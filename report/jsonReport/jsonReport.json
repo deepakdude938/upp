@@ -1,0 +1,124 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2023-02-01T12:36:41.214Z",
+        "before": [
+          {
+            "result": {
+              "duration": 4604347500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upp.hooks.Hook.setUp()"
+            }
+          }
+        ],
+        "line": 11,
+        "name": "Create Basic details with TC1",
+        "description": "",
+        "id": "upp-feature;create-basic-details-with-tc1;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 884387800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "com.upp.hooks.Hook.AfterScenario()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 2488493300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "User is on LoginPage",
+            "match": {
+              "location": "com.upp.stepdefinition.DashBoardPage.user_is_on_LoginPage()"
+            },
+            "after": [
+              {
+                "result": {
+                  "duration": 2999400,
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.upp.hooks.Hook.AddScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 711035200,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "Login to the application",
+            "match": {
+              "location": "com.upp.stepdefinition.DashBoardPage.login_to_the_application()"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.upp.hooks.Hook.AddScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 9202167200,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "Create new deal POC with basic details with given 1.",
+            "match": {
+              "arguments": [
+                {
+                  "val": "1",
+                  "offset": 50
+                }
+              ],
+              "location": "com.upp.stepdefinition.DashBoardPage.create_new_deal_POC_with_basic_details_with_given(java.lang.Integer)"
+            },
+            "after": [
+              {
+                "result": {
+                  "status": "passed"
+                },
+                "match": {
+                  "location": "com.upp.hooks.Hook.AddScreenshot(io.cucumber.java.Scenario)"
+                }
+              }
+            ],
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Regression"
+          }
+        ]
+      }
+    ],
+    "name": "UPP feature",
+    "description": "",
+    "id": "upp-feature",
+    "keyword": "Feature",
+    "uri": "file:testcases/newLead.feature",
+    "tags": []
+  }
+]
