@@ -38,6 +38,23 @@ public class Object_Deal extends BaseClass{
 	@FindBy(xpath="//select[@id='sel-deals-basicDetails-country-v1']")
 	public WebElement countryIndiaDropDown;
 	
+	@FindBy(xpath="//input[@id='allowBeneficiaries']")
+	public WebElement beneficiariesCheckBox;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	public WebElement partyResponsibility;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
+	public WebElement transactionCategory;
+	
+	@FindBy(xpath="//button[normalize-space()='Save']")
+	public WebElement saveButton;
+	
+	
+	
+	
+	
+	
 	
 	
 	

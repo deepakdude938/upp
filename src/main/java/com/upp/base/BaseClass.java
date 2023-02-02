@@ -122,9 +122,9 @@ public class BaseClass {
 				wait.until(ExpectedConditions.visibilityOfAllElements(element));
 	}
 	
-	public void applyExplicitWaitsUntilElementVisible(By locator, Duration time) {
+	public void applyExplicitWaitsUntilElementVisible(By locator, int time) {
 		
-		WebDriverWait wait = new WebDriverWait(driver, time);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 	}
 

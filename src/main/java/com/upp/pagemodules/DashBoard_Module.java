@@ -2,6 +2,9 @@ package com.upp.pagemodules;
 
 
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.upp.base.BaseClass;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
@@ -37,7 +40,28 @@ public class DashBoard_Module extends BaseClass{
 			 od.newDeal.sendKeys(externalData.getFieldData(TcId,"Basic Details","Deal Name"));
 			 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TcId,"Basic Details","Business Segment"));
 			 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TcId,"Basic Details","Country"));
-		 
+			 String input = externalData.getFieldData(TcId,"Basic Details","Transactions to non-registered beneficiaries");
+			 if((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes") ) && !od.beneficiariesCheckBox.isSelected()) {
+				 od.beneficiariesCheckBox.click();
+			 }
+			 
+			 input = externalData.getFieldData(TcId,"Basic Details","Transaction Categories");
+				
+			 od.transactionCategory.click();
+			//div[@class='ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted']
+			 By transaction_Category_Option = By.xpath("//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+			 applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+			 driver.findElement(transaction_Category_Option).click();
+			 od.saveButton.click();
+			
+			 input = externalData.getFieldData(TcId,"Basic Details","Party Responsibilities");
+			
+			 od.partyResponsibility.click();
+			 
+			 By party_Responsibility_Option = By.xpath("//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+			 applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
+			 driver.findElement(party_Responsibility_Option).click();
+			 od.saveButton.click();
 	}
 	
 	
