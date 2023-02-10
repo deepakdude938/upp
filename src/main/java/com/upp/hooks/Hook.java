@@ -16,30 +16,23 @@ import io.cucumber.java.After;
 public class Hook extends BaseClass {
 	
 	
-	
-//	@Before()
-//	public void setUp() throws Exception {
-//		initialize();
-//		
-//	}
-	
 	public static WebDriver driver;
+	
+	
 	@Before()
 	public void setUp() throws Exception {
 		WebDriver driver=initialize();
 		this.driver=driver;
 		
-		
-	}
+		}
 	
 	@After
 	public void AfterScenario() throws IOException
 	{
 		
-//		driver.quit();
+		driver.quit();
 		
 	}
-	
 	
 	@AfterStep
 	public void AddScreenshot(Scenario scenario) throws IOException
@@ -55,6 +48,5 @@ public class Hook extends BaseClass {
 		}
 		
 	}
-	
 }
 	

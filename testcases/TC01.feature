@@ -1,14 +1,15 @@
-Feature: UPP feature
+Feature: TC01
 
 
-@Regression
-Scenario Outline: Create Basic details with TC1
-Given User is on LoginPage
+@Regression @TC01
+Scenario Outline: Create Basic details with TC01
+Given User is on LoginPage 
 Then Login to the application
-And Create new deal POC with basic details with given <TcId>.
+And Create new deal with basic details with given "<TcId>".
 Examples:
       |TcId|
-      |1   |
+      |TS01|
+     
       
       
       

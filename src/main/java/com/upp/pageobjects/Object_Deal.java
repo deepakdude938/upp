@@ -12,8 +12,6 @@ public class Object_Deal extends BaseClass{
 		PageFactory.initElements(driver, this);
 	}
 	
-	
-	
 	@FindBy(id="txt-generic-login-username-v1")
 	public WebElement username;
 	
@@ -50,23 +48,31 @@ public class Object_Deal extends BaseClass{
 	@FindBy(xpath="//button[normalize-space()='Save']")
 	public WebElement saveButton;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
+	public WebElement deals_ProcessingUnits;
 
+	@FindBy(xpath="//span[@class='ng-tns-c92-7 ui-autocomplete-list-item-option']")
+	public WebElement deals_selectAll;
+	
+	@FindBy(id="btn-deals-basicDetails-next-v1")
+	public WebElement nextBtn;
+	
+	@FindBy(xpath=" //select[@id='country']")
+	public WebElement country;
+	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select full-border'])[2]")
+	public WebElement currency;
+	
+	@FindBy(xpath ="//select[@id='accountIdentifierKey']")
+	public WebElement physical;
+	
+	@FindBy(xpath="//select[@id='sel-generic-searchBar-searchSelect-v1']")
+	public WebElement searchBy;
+	
+	@FindBy(id="sel-generic-searchBar-searchInput-v1")
+	public WebElement searchTextBox;
+	
+	@FindBy(id="btn-generic-searchBar-search-v1")
+	public WebElement searchButton;
+	
 }

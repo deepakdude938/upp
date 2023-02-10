@@ -1,32 +1,30 @@
 package com.upp.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
-
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.NumberToTextConverter;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 
-import com.upp.base.Constants;
 public class ExcelReader {
 	
-	public static String  excelFilePath=Constants.PROJECT_PATH+Constants.TESTDATA_EXCEL_FILE_PATH;
 
-    
+	public static String  excelFilePath =Thread.currentThread().getContextClassLoader().getResource("upp-automation-testdata.xlsx").getFile();
+	public static int rowNum;
+	public static Sheet sheet ;
 
    public void init() throws EncryptedDocumentException, IOException {
         if(false) {
@@ -35,20 +33,63 @@ public class ExcelReader {
         else {
            
             WorkbookFactory.create(new File(excelFilePath));
+             
         }
     }
 
-    public  String getFieldData(int tcID, String worksheetName, String fieldName) throws InvalidFormatException, IOException {
-    	
-    	 Sheet sheet = getWorkBook(excelFilePath).getSheet(worksheetName);
-    	 List<Map<String, String>> details=readSheet(sheet);
-    	 String data=details.get(tcID).get(fieldName);
+    public  String getFieldData(String TSID, String worksheetName, String fieldName) throws InvalidFormatException, IOException {
+    	sheet = getWorkBook(excelFilePath).getSheet(worksheetName);
+       	rowNum = ExcelReader.findrownum(worksheetName, TSID);
+       	    	 
+    	 String cellData = null;
+    	 XSSFRow row = (XSSFRow) sheet.getRow(0);
+    	 int column_Number = 0;
+    	 XSSFCell cell;
+    	 for (int i = 0; i < row.getLastCellNum(); i++) {
+    	 if (row.getCell(i).getStringCellValue().trim().equals(fieldName))
+    		column_Number = i;
+    	 cell = (XSSFCell) sheet.getRow(rowNum).getCell(column_Number);
+    	 if (cell.getCellType() == CellType.STRING) {
+    		 cellData = cell.getStringCellValue();
+    	 } else if (cell.getCellType() == CellType.NUMERIC) {
+    		 cellData = cell.getNumericCellValue() + "";
+    	 }
+    	 }
+    	 return cellData;
     	 
-    	return data;
-    	
     }
     
+ public static int findrownum(String workSheetName, String TSID) {
 
+    	try {
+			sheet = getWorkBook(excelFilePath).getSheet(workSheetName);
+		} catch (Exception e) {
+				} 
+        boolean check = true;
+        int i=1;
+        while (check){
+            Row rowH = sheet.getRow(i);
+            Cell cell = rowH.getCell(0);
+            String cellvalue = null ;
+            
+            if (cell.getCellType() == CellType.STRING) {
+            	   cellvalue = cell.getStringCellValue();
+                }
+             else if (cell.getCellType() == CellType.NUMERIC) {
+            	cellvalue = cell.getNumericCellValue()+"";
+            }
+
+            if (cellvalue.equalsIgnoreCase(TSID)){
+                check = false;
+            }
+            else {
+                i = i+1;
+            }
+        }       
+
+        return i;
+    }
+    
 	public List<Map<String, String>> getData(String excelFilePath, String sheetName)
             throws InvalidFormatException, IOException {
         Sheet sheet = getSheetByName(excelFilePath, sheetName);
@@ -182,5 +223,6 @@ public class ExcelReader {
         }
         return columnMapdata;
     }
-	
 }
+	
+

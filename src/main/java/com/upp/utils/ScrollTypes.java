@@ -51,8 +51,6 @@ public class ScrollTypes {
 	
 	}
 	
-	
-	
 	public static void  scrollInsideWindow1(WebElement element,int pixelNo){
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollTop = arguments[1];",element, pixelNo);

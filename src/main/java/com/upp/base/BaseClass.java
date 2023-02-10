@@ -15,7 +15,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -69,12 +68,10 @@ public class BaseClass {
 			}
 			
 			driver = new ChromeDriver(options);
-//			driver = new ChromeDriver();
+
 			
 		} else if (browser.equalsIgnoreCase("firefox")) {
-			WebDriverManager.firefoxdriver().setup();
-			
-			driver = new FirefoxDriver();
+			 
 			driver.manage().window().maximize();
 			
 		} else if (browser.equalsIgnoreCase("internetExplorer")) {
@@ -94,8 +91,7 @@ public class BaseClass {
 		return driver;
 
 	}
-	
-	
+		
 	public static void applyExplicitWaitsUntilElementVisible(WebElement element, Duration time)throws MalformedURLException {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.visibilityOf(element));
@@ -166,15 +162,13 @@ public class BaseClass {
 			catch(StaleElementReferenceException r) {
 				
 			}
-			
 		}
 		
 		return outcome;
 		
 	}
 	
-	
-	public String getXpath(List<WebElement> dataServiceNameBifrost) {
+		public String getXpath(List<WebElement> dataServiceNameBifrost) {
 	    String str = dataServiceNameBifrost.toString();
 	    String[] listString = null;
 	    if(str.contains("xpath"))
@@ -188,5 +182,3 @@ public class BaseClass {
 	    return xpath.substring(0, xpath.length() - 5).trim();
 	}
 }
-
-

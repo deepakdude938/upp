@@ -33,11 +33,6 @@ public class SwitchWindow {
 	public int windowCount() {
 		ArrayList tabs = new ArrayList(driver.getWindowHandles());
 		int size = (tabs.size());
-		/*
-		 * for (int i =1;i<tabs.size();i++){
-		 * driver.switchTo().window(tabs.get(i)); }
-		 */
-		// driver.switchTo().window(tabs.get(0));
 		return size;
 	}
 

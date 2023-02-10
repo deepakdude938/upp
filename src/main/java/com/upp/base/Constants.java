@@ -14,7 +14,6 @@ public class Constants {
 	
 	public static final String PROPERTY_FILE_PATH = "//src//test//resources//global.properties";
 	
-	public static final String TESTDATA_EXCEL_FILE_PATH =	"\\src\\main\\resources\\upp-automation-testdata.xlsx";
-	
+
 
 }

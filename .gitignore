@@ -1,5 +1,5 @@
-target/
-report/
+/target/
+/report/
 *.png
 /.settings/
 /test-output/
