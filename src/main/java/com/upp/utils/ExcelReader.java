@@ -2,6 +2,9 @@ package com.upp.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -19,10 +22,16 @@ import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
+import com.upp.base.Constants;
+
 public class ExcelReader {
 	
 
 	public static String  excelFilePath =Thread.currentThread().getContextClassLoader().getResource("upp-automation-testdata.xlsx").getFile();
+
+	public  URL pathSource =this.getClass().getResource("upp-automation-testdata.xlsx");
+	InputStream is = getClass().getClassLoader().getResourceAsStream("upp-automation-testdata.xlsx");
+	URL resource = getClass().getClassLoader().getResource("upp-automation-testdata.xlsx");
 	public static int rowNum;
 	public static Sheet sheet ;
 
@@ -38,6 +47,7 @@ public class ExcelReader {
     }
 
     public  String getFieldData(String TSID, String worksheetName, String fieldName) throws InvalidFormatException, IOException {
+ 
     	sheet = getWorkBook(excelFilePath).getSheet(worksheetName);
        	rowNum = ExcelReader.findrownum(worksheetName, TSID);
        	    	 
@@ -61,10 +71,10 @@ public class ExcelReader {
     
  public static int findrownum(String workSheetName, String TSID) {
 
-    	try {
-			sheet = getWorkBook(excelFilePath).getSheet(workSheetName);
-		} catch (Exception e) {
-				} 
+//    	try {
+//			sheet = getWorkBook(excelFilePath).getSheet(workSheetName);
+//		} catch (Exception e) {
+//				} 
         boolean check = true;
         int i=1;
         while (check){

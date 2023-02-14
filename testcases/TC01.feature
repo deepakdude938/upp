@@ -5,9 +5,9 @@ Feature: TC01
 Scenario Outline: Create Basic details with TC01
 Given User is on LoginPage 
 Then Login to the application
-And Create new deal with basic details with given "<TcId>".
+And Create new deal with basic details with given "<TSId>".
 Examples:
-      |TcId|
+      |TSId|
       |TS01|
      
       

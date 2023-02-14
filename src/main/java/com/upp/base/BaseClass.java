@@ -2,6 +2,7 @@ package com.upp.base;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class BaseClass {
 	public static Properties prop;
 	
 	public WebDriver initialize() throws Exception {
-	
+		
 		FileInputStream	fis = new FileInputStream(Constants.PROJECT_PATH+Constants.PROPERTY_FILE_PATH);
 		prop = new Properties();
 		prop.load(fis);
