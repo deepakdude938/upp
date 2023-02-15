@@ -1,5 +1,6 @@
 package com.upp.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -70,5 +71,26 @@ public class DateUtils {
 		// Date tomorrow = calendar.getTime();
 		date1 = sdf.format(today);
 		return date1;
+	}
+
+	public static String getTimeAfterMins(int mins) {
+		SimpleDateFormat df = new SimpleDateFormat("hh.mm aa");
+
+		String dateString = df.format(new Date()).toString();
+		System.out.println(dateString);
+		Date d = null;
+		try {
+			d = df.parse(dateString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(d);
+		cal.add(Calendar.MINUTE, mins);
+		String newTime = df.format(cal.getTime());
+		System.out.println(newTime);
+		return newTime;
+
 	}
 }

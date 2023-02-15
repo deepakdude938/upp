@@ -1,100 +1,162 @@
 package com.upp.pagemodules;
 
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.utils.ExcelReader;
 
-public class DashBoard_Module extends BaseClass{
-	
-	public static Object_Deal od ;
+import freemarker.template.utility.DateUtil;
+
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.text.DateFormat;
+import java.util.Date;
+
+public class DashBoard_Module extends BaseClass {
+
+	public static Object_Deal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
 	public static int rowNum;
 	public static OdpApi odpAccount;
 	public static AccountDetails accDetails;
+	public static String accountNumber;
+	DateUtils dateTime = new DateUtils();
+	
 
 	public DashBoard_Module() {
-		
+
 		od = new Object_Deal();
 		externalData = new ExcelReader();
-		dropdown=new DropDown(driver);
-		odpAccount=new OdpApi();
-		accDetails=new AccountDetails();
+		dropdown = new DropDown(driver);
+		odpAccount = new OdpApi();
+		accDetails = new AccountDetails();
 
 	}
 
 	public void loginToUPP() {
-		
+
 		od.username.sendKeys(prop.getProperty("username"));
 		od.password.sendKeys(prop.getProperty("password"));
-		od.loginIn.click();	
-	
+		od.loginIn.click();
+
 	}
 
-	public void createNewDeal(String TSID) throws Exception{
-	
-			 od.deal_SideMenuIcon.click();
-			 od.newDealButton.click();
-			 od.newDeal.sendKeys(externalData.getFieldData(TSID,"Basic Details","Deal Name"));
-			 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TSID,"Basic Details","Business Segment"));
-			 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TSID,"Basic Details","Country"));
-			 String input = externalData.getFieldData(TSID,"Basic Details","Transactions to non-registered beneficiaries");
-			 if((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes") ) && !od.beneficiariesCheckBox.isSelected()) {
-				 od.beneficiariesCheckBox.click();
-			 }
-			  
-			 String ProcessingUnits=externalData.getFieldData(TSID,"Basic Details","Processing Units");
-				
-				if(!(ProcessingUnits.equalsIgnoreCase("Select All")))
-				{
-					 od.deals_ProcessingUnits.click();
-					 od.deals_selectAll.click();
-					 By ProcessingUnit = By.xpath("//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+ProcessingUnits+"']");
-					 driver.findElement(ProcessingUnit).click();
-				}
-			 
-			 input = externalData.getFieldData(TSID,"Basic Details","Transaction Categories");
-			 od.transactionCategory.click();
-			 By transaction_Category_Option = By.xpath("//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
-			 applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-			 driver.findElement(transaction_Category_Option).click();
-			 od.saveButton.click();
-			
-			 input = externalData.getFieldData(TSID,"Basic Details","Party Responsibilities");
-			 od.partyResponsibility.click();
-			 By party_Responsibility_Option = By.xpath("//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
-			 applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
-			 driver.findElement(party_Responsibility_Option).click();
-			 od.saveButton.click();
-			 od.nextBtn.click();
-		    createNewAccount(TSID);
-	}
-	
-	
-	public void createNewAccount(String TSID) throws Exception {
+	public void createNewDeal(String TSID) throws Exception {
+
+		od.deal_SideMenuIcon.click();
+		od.newDealButton.click();
+		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
+		dropdown.selectByVisibleText(od.businessSegmentDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
+		dropdown.selectByVisibleText(od.countryIndiaDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Country"));
+		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
+		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
+			od.beneficiariesCheckBox.click();
+		}
+
+		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
+
+		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
+			od.deals_ProcessingUnits.click();
+			od.deals_selectAll.click();
+			By ProcessingUnit = By.xpath(
+					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+							+ ProcessingUnits + "']");
+			driver.findElement(ProcessingUnit).click();
+		}
+
+		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
+		od.transactionCategory.click();
+		By transaction_Category_Option = By.xpath(
+				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+						+ input + "']");
+		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+		driver.findElement(transaction_Category_Option).click();
+		od.saveButton.click();
+
+		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
+		od.partyResponsibility.click();
+		By party_Responsibility_Option = By.xpath(
+				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+						+ input + "']");
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
+		driver.findElement(party_Responsibility_Option).click();
+		od.saveButton.click();
+		od.nextBtn.click();
 		
+		
+	}
+
+	public String createNewAccount(String TSID) throws Exception {
+
 		odpAccount.createAccount(TSID);
-		accDetails=odpAccount.popelmnt(OdpApi.stack1);
-		System.out.println("the account no is"+accDetails.getAccno());
+		accDetails = odpAccount.popelmnt(OdpApi.stack1);
+		System.out.println("the account no is" + accDetails.getAccno());
 		String accountNo = accDetails.getAccno();
-		dropdown.selectByVisibleText(od.country,externalData.getFieldData(TSID, "Accounts", "Country"));
+		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
 		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
 		String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
 		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
-		dropdown.selectByVisibleText(od.physical, "Physical");
-		} 
-			else {
+			dropdown.selectByVisibleText(od.physical, "Physical");
+		} else {
 			dropdown.selectByVisibleText(od.physical, " Virtual ");
-			}
-
+		}
 		od.searchTextBox.sendKeys(accountNo);
 		od.searchButton.click();
-
-		}
+		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(5));
+		od.accounts_addAccount.click();
+		Thread.sleep(2000);
+		return accountNo;
 	}
+
+	public void createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
+
+		od.linkedInstruction_linkedBtn.click();
+		od.linkedInstruction_addAccountBtn.click();
+		od.linkedInstruction_paymentBtn.click();
+		od.linkedInstruction_proccedbtn.click();
+		od.linkedInstruction_purposeddl.click();
+		dropdown.selectByVisibleText(od.linkedInstruction_purposeddl, " Payment ");
+		// String accNumber = accountNumber;
+		od.linkedInstruction_SourceAccounttxt.click();
+		od.linkedInstruction_Accountvalue.sendKeys(sourceAccountno);
+		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
+		driver.findElement(sourceaccountselect).click();
+		dropdown.selectByVisibleText(od.linkedInstruction_Balanceddl, " Available Balance ");
+		od.linkedInstruction_NextBtn.click();
+		od.linkedInstruction_LinkedConfigNextBtn.click();
+		od.linkedInstruction_Executiondate.click();
+		od.linkedInstruction_Todaydate.click();
+		dropdown.selectByVisibleText(od.linkedInstruction_schedule, " At specific time ");
+		dropdown.selectByVisibleText(od.linkedInstruction_HolidayAction, "Execute on holiday ");
+		String timem = dateTime.getTimeAfterMins(10);
+		od.linkedInstruction_TimePicker.clear();
+		od.linkedInstruction_TimePicker.sendKeys(timem);
+		od.linkedInstruction_ScheduleNextBtn.click();
+		od.linkedInstruction_Instrumentddl.sendKeys("BT");
+		String inst = "BT";
+		By instrument = By
+				.xpath("//li[@id='lbl-generic-autocomplete-listItemOption1']//div[contains(text(),'" + inst + "')]");
+		driver.findElement(instrument).click();
+		od.linkedInstruction_Amount.click();
+		od.linkedInstruction_ToAccountddl.sendKeys(toaccountNo);
+		By toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+		driver.findElement(toaccountselect).click();
+		dropdown.selectByVisibleText(od.linkedInstruction_Incorporationddl, "IN");
+		od.linkedInstruction_BankBic.sendKeys("SCBLINBB");
+		od.linkedInstruction_AddBtn.click();
+		od.linkedInstruction_Summary.click();
+		od.linkedInstruction_Submit.click();
+		od.linkedInstruction_YesBtn.click();
+		od.linkedInstruction_OkBtn.click();
+	}
+}

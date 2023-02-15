@@ -16,6 +16,7 @@ public class DashBoardPage extends BaseClass{
 	@Given("Create new deal with basic details with given {string}.")
 	public void create_new_deal_POC_with_basic_details_with_given(String TCID) throws  Exception {
 		dm.createNewDeal(TCID);
+		
 	}
 	
 	@Given("User is on LoginPage")
@@ -27,4 +28,6 @@ public class DashBoardPage extends BaseClass{
 	public void login_to_the_application() {
 		dm.loginToUPP();
 	   }
+	
+	
 }
