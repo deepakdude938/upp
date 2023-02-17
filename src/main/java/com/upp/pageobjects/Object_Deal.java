@@ -87,6 +87,9 @@ public class Object_Deal extends BaseClass{
 	@FindBy(id="btn-deals-accounts-addUpdateAdvice-ok-v1")
 	public WebElement linkedInstruction_addAccountBtn;
 	
+	@FindBy(id="txt-deals-instruction-fundTransferBasic-name-v1")
+	public WebElement linkedInstruction_basicNameTxt;
+	
 	@FindBy(xpath="//div[text()=' Payment ']")
 	public WebElement linkedInstruction_paymentBtn;
 	
@@ -163,5 +166,104 @@ public class Object_Deal extends BaseClass{
 	
 	@FindBy(xpath="//button[text()='OK']")
 	public WebElement linkedInstruction_OkBtn;
+	
+	@FindBy(xpath = "//span[contains(@class,'text-label')]//span")
+	public WebElement linkedInstruction_DealId;
+	
+	
+	@FindBy(xpath="(//button[normalize-space()='Yes'])[1]")
+	public WebElement payments_DealYesButton;
+	
+	@FindBy(xpath="(//button[normalize-space()='OK'])[1]")
+	public WebElement payments_DealOkButton;
+	
+	//dealChecker objects
+	
+	@FindBy(xpath="//span[contains(text(),'REF')]")
+	public WebElement deals_SummaryRefId;
+	
+	@FindBy(xpath="//a[@href='/deals/DEALCHECKER']")
+	public WebElement dealChecker_Button;
+    	
+	@FindBy(id="sel-generic-searchBar-searchSelect-v1")
+	public WebElement dealChecker_searchSelect;
+	
+	@FindBy(xpath="//input[@id='sel-generic-searchBar-searchInput-v1']")
+	public WebElement dealChecker_searchBar;
+	
+	@FindBy(id="btn-generic-searchBar-search-v1")
+	public WebElement dealChecker_searchButton;
+	
+	@FindBy(id="ic-generic-menu-showMenu-v1")
+	public WebElement dealChecker_showMenu;
+	
+	@FindBy(xpath="//div[contains(text(),'open')]")
+	public WebElement dealChecker_Open;
+	
+	@FindBy(xpath="(//input[@id='rad-generic-radio-select-v1'])[1]")
+	public WebElement dealChecker_approveAllRadioButton;
+	@FindBy(xpath="(//i[@class='ui-icon ui-icon-note warning'])[1]")
+	public WebElement dealChecker_addComments;
+	
+	@FindBy(id="btn-deals-summary-approve-v1")
+	public WebElement dealChecker_ApproveButton;
+	
+	@FindBy(id="txt-deals-accounts-addUpdateAdvice-noteTxt-v1")
+	public WebElement dealChecker_addNote;
+	
+	@FindBy(id="btn-deals-accounts-addUpdateAdvice-ok-v1")
+	public WebElement dealChecker_okCommentbutton;
+	
+	//Logout Object
+	@FindBy(xpath = "//i[contains(@class,'logout ')]")
+	public WebElement logout;
+	
+//	Transaction Maker objects
+	@FindBy(xpath = "//label[contains(text(),' TRANSACTIONS ')]")
+	public WebElement TxnMaker_Transaction;
+	
+	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONMAKER']")
+	public WebElement TxnMaker_TrasactionMaker;
+	
+	@FindBy(xpath = "((//div[@aria-rowindex='2'])[2]//input)[2]")
+	public WebElement TxnMaker_searchDealId;
+	
+	@FindBy(xpath = "//div[@class='ag-pinned-left-cols-container']//div[@class='ui-checkbox']//span")
+	public WebElement TxnMaker_txnCheckbox;
+	
+	@FindBy(xpath = "//button[contains(text(),'Submit')]")
+	public WebElement TxnMaker_submitBtn;
+	
+	@FindBy(xpath = "//button[contains(text(),'OK')]")
+	public WebElement TxnMaker_okBtn;
+	
+//	Transaction Checker objects
+	@FindBy(xpath = "//label[contains(text(),' TRANSACTIONS ')]")
+	public WebElement TxnChecker_Transaction;
+	
+	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONCHECKER']")
+	public WebElement TxnChecker_TrasactionChecker;
+	
+	@FindBy(xpath = "((//div[@aria-rowindex='2'])[2]//input)[2]")
+	public WebElement TxnChecker_searchDealId;
+	
+	@FindBy(xpath = "//div[@class='ag-pinned-left-cols-container']//div[@class='ui-checkbox']//span")
+	public WebElement TxnChecker_txnCheckbox;
+	
+	@FindBy(xpath = "(//div[contains(@class,' ag-cell-first-right-pinned')]//i)[3]")
+	public WebElement TxnChecker_comment;
+	
+	@FindBy(id = "txt-deals-accounts-addUpdateAdvice-noteTxt-v1")
+	public WebElement TxnChecker_note;
+	
+	@FindBy(id = "btn-deals-accounts-addUpdateAdvice-ok-v1")
+	public WebElement TxnChecker_ok;
+	
+	@FindBy(xpath = "//button[contains(text(),'Submit')]")
+	public WebElement TxnChecker_submitBtn;
+	
+	@FindBy(xpath = "//button[contains(text(),'OK')]")
+	public WebElement TxnChecker_okBtn;
+	
 }
 
