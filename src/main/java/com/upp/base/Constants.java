@@ -14,6 +14,6 @@ public class Constants {
 	
 	public static final String PROPERTY_FILE_PATH = "//src//test//resources//global.properties";
 	
-
+	public static final String dealer_user = "Dealer"; 
 
 }

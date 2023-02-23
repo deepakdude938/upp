@@ -93,4 +93,14 @@ public class DateUtils {
 		return newTime;
 
 	}
+	
+	public static String getDay() {
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("d");
+		String date1;
+		Date today = calendar.getTime();
+		// Date tomorrow = calendar.getTime();
+		date1 = sdf.format(today);
+		return date1;
+	}
 }

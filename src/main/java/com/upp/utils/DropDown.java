@@ -72,4 +72,15 @@ public class DropDown {
 			e.getMessage();
 		}
 	}
+	
+	public WebElement deSelectElement(WebElement Element) {
+		try {
+			select = new Select(Element);
+			select.deselectAll();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return Element;
+	}
+	
 }
