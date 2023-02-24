@@ -497,4 +497,201 @@ public class DashBoard_Module extends BaseClass {
 		od.nextBtn.click();
 
 	}
+	
+	public void createNewDeal_Old(String TSID) throws Exception{
+		
+		 od.deal_SideMenuIcon.click();
+		 od.newDealButton.click();
+		 
+		 od.newDeal.sendKeys(externalData.getFieldData(TSID,"Basic Details","Deal Name"));	 
+	
+		// dropdown.selectByVisibleText(od.basicDetails_ProductDropDown, externalData.getFieldData(TSID,"Basic Details","Product")); 
+		 
+		
+		 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TSID,"Basic Details","Business Segment"));
+		 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TSID,"Basic Details","Country"));
+		 String input = externalData.getFieldData(TSID,"Basic Details","Transactions to non-registered beneficiaries");
+		 if((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes") ) ) {
+			 od.beneficiariesCheckBox.click();
+		 }
+		  
+		 String ProcessingUnits=externalData.getFieldData(TSID,"Basic Details","Processing Units");
+			
+			if(!(ProcessingUnits.equalsIgnoreCase("Select All")))
+			{
+				 od.deals_ProcessingUnits.click();
+				 od.deals_selectAll.click();
+				 od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
+				 By ProcessingUnit = By.xpath("//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+ProcessingUnits+"']");
+				 driver.findElement(ProcessingUnit).click();
+			}
+		
+		 input = externalData.getFieldData(TSID,"Basic Details","Transaction Categories");
+		 od.transactionCategory.click();
+		 od.transactionCategoryInput.sendKeys(input);
+		 By transaction_Category_Option = By.xpath("//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+		 applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+		 driver.findElement(transaction_Category_Option).click();
+		 if(!od.basicDetails_SaveButton_List.isEmpty())
+		 {
+		 od.saveButton.click();
+		 }
+		 input = externalData.getFieldData(TSID,"Basic Details","Party Responsibilities");
+		 od.partyResponsibility.click();
+		 od.partyResponsibilityinput.sendKeys(input);
+		 By party_Responsibility_Option = By.xpath("//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+		 driver.findElement(party_Responsibility_Option).click();
+		 
+		// od.saveButton.click();
+		 od.nextBtn.click();
+	
+
+}
+	
+	public String submitDeal() throws Exception {
+		
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(5));
+		 od.payments_DealsummaryIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId,Duration.ofSeconds(5));
+	     String dealId=od.deals_SummaryRefId.getText();
+	     
+		scroll.scrollInToView(od.payments_DealSubmitButton);
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton,Duration.ofSeconds(5));
+		 od.payments_DealSubmitButton.click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton,Duration.ofSeconds(10));
+		 od.payments_DealYesButton.click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(10));
+		 od.payments_DealOkButton.click();
+		 
+		return dealId;
+	}
+	
+	public void logOutOld() throws Exception
+	{
+	    applyExplicitWaitsUntilElementClickable(od.logOutIcon,Duration.ofSeconds(40));
+	    jsClick.click(od.logOutIcon);
+	}
+	
+	public String createPayments(String TSID,String sourceAccountno,String toaccountNo) throws Exception{
+
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon,Duration.ofSeconds(5));
+		od.payments_ScheduledInstructionIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted,Duration.ofSeconds(5));
+		od.payments_GetStarted.click();
+		String InstructionType=externalData.getFieldData(TSID,"Scheduled","Select Instruction Type");
+		 By InstructionButton = By.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"+InstructionType+"']");
+		 applyExplicitWaitsUntilElementVisible(InstructionButton,10);
+		 driver.findElement(InstructionButton).click();
+		
+		applyExplicitWaitsUntilElementClickable(od.payments_Proceed,Duration.ofSeconds(5));
+		od.payments_Proceed.click();
+		od.payments_BasicName.clear();
+		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID,"Scheduled","Basic Details Name"));
+		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID,"Scheduled","Purpose"));
+		od.payments_SourceAccount.sendKeys(sourceAccountno);
+		By sourceaccountselect = By.xpath("//div[contains(text(),'"+sourceAccountno+"')]");
+		 driver.findElement(sourceaccountselect).click();
+
+		dropdown.selectByVisibleText(od.payments_BalanceConsideration,externalData.getFieldData(TSID,"Scheduled","Balance Consideration"));
+		if(((externalData.getFieldData(TSID,"Scheduled","Split")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Split")).equalsIgnoreCase("Yes"))){
+			od.payments_SplitBalanceSlider.click();
+		}
+		if(((externalData.getFieldData(TSID,"Scheduled","Partial Payment")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Partial Payment")).equalsIgnoreCase("Yes"))){
+			od.payments_PartialpaymentSlider.click();
+		}
+		
+		od.payments_NextArrowButtonTransferBasic.click();
+		
+		if(((externalData.getFieldData(TSID,"Scheduled","Schedule - Repeating")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Schedule - Repeating")).equalsIgnoreCase("Yes"))){
+			od.payments_PartialpaymentSlider.click();
+		}
+		
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate,Duration.ofSeconds(5));
+		od.payments_ExecutionDate.click();
+		
+	   	String day=dateutil.getDay(); 
+		 By excecutionDay = By.xpath("//a[contains(text(),'"+day+"')]");
+		 applyExplicitWaitsUntilElementVisible(excecutionDay,5);
+		 driver.findElement(excecutionDay).click();
+	
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt,Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.payments_ScheduleAt, externalData.getFieldData(TSID,"Scheduled","Schedule At"));
+		dropdown.selectByVisibleText(od.payments_HolidayAction, externalData.getFieldData(TSID,"Scheduled","Holiday Action"));
+		od.payments_NextArrowButtonTransferSchedule.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_Instrument,Duration.ofSeconds(5));
+		
+		od.payments_Instrument.click();
+		
+		String paymentInstrumentdata=externalData.getFieldData(TSID,"Scheduled","Instrument");
+		 By paymentInstrument = By.xpath("//div[contains(text(),'"+paymentInstrumentdata+"')]");
+		 driver.findElement(paymentInstrument).click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown,Duration.ofSeconds(5));
+		 scroll.scrollInToView(od.payments_ToAccountDropdown);
+		 dropdown.selectByVisibleText(od.payments_ToAccountDropdown,toaccountNo);
+		 scroll.scrollInToView(od.payments_beneficiaryBankBic);
+		 od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID,"Scheduled","Beneficiary Bank Bic"));
+		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID,"Scheduled","Beneficiary Country Of Incorporation"));
+		od.payments_Amount.sendKeys(externalData.getFieldData(TSID,"Scheduled","Amount"));
+		od.payments_AddSubInstructionButton.click();
+		od.payments_NextArrowButtonTransferSubInstruction.click();		
+		
+		if(((externalData.getFieldData(TSID,"Scheduled","Retry-Enable Auto Retry")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))){
+			od.payments_RetrySlider.click();
+		}
+		od.payments_NextArrowButtonRetryMechanism.click();
+		
+		if(((externalData.getFieldData(TSID,"Scheduled","Notification-Notification Alerts")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Notification-Notification Alerts")).equalsIgnoreCase("Yes"))){
+			od.payments_NotificationAlertSlider.click();
+		}
+		
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(5));
+		 od.payments_DealsummaryIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId,Duration.ofSeconds(5));
+	     String dealId=od.deals_SummaryRefId.getText();
+	     
+		scroll.scrollInToView(od.payments_DealSubmitButton);
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton,Duration.ofSeconds(5));
+		 od.payments_DealSubmitButton.click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton,Duration.ofSeconds(10));
+		 od.payments_DealYesButton.click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(10));
+		 od.payments_DealOkButton.click();
+		 
+		return dealId;
+
+	}
+	public void approveDealFromDealChecker_Old(String dealId) throws Exception
+	{
+		
+		System.out.println("The deal id is"+dealId);
+		
+		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
+		 od.deal_SideMenuIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_Button1,Duration.ofSeconds(15));
+		 od.dealChecker_Button1.click();
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
+		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+		 od.dealChecker_searchBar.sendKeys(dealId);
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton,Duration.ofSeconds(25));
+		 od.dealChecker_searchButton.click();
+		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(40));
+		 od.dealChecker_showMenu.click();
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_Open,Duration.ofSeconds(25));
+		 od.dealChecker_Open.click();
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_addComments,Duration.ofSeconds(10));
+		 jsClick.click(od.dealChecker_addComments);
+		 od.dealChecker_addNote.sendKeys("Ok approved");
+		 od.dealChecker_okCommentbutton.click();
+		 jsClick.click(od.dealChecker_approveAllRadioButton);
+		 od.dealChecker_ApproveButton.click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton,Duration.ofSeconds(40));
+		 od.payments_DealYesButton.click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(40));
+		 od.payments_DealOkButton.click();
+		
+	}
+	
+	
+	
+	
 }

@@ -35,7 +35,7 @@ public class DealPage extends BaseClass implements ICallback {
 	}
 
 	@Then("Login to the application as {string}")
-	public void login_to_the_application_as(String users) {
+	public void login_to_the_application_as(String users) throws Exception {
 		new LoginToApplication().login(users, prop);
 	}
 

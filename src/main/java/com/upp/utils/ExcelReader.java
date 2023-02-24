@@ -26,8 +26,8 @@ import com.upp.base.Constants;
 
 public class ExcelReader {
 	
-
-	public static String  excelFilePath =Thread.currentThread().getContextClassLoader().getResource("upp-automation-testdata.xlsx").getFile();
+	public static String excelFilePath=System.getProperty("user.dir")+"\\src\\main\\resources\\upp-automation-testdata.xlsx";
+	//public static String  excelFilePath =Thread.currentThread().getContextClassLoader().getResource("upp-automation-testdata.xlsx").getFile();
 
 	public  URL pathSource =this.getClass().getResource("upp-automation-testdata.xlsx");
 	InputStream is = getClass().getClassLoader().getResourceAsStream("upp-automation-testdata.xlsx");

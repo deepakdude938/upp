@@ -1,5 +1,7 @@
 package com.upp.pageobjects;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -488,5 +490,22 @@ public class Object_NewDeal extends BaseClass {
 //	
 //	@FindBy(xpath="(//button[normalize-space()='OK'])[1]")
 //	public WebElement payments_DealOkButton;
-
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-search'])[3]")
+	public WebElement partyResponsibilityinput;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-search'])[1]")
+	public WebElement deals_ProcessingUnitsSearch;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-search'])[2]")
+	public WebElement transactionCategoryInput;
+	
+	@FindBy(xpath="//button[normalize-space()='Save']")
+	public List< WebElement> basicDetails_SaveButton_List;
+	
+	@FindBy(xpath="//div[@title='Logout']")
+	public WebElement logOutIcon;
+	
+	@FindBy(xpath = "/html[1]/body[1]/xcro-wrapper[1]/xcro-protected[1]/ui-overlay-pane[1]/div[1]/div[2]/div[3]/div[1]/div[6]/div[1]/a[1]")
+	public WebElement dealChecker_Button1;
 }
