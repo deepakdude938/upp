@@ -32,4 +32,5 @@ public class DealResponsibilityHandler extends BaseClass implements ICallback {
 	public void handleMarchant() {
 		dropdown.selectByVisibleText(od.parties_CommissionPlan, "Merchant");
 	}
+
 }

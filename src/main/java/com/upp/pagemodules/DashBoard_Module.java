@@ -2,6 +2,7 @@ package com.upp.pagemodules;
 
 import java.io.IOException;
 import java.time.Duration;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -56,64 +57,63 @@ public class DashBoard_Module extends BaseClass {
 		od.loginIn.click();
 	}
 
-	public void createNewDeal(String TSID) throws Exception {
+//	public void createNewDeal(String TSID) throws Exception {
+//		od.deal_SideMenuIcon.click();
+//		od.newDealButton.click();
+//		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
+//		dropdown.selectByVisibleText(od.basicDetails_ProductDropDown,
+//				externalData.getFieldData(TSID, "Basic Details", "Product"));
+//		dropdown.selectByVisibleText(od.businessSegmentDropDown,
+//				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
+//		System.out.println(externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
+//		dropdown.selectByVisibleText(od.countryIndiaDropDown,
+//				externalData.getFieldData(TSID, "Basic Details", "Country"));
+//		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
+//		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
+//			od.beneficiariesCheckBox.click();
+//		}
+//
+//		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
+//
+//		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
+//			od.deals_ProcessingUnits.click();
+//			od.deals_selectAll.click();
+//			By ProcessingUnit = By.xpath(
+//					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+//							+ ProcessingUnits + "']");
+//			driver.findElement(ProcessingUnit).click();
+//		}
+//
+//		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
+//		System.out.println(input);
+//		od.transactionCategory.click();
+//		od.transactionCategoryInput.sendKeys(input);
+//		By transaction_Category_Option = By.xpath(
+//				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+//						+ input + "']");
+//		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+//		driver.findElement(transaction_Category_Option).click();
+//		if (!od.basicDetails_SaveButton_List.isEmpty())
+//			od.saveButton.click();
+//
+//		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
+//		System.out.println(input);
+//		od.partyResponsibility.click();
+//		od.partyResponsibilityinput.sendKeys(input);
+//		By party_Responsibility_Option = By.xpath(
+//				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+//						+ input + "']");
+//		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
+//		driver.findElement(party_Responsibility_Option).click();
+//		if (!od.basicDetails_SaveButton_List.isEmpty()) {
+//			od.saveButton.click();
+//		}
+//		od.nextBtn.click();
+//	}
+//
+//	}
 
-		od.deal_SideMenuIcon.click();
-		od.newDealButton.click();
-		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
-		dropdown.selectByVisibleText(od.basicDetails_ProductDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Product"));
-		dropdown.selectByVisibleText(od.businessSegmentDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		System.out.println(externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		dropdown.selectByVisibleText(od.countryIndiaDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Country"));
-		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
-		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
-			od.beneficiariesCheckBox.click();
-		}
-
-		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
-
-		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
-			od.deals_ProcessingUnits.click();
-			od.deals_selectAll.click();
-			By ProcessingUnit = By.xpath(
-					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-							+ ProcessingUnits + "']");
-			driver.findElement(ProcessingUnit).click();
-		}
-
-		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		System.out.println(input);
-		od.transactionCategory.click();
-		od.transactionCategoryInput.sendKeys(input);
-		By transaction_Category_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-		driver.findElement(transaction_Category_Option).click();
-		if (!od.basicDetails_SaveButton_List.isEmpty())
-			od.saveButton.click();
-
-		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		System.out.println(input);
-		od.partyResponsibility.click();
-		od.partyResponsibilityinput.sendKeys(input);
-		By party_Responsibility_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
-		driver.findElement(party_Responsibility_Option).click();
-		if (!od.basicDetails_SaveButton_List.isEmpty()) {
-			od.saveButton.click();
-		}
-		od.nextBtn.click();
-	}
-
-	}
-
-	public void createParties(String TSID) throws Exception, IOException {
+	public void createParties1(String TSID) throws Exception, IOException {
 
 		od.parties_icon.click();
 		od.parties_GetStarted.click();
@@ -211,7 +211,7 @@ public class DashBoard_Module extends BaseClass {
 		od.accounts_addAccount.click();
 		Thread.sleep(2000);
 		return accountNo;
-}
+	}
 
 	public void createDealWithAccountAndParty(String TSID) throws Exception {
 //		String dealName = externalData.getFieldData(TSID,"Basic Details","Deal Name");
@@ -222,52 +222,52 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	public void createNewDeal1(String TSID, String dealName, String businessSegMent, String Country) throws Exception {
-
-		od.deal_SideMenuIcon.click();
-		od.newDealButton.click();
-		od.newDeal.sendKeys(dealName);
-		dropdown.selectByVisibleText(od.businessSegmentDropDown, businessSegMent);
-		dropdown.selectByVisibleText(od.countryIndiaDropDown, Country);
-
-		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
-		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
-			od.beneficiariesCheckBox.click();
-		}
-
-		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
-
-		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
-			od.deals_ProcessingUnits.click();
-			od.deals_selectAll.click();
-			By ProcessingUnit = By.xpath(
-					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-							+ ProcessingUnits + "']");
-			driver.findElement(ProcessingUnit).click();
-		}
-
-		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		od.transactionCategory.click();
-		od.transactionCategoryInput.sendKeys(input);
-		By transaction_Category_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-		driver.findElement(transaction_Category_Option).click();
-		od.saveButton.click();
-
-		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		od.partyResponsibility.click();
-		od.partyResponsibilityinput.sendKeys(input);
-		By party_Responsibility_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
-		driver.findElement(party_Responsibility_Option).click();
-		od.saveButton.click();
-		od.nextBtn.click();
-		createNewAccount(TSID);
-	}
+//	public void createNewDeal1(String TSID, String dealName, String businessSegMent, String Country) throws Exception {
+//
+//		od.deal_SideMenuIcon.click();
+//		od.newDealButton.click();
+//		od.newDeal.sendKeys(dealName);
+//		dropdown.selectByVisibleText(od.businessSegmentDropDown, businessSegMent);
+//		dropdown.selectByVisibleText(od.countryIndiaDropDown, Country);
+//
+//		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
+//		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
+//			od.beneficiariesCheckBox.click();
+//		}
+//
+//		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
+//
+//		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
+//			od.deals_ProcessingUnits.click();
+//			od.deals_selectAll.click();
+//			By ProcessingUnit = By.xpath(
+//					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+//							+ ProcessingUnits + "']");
+//			driver.findElement(ProcessingUnit).click();
+//		}
+//
+//		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
+//		od.transactionCategory.click();
+//		od.transactionCategoryInput.sendKeys(input);
+//		By transaction_Category_Option = By.xpath(
+//				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+//						+ input + "']");
+//		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+//		driver.findElement(transaction_Category_Option).click();
+//		od.saveButton.click();
+//
+//		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
+//		od.partyResponsibility.click();
+//		od.partyResponsibilityinput.sendKeys(input);
+//		By party_Responsibility_Option = By.xpath(
+//				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+//						+ input + "']");
+//		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
+//		driver.findElement(party_Responsibility_Option).click();
+//		od.saveButton.click();
+//		od.nextBtn.click();
+//		createNewAccount(TSID);
+//	}
 
 	public void createParties(String TSID) throws Exception, IOException {
 
@@ -327,14 +327,12 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	}
-
 	public String createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
 
 		od.linkedInstruction_linkedBtn.click();
 		od.linkedInstruction_addAccountBtn.click();
-
 		String pay = externalData.getFieldData(TSID, "Linked", "Select Instruction Type");
+		System.out.println(pay);
 		By payment = By.xpath("//div[contains(text(),'" + pay + "')]");
 		driver.findElement(payment).click();
 		od.linkedInstruction_proccedbtn.click();

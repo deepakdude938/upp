@@ -45,6 +45,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
 	public WebElement partyResponsibility;
+	
+	@FindBy(xpath = "//div[@class='ui-dialog-header']")
+	public WebElement responsibilityAttributePopup;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement transactionCategory;

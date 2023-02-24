@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import com.upp.base.BaseClass;
+import com.upp.handlers.DealResponsibilityHandler;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
@@ -60,14 +61,13 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-		od.deal_Product.sendKeys(productName);
 		dropdown.selectByVisibleText(od.deal_Product, "A");
-		dropdown.deSelectByVisibleText(od.deal_Product, "A");
+		dropdown.selectByVisibleText(od.businessSegmentDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
+		od.deal_Product.sendKeys(productName);
 		dropdown.selectByVisibleText(od.deal_Product, productName);
 		// dropdown.selectByValue(od.deal_Product, "T1142");
 		icallback.handleCallback("PRODUCT_NAME", productName);
-		dropdown.selectByVisibleText(od.businessSegmentDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Country"));
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
@@ -94,7 +94,6 @@ public class DealBasicDetailCreators extends BaseClass {
 		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		driver.findElement(transaction_Category_Option).click();
 		od.saveButton.click();
-
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
 		od.partyResponsibility.click();
 		By party_Responsibility_Option = By.xpath(
@@ -102,10 +101,14 @@ public class DealBasicDetailCreators extends BaseClass {
 						+ input + "']");
 		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
 		driver.findElement(party_Responsibility_Option).click();
-		od.saveButton.click();
-		scroll.scrollInToView(od.deal_Product);
+		try {
+			if (od.responsibilityAttributePopup.isDisplayed()) {
+				od.saveButton.click();
+			}
+		} catch (Exception e) {
+			System.out.println("Normal flow ");
+		}
 		od.nextBtn.click();
-
 	}
 
 }
