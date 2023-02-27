@@ -17,7 +17,7 @@ import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
-public class LoginToApplication{
+public class LoginToApplication extends BaseClass {
 
 	public static Object_Login ol;
 	public static Properties prop;
@@ -28,7 +28,7 @@ public class LoginToApplication{
 
 	}
 
-	public void login(String userType, Properties prop){
+	public void login(String userType, Properties prop) throws Exception{
 
 		// userType can be deal_maker, deal_cherk, txn_maker, txn_checker, txn_verifier
 		String userNameKey = userType + ".username";
@@ -36,6 +36,7 @@ public class LoginToApplication{
 
 		String userName = prop.getProperty(userNameKey);
 		String password = prop.getProperty(pwdKey);
+		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(35));
 		ol.username.sendKeys(userName);
 		ol.password.sendKeys(password);
 		ol.loginIn.click();
