@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
-import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Deal;
 import com.upp.stepdefinition.DealPage;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
@@ -17,7 +17,7 @@ import com.upp.utils.ScrollTypes;
 import callbackInterfaces.ICallback;
 
 public class DealPartiesHandler extends BaseClass {
-	public static Object_NewDeal od;
+	public static Object_Deal od;
 	DropDown dropdown;
 	public static ExcelReader externalData;
 	public static ScrollTypes scroll;
@@ -26,7 +26,7 @@ public class DealPartiesHandler extends BaseClass {
 	public String ecommerce;
 
 	public DealPartiesHandler() {
-		od = new Object_NewDeal();
+		od = new Object_Deal();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
 		scroll = new ScrollTypes(driver);

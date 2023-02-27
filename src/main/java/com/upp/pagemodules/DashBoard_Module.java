@@ -11,7 +11,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
-import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Deal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DashBoard_Module extends BaseClass {
 
-	public static Object_NewDeal od;
+	public static Object_Deal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -41,7 +41,7 @@ public class DashBoard_Module extends BaseClass {
 	public static String productName;
 
 	public DashBoard_Module() {
-		od = new Object_NewDeal();
+		od = new Object_Deal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		odpAccount = new OdpApi();
@@ -51,13 +51,7 @@ public class DashBoard_Module extends BaseClass {
 		dateutil = new DateUtils();
 	}
 
-	public void loginToUPP(String userName, String Password) {
-		od.username.sendKeys(userName);
-		od.password.sendKeys(Password);
-		od.loginIn.click();
-	}
-
-//	public void createNewDeal(String TSID) throws Exception {
+	//	public void createNewDeal(String TSID) throws Exception {
 //		od.deal_SideMenuIcon.click();
 //		od.newDealButton.click();
 //		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));

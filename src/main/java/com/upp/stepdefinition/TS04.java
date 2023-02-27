@@ -34,10 +34,11 @@ public class TS04 extends BaseClass {
 	public void approve_the_deal_from_the_deal_checker() throws Exception {
 	   dm.approveDealFromDealChecker(dealId);
 	}
-
-	@Then("Logout from Application")
-	public void logout_from_Application() throws Exception {
-	    dm.logout();
+	
+	@Then("Submit the deal to transaction checker")
+	public void submit_the_deal_to_transaction_checker() throws Exception {
+		dm.txnMaker_SubmitDeal(dealId);
+		
 	}
 
 
