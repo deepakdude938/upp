@@ -105,8 +105,16 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//td[contains(@class,'today')]/following::td[3]")
 	public WebElement endDate;	
 	
-	@FindBy(xpath = "((//div[@col-id='accountNumber'])[2]")
-	public WebElement ecommerceAccount;
+	@FindBy(xpath = "(//span[@class='ag-selection-checkbox'])[1]")
+	public WebElement ecommerceFirstAccount;
+	
+
+	@FindBy(xpath = "(//span[@class='ag-selection-checkbox'])[2]")
+	public WebElement ecommerceSecondAccount;
+	
+	
+	@FindBy(id = "btn-parties-ecommerce-updateParty-v1")
+	public WebElement ecommerceSave;
 	
 	//	Objects for Linked Instructions
 
@@ -241,7 +249,7 @@ public class Object_Deal extends BaseClass {
 	public WebElement dealChecker_okCommentbutton;
 
 	// Logout Object
-	@FindBy(xpath = "//i[contains(@class,'logout ')]")
+	@FindBy(xpath ="//div[@title='Logout']")
 	public WebElement logout;
 
 //	Transaction Maker objects

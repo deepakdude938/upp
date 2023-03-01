@@ -61,13 +61,15 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-		dropdown.selectByVisibleText(od.deal_Product, "A");
+		System.out.println(productName);
+		if (!(productName.equals("1.0"))) {
+			od.deal_Product.sendKeys(productName);
+			dropdown.selectByVisibleText(od.deal_Product, productName);
+			// dropdown.selectByValue(od.deal_Product, "T1142");
+			icallback.handleCallback("PRODUCT_NAME", productName);
+		}
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		od.deal_Product.sendKeys(productName);
-		dropdown.selectByVisibleText(od.deal_Product, productName);
-		// dropdown.selectByValue(od.deal_Product, "T1142");
-		icallback.handleCallback("PRODUCT_NAME", productName);
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Country"));
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");

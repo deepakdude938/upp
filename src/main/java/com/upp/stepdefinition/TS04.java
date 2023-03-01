@@ -27,6 +27,7 @@ public class TS04 extends BaseClass {
 	public void create_Linked_Instruction_Payment_with_given(String TSID) throws Exception {
 		String sourceAccount = new DealPage(dm).sourceAccountNo;
 		String toAccount  = new DealPage(dm).toaccountNo;	
+		System.out.println("Changes = "+ TSID);
 		dealId = dm.createNewLinkedAccount(TSID, sourceAccount, toAccount);
 	}
 	
@@ -39,6 +40,11 @@ public class TS04 extends BaseClass {
 	public void submit_the_deal_to_transaction_checker() throws Exception {
 		dm.txnMaker_SubmitDeal(dealId);
 		
+	}
+	
+	@Then("Submit the deal to transaction verifier")
+	public void submit_the_deal_to_transaction_verifier() {
+	   
 	}
 
 

@@ -35,7 +35,7 @@ public class DashBoard_Module extends BaseClass {
 	public static AccountDetails accDetails;
 	DateUtils dateTime = new DateUtils();
 	public static JavascriptClick jsClick;
-	public static int waitingTime = 5;
+	public static int waitingTime = 3;
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
@@ -325,6 +325,7 @@ public class DashBoard_Module extends BaseClass {
 
 		od.linkedInstruction_linkedBtn.click();
 		od.linkedInstruction_addAccountBtn.click();
+		System.out.println(TSID);
 		String pay = externalData.getFieldData(TSID, "Linked", "Select Instruction Type");
 		System.out.println(pay);
 		By payment = By.xpath("//div[contains(text(),'" + pay + "')]");
@@ -405,19 +406,14 @@ public class DashBoard_Module extends BaseClass {
 	}
 
 	public void logout() throws Exception {
-		try {
-			applyExplicitWaitsUntilElementClickable(od.logout, Duration.ofSeconds(30));
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		od.logout.click();
-		TimeUnit.SECONDS.sleep(7);
+		applyExplicitWaitsUntilElementClickable(od.logout,Duration.ofSeconds(40));
+	    jsClick.click(od.logout);
+
 	}
 
 	public void txnMaker_SubmitDeal(String dealid) throws Exception {
 		System.out.println("deal id in maker = " + dealid);
-		TimeUnit.SECONDS.sleep(waitingTime);
+		TimeUnit.MINUTES.sleep(waitingTime);
 		od.TxnMaker_Transaction.click();
 		od.TxnMaker_TrasactionMaker.click();
 
@@ -449,7 +445,6 @@ public class DashBoard_Module extends BaseClass {
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
 		System.out.println(productName);
-
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
@@ -487,7 +482,6 @@ public class DashBoard_Module extends BaseClass {
 		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
 		driver.findElement(party_Responsibility_Option).click();
 		od.saveButton.click();
-
 		od.nextBtn.click();
 
 	}

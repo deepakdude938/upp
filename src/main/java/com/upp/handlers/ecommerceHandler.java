@@ -21,11 +21,13 @@ public class ecommerceHandler extends BaseClass {
 	public static Object_Deal od;
 	DropDown dropdown;
 	public ExcelReader externalData;
+	public static JavascriptClick jsClick;
 
 	public ecommerceHandler() {
 		od = new Object_Deal();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
+		jsClick = new JavascriptClick(driver);
 	}
 
 	public void handleEcommerce(String TSID) throws Exception {
@@ -37,7 +39,9 @@ public class ecommerceHandler extends BaseClass {
 		od.startDate.click();
 		od.ecommerce_validTill.click();
 		od.endDate.click();
-		od.ecommerceAccount.click();
+		jsClick.click(od.ecommerceFirstAccount);
+		jsClick.click(od.ecommerceSecondAccount);
+		od.ecommerceSave.click();
 	}
 
 }
