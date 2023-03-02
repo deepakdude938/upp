@@ -194,6 +194,4 @@ public class Object_Deal extends BaseClass{
 	public WebElement parties_DocumentsAddButton;
 	
 	
-	
-	
 }

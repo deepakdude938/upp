@@ -610,7 +610,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_ExecutionDate.click();
 		
 	   	String day=dateutil.getDay(); 
-		 By excecutionDay = By.xpath("//a[contains(text(),'"+day+"')]");
+	   	By excecutionDay = By.xpath("(//a[normalize-space()='"+day+"'])[1]");
 		 applyExplicitWaitsUntilElementVisible(excecutionDay,5);
 		 driver.findElement(excecutionDay).click();
 	
@@ -667,10 +667,11 @@ public class DashBoard_Module extends BaseClass {
 		
 		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
 		 od.deal_SideMenuIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_Button1,Duration.ofSeconds(15));
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_Button,Duration.ofSeconds(15));
 		 od.dealChecker_Button1.click();
 		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
 		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(25));
 		 od.dealChecker_searchBar.sendKeys(dealId);
 		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton,Duration.ofSeconds(25));
 		 od.dealChecker_searchButton.click();

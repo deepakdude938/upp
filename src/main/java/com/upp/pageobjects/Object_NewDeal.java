@@ -508,4 +508,26 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath = "/html[1]/body[1]/xcro-wrapper[1]/xcro-protected[1]/ui-overlay-pane[1]/div[1]/div[2]/div[3]/div[1]/div[6]/div[1]/a[1]")
 	public WebElement dealChecker_Button1;
+	
+	@FindBy(xpath="//a[contains(text(),'Live Deals')]")
+	public WebElement liveDealIcon;
+    
+	@FindBy(xpath="(//div[normalize-space()='edit'])[1]")
+	public WebElement deal_EditIcon;
+	
+	@FindBy(xpath="(//span[@class='ui-pseudo-checkbox'])[1]")
+	public WebElement parties_LinkPartyCheckboxIcon;
+	
+	@FindBy(id="btn-parties-partyContactList-addPartyContact-v1")
+	public WebElement parties_ConatctPlusIcon;
+	
+	@FindBy(id="btn-parties-partyAccountList-createPartyAccount-v1")
+	public WebElement parties_AccountPlusIcon;
+	
+	@FindBy(xpath="(//button[@id='btn-parties-partyDocument-createPartyDocument-v1'])[1]")
+	public WebElement parties_DocumentsPlusIcon;
+	
+	@FindBy(xpath ="(//button[@id='btn-parties-linkParty-add-v1'])[1]")
+	public WebElement parties_addPartyPlusIcon;
+	
 }
