@@ -15,14 +15,14 @@ import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
-import callbackinterfaces.ICallback;
+import callbackInterfaces.ICallback;
 
-public class EcommerceHandler extends BaseClass {
+public class ecommerceHandler extends BaseClass {
 	public static Object_NewDeal od;
 	DropDown dropdown;
 	public ExcelReader externalData;
 
-	public EcommerceHandler() {
+	public ecommerceHandler() {
 		od = new Object_NewDeal();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();

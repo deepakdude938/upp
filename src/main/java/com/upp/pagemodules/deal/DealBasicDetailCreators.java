@@ -1,10 +1,11 @@
-package com.upp.pagemodules.deal;
+package com.upp.pagemodules.Deal;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
 import com.upp.base.BaseClass;
+import com.upp.handlers.DealResponsibilityHandler;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
@@ -14,7 +15,7 @@ import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
-import callbackinterfaces.ICallback;
+import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
 
 import java.text.SimpleDateFormat;
@@ -60,12 +61,20 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
+	    dropdown.selectByVisibleText(od.deal_Product, "A");
+		
+		
+		dropdown.selectByVisibleText(od.businessSegmentDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		od.deal_Product.sendKeys(productName);
+		
 		dropdown.selectByVisibleText(od.deal_Product, productName);
+		
 		// dropdown.selectByValue(od.deal_Product, "T1142");
 		icallback.handleCallback("PRODUCT_NAME", productName);
-		dropdown.selectByVisibleText(od.businessSegmentDropDown,externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		dropdown.selectByVisibleText(od.countryIndiaDropDown,externalData.getFieldData(TSID, "Basic Details", "Country"));
+		
+		dropdown.selectByVisibleText(od.countryIndiaDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Country"));
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
 		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
 			od.beneficiariesCheckBox.click();
@@ -84,28 +93,28 @@ public class DealBasicDetailCreators extends BaseClass {
 
 		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
 		od.transactionCategory.click();
-		od.transactionCategoryInput.sendKeys(input);
 		By transaction_Category_Option = By.xpath(
 				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
 						+ input + "']");
-	
+		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		driver.findElement(transaction_Category_Option).click();
 		od.saveButton.click();
-
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
 		od.partyResponsibility.click();
-		od.partyResponsibilityinput.sendKeys(input);
 		By party_Responsibility_Option = By.xpath(
 				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
 						+ input + "']");
-	
+		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
 		driver.findElement(party_Responsibility_Option).click();
-		 if(!od.basicDetails_SaveButton_List.isEmpty()) {
-			 od.saveButton.click();
-			 }
-		scroll.scrollInToView(od.deal_Product);
-		od.nextBtn.click();
 
+		try {
+			if (od.responsibilityAttributePopup.isDisplayed()) {
+				od.saveButton.click();
+			}
+		} catch (Exception e) {
+			System.out.println("Normal flow ");
+		}
+		od.nextBtn.click();
 	}
 
 }

@@ -1,4 +1,4 @@
-package callbackinterfaces;
+package callbackInterfaces;
 
 public interface ICallback {
 

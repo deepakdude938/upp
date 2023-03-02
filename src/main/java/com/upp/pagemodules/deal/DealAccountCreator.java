@@ -1,4 +1,4 @@
-package com.upp.pagemodules.deal;
+package com.upp.pagemodules.Deal;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
-import callbackinterfaces.ICallback;
+import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
 
 import java.text.SimpleDateFormat;
