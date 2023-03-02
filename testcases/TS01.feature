@@ -3,8 +3,11 @@ Feature: TC01
 
 @Regression @TC01
 Scenario Outline: Create Basic details with TC01
-Given User is on LoginPage 
-Then Login to the application
+#Given User is on LoginPage 
+#Then Login to the application
+
+Given Open browser and enter url 
+Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSId>".
 Examples:
       |TSId|

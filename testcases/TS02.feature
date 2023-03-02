@@ -3,8 +3,10 @@ Feature: TC02
 
 @Regression @TC02
 Scenario Outline: Create a Deal having Accounts, Parties for EComm Transactions
-Given User is on LoginPage 
-Then Login to the application
+#Given User is on LoginPage 
+#Then Login to the application
+Given Open browser and enter url 
+Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSId>".
 And Create new Account with given "<TSId>"
 And Create Parties in the Parties Tab with given "<TSId>"

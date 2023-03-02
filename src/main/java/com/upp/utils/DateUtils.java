@@ -71,4 +71,34 @@ public class DateUtils {
 		date1 = sdf.format(today);
 		return date1;
 	}
-}
+	
+	public static String getDay() {
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("d");
+		String date1;
+		Date today = calendar.getTime();
+		// Date tomorrow = calendar.getTime();
+		date1 = sdf.format(today);
+		return date1;
+	}
+
+
+		public static String getTimeAfterMins(int mins) {
+			SimpleDateFormat df = new SimpleDateFormat("hh.mm aa");
+
+			String dateString = df.format(new Date()).toString();
+			Date d = null;
+			try {
+				d = df.parse(dateString);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(d);
+			cal.add(Calendar.MINUTE, mins);
+			String newTime = df.format(cal.getTime());
+			return newTime;
+
+		}
+	}

@@ -27,6 +27,9 @@ public class BaseClass {
 	public static String browser = System.getProperty("browser");
 	public static boolean isHeadLess;
 	public static Properties prop;
+	public static String dealId = "";
+	
+	public boolean isFlexibleFunding;
 	
 	public WebDriver initialize() throws Exception {
 		
