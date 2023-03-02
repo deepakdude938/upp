@@ -8,7 +8,7 @@ Given Open browser and enter url
 Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TcId>".
 And Create two Accounts with given "<TcId>"
-And Create Parties in the Parties Tab with given "<TcId>"
+And Create 2 Ecoomerce Parties in the Parties Tab with given "<TcId>"
 #Then Then approve the deal from the deal checker
 #Then Logout from Application
 #Then Login to the application as "txn_maker"

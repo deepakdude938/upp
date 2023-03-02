@@ -8,7 +8,9 @@ import org.openqa.selenium.By;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pageobjects.Object_Deal;
+import com.upp.stepdefinition.DealPage;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -22,6 +24,7 @@ public class ecommerceHandler extends BaseClass {
 	DropDown dropdown;
 	public ExcelReader externalData;
 	public static JavascriptClick jsClick;
+	DashBoard_Module dm = new DashBoard_Module();
 
 	public ecommerceHandler() {
 		od = new Object_Deal();
@@ -39,9 +42,13 @@ public class ecommerceHandler extends BaseClass {
 		od.startDate.click();
 		od.ecommerce_validTill.click();
 		od.endDate.click();
-		jsClick.click(od.ecommerceFirstAccount);
-		jsClick.click(od.ecommerceSecondAccount);
-		od.ecommerceSave.click();
+
+		String sorceAccount = new DealPage(dm).sourceAccountNo;
+		String toAccount = new DealPage(dm).toaccountNo;
+		By account1 = By.xpath("//span[@title='" + sorceAccount + "']");
+		driver.findElement(account1).click();
+		By account2 = By.xpath("//span[@title='" + toAccount + "']");
+				od.ecommerceSave.click();
 	}
 
 }

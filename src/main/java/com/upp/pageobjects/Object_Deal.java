@@ -108,11 +108,9 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//span[@class='ag-selection-checkbox'])[1]")
 	public WebElement ecommerceFirstAccount;
 	
-
 	@FindBy(xpath = "(//span[@class='ag-selection-checkbox'])[2]")
 	public WebElement ecommerceSecondAccount;
-	
-	
+		
 	@FindBy(id = "btn-parties-ecommerce-updateParty-v1")
 	public WebElement ecommerceSave;
 	

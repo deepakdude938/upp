@@ -29,6 +29,7 @@ public class TS04 extends BaseClass {
 		String toAccount  = new DealPage(dm).toaccountNo;	
 		System.out.println("Changes = "+ TSID);
 		dealId = dm.createNewLinkedAccount(TSID, sourceAccount, toAccount);
+		
 	}
 	
 	@Then("approve the deal from the deal checker")

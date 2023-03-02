@@ -35,7 +35,7 @@ public class DashBoard_Module extends BaseClass {
 	public static AccountDetails accDetails;
 	DateUtils dateTime = new DateUtils();
 	public static JavascriptClick jsClick;
-	public static int waitingTime = 3;
+	public static int waitingTime = 5;
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
@@ -51,7 +51,7 @@ public class DashBoard_Module extends BaseClass {
 		dateutil = new DateUtils();
 	}
 
-	//	public void createNewDeal(String TSID) throws Exception {
+	// public void createNewDeal(String TSID) throws Exception {
 //		od.deal_SideMenuIcon.click();
 //		od.newDealButton.click();
 //		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
@@ -350,22 +350,23 @@ public class DashBoard_Module extends BaseClass {
 				externalData.getFieldData(TSID, "Linked", "Schedule At"));
 		dropdown.selectByVisibleText(od.linkedInstruction_HolidayAction,
 				externalData.getFieldData(TSID, "Linked", "Holiday Action"));
-//		String timem = dateTime.getTimeAfterMins(waitingTime);
-//		od.linkedInstruction_TimePicker.clear();
-//		od.linkedInstruction_TimePicker.sendKeys(timem);
+		String timem = dateTime.getTimeAfterMins(waitingTime);
+		od.linkedInstruction_TimePicker.clear();
+		od.linkedInstruction_TimePicker.sendKeys(timem);
 		od.linkedInstruction_ScheduleNextBtn.click();
 		od.linkedInstruction_Instrumentddl.sendKeys(externalData.getFieldData(TSID, "Linked", "Instrument"));
 		String inst = externalData.getFieldData(TSID, "Linked", "Instrument");
 		By instrument = By
 				.xpath("//li[@id='lbl-generic-autocomplete-listItemOption1']//div[contains(text(),'" + inst + "')]");
 		driver.findElement(instrument).click();
-		od.linkedInstruction_Amount.sendKeys(externalData.getFieldData(TSID, "Linked", "Amount"));
 		od.linkedInstruction_ToAccountddl.sendKeys(toaccountNo);
 		By toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
 		driver.findElement(toaccountselect).click();
 		dropdown.selectByVisibleText(od.linkedInstruction_Incorporationddl,
 				externalData.getFieldData(TSID, "Linked", "Beneficiary Country Of Incorporation"));
+
 		od.linkedInstruction_BankBic.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Bank Bic"));
+		od.linkedInstruction_Amount.sendKeys(externalData.getFieldData(TSID, "Linked", "Amount"));
 		od.linkedInstruction_AddBtn.click();
 		od.linkedInstruction_Summary.click();
 		String dealid = od.deals_SummaryRefId.getText();
@@ -406,8 +407,8 @@ public class DashBoard_Module extends BaseClass {
 	}
 
 	public void logout() throws Exception {
-		applyExplicitWaitsUntilElementClickable(od.logout,Duration.ofSeconds(40));
-	    jsClick.click(od.logout);
+		applyExplicitWaitsUntilElementClickable(od.logout, Duration.ofSeconds(40));
+		jsClick.click(od.logout);
 
 	}
 
