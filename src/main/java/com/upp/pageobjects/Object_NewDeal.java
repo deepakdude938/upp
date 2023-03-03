@@ -508,4 +508,58 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath = "/html[1]/body[1]/xcro-wrapper[1]/xcro-protected[1]/ui-overlay-pane[1]/div[1]/div[2]/div[3]/div[1]/div[6]/div[1]/a[1]")
 	public WebElement dealChecker_Button1;
+	
+	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-frequency-v1']")
+	public WebElement budget_Interval;
+	
+	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-duration-v1']")
+	public WebElement budget_Duration;
+	
+	@FindBy(id="btn-deals-addUpdateBudget-add-v1")
+	public WebElement budget_AddButton;
+	
+	
+	@FindBy(id="txt-deals-addUpdateBudget-allocatedAmount-v1")
+	public WebElement budget_allocatedAmount;
+	
+	@FindBy(id="tab-deals-budgetWizard-v1")
+	public WebElement budget_BudgetIcon;
+	
+	@FindBy(id="btn-deals-budgetGroup-add-v1")
+	public WebElement budget_CreateBudget;
+	
+	@FindBy(id="txt-deals-addBudgetGroup-name-v1")
+	public WebElement budget_AddBudgetName;
+	
+	@FindBy(id="txt-generic-autocomplete-input-v1")
+	public WebElement budget_BudgetSourceAccount;
+	
+	@FindBy(id="btn-deals-addBudgetGroup-save-v1")
+	public WebElement budget_AddBudget;
+	
+	@FindBy(xpath="//div[@id='btn-deals-budgetDetail-addBudget-v1']//i")
+	public WebElement budget_budgetDetailsAddBudget;
+	
+	@FindBy(id="txt-deals-addUpdateBudget-purpose-v1")
+	public WebElement budget_Purpose;
+	
+	
+	@FindBy(xpath="//label[normalize-space()='Budget Carry forward']/following::span[@class='slider round']")
+	public WebElement budget_budgetCarryForward;
+	
+	@FindBy(id="txt-generic-destinationSearch-search-v1")
+	public WebElement budget_budgetDestination;
+	
+	@FindBy(xpath = "//input[@id='txt-generic-timePicker-input-v1']")
+	public WebElement payments_ScheduleTime;
+	
+	@FindBy(id = "txt-generic-autocomplete-input-v1")
+	public WebElement payments_BudgetPurpose;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	public WebElement payments_budgetPurpose;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	public WebElement payments_ToAccountInputBox;
+	
 }
