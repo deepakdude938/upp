@@ -9,8 +9,8 @@ And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 Then submit the deal
 Then approve the deal from the deal checker common method
-#Then Create party from party maker with given "<TSID>"
-#And Approve party from party checker with given "<TSID>"
+Then Create party from party maker with given "<TSID>"
+And Approve party from party checker with given "<TSID>"
 Then Edit the Live deal and add Existing Party with given "<TSID>"
 And Add a Transaction using Payment with the updated deal with given "<TSID>"
 Then submit the deal

@@ -80,10 +80,18 @@ public class Parties extends BaseClass {
 		op.PartyMaker_internal_slider.click();
 		}
 		
-		applyExplicitWaitsUntilElementVisible(op.PartyMaker_customerId,Duration.ofSeconds(5));
+		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		 String accno = Long.toString(number);
+		 
 		
-		op.PartyMaker_customerId.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
-		op.PartyMaker_partyName.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Party Name"));
+		String customerID=externalData.getFieldData(TSID, "Parties-Maker", "Customer Id");
+		String UniquecustomerID=customerID.concat(accno);
+		String partyName=externalData.getFieldData(TSID, "Parties-Maker", "Party Name");
+		String UniquepartyName=partyName.concat(accno);
+		
+		applyExplicitWaitsUntilElementVisible(op.PartyMaker_customerId,Duration.ofSeconds(5));
+		op.PartyMaker_customerId.sendKeys(UniquecustomerID);
+		op.PartyMaker_partyName.sendKeys( UniquepartyName);
 		
 		 String ProcessingUnits=externalData.getFieldData(TSID,"Parties-Maker","Processing Units");
 				 od.deals_ProcessingUnits.click();
@@ -173,8 +181,9 @@ public class Parties extends BaseClass {
 		op.PartyChecker_Icon.click();
 		applyExplicitWaitsUntilElementClickable(op.PartyChecker_CustomerID_SearchBox,Duration.ofSeconds(20));
 		op.PartyChecker_CustomerID_SearchBox.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
-		Thread.sleep(2000);
-		op.PartyChecker_EditIcon.click();
+		Thread.sleep(7000);
+		applyExplicitWaitsUntilElementClickable(op.PartyChecker_EditIcon,Duration.ofSeconds(10));
+		jsClick.click(op.PartyChecker_EditIcon);
 		op.PartyMaker_SummaryTab.click();
 		applyExplicitWaitsUntilElementClickable(op.PartyChecker_AddComment,Duration.ofSeconds(10));
 		op.PartyChecker_AddComment.sendKeys(externalData.getFieldData(TSID, "Parties-Checker", "Summary - Add your comments here"));
