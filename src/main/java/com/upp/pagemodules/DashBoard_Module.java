@@ -57,61 +57,50 @@ public class DashBoard_Module extends BaseClass {
 		od.loginIn.click();
 	}
 
-//	public void createNewDeal(String TSID) throws Exception {
-//		od.deal_SideMenuIcon.click();
-//		od.newDealButton.click();
-//		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
-//		dropdown.selectByVisibleText(od.basicDetails_ProductDropDown,
-//				externalData.getFieldData(TSID, "Basic Details", "Product"));
-//		dropdown.selectByVisibleText(od.businessSegmentDropDown,
-//				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-//		System.out.println(externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-//		dropdown.selectByVisibleText(od.countryIndiaDropDown,
-//				externalData.getFieldData(TSID, "Basic Details", "Country"));
-//		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
-//		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
-//			od.beneficiariesCheckBox.click();
-//		}
-//
-//		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
-//
-//		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
-//			od.deals_ProcessingUnits.click();
-//			od.deals_selectAll.click();
-//			By ProcessingUnit = By.xpath(
-//					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-//							+ ProcessingUnits + "']");
-//			driver.findElement(ProcessingUnit).click();
-//		}
-//
-//		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-//		System.out.println(input);
-//		od.transactionCategory.click();
-//		od.transactionCategoryInput.sendKeys(input);
-//		By transaction_Category_Option = By.xpath(
-//				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-//						+ input + "']");
-//		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-//		driver.findElement(transaction_Category_Option).click();
-//		if (!od.basicDetails_SaveButton_List.isEmpty())
-//			od.saveButton.click();
-//
-//		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-//		System.out.println(input);
-//		od.partyResponsibility.click();
-//		od.partyResponsibilityinput.sendKeys(input);
-//		By party_Responsibility_Option = By.xpath(
-//				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-//						+ input + "']");
-//		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
-//		driver.findElement(party_Responsibility_Option).click();
-//		if (!od.basicDetails_SaveButton_List.isEmpty()) {
-//			od.saveButton.click();
-//		}
-//		od.nextBtn.click();
-//	}
-//
-//	}
+	public void createNewDeal(String TSID) throws Exception{
+	
+			 od.deal_SideMenuIcon.click();
+			 od.newDealButton.click();
+			 od.newDeal.sendKeys(externalData.getFieldData(TSID,"Basic Details","Deal Name"));	 
+			 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TSID,"Basic Details","Business Segment"));
+			 System.out.println(externalData.getFieldData(TSID,"Basic Details","Business Segment"));
+			 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TSID,"Basic Details","Country"));
+			 String input = externalData.getFieldData(TSID,"Basic Details","Transactions to non-registered beneficiaries");
+			 if((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes") ) && !od.beneficiariesCheckBox.isSelected()) {
+				 od.beneficiariesCheckBox.click();
+			 }
+			  
+			 String ProcessingUnits=externalData.getFieldData(TSID,"Basic Details","Processing Units");
+				
+				if(!(ProcessingUnits.equalsIgnoreCase("Select All")))
+				{
+					 od.deals_ProcessingUnits.click();
+					 od.deals_selectAll.click();
+					 By ProcessingUnit = By.xpath("//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+ProcessingUnits+"']");
+					 driver.findElement(ProcessingUnit).click();
+				}
+			 
+			 input = externalData.getFieldData(TSID,"Basic Details","Transaction Categories");
+			 System.out.println(input);
+			 od.transactionCategory.click();
+			 od.transactionCategoryInput.sendKeys(input);
+			 By transaction_Category_Option = By.xpath("//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+			 applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+			 driver.findElement(transaction_Category_Option).click();
+			 if(!od.basicDetails_SaveButton_List.isEmpty())
+			 od.saveButton.click();
+			
+			 input = externalData.getFieldData(TSID,"Basic Details","Party Responsibilities");
+			 System.out.println(input);
+			 od.partyResponsibility.click();
+			 od.partyResponsibilityinput.sendKeys(input);
+			 By party_Responsibility_Option = By.xpath("//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+			 applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
+			 driver.findElement(party_Responsibility_Option).click();
+			 if(!od.basicDetails_SaveButton_List.isEmpty()) {
+			 od.saveButton.click();
+			 }
+			 od.nextBtn.click();
 
 	public void createParties1(String TSID) throws Exception, IOException {
 
@@ -500,70 +489,13 @@ public class DashBoard_Module extends BaseClass {
 	
 	public void createNewDeal_Old(String TSID) throws Exception{
 		
-		 od.deal_SideMenuIcon.click();
-		 od.newDealButton.click();
-		 
-		 od.newDeal.sendKeys(externalData.getFieldData(TSID,"Basic Details","Deal Name"));	 
-	
-		// dropdown.selectByVisibleText(od.basicDetails_ProductDropDown, externalData.getFieldData(TSID,"Basic Details","Product")); 
-		 
-		
-		 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TSID,"Basic Details","Business Segment"));
-		 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TSID,"Basic Details","Country"));
-		 String input = externalData.getFieldData(TSID,"Basic Details","Transactions to non-registered beneficiaries");
-		 if((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes") ) ) {
-			 od.beneficiariesCheckBox.click();
-		 }
-		  
-		 String ProcessingUnits=externalData.getFieldData(TSID,"Basic Details","Processing Units");
-			
-			if(!(ProcessingUnits.equalsIgnoreCase("Select All")))
-			{
-				 od.deals_ProcessingUnits.click();
-				 od.deals_selectAll.click();
-				 od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
-				 By ProcessingUnit = By.xpath("//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+ProcessingUnits+"']");
-				 driver.findElement(ProcessingUnit).click();
-			}
-		
-		 input = externalData.getFieldData(TSID,"Basic Details","Transaction Categories");
-		 od.transactionCategory.click();
-		 od.transactionCategoryInput.sendKeys(input);
-		 By transaction_Category_Option = By.xpath("//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
-		 applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-		 driver.findElement(transaction_Category_Option).click();
-		 if(!od.basicDetails_SaveButton_List.isEmpty())
-		 {
-		 od.saveButton.click();
-		 }
-		 input = externalData.getFieldData(TSID,"Basic Details","Party Responsibilities");
-		 od.partyResponsibility.click();
-		 od.partyResponsibilityinput.sendKeys(input);
-		 By party_Responsibility_Option = By.xpath("//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
-		 driver.findElement(party_Responsibility_Option).click();
-		 
-		// od.saveButton.click();
-		 od.nextBtn.click();
-	
-
-}
-	
-	public String submitDeal() throws Exception {
-		
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(5));
-		 od.payments_DealsummaryIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId,Duration.ofSeconds(5));
-	     String dealId=od.deals_SummaryRefId.getText();
-	     
-		scroll.scrollInToView(od.payments_DealSubmitButton);
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton,Duration.ofSeconds(5));
-		 od.payments_DealSubmitButton.click();
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton,Duration.ofSeconds(10));
-		 od.payments_DealYesButton.click();
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(10));
-		 od.payments_DealOkButton.click();
-		 
-		return dealId;
+		 By destination = By.xpath("//div[@id='grid-generic-destinationSearch-panelClick-v1']//li[contains(text(),'"+toAccountNo+"')]");
+		 applyExplicitWaitsUntilElementVisible(destination, 10);
+		 driver.findElement(destination).click();
+		 dropdown.selectByVisibleText(od.budget_Interval, externalData.getFieldData(TSID,"Budget","Interval"));
+		 dropdown.selectByIndex(od.budget_Duration, 2);
+		 od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID,"Budget","Allocated Budget Amount"));
+		 od.budget_AddButton.click();
 	}
 	
 	public void logOutOld() throws Exception
@@ -688,7 +620,6 @@ public class DashBoard_Module extends BaseClass {
 		 od.payments_DealYesButton.click();
 		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(40));
 		 od.payments_DealOkButton.click();
-		
 	}
 	
 	
