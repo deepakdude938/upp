@@ -8,6 +8,7 @@ import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.pagemodules.DashBoard_Module;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_NewDeal;
@@ -65,15 +66,17 @@ public class Parties extends BaseClass {
 	public void createPartyFromPartyMaker(String TSID,ICallback icallback) throws Exception
 	{
 		applyExplicitWaitsUntilElementClickable(op.parties_Icon,Duration.ofSeconds(30));
-		op.parties_Icon.click();
-		applyExplicitWaitsUntilElementClickable(op.partyMaker_Icon,Duration.ofSeconds(10));
-		op.partyMaker_Icon.click();
+		scroll.scrollInToView(op.parties_Icon);
+		jsClick.click(op.parties_Icon);
+		applyExplicitWaitsUntilElementClickable(op.partyMaker_Icon,Duration.ofSeconds(20));
+		scroll.scrollInToView(op.partyMaker_Icon);
+		jsClick.click(op.partyMaker_Icon);
 		applyExplicitWaitsUntilElementClickable(op.PartyMaker_AddNewButon,Duration.ofSeconds(15));
 		op.PartyMaker_AddNewButon.click();
 		applyExplicitWaitsUntilElementVisible(op.PartyMaker_internalOrExternal,Duration.ofSeconds(10));
 		String internalOrExternal=op.PartyMaker_internalOrExternal.getText();
 		if(internalOrExternal.equalsIgnoreCase("Internal")) {
-		op.PartyMaker_internal_slider.click();
+			Thread.sleep(2000);
 		op.PartyMaker_internal_slider.click();
 		}
 		
@@ -89,7 +92,8 @@ public class Parties extends BaseClass {
 				 driver.findElement(ProcessingUnit).click();
 		op.PartyMaker_partyRemarks.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Remarks"));
 	    dropdown.selectByVisibleText(op.PartyMaker_country,externalData.getFieldData(TSID, "Parties-Maker", "Country"));
-	    op.PartyMaker_party_nextButton.click();
+	    applyExplicitWaitsUntilElementClickable(op.PartyMaker_party_nextButton,Duration.ofSeconds(5));
+	    jsClick.click(op.PartyMaker_party_nextButton);
 	    
 	    applyExplicitWaitsUntilElementClickable( od.parties_AddContact,Duration.ofSeconds(10));
 	    od.parties_AddContact.click();
@@ -204,6 +208,8 @@ public class Parties extends BaseClass {
 		 partyHandler.handleLinkedExistingParty(TSID);
 
 	}
+	
+	
 	
 
 }

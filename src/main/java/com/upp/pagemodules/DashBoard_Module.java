@@ -673,9 +673,9 @@ public class DashBoard_Module extends BaseClass {
 		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
 		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(25));
 		 od.dealChecker_searchBar.sendKeys(dealId);
-		 Thread.sleep(4000);
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton,Duration.ofSeconds(10));
 		 od.dealChecker_searchButton.click();
-		 Thread.sleep(4000);
+		 Thread.sleep(15000);
 		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(40));
 		 od.dealChecker_showMenu.click();
 		 applyExplicitWaitsUntilElementClickable(od.dealChecker_Open,Duration.ofSeconds(25));
