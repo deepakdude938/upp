@@ -40,21 +40,14 @@ public TS03(Transactions_Maker_Verifier_Checker tm) {
 @Then("Create Payments in the scheduled Instructions with given {string}")
 public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
 	
- dealid=dm.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
-	
+	dm.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
     
 }
 
 	
-@Then("approve deal from the deal checker")
-public void approve_the_deal_from_the_deal_checker() throws Exception {
-	Thread.sleep(2000);
-    dm.approveDealFromDealChecker_Old(dealid);
-	//dm.approveDealFromDealChecker_Old("REF1677246486976");
-}
 
 	
-	
+
 //	@Then("Create new deal with basic details with given {string}.")
 //	public void create_new_deal_POC_with_basic_details_with_given(String TSID) throws  Exception {
 //		

@@ -572,7 +572,7 @@ public class DashBoard_Module extends BaseClass {
 	    jsClick.click(od.logOutIcon);
 	}
 	
-	public String createPayments(String TSID,String sourceAccountno,String toaccountNo) throws Exception{
+	public void createPayments(String TSID,String sourceAccountno,String toaccountNo) throws Exception{
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon,Duration.ofSeconds(5));
 		od.payments_ScheduledInstructionIcon.click();
@@ -643,21 +643,7 @@ public class DashBoard_Module extends BaseClass {
 		if(((externalData.getFieldData(TSID,"Scheduled","Notification-Notification Alerts")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Notification-Notification Alerts")).equalsIgnoreCase("Yes"))){
 			od.payments_NotificationAlertSlider.click();
 		}
-		
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(5));
-		 od.payments_DealsummaryIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId,Duration.ofSeconds(5));
-	     String dealId=od.deals_SummaryRefId.getText();
-	     
-		scroll.scrollInToView(od.payments_DealSubmitButton);
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton,Duration.ofSeconds(5));
-		 od.payments_DealSubmitButton.click();
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton,Duration.ofSeconds(10));
-		 od.payments_DealYesButton.click();
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(10));
-		 od.payments_DealOkButton.click();
-		 
-		return dealId;
+
 
 	}
 	public void approveDealFromDealChecker_Old(String dealId) throws Exception

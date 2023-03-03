@@ -63,8 +63,7 @@ public void edit_the_Live_deal_and_add_Existing_Party_with_given(String string) 
 
 @Then("Add a Transaction using Payment with the updated deal with given {string}")
 public void add_a_Transaction_using_Payment_with_the_updated_deal_with_given(String string) throws Exception {
-	 String dealid=dm.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
-	 dm.approveDealFromDealChecker_Old(dealid);
+	dm.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
 }
 
 

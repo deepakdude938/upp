@@ -79,7 +79,7 @@ public void logout_of_the_application() throws Exception {
 	
 	@Then("Check the Transaction staus in execution report with given {string}")
 	public void check_the_Transaction_staus_in_execution_report_with_given(String string) throws Exception {
-	    tm.checkTnxStatusFromExecutionReport(string,DealPage.dealId);
+	    tm.checkTnxStatusFromExecutionReport(string,dealId);
 	
 		
 	}
