@@ -60,8 +60,6 @@ public class DashBoard_Module extends BaseClass{
 			 od.deal_SideMenuIcon.click();
 			 od.newDealButton.click();
 			 od.newDeal.sendKeys(externalData.getFieldData(TSID,"Basic Details","Deal Name"));	 
-//			 dropdown.selectByVisibleText(od.basicDetails_ProductDropDown, externalData.getFieldData(TSID,"Basic Details","Product"));	
-			 
 			 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TSID,"Basic Details","Business Segment"));
 			 System.out.println(externalData.getFieldData(TSID,"Basic Details","Business Segment"));
 			 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TSID,"Basic Details","Country"));
@@ -205,7 +203,6 @@ public class DashBoard_Module extends BaseClass{
 		 dropdown.selectByIndex(od.budget_Duration, 2);
 		 od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID,"Budget","Allocated Budget Amount"));
 		 od.budget_AddButton.click();
-		 	
 	}
 
 	public String createBudget_Payments(String TSID,String sourceAccountno,String toAccountNo) throws Exception{
@@ -331,6 +328,5 @@ public class DashBoard_Module extends BaseClass{
 		 od.payments_DealYesButton.click();
 		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(40));
 		 od.payments_DealOkButton.click();
-		
 	}
 	}
