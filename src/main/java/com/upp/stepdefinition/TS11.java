@@ -2,6 +2,7 @@ package com.upp.stepdefinition;
 
 import java.io.IOException;
 
+import com.upp.Api.utils.LoginApi;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -10,6 +11,8 @@ import com.upp.pagemodules.LoginToApplication;
 import callbackInterfaces.ICallback;
 
 import com.upp.handlers.DealGroupAttributesHandler;
+import com.upp.handlers.DealResponsibilityHandler;
+import com.upp.handlers.PartyMaker_PaymentInstrumentHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
 import com.upp.pagemodules.Transactions.Transactions_Maker_Verifier_Checker;
 import com.upp.utils.SwitchWindow;
@@ -17,41 +20,35 @@ import com.upp.utils.SwitchWindow;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
+import com.upp.pagemodules.Parties.Parties;
+
 import io.cucumber.java.en.*;
 
-public class TS03 extends BaseClass  implements ICallback{
+public class TS11 extends BaseClass  implements ICallback{
 	DashBoard_Module dm;
 	DealPage dp;
+	public static String sourceAccountNo = "";
+	public static String toaccountNo = "";
+//	public static String dealId = "";
 	LoginToApplication userLogin;
 	public static String TSID = "";
 	Transactions_Maker_Verifier_Checker tm;
 	public static String TnxId="";
-	public String dealid;
-public TS03(Transactions_Maker_Verifier_Checker tm) {
+	Parties ps;
+	LoginApi login;
+public TS11(Parties ps) {
 		
-		this.tm=new Transactions_Maker_Verifier_Checker();
+		this.ps=new Parties();
 		this.dm=new DashBoard_Module();
 	}
 	
 
 
-
-
-@Then("Create Payments in the scheduled Instructions with given {string}")
-public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
-	
-	dm.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
-    //dm.createPayments(string,"Trial123","Trail1234");
+@Then("Add the Party through Api call")
+public void add_the_Party_through_Api_call() {
+    
 }
 
-	
-
-//	@Then("Create new deal with basic details with given {string}.")
-//	public void create_new_deal_POC_with_basic_details_with_given(String TSID) throws  Exception {
-//		
-//		DealBasicDetailCreators createDeal = new  DealBasicDetailCreators();
-//		createDeal.createDealBasicDetails(TSID, this);
-//	}
 
 	@Override
 	public  void handleCallback(String callbackid, Object data) throws Exception {
@@ -75,10 +72,22 @@ public void create_Payments_in_the_scheduled_Instructions_with_given(String stri
 			if(paymentInstrument.equalsIgnoreCase("BT")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler=new TransactionMaker_PaymentInstrumentHandler();
 				
-			instrumentHandler.handleBTPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+			instrumentHandler.handleBTPaymentInstrument(TSID,sourceAccountNo,toaccountNo);
 			}
 			
 		}
+		
+		if(callbackid.equalsIgnoreCase("PARTIES_MAKER_PAYMENT_INSTRUMENT")) {
+			String paymentInstrument = (String) data;
+			if(paymentInstrument.equalsIgnoreCase("BT")) {
+				PartyMaker_PaymentInstrumentHandler BThandler=new PartyMaker_PaymentInstrumentHandler();
+				BThandler.handlePartyMakerBT_PaymentInstrument(TSID);
+				
+			}
+			
+		}
+		
+		
 		
 	}
 }
