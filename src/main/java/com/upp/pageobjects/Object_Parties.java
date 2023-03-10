@@ -114,6 +114,8 @@ public class Object_Parties extends BaseClass{
 	@FindBy(id ="btn-parties-linkParty-add-v1")
 	public WebElement Party_linkPartyDetails_checkBoxIcon;
 	
+	@FindBy(xpath="(//dd[@class='ng-star-inserted'])[2]")
+	public WebElement Party_PartiesNumber;
 	
 	
 	

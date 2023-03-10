@@ -16,7 +16,7 @@ public class Payload {
 		 String random = Long.toString(number);
 		 String uniquePartyName="Party"+random;
 		 String uniquePartyRefId="Party"+random;
-		
+		 	
 		return "{\r\n"
 				+ "        \"party\": {\r\n"
 				+ "                \"dealRefId\":\""+dealId+"\",\r\n"
@@ -71,7 +71,8 @@ public class Payload {
 				+ "                        \"beneficiaryCountry\":\"IN\",\r\n"
 				+ "                        \"beneficiaryCurrency\":\"INR\",\r\n"
 				+ "                        \"to\":\"SBI98765\",\r\n"
-				+ "                        \"beneficiaryCountryOfIncorporation\":\"IN\"\r\n"
+				+ "                        \"beneficiaryCountryOfIncorporation\":\"IN\",\r\n"
+				+ "                        \"amount\":1000\r\n"
 				+ "                        }\r\n"
 				+ "            \r\n"
 				+ "                        \r\n"

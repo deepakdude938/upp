@@ -42,4 +42,5 @@ public class DealGroupAttributesHandler extends BaseClass implements ICallback {
 	public void handleoneProduct() {
 		System.out.println("call back for product 1");
 	}
+	
 }

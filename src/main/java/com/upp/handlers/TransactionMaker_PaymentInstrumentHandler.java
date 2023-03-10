@@ -61,7 +61,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass  implem
 		 scroll.scrollInToView(od.payments_AddSubInstructionButton);
 		 od.payments_AddSubInstructionButton.click();
 		 scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
-		 applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,Duration.ofSeconds(5));
+		 applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,Duration.ofSeconds(10));
 		 od.payments_NextArrowButtonTransferSubInstruction.click();	
 		
 	}

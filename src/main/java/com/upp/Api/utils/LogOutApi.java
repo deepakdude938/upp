@@ -7,9 +7,8 @@ import io.restassured.path.json.JsonPath;
 import com.upp.utils.Property;
 
 public class LogOutApi {
-	public static String authToken="";
 
-	public static void loginToUpp() throws Exception {
+	public static void logOut() throws Exception {
 
 
 		String base_Url = Property.getProperty("Dev_base_uri");
@@ -23,7 +22,7 @@ public class LogOutApi {
 				.assertThat().statusCode(200)
 				.extract().response().asString();
 
-		System.out.println(response_LogOut);
+		System.out.println("The Logout Api response is "+response_LogOut);
 
 }
 }

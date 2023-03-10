@@ -23,8 +23,9 @@ public class PartyApi {
 				.assertThat().statusCode(200)
 				.extract()
 				.response().asString();
-
+		System.out.println("The Part Api response is "+response);
 		JsonPath js = new JsonPath(response);
+	
 
 }
 }

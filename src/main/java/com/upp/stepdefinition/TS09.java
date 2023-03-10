@@ -13,13 +13,18 @@ import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.DealResponsibilityHandler;
 import com.upp.handlers.PartyMaker_PaymentInstrumentHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
-import com.upp.pagemodules.Transactions.Transactions_Maker_Verifier_Checker;
 import com.upp.utils.SwitchWindow;
 
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
-import com.upp.pagemodules.Parties.Parties;
+import com.upp.pagemodules.Parties.Party_AddExistingPartyForGivenDealid;
+import com.upp.pagemodules.Parties.Party_Checker;
+import com.upp.pagemodules.Parties.Party_Maker_Accounts;
+import com.upp.pagemodules.Parties.Party_Maker_BasicDetails;
+import com.upp.pagemodules.Parties.Party_Maker_Contacts;
+import com.upp.pagemodules.Parties.Party_Maker_Documents;
+import com.upp.pagemodules.Parties.Party_Maker_Summary;
 
 import io.cucumber.java.en.*;
 
@@ -31,13 +36,24 @@ public class TS09 extends BaseClass  implements ICallback{
 //	public static String dealId = "";
 	LoginToApplication userLogin;
 	public static String TSID = "";
-	Transactions_Maker_Verifier_Checker tm;
 	public static String TnxId="";
-	Parties ps;
-public TS09(Parties ps) {
+	Party_Maker_BasicDetails pm_Basic;
+	Party_Maker_Contacts pm_Contacts;
+	Party_Maker_Accounts pm_Accounts;
+	Party_Maker_Documents pm_Documents;
+	Party_Maker_Summary pm_Summary;
+	Party_Checker partyChecker;
+	Party_AddExistingPartyForGivenDealid addexistingParty;
+public TS09() {
 		
-		this.ps=new Parties();
 		this.dm=new DashBoard_Module();
+		pm_Basic=new Party_Maker_BasicDetails();
+		pm_Contacts=new Party_Maker_Contacts();
+		pm_Accounts=new Party_Maker_Accounts();
+		pm_Documents=new Party_Maker_Documents();
+		pm_Summary=new Party_Maker_Summary();
+		partyChecker=new Party_Checker();
+		addexistingParty=new Party_AddExistingPartyForGivenDealid();
 	}
 	
 
@@ -45,20 +61,27 @@ public TS09(Parties ps) {
 @Then("Create party from party maker with given {string}")
 public void create_party_from_party_maker(String string) throws Exception {
 	 TSID=string;
-ps.createPartyFromPartyMaker(string,this);
+	 pm_Basic.PartyMaker_BasicDetails(string);
+	 pm_Contacts.PartyMaker_Contacts(string);
+	 pm_Accounts.PartyMaker_Accounts(string,this);
+	 pm_Documents.PartyMaker_Documents(string);
+	 pm_Summary.PartyMaker_Summary(string);
+	 
 }
 
 @Then("Approve party from party checker with given {string}")
 public void approve_party_from_party_checker(String string) throws Exception {
    
- ps.approvePartyFromPartyChecker(string);
- 
- System.out.println("the deal id in step def"+TS06.dealId);
+
+	partyChecker.PartyChecker(string);
+	
 }
 	
 @Then("Edit the Live deal and add Existing Party with given {string}")
 public void edit_the_Live_deal_and_add_Existing_Party_with_given(String string) throws Exception {
-	ps.add_Existing_Party_with_given_DealId(string,TS06.dealId);
+	
+	addexistingParty.add_Existing_Party_with_given_DealId(string,TS06.dealId);
+	
 }
 
 @Then("Add a Transaction using Payment with the updated deal with given {string}")

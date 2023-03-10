@@ -39,6 +39,7 @@ public class BaseClass {
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");
 			String downloadFilepath = new File("downloadedFiles").getAbsolutePath();
 
 			if (System.getProperty("os.name").equals("Linux")) {

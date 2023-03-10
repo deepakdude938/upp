@@ -15,6 +15,8 @@ import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
+
+import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -498,18 +500,22 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 	
-	public void createNewDeal_Old(String TSID) throws Exception{
+	public void createNewDeal_Old(String TSID,ICallback icallback) throws Exception{
 		
 		 od.deal_SideMenuIcon.click();
 		 od.newDealButton.click();
-		 
 		 od.newDeal.sendKeys(externalData.getFieldData(TSID,"Basic Details","Deal Name"));	 
 	
-		// dropdown.selectByVisibleText(od.basicDetails_ProductDropDown, externalData.getFieldData(TSID,"Basic Details","Product")); 
-		 
-		
+		 productName = externalData.getFieldData(TSID, "Basic Details", "Product");
+		 dropdown.selectByVisibleText(od.deal_Product, "A");
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TSID,"Basic Details","Business Segment"));
+		 od.deal_Product.sendKeys(productName);
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+		icallback.handleCallback("PRODUCT_NAME", productName);
+		
 		 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TSID,"Basic Details","Country"));
+		 
 		 String input = externalData.getFieldData(TSID,"Basic Details","Transactions to non-registered beneficiaries");
 		 if((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes") ) ) {
 			 od.beneficiariesCheckBox.click();
@@ -542,9 +548,18 @@ public class DashBoard_Module extends BaseClass {
 		 By party_Responsibility_Option = By.xpath("//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
 		 driver.findElement(party_Responsibility_Option).click();
 		 
-		// od.saveButton.click();
+		 try {
+			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+				if (od.responsibilityAttributePopup.isDisplayed()) {
+					applyExplicitWaitsUntilElementClickable(od.saveButton,Duration.ofSeconds(10));
+					od.saveButton.click();
+				}
+			} catch (Exception e) {
+				System.out.println("Normal flow ");
+			}
+		 applyExplicitWaitsUntilElementClickable(od.nextBtn,Duration.ofSeconds(15));
 		 od.nextBtn.click();
-	
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
 }
 	

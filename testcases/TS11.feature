@@ -10,10 +10,12 @@ And Create Parties in the Parties Tab with given "<TSID>"
 Then submit the deal
 Then approve the deal from the deal checker common method
 And Add the Party through Api call
-#And Add a Transaction using Payment with the updated deal with given "<TSID>"
-#Then submit the deal
-#Then approve the deal from the deal checker common method
-#Then logout of the application
+Then Open and Edit the live deal
+And Add a Transaction using Payment with the updated deal with given "<TSID>"
+Then submit the deal
+Then approve the deal from the deal checker common method
+And Verify that Party Api got addded in the live deal
+Then logout of the application
 Examples:
       |TSID   |
       |TS11   |

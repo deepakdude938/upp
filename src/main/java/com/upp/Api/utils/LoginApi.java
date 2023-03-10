@@ -23,12 +23,12 @@ public class LoginApi {
 				.assertThat().statusCode(200)
 				.extract()
 				.response().asString();
-
+   
 		JsonPath js = new JsonPath(responseLogin);
 
 		String token = js.getString("token");
 
 		authToken = "JWT " + token;
-
+		
 }
 }

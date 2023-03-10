@@ -11,7 +11,6 @@ import callbackInterfaces.ICallback;
 
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
-import com.upp.pagemodules.Transactions.Transactions_Maker_Verifier_Checker;
 import com.upp.utils.SwitchWindow;
 
 import com.upp.pagemodules.Deal.DealAccountCreator;
@@ -24,12 +23,10 @@ public class TS03 extends BaseClass  implements ICallback{
 	DealPage dp;
 	LoginToApplication userLogin;
 	public static String TSID = "";
-	Transactions_Maker_Verifier_Checker tm;
 	public static String TnxId="";
 	public String dealid;
-public TS03(Transactions_Maker_Verifier_Checker tm) {
-		
-		this.tm=new Transactions_Maker_Verifier_Checker();
+public TS03() {
+
 		this.dm=new DashBoard_Module();
 	}
 	
