@@ -60,7 +60,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement deals_ProcessingUnits;
 
-	@FindBy(xpath = "//span[@class='ng-tns-c92-7 ui-autocomplete-list-item-option']")
+	@FindBy(xpath = "//span[contains(text(),'Select All')]")
 	public WebElement deals_selectAll;
 
 	@FindBy(id = "btn-deals-basicDetails-next-v1")
@@ -506,7 +506,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//div[@title='Logout']")
 	public WebElement logOutIcon;
 	
-	@FindBy(xpath = "/html[1]/body[1]/xcro-wrapper[1]/xcro-protected[1]/ui-overlay-pane[1]/div[1]/div[2]/div[3]/div[1]/div[6]/div[1]/a[1]")
+	@FindBy(xpath="(//a[normalize-space()='Deal Checker'])[1]")
 	public WebElement dealChecker_Button1;
 	
 	@FindBy(xpath="//a[contains(text(),'Live Deals')]")
@@ -530,4 +530,9 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="(//button[@id='btn-parties-linkParty-add-v1'])[1]")
 	public WebElement parties_addPartyPlusIcon;
 	
+	@FindBy(xpath ="(//span[@class='slider round'])[4]")
+	public WebElement payments_SweepInSlider;
+	
+	@FindBy(xpath ="(//i[@id='ic-instructions-tabSweepIn-next-v1'])[1]")
+	public WebElement payments_SweepinNextButton;
 }

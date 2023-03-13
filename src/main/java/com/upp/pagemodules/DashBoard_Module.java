@@ -528,14 +528,14 @@ public class DashBoard_Module extends BaseClass {
 				 od.deals_ProcessingUnits.click();
 				 od.deals_selectAll.click();
 				 od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
-				 By ProcessingUnit = By.xpath("//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+ProcessingUnits+"']");
+				 By ProcessingUnit = By.xpath("//div[contains(text(),'"+ProcessingUnits+"')]");
 				 driver.findElement(ProcessingUnit).click();
 			}
 		
 		 input = externalData.getFieldData(TSID,"Basic Details","Transaction Categories");
 		 od.transactionCategory.click();
 		 od.transactionCategoryInput.sendKeys(input);
-		 By transaction_Category_Option = By.xpath("//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+		 By transaction_Category_Option = By.xpath("(//div[contains(text(),'"+ input+"')])[1]");
 		 applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		 driver.findElement(transaction_Category_Option).click();
 		 if(!od.basicDetails_SaveButton_List.isEmpty())
@@ -545,7 +545,7 @@ public class DashBoard_Module extends BaseClass {
 		 input = externalData.getFieldData(TSID,"Basic Details","Party Responsibilities");
 		 od.partyResponsibility.click();
 		 od.partyResponsibilityinput.sendKeys(input);
-		 By party_Responsibility_Option = By.xpath("//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"+input+"']");
+		 By party_Responsibility_Option = By.xpath("//div[contains(text(),'"+input+"')]");
 		 driver.findElement(party_Responsibility_Option).click();
 		 
 		 try {
@@ -621,6 +621,10 @@ public class DashBoard_Module extends BaseClass {
 			od.payments_PartialpaymentSlider.click();
 		}
 		
+		if(((externalData.getFieldData(TSID,"Scheduled","Sweep in")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Sweep in")).equalsIgnoreCase("Yes"))){
+			od.payments_SweepInSlider.click();
+		}
+		od.payments_SweepinNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate,Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
 		
@@ -668,8 +672,8 @@ public class DashBoard_Module extends BaseClass {
 		
 		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
 		 od.deal_SideMenuIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_Button,Duration.ofSeconds(15));
-		 od.dealChecker_Button1.click();
+         Thread.sleep(4000);
+		 jsClick.click(od.dealChecker_Button1);
 		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
 		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
 		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(25));
