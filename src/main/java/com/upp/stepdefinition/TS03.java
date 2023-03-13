@@ -30,12 +30,7 @@ public TS03() {
 		this.dm=new DashBoard_Module();
 	}
 
-	@Then("Create Payments in the scheduled Instructions with given {string}")
-	public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
 
-		dealid = dm.createPayments(string, DealPage.sourceAccountNo, DealPage.toaccountNo);
-
-	}
 
 @Then("Create Payments in the scheduled Instructions with given {string}")
 public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
