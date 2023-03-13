@@ -18,7 +18,7 @@ import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
 import io.cucumber.java.en.*;
 
-public class TS03 extends BaseClass  implements ICallback{
+public class TS03 extends BaseClass implements ICallback {
 	DashBoard_Module dm;
 	DealPage dp;
 	LoginToApplication userLogin;
@@ -29,10 +29,13 @@ public TS03() {
 
 		this.dm=new DashBoard_Module();
 	}
-	
 
+	@Then("Create Payments in the scheduled Instructions with given {string}")
+	public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
 
+		dealid = dm.createPayments(string, DealPage.sourceAccountNo, DealPage.toaccountNo);
 
+	}
 
 @Then("Create Payments in the scheduled Instructions with given {string}")
 public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
@@ -51,31 +54,31 @@ public void create_Payments_in_the_scheduled_Instructions_with_given(String stri
 //	}
 
 	@Override
-	public  void handleCallback(String callbackid, Object data) throws Exception {
+	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub
-		
-		if(callbackid.equalsIgnoreCase("PRODUCT_NAME")) {
+
+		if (callbackid.equalsIgnoreCase("PRODUCT_NAME")) {
 			String productName = (String) data;
-			if(productName.equalsIgnoreCase("flexible funding")) {
+			if (productName.equalsIgnoreCase("flexible funding")) {
 				DealGroupAttributesHandler handleAttribute = new DealGroupAttributesHandler();
 				handleAttribute.handleFlexibleFundding();
 			}
-			if(productName.equalsIgnoreCase("1.0")) {
+			if (productName.equalsIgnoreCase("1.0")) {
 				DealGroupAttributesHandler handleAttribute = new DealGroupAttributesHandler();
 				handleAttribute.handleoneProduct();
 			}
 
 		}
-		
-		if(callbackid.equalsIgnoreCase("PAYMENT_INSTRUMENT")) {
+
+		if (callbackid.equalsIgnoreCase("PAYMENT_INSTRUMENT")) {
 			String paymentInstrument = (String) data;
-			if(paymentInstrument.equalsIgnoreCase("BT")) {
-				TransactionMaker_PaymentInstrumentHandler instrumentHandler=new TransactionMaker_PaymentInstrumentHandler();
-				
-			instrumentHandler.handleBTPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+			if (paymentInstrument.equalsIgnoreCase("BT")) {
+				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
+
+				instrumentHandler.handleBTPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
-			
+
 		}
-		
+
 	}
 }
