@@ -9,7 +9,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
-import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_Transactions;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
@@ -30,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
 public class Transactions_Maker_Verifier_Checker extends BaseClass {
 
-	public static Object_NewDeal od;
+	public static Object_Deal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -46,7 +46,7 @@ public class Transactions_Maker_Verifier_Checker extends BaseClass {
 	 public static Object_Transactions tm ;
 	public Transactions_Maker_Verifier_Checker() {
 
-		od = new Object_NewDeal();
+		od = new Object_Deal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		odpAccount = new OdpApi();

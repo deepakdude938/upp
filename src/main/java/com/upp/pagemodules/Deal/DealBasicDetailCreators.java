@@ -89,18 +89,14 @@ public class DealBasicDetailCreators extends BaseClass {
 		}
 
 		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		od.transactionCategory.click();
-		By transaction_Category_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
+		od.transactionCategory.sendKeys(input);
+		By transaction_Category_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		driver.findElement(transaction_Category_Option).click();
 		od.saveButton.click();
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		od.partyResponsibility.click();
-		By party_Responsibility_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
+		od.partyResponsibility.sendKeys(input);
+		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
 		driver.findElement(party_Responsibility_Option).click();
 

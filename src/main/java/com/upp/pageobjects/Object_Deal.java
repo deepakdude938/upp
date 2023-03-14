@@ -15,6 +15,7 @@ public class Object_Deal extends BaseClass {
 		PageFactory.initElements(driver, this);
 	}
 
+//Objects for  Basic details page
 	
 	@FindBy(xpath = "//label[contains(@class,'deal_icon sidemenu_icon')]")
 	public WebElement deal_SideMenuIcon;
@@ -58,6 +59,10 @@ public class Object_Deal extends BaseClass {
 	@FindBy(id = "btn-deals-basicDetails-next-v1")
 	public WebElement nextBtn;
 
+	//objects   Accounts page 
+	@FindBy (xpath = "//div[@title='Accounts']/i")
+	public WebElement accountIcon;
+	
 	@FindBy(xpath = " //select[@id='country']")
 	public WebElement country;
 
@@ -105,10 +110,13 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//td[contains(@class,'today')]/following::td[3]")
 	public WebElement endDate;	
 	
-	@FindBy(xpath = "(//span[@class='ag-selection-checkbox'])[1]")
+	@FindBy(xpath = "//span[contains(@class,'ag-selection-checkbox')]")
+	public WebElement accountNumbers;
+	
+	@FindBy(xpath = "(//div[@col-id='accountNumber'])[2]")
 	public WebElement ecommerceFirstAccount;
 	
-	@FindBy(xpath = "(//span[@class='ag-selection-checkbox'])[2]")
+	@FindBy(xpath = "(//div[@col-id='accountNumber'])[3]")
 	public WebElement ecommerceSecondAccount;
 		
 	@FindBy(id = "btn-parties-ecommerce-updateParty-v1")
@@ -203,13 +211,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//span[contains(@class,'text-label')]//span")
 	public WebElement linkedInstruction_DealId;
 
-	@FindBy(xpath = "(//button[normalize-space()='Yes'])[1]")
-	public WebElement payments_DealYesButton;
-
-	@FindBy(xpath = "(//button[normalize-space()='OK'])[1]")
-	public WebElement payments_DealOkButton;
-
-	// dealChecker objects
+		// dealChecker objects
 
 	@FindBy(xpath = "//span[contains(text(),'REF')]")
 	public WebElement deals_SummaryRefId;
@@ -234,6 +236,7 @@ public class Object_Deal extends BaseClass {
 
 	@FindBy(xpath = "(//input[@id='rad-generic-radio-select-v1'])[1]")
 	public WebElement dealChecker_approveAllRadioButton;
+	
 	@FindBy(xpath = "(//i[@class='ui-icon ui-icon-note warning'])[1]")
 	public WebElement dealChecker_addComments;
 
@@ -297,11 +300,20 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//button[contains(text(),'OK')]")
 	public WebElement TxnChecker_okBtn;
 
+	@FindBy(xpath = "//button[text()='Yes']")
+	public WebElement TxnChecker_yesBtn;
+	//object for txn verifier 
+	
+	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONCHECKER']")
+	public WebElement TxnVerifier_TrasactionVerifier;
+	
+	@FindBy(xpath = "/html[1]/body[1]/xcro-wrapper[1]/xcro-protected[1]/ui-overlay-pane[1]/div[1]/div[2]/div[3]/div[1]/div[6]/div[1]/a[1]")
+	public WebElement dealChecker_Button1;
 	// Parties Object
 	@FindBy(xpath = "//div[@title='Parties']/i")
 	public WebElement parties_icon;
 
-	@FindBy(id = "btn-parties-parties-getStarted-v1")
+	@FindBy(id = "ic-parties-partiesList-addParty-v1")
 	public WebElement parties_GetStarted;
 
 	@FindBy(id = "btn-parties-addLinkParty-addNewParty-v1")
@@ -401,7 +413,15 @@ public class Object_Deal extends BaseClass {
 
 	@FindBy(xpath = "//div[contains(text(),'Architect certificate')]")
 	public WebElement parties_DocumentsType_Architect_certificate;
+	
+	//Objects for payments
 
+	@FindBy(xpath = "(//button[normalize-space()='Yes'])[1]")
+	public WebElement payments_DealYesButton;
+
+	@FindBy(xpath = "(//button[normalize-space()='OK'])[1]")
+	public WebElement payments_DealOkButton;
+	
 	@FindBy(xpath = "//div[@title='Scheduled']/i")
 	public WebElement payments_ScheduledInstructionIcon;
 
@@ -506,5 +526,67 @@ public class Object_Deal extends BaseClass {
 	
 	@FindBy(id="ic-deals-account-accountDetails-addAccount-v1")
 	public WebElement addAccountButton;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-search'])[1]")
+	public WebElement deals_ProcessingUnitsSearch;
+	
+	@FindBy(xpath="//div[@title='Logout']")
+	public WebElement logOutIcon;
+	
+	//Object for budget page
+	
+
+	@FindBy(id="tab-deals-budgetWizard-v1")
+	public WebElement budget_BudgetIcon;
+	
+	@FindBy(id="btn-deals-budgetGroup-add-v1")
+	public WebElement budget_CreateBudget;
+	
+	@FindBy(id="txt-deals-addBudgetGroup-name-v1")
+	public WebElement budget_AddBudgetName;
+	
+	@FindBy(id="txt-generic-autocomplete-input-v1")
+	public WebElement budget_BudgetSourceAccount;
+	
+	@FindBy(id="btn-deals-addBudgetGroup-save-v1")
+	public WebElement budget_AddBudget;
+	
+	@FindBy(xpath="//div[@id='btn-deals-budgetDetail-addBudget-v1']//i")
+	public WebElement budget_budgetDetailsAddBudget;
+	
+	@FindBy(id="txt-deals-addUpdateBudget-purpose-v1")
+	public WebElement budget_Purpose;
+	
+	
+	@FindBy(xpath="//label[normalize-space()='Budget Carry forward']/following::span[@class='slider round']")
+	public WebElement budget_budgetCarryForward;
+	
+	@FindBy(id="txt-generic-destinationSearch-search-v1")
+	public WebElement budget_budgetDestination;
+	
+	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-frequency-v1']")
+	public WebElement budget_Interval;
+	
+	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-duration-v1']")
+	public WebElement budget_Duration;
+	
+	@FindBy(id="btn-deals-addUpdateBudget-add-v1")
+	public WebElement budget_AddButton;
+	
+	@FindBy(xpath = "//input[@id='txt-generic-timePicker-input-v1']")
+	public WebElement payments_ScheduleTime;
+	
+	@FindBy(id="txt-deals-addUpdateBudget-allocatedAmount-v1")
+	public WebElement budget_allocatedAmount;
+	
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	public WebElement payments_budgetPurpose;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	public WebElement payments_ToAccountInputBox;
+	
+	
+	
 		
 }

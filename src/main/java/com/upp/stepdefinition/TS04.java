@@ -26,27 +26,31 @@ public class TS04 extends BaseClass {
 	@Then("create Linked Instruction Payment with given  {string}.")
 	public void create_Linked_Instruction_Payment_with_given(String TSID) throws Exception {
 		String sourceAccount = new DealPage(dm).sourceAccountNo;
-		String toAccount  = new DealPage(dm).toaccountNo;	
-		System.out.println("Changes = "+ TSID);
+		String toAccount = new DealPage(dm).toaccountNo;
+		System.out.println("Changes = " + TSID);
 		dealId = dm.createNewLinkedAccount(TSID, sourceAccount, toAccount);
-		
+
 	}
-	
+
 	@Then("approve the deal from the deal checker")
 	public void approve_the_deal_from_the_deal_checker() throws Exception {
-	   dm.approveDealFromDealChecker(dealId);
+		dm.approveDealFromDealChecker(dealId);
 	}
-	
+
 	@Then("Submit the deal to transaction checker")
 	public void submit_the_deal_to_transaction_checker() throws Exception {
 		dm.txnMaker_SubmitDeal(dealId);
-		
-	}
-	
-	@Then("Submit the deal to transaction verifier")
-	public void submit_the_deal_to_transaction_verifier() {
-	   
 	}
 
+	@Then("Submit the deal to transaction verifier")
+	public void submit_the_deal_to_transaction_verifier() {
+		dm.txnChecker_SubmitDeal(dealId);
+	}
+
+	@Then("Transaction verifier approve deal")
+	public void transaction_verifier_approve_deal() {
+		dm.txnVerifier_ApproveDeal(dealId);
+
+	}
 
 }

@@ -44,7 +44,7 @@ public class DealPartiesHandler extends BaseClass {
 		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
 		ecommerce = externalData.getFieldData(TSID, "Party", "eCommerce Party-checkbox");
 		if (ecommerce.equalsIgnoreCase("Y")) {
-			new ecommerceHandler().handleEcommerce(TSID);
+			new EcommerceHandler().handleEcommerce(TSID);
 		} else {
 			od.parties_BasicNextButton.click();
 		}

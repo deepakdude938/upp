@@ -7,7 +7,7 @@ import com.upp.handlers.CommonProductHandler;
 import com.upp.handlers.CommonResponsibilityHandler;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.handlers.DealResponsibilityHandler;
-import com.upp.handlers.ecommerceHandler;
+import com.upp.handlers.EcommerceHandler;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.LoginToApplication;
 import com.upp.pagemodules.Deal.DealAccountCreator;
@@ -75,7 +75,7 @@ public class DealPage extends BaseClass implements ICallback {
 		if (callbackid.equalsIgnoreCase("ecommerce")) {
 			String responsibility = (String) data;
 			if (responsibility.equalsIgnoreCase("Y")) {
-				ecommerceHandler ecommerce = new ecommerceHandler();
+				EcommerceHandler ecommerce = new EcommerceHandler();
 				ecommerce.handleEcommerce(tsid);
 			}
 		}
