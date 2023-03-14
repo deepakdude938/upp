@@ -79,7 +79,7 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		 applyExplicitWaitsUntilElementClickable(op.Party_PartiesNumber,Duration.ofSeconds(15));
 		String partyNumber= op.Party_PartiesNumber.getText();
        System.out.println("Parties number is "+partyNumber);
-		if(!(partyNumber.equalsIgnoreCase(partyNumber)))
+		if(!(partyNumber.equals("2")))
 		{
                 Assert.fail();
 		}
