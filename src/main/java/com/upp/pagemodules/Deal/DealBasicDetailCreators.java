@@ -76,18 +76,15 @@ public class DealBasicDetailCreators extends BaseClass {
 		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
 			od.beneficiariesCheckBox.click();
 		}
-
 		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
 
 		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
 			od.deals_ProcessingUnits.click();
 			od.deals_selectAll.click();
-			By ProcessingUnit = By.xpath(
-					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-							+ ProcessingUnits + "']");
+			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
+			By ProcessingUnit = By.xpath("//div[contains(text(),'" + ProcessingUnits + "')]");
 			driver.findElement(ProcessingUnit).click();
 		}
-
 		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
 		od.transactionCategory.sendKeys(input);
 		By transaction_Category_Option = By.xpath("//div[contains(text(),'" + input + "')]");

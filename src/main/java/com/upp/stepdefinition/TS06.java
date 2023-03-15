@@ -33,7 +33,7 @@ public class TS06 extends BaseClass implements ICallback {
 	public static String dealId = "";
 	LoginToApplication userLogin;
 	public static String TSID = "";
-	public static String TnxId="";
+	public static String TnxId = "";
 	Transactions_Maker_Sub_Instruction tm_sub;
 	Transactions_Maker_Documents tm_doc;
 	Transactions_Maker_Summary tm_sum;
@@ -41,34 +41,25 @@ public class TS06 extends BaseClass implements ICallback {
 	Transactions_Checker tc;
 	Transactions_Verifier tv;
 	Reports_ExecutionReport execReport;
-	
-public TS06() {
-		
-		this.dm=new DashBoard_Module();
-		this.tm_BasicDetails=new Transactions_Maker_BasicDetails();;
-		this.tm_sub=new Transactions_Maker_Sub_Instruction();
-		this.tm_doc=new Transactions_Maker_Documents();
-		this.tm_sum=new Transactions_Maker_Summary();
-		this.tc=new Transactions_Checker();
-		this.tv=new Transactions_Verifier();
-		this.execReport=new Reports_ExecutionReport();
+
+	public TS06() {
+
+		this.dm = new DashBoard_Module();
+		this.tm_BasicDetails = new Transactions_Maker_BasicDetails();
+		;
+		this.tm_sub = new Transactions_Maker_Sub_Instruction();
+		this.tm_doc = new Transactions_Maker_Documents();
+		this.tm_sum = new Transactions_Maker_Summary();
+		this.tc = new Transactions_Checker();
+		this.tv = new Transactions_Verifier();
+		this.execReport = new Reports_ExecutionReport();
 	}
 
-@Then("Create deal with basic details with given {string}.")
-public void create_deal_with_basic_details_with_given(String string) throws Exception {
-    
-   dm.createNewDeal_Old(string,this);
-}
+	@Then("Create deal with basic details with given {string}.")
+	public void create_deal_with_basic_details_with_given(String string) throws Exception {
 
-@Then("submit the deal")
-public void submit_the_deal() throws Exception {
-    // Write code here that turns the phrase above into concrete actions
-	dealId= dm.submitDeal();
-}
-@Then("approve the deal from the deal checker common method")
-public void approve_the_deal_from_the_deal_checker() throws Exception {
-    dm.approveDealFromDealChecker_Old(dealId);
-}
+		dm.createNewDeal_Old(string, this);
+	}
 
 	@Then("submit the deal")
 	public void submit_the_deal() throws Exception {
@@ -76,7 +67,7 @@ public void approve_the_deal_from_the_deal_checker() throws Exception {
 		dealId = dm.submitDeal();
 	}
 
-	@Then("approve the deal from the deal checker for TS06")
+	@Then("approve the deal from the deal checker common method")
 	public void approve_the_deal_from_the_deal_checker() throws Exception {
 		dm.approveDealFromDealChecker_Old(dealId);
 	}
@@ -88,33 +79,33 @@ public void approve_the_deal_from_the_deal_checker() throws Exception {
 
 	@Given("Create a Transaction from Transaction Maker with given {string}")
 	public void create_a_Transaction_from_Transaction_Maker(String string) throws Exception {
-		
-		 TSID=string;
-		//TnxId=tm.createTransactionFromTransactionMaker(string,DealPage.dealId,DealPage.toaccountNo,this);
-		 tm_BasicDetails.Transactions_Maker_BasicDetails(string,DealPage.dealId,DealPage.toaccountNo);
-		 tm_sub.Transaction_Maker_Sub_Instruction(string,this);
-		 tm_doc.Transactions_Maker_Documents(string);
-		 TnxId= tm_sum.Transaction_Maker_Summary();
-		 
+
+		TSID = string;
+		// TnxId=tm.createTransactionFromTransactionMaker(string,DealPage.dealId,DealPage.toaccountNo,this);
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string, DealPage.dealId, DealPage.toaccountNo);
+		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
+		tm_doc.Transactions_Maker_Documents(string);
+		TnxId = tm_sum.Transaction_Maker_Summary();
+
 	}
 
 	@Then("Approve the transaction from Transaction Checker with given {string}")
 	public void approve_the_transaction_from_Transaction_Checker(String string) throws Exception {
-	  //tm.approveTransactionFromChecker(string,TnxId);
-		tc.TransactionsChecker(string,TnxId);
+		// tm.approveTransactionFromChecker(string,TnxId);
+		tc.TransactionsChecker(string, TnxId);
 	}
 
 	@Then("Approve the transaction from Transaction Verifier with given {string}")
 	public void approve_the_transaction_from_Transaction_Verifier_with_given(String string) throws Exception {
-	   // tm.approveTransactionFromVerifier(string,TnxId);
-		tv.TransactionsVerifier(string,TnxId);
+		// tm.approveTransactionFromVerifier(string,TnxId);
+		tv.TransactionsVerifier(string, TnxId);
 	}
 
 	@Then("Check the Transaction staus in execution report with given {string}")
 	public void check_the_Transaction_staus_in_execution_report_with_given(String string) throws Exception {
-	   // tm.checkTnxStatusFromExecutionReport(string,dealId);
-		execReport.ExecutionReport(string,dealId);
-		
+		// tm.checkTnxStatusFromExecutionReport(string,dealId);
+		execReport.ExecutionReport(string, dealId);
+
 	}
 
 //	@Then("Create new deal with basic details with given {string}.")

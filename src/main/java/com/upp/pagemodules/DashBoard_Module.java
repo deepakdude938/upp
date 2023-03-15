@@ -13,6 +13,7 @@ import com.upp.pagemodules.Deal.DealPartiesCreator;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
+import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
@@ -29,7 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DashBoard_Module extends BaseClass {
 
-	public static Object_Deal od;
+	public static Object_NewDeal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -44,7 +45,7 @@ public class DashBoard_Module extends BaseClass {
 	public static String productName;
 
 	public DashBoard_Module() {
-		od = new Object_Deal();
+		od = new Object_NewDeal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		odpAccount = new OdpApi();
@@ -414,33 +415,8 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	public void txnMaker_SubmitDeal(String dealid) throws Exception {
-		System.out.println("deal id in maker = " + dealid);
-		TimeUnit.MINUTES.sleep(waitingTime);
-		od.TxnMaker_Transaction.click();
-		od.TxnMaker_TrasactionMaker.click();
-
-		od.TxnMaker_searchDealId.sendKeys(dealid);
-
-		od.TxnMaker_txnCheckbox.click();
-		od.TxnMaker_submitBtn.click();
-		od.TxnMaker_okBtn.click();
-
-	}
-
-	public void txnChecker_SubmitDeal(String dealId) {
-		// TODO Auto-generated method stub
-		od.TxnChecker_Transaction.click();
-		od.TxnChecker_TrasactionChecker.click();
-		od.TxnChecker_searchDealId.sendKeys(dealId);
-		od.TxnChecker_comment.click();
-		od.TxnChecker_note.sendKeys("Ok");
-		od.TxnChecker_ok.click();
-		od.TxnChecker_txnCheckbox.click();
-		od.TxnChecker_submitBtn.click();
-		od.TxnChecker_yesBtn.click();
-		od.TxnChecker_okBtn.click();
-	}
+	
+	
 
 	public static void commonMethodToCreateDeal(String TSID) throws Exception {
 
@@ -489,67 +465,68 @@ public class DashBoard_Module extends BaseClass {
 		od.nextBtn.click();
 
 	}
-	
-	public void createNewDeal_Old(String TSID,ICallback icallback) throws Exception{
-		
-		 od.deal_SideMenuIcon.click();
-		 od.newDealButton.click();
-		 od.newDeal.sendKeys(externalData.getFieldData(TSID,"Basic Details","Deal Name"));	 
-	
-		 productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-		 dropdown.selectByVisibleText(od.deal_Product, "A");
-		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-		 dropdown.selectByVisibleText(od.businessSegmentDropDown, externalData.getFieldData(TSID,"Basic Details","Business Segment"));
-		 od.deal_Product.sendKeys(productName);
-		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+
+	public void createNewDeal_Old(String TSID, ICallback icallback) throws Exception {
+
+		od.deal_SideMenuIcon.click();
+		od.newDealButton.click();
+		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
+
+		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
+		dropdown.selectByVisibleText(od.deal_Product, "A");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+		dropdown.selectByVisibleText(od.businessSegmentDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
+		od.deal_Product.sendKeys(productName);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		icallback.handleCallback("PRODUCT_NAME", productName);
-		
-		 dropdown.selectByVisibleText(od.countryIndiaDropDown, externalData.getFieldData(TSID,"Basic Details","Country"));
-		 
-		 String input = externalData.getFieldData(TSID,"Basic Details","Transactions to non-registered beneficiaries");
-		 if((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes") ) ) {
-			 od.beneficiariesCheckBox.click();
-		 }
-		  
-		 String ProcessingUnits=externalData.getFieldData(TSID,"Basic Details","Processing Units");
-			
-			if(!(ProcessingUnits.equalsIgnoreCase("Select All")))
-			{
-				 od.deals_ProcessingUnits.click();
-				 od.deals_selectAll.click();
-				 od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
-				 By ProcessingUnit = By.xpath("//div[contains(text(),'"+ProcessingUnits+"')]");
-				 driver.findElement(ProcessingUnit).click();
+
+		dropdown.selectByVisibleText(od.countryIndiaDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Country"));
+
+		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
+		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes"))) {
+			od.beneficiariesCheckBox.click();
+		}
+
+		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
+
+		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
+			od.deals_ProcessingUnits.click();
+			od.deals_selectAll.click();
+			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
+			By ProcessingUnit = By.xpath("//div[contains(text(),'" + ProcessingUnits + "')]");
+			driver.findElement(ProcessingUnit).click();
+		}
+
+		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
+		od.transactionCategory.click();
+		od.transactionCategoryInput.sendKeys(input);
+		By transaction_Category_Option = By.xpath("(//div[contains(text(),'" + input + "')])[1]");
+		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+		driver.findElement(transaction_Category_Option).click();
+		if (!od.basicDetails_SaveButton_List.isEmpty()) {
+			od.saveButton.click();
+		}
+		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
+		od.partyResponsibility.click();
+		od.partyResponsibilityinput.sendKeys(input);
+		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
+		driver.findElement(party_Responsibility_Option).click();
+
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+			if (od.responsibilityAttributePopup.isDisplayed()) {
+				applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
+				od.saveButton.click();
 			}
-		
-		 input = externalData.getFieldData(TSID,"Basic Details","Transaction Categories");
-		 od.transactionCategory.click();
-		 od.transactionCategoryInput.sendKeys(input);
-		 By transaction_Category_Option = By.xpath("(//div[contains(text(),'"+ input+"')])[1]");
-		 applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-		 driver.findElement(transaction_Category_Option).click();
-		 if(!od.basicDetails_SaveButton_List.isEmpty())
-		 {
-		 od.saveButton.click();
-		 }
-		 input = externalData.getFieldData(TSID,"Basic Details","Party Responsibilities");
-		 od.partyResponsibility.click();
-		 od.partyResponsibilityinput.sendKeys(input);
-		 By party_Responsibility_Option = By.xpath("//div[contains(text(),'"+input+"')]");
-		 driver.findElement(party_Responsibility_Option).click();
-		 
-		 try {
-			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-				if (od.responsibilityAttributePopup.isDisplayed()) {
-					applyExplicitWaitsUntilElementClickable(od.saveButton,Duration.ofSeconds(10));
-					od.saveButton.click();
-				}
-			} catch (Exception e) {
-				System.out.println("Normal flow ");
-			}
-		 applyExplicitWaitsUntilElementClickable(od.nextBtn,Duration.ofSeconds(15));
-		 od.nextBtn.click();
-		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		} catch (Exception e) {
+			System.out.println("Normal flow ");
+		}
+		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
+		od.nextBtn.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+	}
 
 	public void createNewDeal_Old(String TSID) throws Exception {
 
@@ -622,21 +599,13 @@ public class DashBoard_Module extends BaseClass {
 		System.out.println(dealId);
 		return dealId;
 	}
-	
-	public void logOutOld() throws Exception
-	{
-	    applyExplicitWaitsUntilElementClickable(od.logOutIcon,Duration.ofSeconds(40));
-	    jsClick.click(od.logOutIcon);
-	}
-	
-	public void createPayments(String TSID,String sourceAccountno,String toaccountNo) throws Exception{
 
 	public void logOutOld() throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.logOutIcon, Duration.ofSeconds(40));
 		jsClick.click(od.logOutIcon);
 	}
 
-	public String createPayments(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
+	public void createPayments(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
 		od.payments_ScheduledInstructionIcon.click();
@@ -675,22 +644,25 @@ public class DashBoard_Module extends BaseClass {
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
 			od.payments_PartialpaymentSlider.click();
 		}
-		
-		if(((externalData.getFieldData(TSID,"Scheduled","Sweep in")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Scheduled","Sweep in")).equalsIgnoreCase("Yes"))){
+
+		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
 			od.payments_SweepInSlider.click();
 		}
 		od.payments_SweepinNextButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate,Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
-		
-	   	String day=dateutil.getDay(); 
-	   	By excecutionDay = By.xpath("(//a[normalize-space()='"+day+"'])[1]");
-		 applyExplicitWaitsUntilElementVisible(excecutionDay,5);
-		 driver.findElement(excecutionDay).click();
-	
-		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt,Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.payments_ScheduleAt, externalData.getFieldData(TSID,"Scheduled","Schedule At"));
-		dropdown.selectByVisibleText(od.payments_HolidayAction, externalData.getFieldData(TSID,"Scheduled","Holiday Action"));
+
+		String day = dateutil.getDay();
+		By excecutionDay = By.xpath("(//a[normalize-space()='" + day + "'])[1]");
+		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+		driver.findElement(excecutionDay).click();
+
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.payments_ScheduleAt,
+				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
+		dropdown.selectByVisibleText(od.payments_HolidayAction,
+				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 		od.payments_NextArrowButtonTransferSchedule.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 
@@ -722,39 +694,38 @@ public class DashBoard_Module extends BaseClass {
 			od.payments_NotificationAlertSlider.click();
 		}
 
-
 	}
-	public void approveDealFromDealChecker_Old(String dealId) throws Exception
-	{
-		
-		System.out.println("The deal id is"+dealId);
-		
-		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
-		 od.deal_SideMenuIcon.click();
-         Thread.sleep(4000);
-		 jsClick.click(od.dealChecker_Button1);
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
-		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(25));
-		 od.dealChecker_searchBar.sendKeys(dealId);
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton,Duration.ofSeconds(10));
-		 od.dealChecker_searchButton.click();
-		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(40));
-		 od.dealChecker_searchButton.click();
-		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(20));
-		 od.dealChecker_showMenu.click();
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_Open,Duration.ofSeconds(25));
-		 od.dealChecker_Open.click();
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_addComments,Duration.ofSeconds(10));
-		 jsClick.click(od.dealChecker_addComments);
-		 od.dealChecker_addNote.sendKeys("Ok approved");
-		 od.dealChecker_okCommentbutton.click();
-		 jsClick.click(od.dealChecker_approveAllRadioButton);
-		 od.dealChecker_ApproveButton.click();
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton,Duration.ofSeconds(40));
-		 od.payments_DealYesButton.click();
-		 applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton,Duration.ofSeconds(40));
-		 od.payments_DealOkButton.click();
+
+	public void approveDealFromDealChecker_Old(String dealId) throws Exception {
+
+		System.out.println("The deal id is" + dealId);
+
+		applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon, Duration.ofSeconds(15));
+		od.deal_SideMenuIcon.click();
+		Thread.sleep(4000);
+		jsClick.click(od.dealChecker_Button1);
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect, Duration.ofSeconds(25));
+		dropdown.selectByVisibleText(od.dealChecker_searchSelect, "Deal Id");
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar, Duration.ofSeconds(25));
+		od.dealChecker_searchBar.sendKeys(dealId);
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton, Duration.ofSeconds(10));
+		od.dealChecker_searchButton.click();
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(40));
+		od.dealChecker_searchButton.click();
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
+		od.dealChecker_showMenu.click();
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_Open, Duration.ofSeconds(25));
+		od.dealChecker_Open.click();
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_addComments, Duration.ofSeconds(10));
+		jsClick.click(od.dealChecker_addComments);
+		od.dealChecker_addNote.sendKeys("Ok approved");
+		od.dealChecker_okCommentbutton.click();
+		jsClick.click(od.dealChecker_approveAllRadioButton);
+		od.dealChecker_ApproveButton.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(40));
+		od.payments_DealYesButton.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(40));
+		od.payments_DealOkButton.click();
 	}
 
 	public void createBudget(String TSID, String sourceAccountNo, String toAccountNo) throws Exception, IOException {
@@ -899,25 +870,13 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	public void txnVerifier_ApproveDeal(String dealId) {
-		// TODO Auto-generated method stub
-		od.TxnChecker_Transaction.click();
-		od.TxnVerifier_TrasactionVerifier.click();
-		od.TxnChecker_searchDealId.sendKeys(dealId);
-		od.TxnChecker_comment.click();
-		od.TxnChecker_note.sendKeys("Ok");
-		od.TxnChecker_ok.click();
-		od.TxnChecker_txnCheckbox.click();
-		od.TxnChecker_submitBtn.click();
-		od.TxnChecker_yesBtn.click();
-		od.TxnChecker_okBtn.click();
-	}
+	
 
 	public String twoEcommerceParties(String TSID, ICallback icallback) throws Exception {
 		String deal;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParties(TSID, icallback);
-		od.accountIcon.click();
+		//od.accountIcon.click();
 		creator.createParties(TSID, icallback);
 		deal = submitDeal();
 		approveDealFromDealChecker(deal);

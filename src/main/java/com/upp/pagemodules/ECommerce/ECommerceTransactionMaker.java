@@ -52,8 +52,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		ecomm.ecommerce_addNewmaker.click();
-		ecomm.ecommerce_dealId.sendKeys("REF1678767832286");
-		By dealId_Option = By.xpath("//div[contains(text(),'" + "REF1678767832286" + "')]");
+		ecomm.ecommerce_dealId.sendKeys("REF1678772699696");
+		By dealId_Option = By.xpath("//div[contains(text(),'" + "REF1678772699696" + "')]");
 		driver.findElement(dealId_Option).click();
 		ecomm.ecommerce_participantIdtxt.click();
 		ecomm.ecommerce_participantId.click();

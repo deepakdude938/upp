@@ -31,7 +31,7 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//input[@placeholder='Select Deal Id']")
 	public WebElement ecommerce_dealId;
 
-	@FindBy(xpath = "//input[@placeholder='Select Participant Id']")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement ecommerce_participantIdtxt;
 
 	@FindBy(xpath = "(//li[contains(@id,lbl-generic-autocomplete-listItem)])[2]")
