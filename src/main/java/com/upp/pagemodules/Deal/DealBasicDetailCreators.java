@@ -10,7 +10,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
-import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Deal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DealBasicDetailCreators extends BaseClass {
 
-	public static Object_NewDeal od;
+	public static Object_Deal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -44,7 +44,7 @@ public class DealBasicDetailCreators extends BaseClass {
 
 	public DealBasicDetailCreators() {
 
-		od = new Object_NewDeal();
+		od = new Object_Deal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		odpAccount = new OdpApi();
@@ -61,18 +61,15 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-	    dropdown.selectByVisibleText(od.deal_Product, "A");
-		
-		
+		System.out.println(productName);
+		if (!(productName.equals("1.0"))) {
+			od.deal_Product.sendKeys(productName);
+			dropdown.selectByVisibleText(od.deal_Product, productName);
+			// dropdown.selectByValue(od.deal_Product, "T1142");
+			icallback.handleCallback("PRODUCT_NAME", productName);
+		}
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		od.deal_Product.sendKeys(productName);
-		
-		dropdown.selectByVisibleText(od.deal_Product, productName);
-		
-		// dropdown.selectByValue(od.deal_Product, "T1142");
-		icallback.handleCallback("PRODUCT_NAME", productName);
-		
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Country"));
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
@@ -92,18 +89,14 @@ public class DealBasicDetailCreators extends BaseClass {
 		}
 
 		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		od.transactionCategory.click();
-		By transaction_Category_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
+		od.transactionCategory.sendKeys(input);
+		By transaction_Category_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		driver.findElement(transaction_Category_Option).click();
 		od.saveButton.click();
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		od.partyResponsibility.click();
-		By party_Responsibility_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
+		od.partyResponsibility.sendKeys(input);
+		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
 		driver.findElement(party_Responsibility_Option).click();
 

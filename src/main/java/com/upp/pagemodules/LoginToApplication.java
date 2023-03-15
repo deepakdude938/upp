@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
-import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_Login;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
