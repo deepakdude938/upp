@@ -28,14 +28,14 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class ECommerceTransactionChecker extends BaseClass {
+public class ECommerceTransactionVerifier extends BaseClass {
 
 	public static Object_Ecommerce ecomm;
 	DropDown dropdown;
 	public ExcelReader externalData;
 	ScrollTypes scroll;
 
-	public ECommerceTransactionChecker() {
+	public ECommerceTransactionVerifier() {
 
 		ecomm = new Object_Ecommerce();
 		dropdown = new DropDown(driver);
@@ -43,10 +43,10 @@ public class ECommerceTransactionChecker extends BaseClass {
 		scroll = new ScrollTypes(driver);
 	}
 
-	public void ecommChecker_SubmitDeal(String dealId) throws Exception {
+	public void txnVerifier_ApproveDeal(String dealId) {
 		// TODO Auto-generated method stub
 
-		ecomm.ecommerce_txnChecker.click();
+		ecomm.ecommerce_txnVerifier.click();
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
 		ecomm.ecommerce_comment.click();
 		ecomm.ecommerce_note.sendKeys("Ok approve");
@@ -62,6 +62,6 @@ public class ECommerceTransactionChecker extends BaseClass {
 //		}
 		ecomm.ecommerce_yesBtn.click();
 		ecomm.ecommerce_okBtn.click();
-		Thread.sleep(2000);
+	
 	}
 }

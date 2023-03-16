@@ -11,6 +11,7 @@ Then Login to the application as "deal_maker"
 #And Create two eCommerce  Parties in the Parties Tab with given "<TcId>"
 And Add deal in ecommerce transaction maker queue "<TcId>"
 And Submit the deal to ecommerce transaction checker
+And Ecommerce transaction verifier approve the deal
 Examples:
       |TcId|
       |TS07|

@@ -52,8 +52,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		ecomm.ecommerce_addNewmaker.click();
-		ecomm.ecommerce_dealId.sendKeys("REF1678772699696");
-		By dealId_Option = By.xpath("//div[contains(text(),'" + "REF1678772699696" + "')]");
+		ecomm.ecommerce_dealId.sendKeys(dealId);
+		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
 		ecomm.ecommerce_participantIdtxt.click();
 		ecomm.ecommerce_participantId.click();
@@ -83,8 +83,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 		creatorAcc.selectByIndex(1);
 		ecomm.ecommerce_ParticipantId.click();
 		ecomm.ecommerce_ParticipantIdOpt.click();
-		ecomm.ecommerce_PlatformRefNumber.sendKeys("tesmtsnmmjna");
-		ecomm.ecommerce_FragmentPlatformRefNumber.sendKeys("tesnsammtnmj");
+		ecomm.ecommerce_PlatformRefNumber.sendKeys("Test098");
+		ecomm.ecommerce_FragmentPlatformRefNumber.sendKeys("Test099");
 
 		scroll.scrollDown();
 
@@ -126,18 +126,5 @@ public class ECommerceTransactionMaker extends BaseClass {
 
 	}
 
-	public void ecommChecker_SubmitDeal(String dealId) {
-		// TODO Auto-generated method stub
-
-		ecomm.ecommerce_txnChecker.click();
-		ecomm.ecommerce_TxnDealSearch.sendKeys("REF1678767832286");
-		ecomm.ecommerce_comment.click();
-		ecomm.ecommerce_note.sendKeys("Ok approve");
-		ecomm.ecommerce_txnok.click();
-		ecomm.ecommerce_txnCheckbox.click();
-		ecomm.ecommerce_submitBtn.click();
-		ecomm.ecommerce_yesBtn.click();
-		ecomm.ecommerce_okBtn.click();
-
-	}
+	
 }

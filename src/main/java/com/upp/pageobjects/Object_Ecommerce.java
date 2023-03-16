@@ -164,5 +164,14 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//button[text()='Yes']")
 	public WebElement ecommerce_yesBtn;
 	
+	@FindBy(xpath = "(//div[@col-id ='warnings'])[2]")
+	public WebElement ecommerce_warning;
+	
+	//Object for  E-commerce verifier
+	
+	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONVERIFIER']")
+	public WebElement ecommerce_txnVerifier;
+
+	
 	
 }

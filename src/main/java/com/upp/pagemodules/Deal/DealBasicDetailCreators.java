@@ -56,13 +56,13 @@ public class DealBasicDetailCreators extends BaseClass {
 	}
 
 	public static void createDealBasicDetails(String TSID, ICallback icallback) throws Exception {
-
 		od.deal_SideMenuIcon.click();
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-		System.out.println(productName);
+		
 		if (!(productName.equals("1.0"))) {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 			od.deal_Product.sendKeys(productName);
 			dropdown.selectByVisibleText(od.deal_Product, productName);
 			// dropdown.selectByValue(od.deal_Product, "T1142");
@@ -70,12 +70,15 @@ public class DealBasicDetailCreators extends BaseClass {
 		}
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
+
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Country"));
+
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
-		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
+		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes"))) {
 			od.beneficiariesCheckBox.click();
 		}
+
 		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
 
 		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
@@ -85,26 +88,35 @@ public class DealBasicDetailCreators extends BaseClass {
 			By ProcessingUnit = By.xpath("//div[contains(text(),'" + ProcessingUnits + "')]");
 			driver.findElement(ProcessingUnit).click();
 		}
+
 		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		od.transactionCategory.sendKeys(input);
-		By transaction_Category_Option = By.xpath("//div[contains(text(),'" + input + "')]");
-		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+		od.transactionCategory.click();
+		od.transactionCategoryInput.sendKeys(input);
+		By transaction_Category_Option = By.xpath("(//div[contains(text(),'" + input + "')])[1]");
+		//applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		driver.findElement(transaction_Category_Option).click();
-		od.saveButton.click();
+		if (!od.basicDetails_SaveButton_List.isEmpty()) {
+			od.saveButton.click();
+		}
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		od.partyResponsibility.sendKeys(input);
+		od.partyResponsibility.click();
+		od.partyResponsibilityinput.sendKeys(input);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
-		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
 		driver.findElement(party_Responsibility_Option).click();
 
 		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 			if (od.responsibilityAttributePopup.isDisplayed()) {
+				applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
 				od.saveButton.click();
 			}
 		} catch (Exception e) {
 			System.out.println("Normal flow ");
 		}
+		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
 	}
 
 }
