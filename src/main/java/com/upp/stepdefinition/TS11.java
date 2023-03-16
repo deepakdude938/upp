@@ -3,13 +3,12 @@ package com.upp.stepdefinition;
 import java.io.IOException;
 
 import com.upp.Api.utils.LogOutApi;
-import com.upp.Api.utils.LoginApi;
+
 import com.upp.Api.utils.PartyApi;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
 
-import com.upp.pagemodules.LoginToApplication;
 import callbackInterfaces.ICallback;
 
 import com.upp.handlers.DealGroupAttributesHandler;
@@ -21,6 +20,7 @@ import com.upp.utils.SwitchWindow;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
+import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pagemodules.Parties.Party_Edit_LiveDeal;
 import com.upp.pagemodules.Parties.Party_Verify_PartyApiAdded;
 
@@ -32,10 +32,9 @@ public class TS11 extends BaseClass implements ICallback {
 	public static String sourceAccountNo = "";
 	public static String toaccountNo = "";
 //	public static String dealId = "";
-	LoginToApplication userLogin;
 	public static String TSID = "";
 	public static String TnxId = "";
-	LoginApi loginApi;
+	LoginAPI_UPP loginApi;
 	PartyApi partyApi;
 	LogOutApi logoutApi;
 	Party_Edit_LiveDeal editDeal;
@@ -48,10 +47,10 @@ public class TS11 extends BaseClass implements ICallback {
 		partApiAdded = new Party_Verify_PartyApiAdded();
 	}
 
-	@Then("Add the Party through Api call")
-	public void add_the_Party_through_Api_call() throws Exception {
+	@Then("Add the Party through Api call with given {string}")
+	public void add_the_Party_through_Api_call(String string) throws Exception {
 		loginApi.loginToUpp();
-		partyApi.createParty(TS06.dealId);
+		partyApi.createParty(TS06.dealId,string);
 		logoutApi.logOut();
 	}
 

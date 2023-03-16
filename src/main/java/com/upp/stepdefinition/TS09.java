@@ -6,7 +6,7 @@ import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
 
-import com.upp.pagemodules.LoginToApplication;
+
 import callbackInterfaces.ICallback;
 
 import com.upp.handlers.DealGroupAttributesHandler;
@@ -34,7 +34,6 @@ public class TS09 extends BaseClass  implements ICallback{
 	public static String sourceAccountNo = "";
 	public static String toaccountNo = "";
 //	public static String dealId = "";
-	LoginToApplication userLogin;
 	public static String TSID = "";
 	public static String TnxId="";
 	Party_Maker_BasicDetails pm_Basic;

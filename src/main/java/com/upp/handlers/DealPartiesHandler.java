@@ -61,22 +61,12 @@ public class DealPartiesHandler extends BaseClass {
 			od.parties_AddButton.click();
 			od.parties_AccountsTab.click();
 			od.parties_AddAccounts.click();
+			
 			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 			od.parties_PaymentSystem.click();
-			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_BT, Duration.ofSeconds(5));
-			od.parties_PaymentSystem_BT.click();
-			applyExplicitWaitsUntilElementClickable(od.parties_beneficiaryBankBic, Duration.ofSeconds(5));
-			od.parties_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Bank Bic"));
-			applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
-			dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
-					externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
-			applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
-			scroll.scrollInToView(od.parties_paymentTo);
-			od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Party", "To"));
-			scroll.scrollInToView(od.parties_beneficiaryCurrency);
-			od.parties_beneficiaryCurrency.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Currency"));
-			applyExplicitWaitsUntilElementClickable(od.parties_partyAccountsAddButton, Duration.ofSeconds(5));
-			od.parties_partyAccountsAddButton.click();
+			String paymentInstrument =externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
+			icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT",paymentInstrument);
+			
 			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
 			od.parties_DocumentsTab.click();
 			od.parties_AddDocument.click();
