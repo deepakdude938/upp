@@ -6,7 +6,7 @@ import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
 
-import com.upp.pagemodules.LoginToApplication;
+
 import callbackInterfaces.ICallback;
 
 import com.upp.handlers.DealGroupAttributesHandler;
@@ -21,7 +21,6 @@ import io.cucumber.java.en.*;
 public class TS03 extends BaseClass implements ICallback {
 	DashBoard_Module dm;
 	DealPage dp;
-	LoginToApplication userLogin;
 	public static String TSID = "";
 	public static String TnxId="";
 	public String dealid;

@@ -9,7 +9,6 @@ import com.upp.handlers.CommonResponsibilityHandler;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.pagemodules.DashBoard_Module;
-import com.upp.pagemodules.LoginToApplication;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
 import com.upp.pagemodules.ECommerce.ECommerceTransactionChecker;

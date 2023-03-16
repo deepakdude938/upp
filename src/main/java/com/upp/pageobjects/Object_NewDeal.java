@@ -588,4 +588,22 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
 	public WebElement payments_ToAccountInputBox;
 	
+	@FindBy(xpath = "(//div[normalize-space()='LTTest'])[1]")
+	public WebElement parties_Account_LTTest;
+	
+	@FindBy(id = "payment-accountType-txt-v1")
+	public WebElement parties_Account_accountType;
+	
+	@FindBy(id = "payment-beneficiaryCountryOfIncorporation-txt-v1")
+	public WebElement parties_Account_beneficiaryCountryOfIncorporation;
+	
+	@FindBy(id = "payment-beneficiaryCountry-txt-v1")
+	public WebElement parties_Account_beneficiaryCountry;
+	
+	@FindBy(id = "payment-werwer-txt-v1")
+	public WebElement parties_Account_werwer;
+	
+	@FindBy(id = "payment-trteo-txt-v1")
+	public WebElement parties_Account_trteo;
+	
 }
