@@ -64,7 +64,7 @@ public class DealPartiesHandler extends BaseClass {
 			od.parties_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Bank Bic"));
 			applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
 			dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
-					externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
+			externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
 			applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
 			scroll.scrollInToView(od.parties_paymentTo);
 			od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Party", "To"));

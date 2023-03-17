@@ -1,0 +1,66 @@
+package com.upp.pageobjects;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.upp.base.BaseClass;
+
+public class Object_Configuration extends BaseClass {
+
+	public Object_Configuration() {
+		PageFactory.initElements(driver, this);
+	}
+	
+	@FindBy(xpath="//label[contains(@class,'opr_icon sidemenu_icon ng-star-inserted')]")
+	public WebElement configurationButton;
+	
+	@FindBy(id="menu-generic-sidemenu-Configuration-holidays-v1")
+	public WebElement configuration_HolidayButton;
+	
+	@FindBy(id="btn-config-holidays-master-add-v1")
+	public WebElement configuration_HolidayAddButton;
+	
+	@FindBy(id="txt-generic-datePicker-input-v1")
+	public WebElement configuration_HolidayInputDate;
+	
+	@FindBy(id="txt-generic-autocomplete-input-v1")
+	public WebElement configuration_HolidayApplicableFor;
+	
+	@FindBy(id="txt-config-holidays-addUpdate-name-v1")
+	public WebElement configuration_HolidayName;
+	
+	@FindBy(xpath="//button[@class='ui-btn-primary ng-star-inserted']")
+	public WebElement configuration_HolidayNextButton;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	public WebElement configuration_Country;
+	
+	@FindBy(xpath="//button[contains(@class,'ui-btn-primary ui-align-right btn-preference') and normalize-space()='Next']")
+	public WebElement configuration_HolidayNextButton2;
+	
+	@FindBy(xpath="//button[contains(@class,'ui-btn-primary ui-align-right btn-preference') and normalize-space()='Save']")
+	public WebElement configuration_HolidaySaveButton;
+	
+	@FindBy(xpath="//button[contains(@class,'swal2-confirm')]")
+	public WebElement configuration_HolidayOkButton;
+	
+	@FindBy(xpath="//div[@id='menu-generic-sidemenu-Configuration-HD-v1']")
+	public WebElement configuration_HolidayDraftsButton;
+	
+	@FindBy(id="sel-generic-searchBar-searchInput-v1")
+	public WebElement configuration_HolidaySearchBox;
+	
+	@FindBy(id="btn-generic-searchBar-search-v1")
+	public WebElement configuration_HolidaySearchBoxButton;
+	
+	@FindBy(xpath="//div[@id='ic-generic-menu-showMenu-v1']")
+	public WebElement configuration_HolidayKebabMenu;
+	
+	@FindBy(xpath="//div[@id='popup-menu']")
+	public WebElement configuration_HolidayEditTab;
+	
+	@FindBy(xpath="//button[contains(@class,'ui-btn-primary ui-align-right btn-preference') and normalize-space()='Approve']")
+	public WebElement configuration_HolidayApproveButton;
+	
+}

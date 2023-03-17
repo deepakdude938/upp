@@ -65,6 +65,8 @@ public class BaseClass {
 				chromePrefs.put("download.default_directory", downloadFilepath);
 				options.setExperimentalOption("prefs", chromePrefs);
 				WebDriverManager.chromedriver().setup();
+//				WebDriverManager.chromedriver().version("111.0.5563.64").setup();
+				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if(isHeadLess) {
 					options.addArguments("--headless","--window-size=1296,696", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");

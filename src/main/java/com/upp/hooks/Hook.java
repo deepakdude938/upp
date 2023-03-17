@@ -31,14 +31,14 @@ public class Hook extends BaseClass {
 	{
 		
 //		driver.quit();
-		driver.close();
+//		driver.close();
 		
 	}
 	
 	@AfterStep
 	public void AddScreenshot(Scenario scenario) throws IOException
 	{
-		
+	
 		if(scenario.isFailed())
 		{
 		//screenshot

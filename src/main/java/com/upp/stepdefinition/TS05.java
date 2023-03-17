@@ -3,6 +3,7 @@ package com.upp.stepdefinition;
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
+import com.upp.pagemodules.Budget;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import callbackInterfaces.ICallback;
@@ -12,14 +13,14 @@ public class TS05 extends BaseClass  implements ICallback{
 	
 	
 	
-	public DashBoard_Module dm;
+	public Budget dm;
 	public String tsid;
 	public static String sourceAccountNo = "";
 	public static String toAccountNo = "";
 //	public static String dealId = "";
 
 	public TS05(DashBoard_Module dm) {
-		this.dm = new DashBoard_Module();
+		this.dm = new Budget();
 	}
 	
 	
@@ -30,13 +31,13 @@ public class TS05 extends BaseClass  implements ICallback{
 	}
 	
 	
-//	@Then("Create Payments in the scheduled Instructions with given {string}")
-//	public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
-//		
-//	 dealId=dm.createBudget_Payments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
-//		
-//	  
-//	}
+	@Then("Create Payments in the Scheduled Instructions with given {string}")
+	public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
+		
+	 dealId=dm.createBudget_Payments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
+		
+	  
+	}
 	
 	
 	@Override
