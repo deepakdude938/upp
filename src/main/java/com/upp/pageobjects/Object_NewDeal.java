@@ -606,4 +606,11 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-trteo-txt-v1")
 	public WebElement parties_Account_trteo;
 	
+	@FindBy(id ="payment-amount-txt-v1")
+	public WebElement parties_Accounts_Amount;
+	
+	@FindBy(id ="payment-beneficiaryCountryOfIncorporation-sel-v1")
+	public WebElement parties_Accounts_beneficiaryCountryOfIncorporation;
+	
+	
 }
