@@ -43,14 +43,28 @@ public class PartyMaker_PaymentInstrumentHandler extends BaseClass  implements I
 
 	public void handlePartyMakerBT_PaymentInstrument(String TSID) throws Exception {
 		
+		
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_Amount, Duration.ofSeconds(5));
+		od.parties_Accounts_Amount.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Amount"));
+		
+		scroll.scrollInToView(od.parties_beneficiaryBankBic);
 		applyExplicitWaitsUntilElementClickable(od.parties_beneficiaryBankBic, Duration.ofSeconds(5));
 		od.parties_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Bank Bic"));
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
+				externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Country Of Incorporation"));
+		
+		scroll.scrollInToView(od.parties_BeneficiaryCountry);
 		applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
 				externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Country"));
-		applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
+		
 		scroll.scrollInToView(od.parties_paymentTo);
+		applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
 		od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "To"));
+		
 		scroll.scrollInToView(od.parties_beneficiaryCurrency);
 		od.parties_beneficiaryCurrency.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Currency"));
 		applyExplicitWaitsUntilElementClickable(od.parties_partyAccountsAddButton, Duration.ofSeconds(5));
