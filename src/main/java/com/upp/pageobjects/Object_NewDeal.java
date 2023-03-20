@@ -612,5 +612,28 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id ="payment-beneficiaryCountryOfIncorporation-sel-v1")
 	public WebElement parties_Accounts_beneficiaryCountryOfIncorporation;
 	
+	@FindBy(xpath ="//div[contains(text(),'BT_IN')]")
+	public WebElement parties_PaymentSystem_BT_IN;
+	
+	@FindBy(id="payment-paymentType-sel-v1")
+	public WebElement parties_PaymentType;
+	
+	@FindBy(id="payment-beneficiaryBankIfscCode-txt-v1")
+	public WebElement parties_Accounts_beneficiaryBankIfscCode;
+	
+	@FindBy(id="payment-beneficiaryName-txt-v1")
+	public WebElement parties_Accounts_beneficiaryName;
+	
+	@FindBy(id="payment-accountOrIban-sel-v1")
+	public WebElement parties_Accounts_accountOrIban;
+	
+	@FindBy(id="payment-beneficiaryAddressLine1-txt-v1")
+	public WebElement parties_Accounts_beneficiaryAddressLine1;
+	
+	@FindBy(id="payment-senderPop-txt-v1")
+	public WebElement payments_senderPop;
+	
+	@FindBy(xpath ="//div[contains(text(),'LT_IN')]")
+	public WebElement parties_PaymentSystem_LT_IN;
 	
 }
