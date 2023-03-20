@@ -75,6 +75,46 @@ public class DealPartyAccount_PaymentInstrumentHandler extends BaseClass  implem
 		
 	}
 	
+public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
+		
+		System.out.println("inside BT_IN");
+		scroll.scrollInToView(od.parties_PaymentSystem_BT_IN);
+		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_BT_IN, Duration.ofSeconds(5));
+		od.parties_PaymentSystem_BT_IN.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.parties_PaymentType, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_PaymentType,"BT");
+		
+		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary bank IFSC code"));
+		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Name"));
+		
+		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Party", "Select Account/IBAN"));
+		
+		scroll.scrollInToView(od.parties_paymentTo);
+		applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
+		od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Account Number / IBAN"));
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
+		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Address Line 1"));
+		
+
+		scroll.scrollInToView(od.parties_BeneficiaryCountry);
+		applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
+				externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
+				externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
+	
+		od.parties_partyAccountsAddButton.click();
+		
+	}
+	
 	
 public void handle_LTTest_PaymentInstrument(String TSID) throws Exception {
 		
@@ -97,6 +137,39 @@ public void handle_LTTest_PaymentInstrument(String TSID) throws Exception {
 		
 	}
 
+public void handle_LT_IN_PaymentInstrument(String TSID) throws Exception {
+	scroll.scrollInToView(od.parties_PaymentSystem_LT_IN);
+	applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_LT_IN, Duration.ofSeconds(5));
+	od.parties_PaymentSystem_LT_IN.click();
+	
+	od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary bank IFSC code"));
+	od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Name"));
+  
+	scroll.scrollInToView(od.parties_Accounts_accountOrIban);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
+	dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Party", "Select Account/IBAN"));
+	
+	scroll.scrollInToView(od.parties_paymentTo);
+	applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
+	od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Account Number / IBAN"));
+	
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
+	od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Address Line 1"));
+	
 
+	scroll.scrollInToView(od.parties_BeneficiaryCountry);
+	applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
+	dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
+			externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
+	
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
+	dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
+			externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
+
+	od.parties_partyAccountsAddButton.click();
+	
+}
 	
 }
