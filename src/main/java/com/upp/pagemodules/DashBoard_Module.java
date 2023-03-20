@@ -17,6 +17,7 @@ import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
+import com.upp.utils.CommonUtils;
 
 import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
@@ -43,6 +44,7 @@ public class DashBoard_Module extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
+	public static CommonUtils commonutils;
 
 	public DashBoard_Module() {
 		od = new Object_NewDeal();
@@ -53,6 +55,8 @@ public class DashBoard_Module extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
+		commonutils=new CommonUtils(driver);
+		
 	}
 
 	public void createNewDeal(String TSID) throws Exception {
@@ -674,11 +678,47 @@ public class DashBoard_Module extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
 		scroll.scrollInToView(od.payments_ToAccountDropdown);
 		dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
+		
+	
+		if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
 		scroll.scrollInToView(od.payments_beneficiaryBankBic);
 		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
+		}
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
+		
+		
+		if(commonutils.isElementDisplayed(od.payments_senderPop,1)) {
+		scroll.scrollInToView(od.payments_senderPop);
+		od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
+		}
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
+		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
+		
+		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
+		
+		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
+		
+		
+		
+		scroll.scrollInToView(od.payments_Amount);
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
+		
+		if(commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode,1)) {
+		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
+		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
 

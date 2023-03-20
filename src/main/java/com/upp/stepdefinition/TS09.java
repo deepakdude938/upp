@@ -124,6 +124,12 @@ public void add_a_Transaction_using_Payment_with_the_updated_deal_with_given(Str
 				
 			}
 			
+			if(paymentInstrument.equalsIgnoreCase("BT_IN")) {
+				PartyMaker_PaymentInstrumentHandler BThandler=new PartyMaker_PaymentInstrumentHandler();
+				BThandler.handlePartyMakerBT_INPaymentInstrument(TSID);
+				
+			}
+			
 		}
 		
 		
