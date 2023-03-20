@@ -40,7 +40,7 @@ public class Object_Transactions extends BaseClass{
 	@FindBy(id="payment-debitAccountBicCode-txt-v1")
 	public WebElement transactions_debitAccountBicCode;
 	
-	@FindBy(xpath="//select[@id='payment-to-sel-v1']")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
 	public WebElement transactions_ToAccountDropdown;
 	
 	@FindBy(xpath="(//select[@class='ui-dropdown-select'])[1]")

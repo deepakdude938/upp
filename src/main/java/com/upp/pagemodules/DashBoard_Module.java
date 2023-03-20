@@ -483,7 +483,7 @@ public class DashBoard_Module extends BaseClass {
 
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Country"));
-
+		
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
 		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes"))) {
 			od.beneficiariesCheckBox.click();

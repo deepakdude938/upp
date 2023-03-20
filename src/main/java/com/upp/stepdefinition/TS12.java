@@ -60,6 +60,7 @@ public class TS12 extends BaseClass implements ICallback {
 	public void create_Transaction_from_Transaction_Maker_and_check_whether_To_Field_is_accepting_Non_Registered_Beneficiary_with_given(String string) throws Exception {
 		TSID = string;
 		tm_BasicDetails.Transactions_Maker_BasicDetails(string, DealPage.dealId, DealPage.toaccountNo);
+		//tm_BasicDetails.Transactions_Maker_BasicDetails(string,"REF1679039275801","1750905714");
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
 		TnxId = tm_sum.Transaction_Maker_Summary();
@@ -93,10 +94,10 @@ public class TS12 extends BaseClass implements ICallback {
 
 				instrumentHandler.handleBTPaymentInstrument(TSID, sourceAccountNo, toaccountNo);
 			}
-			if (paymentInstrument.equalsIgnoreCase("LTTest")) {
+			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleLTTestPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(TSID,sourceAccountNo,toaccountNo);
+				instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(TSID,sourceAccountNo,toaccountNo);
 			}
 		}
 
