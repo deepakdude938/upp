@@ -40,7 +40,7 @@ public class Object_Transactions extends BaseClass{
 	@FindBy(id="payment-debitAccountBicCode-txt-v1")
 	public WebElement transactions_debitAccountBicCode;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	@FindBy(xpath="(//select[@id='payment-to-sel-v1'])[1]")
 	public WebElement transactions_ToAccountDropdown;
 	
 	@FindBy(xpath="(//select[@class='ui-dropdown-select'])[1]")
@@ -124,5 +124,37 @@ public class Object_Transactions extends BaseClass{
 	@FindBy(xpath="(//div[@role='gridcell'])[4]")
 	public WebElement reports_ScroeStatus;
 	
+	@FindBy(xpath = "//ui-autocomplete[contains(@id,'instruction-fundTransferSubInstruction-paymentInstrument')]")
+	public WebElement transactions_instruments;
+	
+	@FindBy(xpath = "//input[contains(@id,'payment-amount-txt')]")
+	public WebElement transactions_amount;
+	
+	@FindBy(xpath = "//input[contains(@id,'payment-beneficiaryBankIfscCode')]")
+	public WebElement transactions_bankIFSCCode;
+	
+	@FindBy(xpath = "//input[contains(@id,'payment-beneficiaryName')]")
+	public WebElement transactions_beneficiaryName;
+	
+	@FindBy(xpath = "//select[contains(@id,'payment-accountOrIban')]")
+	public WebElement transactions_accountOrIban;
+	
+	@FindBy(xpath = "//input[contains(@id,'beneficiaryAddressLine1')]")
+	public WebElement transactions_address;
+	
+	@FindBy(xpath = "//select[contains(@id,'beneficiaryCountry')]")
+	public WebElement transactions_country;
+	
+	@FindBy(xpath = "//select[contains(@id,'beneficiaryCountryOfIncorporation')]")
+	public WebElement transactions_beneficiaryIncorporation;
+	
+	@FindBy(id = "sel-deals-basicDetails-processingUnit-v1")
+	public WebElement transactions_beneficiaryaccountNumber;
+	
+	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
+	public WebElement transactions_beneficiaryaccountNumberInput;
+	
+	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
+	public WebElement transactions_addSubInstruction;
 	
 }

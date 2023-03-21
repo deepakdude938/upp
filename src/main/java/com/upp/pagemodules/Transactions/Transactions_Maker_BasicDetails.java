@@ -65,7 +65,7 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		tm.transactions_TransactionIcon.click();
 		tm.transactions_TransactionMaker.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon,Duration.ofSeconds(15));
-		tm.transactions_AddNewButon.click();
+		jsClick.click(tm.transactions_AddNewButon);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId,Duration.ofSeconds(10));
 		tm.transactions_DealId.sendKeys(DealId);
 		By transactions_DealId = By.xpath("//div[contains(text(),'"+DealId+"')]");

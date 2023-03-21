@@ -67,7 +67,6 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 	    By paymentInstrument = By.xpath("(//div[contains(text(),'"+paymentInstrumentdata+"')])[1]");
 		 applyExplicitWaitsUntilElementVisible(paymentInstrument,3);
 		 driver.findElement(paymentInstrument).click();
-		 tm.transactions_Instrument.click();
 		 System.out.println("the to data is "+externalData.getFieldData(TSID,"Txn Maker","to"));
 		 icallback.handleCallback("PAYMENT_INSTRUMENT",paymentInstrumentdata);
 	}

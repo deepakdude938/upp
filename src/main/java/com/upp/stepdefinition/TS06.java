@@ -80,23 +80,23 @@ public class TS06 extends BaseClass implements ICallback {
 
 		TSID = string;
 		// TnxId=tm.createTransactionFromTransactionMaker(string,DealPage.dealId,DealPage.toaccountNo,this);
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string, DealPage.dealId, DealPage.toaccountNo);
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string,TS06.dealId, DealPage.toaccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
-		TnxId = tm_sum.Transaction_Maker_Summary();
+		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
 
 	}
 
 	@Then("Approve the transaction from Transaction Checker with given {string}")
 	public void approve_the_transaction_from_Transaction_Checker(String string) throws Exception {
 		// tm.approveTransactionFromChecker(string,TnxId);
-		tc.TransactionsChecker(string, TnxId);
+		tc.TransactionsChecker(string, TS06.TnxId);
 	}
 
 	@Then("Approve the transaction from Transaction Verifier with given {string}")
 	public void approve_the_transaction_from_Transaction_Verifier_with_given(String string) throws Exception {
 		// tm.approveTransactionFromVerifier(string,TnxId);
-		tv.TransactionsVerifier(string, TnxId);
+		tv.TransactionsVerifier(string, TS06.TnxId);
 	}
 
 	@Then("Check the Transaction staus in execution report with given {string}")
@@ -135,7 +135,13 @@ public class TS06 extends BaseClass implements ICallback {
 			if (paymentInstrument.equalsIgnoreCase("BT")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleBTPaymentInstrument(TSID, sourceAccountNo, toaccountNo);
+				instrumentHandler.handleBTPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+			}
+
+			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
+				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
+
+				instrumentHandler.handleBT_INPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
 			}
 
 		}

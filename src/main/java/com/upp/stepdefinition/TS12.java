@@ -17,6 +17,7 @@ import com.upp.pagemodules.Transactions.Transactions_Maker_Documents;
 import com.upp.pagemodules.Transactions.Transactions_Maker_Sub_Instruction;
 import com.upp.pagemodules.Transactions.Transactions_Maker_Summary;
 import com.upp.pagemodules.Transactions.Transactions_Verifier;
+import com.upp.utils.ExcelReader;
 import com.upp.utils.SwitchWindow;
 
 import com.upp.pagemodules.Deal.DealAccountCreator;
@@ -31,7 +32,6 @@ public class TS12 extends BaseClass implements ICallback {
 	public static String toaccountNo = "";
 	public static String dealId = "";
 	public static String TSID = "";
-	public static String TnxId = "";
 	Transactions_Maker_Sub_Instruction tm_sub;
 	Transactions_Maker_Documents tm_doc;
 	Transactions_Maker_Summary tm_sum;
@@ -39,7 +39,8 @@ public class TS12 extends BaseClass implements ICallback {
 	Transactions_Checker tc;
 	Transactions_Verifier tv;
 	Reports_ExecutionReport execReport;
-
+	public static ExcelReader externalData;
+    
 	public TS12() {
 
 		this.dm = new DashBoard_Module();
@@ -51,6 +52,7 @@ public class TS12 extends BaseClass implements ICallback {
 		this.tc = new Transactions_Checker();
 		this.tv = new Transactions_Verifier();
 		this.execReport = new Reports_ExecutionReport();
+		externalData = new ExcelReader();
 	}
 
 	
@@ -59,11 +61,10 @@ public class TS12 extends BaseClass implements ICallback {
 	@Then("Create Transaction from Transaction Maker and check whether To Field is accepting Non Registered Beneficiary with given {string}")
 	public void create_Transaction_from_Transaction_Maker_and_check_whether_To_Field_is_accepting_Non_Registered_Beneficiary_with_given(String string) throws Exception {
 		TSID = string;
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string, DealPage.dealId, DealPage.toaccountNo);
-		//tm_BasicDetails.Transactions_Maker_BasicDetails(string,"REF1679039275801","1750905714");
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.toaccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
-		TnxId = tm_sum.Transaction_Maker_Summary();
+		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
 	}
 
 	
@@ -92,14 +93,19 @@ public class TS12 extends BaseClass implements ICallback {
 			if (paymentInstrument.equalsIgnoreCase("BT")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleBTPaymentInstrument(TSID, sourceAccountNo, toaccountNo);
+				instrumentHandler.handleBTPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
 			}
+			
 			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
+            String checkbox=externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
 
-				instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(TSID,sourceAccountNo,toaccountNo);
+             if(checkbox.equalsIgnoreCase("N")) {
+				instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+                  }
+
 			}
 		}
-
+		
 	}
 }
