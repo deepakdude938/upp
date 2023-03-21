@@ -1,13 +1,17 @@
 package com.upp.handlers;
 
+import java.io.IOException;
 import java.time.Duration;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Parties;
 import com.upp.stepdefinition.DealPage;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
@@ -24,13 +28,14 @@ public class DealPartiesHandler extends BaseClass {
 	public static DateUtils dateutil;
 	public String responsibilities;
 	public String ecommerce;
-
+	public static Object_Parties op;
 	public DealPartiesHandler() {
 		od = new Object_NewDeal();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
+		op=new Object_Parties();
 	}
 
 	public void handleAddNewParty(String TSID, ICallback icallback) throws Exception {
@@ -44,7 +49,7 @@ public class DealPartiesHandler extends BaseClass {
 		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
 		ecommerce = externalData.getFieldData(TSID, "Party", "eCommerce Party-checkbox");
 		if (ecommerce.equalsIgnoreCase("Y")) {
-			new ecommerceHandler().handleEcommerce(TSID);
+			new EcommerceHandler().handleEcommerce(TSID);
 		} else {
 			od.parties_BasicNextButton.click();
 			od.parties_AddContact.click();
@@ -56,23 +61,13 @@ public class DealPartiesHandler extends BaseClass {
 			od.parties_AddButton.click();
 			od.parties_AccountsTab.click();
 			od.parties_AddAccounts.click();
+			
 			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 			od.parties_PaymentSystem.click();
-			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_BT, Duration.ofSeconds(5));
-			od.parties_PaymentSystem_BT.click();
-			applyExplicitWaitsUntilElementClickable(od.parties_beneficiaryBankBic, Duration.ofSeconds(5));
-			od.parties_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Bank Bic"));
-			applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
-			dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
-			externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
-			applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
-			scroll.scrollInToView(od.parties_paymentTo);
-			od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Party", "To"));
-			scroll.scrollInToView(od.parties_beneficiaryCurrency);
-			od.parties_beneficiaryCurrency.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Currency"));
-			applyExplicitWaitsUntilElementClickable(od.parties_partyAccountsAddButton, Duration.ofSeconds(5));
-			od.parties_partyAccountsAddButton.click();
-			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(5));
+			String paymentInstrument =externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
+			icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT",paymentInstrument);
+			
+			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
 			od.parties_DocumentsTab.click();
 			od.parties_AddDocument.click();
 			applyExplicitWaitsUntilElementClickable(od.parties_DocumentType, Duration.ofSeconds(5));
@@ -94,7 +89,7 @@ public class DealPartiesHandler extends BaseClass {
 				applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 				od.payments_ExecutionDate.click();
 				String day = dateutil.getDay();
-				By excecutionDay = By.xpath("//a[contains(text(),'" + day + "')]");
+				By excecutionDay = By.xpath("(//a[normalize-space()='"+day+"'])[1]");
 				applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 				driver.findElement(excecutionDay).click();
 				od.parties_DocumentsAddButton.click();
@@ -102,7 +97,36 @@ public class DealPartiesHandler extends BaseClass {
 		}
 	}
 
-	public void handleLinkedExistingParty(String TSID) {
+	public void handleLinkedExistingParty(String TSID) throws Exception {
+		
+		applyExplicitWaitsUntilElementClickable(op.Party_linkExistingParty, Duration.ofSeconds(5));
+		 op.Party_linkExistingParty.click();
+		 op.Party_linkPartyDetails_customerId.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
+		 applyExplicitWaitsUntilElementClickable(op.Party_linkPartyDetails_searchButton, Duration.ofSeconds(5));
+		 op.Party_linkPartyDetails_searchButton.click();
+		 op.Party_selectPartyCircle.click();
+		od.parties_addPartyPlusIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.parties_Responsibility, Duration.ofSeconds(5));
+		 od.parties_Responsibility.click();
+		od.parties_Responsibility_dropdown.click();
+		od.parties_BasicNextButton.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_AddContact,Duration.ofSeconds(10));
+		od.parties_AddContact.click();
+		od.parties_LinkPartyCheckboxIcon.click();
+		od.parties_ConatctPlusIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab,Duration.ofSeconds(10));
+		od.parties_AccountsTab.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_AddAccounts,Duration.ofSeconds(10));
+		od.parties_AddAccounts.click();
+		od.parties_LinkPartyCheckboxIcon.click();
+		od.parties_AccountPlusIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab,Duration.ofSeconds(10));
+		od.parties_DocumentsTab.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_AddDocument,Duration.ofSeconds(10));
+		od.parties_AddDocument.click();
+		od.parties_LinkPartyCheckboxIcon.click();
+		od.parties_DocumentsPlusIcon.click();
+		
 
 	}
 }

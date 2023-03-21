@@ -60,7 +60,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement deals_ProcessingUnits;
 
-	@FindBy(xpath = "//span[contains(@class,'ui-autocomplete-list-item-option')]")
+	@FindBy(xpath = "//span[contains(text(),'Select All')]")
 	public WebElement deals_selectAll;
 
 	@FindBy(id = "btn-deals-basicDetails-next-v1")
@@ -506,9 +506,35 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//div[@title='Logout']")
 	public WebElement logOutIcon;
 	
-	@FindBy(xpath = "/html[1]/body[1]/xcro-wrapper[1]/xcro-protected[1]/ui-overlay-pane[1]/div[1]/div[2]/div[3]/div[1]/div[6]/div[1]/a[1]")
+	@FindBy(xpath="(//a[normalize-space()='Deal Checker'])[1]")
 	public WebElement dealChecker_Button1;
 	
+	@FindBy(xpath="//a[contains(text(),'Live Deals')]")
+	public WebElement liveDealIcon;
+    
+	@FindBy(xpath="(//div[normalize-space()='edit'])[1]")
+	public WebElement deal_EditIcon;
+	
+	@FindBy(xpath="(//span[@class='ui-pseudo-checkbox'])[1]")
+	public WebElement parties_LinkPartyCheckboxIcon;
+	
+	@FindBy(id="btn-parties-partyContactList-addPartyContact-v1")
+	public WebElement parties_ConatctPlusIcon;
+	
+	@FindBy(id="btn-parties-partyAccountList-createPartyAccount-v1")
+	public WebElement parties_AccountPlusIcon;
+	
+	@FindBy(xpath="(//button[@id='btn-parties-partyDocument-createPartyDocument-v1'])[1]")
+	public WebElement parties_DocumentsPlusIcon;
+	
+	@FindBy(xpath ="(//button[@id='btn-parties-linkParty-add-v1'])[1]")
+	public WebElement parties_addPartyPlusIcon;
+	
+	@FindBy(xpath ="(//span[@class='slider round'])[4]")
+	public WebElement payments_SweepInSlider;
+	
+	@FindBy(xpath ="(//i[@id='ic-instructions-tabSweepIn-next-v1'])[1]")
+	public WebElement payments_SweepinNextButton;
 	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-frequency-v1']")
 	public WebElement budget_Interval;
 	
@@ -561,5 +587,53 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
 	public WebElement payments_ToAccountInputBox;
+	
+	@FindBy(xpath = "(//div[normalize-space()='LTTest'])[1]")
+	public WebElement parties_Account_LTTest;
+	
+	@FindBy(id = "payment-accountType-txt-v1")
+	public WebElement parties_Account_accountType;
+	
+	@FindBy(id = "payment-beneficiaryCountryOfIncorporation-txt-v1")
+	public WebElement parties_Account_beneficiaryCountryOfIncorporation;
+	
+	@FindBy(id = "payment-beneficiaryCountry-txt-v1")
+	public WebElement parties_Account_beneficiaryCountry;
+	
+	@FindBy(id = "payment-werwer-txt-v1")
+	public WebElement parties_Account_werwer;
+	
+	@FindBy(id = "payment-trteo-txt-v1")
+	public WebElement parties_Account_trteo;
+	
+	@FindBy(id ="payment-amount-txt-v1")
+	public WebElement parties_Accounts_Amount;
+	
+	@FindBy(id ="payment-beneficiaryCountryOfIncorporation-sel-v1")
+	public WebElement parties_Accounts_beneficiaryCountryOfIncorporation;
+	
+	@FindBy(xpath ="//div[contains(text(),'BT_IN')]")
+	public WebElement parties_PaymentSystem_BT_IN;
+	
+	@FindBy(id="payment-paymentType-sel-v1")
+	public WebElement parties_PaymentType;
+	
+	@FindBy(id="payment-beneficiaryBankIfscCode-txt-v1")
+	public WebElement parties_Accounts_beneficiaryBankIfscCode;
+	
+	@FindBy(id="payment-beneficiaryName-txt-v1")
+	public WebElement parties_Accounts_beneficiaryName;
+	
+	@FindBy(id="payment-accountOrIban-sel-v1")
+	public WebElement parties_Accounts_accountOrIban;
+	
+	@FindBy(id="payment-beneficiaryAddressLine1-txt-v1")
+	public WebElement parties_Accounts_beneficiaryAddressLine1;
+	
+	@FindBy(id="payment-senderPop-txt-v1")
+	public WebElement payments_senderPop;
+	
+	@FindBy(xpath ="//div[contains(text(),'LT_IN')]")
+	public WebElement parties_PaymentSystem_LT_IN;
 	
 }

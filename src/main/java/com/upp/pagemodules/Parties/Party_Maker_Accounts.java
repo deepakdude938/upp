@@ -1,4 +1,4 @@
-package com.upp.pagemodules.Deal;
+package com.upp.pagemodules.Parties;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -8,27 +8,32 @@ import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.pagemodules.DashBoard_Module;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
-import com.upp.pageobjects.Object_Deal;
+import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Parties;
+import com.upp.pageobjects.Object_Transactions;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
-import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+
+import static org.testng.Assert.assertTrue;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import callbackInterfaces.ICallback;
+public class Party_Maker_Accounts extends BaseClass {
 
-public class DealPartiesCreator extends BaseClass {
-
-	public static Object_Deal od;
+	public static Object_NewDeal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -41,11 +46,11 @@ public class DealPartiesCreator extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
+	public static Object_Parties op;
 	DealPartiesHandler partyHandler = new DealPartiesHandler();
+	public Party_Maker_Accounts() {
 
-	public DealPartiesCreator() {
-
-		od = new Object_Deal();
+		od = new Object_NewDeal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		odpAccount = new OdpApi();
@@ -53,20 +58,26 @@ public class DealPartiesCreator extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
+		op=new Object_Parties();
 
 	}
 
-	public void createParties(String TSID, ICallback icallback) throws Exception, IOException {
-		applyExplicitWaitsUntilElementClickable(od.parties_icon, Duration.ofSeconds(20));
-		od.parties_icon.click();
-		od.parties_GetStarted.click();
-		String partyHandle = externalData.getFieldData(TSID, "Party", "Add a new Party");
-		System.out.println(partyHandle);
-		if (partyHandle.equalsIgnoreCase("Yes")) {
-			partyHandler.handleAddNewParty(TSID, icallback);
-		}else {
-			partyHandler.handleLinkedExistingParty(TSID);
-		}
+	
+	public void PartyMaker_Accounts(String TSID,ICallback icallback) throws Exception
+	{
+		od.parties_AccountsTab.click();
+		op.PartyMaker_partyAccountsAddButton.click();		
+		applyExplicitWaitsUntilElementClickable(op.PartyMaker_PaymentSystem, Duration.ofSeconds(5));
+		op.PartyMaker_PaymentSystem.click();
+		
+		String paymentInstrumentdata=externalData.getFieldData(TSID, "Parties-Maker", "Accounts-Payment System");
+		 By paymentInstrument = By.xpath("(//div[contains(text(),'"+paymentInstrumentdata+"')])[1]");
+		 applyExplicitWaitsUntilElementVisible(paymentInstrument,3);
+		 driver.findElement(paymentInstrument).click();
+		 
+		icallback.handleCallback("PARTIES_MAKER_PAYMENT_INSTRUMENT",paymentInstrumentdata);
+		
+		applyExplicitWaitsUntilElementClickable(op.PartyMaker_OKButton, Duration.ofSeconds(5));
+		op.PartyMaker_OKButton.click();
 	}
-
 }

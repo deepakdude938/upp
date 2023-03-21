@@ -8,7 +8,7 @@ And Create deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 Then submit the deal
-Then approve the deal from the deal checker for TS06
+Then approve the deal from the deal checker common method
 Then logout of the application
 Then Login to the application as "txn_maker"
 And Create a Transaction from Transaction Maker with given "<TSID>"

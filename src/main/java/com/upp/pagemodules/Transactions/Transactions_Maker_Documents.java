@@ -1,4 +1,4 @@
-package com.upp.pagemodules.Deal;
+package com.upp.pagemodules.Transactions;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -9,26 +9,28 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
-import com.upp.pageobjects.Object_Deal;
-import com.upp.pageobjects.Object_Deal;
+import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Transactions;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
-import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+
+import static org.testng.Assert.assertTrue;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import callbackInterfaces.ICallback;
+public class Transactions_Maker_Documents extends BaseClass {
 
-public class DealAccountCreator extends BaseClass {
-
-	public static Object_Deal od;
+	public static Object_NewDeal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -41,10 +43,10 @@ public class DealAccountCreator extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
+	 public static Object_Transactions tm ;
+	public Transactions_Maker_Documents() {
 
-	public DealAccountCreator() {
-
-		od = new Object_Deal();
+		od = new Object_NewDeal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		odpAccount = new OdpApi();
@@ -52,29 +54,24 @@ public class DealAccountCreator extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
+		tm=new Object_Transactions();
 
 	}
 
-	public String createNewAccount(String TSID) throws Exception {
-
-		odpAccount.createAccount(TSID);
-		accDetails = odpAccount.popelmnt(OdpApi.stack1);
-		System.out.println("the account no is" + accDetails.getAccno());
-		String accountNo = accDetails.getAccno();
-		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
-		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
-		String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
-		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
-			dropdown.selectByVisibleText(od.physical, "Physical");
-		} else {
-			dropdown.selectByVisibleText(od.physical, " Virtual ");
-		}
-		od.searchTextBox.sendKeys(accountNo);
-		od.searchButton.click();
-		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(5));
-		od.accounts_addAccount.click();
-		Thread.sleep(2000);
-		return accountNo;
+	
+	public void Transactions_Maker_Documents(String TSID) throws Exception
+	{
+		 scroll.scrollInToView(tm.transactions_DocumentTypeDropdown);
+		 applyExplicitWaitsUntilElementClickable(tm.transactions_DocumentTypeDropdown,Duration.ofSeconds(5));
+		 dropdown.selectByVisibleText(tm.transactions_DocumentTypeDropdown,externalData.getFieldData(TSID,"Txn Maker","Documents-Document Type"));
+		 dropdown.selectByVisibleText(tm.transactions_FileType,externalData.getFieldData(TSID,"Txn Maker","File Type"));
+		 tm.transactions_EnterUrl.sendKeys(externalData.getFieldData(TSID,"Txn Maker","URL"));
+		 tm.transactions_Description.sendKeys(externalData.getFieldData(TSID,"Txn Maker","Description"));
+		 tm.transactions_DocumentsAddButton.click();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		 
 	}
+	
+
 
 }

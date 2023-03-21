@@ -17,7 +17,7 @@ import com.upp.utils.ScrollTypes;
 
 import callbackInterfaces.ICallback;
 
-public class TransactionMaker_PaymentInstrumentHandler extends BaseClass  implements ICallback {
+public class EcommTransactionMaker_PaymentInstrumentHandler extends BaseClass  implements ICallback {
 	public static Object_Deal od;
 	public static ExcelReader externalData;
 	DropDown dropdown;
@@ -26,7 +26,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass  implem
 	public static JavascriptClick jsClick;
 	public static Object_Transactions tm ;
 
-	public TransactionMaker_PaymentInstrumentHandler() {
+	public EcommTransactionMaker_PaymentInstrumentHandler() {
 		od = new Object_Deal();
 		dropdown = new DropDown(BaseClass.driver);
 		scroll=new ScrollTypes(driver);
@@ -61,7 +61,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass  implem
 		 scroll.scrollInToView(od.payments_AddSubInstructionButton);
 		 od.payments_AddSubInstructionButton.click();
 		 scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
-		 applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,Duration.ofSeconds(10));
+		 applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,Duration.ofSeconds(5));
 		 od.payments_NextArrowButtonTransferSubInstruction.click();	
 		
 	}
