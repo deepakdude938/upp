@@ -60,8 +60,10 @@ public class Holiday extends BaseClass{
 		 applyExplicitWaitsUntilElementVisible(holidayApplicableFor, 10);
 		 driver.findElement(holidayApplicableFor).click();
 		 hd.configuration_HolidayName.sendKeys(externalData.getFieldData(iD,"Holidays and Holiday Drafts","Holiday").trim());
-//		 hd.configuration_Country.sendKeys(externalData.getFieldData("TS10","Holidays and Holiday Drafts","All countries").trim());
+		 hd.configuration_Country.sendKeys(externalData.getFieldData("TS10","Holidays and Holiday Drafts","All countries").trim());
 //		 js.sendKeys(hd.configuration_Country, externalData.getFieldData(iD,"Holidays and Holiday Drafts","All countries").trim());	 
+		 String country = externalData.getFieldData("TS10","Holidays and Holiday Drafts","All countries").trim();
+		 driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+country+"']")).click();
 		 hd.configuration_HolidayNextButton.click();
 		 hd.configuration_HolidayNextButton2.click();
 		 hd.configuration_HolidaySaveButton.click();
