@@ -41,20 +41,20 @@ public class TS13 extends BaseClass implements ICallback {
 		this.txnChecker = new Transactions_Checker();
 		this.txnVerifier = new Transactions_Verifier();
 		sourceAccount = new DealPage(dm).sourceAccountNo;
-		//toAccount = new DealPage(dm).toaccountNo;
+		// toAccount = new DealPage(dm).toaccountNo;
 		this.tm_BasicDetails = new Transactions_Maker_BasicDetails();
 		this.tm_sub = new Transactions_Maker_Sub_Instruction();
 	}
 
 	@Then("Create a Transaction for Non Registered Beneficiary user from Transaction Maker with given {string}")
-	public void create_a_Transaction_for_Non_Registered_Beneficiary_user_from_Transaction_Maker_with_given(
-			String TSID) throws Exception {
+	public void create_a_Transaction_for_Non_Registered_Beneficiary_user_from_Transaction_Maker_with_given(String TSID)
+			throws Exception {
 		tsid = TSID;
 		System.out.println("TS13 steps");
 		tm_BasicDetails.Transactions_Maker_BasicDetails(TSID, DealPage.dealId, DealPage.toaccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(TSID, this);
 		tm_sub.Non_Registered_Beneficiary(toAccount);
-		
+
 	}
 
 	@Override
@@ -75,8 +75,7 @@ public class TS13 extends BaseClass implements ICallback {
 			String paymentInstrument = (String) data;
 			if (paymentInstrument.equalsIgnoreCase("BT")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
-				// instrumentHandler.handleBTPaymentInstrument(tsid, sourceAccountNo,
-				// toaccountNo);
+				instrumentHandler.handleBTPaymentInstrument(tsid, sourceAccount, toAccount);
 			}
 			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();

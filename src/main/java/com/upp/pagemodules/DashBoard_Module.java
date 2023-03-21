@@ -327,8 +327,8 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	public String createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
-
+	public String createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo,ICallback icallback) throws Exception {
+		String dealid ;
 		od.linkedInstruction_linkedBtn.click();
 		od.linkedInstruction_addAccountBtn.click();
 		System.out.println(TSID);
@@ -350,6 +350,7 @@ public class DashBoard_Module extends BaseClass {
 				externalData.getFieldData(TSID, "Linked", "Balance Consideration"));
 		od.linkedInstruction_NextBtn.click();
 		od.linkedInstruction_LinkedConfigNextBtn.click();
+		od.linkedInstruction_sweepNext.click();
 		od.linkedInstruction_Executiondate.click();
 		od.linkedInstruction_Todaydate.click();
 
@@ -361,27 +362,16 @@ public class DashBoard_Module extends BaseClass {
 		od.linkedInstruction_TimePicker.clear();
 		od.linkedInstruction_TimePicker.sendKeys(timem);
 		od.linkedInstruction_ScheduleNextBtn.click();
-		od.linkedInstruction_Instrumentddl.sendKeys(externalData.getFieldData(TSID, "Linked", "Instrument"));
-		String inst = externalData.getFieldData(TSID, "Linked", "Instrument");
-		By instrument = By
-				.xpath("//li[@id='lbl-generic-autocomplete-listItemOption1']//div[contains(text(),'" + inst + "')]");
-		driver.findElement(instrument).click();
-		od.linkedInstruction_ToAccountddl.sendKeys(toaccountNo);
-		By toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
-		driver.findElement(toaccountselect).click();
-		dropdown.selectByVisibleText(od.linkedInstruction_Incorporationddl,
-				externalData.getFieldData(TSID, "Linked", "Beneficiary Country Of Incorporation"));
-
-		od.linkedInstruction_BankBic.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Bank Bic"));
-		od.linkedInstruction_Amount.sendKeys(externalData.getFieldData(TSID, "Linked", "Amount"));
+		String instrumentName = externalData.getFieldData(TSID, "Linked", "Instrument");
+		icallback.handleCallback("Instrument_NAME", instrumentName);		
 		od.linkedInstruction_AddBtn.click();
 		od.linkedInstruction_Summary.click();
-		String dealid = od.deals_SummaryRefId.getText();
+		dealid = od.deals_SummaryRefId.getText();
 		od.linkedInstruction_Submit.click();
 		od.linkedInstruction_YesBtn.click();
 		od.linkedInstruction_OkBtn.click();
 
-		System.out.println("Deal id = " + dealid);
+	System.out.println("Deal id = " + dealid);
 		return dealid;
 
 	}

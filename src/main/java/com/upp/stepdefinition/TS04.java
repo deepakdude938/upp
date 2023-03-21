@@ -2,8 +2,12 @@ package com.upp.stepdefinition;
 
 import java.io.IOException;
 
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
+import org.checkerframework.common.value.qual.StaticallyExecutable;
+
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
+import com.upp.handlers.CommonLinkedInstructionInstrument;
 import com.upp.handlers.CommonProductHandler;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.DealPartiesHandler;
@@ -17,26 +21,29 @@ import com.upp.utils.SwitchWindow;
 import callbackInterfaces.ICallback;
 import io.cucumber.java.en.*;
 
-public class TS04 extends BaseClass {
+public class TS04 extends BaseClass implements ICallback {
 	DashBoard_Module dm;
 	public String dealId;
 	Transactions_Maker_SearchTransactionAndSubmit txnsearch;
 	Transactions_Checker txnChecker;
 	Transactions_Verifier txnVerifier;
+	String tsid;
+	public static String toAccount, sourceAccount;
 
 	public TS04(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
 		this.txnsearch = new Transactions_Maker_SearchTransactionAndSubmit();
 		this.txnChecker = new Transactions_Checker();
 		this.txnVerifier = new Transactions_Verifier();
+		sourceAccount = new DealPage(dm).sourceAccountNo;
+		toAccount = new DealPage(dm).toaccountNo;
 	}
 
 	@Then("create Linked Instruction Payment with given  {string}.")
 	public void create_Linked_Instruction_Payment_with_given(String TSID) throws Exception {
-		String sourceAccount = new DealPage(dm).sourceAccountNo;
-		String toAccount = new DealPage(dm).toaccountNo;
+		tsid = TSID;
 		System.out.println("Changes = " + TSID);
-		dealId = dm.createNewLinkedAccount(TSID, sourceAccount, toAccount);
+		dealId = dm.createNewLinkedAccount(TSID, sourceAccount, toAccount, this);
 
 	}
 
@@ -59,6 +66,12 @@ public class TS04 extends BaseClass {
 	public void transaction_verifier_approve_deal() {
 		txnVerifier.txnVerifier_ApproveDeal(dealId);
 
+	}
+
+	@Override
+	public void handleCallback(String callbackid, Object data) throws Exception {
+		// TODO Auto-generated method stub
+		new CommonLinkedInstructionInstrument().handleInstruments(tsid, callbackid, data, toAccount);
 	}
 
 }

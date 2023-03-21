@@ -77,11 +77,11 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 		tm.transactions_amount.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Amount"));
 		tm.transactions_bankIFSCCode.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Bank IFSC code"));
-		tm.transactions_beneficiaryName.sendKeys("User1");
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Beneficiary Name"));
 		dropdown.selectByValue(tm.transactions_accountOrIban, externalData.getFieldData(tsid,"Txn Maker","AccountOrIban"));
 		tm.transactions_beneficiaryaccountNumber.click();
 		tm.transactions_beneficiaryaccountNumberInput.sendKeys(toAccount);
-		tm.transactions_address.sendKeys("testing");
+		tm.transactions_address.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Beneficiary Address Line 1"));
 		dropdown.selectByValue(tm.transactions_country, externalData.getFieldData(tsid,"Txn Maker","Beneficiary country"));
 		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation, externalData.getFieldData(tsid,"Txn Maker","Beneficiary Country Of Incorporation"));
 		tm.transactions_addSubInstruction.click();

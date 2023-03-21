@@ -62,10 +62,10 @@ public class DealPartiesHandler extends BaseClass {
 			od.parties_AccountsTab.click();
 			od.parties_AddAccounts.click();
 			
-//			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
-//			od.parties_PaymentSystem.click();
-//			String paymentInstrument =externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
-//			icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT",paymentInstrument);
+			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
+			od.parties_PaymentSystem.click();
+			String paymentInstrument =externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
+			icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT",paymentInstrument);
 			
 			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
 			od.parties_DocumentsTab.click();
