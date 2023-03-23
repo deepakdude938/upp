@@ -13,12 +13,15 @@ public class CommonUtils {
 		this.driver = driver;
 	}
 	public boolean isElementDisplayed(WebElement Element,int time) {
-	   
+	   boolean state=false;
 	    try {
 	    	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
-	        return Element.isDisplayed();
-	    } catch (NoSuchElementException e) {
-	        return false;
+	        state= Element.isDisplayed();
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+	    } 
+	    catch (NoSuchElementException e) {
+	    	 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	    }
+	    return state;
 	}
 }

@@ -81,7 +81,8 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 			flag=1;
 		}
 		Assert.assertEquals(flag,1);
-
+		od.payments_NextArrowButtonTransferSubInstruction.click();
 	}
+	
 
 }

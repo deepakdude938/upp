@@ -1,9 +1,7 @@
 package com.upp.handlers;
 
-import java.io.IOException;
 import java.time.Duration;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -12,6 +10,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_Transactions;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -28,6 +27,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 	public static ScrollTypes scroll;
 	public static JavascriptClick jsClick;
 	public static Object_Transactions tm;
+	public static CommonUtils commonutils;
 
 	public TransactionMaker_PaymentInstrumentHandler() {
 		od = new Object_Deal();
@@ -36,6 +36,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		jsClick = new JavascriptClick(driver);
 		tm = new Object_Transactions();
 		externalData = new ExcelReader();
+		commonutils = new CommonUtils(driver);
 	}
 
 	@Override
@@ -72,59 +73,89 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 	}
 
-	public void handleLTTestPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_checked(String tsid,
+	public void handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(String TSID,
+			String sourceAccountno, String toaccountNo) throws Exception {
+
+		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
+		jsClick.click(tm.transactions_ToAccountDropdown);
+		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown, sourceAccountno);
+
+		tm.transactions_bankIFSCCode
+				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
+		dropdown.selectByValue(tm.transactions_accountOrIban,
+				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
+
+		tm.transactions_address.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Address Line 1"));
+		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+
+		if ((commonutils.isElementDisplayed(tm.transactions_beneficiaryaccountNumberInput, 1))) {
+			Assert.fail("The non registered Beneficiary_WithCheckbox_Unchecked should accept only registered accounts");
+		}
+
+		scroll.scrollInToView(tm.transactions_beneficiaryIncorporation);
+		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
+				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
+		scroll.scrollInToView(od.payments_AddSubInstructionButton);
+		od.payments_AddSubInstructionButton.click();
+		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
+		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
+				Duration.ofSeconds(10));
+		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
+
+	}
+
+	public void handleBT_INPaymentInstrument(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
+
+		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
+		jsClick.click(tm.transactions_ToAccountDropdown);
+		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown,
+				externalData.getFieldData(TSID, "Txn Maker", "to"));
+
+		tm.transactions_bankIFSCCode
+				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
+		dropdown.selectByValue(tm.transactions_accountOrIban,
+				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
+
+		tm.transactions_address.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Address Line 1"));
+		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+		scroll.scrollInToView(tm.transactions_beneficiaryIncorporation);
+		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
+				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
+		scroll.scrollInToView(od.payments_AddSubInstructionButton);
+		od.payments_AddSubInstructionButton.click();
+		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
+		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
+				Duration.ofSeconds(10));
+		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
+
+	}
+
+	public void handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_checked(String tsid,
 			String sourceAccount, String toAccount) throws Exception {
 		System.out.println("Checkbox check");
 
-		tm.transactions_amount.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Amount"));
-		tm.transactions_bankIFSCCode.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Bank IFSC code"));
-		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Beneficiary Name"));
-		dropdown.selectByValue(tm.transactions_accountOrIban, externalData.getFieldData(tsid,"Txn Maker","AccountOrIban"));
 		tm.transactions_beneficiaryaccountNumber.click();
 		tm.transactions_beneficiaryaccountNumberInput.sendKeys(toAccount);
-		tm.transactions_address.sendKeys(externalData.getFieldData(tsid,"Txn Maker","Beneficiary Address Line 1"));
-		dropdown.selectByValue(tm.transactions_country, externalData.getFieldData(tsid,"Txn Maker","Beneficiary country"));
-		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation, externalData.getFieldData(tsid,"Txn Maker","Beneficiary Country Of Incorporation"));
-		tm.transactions_addSubInstruction.click();
-		
-	}
 
-public void handleLTTestPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(String TSID,String sourceAccountno,String toaccountNo) throws Exception {
-		boolean flag=false;
-		
-		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown,Duration.ofSeconds(7));
-		jsClick.click(tm.transactions_ToAccountDropdown);
-		
-		try {
-		tm.transactions_ToAccountDropdown.sendKeys("HSBC178");
-		}
-	catch(Exception ignored){
-		flag=true;
+		tm.transactions_amount.sendKeys(externalData.getFieldData(tsid, "Txn Maker", "Amount"));
+		tm.transactions_bankIFSCCode
+				.sendKeys(externalData.getFieldData(tsid, "Txn Maker", "Beneficiary bank IFSC code"));
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(tsid, "Txn Maker", "Beneficiary Name"));
+		dropdown.selectByValue(tm.transactions_accountOrIban,
+				externalData.getFieldData(tsid, "Txn Maker", "Select Account/IBAN"));
+
+		tm.transactions_address.sendKeys(externalData.getFieldData(tsid, "Txn Maker", "Beneficiary Address Line 1"));
+		dropdown.selectByValue(tm.transactions_country,
+				externalData.getFieldData(tsid, "Txn Maker", "beneficiaryCountry"));
+		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
+				externalData.getFieldData(tsid, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		tm.transactions_addSubInstruction.click();
+
 	}
-		if(flag==false)
-		{
-			
-			Assert.fail("Non registeted beneficairy account should not be allowed");
-		}
-		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown,externalData.getFieldData(TSID,"Txn Maker","to"));
-		 System.out.println("the to data is "+externalData.getFieldData(TSID,"Txn Maker","to"));
-		 
-		 scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
-		 applyExplicitWaitsUntilElementClickable(od.payments_beneficiaryCountryOfIncorporationDropdown,Duration.ofSeconds(7));
-		 od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID,"Txn Maker","Beneficiary Country Of Incorporation"));
-		
-		 applyExplicitWaitsUntilElementClickable(od.payments_Amount,Duration.ofSeconds(5));
-		 scroll.scrollInToView(od.payments_Amount);
-		 od.payments_Amount.sendKeys(externalData.getFieldData(TSID,"Txn Maker","Amount"));
-		 
-		
-		 scroll.scrollInToView(od.payments_AddSubInstructionButton);
-		 od.payments_AddSubInstructionButton.click();
-		 scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
-		 applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,Duration.ofSeconds(10));
-		 od.payments_NextArrowButtonTransferSubInstruction.click();	
-		
-	}
-	
 }
