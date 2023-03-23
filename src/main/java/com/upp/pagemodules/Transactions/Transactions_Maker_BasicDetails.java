@@ -69,11 +69,11 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		jsClick.click(tm.transactions_AddNewButon);
 //		tm.transactions_AddNewButon.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(10));
-		tm.transactions_DealId.sendKeys("REF1679547068618");
-		By transactions_DealId = By.xpath("//div[contains(text(),'" + "REF1679547068618" + "')]");
+		tm.transactions_DealId.sendKeys(dealId);
+		By transactions_DealId = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(transactions_DealId).click();
-		tm.transactions_SourceAccNo.sendKeys("5564697979");
-		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + "5564697979" + "')]");
+		tm.transactions_SourceAccNo.sendKeys(sourceAccno);
+		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
 		driver.findElement(transactions_SouceAccno).click();
 		jsClick.click(tm.transactions_SubmitButton);
 		od.payments_BasicName.clear();
