@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import com.upp.base.BaseClass;
@@ -350,6 +352,7 @@ public class DashBoard_Module extends BaseClass {
 				externalData.getFieldData(TSID, "Linked", "Balance Consideration"));
 		od.linkedInstruction_NextBtn.click();
 		od.linkedInstruction_LinkedConfigNextBtn.click();
+		od.linkedInstruction_sweepNext.click();
 		od.linkedInstruction_Executiondate.click();
 		od.linkedInstruction_Todaydate.click();
 
@@ -679,8 +682,7 @@ public class DashBoard_Module extends BaseClass {
 		scroll.scrollInToView(od.payments_ToAccountDropdown);
 		dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
 		
-	
-		if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
+	   if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
 		scroll.scrollInToView(od.payments_beneficiaryBankBic);
 		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
 		}
@@ -690,7 +692,6 @@ public class DashBoard_Module extends BaseClass {
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-		
 		
 		if(commonutils.isElementDisplayed(od.payments_senderPop,1)) {
 		scroll.scrollInToView(od.payments_senderPop);
@@ -709,8 +710,6 @@ public class DashBoard_Module extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
 		
 		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
-		
-		
 		
 		scroll.scrollInToView(od.payments_Amount);
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
@@ -907,10 +906,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_DealOkButton.click();
 
 		return dealId;
-
-	}
-
-	
+}
 
 	public String twoEcommerceParties(String TSID, ICallback icallback) throws Exception {
 		String deal;
@@ -922,5 +918,4 @@ public class DashBoard_Module extends BaseClass {
 		approveDealFromDealChecker(deal);
 		return deal;
 	}
-
 }

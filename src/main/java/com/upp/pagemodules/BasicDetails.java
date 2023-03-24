@@ -30,7 +30,7 @@ public class BasicDetails extends BaseClass{
 	}
 	
 	
-	public static void createDealBasicDetails(String TSID, ICallback icallback) throws Exception {
+	public void createDealBasicDetails(String TSID, ICallback icallback) throws Exception {
 
 		od.deal_SideMenuIcon.click();
 		od.newDealButton.click();
@@ -60,7 +60,7 @@ public class BasicDetails extends BaseClass{
 		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
 			od.deals_ProcessingUnits.click();
 			od.deals_selectAll.click();
-			 od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
+			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
 			By ProcessingUnit = By.xpath(
 					"//div[contains(@class,'ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
 							+ ProcessingUnits + "']");
@@ -73,7 +73,7 @@ public class BasicDetails extends BaseClass{
 		By transaction_Category_Option = By.xpath(
 				"//div[contains(@class,'ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
 						+ input + "']");
-		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		driver.findElement(transaction_Category_Option).click();
 		od.saveButton.click();
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
@@ -82,7 +82,7 @@ public class BasicDetails extends BaseClass{
 		By party_Responsibility_Option = By.xpath(
 				"//div[contains(@class,'ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
 						+ input + "']");
-		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
 		driver.findElement(party_Responsibility_Option).click();
 
 		try {

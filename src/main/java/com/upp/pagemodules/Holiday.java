@@ -3,11 +3,10 @@ package com.upp.pagemodules;
 import java.io.IOException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
-
 import com.upp.base.BaseClass;
-import com.upp.odp.utils.AccountDetails;
-import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_Configuration;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.DateUtils;
@@ -17,8 +16,6 @@ import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
 public class Holiday extends BaseClass{
-	
-	
 	
 	public static Object_NewDeal od;
 	public static ExcelReader externalData;
@@ -50,7 +47,10 @@ public class Holiday extends BaseClass{
 		 hd.configuration_HolidayButton.click();
 		 hd.configuration_HolidayAddButton.click();
 		 hd.configuration_HolidayInputDate.click();
-		 String day =DateUtils.getDay();
+		 LocalDate now = new LocalDate();
+		 LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
+		 String day =friday.toString().split("[/-]")[2];
+		 System.out.println(day);
 		 By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
 		 driver.findElement(excecutionDay).click();
 		 String holdayApplicableForInput =  externalData.getFieldData(iD,"Holidays and Holiday Drafts","Applicable For").trim();
@@ -61,7 +61,32 @@ public class Holiday extends BaseClass{
 		 driver.findElement(holidayApplicableFor).click();
 		 hd.configuration_HolidayName.sendKeys(externalData.getFieldData(iD,"Holidays and Holiday Drafts","Holiday").trim());
 		 hd.configuration_Country.sendKeys(externalData.getFieldData("TS10","Holidays and Holiday Drafts","All countries").trim());
-//		 js.sendKeys(hd.configuration_Country, externalData.getFieldData(iD,"Holidays and Holiday Drafts","All countries").trim());	 
+		 String country = externalData.getFieldData("TS10","Holidays and Holiday Drafts","All countries").trim();
+		 driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+country+"']")).click();
+		 hd.configuration_HolidayNextButton.click();
+		 hd.configuration_HolidayNextButton2.click();
+		 hd.configuration_HolidaySaveButton.click();
+		 hd.configuration_HolidayOkButton.click();
+		 
+}
+	
+	public void createNewHoliday(String iD,String date) throws InvalidFormatException, IOException, Exception {
+		 ID =iD;
+		 hd.configurationButton.click();
+		 hd.configuration_HolidayButton.click();
+		 hd.configuration_HolidayAddButton.click();
+		 hd.configuration_HolidayInputDate.click();
+		 String day = date.split("[/-]")[0];
+		 By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
+		 driver.findElement(excecutionDay).click();
+		 String holdayApplicableForInput =  externalData.getFieldData(iD,"Holidays and Holiday Drafts","Applicable For").trim();
+
+		 hd.configuration_HolidayApplicableFor.sendKeys(holdayApplicableForInput);
+		 By holidayApplicableFor = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+holdayApplicableForInput+"']");
+		 applyExplicitWaitsUntilElementVisible(holidayApplicableFor, 10);
+		 driver.findElement(holidayApplicableFor).click();
+		 hd.configuration_HolidayName.sendKeys(externalData.getFieldData(iD,"Holidays and Holiday Drafts","Holiday").trim());
+		 hd.configuration_Country.sendKeys(externalData.getFieldData("TS10","Holidays and Holiday Drafts","All countries").trim());
 		 String country = externalData.getFieldData("TS10","Holidays and Holiday Drafts","All countries").trim();
 		 driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+country+"']")).click();
 		 hd.configuration_HolidayNextButton.click();

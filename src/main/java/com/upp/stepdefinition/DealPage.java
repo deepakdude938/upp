@@ -10,6 +10,7 @@ import com.upp.handlers.DealPartyAccount_PaymentInstrumentHandler;
 import com.upp.handlers.DealResponsibilityHandler;
 import com.upp.handlers.EcommerceHandler;
 import com.upp.handlers.PartyMaker_PaymentInstrumentHandler;
+import com.upp.pagemodules.BasicDetails;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Login.LoginToApplication;
 import com.upp.pagemodules.Deal.DealAccountCreator;

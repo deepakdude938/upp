@@ -13,17 +13,15 @@ public class TS05 extends BaseClass  implements ICallback{
 	
 	
 	
-	public Budget dm;
+	public DashBoard_Module dm;
 	public String tsid;
 	public static String sourceAccountNo = "";
 	public static String toAccountNo = "";
 //	public static String dealId = "";
 
 	public TS05(DashBoard_Module dm) {
-		this.dm = new Budget();
+		this.dm = new DashBoard_Module();
 	}
-	
-	
 	
 	@Then("Create a Budget with given {string}")
 	public void create_a_Budget_with_given(String TSID) throws Exception, Exception {
@@ -35,14 +33,12 @@ public class TS05 extends BaseClass  implements ICallback{
 	public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
 		
 	 dealId=dm.createBudget_Payments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
-		
-	  
-	}
+}
 	
 	
 	@Override
 	public  void handleCallback(String callbackid, Object data) throws Exception {
-		// TODO Auto-generated method stub
+	
 		
 		if(callbackid.equalsIgnoreCase("PRODUCT_NAME")) {
 			String productName = (String) data;
@@ -70,9 +66,3 @@ public class TS05 extends BaseClass  implements ICallback{
 	}
 }
 
-//	@Then("Create two Accounts with given {string}")
-//	public void create_two_Accounts_with_given(String string) throws Exception {
-//		DealAccountCreator accountCreator = new DealAccountCreator();
-//		sourceAccountNo = accountCreator.createNewAccount(string);
-//		toAccountNo = accountCreator.createNewAccount(string);
-//	}
