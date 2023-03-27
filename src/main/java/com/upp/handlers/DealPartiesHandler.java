@@ -89,7 +89,7 @@ public class DealPartiesHandler extends BaseClass {
 				applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 				od.payments_ExecutionDate.click();
 				String day = dateutil.getDay();
-				By excecutionDay = By.xpath("(//a[normalize-space()='"+day+"'])[1]");
+				By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
 				applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 				driver.findElement(excecutionDay).click();
 				od.parties_DocumentsAddButton.click();
