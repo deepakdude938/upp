@@ -17,6 +17,7 @@ import com.upp.pagemodules.Transactions.Transactions_Maker_Documents;
 import com.upp.pagemodules.Transactions.Transactions_Maker_Sub_Instruction;
 import com.upp.pagemodules.Transactions.Transactions_Maker_Summary;
 import com.upp.pagemodules.Transactions.Transactions_Verifier;
+import com.upp.utils.ExcelReader;
 import com.upp.utils.SwitchWindow;
 
 import com.upp.pagemodules.Deal.DealAccountCreator;
@@ -24,14 +25,13 @@ import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
 import io.cucumber.java.en.*;
 
-public class TS06 extends BaseClass implements ICallback {
+public class TS12 extends BaseClass implements ICallback {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String sourceAccountNo = "";
 	public static String toaccountNo = "";
 	public static String dealId = "";
 	public static String TSID = "";
-	public static String TnxId = "";
 	Transactions_Maker_Sub_Instruction tm_sub;
 	Transactions_Maker_Documents tm_doc;
 	Transactions_Maker_Summary tm_sum;
@@ -39,8 +39,9 @@ public class TS06 extends BaseClass implements ICallback {
 	Transactions_Checker tc;
 	Transactions_Verifier tv;
 	Reports_ExecutionReport execReport;
-
-	public TS06() {
+	public static ExcelReader externalData;
+    
+	public TS12() {
 
 		this.dm = new DashBoard_Module();
 		this.tm_BasicDetails = new Transactions_Maker_BasicDetails();
@@ -51,67 +52,24 @@ public class TS06 extends BaseClass implements ICallback {
 		this.tc = new Transactions_Checker();
 		this.tv = new Transactions_Verifier();
 		this.execReport = new Reports_ExecutionReport();
+		externalData = new ExcelReader();
 	}
 
-	@Then("Create deal with basic details with given {string}.")
-	public void create_deal_with_basic_details_with_given(String string) throws Exception {
+	
 
-		dm.createNewDeal_Old(string, this);
-	}
 
-	@Then("submit the deal")
-	public void submit_the_deal() throws Exception {
-		// Write code here that turns the phrase above into concrete actions
-		dealId = dm.submitDeal();
-	}
-
-	@Then("approve the deal from the deal checker common method")
-	public void approve_the_deal_from_the_deal_checker() throws Exception {
-		dm.approveDealFromDealChecker_Old(dealId);
-	}
-
-	@Then("logout of the application")
-	public void logout_of_the_application() throws Exception {
-		dm.logOutOld();
-	}
-
-	@Given("Create a Transaction from Transaction Maker with given {string}")
-	public void create_a_Transaction_from_Transaction_Maker(String string) throws Exception {
-
+	@Then("Create Transaction from Transaction Maker and check whether To Field is accepting Non Registered Beneficiary with given {string}")
+	public void create_Transaction_from_Transaction_Maker_and_check_whether_To_Field_is_accepting_Non_Registered_Beneficiary_with_given(String string) throws Exception {
 		TSID = string;
-		// TnxId=tm.createTransactionFromTransactionMaker(string,DealPage.dealId,DealPage.toaccountNo,this);
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string,TS06.dealId, DealPage.toaccountNo);
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.toaccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
-
 	}
 
-	@Then("Approve the transaction from Transaction Checker with given {string}")
-	public void approve_the_transaction_from_Transaction_Checker(String string) throws Exception {
-		// tm.approveTransactionFromChecker(string,TnxId);
-		tc.TransactionsChecker(string, TS06.TnxId);
-	}
+	
 
-	@Then("Approve the transaction from Transaction Verifier with given {string}")
-	public void approve_the_transaction_from_Transaction_Verifier_with_given(String string) throws Exception {
-		// tm.approveTransactionFromVerifier(string,TnxId);
-		tv.TransactionsVerifier(string, TS06.TnxId);
-	}
 
-	@Then("Check the Transaction staus in execution report with given {string}")
-	public void check_the_Transaction_staus_in_execution_report_with_given(String string) throws Exception {
-		// tm.checkTnxStatusFromExecutionReport(string,dealId);
-		execReport.ExecutionReport(string, dealId);
-
-	}
-
-//	@Then("Create new deal with basic details with given {string}.")
-//	public void create_new_deal_POC_with_basic_details_with_given(String TSID) throws  Exception {
-//		
-//		DealBasicDetailCreators createDeal = new  DealBasicDetailCreators();
-//		createDeal.createDealBasicDetails(TSID, this);
-//	}
 
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
@@ -137,14 +95,17 @@ public class TS06 extends BaseClass implements ICallback {
 
 				instrumentHandler.handleBTPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
 			}
-
-			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
+			
+			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
+            String checkbox=externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
 
-				instrumentHandler.handleBT_INPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+             if(checkbox.equalsIgnoreCase("N")) {
+				instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+                  }
+
 			}
-
 		}
-
+		
 	}
 }
