@@ -10,6 +10,8 @@ Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSId>".
 And Create two Accounts with given "<TSId>"
 And Create Parties in the Parties Tab with given "<TSId>"
+And Submit the deal
+Then Approve the deal from the deal checker
 Examples:
       |TSId|
       |TS02|

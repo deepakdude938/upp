@@ -19,6 +19,7 @@ public class TS05 extends BaseClass  implements ICallback{
 	public static String toAccountNo = "";
 //	public static String dealId = "";
 
+
 	public TS05(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
 	}
@@ -34,6 +35,11 @@ public class TS05 extends BaseClass  implements ICallback{
 		
 	 dealId=dm.createBudget_Payments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
 }
+	
+	@Then("Approve the deal from the deal checker")
+	public void approve_the_deal_from_the_deal_checker() throws Exception {
+		dm.approveDealFromDealChecker_Old(dealId);
+	}
 	
 	
 	@Override

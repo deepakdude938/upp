@@ -37,9 +37,11 @@ public class Payment_Summary extends BaseClass{
 		String actualDate = od.payments_SimulateExecutionActualDate.getText();
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
-		String day =friday.toString().split("[/-]")[2];
+	    LocalDate saturday = now.withDayOfWeek(DateTimeConstants.SATURDAY);
+	    String day =friday.toString().split("[/-]")[2];
+		String sat= saturday.toString().split("[/-]")[2];
 		 
 		Assert.assertEquals(day, strikeDate.split(" ")[0].split("-")[0]);
-	    Assert.assertEquals(actualDate.split(" ")[0].split("-")[0], 1+Integer.parseInt(day)+"");
+	    Assert.assertEquals(actualDate.split(" ")[0].split("-")[0], sat);
 	}
 }

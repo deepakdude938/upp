@@ -65,7 +65,6 @@ public class DealPage extends BaseClass implements ICallback {
 		crator.createParties(TSID, this);
 	}
 	
-
 	@Then("Logout from Application")
 	public void logout_from_Application() throws Exception {
 	    dm.logout();

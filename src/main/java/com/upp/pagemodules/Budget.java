@@ -20,7 +20,6 @@ public class Budget extends BaseClass{
 	public static Object_NewDeal od;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
-//	public static JavascriptClick jsClick;
 	public static int waitingTime = 5;
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
