@@ -155,6 +155,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "ic-instructions-tabLinkedConfig-next-v1")
 	public WebElement linkedInstruction_LinkedConfigNextBtn;
+	
+	@FindBy(id="ic-instructions-tabSweepIn-next-v1")
+	public WebElement linkedInstruction_sweepNext;
 
 	@FindBy(xpath = "//td[contains(@class,' ui-day-today')]")
 	public WebElement linkedInstruction_Todaydate;
@@ -453,6 +456,10 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "ic-deals-instruction-fundTransferBasic-next-v1")
 	public WebElement payments_NextArrowButtonTransferBasic;
+	
+	@FindBy(id = "ic-instructions-tabSweepIn-next-v1")
+	public WebElement payments_NextArrowButton;
+	
 
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferSchedule-repeating-v1']//span[@class='slider round']")
 	public WebElement payments_Repeatingslider;
@@ -477,6 +484,25 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "payment-beneficiaryBankBic-txt-v1")
 	public WebElement payments_beneficiaryBankBic;
+	
+	@FindBy(id = "payment-beneficiaryCountry-sel-v1")
+	public WebElement payments_beneficiaryCountry;
+	
+	@FindBy(xpath = "//div[@class='ui-tab truncate ng-star-inserted']")
+	public WebElement payments_SummaryButton;
+	
+	@FindBy(id = "btn-deals-instructions-summary-simulate-v1")
+	public WebElement payments_SimulateButton;
+	
+	@FindBy(xpath = "(//div[contains(@class,'ui-grid-cell-inner simulate-date ui-text-xs')])[1]//i")
+	public WebElement payments_SimulateExecutionStrikeDate;
+	
+	@FindBy(xpath = "(//div[contains(@class,'ui-grid-cell-inner simulate-date ui-text-xs')])[1]/div[2]")
+	public WebElement payments_SimulateExecutionActualDate;
+	
+	@FindBy(id = "btn-instructions-simulateSchedule-close-v1")
+	public WebElement payments_SimulateCloseButton;
+	
 
 	@FindBy(id = "payment-beneficiaryCountryOfIncorporation-sel-v1")
 	public WebElement payments_beneficiaryCountryOfIncorporationDropdown;
@@ -555,6 +581,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath ="(//i[@id='ic-instructions-tabSweepIn-next-v1'])[1]")
 	public WebElement payments_SweepinNextButton;
+	
 	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-frequency-v1']")
 	public WebElement budget_Interval;
 	

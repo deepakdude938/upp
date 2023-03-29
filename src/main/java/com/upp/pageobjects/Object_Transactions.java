@@ -40,7 +40,7 @@ public class Object_Transactions extends BaseClass{
 	@FindBy(id="payment-debitAccountBicCode-txt-v1")
 	public WebElement transactions_debitAccountBicCode;
 	
-	@FindBy(xpath="//select[@id='payment-to-sel-v1']")
+	@FindBy(xpath="(//select[@id='payment-to-sel-v1'])[1]")
 	public WebElement transactions_ToAccountDropdown;
 	
 	@FindBy(xpath="(//select[@class='ui-dropdown-select'])[1]")
@@ -125,7 +125,6 @@ public class Object_Transactions extends BaseClass{
 	public WebElement reports_ScroeStatus;
 	
 	//object for LT-IN
-	
 	@FindBy(xpath = "//ui-autocomplete[contains(@id,'instruction-fundTransferSubInstruction-paymentInstrument')]")
 	public WebElement transactions_instruments;
 	
@@ -156,7 +155,8 @@ public class Object_Transactions extends BaseClass{
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
 	public WebElement transactions_beneficiaryaccountNumberInput;
 	
-	
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement transactions_addSubInstruction;
+	
+	
 }

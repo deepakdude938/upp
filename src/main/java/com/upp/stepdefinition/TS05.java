@@ -3,6 +3,7 @@ package com.upp.stepdefinition;
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
+import com.upp.pagemodules.Budget;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import callbackInterfaces.ICallback;
@@ -12,17 +13,16 @@ public class TS05 extends BaseClass  implements ICallback{
 	
 	
 	
-	public DashBoard_Module dm;
+	public Budget dm;
 	public String tsid;
 	public static String sourceAccountNo = "";
 	public static String toAccountNo = "";
-//	public static String dealId = "";
+	public DashBoard_Module dm1;
 
-	public TS05(DashBoard_Module dm) {
-		this.dm = new DashBoard_Module();
+	public TS05() {
+		this.dm = new Budget();
+		this.dm1 = new DashBoard_Module();
 	}
-	
-	
 	
 	@Then("Create a Budget with given {string}")
 	public void create_a_Budget_with_given(String TSID) throws Exception, Exception {
@@ -30,18 +30,21 @@ public class TS05 extends BaseClass  implements ICallback{
 	}
 	
 	
-//	@Then("Create Payments in the scheduled Instructions with given {string}")
-//	public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
-//		
-//	 dealId=dm.createBudget_Payments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
-//		
-//	  
-//	}
+	@Then("Create Payments in the Scheduled Instructions with given {string}")
+	public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
+		
+	 dealId=dm.createBudget_Payments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
+}
+	
+	@Then("Approve the deal from the deal checker")
+	public void approve_the_deal_from_the_deal_checker() throws Exception {
+		dm1.approveDealFromDealChecker_Old(dealId);
+	}
 	
 	
 	@Override
 	public  void handleCallback(String callbackid, Object data) throws Exception {
-		// TODO Auto-generated method stub
+	
 		
 		if(callbackid.equalsIgnoreCase("PRODUCT_NAME")) {
 			String productName = (String) data;
@@ -69,9 +72,3 @@ public class TS05 extends BaseClass  implements ICallback{
 	}
 }
 
-//	@Then("Create two Accounts with given {string}")
-//	public void create_two_Accounts_with_given(String string) throws Exception {
-//		DealAccountCreator accountCreator = new DealAccountCreator();
-//		sourceAccountNo = accountCreator.createNewAccount(string);
-//		toAccountNo = accountCreator.createNewAccount(string);
-//	}

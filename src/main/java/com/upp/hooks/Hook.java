@@ -38,7 +38,7 @@ public class Hook extends BaseClass {
 	@AfterStep
 	public void AddScreenshot(Scenario scenario) throws IOException
 	{
-		
+	
 		if(scenario.isFailed())
 		{
 		//screenshot

@@ -64,23 +64,20 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
 		tm.transactions_TransactionIcon.click();
 		tm.transactions_TransactionMaker.click();
-
-		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon,Duration.ofSeconds(15));
 		jsClick.click(tm.transactions_AddNewButon);
-//		tm.transactions_AddNewButon.click();
-		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(10));
-		tm.transactions_DealId.sendKeys(dealId);
-		By transactions_DealId = By.xpath("//div[contains(text(),'" + dealId + "')]");
-		driver.findElement(transactions_DealId).click();
-		tm.transactions_SourceAccNo.sendKeys(sourceAccno);
-		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
-		driver.findElement(transactions_SouceAccno).click();
-		jsClick.click(tm.transactions_SubmitButton);
-		od.payments_BasicName.clear();
-		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Name"));
-		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Txn Maker", "Purpose"));
-		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
-				externalData.getFieldData(TSID, "Txn Maker", "Balance Consideration"));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId,Duration.ofSeconds(10));
+		tm.transactions_DealId.sendKeys(DealId);
+		By transactions_DealId = By.xpath("//div[contains(text(),'"+DealId+"')]");
+	    driver.findElement(transactions_DealId).click();
+	    tm.transactions_SourceAccNo.sendKeys(sourceAccno);
+		By transactions_SouceAccno = By.xpath("//div[contains(text(),'"+sourceAccno+"')]");
+	    driver.findElement(transactions_SouceAccno).click();
+	    jsClick.click(tm.transactions_SubmitButton);
+	    od.payments_BasicName.clear();
+		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID,"Txn Maker","Name"));
+		dropdown.selectByVisibleText(od.payments_Purpose,externalData.getFieldData(TSID,"Txn Maker","Purpose"));
+		dropdown.selectByVisibleText(od.payments_BalanceConsideration,externalData.getFieldData(TSID,"Txn Maker","Balance Consideration"));
 		Thread.sleep(2000);
 		if (((externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Yes"))) {

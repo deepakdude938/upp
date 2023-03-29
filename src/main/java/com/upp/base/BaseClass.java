@@ -69,6 +69,8 @@ public class BaseClass {
 				options.addArguments("--remote-allow-origins=*");
 				options.setExperimentalOption("prefs", chromePrefs);
 				WebDriverManager.chromedriver().setup();
+//				WebDriverManager.chromedriver().version("111.0.5563.64").setup();
+				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if (isHeadLess) {
 					options.addArguments("--headless", "--window-size=1296,696", "--no-sandbox", "--disable-gpu",

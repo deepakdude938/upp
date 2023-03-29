@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.joda.time.DateTimeConstants;
+import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import com.upp.base.BaseClass;
@@ -472,7 +474,7 @@ public class DashBoard_Module extends BaseClass {
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		od.deal_Product.sendKeys(productName);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+		
 		icallback.handleCallback("PRODUCT_NAME", productName);
 
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
@@ -507,75 +509,18 @@ public class DashBoard_Module extends BaseClass {
 		od.partyResponsibilityinput.sendKeys(input);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		driver.findElement(party_Responsibility_Option).click();
-
-		try {
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-			if (od.responsibilityAttributePopup.isDisplayed()) {
-				applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
-				od.saveButton.click();
-			}
-		} catch (Exception e) {
-			System.out.println("Normal flow ");
-		}
-		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
-		od.nextBtn.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-	}
-
-	public void createNewDeal_Old(String TSID) throws Exception {
-
-		od.deal_SideMenuIcon.click();
-		od.newDealButton.click();
-
-		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
-
-		// dropdown.selectByVisibleText(od.basicDetails_ProductDropDown,
-		// externalData.getFieldData(TSID,"Basic Details","Product"));
-
-		dropdown.selectByVisibleText(od.businessSegmentDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		dropdown.selectByVisibleText(od.countryIndiaDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Country"));
-		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
-		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes"))) {
-			od.beneficiariesCheckBox.click();
-		}
-
-		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
-
-		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
-			od.deals_ProcessingUnits.click();
-			od.deals_selectAll.click();
-			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
-			By ProcessingUnit = By.xpath(
-					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-							+ ProcessingUnits + "']");
-			driver.findElement(ProcessingUnit).click();
-		}
-
-		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		od.transactionCategory.click();
-		od.transactionCategoryInput.sendKeys(input);
-		By transaction_Category_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-		driver.findElement(transaction_Category_Option).click();
-		if (!od.basicDetails_SaveButton_List.isEmpty()) {
+		
+		if(commonutils.isElementDisplayed(od.responsibilityAttributePopup,1))
+		{
+			applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
 			od.saveButton.click();
 		}
-		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		od.partyResponsibility.click();
-		od.partyResponsibilityinput.sendKeys(input);
-		By party_Responsibility_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		driver.findElement(party_Responsibility_Option).click();
-
-		// od.saveButton.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
 	}
 
+	
 	public String submitDeal() throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
@@ -647,7 +592,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_ExecutionDate.click();
 
 		String day = dateutil.getDay();
-		By excecutionDay = By.xpath("(//a[normalize-space()='" + day + "'])[1]");
+		By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 		driver.findElement(excecutionDay).click();
 
@@ -668,25 +613,22 @@ public class DashBoard_Module extends BaseClass {
 		scroll.scrollInToView(od.payments_ToAccountDropdown);
 		dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
 		
-	
-		if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
+	   if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
 		scroll.scrollInToView(od.payments_beneficiaryBankBic);
 		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
 		}
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-		
 		
 		if(commonutils.isElementDisplayed(od.payments_senderPop,1)) {
 		scroll.scrollInToView(od.payments_senderPop);
 		od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
 		}
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
 		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
 		
@@ -699,15 +641,13 @@ public class DashBoard_Module extends BaseClass {
 		
 		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 		
-		
-		
 		scroll.scrollInToView(od.payments_Amount);
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
 		
 		if(commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode,1)) {
 		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
 		}
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
 
@@ -896,10 +836,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_DealOkButton.click();
 
 		return dealId;
-
-	}
-
-	
+}
 
 	public String twoEcommerceParties(String TSID, ICallback icallback) throws Exception {
 		String deal;
@@ -911,5 +848,4 @@ public class DashBoard_Module extends BaseClass {
 		approveDealFromDealChecker(deal);
 		return deal;
 	}
-
 }

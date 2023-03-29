@@ -26,7 +26,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 	public static ScrollTypes scroll;
 	public static JavascriptClick jsClick;
-	public static Object_Transactions tm;
+	public static Object_Transactions tm ;
 	public static CommonUtils commonutils;
 
 	public TransactionMaker_PaymentInstrumentHandler() {
@@ -36,7 +36,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		jsClick = new JavascriptClick(driver);
 		tm = new Object_Transactions();
 		externalData = new ExcelReader();
-		commonutils = new CommonUtils(driver);
+		commonutils=new CommonUtils(driver);
 	}
 
 	@Override
