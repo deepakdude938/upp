@@ -485,7 +485,6 @@ public class DashBoard_Module extends BaseClass {
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		od.deal_Product.sendKeys(productName);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		
 		icallback.handleCallback("PRODUCT_NAME", productName);
 
