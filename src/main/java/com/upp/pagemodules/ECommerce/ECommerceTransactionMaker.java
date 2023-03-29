@@ -93,7 +93,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 //		By instrument = By
 //				.xpath("//li[@id='lbl-generic-autocomplete-listItemOption1']//div[contains(text(),'" + inst + "')]");
 //		driver.findElement(instrument).click();
-		String input = externalData.getFieldData(TSID, "Ecomm Txn Maker", "Instrument category");
+		String input = externalData.getFieldData(TSID, "Ecomm Txn Maker", "Instrument - category");
 		ecomm.ecommerce_txnCategory.sendKeys(input);
 		By transaction_Category_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		driver.findElement(transaction_Category_Option).click();
@@ -103,8 +103,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 		String country = externalData.getFieldData(TSID, "Ecomm Txn Maker", "Beneficiary Country Of Incorporation");
 		dropdown.selectByVisibleText(ecomm.ecommerce_beneficiaryCountry, country);
 		ecomm.ecommerce_txnSubCategory.click();
-		ecomm.ecommerce_txnSubCategoryValue.sendKeys("1");
-		ecomm.ecommerce_addSubInstruction.click();
+//		ecomm.ecommerce_txnSubCategoryValue.sendKeys("1");
+//		ecomm.ecommerce_addSubInstruction.click();
 		ecomm.ecommerce_addSubInstruction.click();
 		ecomm.ecommerce_nextSubInstruction.click();
 

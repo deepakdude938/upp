@@ -20,6 +20,9 @@ Then Submit the deal to transaction verifier
 Then Logout from Application
 Then Login to the application as "txn_verifier"
 Then Transaction verifier approve deal 
+
+
+
 Examples:
       |TcId|
       |TS04|

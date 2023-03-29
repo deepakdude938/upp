@@ -47,10 +47,10 @@ public class TS04 extends BaseClass implements ICallback {
 
 	}
 
-//	@Then("approve the deal from the deal checker")
-//	public void approve_the_deal_from_the_deal_checker() throws Exception {
-//		dm.approveDealFromDealChecker(dealId);
-//	}
+	@Then("approve the deal from the deal checker")
+	public void approve_the_deal_from_the_deal_checker() throws Exception {
+		dm.approveDealFromDealChecker(dealId);
+	}
 
 	@Then("Submit the deal to transaction checker")
 	public void submit_the_deal_to_transaction_checker() throws Exception {

@@ -395,9 +395,9 @@ public class DashBoard_Module extends BaseClass {
 		jsClick.click(od.dealChecker_okCommentbutton);
 		jsClick.click(od.dealChecker_approveAllRadioButton);
 		od.dealChecker_ApproveButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(20));
 		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(20));
 		od.payments_DealOkButton.click();
 		TimeUnit.SECONDS.sleep(5);
 
@@ -611,7 +611,6 @@ public class DashBoard_Module extends BaseClass {
 						+ InstructionType + "']");
 		applyExplicitWaitsUntilElementVisible(InstructionButton, 10);
 		driver.findElement(InstructionButton).click();
-
 		applyExplicitWaitsUntilElementClickable(od.payments_Proceed, Duration.ofSeconds(5));
 		od.payments_Proceed.click();
 		od.payments_BasicName.clear();
@@ -906,7 +905,7 @@ public class DashBoard_Module extends BaseClass {
 		String deal;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParties(TSID, icallback);
-		//od.accountIcon.click();
+		od.accountBackbtn.click();
 		creator.createParties(TSID, icallback);
 		deal = submitDeal();
 		approveDealFromDealChecker(deal);

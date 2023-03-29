@@ -44,16 +44,20 @@ public class DealLinkedInstruction_PaymentInstrumentHandler extends BaseClass im
 		driver.findElement(instrument).click();
 		od.linkedInstruction_ToAccountddl.sendKeys(toaccountNo);
 		By toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+		System.out.println(toaccountselect);
 		driver.findElement(toaccountselect).click();
+		applyExplicitWaitsUntilElementClickable(od.linkedInstruction_accountOrIban, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.linkedInstruction_accountOrIban, " ACCOUNTNUMBER ");
 		od.linkedInstruction_Amount.sendKeys(externalData.getFieldData(TSID, "Linked", "Amount"));
-		od.linkedInstruction_beneficiaryName.sendKeys("test");
-		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys("test345");
-		od.linkedInstruction_beneficiaryAddressl.sendKeys("sdfsd");
+		od.linkedInstruction_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Name"));
+		od.parties_Accounts_beneficiaryBankIfscCode
+				.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary bank IFSC code"));
+		od.linkedInstruction_beneficiaryAddressl
+				.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Address Line 1"));
 		dropdown.selectByVisibleText(od.linkedInstruction_beneficiaryCountry, "IN");
 		dropdown.selectByVisibleText(od.linkedInstruction_Incorporationddl,
 				externalData.getFieldData(TSID, "Linked", "Beneficiary Country Of Incorporation"));
-
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
 
 }

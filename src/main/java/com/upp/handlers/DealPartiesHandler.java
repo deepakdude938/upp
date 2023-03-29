@@ -29,13 +29,14 @@ public class DealPartiesHandler extends BaseClass {
 	public String responsibilities;
 	public String ecommerce;
 	public static Object_Parties op;
+
 	public DealPartiesHandler() {
 		od = new Object_NewDeal();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
-		op=new Object_Parties();
+		op = new Object_Parties();
 	}
 
 	public void handleAddNewParty(String TSID, ICallback icallback) throws Exception {
@@ -52,21 +53,22 @@ public class DealPartiesHandler extends BaseClass {
 			new EcommerceHandler().handleEcommerce(TSID);
 		} else {
 			od.parties_BasicNextButton.click();
-			od.parties_AddContact.click();
-			od.parties_ContactName.sendKeys(externalData.getFieldData(TSID, "Party", "Contact Name"));
-			if ((externalData.getFieldData(TSID, "Party", "Authorised signatory-check box")).equalsIgnoreCase("Y")) {
-				od.parties_AuthrorizedSignatoryYes.click();
-			}
+
+		}
+		od.parties_AddContact.click();
+		od.parties_ContactName.sendKeys(externalData.getFieldData(TSID, "Party", "Contact Name"));
+		if ((externalData.getFieldData(TSID, "Party", "Authorised signatory-check box")).equalsIgnoreCase("Y")) {
+			od.parties_AuthrorizedSignatoryYes.click();
 			od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
 			od.parties_AddButton.click();
 			od.parties_AccountsTab.click();
 			od.parties_AddAccounts.click();
-			
+
 			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 			od.parties_PaymentSystem.click();
-			String paymentInstrument =externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
-			icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT",paymentInstrument);
-			
+			String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
+			icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
+
 			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
 			od.parties_DocumentsTab.click();
 			od.parties_AddDocument.click();
@@ -89,7 +91,7 @@ public class DealPartiesHandler extends BaseClass {
 				applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 				od.payments_ExecutionDate.click();
 				String day = dateutil.getDay();
-				By excecutionDay = By.xpath("(//a[normalize-space()='"+day+"'])[1]");
+				By excecutionDay = By.xpath("(//a[normalize-space()='" + day + "'])[1]");
 				applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 				driver.findElement(excecutionDay).click();
 				od.parties_DocumentsAddButton.click();
@@ -98,35 +100,34 @@ public class DealPartiesHandler extends BaseClass {
 	}
 
 	public void handleLinkedExistingParty(String TSID) throws Exception {
-		
+
 		applyExplicitWaitsUntilElementClickable(op.Party_linkExistingParty, Duration.ofSeconds(5));
-		 op.Party_linkExistingParty.click();
-		 op.Party_linkPartyDetails_customerId.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
-		 applyExplicitWaitsUntilElementClickable(op.Party_linkPartyDetails_searchButton, Duration.ofSeconds(5));
-		 op.Party_linkPartyDetails_searchButton.click();
-		 op.Party_selectPartyCircle.click();
+		op.Party_linkExistingParty.click();
+		op.Party_linkPartyDetails_customerId.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
+		applyExplicitWaitsUntilElementClickable(op.Party_linkPartyDetails_searchButton, Duration.ofSeconds(5));
+		op.Party_linkPartyDetails_searchButton.click();
+		op.Party_selectPartyCircle.click();
 		od.parties_addPartyPlusIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.parties_Responsibility, Duration.ofSeconds(5));
-		 od.parties_Responsibility.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_Responsibility, Duration.ofSeconds(5));
+		od.parties_Responsibility.click();
 		od.parties_Responsibility_dropdown.click();
 		od.parties_BasicNextButton.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_AddContact,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(10));
 		od.parties_AddContact.click();
 		od.parties_LinkPartyCheckboxIcon.click();
 		od.parties_ConatctPlusIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab, Duration.ofSeconds(10));
 		od.parties_AccountsTab.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_AddAccounts,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_AddAccounts, Duration.ofSeconds(10));
 		od.parties_AddAccounts.click();
 		od.parties_LinkPartyCheckboxIcon.click();
 		od.parties_AccountPlusIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(10));
 		od.parties_DocumentsTab.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_AddDocument,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_AddDocument, Duration.ofSeconds(10));
 		od.parties_AddDocument.click();
 		od.parties_LinkPartyCheckboxIcon.click();
 		od.parties_DocumentsPlusIcon.click();
-		
 
 	}
 }
