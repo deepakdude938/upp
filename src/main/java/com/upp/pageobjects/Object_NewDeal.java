@@ -561,6 +561,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath ="(//i[@id='ic-instructions-tabSweepIn-next-v1'])[1]")
 	public WebElement payments_SweepinNextButton;
+	
 	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-frequency-v1']")
 	public WebElement budget_Interval;
 	

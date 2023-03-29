@@ -485,11 +485,12 @@ public class DashBoard_Module extends BaseClass {
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		od.deal_Product.sendKeys(productName);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		icallback.handleCallback("PRODUCT_NAME", productName);
 
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Country"));
-		
+
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
 		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes"))) {
 			od.beneficiariesCheckBox.click();
@@ -520,17 +521,73 @@ public class DashBoard_Module extends BaseClass {
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		driver.findElement(party_Responsibility_Option).click();
 
-		if(commonutils.isElementDisplayed(od.responsibilityAttributePopup,1))
-		{
-			applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
-			od.saveButton.click();
+		try {
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+			if (od.responsibilityAttributePopup.isDisplayed()) {
+				applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
+				od.saveButton.click();
+			}
+		} catch (Exception e) {
+			System.out.println("Normal flow ");
 		}
-		
 		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 	}
 
-	
+	public void createNewDeal_Old(String TSID) throws Exception {
+
+		od.deal_SideMenuIcon.click();
+		od.newDealButton.click();
+
+		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
+
+		// dropdown.selectByVisibleText(od.basicDetails_ProductDropDown,
+		// externalData.getFieldData(TSID,"Basic Details","Product"));
+
+		dropdown.selectByVisibleText(od.businessSegmentDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
+		dropdown.selectByVisibleText(od.countryIndiaDropDown,
+				externalData.getFieldData(TSID, "Basic Details", "Country"));
+		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
+		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes"))) {
+			od.beneficiariesCheckBox.click();
+		}
+
+		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
+
+		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
+			od.deals_ProcessingUnits.click();
+			od.deals_selectAll.click();
+			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
+			By ProcessingUnit = By.xpath(
+					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+							+ ProcessingUnits + "']");
+			driver.findElement(ProcessingUnit).click();
+		}
+
+		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
+		od.transactionCategory.click();
+		od.transactionCategoryInput.sendKeys(input);
+		By transaction_Category_Option = By.xpath(
+				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+						+ input + "']");
+		applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+		driver.findElement(transaction_Category_Option).click();
+		if (!od.basicDetails_SaveButton_List.isEmpty()) {
+			od.saveButton.click();
+		}
+		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
+		od.partyResponsibility.click();
+		od.partyResponsibilityinput.sendKeys(input);
+		By party_Responsibility_Option = By.xpath(
+				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
+						+ input + "']");
+		driver.findElement(party_Responsibility_Option).click();
+
+		// od.saveButton.click();
+		od.nextBtn.click();
+	}
 
 	public String submitDeal() throws Exception {
 
@@ -602,9 +659,9 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_SweepinNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
-		
+
 		String day = dateutil.getDay();
-		By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
+		By excecutionDay = By.xpath("(//a[normalize-space()='" + day + "'])[1]");
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 		driver.findElement(excecutionDay).click();
 
@@ -630,6 +687,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
 		}
 		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown
@@ -640,6 +698,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
 		}
 		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
 		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
 		
@@ -658,7 +717,7 @@ public class DashBoard_Module extends BaseClass {
 		if(commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode,1)) {
 		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
 		}
-	
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
 
