@@ -117,7 +117,8 @@ public class Object_Parties extends BaseClass{
 	@FindBy(xpath="(//dd[@class='ng-star-inserted'])[2]")
 	public WebElement Party_PartiesNumber;
 	
-	
+	@FindBy(xpath="(//div[normalize-space()='Inactive'])[1]")
+	public WebElement PartyMaker_Status_Inactive;
 	
 	
 }

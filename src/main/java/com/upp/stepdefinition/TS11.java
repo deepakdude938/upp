@@ -51,7 +51,7 @@ public class TS11 extends BaseClass implements ICallback {
 	public void add_the_Party_through_Api_call(String string) throws Exception {
 		loginApi.loginToUpp();
 		partyApi.createParty(TS06.dealId,string);
-		logoutApi.logOut();
+		
 	}
 
 	@Then("Open and Edit the live deal")
@@ -63,6 +63,19 @@ public class TS11 extends BaseClass implements ICallback {
 	public void verify_that_Party_Api_got_addded_in_the_live_deal() throws Exception {
 		partApiAdded.Verify_PartyApiAdded(TS06.dealId);
 	}
+	
+	@Then("call the GET Party Api with given {string}")
+	public void call_the_GET_Party_Api_with_given(String string) throws Exception {
+		partyApi.getParty(TS06.dealId,string);
+		
+	}
+
+	@Then("Update the Pary Api With given {string}")
+	public void update_the_Pary_Api_With_given(String string) throws Exception {
+	    partyApi.updateParty(TS06.dealId,string);
+	    logoutApi.logOut();
+	}
+
 
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
