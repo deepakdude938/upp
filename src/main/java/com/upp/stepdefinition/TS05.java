@@ -13,15 +13,17 @@ public class TS05 extends BaseClass  implements ICallback{
 	
 	
 	
-	public DashBoard_Module dm;
+	public Budget dm;
 	public String tsid;
 	public static String sourceAccountNo = "";
 	public static String toAccountNo = "";
-//	public static String dealId = "";
+	public DashBoard_Module dm1;
 
 
-	public TS05(DashBoard_Module dm) {
-		this.dm = new DashBoard_Module();
+	public TS05() {
+		this.dm = new Budget();
+		this.dm1 = new DashBoard_Module();
+
 	}
 	
 	@Then("Create a Budget with given {string}")
@@ -38,7 +40,9 @@ public class TS05 extends BaseClass  implements ICallback{
 	
 	@Then("Approve the deal from the deal checker")
 	public void approve_the_deal_from_the_deal_checker() throws Exception {
-		dm.approveDealFromDealChecker_Old(dealId);
+
+		dm1.approveDealFromDealChecker_Old(dealId);
+
 	}
 	
 	

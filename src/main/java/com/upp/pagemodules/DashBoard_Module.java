@@ -329,8 +329,8 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	public String createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
-
+	public String createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo,ICallback icallback) throws Exception {
+		String dealid ;
 		od.linkedInstruction_linkedBtn.click();
 		od.linkedInstruction_addAccountBtn.click();
 		System.out.println(TSID);
@@ -364,27 +364,16 @@ public class DashBoard_Module extends BaseClass {
 		od.linkedInstruction_TimePicker.clear();
 		od.linkedInstruction_TimePicker.sendKeys(timem);
 		od.linkedInstruction_ScheduleNextBtn.click();
-		od.linkedInstruction_Instrumentddl.sendKeys(externalData.getFieldData(TSID, "Linked", "Instrument"));
-		String inst = externalData.getFieldData(TSID, "Linked", "Instrument");
-		By instrument = By
-				.xpath("//li[@id='lbl-generic-autocomplete-listItemOption1']//div[contains(text(),'" + inst + "')]");
-		driver.findElement(instrument).click();
-		od.linkedInstruction_ToAccountddl.sendKeys(toaccountNo);
-		By toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
-		driver.findElement(toaccountselect).click();
-		dropdown.selectByVisibleText(od.linkedInstruction_Incorporationddl,
-				externalData.getFieldData(TSID, "Linked", "Beneficiary Country Of Incorporation"));
-
-		od.linkedInstruction_BankBic.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Bank Bic"));
-		od.linkedInstruction_Amount.sendKeys(externalData.getFieldData(TSID, "Linked", "Amount"));
+		String instrumentName = externalData.getFieldData(TSID, "Linked", "Instrument");
+		icallback.handleCallback("Instrument_NAME", instrumentName);		
 		od.linkedInstruction_AddBtn.click();
 		od.linkedInstruction_Summary.click();
-		String dealid = od.deals_SummaryRefId.getText();
+		dealid = od.deals_SummaryRefId.getText();
 		od.linkedInstruction_Submit.click();
 		od.linkedInstruction_YesBtn.click();
 		od.linkedInstruction_OkBtn.click();
 
-		System.out.println("Deal id = " + dealid);
+	System.out.println("Deal id = " + dealid);
 		return dealid;
 
 	}
@@ -408,9 +397,9 @@ public class DashBoard_Module extends BaseClass {
 		jsClick.click(od.dealChecker_okCommentbutton);
 		jsClick.click(od.dealChecker_approveAllRadioButton);
 		od.dealChecker_ApproveButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(20));
 		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(20));
 		od.payments_DealOkButton.click();
 		TimeUnit.SECONDS.sleep(5);
 
@@ -485,11 +474,12 @@ public class DashBoard_Module extends BaseClass {
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		od.deal_Product.sendKeys(productName);
+		
 		icallback.handleCallback("PRODUCT_NAME", productName);
 
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Country"));
-		
+
 		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
 		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes"))) {
 			od.beneficiariesCheckBox.click();
@@ -518,8 +508,9 @@ public class DashBoard_Module extends BaseClass {
 		od.partyResponsibility.click();
 		od.partyResponsibilityinput.sendKeys(input);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option,2);
 		driver.findElement(party_Responsibility_Option).click();
-
+		
 		if(commonutils.isElementDisplayed(od.responsibilityAttributePopup,1))
 		{
 			applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
@@ -531,7 +522,6 @@ public class DashBoard_Module extends BaseClass {
 	}
 
 	
-
 	public String submitDeal() throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
@@ -567,7 +557,6 @@ public class DashBoard_Module extends BaseClass {
 						+ InstructionType + "']");
 		applyExplicitWaitsUntilElementVisible(InstructionButton, 10);
 		driver.findElement(InstructionButton).click();
-
 		applyExplicitWaitsUntilElementClickable(od.payments_Proceed, Duration.ofSeconds(5));
 		od.payments_Proceed.click();
 		od.payments_BasicName.clear();
@@ -602,7 +591,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_SweepinNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
-		
+
 		String day = dateutil.getDay();
 		By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
@@ -640,6 +629,7 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
 		}
 		
+		
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
 		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
 		
@@ -658,7 +648,7 @@ public class DashBoard_Module extends BaseClass {
 		if(commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode,1)) {
 		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
 		}
-	
+		
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
 
@@ -853,7 +843,7 @@ public class DashBoard_Module extends BaseClass {
 		String deal;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParties(TSID, icallback);
-		//od.accountIcon.click();
+		od.accountBackbtn.click();
 		creator.createParties(TSID, icallback);
 		deal = submitDeal();
 		approveDealFromDealChecker(deal);

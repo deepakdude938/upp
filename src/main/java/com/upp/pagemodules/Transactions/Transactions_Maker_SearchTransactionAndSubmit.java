@@ -31,6 +31,7 @@ import callbackInterfaces.ICallback;
 public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 
 	public static Object_NewDeal od;
+	public static  Object_Transactions tm;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -43,7 +44,7 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
-	 public static Object_Transactions tm ;
+	
 	public Transactions_Maker_SearchTransactionAndSubmit() {
 
 		od = new Object_NewDeal();
@@ -62,8 +63,8 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 	public void txnMaker_SubmitDeal(String dealid) throws Exception {
 		System.out.println("deal id in maker = " + dealid);
 		TimeUnit.MINUTES.sleep(waitingTime);
-		od.TxnMaker_Transaction.click();
-		od.TxnMaker_TrasactionMaker.click();
+		tm.transactions_TransactionIcon.click();
+		tm.transactions_TransactionMaker.click();
 
 		od.TxnMaker_searchDealId.sendKeys(dealid);
 

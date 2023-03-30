@@ -20,11 +20,13 @@ public class TS10 extends BaseClass  implements ICallback{
 	public Holiday hd;
 	public Payment pm;
 	public Payment_Summary ps;
+
 	
 	public TS10() {
 		this.hd = new Holiday();
 		this.pm = new Payment();
 		this.ps = new Payment_Summary();
+	
 	}
 	
 	

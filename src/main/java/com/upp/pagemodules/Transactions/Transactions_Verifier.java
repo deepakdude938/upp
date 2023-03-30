@@ -101,14 +101,15 @@ public class Transactions_Verifier extends BaseClass {
 	public void txnVerifier_ApproveDeal(String dealId) {
 		// TODO Auto-generated method stub
 		od.TxnChecker_Transaction.click();
-		//od.TxnVerifier_TrasactionVerifier.click();
+		tm.transactions_TransactionVerifier.click();
+		
 		od.TxnChecker_searchDealId.sendKeys(dealId);
 		od.TxnChecker_comment.click();
 		od.TxnChecker_note.sendKeys("Ok");
 		od.TxnChecker_ok.click();
 		od.TxnChecker_txnCheckbox.click();
 		od.TxnChecker_submitBtn.click();
-		//od.TxnChecker_yesBtn.click();
+		tm.transactions_YesButton.click();
 		od.TxnChecker_okBtn.click();
 	}
 

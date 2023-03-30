@@ -124,6 +124,7 @@ public class Object_Transactions extends BaseClass{
 	@FindBy(xpath="(//div[@role='gridcell'])[4]")
 	public WebElement reports_ScroeStatus;
 	
+	//object for LT-IN
 	@FindBy(xpath = "//ui-autocomplete[contains(@id,'instruction-fundTransferSubInstruction-paymentInstrument')]")
 	public WebElement transactions_instruments;
 	
@@ -156,5 +157,6 @@ public class Object_Transactions extends BaseClass{
 	
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement transactions_addSubInstruction;
+	
 	
 }
