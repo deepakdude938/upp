@@ -28,6 +28,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
+
 public class Transactions_Maker_BasicDetails extends BaseClass {
 
 	public static Object_NewDeal od;
@@ -43,7 +44,8 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
-	 public static Object_Transactions tm ;
+	public static Object_Transactions tm;
+
 	public Transactions_Maker_BasicDetails() {
 
 		od = new Object_NewDeal();
@@ -54,14 +56,12 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
-		tm=new Object_Transactions();
+		tm = new Object_Transactions();
 
 	}
 
-	
-	public void Transactions_Maker_BasicDetails(String TSID,String DealId,String sourceAccno) throws Exception
-	{
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon,Duration.ofSeconds(15));
+	public void Transactions_Maker_BasicDetails(String TSID, String DealId, String sourceAccno) throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
 		tm.transactions_TransactionIcon.click();
 		tm.transactions_TransactionMaker.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon,Duration.ofSeconds(15));
@@ -79,11 +79,12 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		dropdown.selectByVisibleText(od.payments_Purpose,externalData.getFieldData(TSID,"Txn Maker","Purpose"));
 		dropdown.selectByVisibleText(od.payments_BalanceConsideration,externalData.getFieldData(TSID,"Txn Maker","Balance Consideration"));
 		Thread.sleep(2000);
-		if(((externalData.getFieldData(TSID,"Txn Maker","Split")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID,"Txn Maker","Split")).equalsIgnoreCase("Yes"))){
+		if (((externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Yes"))) {
 			od.payments_SplitBalanceSlider.click();
 		}
 		od.payments_NextArrowButtonTransferBasic.click();
-		
+
 	}
-	
+
 }

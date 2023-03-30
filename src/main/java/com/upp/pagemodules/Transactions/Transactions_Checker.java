@@ -107,7 +107,7 @@ public class Transactions_Checker extends BaseClass {
 		od.TxnChecker_ok.click();
 		od.TxnChecker_txnCheckbox.click();
 		od.TxnChecker_submitBtn.click();
-		// od.TxnChecker_yesBtn.click();
+		tm.transactions_YesButton.click();
 		od.TxnChecker_okBtn.click();
 	}
 

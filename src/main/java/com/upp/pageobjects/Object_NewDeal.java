@@ -116,6 +116,11 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "((//div[@col-id='accountNumber'])[2]")
 	public WebElement ecommerceAccount;
 	
+	@FindBy (xpath = "//div[@title='Accounts']/i")
+	public WebElement accountIcon;
+	
+	@FindBy(id="ic-parties-addUpdateParty-back-v1")
+	public WebElement accountBackbtn;
 	//	Objects for Linked Instructions
 
 	@FindBy(xpath = "//div[@title='Linked']/i")
@@ -151,8 +156,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-instructions-tabLinkedConfig-next-v1")
 	public WebElement linkedInstruction_LinkedConfigNextBtn;
 	
-	@FindBy(id="ic-instructions-tabSweepIn-next-v1")
-	public WebElement linkedInstruction_sweepNext;
+
 
 	@FindBy(xpath = "//td[contains(@class,' ui-day-today')]")
 	public WebElement linkedInstruction_Todaydate;
@@ -177,15 +181,30 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "payment-amount-txt-v1")
 	public WebElement linkedInstruction_Amount;
+	
+	@FindBy(id = "payment-beneficiaryName-txt-v1")
+	public WebElement linkedInstruction_beneficiaryName;
+	
+	@FindBy(xpath = "//select[@id='payment-accountOrIban-sel-v1']")
+	public WebElement linkedInstruction_accountOrIban;
 
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
 	public WebElement linkedInstruction_ToAccountddl;
+	
+	@FindBy(id = "payment-beneficiaryAddressLine1-txt-v1")
+	public WebElement linkedInstruction_beneficiaryAddressl;
+
+	@FindBy(xpath = "//select[@id='payment-beneficiaryCountry-sel-v1']")
+	public WebElement linkedInstruction_beneficiaryCountry;
 
 	@FindBy(xpath = "//div[@class='ng-tns-c92-334 ng-star-inserted']")
 	public WebElement linkedInstruction_ToAccountValue;
 
 	@FindBy(xpath = "//select[@id='payment-beneficiaryCountryOfIncorporation-sel-v1']")
 	public WebElement linkedInstruction_Incorporationddl;
+	
+	@FindBy(id="ic-instructions-tabSweepIn-next-v1")
+	public WebElement linkedInstruction_sweepNext;
 
 	@FindBy(id = "payment-beneficiaryBankBic-txt-v1")
 	public WebElement linkedInstruction_BankBic;
@@ -211,7 +230,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//button[normalize-space()='Yes'])[1]")
 	public WebElement payments_DealYesButton;
 
-	@FindBy(xpath = "(//button[normalize-space()='OK'])[1]")
+	@FindBy(xpath = "(//button[text()='OK'])[1]")
 	public WebElement payments_DealOkButton;
 
 	// dealChecker objects
@@ -306,7 +325,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//div[@title='Parties']/i")
 	public WebElement parties_icon;
 
-	@FindBy(id = "btn-parties-parties-getStarted-v1")
+	@FindBy(id = "ic-parties-partiesList-addParty-v1")
 	public WebElement parties_GetStarted;
 
 	@FindBy(id = "btn-parties-addLinkParty-addNewParty-v1")
@@ -359,7 +378,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "btn-generic-partyContacts-addUpdate-v1")
 	public WebElement parties_AddButton;
 
-	@FindBy(xpath = "//p[normalize-space()='Accounts']")
+	@FindBy(xpath = "//p[text()='Accounts']")
 	public WebElement parties_AccountsTab;
 
 	@FindBy(id = "btn-generic-partyAccounts-getStarted-v1")
@@ -561,6 +580,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath ="(//i[@id='ic-instructions-tabSweepIn-next-v1'])[1]")
 	public WebElement payments_SweepinNextButton;
+	
 	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-frequency-v1']")
 	public WebElement budget_Interval;
 	

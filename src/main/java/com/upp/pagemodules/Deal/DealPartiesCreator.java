@@ -11,6 +11,7 @@ import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
+import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
@@ -28,7 +29,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DealPartiesCreator extends BaseClass {
 
-	public static Object_Deal od;
+	public static Object_NewDeal od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -45,7 +46,7 @@ public class DealPartiesCreator extends BaseClass {
 
 	public DealPartiesCreator() {
 
-		od = new Object_Deal();
+		od = new Object_NewDeal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		odpAccount = new OdpApi();

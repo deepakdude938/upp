@@ -57,7 +57,7 @@ public class Object_Ecommerce extends BaseClass {
 	public WebElement ecommerce_saveAndContinue;
 
 	// Object for Sub instruction on ecomm treansaction maker
-	@FindBy(xpath = "//input[@placeholder='Creditor Participant Id']")
+	@FindBy(xpath = "//ui-autocomplete[@id='sel-fdt-participant-id-v1']//input[@placeholder='Creditor Participant Id']")
 	public WebElement ecommerce_creatorParticipant;
 
 	@FindBy(xpath = "(//li[@id='lbl-generic-autocomplete-listItemOption0']//div//div)[3]")
@@ -163,6 +163,15 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "//button[text()='Yes']")
 	public WebElement ecommerce_yesBtn;
+	
+	@FindBy(xpath = "(//div[@col-id ='warnings'])[2]")
+	public WebElement ecommerce_warning;
+	
+	//Object for  E-commerce verifier
+	
+	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONVERIFIER']")
+	public WebElement ecommerce_txnVerifier;
+
 	
 	
 }

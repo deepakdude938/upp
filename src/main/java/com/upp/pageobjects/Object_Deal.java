@@ -53,7 +53,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement deals_ProcessingUnits;
 
-	@FindBy(xpath = "//span[@class='ng-tns-c92-7 ui-autocomplete-list-item-option']")
+	@FindBy(xpath = "//span[contains(text(),'Select All')]")
 	public WebElement deals_selectAll;
 
 	@FindBy(id = "btn-deals-basicDetails-next-v1")
