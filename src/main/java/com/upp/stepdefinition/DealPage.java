@@ -48,6 +48,8 @@ public class DealPage extends BaseClass implements ICallback {
 	public void create_new_deal_with_basic_details_with_given(String TSID) throws Exception {
 		BasicDetails createDeal = new BasicDetails();
 		createDeal.createDealBasicDetails(TSID, this);
+//		DealBasicDetailCreators deal=new DealBasicDetailCreators();
+//		deal.createDealBasicDetails(TSID,this);
 	}
 
 	@Then("Create two Accounts with given {string}")

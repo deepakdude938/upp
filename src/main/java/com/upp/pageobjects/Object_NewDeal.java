@@ -156,8 +156,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-instructions-tabLinkedConfig-next-v1")
 	public WebElement linkedInstruction_LinkedConfigNextBtn;
 	
-	@FindBy(id="ic-instructions-tabSweepIn-next-v1")
-	public WebElement linkedInstruction_sweepNext;
+
 
 	@FindBy(xpath = "//td[contains(@class,' ui-day-today')]")
 	public WebElement linkedInstruction_Todaydate;
