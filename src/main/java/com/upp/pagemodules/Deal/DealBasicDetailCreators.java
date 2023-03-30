@@ -102,6 +102,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.partyResponsibility.click();
 		od.partyResponsibilityinput.sendKeys(input);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option,2);
 		driver.findElement(party_Responsibility_Option).click();
 
 		try {

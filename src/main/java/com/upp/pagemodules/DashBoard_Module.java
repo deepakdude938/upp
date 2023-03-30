@@ -508,6 +508,7 @@ public class DashBoard_Module extends BaseClass {
 		od.partyResponsibility.click();
 		od.partyResponsibilityinput.sendKeys(input);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option,2);
 		driver.findElement(party_Responsibility_Option).click();
 		
 		if(commonutils.isElementDisplayed(od.responsibilityAttributePopup,1))
