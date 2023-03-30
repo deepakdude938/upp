@@ -52,4 +52,13 @@ return modifiedJsonString;
 				+ "    \"password\":\""+api_password+"\"\r\n"
 				+ "}";
 	}
+	
+	public static String updateParty(String dealId,String TSID) throws IOException, Exception
+	{
+		externalData = new ExcelReader();
+		String payLoadString =externalData.getFieldData(TSID, "PArty API", "Payload");
+	    
+		return payLoadString;
+		 
+	}
 }

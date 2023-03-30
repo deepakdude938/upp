@@ -5,6 +5,7 @@ import org.testng.AssertJUnit;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.Select;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
@@ -87,6 +88,21 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		{
 			System.out.println("Party successfully added through Api");
 		}
+		
+		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
+		 od.dealChecker_showMenu.click();
+		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
+		 od.deal_EditIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(10));
+		 od.payments_DealsummaryIcon.click();
+		 
+		 scroll.scrollInToView(op.PartyMaker_Status_Inactive);
+		 applyExplicitWaitsUntilElementClickable(op.PartyMaker_Status_Inactive,Duration.ofSeconds(5));
+		String status= op.PartyMaker_Status_Inactive.getText();
+		System.out.println("The status is "+status);
+		Assert.assertEquals("Inactive",status);
+		 
+
 	}
 
 }
