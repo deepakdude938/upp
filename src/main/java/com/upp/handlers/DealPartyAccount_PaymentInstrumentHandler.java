@@ -85,6 +85,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentType, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.parties_PaymentType,"BT");
 		
+		System.out.println(externalData.getFieldData(TSID, "Party", "Beneficiary bank IFSC code"));
 		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary bank IFSC code"));
 		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Name"));
 		

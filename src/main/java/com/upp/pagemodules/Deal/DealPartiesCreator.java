@@ -69,5 +69,11 @@ public class DealPartiesCreator extends BaseClass {
 			partyHandler.handleLinkedExistingParty(TSID);
 		}
 	}
+	
+	public void createPeatiesWith1DebitorAnd2Creditor(String TSID, ICallback icallback) throws Exception {
+		createParties(TSID, icallback);
+		od.accountBackbtn.click();
+		createParties(TSID, icallback);
+	}
 
 }
