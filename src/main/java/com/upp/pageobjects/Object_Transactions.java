@@ -158,5 +158,16 @@ public class Object_Transactions extends BaseClass{
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement transactions_addSubInstruction;
 	
+	@FindBy(xpath="(//div[contains(text(),'eComm Executions')])[2]")
+	public WebElement reports_eCommExecutions;
+	
+	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[3]")
+	public WebElement reports_endToendId;
+	
+	@FindBy(xpath="//div[@col-id='Amount']")
+	public WebElement reports_Amount;
+	
+	@FindBy(xpath="(//div[@class='ag-body-horizontal-scroll-viewport'])[1]")
+	public WebElement reports_horizontalWindow;
 	
 }

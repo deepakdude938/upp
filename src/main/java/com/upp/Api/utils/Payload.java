@@ -61,4 +61,24 @@ return modifiedJsonString;
 		return payLoadString;
 		 
 	}
+	public static String createEcommerceTnx(String dealId,String TSID) throws IOException, Exception
+	{
+		externalData = new ExcelReader();
+		String payLoadString =externalData.getFieldData(TSID, "Ecommerce Tnx Api", "Payload");
+		
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+	    String random = Long.toString(number);
+	    
+	     String UniqueplatformRefNo="cplate"+random;
+
+	     ObjectMapper objectMapper = new ObjectMapper();
+		 JsonNode rootNode = objectMapper.readTree(payLoadString);
+		 JsonNode nodeToModify = rootNode.path("paymentInfo");
+		 
+		 ((ObjectNode) nodeToModify).put("platformRefNo",UniqueplatformRefNo);
+		 String modifiedJsonString = objectMapper.writeValueAsString(rootNode);
+	    
+		return modifiedJsonString;
+		 
+	}
 }

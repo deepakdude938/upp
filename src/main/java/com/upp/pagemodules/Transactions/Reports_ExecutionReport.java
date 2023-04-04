@@ -3,6 +3,7 @@ package com.upp.pagemodules.Transactions;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
@@ -92,6 +93,45 @@ public class Reports_ExecutionReport extends BaseClass {
 			}
 		}
 		
+	}
+	
+	
+	public void eCommExecutionsReport(String EndToEndId,String DealId) throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon,Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal,Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,Duration.ofSeconds(5));
+		tm.reports_searchBox.sendKeys("eComm Executions");
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutions,Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommExecutions);
+		applyExplicitWaitsUntilElementClickable(tm.reports_endToendId,Duration.ofSeconds(5));
+		tm.reports_endToendId.sendKeys(EndToEndId);
+		
+		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow,1800);
+		
+		Thread.sleep(3000);
+		
+		By Amount1 = By.xpath("//div[normalize-space()='925']");
+		applyExplicitWaitsUntilElementVisible(Amount1,3);
+		String amount1=driver.findElement(Amount1).getText();
+		System.out.println("the amount1 is:"+amount1);
+	
+		By Amount2 = By.xpath("//div[normalize-space()='75']");
+		applyExplicitWaitsUntilElementVisible(Amount2,3);
+		String amount2=driver.findElement(Amount2).getText();
+		System.out.println("the amount2 is:"+amount2);
+		
+		if(!(amount1.equalsIgnoreCase("925")))
+		{
+			Assert.fail("Amount is mismatched");
+		}
+		
+		if(!(amount2.equalsIgnoreCase("75")))
+		{
+			Assert.fail("Amount is mismatched");
+		}
 	}
 	
 }
