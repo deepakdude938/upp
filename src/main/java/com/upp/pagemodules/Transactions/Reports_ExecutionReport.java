@@ -123,6 +123,16 @@ public class Reports_ExecutionReport extends BaseClass {
 		String amount2=driver.findElement(Amount2).getText();
 		System.out.println("the amount2 is:"+amount2);
 		
+		By Status=By.xpath("//div[normalize-space()='Scheduled']");
+		applyExplicitWaitsUntilElementVisible(Status,3);
+		String status=driver.findElement(Status).getText();
+		System.out.println("the status is:"+status);
+		
+		if(!(status.equalsIgnoreCase("Scheduled")))
+		{
+			Assert.fail("Transaction is not scheduled");
+		}
+		
 		if(!(amount1.equalsIgnoreCase("925")))
 		{
 			Assert.fail("Amount is mismatched");
