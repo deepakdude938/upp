@@ -45,6 +45,11 @@ public class TS05 extends BaseClass  implements ICallback{
 
 	}
 	
+	@Then("Create record in ODP")
+	public void create_record_in_ODP() throws Exception {
+	 dm.createRecordInOdp();
+	}
+	
 	
 	@Override
 	public  void handleCallback(String callbackid, Object data) throws Exception {

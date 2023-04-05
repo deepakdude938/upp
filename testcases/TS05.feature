@@ -10,6 +10,7 @@ And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create a Budget with given "<TSID>"
 And Create Payments in the Scheduled Instructions with given "<TSID>"
+And Create record in ODP
 Then Approve the deal from the deal checker
 Examples:
       |TSID|
