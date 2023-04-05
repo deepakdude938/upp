@@ -37,11 +37,17 @@ public class TS07 extends BaseClass implements ICallback {
 		this.ecommVerifier = new ECommerceTransactionVerifier();
 	}
 
-	@Then("Create two eCommerce  Parties in the Parties Tab with given {string}")
-	public void create_two_eCommerce_Parties_in_the_Parties_Tab_with_given(String TSID) throws Exception {
-		tsid = TSID;
-		dealId = dm.twoEcommerceParties(TSID, this);
+//	@Then("Create two eCommerce  Parties in the Parties Tab with given {string}")
+//	public void create_two_eCommerce_Parties_in_the_Parties_Tab_with_given(String TSID) throws Exception {
+//		tsid = TSID;
+//		dealId = dm.twoEcommerceParties(TSID, this);
+//
+//	}
 
+	@Then("Create two eCommerce  Parties in the Parties Tab with given {string} and {string}")
+	public void create_two_eCommerce_Parties_in_the_Parties_Tab_with_given_and(String TSID, String string2) throws Exception {
+		tsid = TSID;
+		dealId = dm.twoEcommerceParties(TSID,string2, this);
 	}
 
 	@Then("Add deal in ecommerce transaction maker queue {string}")

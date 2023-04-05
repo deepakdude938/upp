@@ -65,11 +65,11 @@ public class DealPartiesCreator extends BaseClass {
 		System.out.println(partyHandle);
 		if (partyHandle.equalsIgnoreCase("Yes")) {
 			partyHandler.handleAddNewParty(TSID, icallback);
-		}else {
+		} else {
 			partyHandler.handleLinkedExistingParty(TSID);
 		}
 	}
-	
+
 	public void createPeatiesWith1DebitorAnd2Creditor(String TSID, ICallback icallback) throws Exception {
 		createParties(TSID, icallback);
 		od.accountBackbtn.click();
