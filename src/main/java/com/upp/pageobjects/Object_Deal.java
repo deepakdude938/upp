@@ -414,6 +414,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'Architect certificate')]")
 	public WebElement parties_DocumentsType_Architect_certificate;
 	
+	
 	//Objects for payments
 
 	@FindBy(xpath = "(//button[normalize-space()='Yes'])[1]")

@@ -57,8 +57,8 @@ public class DashBoard_Module extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
-		commonutils=new CommonUtils(driver);
-		
+		commonutils = new CommonUtils(driver);
+
 	}
 
 	public void createNewDeal(String TSID) throws Exception {
@@ -329,8 +329,9 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	public String createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo,ICallback icallback) throws Exception {
-		String dealid ;
+	public String createNewLinkedAccount(String TSID, String sourceAccountno, String toaccountNo, ICallback icallback)
+			throws Exception {
+		String dealid;
 		od.linkedInstruction_linkedBtn.click();
 		od.linkedInstruction_addAccountBtn.click();
 		System.out.println(TSID);
@@ -365,7 +366,7 @@ public class DashBoard_Module extends BaseClass {
 		od.linkedInstruction_TimePicker.sendKeys(timem);
 		od.linkedInstruction_ScheduleNextBtn.click();
 		String instrumentName = externalData.getFieldData(TSID, "Linked", "Instrument");
-		icallback.handleCallback("Instrument_NAME", instrumentName);		
+		icallback.handleCallback("Instrument_NAME", instrumentName);
 		od.linkedInstruction_AddBtn.click();
 		od.linkedInstruction_Summary.click();
 		dealid = od.deals_SummaryRefId.getText();
@@ -373,7 +374,7 @@ public class DashBoard_Module extends BaseClass {
 		od.linkedInstruction_YesBtn.click();
 		od.linkedInstruction_OkBtn.click();
 
-	System.out.println("Deal id = " + dealid);
+		System.out.println("Deal id = " + dealid);
 		return dealid;
 
 	}
@@ -410,9 +411,6 @@ public class DashBoard_Module extends BaseClass {
 		jsClick.click(od.logout);
 
 	}
-
-	
-	
 
 	public static void commonMethodToCreateDeal(String TSID) throws Exception {
 
@@ -474,7 +472,7 @@ public class DashBoard_Module extends BaseClass {
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 		od.deal_Product.sendKeys(productName);
-		
+
 		icallback.handleCallback("PRODUCT_NAME", productName);
 
 		dropdown.selectByVisibleText(od.countryIndiaDropDown,
@@ -508,20 +506,18 @@ public class DashBoard_Module extends BaseClass {
 		od.partyResponsibility.click();
 		od.partyResponsibilityinput.sendKeys(input);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
-		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option,2);
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 2);
 		driver.findElement(party_Responsibility_Option).click();
-		
-		if(commonutils.isElementDisplayed(od.responsibilityAttributePopup,1))
-		{
+
+		if (commonutils.isElementDisplayed(od.responsibilityAttributePopup, 1)) {
 			applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
 			od.saveButton.click();
 		}
-		
+
 		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
 	}
 
-	
 	public String submitDeal() throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
@@ -596,7 +592,9 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_ExecutionDate.click();
 
 		String day = dateutil.getDay();
-		By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
+		By excecutionDay = By.xpath(
+				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
+						+ day + "']");
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 		driver.findElement(excecutionDay).click();
 
@@ -616,42 +614,44 @@ public class DashBoard_Module extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
 		scroll.scrollInToView(od.payments_ToAccountDropdown);
 		dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
-		
-	   if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
-		scroll.scrollInToView(od.payments_beneficiaryBankBic);
-		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
+
+		if (commonutils.isElementDisplayed(od.payments_beneficiaryBankBic, 1)) {
+			scroll.scrollInToView(od.payments_beneficiaryBankBic);
+			od.payments_beneficiaryBankBic
+					.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
 		}
-		
-		
+
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-		
-		if(commonutils.isElementDisplayed(od.payments_senderPop,1)) {
-		scroll.scrollInToView(od.payments_senderPop);
-		od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
+
+		if (commonutils.isElementDisplayed(od.payments_senderPop, 1)) {
+			scroll.scrollInToView(od.payments_senderPop);
+			od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
 		}
-		
-		
+
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
 		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
-		
+
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
-		
+		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,
+				externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
+
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
-		
-		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
-		
+
+		od.parties_Accounts_beneficiaryAddressLine1
+				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
+
 		scroll.scrollInToView(od.payments_Amount);
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
-		
-		if(commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode,1)) {
-		od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
+
+		if (commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode, 1)) {
+			od.parties_Accounts_beneficiaryBankIfscCode
+					.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
 		}
-		
+
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
 
@@ -840,14 +840,14 @@ public class DashBoard_Module extends BaseClass {
 		od.payments_DealOkButton.click();
 
 		return dealId;
-}
+	}
 
-	public String twoEcommerceParties(String TSID, ICallback icallback) throws Exception {
+	public String twoEcommerceParties(String TSID, String Party_id, ICallback icallback) throws Exception {
 		String deal;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParties(TSID, icallback);
 		od.accountBackbtn.click();
-		creator.createParties(TSID, icallback);
+		creator.createParties(Party_id, icallback);
 		deal = submitDeal();
 		approveDealFromDealChecker(deal);
 		return deal;
