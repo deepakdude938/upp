@@ -2,6 +2,9 @@ package com.upp.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -105,5 +108,14 @@ public class DateUtils {
 		// Date tomorrow = calendar.getTime();
 		date1 = sdf.format(today);
 		return date1;
+	}
+	
+	public static String getCurrentDateUTC() {
+		
+		
+	    LocalDateTime date= LocalDateTime.now(ZoneOffset.UTC);
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    String utcdate= date.format(formatter);
+	    return utcdate;
 	}
 }
