@@ -43,12 +43,14 @@ public class DealPartiesHandler extends BaseClass {
 		od.parties_AddnewParty.click();
 		od.parties_CustomerID.sendKeys(externalData.getFieldData(TSID, "Party", "Customer Id"));
 		od.parties_PartyName.sendKeys(externalData.getFieldData(TSID, "Party", "Party Name"));
+
 		od.parties_Responsibility.click();
 		od.parties_Responsibility_dropdown.click();
 		od.parties_Remarks.sendKeys(externalData.getFieldData(TSID, "Party", "Remarks"));
-		responsibilities = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
+//		responsibilities = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
+//		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
 		ecommerce = externalData.getFieldData(TSID, "Party", "eCommerce Party-checkbox");
+		System.out.println(ecommerce);
 		if (ecommerce.equalsIgnoreCase("Y")) {
 			new EcommerceHandler().handleEcommerce(TSID);
 		} else {
@@ -60,46 +62,47 @@ public class DealPartiesHandler extends BaseClass {
 		if ((externalData.getFieldData(TSID, "Party", "Authorised signatory-check box")).equalsIgnoreCase("Y")) {
 			od.parties_AuthrorizedSignatoryYes.click();
 		}
-			od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
-			od.parties_AddButton.click();
-			od.parties_AccountsTab.click();
-			od.parties_AddAccounts.click();
+		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
+		od.parties_AddButton.click();
+		od.parties_AccountsTab.click();
+		od.parties_AddAccounts.click();
 
-			applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
-			od.parties_PaymentSystem.click();
-			String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
-			icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
+		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
+		od.parties_PaymentSystem.click();
+		String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
+		icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
 
-			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
-			od.parties_DocumentsTab.click();
-			od.parties_AddDocument.click();
-			applyExplicitWaitsUntilElementClickable(od.parties_DocumentType, Duration.ofSeconds(5));
-			od.parties_DocumentType.click();
-			if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {
-				applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Blueprint, Duration.ofSeconds(5));
-				od.parties_DocumentsType_Blueprint.click();
-				dropdown.selectByVisibleText(od.parties_DocumentNature1,
-						externalData.getFieldData(TSID, "Party", "Document Nature"));
-				od.parties_DocumentsAddButton.click();
-			}
-
-			if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Architect certificate")) {
-				applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Architect_certificate,
-						Duration.ofSeconds(5));
-				od.parties_DocumentsType_Architect_certificate.click();
-				dropdown.selectByVisibleText(od.parties_DocumentNature1,
-						externalData.getFieldData(TSID, "Party", "Document Nature"));
-				applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
-				od.payments_ExecutionDate.click();
-				String day = dateutil.getDay();
-				By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
-				applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
-				driver.findElement(excecutionDay).click();
-				od.parties_DocumentsAddButton.click();
-			}
-		
+		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
+		od.parties_DocumentsTab.click();
+		od.parties_AddDocument.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_DocumentType, Duration.ofSeconds(5));
+		od.parties_DocumentType.click();
+		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {
+			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Blueprint, Duration.ofSeconds(5));
+			od.parties_DocumentsType_Blueprint.click();
+			dropdown.selectByVisibleText(od.parties_DocumentNature1,
+					externalData.getFieldData(TSID, "Party", "Document Nature"));
+			od.parties_DocumentsAddButton.click();
 		}
-	
+
+		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Architect certificate")) {
+			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Architect_certificate,
+					Duration.ofSeconds(5));
+			od.parties_DocumentsType_Architect_certificate.click();
+			dropdown.selectByVisibleText(od.parties_DocumentNature1,
+					externalData.getFieldData(TSID, "Party", "Document Nature"));
+			applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
+			od.payments_ExecutionDate.click();
+			String day = dateutil.getDay();
+			By excecutionDay = By.xpath(
+					"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
+							+ day + "']");
+			applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+			driver.findElement(excecutionDay).click();
+			od.parties_DocumentsAddButton.click();
+		}
+
+	}
 
 	public void handleLinkedExistingParty(String TSID) throws Exception {
 

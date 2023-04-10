@@ -36,6 +36,7 @@ public class EcommerceHandler extends BaseClass {
 	}
 
 	public void handleEcommerce(String TSID) throws Exception {
+		String debitorFalg;
 		od.parties_eCommerceCheckbox.click();
 		StringBuffer StrBuffer = new StringBuffer();
 		Random random = new Random();
@@ -45,24 +46,28 @@ public class EcommerceHandler extends BaseClass {
 			char ch = CHAR_LIST.charAt(number);
 			StrBuffer.append(ch);
 		}
-		String PraticipantId = StrBuffer.toString();
-		od.parties_ParticipantId.sendKeys("Participant" + PraticipantId);
-		// od.parties_BasicNextButton.click();
+		String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
+		System.out.println(PraticipantId);
+		od.parties_ParticipantId.sendKeys(PraticipantId);
+		od.parties_BasicNextButton.click();
 		dropdown.selectByVisibleText(od.ecommerce_status, "Active");
 		od.ecommerce_validFrom.click();
 		od.startDate.click();
+		debitorFalg = externalData.getFieldData(TSID, "Party", "Debit Accounts");
+		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
+			String hiddenClass = od.accountNumbers.getAttribute("class");
+			if (hiddenClass.contains("ag-hidden")) {
+				jsClick.click(od.ecommerceSecondAccount);
+				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
+			} else {
+				System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
+				jsClick.click(od.ecommerceFirstAccount);
+			}
+		}
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
-		String hiddenClass = od.accountNumbers.getAttribute("class");
-		// jsClick.click(od.ecommerceSecondAccount);
-		if (hiddenClass.contains("ag-hidden")) {
-			jsClick.click(od.ecommerceSecondAccount);
-			System.out.println("First = " + od.accountNumbers.getAttribute("class"));
-		} else {
-			System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
-			jsClick.click(od.ecommerceFirstAccount);
-		}
-		od.parties_BasicNextButton.click();
+
+		od.ecommerceSave.click();
 
 	}
 
