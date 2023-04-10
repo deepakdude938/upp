@@ -584,7 +584,10 @@ public class DashBoard_Module extends BaseClass {
 				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
 			od.payments_SweepInSlider.click();
 		}
+	if(commonutils.isElementDisplayed(od.payments_SweepinNextButton,2))
+	{
 		od.payments_SweepinNextButton.click();
+	}
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
 

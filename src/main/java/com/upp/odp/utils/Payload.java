@@ -76,6 +76,8 @@ public class Payload {
 		+ "        \"dropdown\": null,\r\n"
 		+ "        \"date\": null,\r\n"
 		+ "        \"aadharNo\": \"123132\",\r\n"
+		+ "        \"ebbsShortName\": \"john\",\r\n"
+		+ "            \"idNo\": 10178,\r\n"
 		+ "        \"vehicleNUmber\": null,\r\n"
 		+ "        \"mothersMaidenName\": \"TestName\",\r\n"
 		+ "        \"oboConsideration\": \"NonOBO\",\r\n"
