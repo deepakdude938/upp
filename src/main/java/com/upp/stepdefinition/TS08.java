@@ -36,6 +36,7 @@ public class TS08 extends BaseClass implements ICallback {
 	LoginAPI_UPP loginApi;
 	TransactionApi transactionApi;
 	LogOutApi logoutApi;
+	PartyApi partyApi;
 	Party_Edit_LiveDeal editDeal;
 	Party_Verify_PartyApiAdded partApiAdded;
 
@@ -51,6 +52,7 @@ public class TS08 extends BaseClass implements ICallback {
 	@Then("Add the Party using  Api call with given {string}")
 	public void add_the_Party_using_Api_call_with_given(String string) throws Exception {
 		loginApi.loginToUpp();
+		//partyApi.createParty("REF1680236784142",string);
 		//System.out.println(DealPage.dealId);
 		transactionApi.createTransaction("REF1680236784142",string);
 	}
