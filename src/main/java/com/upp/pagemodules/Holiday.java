@@ -49,7 +49,7 @@ public class Holiday extends BaseClass{
 		 hd.configuration_HolidayInputDate.click();
 		 LocalDate now = new LocalDate();
 		 LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
-		 String day =friday.toString().split("[/-]")[2];
+		 String day = (Integer.parseInt(friday.toString().split("[/-]")[2])/1)+"";
 		 System.out.println(day);
 		 By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
 		 driver.findElement(excecutionDay).click();

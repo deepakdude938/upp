@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
 
 public class Payload {
 
@@ -118,5 +120,34 @@ public class Payload {
 		System.out.println("String" + modifiedJsonString);
 		return modifiedJsonString;
 
+	}
+	public static String createEcommerceTnx(String dealId,String TSID) throws IOException, Exception
+	{
+		externalData = new ExcelReader();
+		String payLoadString =externalData.getFieldData(TSID, "Ecommerce Tnx Api", "Payload");
+		
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+	    String random = Long.toString(number);
+	    
+	     String UniqueplatformRefNo="cplate"+random;
+
+	     ObjectMapper objectMapper = new ObjectMapper();
+		 JsonNode rootNode = objectMapper.readTree(payLoadString);
+		 JsonNode nodeToModify = rootNode.path("paymentInfo");
+		 
+		 ((ObjectNode) nodeToModify).put("platformRefNo",UniqueplatformRefNo);
+		 String modifiedJsonString = objectMapper.writeValueAsString(rootNode);		 
+		 
+		String utcdate= DateUtils.getCurrentDateUTC();
+		
+	    String utctimeEod=utcdate+"T"+"14:30:00Z";
+	   
+		 DocumentContext jsonContext = JsonPath.parse(modifiedJsonString);
+	     jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+	     jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn", utctimeEod);
+	       String modifiedJsonString1 = jsonContext.jsonString();
+	       
+		return modifiedJsonString1;
+		 
 	}
 }
