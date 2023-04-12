@@ -113,7 +113,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//button[contains(text(),'Submit')]")
 	public WebElement reports_SubmitButton;
 
-	@FindBy(xpath = "(//div[@role='gridcell'])[4]")
+	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[2]")
 	public WebElement reports_ScroeStatus;
 
 	// object for LT-IN
@@ -161,5 +161,14 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath="(//div[@class='ag-body-horizontal-scroll-viewport'])[1]")
 	public WebElement reports_horizontalWindow;
+	
+	@FindBy(xpath="(//div[@col-id='Sub-Instruction Type'])[2]")
+	public WebElement reports_instructiontype_payment;
+	
+	@FindBy(xpath="(//div[@col-id='Sub-Instruction Type'])[3]")
+	public WebElement reports_instructiontype_retention;
+	
+
+	
 	
 }
