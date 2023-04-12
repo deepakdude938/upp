@@ -682,4 +682,33 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="//div[contains(text(),'LT_IN')]")
 	public WebElement parties_PaymentSystem_LT_IN;
 	
+	@FindBy(xpath ="//span[normalize-space()='Retention']")
+	public WebElement retention_Tab;
+	
+	@FindBy(xpath ="(//select[@id='sel-deals-instruction-retentionBasic-purpose-v1'])[1]")
+	public WebElement retention_Purpose;
+	
+	@FindBy(id="txt-deals-instruction-retentionBasic-remark-v1")
+	public WebElement retention_Remarks;
+	
+	@FindBy(xpath ="(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	public WebElement retention_Execute;
+	
+	@FindBy(xpath ="(//div[contains(text(),'A few days prior')])[1]")
+	public WebElement retention_FewDaysPrior;
+	
+	@FindBy(id="txt-deals-instruction-retentionBasic-priorDay-v1")
+	public WebElement retention_NoOfDays;
+	
+	@FindBy(id="ic-deals-instruction-retentionBasic-next-v1")
+	public WebElement retention_nextArrowIcon;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	public WebElement Payment_Beneficiaryaccno;
+	
+	@FindBy(xpath="//span[normalize-space()='Summary']")
+	public WebElement Retention_Summary;
+	
+	@FindBy(id="ic-instructions-simulateSchedule-close-v1")
+	public WebElement Retention_Summary_close;
 }
