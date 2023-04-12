@@ -15,13 +15,13 @@ public class TransactionApi {
 
 	public static String base_Url = Property.getProperty("Dev_base_uri");
 	
-	public static String createTransaction(String dealId,String TSID) throws Exception
+	public static String createTransaction(String dealId,String TSID,String participant1,String participant2) throws Exception
 	{
 		RestAssured.baseURI = base_Url;
 		String response = given()
 				.header("Content-Type", "application/json")
 				.header("Authorization",LoginAPI_UPP.authToken)
-				.body(Payload.createTransaction(dealId,TSID)).when()
+				.body(Payload.createTransaction(dealId,TSID,participant1,participant2)).when()
 				.post("transaction/api/transaction").then()
 				//.assertThat().statusCode(200)
 				.extract()
