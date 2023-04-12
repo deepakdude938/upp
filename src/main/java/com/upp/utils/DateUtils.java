@@ -12,7 +12,7 @@ public class DateUtils {
 
 	public static String getDate(int i) {
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date1;
 		// Date today = calendar.getTime();
 		calendar.add(Calendar.DATE, i);
@@ -47,9 +47,12 @@ public class DateUtils {
 
 	public static String getDateAndTime(int i) {
 		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYYHH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-ddHH:mm:ss");
 		String date1;
 		// Date today = calendar.getTime();
+		
+//		2023-04-10T16:12:41.440Z"
+		System.out.println(sdf);
 		calendar.add(Calendar.DATE, i);
 		Date tomorrow = calendar.getTime();
 		date1 = sdf.format(tomorrow);

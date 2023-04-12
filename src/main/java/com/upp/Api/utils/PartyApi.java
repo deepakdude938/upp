@@ -75,4 +75,26 @@ public class PartyApi {
 		
 	}
 	
+	public static void createPartyUsingExcel(String dealId,String TSID) throws Exception {
+
+		// Create Party api
+				RestAssured.baseURI = base_Url;
+				String response = given()
+						.header("Content-Type", "application/json")
+						.header("Authorization",LoginAPI_UPP.authToken)
+						.body(Payload.createPartyUsingExcel(dealId,TSID)).when()
+						.post("mdm/api/party").then()
+						//.assertThat().statusCode(200)
+						.extract()
+						.response().asString();
+				System.out.println("The Party Api response is "+response);
+				JsonPath js = new JsonPath(response);
+				partyRefId=js.getString("partyRefId");
+				partyId=js.getString("partyId");
+				System.out.println("The Party ref id is "+partyRefId);
+				System.out.println("The Party id is "+partyId);
+			
+
+		}
+	
 }
