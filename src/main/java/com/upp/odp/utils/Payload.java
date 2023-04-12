@@ -81,6 +81,7 @@ public class Payload {
 		+ "        \"vehicleNUmber\": null,\r\n"
 		+ "        \"mothersMaidenName\": \"TestName\",\r\n"
 		+ "        \"oboConsideration\": \"NonOBO\",\r\n"
+		+ "        \"testIdMandatory\": 1245,\r\n"
 		+ "        \"oboResponsibility\": null,\r\n"
 		+ "        \"oboFlag\": \"N\",\r\n"
 		+ "        \"oboName\": null,\r\n"

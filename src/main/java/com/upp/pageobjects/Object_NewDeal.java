@@ -673,6 +673,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="payment-accountOrIban-sel-v1")
 	public WebElement parties_Accounts_accountOrIban;
 	
+	@FindBy(xpath ="//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input[@id='txt-generic-autocomplete-input-v1']")
+	public WebElement schedule_IBAN;
+	
+	
 	@FindBy(id="payment-beneficiaryAddressLine1-txt-v1")
 	public WebElement parties_Accounts_beneficiaryAddressLine1;
 	
@@ -681,5 +685,25 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath ="//div[contains(text(),'LT_IN')]")
 	public WebElement parties_PaymentSystem_LT_IN;
+	
+	@FindBy(xpath ="//span[@class='ui-widget-ct ui-text-s ui-instruction-title' and normalize-space()='Surplus']")
+	public WebElement paymentSurplus_SurplusButton;
+	
+	// Payments-Surplus WebElements
+	
+	@FindBy(xpath ="//select[@id='sel-deals-instruction-surplusBasic-purpose-v1']")
+	public WebElement paymentSurplus_Purpose;
+	
+	@FindBy(id="txt-deals-instruction-surplusBasic-remark-v1")
+	public WebElement paymentSurplus_Remarks;
+	
+	@FindBy(id="ic-deals-instruction-surplusBasic-next-v1")
+	public WebElement paymentSurplus_NextButton;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	public WebElement paymentSurplus_Instrument;
+	
+	@FindBy(id = "btn-deals-instruction-surplusSubInstruction-add-v1")
+	public WebElement paymentsSurplus_AddSubInstructionButton;
 	
 }

@@ -97,7 +97,13 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//label[contains(text(),'Reports')]")
 	public WebElement reports_ReportsIcon;
-
+	
+	@FindBy(xpath = "//div[@col-id='Sub-Instruction Type' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List <WebElement> reports_SubInstructions;
+	
+	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Sub-Instruction Type']")
+	public WebElement reports_SubInstructionType;
+	
 	@FindBy(xpath = "//a[contains(text(),'INTERNAL')]")
 	public WebElement reports_ReportsInternal;
 
@@ -161,5 +167,8 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath="(//div[@class='ag-body-horizontal-scroll-viewport'])[1]")
 	public WebElement reports_horizontalWindow;
+	
+	@FindBy(xpath="//div[@class='ag-center-cols-viewport']")
+	public WebElement reports_horizontalWindow1;
 	
 }

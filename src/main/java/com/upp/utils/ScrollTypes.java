@@ -56,4 +56,20 @@ public class ScrollTypes {
 		js.executeScript("arguments[0].scrollTop = arguments[1];",element, pixelNo);
 	
 	}
+	
+	public static void scrollInsideWindowTillWebElementPresent(WebElement elementToBeLocated,WebElement window,int maxRepeatCount,int pixel) {
+		CommonUtils b = new CommonUtils(driver);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		int i=0;
+		while(!b.isElementDisplayed(elementToBeLocated,3) && i!=maxRepeatCount) {
+		
+			js.executeScript("arguments[0].scrollBy("+pixel+", 0)", window);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			i++;
+		}
+	}	
 }

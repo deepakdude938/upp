@@ -182,7 +182,6 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
 		od.payments_DealsummaryIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
-		System.out.println("Q"+time);
 		String dealRefId = od.deals_SummaryRefId.getText();
 		String url = driver.getCurrentUrl();
 		String dealID = url.split("[/]")[url.split("/").length - 1];
