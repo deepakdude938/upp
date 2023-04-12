@@ -73,6 +73,7 @@ public class TS08 extends BaseClass implements ICallback {
 	@Then("Verify the Transaction status in eComm Executions Report")
 	public void verify_the_Transaction_status_in_eComm_Executions_Report() throws Exception {
 		report.eCommExecutionsReportToCheckTransactionStatus(endToEndId,DealPage.dealId);
+		logoutApi.logOut();
 	}
 
 	@Then("Update the Pary Api using given {string}")
