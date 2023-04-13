@@ -93,24 +93,13 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	public void ExecutionReport(String TSID, String DealId) throws Exception {
 
-		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
-		jsClick.click(tm.reports_ReportsIcon);
-		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
-		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("Execution Report");
-		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
-		jsClick.click(tm.reports_ExecutionReport);
-		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
-		tm.reports_DealId.sendKeys(DealId);
-		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
-		jsClick.click(tm.reports_SubmitButton);
-		Thread.sleep(4000);
+		commonmethodExecReport(TSID, DealId);
+
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
 			System.out.println("Waiting for Transaction to be triggered");
-			TimeUnit.SECONDS.sleep(5);
+			TimeUnit.SECONDS.sleep(3);
 			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
 			if (ScroeStatusafter.equalsIgnoreCase("triggered")) {
 				System.out.println("Transaction is triggered");
@@ -166,7 +155,77 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 	}
 
-	public void eCommExecutionsReportToCheckTransactionStatus(String EndToEndId, String DealId) throws Exception {
+	public void commonmethodExecReport(String TSID, String DealId) throws Exception {
+
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+		tm.reports_searchBox.sendKeys("Execution Report");
+		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_ExecutionReport);
+		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
+		tm.reports_DealId.sendKeys(DealId);
+		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_SubmitButton);
+		Thread.sleep(2000);
+
+	}
+
+	public void checkInstructionTypePayment_Retention(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		if (!(ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled"))) {
+			Assert.fail("Transaction not scheduled");
+		}
+
+		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
+
+		Thread.sleep(1000);
+
+		String instructionType1 = tm.reports_instructiontype_payment.getText();
+		String instructionType2 = tm.reports_instructiontype_retention.getText();
+
+		if (!((instructionType1.equalsIgnoreCase("Payment"))|| (instructionType1.equalsIgnoreCase("Retention")))) {
+			Assert.fail("it should be Payment instruction type");
+		}
+
+		if (!(instructionType2.equalsIgnoreCase("Retention"))) {
+			Assert.fail("it should be Retention instruction type");
+		}
+	}
+	
+	public void checkStatusTriggeredOrSettled(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+			
+			if(!((ScroeStatus.equalsIgnoreCase("Triggered")) || ScroeStatus.equalsIgnoreCase("Settled"))) {
+				
+                 Assert.fail("The transaction is not triggered or settled");
+			} 
+		}
+	
+	public void checkStatusRejected(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+			
+			if(!(ScroeStatus.equalsIgnoreCase("Rejected"))) {
+				
+                 Assert.fail("The transaction is not Rejected");
+			} 
+		}
+
+		public void eCommExecutionsReportToCheckTransactionStatus(String EndToEndId, String DealId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
@@ -179,4 +238,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_endToendId.sendKeys(EndToEndId);
 
 	}
-}
+
+	}
+
+
