@@ -6,6 +6,7 @@ import com.upp.Api.utils.LogOutApi;
 import com.upp.Api.utils.PartyApi;
 import com.upp.Api.utils.TransactionApi;
 import com.upp.base.BaseClass;
+import com.upp.handlers.CommonDocumentTypeHandler;
 import com.upp.handlers.CommonProductHandler;
 import com.upp.handlers.CommonResponsibilityHandler;
 import com.upp.handlers.DealPartiesHandler;
@@ -21,6 +22,7 @@ import com.upp.pagemodules.Parties.Party_Edit_LiveDeal;
 import com.upp.pagemodules.Parties.Party_Verify_PartyApiAdded;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.document.AddDealWithDocument;
+import com.upp.pagemodules.document.RequiredDocumentSchedule;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
@@ -33,16 +35,29 @@ public class TS17 extends BaseClass implements ICallback {
 	DashBoard_Module dm;
 	public String tsid;
 	AddDealWithDocument addDoc;
+	RequiredDocumentSchedule reqSchedule;
 
 	public TS17(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
 		this.addDoc = new AddDealWithDocument();
+		this.reqSchedule = new RequiredDocumentSchedule();
 	}
 
 	@Given("Create document using data given in  {string}")
-	public void create_document_using_data_given_in(String string) {
+	public void create_document_using_data_given_in(String string) throws Exception {
 		tsid = string;
-		addDoc.addDealWithRequiredDocument();
+		addDoc.addDocuments(string, this);
+	}
+
+	@Then("Schedule reminder for required Document with {string}")
+	public void schedule_reminder_for_required_Document_with(String string) {
+		addDoc.scheduleReminder();
+	}
+
+	@Then("Create workItem for required document schedules")
+	public void create_workItem_for_required_document_schedules() {
+		System.out.println(TS06.dealId);
+		reqSchedule.createWorkItem(TS06.dealId);
 	}
 
 	@Override
@@ -50,6 +65,7 @@ public class TS17 extends BaseClass implements ICallback {
 
 		new CommonProductHandler().handleProduct(callbackid, data);
 		new CommonResponsibilityHandler().handleResponsibility(callbackid, data);
+		new CommonDocumentTypeHandler().handleDocumentType(callbackid, data, tsid);
 
 		if (callbackid.equalsIgnoreCase("ecommerce")) {
 			String responsibility = (String) data;

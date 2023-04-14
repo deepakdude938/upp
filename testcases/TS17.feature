@@ -7,6 +7,10 @@ Then Login to the application as "deal_maker"
 And Create deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create document using data given in  "<TSID>"
+And Schedule reminder for required Document with "<TSID>"
+Then submit the deal
+Then approve the deal from the deal checker common method
+And Create workItem for required document schedules
 
 Examples:
       |TSID   |

@@ -35,8 +35,13 @@ public class DocumentHandler extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 	}
 
-	public void handleBlueprintDocument(String TSID) throws Exception {
-		
+	public void handleBlueprintDocument(String TSID,String docType) throws Exception {
+		od.requiredDoc_docTypetxt.sendKeys(docType);
+		By documentType = By.xpath("//div[contains(text(),'" + docType + "')]");
+		driver.findElement(documentType).click();
+		dropdown.selectByVisibleText(od.requiredDoc_docNature, "Original");
+		od.requiredDoc_addDocBtn.click();
+		od.requiredDoc_label.click();
 	}
 
 }

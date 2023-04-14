@@ -35,14 +35,14 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
 
-public class AddDealWithDocument extends BaseClass {
+public class RequiredDocumentSchedule extends BaseClass {
 
 	public static Object_Document od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
 
-	public AddDealWithDocument() {
+	public RequiredDocumentSchedule() {
 
 		od = new Object_Document();
 		externalData = new ExcelReader();
@@ -50,35 +50,11 @@ public class AddDealWithDocument extends BaseClass {
 
 	}
 
-	public void addDocuments(String TSID, ICallback icallback) throws Exception {
-		String documents = externalData.getFieldData(TSID, "Document", "Documents");
-		if (documents.equalsIgnoreCase("Required Documents")) {
-			addDealWithRequiredDocument(TSID, icallback);
-		}
-	}
-
-	public void addDealWithRequiredDocument(String TSID, ICallback icallback) throws Exception {
-		String docType = "Blueprint";
-		od.documentTab.click();
-		od.requiredDoc_addBtn.click();
-		String documentType = externalData.getFieldData(TSID, "Document", "Document Type");
-		icallback.handleCallback("Document_Type", documentType);
-	}
-
-	public void scheduleReminder() {
-		od.requiredDoc_schedule.click();
-		od.requiredDoc_scheduleAtEod.click();
-		od.requiredDoc_frequencyOnce.click();
-		od.requiredDoc_startDateCalenderIcon.click();
-		od.requiredDoc_todaysDate.click();
-		od.requiredDoc_reminderDays.click();
-		od.requiredDoc_repeat.sendKeys("1");
-		od.requiredDoc_scheduleBtn.click();
-		String reminderdate = od.requiredDoc_reminderDate.getText();
-		System.out.println(reminderdate);
-		//Assert.assertNotEquals(reminderdate,"");
-	}
-	
-	
-	
+	public void createWorkItem(String dealid) {
+		od.DocumentTracker.click();
+		od.requiredDoc_requiredDocSchedule.click();
+		od.requiredDoc_dealId.sendKeys(dealid);
+		od.requiredDoc_createItem.click();
+		od.requiredDoc_OkBtn.click();
+	}	
 }

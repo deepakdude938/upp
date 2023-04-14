@@ -35,14 +35,14 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
 
-public class AddDealWithDocument extends BaseClass {
+public class DocumentMaker extends BaseClass {
 
 	public static Object_Document od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
 
-	public AddDealWithDocument() {
+	public DocumentMaker() {
 
 		od = new Object_Document();
 		externalData = new ExcelReader();
@@ -78,7 +78,6 @@ public class AddDealWithDocument extends BaseClass {
 		System.out.println(reminderdate);
 		//Assert.assertNotEquals(reminderdate,"");
 	}
-	
 	
 	
 }

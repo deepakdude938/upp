@@ -28,7 +28,71 @@ public class Object_Document extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1']")
 	public WebElement requiredDoc_docTypetxt;
 	
+	@FindBy(xpath = "//select[@class='ui-dropdown-select']")
+	public WebElement requiredDoc_docNature;
 	
+	@FindBy(id = "btn-deals-dealDocuments-otherDocuments-addDocument-v1")
+	public WebElement requiredDoc_addDocBtn;
+	
+	@FindBy(xpath = "//label[text()=' Required Documents ']")
+	public WebElement requiredDoc_label;
+	
+	@FindBy(xpath = "//span[@class ='schedule']")
+	public WebElement requiredDoc_schedule;
+	
+	@FindBy(xpath = "(//li[contains(@class,'Schedule_li')])[1]")
+	public WebElement requiredDoc_scheduleAtEod;
+	
+	@FindBy(xpath = "(//li[contains(@class,'frequency_li')])[1]")
+	public WebElement requiredDoc_frequencyOnce;
+	
+	
+	@FindBy(id="ic-generic-datePicker-calender-v1")
+	public WebElement requiredDoc_startDateCalenderIcon;
+
+	@FindBy(xpath = "//td[contains(@class,'today')]")
+	public WebElement requiredDoc_todaysDate;
+	
+	@FindBy(xpath = "(//li[contains(@class,'reminder_li')])[1]")
+	public WebElement requiredDoc_reminderDays;
+	
+	@FindBy(id="txt-deals-dealDocuments-scheduler-repeatEvery-v1")
+	public WebElement requiredDoc_repeat;
+	
+	@FindBy(xpath = "//button[text()=' Schedule ']")
+	public WebElement requiredDoc_scheduleBtn;
+	
+	@FindBy(xpath = "//table/tbody/tr/td[4]")
+	public WebElement requiredDoc_reminderDate;
+	
+	@FindBy(xpath = "//label[text()=' DOCUMENT TRACKER ']")
+	public WebElement DocumentTracker;
+	
+	//object for required document maker
+		
+	@FindBy(xpath = "//a[@href='/document-tracker/DEALMAKER']")
+	public WebElement requiredDoc_DocumentMaker;
+	
+	
+	@FindBy(xpath = "//div[@col-id='manage']//div[@class='grid-cell']")
+	public WebElement requiredDoc_manageDoc;
+	
+	//object for required document schedule
+	
+	@FindBy(xpath = "//a[@href ='/document-tracker/required-document']")
+	public WebElement requiredDoc_requiredDocSchedule;
+	
+	@FindBy(xpath = "(//div[@role='columnheader']//input)[1]")
+	public WebElement requiredDoc_dealId;
+	
+	@FindBy(xpath = "//i[@title='Create Workitem']")
+	public WebElement requiredDoc_createItem;
+	
+	@FindBy(xpath = "//button[text()='OK']")
+	public WebElement requiredDoc_OkBtn;
+	
+	@FindBy(xpath = "//div[@role ='gridcell' and @aria-colindex='5']")
+	public WebElement requiredDoc_docStatus;
 	
 	
 }
