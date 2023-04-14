@@ -68,8 +68,9 @@ public class Payload {
 		String UniqueplatformRefNo = "cplate"+ random;
 
 		String utcdate = DateUtils.getCurrentDateUTC();
+		String utctime = DateUtils.getCurrentTimeUTC();
 
-		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		String utctimeEod = utcdate + "T" + utctime;
 
 		// Used Jackson library to modify Json values
 

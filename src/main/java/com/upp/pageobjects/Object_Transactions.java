@@ -162,4 +162,10 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath="(//div[@class='ag-body-horizontal-scroll-viewport'])[1]")
 	public WebElement reports_horizontalWindow;
 	
+	@FindBy(xpath="(//div[@col-id='Status' and @role ='gridcell'])[1]")
+	public WebElement reports_FirstTxnStatus;
+	
+	@FindBy(xpath="(//div[@col-id='Status' and @role ='gridcell'])[2]")
+	public WebElement reports_SecondTxnStatus;
+	
 }

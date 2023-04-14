@@ -147,6 +147,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_eCommExecutions);
 		applyExplicitWaitsUntilElementClickable(tm.reports_endToendId, Duration.ofSeconds(5));
 		tm.reports_endToendId.sendKeys(EndToEndId);
-
+		String txn1 = tm.reports_FirstTxnStatus.getText();
+		String txn2 = tm.reports_SecondTxnStatus.getText();
+		Assert.assertEquals(txn1, "Hold");
+		Assert.assertEquals(txn2, "Scheduled");
 	}
 }
