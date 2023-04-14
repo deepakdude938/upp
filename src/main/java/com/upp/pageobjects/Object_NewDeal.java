@@ -673,6 +673,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="payment-accountOrIban-sel-v1")
 	public WebElement parties_Accounts_accountOrIban;
 	
+	@FindBy(xpath ="//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input[@id='txt-generic-autocomplete-input-v1']")
+	public WebElement schedule_IBAN;
+	
+	
 	@FindBy(id="payment-beneficiaryAddressLine1-txt-v1")
 	public WebElement parties_Accounts_beneficiaryAddressLine1;
 	
@@ -682,4 +686,53 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="//div[contains(text(),'LT_IN')]")
 	public WebElement parties_PaymentSystem_LT_IN;
 	
+	@FindBy(xpath ="//span[@class='ui-widget-ct ui-text-s ui-instruction-title' and normalize-space()='Surplus']")
+	public WebElement paymentSurplus_SurplusButton;
+	
+	// Payments-Surplus WebElements
+	
+	@FindBy(xpath ="//select[@id='sel-deals-instruction-surplusBasic-purpose-v1']")
+	public WebElement paymentSurplus_Purpose;
+	
+	@FindBy(id="txt-deals-instruction-surplusBasic-remark-v1")
+	public WebElement paymentSurplus_Remarks;
+	
+	@FindBy(id="ic-deals-instruction-surplusBasic-next-v1")
+	public WebElement paymentSurplus_NextButton;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	public WebElement paymentSurplus_Instrument;
+	
+	@FindBy(id = "btn-deals-instruction-surplusSubInstruction-add-v1")
+	public WebElement paymentsSurplus_AddSubInstructionButton;
+	
+	@FindBy(xpath ="//span[normalize-space()='Retention']")
+	public WebElement retention_Tab;
+	
+	@FindBy(xpath ="(//select[@id='sel-deals-instruction-retentionBasic-purpose-v1'])[1]")
+	public WebElement retention_Purpose;
+	
+	@FindBy(id="txt-deals-instruction-retentionBasic-remark-v1")
+	public WebElement retention_Remarks;
+	
+	@FindBy(xpath ="(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	public WebElement retention_Execute;
+	
+	@FindBy(xpath ="(//div[contains(text(),'A few days prior')])[1]")
+	public WebElement retention_FewDaysPrior;
+	
+	@FindBy(id="txt-deals-instruction-retentionBasic-priorDay-v1")
+	public WebElement retention_NoOfDays;
+	
+	@FindBy(id="ic-deals-instruction-retentionBasic-next-v1")
+	public WebElement retention_nextArrowIcon;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	public WebElement Payment_Beneficiaryaccno;
+	
+	@FindBy(xpath="//span[normalize-space()='Summary']")
+	public WebElement Retention_Summary;
+	
+	@FindBy(id="ic-instructions-simulateSchedule-close-v1")
+	public WebElement Retention_Summary_close;
 }

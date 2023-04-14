@@ -47,6 +47,7 @@ public class DashBoard_Module extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
+	public static String day = "";
 
 	public DashBoard_Module() {
 		od = new Object_NewDeal();
@@ -584,14 +585,22 @@ public class DashBoard_Module extends BaseClass {
 				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
 			od.payments_SweepInSlider.click();
 		}
-	if(commonutils.isElementDisplayed(od.payments_SweepinNextButton,2))
-	{
-		od.payments_SweepinNextButton.click();
-	}
+		if (commonutils.isElementDisplayed(od.payments_SweepinNextButton, 1)) {
+			od.payments_SweepinNextButton.click();
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
 
-		String day = dateutil.getDay();
+		if (InstructionType.equalsIgnoreCase("Payment - Retention")) {
+			day = dateutil.getDay();
+			int day_int = Integer.parseInt(day) + 2;
+			day = Integer.toString(day_int);
+		}
+
+		if (InstructionType.equalsIgnoreCase("Payment")) {
+			day = dateutil.getDay();
+		}
+
 		By excecutionDay = By.xpath(
 				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
 						+ day + "']");
@@ -611,10 +620,19 @@ public class DashBoard_Module extends BaseClass {
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
-		applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
-		scroll.scrollInToView(od.payments_ToAccountDropdown);
-		dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
+		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 1)) {
+			applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
+			scroll.scrollInToView(od.payments_ToAccountDropdown);
+			dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
+		}
 
+		if (commonutils.isElementDisplayed(od.Payment_Beneficiaryaccno, 1)) {
+			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
+			scroll.scrollInToView(od.Payment_Beneficiaryaccno);
+			od.Payment_Beneficiaryaccno.sendKeys(toaccountNo);
+			By accno = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+			driver.findElement(accno).click();
+		}
 		if (commonutils.isElementDisplayed(od.payments_beneficiaryBankBic, 1)) {
 			scroll.scrollInToView(od.payments_beneficiaryBankBic);
 			od.payments_beneficiaryBankBic

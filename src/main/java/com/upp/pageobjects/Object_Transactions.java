@@ -97,7 +97,13 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//label[contains(text(),'Reports')]")
 	public WebElement reports_ReportsIcon;
-
+	
+	@FindBy(xpath = "//div[@col-id='Sub-Instruction Type' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List <WebElement> reports_SubInstructions;
+	
+	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Sub-Instruction Type']")
+	public WebElement reports_SubInstructionType;
+	
 	@FindBy(xpath = "//a[contains(text(),'INTERNAL')]")
 	public WebElement reports_ReportsInternal;
 
@@ -113,7 +119,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//button[contains(text(),'Submit')]")
 	public WebElement reports_SubmitButton;
 
-	@FindBy(xpath = "(//div[@role='gridcell'])[4]")
+	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[2]")
 	public WebElement reports_ScroeStatus;
 
 	// object for LT-IN
@@ -167,5 +173,15 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath="(//div[@col-id='Status' and @role ='gridcell'])[2]")
 	public WebElement reports_SecondTxnStatus;
+	@FindBy(xpath="//div[@class='ag-center-cols-viewport']")
+	public WebElement reports_horizontalWindow1;
+	@FindBy(xpath="(//div[@col-id='Sub-Instruction Type'])[2]")
+	public WebElement reports_instructiontype_payment;
+	
+	@FindBy(xpath="(//div[@col-id='Sub-Instruction Type'])[3]")
+	public WebElement reports_instructiontype_retention;
+	
+
+	
 	
 }

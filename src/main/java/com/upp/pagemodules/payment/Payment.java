@@ -1,12 +1,17 @@
 package com.upp.pagemodules.payment;
 
+import java.io.IOException;
 import java.time.Duration;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_NewDeal;
+import com.upp.stepdefinition.DealPage;
 import com.upp.utils.CommonUtils;
+import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
@@ -21,6 +26,8 @@ public class Payment extends BaseClass{
 	public static JavascriptClick jsClick;
 	public static ScrollTypes scroll;
 	public static CommonUtils commonutils;
+	public String toAccountNo="";
+	public static DateUtils dateutil;
 
 	public Payment() {
 		od = new Object_NewDeal();
@@ -28,11 +35,13 @@ public class Payment extends BaseClass{
 		dropdown = new DropDown(driver);	
 		scroll = new ScrollTypes(driver);
 		commonutils=new CommonUtils(driver);
+		dateutil = new DateUtils();
 	}
 	
 	
 	public void createPaymentsInScheduledInstructionsOnFriday(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
 
+		toAccountNo=DealPage.toaccountNo;
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
 		od.payments_ScheduledInstructionIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
@@ -75,12 +84,18 @@ public class Payment extends BaseClass{
 				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
 			od.payments_SweepInSlider.click();
 		}
-		od.payments_SweepinNextButton.click();
+//		od.payments_SweepinNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
+		String day="";
+		if(TSID.equals("TS10")) {
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
-		String day =friday.toString().split("[/-]")[2];
+		day =friday.toString().split("[/-]")[2];
+		}
+		else {
+			day= DateUtils.getDay();
+		}
 		By excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 		driver.findElement(excecutionDay).click();
@@ -88,9 +103,13 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.payments_ScheduleAt,
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
-		System.out.println(externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+	if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
+		String time = dateutil.getTimeAfterMins(10);
+		od.payments_ScheduleTime.clear();
+		od.payments_ScheduleTime.sendKeys(time);
+	}
 		od.payments_NextArrowButtonTransferSchedule.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 
@@ -99,6 +118,13 @@ public class Payment extends BaseClass{
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
+		
+		scroll.scrollInToView(od.schedule_IBAN);
+		System.out.println(DealPage.sourceAccountNo);
+		System.out.println(DealPage.toaccountNo);
+		od.schedule_IBAN.sendKeys(toAccountNo);
+		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+		driver.findElement(account).click();
 		
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
@@ -153,4 +179,79 @@ public class Payment extends BaseClass{
 			od.payments_NotificationAlertSlider.click();
 		}
     }
+
+
+	public void createPaymentSurplus(String TSID) throws Exception, IOException {
+		od.paymentSurplus_SurplusButton.click();
+		dropdown.selectByVisibleText(od.paymentSurplus_Purpose,externalData.getFieldData(TSID, "Payment-Surplus", "Purpose"));
+		od.paymentSurplus_Remarks.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Remarks"));;
+		od.paymentSurplus_NextButton.click();
+			
+		od.paymentSurplus_Instrument.click();
+		String paymentInstrumentdata = externalData.getFieldData(TSID, "Payment-Surplus", "Instrument");
+		System.out.println(paymentInstrumentdata);
+		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[2]");
+		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
+		driver.findElement(paymentInstrument).click();
+		
+		scroll.scrollInToView(od.schedule_IBAN);
+		System.out.println(DealPage.sourceAccountNo);
+		System.out.println(DealPage.toaccountNo);
+		od.schedule_IBAN.sendKeys(toAccountNo);
+		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+		driver.findElement(account).click();
+		
+		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Payment-Surplus", "Select Account/IBAN"));
+		
+		scroll.scrollInToView(od.payments_Amount);
+		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Amount"));
+		
+		if(commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode,1)) {
+			od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary bank IFSC code"));
+			}
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
+		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Name"));
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
+		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Address Line 1"));
+		
+		od.payments_beneficiaryCountry.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Country Of Incorporation"));
+
+		if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
+		scroll.scrollInToView(od.payments_beneficiaryBankBic);
+		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Bank Bic"));
+		}
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		if(commonutils.isElementDisplayed(od.payments_senderPop,1)) {
+		scroll.scrollInToView(od.payments_senderPop);
+		od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Sender POP"));
+		}
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
+		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Country Of Incorporation"));
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		od.paymentsSurplus_AddSubInstructionButton.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
+		od.payments_DealsummaryIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
+		dealId = od.deals_SummaryRefId.getText();
+		scroll.scrollInToView(od.payments_DealSubmitButton);
+		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
+		od.payments_DealSubmitButton.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
+		od.payments_DealYesButton.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
+		od.payments_DealOkButton.click();
+		
+	}
 }

@@ -2,12 +2,15 @@ package com.upp.odp.utils;
 
 
 import java.io.IOException;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import com.upp.stepdefinition.DealPage;
 import com.upp.utils.*;
 
 
 public class Payload {
 	
-	
+	DealPage dp;
 	public static ExcelReader externalData;
 
 	public static String Login() throws IOException
@@ -101,5 +104,24 @@ public class Payload {
 		+ "    \"openedOn\": \"2023-01-20T18:30:00.000Z\",\r\n"
 		+ "    \"accountIdentifierKey\":\""+accountIdentifierKey+"\"\r\n"
 		+ "}";
+	}
+	
+	public static String editAccount(String TSID,int amount,String accountno) throws Exception
+	{
+		
+		externalData = new ExcelReader();
+		String payLoadString =externalData.getFieldData(TSID, "ODP Api", "Payload");
+	
+		 DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		 jsonContext.set("$._id",accountno);
+		 jsonContext.set("$.accountNumber",accountno);
+	     jsonContext.set("$.balances.available.amount", amount);
+	     jsonContext.set("$.balances.eod.amount", amount);
+	     jsonContext.set("$.balances.ledger.amount", amount);
+	    
+	       String modifiedJsonString = jsonContext.jsonString();
+	       
+		return modifiedJsonString;
+		
 	}
 }
