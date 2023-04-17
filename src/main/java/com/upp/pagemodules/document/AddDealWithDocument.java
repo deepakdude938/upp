@@ -65,9 +65,11 @@ public class AddDealWithDocument extends BaseClass {
 		icallback.handleCallback("Document_Type", documentType);
 	}
 
-	public void scheduleReminder() {
+	public void scheduleReminder(String TSID) throws Exception {
+		applyExplicitWaitsUntilElementClickable(od.requiredDoc_schedule, Duration.ofSeconds(20));
 		od.requiredDoc_schedule.click();
-		od.requiredDoc_scheduleAtEod.click();
+		applyExplicitWaitsUntilElementClickable(od.requiredDoc_scheduleAtEod, Duration.ofSeconds(20));
+		od.requiredDoc_scheduleAtEod.click();		
 		od.requiredDoc_frequencyOnce.click();
 		od.requiredDoc_startDateCalenderIcon.click();
 		od.requiredDoc_todaysDate.click();
@@ -76,9 +78,7 @@ public class AddDealWithDocument extends BaseClass {
 		od.requiredDoc_scheduleBtn.click();
 		String reminderdate = od.requiredDoc_reminderDate.getText();
 		System.out.println(reminderdate);
-		//Assert.assertNotEquals(reminderdate,"");
+		// Assert.assertNotEquals(reminderdate,"");
 	}
-	
-	
-	
+
 }

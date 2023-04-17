@@ -22,6 +22,8 @@ import com.upp.pagemodules.Parties.Party_Edit_LiveDeal;
 import com.upp.pagemodules.Parties.Party_Verify_PartyApiAdded;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.document.AddDealWithDocument;
+import com.upp.pagemodules.document.DocumentChecker;
+import com.upp.pagemodules.document.DocumentMaker;
 import com.upp.pagemodules.document.RequiredDocumentSchedule;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
@@ -36,11 +38,15 @@ public class TS17 extends BaseClass implements ICallback {
 	public String tsid;
 	AddDealWithDocument addDoc;
 	RequiredDocumentSchedule reqSchedule;
-
+	DocumentMaker docMaker;
+	DocumentChecker docCheck;
+	
 	public TS17(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
 		this.addDoc = new AddDealWithDocument();
 		this.reqSchedule = new RequiredDocumentSchedule();
+		this.docMaker = new DocumentMaker();
+		this.docCheck = new DocumentChecker();
 	}
 
 	@Given("Create document using data given in  {string}")
@@ -50,14 +56,35 @@ public class TS17 extends BaseClass implements ICallback {
 	}
 
 	@Then("Schedule reminder for required Document with {string}")
-	public void schedule_reminder_for_required_Document_with(String string) {
-		addDoc.scheduleReminder();
+	public void schedule_reminder_for_required_Document_with(String string) throws Exception {
+		addDoc.scheduleReminder(tsid);
 	}
 
 	@Then("Create workItem for required document schedules")
-	public void create_workItem_for_required_document_schedules() {
+	public void create_workItem_for_required_document_schedules() throws Exception {
 		System.out.println(TS06.dealId);
 		reqSchedule.createWorkItem(TS06.dealId);
+	}
+
+	@Then("Document Maker upload document and submit document to checker")
+	public void document_Maker_upload_document_and_submit_document_to_checker() throws Exception {
+		docMaker.uploaddocument(TS06.dealId);
+
+	}
+
+	@Given("Verify status os document")
+	public void verify_status_os_document() throws Exception {
+		docMaker.verifyStatus(TS06.dealId);
+	}
+
+	@Given("Document Checker upload document and submit document")
+	public void document_Checker_upload_document_and_submit_document() throws Exception{
+		docCheck.manageDocument(TS06.dealId);
+	}
+
+	@Given("Verify final status os document")
+	public void verify_final_status_os_document()throws Exception {
+		docCheck.verifyStatus(TS06.dealId);
 	}
 
 	@Override

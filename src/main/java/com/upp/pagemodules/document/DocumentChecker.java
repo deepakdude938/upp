@@ -35,14 +35,14 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
 
-public class DocumentMaker extends BaseClass {
+public class DocumentChecker extends BaseClass {
 
 	public static Object_Document od;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
 
-	public DocumentMaker() {
+	public DocumentChecker() {
 
 		od = new Object_Document();
 		externalData = new ExcelReader();
@@ -50,13 +50,13 @@ public class DocumentMaker extends BaseClass {
 
 	}
 
-	public void uploaddocument(String dealid) throws Exception {
-		applyExplicitWaitsUntilElementClickable(od.requiredDoc_DocumentMaker, Duration.ofSeconds(20));
-		od.requiredDoc_DocumentMaker.click();
+	public void manageDocument(String dealid) throws Exception {
+		applyExplicitWaitsUntilElementClickable(od.requiredDoc_DocumentChecker, Duration.ofSeconds(20));
+		od.requiredDoc_DocumentChecker.click();
+		
 		od.requiredDoc_dealId.sendKeys(dealid);
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_manageDoc, Duration.ofSeconds(20));
 		od.requiredDoc_manageDoc.click();
-		od.requiredDoc_uploadFile.sendKeys("/upp-test-automation/src/main/resources/upp-automation-testdata.xlsx");
 		od.requiredDoc_submit.click();
 		od.requiredDoc_yesBtn.click();
 	}

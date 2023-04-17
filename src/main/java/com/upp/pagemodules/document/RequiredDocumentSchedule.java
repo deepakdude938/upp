@@ -41,20 +41,35 @@ public class RequiredDocumentSchedule extends BaseClass {
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
+	public static Object_NewDeal on;
 
 	public RequiredDocumentSchedule() {
-
+		on = new Object_NewDeal();
 		od = new Object_Document();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 
 	}
 
-	public void createWorkItem(String dealid) {
+	public void createWorkItem(String dealid) throws Exception {
+		applyExplicitWaitsUntilElementClickable(on.deal_SideMenuIcon, Duration.ofSeconds(15));
+		on.deal_SideMenuIcon.click();
+		applyExplicitWaitsUntilElementClickable(on.liveDealIcon, Duration.ofSeconds(15));
+		on.liveDealIcon.click();
+		applyExplicitWaitsUntilElementClickable(on.dealChecker_searchSelect, Duration.ofSeconds(25));
+		dropdown.selectByVisibleText(on.dealChecker_searchSelect, "Deal Id");
+		applyExplicitWaitsUntilElementClickable(on.dealChecker_searchBar, Duration.ofSeconds(15));
+		on.dealChecker_searchBar.sendKeys(dealid);
+		Thread.sleep(4000);
+		on.dealChecker_searchButton.click();
+		Thread.sleep(3000);
 		od.DocumentTracker.click();
+		Thread.sleep(3000);
 		od.requiredDoc_requiredDocSchedule.click();
+		applyExplicitWaitsUntilElementClickable(od.requiredDoc_dealId, Duration.ofSeconds(20));
 		od.requiredDoc_dealId.sendKeys(dealid);
 		od.requiredDoc_createItem.click();
 		od.requiredDoc_OkBtn.click();
-	}	
+		System.out.println(od.requiredDoc_docStatus.getText());
+	}
 }
