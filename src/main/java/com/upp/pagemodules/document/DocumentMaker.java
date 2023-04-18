@@ -51,6 +51,7 @@ public class DocumentMaker extends BaseClass {
 	}
 
 	public void uploaddocument(String dealid) throws Exception {
+		 String filePath=System.getProperty("user.dir")+"\\src\\main\\resources\\upp-automation-testdata.xlsx";
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_DocumentMaker, Duration.ofSeconds(20));
 		Thread.sleep(4000);
 		od.requiredDoc_DocumentMaker.click();
@@ -59,7 +60,7 @@ public class DocumentMaker extends BaseClass {
 		Thread.sleep(4000);
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_manageDoc, Duration.ofSeconds(20));
 		od.requiredDoc_manageDoc.click();
-		od.requiredDoc_uploadFile.sendKeys("C:\\BDD_Framework\\30 March\\upp-test-automation\\src\\main\\resources\\upp-automation-testdata.xlsx");
+		od.requiredDoc_uploadFile.sendKeys(filePath);
 		Thread.sleep(4000);
 		od.requiredDoc_submit.click();
 		od.requiredDoc_yesBtn.click();
@@ -70,6 +71,10 @@ public class DocumentMaker extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_dealId, Duration.ofSeconds(20));
 		od.requiredDoc_dealId.sendKeys(dealid);
 		System.out.println(od.requiredDoc_docStatus.getText());
+		Thread.sleep(2000);
+		String status = od.requiredDoc_docStatus.getText();
+		System.out.println(status);
+		Assert.assertEquals(status, "In-Progress");
 	}
 
 }

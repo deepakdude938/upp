@@ -58,13 +58,20 @@ public class DocumentChecker extends BaseClass {
 		od.requiredDoc_manageDoc.click();
 		od.requiredDoc_comment.sendKeys("ok approved");
 		od.requiredDoc_approveBtn.click();
+		od.requiredDoc_yesBtn.click();
 	}
 
 	public void verifyStatus(String dealid) throws Exception {
+		Thread.sleep(4000);
 		od.requiredDoc_requiredDocSchedule.click();
+		Thread.sleep(4000);
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_dealId, Duration.ofSeconds(20));
 		od.requiredDoc_dealId.sendKeys(dealid);
 		System.out.println(od.requiredDoc_docStatus.getText());
+		Thread.sleep(2000);
+		String status = od.requiredDoc_docStatus.getText();
+		System.out.println(status);
+		Assert.assertEquals(status, "Completed");
 	}
 
 }

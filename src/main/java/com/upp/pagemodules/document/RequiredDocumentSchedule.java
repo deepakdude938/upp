@@ -72,6 +72,9 @@ public class RequiredDocumentSchedule extends BaseClass {
 		od.requiredDoc_createItem.click();
 		Thread.sleep(4000);
 		od.requiredDoc_OkBtn.click();
-		System.out.println(od.requiredDoc_docStatus.getText());
+		Thread.sleep(2000);
+		String status = od.requiredDoc_docStatus.getText();
+		System.out.println(status);
+		Assert.assertEquals(status, "Scheduled");
 	}
 }
