@@ -52,11 +52,15 @@ public class DocumentMaker extends BaseClass {
 
 	public void uploaddocument(String dealid) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_DocumentMaker, Duration.ofSeconds(20));
+		Thread.sleep(4000);
 		od.requiredDoc_DocumentMaker.click();
+		Thread.sleep(4000);
 		od.requiredDoc_dealId.sendKeys(dealid);
+		Thread.sleep(4000);
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_manageDoc, Duration.ofSeconds(20));
 		od.requiredDoc_manageDoc.click();
-		od.requiredDoc_uploadFile.sendKeys("/upp-test-automation/src/main/resources/upp-automation-testdata.xlsx");
+		od.requiredDoc_uploadFile.sendKeys("C:\\BDD_Framework\\30 March\\upp-test-automation\\src\\main\\resources\\upp-automation-testdata.xlsx");
+		Thread.sleep(4000);
 		od.requiredDoc_submit.click();
 		od.requiredDoc_yesBtn.click();
 	}

@@ -66,7 +66,7 @@ public class Object_Document extends BaseClass {
 
 	@FindBy(xpath = "//label[text()=' DOCUMENT TRACKER ']")
 	public WebElement DocumentTracker;
-	
+
 	@FindBy(xpath = "//input[@formcontrolname='name']")
 	public WebElement schedulerName;
 
@@ -75,18 +75,18 @@ public class Object_Document extends BaseClass {
 	@FindBy(xpath = "//a[@href='/document-tracker/required-document/DEALMAKER']")
 	public WebElement requiredDoc_DocumentMaker;
 
-	@FindBy(xpath = "//div[@col-id='manage']//div[@class='grid-cell']")
+	@FindBy(xpath = "//div[@col-id='manage']//div[@class='grid-cell']//i")
 	public WebElement requiredDoc_manageDoc;
 
-	@FindBy(xpath  ="//input[@id='txt-generic-fileUpload-fileInput-v1']")
+	@FindBy(xpath = "//input[@id='txt-generic-fileUpload-fileInput-v1']")
 	public WebElement requiredDoc_uploadFile;
-	
-	@FindBy(xpath  ="//button[text()='submit']")
+
+	@FindBy(xpath = "//button[text()='submit']")
 	public WebElement requiredDoc_submit;
-	
-	@FindBy(xpath  ="//button[text()='Yes']")
+
+	@FindBy(xpath = "//button[text()='Yes']")
 	public WebElement requiredDoc_yesBtn;
-	
+
 	// object for required document schedule
 
 	@FindBy(xpath = "//a[@href ='/document-tracker/required-document']")
@@ -103,10 +103,16 @@ public class Object_Document extends BaseClass {
 
 	@FindBy(xpath = "//div[@role ='gridcell' and @aria-colindex='5']")
 	public WebElement requiredDoc_docStatus;
-	
-	//object for document checker
-	
+
+	// object for document checker
+
 	@FindBy(xpath = "//a[@href='/document-tracker/required-document/DEALCHECKER']")
 	public WebElement requiredDoc_DocumentChecker;
+
+	@FindBy(xpath = "//div[@class='review-container ng-star-inserted']//textarea")
+	public WebElement requiredDoc_comment;
+	
+	@FindBy(xpath = "//button[contains(text(),'Approve')]")
+	public WebElement requiredDoc_approveBtn;
 
 }

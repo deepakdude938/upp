@@ -53,12 +53,11 @@ public class DocumentChecker extends BaseClass {
 	public void manageDocument(String dealid) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_DocumentChecker, Duration.ofSeconds(20));
 		od.requiredDoc_DocumentChecker.click();
-		
 		od.requiredDoc_dealId.sendKeys(dealid);
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_manageDoc, Duration.ofSeconds(20));
 		od.requiredDoc_manageDoc.click();
-		od.requiredDoc_submit.click();
-		od.requiredDoc_yesBtn.click();
+		od.requiredDoc_comment.sendKeys("ok approved");
+		od.requiredDoc_approveBtn.click();
 	}
 
 	public void verifyStatus(String dealid) throws Exception {

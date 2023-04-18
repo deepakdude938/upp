@@ -68,7 +68,9 @@ public class RequiredDocumentSchedule extends BaseClass {
 		od.requiredDoc_requiredDocSchedule.click();
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_dealId, Duration.ofSeconds(20));
 		od.requiredDoc_dealId.sendKeys(dealid);
+		Thread.sleep(4000);
 		od.requiredDoc_createItem.click();
+		Thread.sleep(4000);
 		od.requiredDoc_OkBtn.click();
 		System.out.println(od.requiredDoc_docStatus.getText());
 	}
