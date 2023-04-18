@@ -56,6 +56,27 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//span[contains(text(),'Select All')]")
 	public WebElement deals_selectAll;
 
+	@FindBy(xpath = "//label[contains(normalize-space(),'Contact')]/span[normalize-space()='Configure']")
+	public WebElement deals_contactConfigure;
+	
+	@FindBy(xpath = "//label[normalize-space()='Party Responsibilities']")
+	public WebElement deals_partyResponsibilitiesText;
+	
+	@FindBy(xpath = "//input[@id='txt-deals-basicDetails-addContact-search-v1']")
+	public WebElement deals_contactNameTextBox;
+	
+	@FindBy(xpath = "//button[contains(@class,'ui-filter-search-btn')]")
+	public WebElement deals_contactNameSearch;
+	
+	@FindBy(xpath = "//div[contains(@class,'control__indicator dl_con_check')]")
+	public WebElement deals_contactCheckBox;
+	
+	@FindBy(xpath = "//button[@id='btn-deals-basicDetails-addContact-addContacts-v1']")
+	public WebElement deals_contactUpdate;
+	
+	
+	
+	
 	@FindBy(id = "btn-deals-basicDetails-next-v1")
 	public WebElement nextBtn;
 
