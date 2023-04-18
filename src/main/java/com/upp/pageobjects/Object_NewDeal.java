@@ -772,4 +772,26 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement notifications_Scroller;
 	
 	//div[@class='ui-grid-view-ct']	
+	@FindBy(id="btn-deals-accounts-addUpdateAdvice-ok-v1")
+	public WebElement PaymentsPlusIcon;
+	
+	@FindBy(id="tab-deals-priorityWizard-v1")
+	public WebElement PriorityDependencyIcon;
+	
+	@FindBy(xpath="(//i[@title='Edit dependency'])[1]")
+	public WebElement Priority_EditIcon;
+	
+	@FindBy(xpath="(//span[@class='ui-pseudo-checkbox'])[1]")
+	public WebElement Priority_Select_Checkbox;
+	
+	@FindBy(xpath="(//span[@class='radio-span ng-star-inserted'])[2]")
+	public WebElement Priority_SameDay;
+	
+	@FindBy(xpath="(//span[@class='radio-span ng-star-inserted'])[1]")
+	public WebElement Priority_Cyclic;
+	
+	@FindBy(id="btn-deals-priorityDependencyEdit-save-v1")
+	public WebElement Priority_SaveButton;
+	
+	
 }
