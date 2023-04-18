@@ -3,7 +3,9 @@ package com.upp.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
@@ -117,5 +119,17 @@ public class DateUtils {
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    String utcdate= date.format(formatter);
 	    return utcdate;
+	}
+	
+	public static String getCurrentTimeUTC() {
+		LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("UTC"));
+
+		LocalDateTime newDateTime = currentDateTime.plusMinutes(5);
+
+		ZonedDateTime zonedDateTime = newDateTime.atZone(ZoneId.of("UTC"));
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		String formattedDateTime = zonedDateTime.format(formatter);
+		return formattedDateTime;
 	}
 }
