@@ -117,10 +117,12 @@ public class DealPartiesHandler extends BaseClass {
 		od.parties_Responsibility.click();
 		od.parties_Responsibility_dropdown.click();
 		od.parties_BasicNextButton.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(10));
-		od.parties_AddContact.click();
-		od.parties_LinkPartyCheckboxIcon.click();
-		od.parties_ConatctPlusIcon.click();
+//		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(10));
+//		od.parties_AddContact.click();
+//		od.parties_LinkPartyCheckboxIcon.click();
+//		od.parties_ConatctPlusIcon.click();
+		Thread.sleep(1000);
+		od.parties_AccountsTab.click();
 		applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab, Duration.ofSeconds(10));
 		od.parties_AccountsTab.click();
 		applyExplicitWaitsUntilElementClickable(od.parties_AddAccounts, Duration.ofSeconds(10));
