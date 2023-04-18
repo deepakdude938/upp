@@ -736,6 +736,42 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="ic-instructions-simulateSchedule-close-v1")
 	public WebElement Retention_Summary_close;
 	
+	//Notifications 
+	
+	@FindBy(xpath="//div[@id='tab-deals-notificationsWizard-v1']")
+	public WebElement notifications_NotificationIcon;
+	
+	@FindBy(xpath="//div[contains(@title,'Successful scheduled/linked Transactions')]/ancestor::table/descendant::div[@id='ic-generic-menu-showMenu-v1']")
+	public WebElement notifications_SuccessfulScheduledKebabMenu;
+	
+	@FindBy(xpath="//div[contains(@class,'onbd_action_option')]")
+	public WebElement notifications_EditButton;
+	
+	@FindBy(xpath="//span[@class='slider round']")
+	public WebElement notifications_EnabledSlider;
+	
+	@FindBy(xpath="//input[@id='txt-generic-autocomplete-input-v1']")
+	public WebElement notifications_Mode;
+	
+	@FindBy(xpath="//div[contains(@class,'ui-autocomplete-list-item-div ') and normalize-space()='E-Mail']")
+	public WebElement notifications_EmailMode;
+	
+	@FindBy(xpath="//span[@id='ic-deals-notifications-addUpdateContacts-v1']")
+	public WebElement notifications_pickContact;
+	
+	@FindBy(xpath="//div[contains(@class,'control__indicator dl_con_check')]")
+	public List<WebElement> notifications_ContactList;
+	
+	@FindBy(id="btn-generic-pickContacts-addContacts-v1")
+	public WebElement notifications_UpdateButton;
+	
+	@FindBy(id="btn-deals-notifications-updateNotification-v1")
+	public WebElement notifications_UpdateNotification;
+	
+	@FindBy(xpath="//div[@class='ui-grid-view-ct']")
+	public WebElement notifications_Scroller;
+	
+	//div[@class='ui-grid-view-ct']	
 	@FindBy(id="btn-deals-accounts-addUpdateAdvice-ok-v1")
 	public WebElement PaymentsPlusIcon;
 	

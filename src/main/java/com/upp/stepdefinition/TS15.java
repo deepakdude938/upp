@@ -19,6 +19,7 @@ public class TS15 extends BaseClass implements ICallback{
 	public Payment_Summary ps;
 	public String TSID;
 	public static ExcelReader externalData;
+	public Reports_ExecutionReport re;
 	
 
 	
@@ -27,6 +28,7 @@ public class TS15 extends BaseClass implements ICallback{
 		this.pm = new Payment();
 		this.ps = new Payment_Summary();
 		externalData = new ExcelReader();
+		re=new Reports_ExecutionReport();
 	
 	}
 
@@ -44,7 +46,7 @@ public class TS15 extends BaseClass implements ICallback{
 	
 	@Then("Validate SubInstruction Type as {string} and {string}")
 	public void validate_SubInstruction_Type_as_and(String string, String string2) throws Exception {
-		Reports_ExecutionReport.checkSubInstructionTypeInExecutionReport();
+		re.checkSubInstructionTypeInExecutionReport();
 	}
 
 	@Override

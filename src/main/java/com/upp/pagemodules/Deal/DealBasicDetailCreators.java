@@ -115,6 +115,27 @@ public class DealBasicDetailCreators extends BaseClass {
 			System.out.println("Normal flow ");
 		}
 		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
+		od.deals_partyResponsibilitiesText.click();
+		
+		try {
+		input=externalData.getFieldData(TSID, "Basic Details", "Contact");
+			if(input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) {
+				
+				od.deals_contactConfigure.click();
+				String contactName=externalData.getFieldData(TSID, "Basic Details", "Contact-Name");
+				System.out.println(contactName);
+				od.deals_contactNameTextBox.sendKeys(contactName);
+				od.deals_contactNameSearch.click();
+				applyExplicitWaitsUntilElementClickable(od.deals_contactCheckBox, Duration.ofSeconds(10));
+				od.deals_contactCheckBox.click();
+				od.deals_contactUpdate.click();
+			
+			}
+		}
+		catch(NullPointerException e) {
+			
+			}
+		
 		od.nextBtn.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
