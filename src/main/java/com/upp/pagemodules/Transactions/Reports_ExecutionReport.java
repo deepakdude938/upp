@@ -63,8 +63,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm = new Object_Transactions();
 
 	}
-	
-	
+
 	public static void checkSubInstructionTypeInExecutionReport() throws Exception {
 		tm = new Object_Transactions();
 		jsClick = new JavascriptClick(driver);
@@ -186,46 +185,43 @@ public class Reports_ExecutionReport extends BaseClass {
 		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
 
 		Thread.sleep(1000);
-
-		String instructionType1 = tm.reports_instructiontype_payment.getText();
-		String instructionType2 = tm.reports_instructiontype_retention.getText();
-
-		if (!((instructionType1.equalsIgnoreCase("Payment"))|| (instructionType1.equalsIgnoreCase("Retention")))) {
-			Assert.fail("it should be Payment instruction type");
+		
+		ArrayList<String> subInstruction = new ArrayList();
+		for(WebElement iu : tm.reports_SubInstructions) {
+			
+			subInstruction.add(iu.getText());
 		}
-
-		if (!(instructionType2.equalsIgnoreCase("Retention"))) {
-			Assert.fail("it should be Retention instruction type");
-		}
+		Assert.assertTrue(subInstruction.contains("Payment"));
+		Assert.assertTrue(subInstruction.contains("Retention"));
 	}
-	
+
 	public void checkStatusTriggeredOrSettled(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
 
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
-			
-			if(!((ScroeStatus.equalsIgnoreCase("Triggered")) || ScroeStatus.equalsIgnoreCase("Settled"))) {
-				
-                 Assert.fail("The transaction is not triggered or settled");
-			} 
+
+		if (!((ScroeStatus.equalsIgnoreCase("Triggered")) || ScroeStatus.equalsIgnoreCase("Settled"))) {
+
+			Assert.fail("The transaction is not triggered or settled");
 		}
-	
+	}
+
 	public void checkStatusRejected(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
 
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
-			
-			if(!(ScroeStatus.equalsIgnoreCase("Rejected"))) {
-				
-                 Assert.fail("The transaction is not Rejected");
-			} 
-		}
 
-		public void eCommExecutionsReportToCheckTransactionStatus(String EndToEndId, String DealId) throws Exception {
+		if (!(ScroeStatus.equalsIgnoreCase("Rejected"))) {
+
+			Assert.fail("The transaction is not Rejected");
+		}
+	}
+
+	public void eCommExecutionsReportToCheckTransactionStatus(String EndToEndId, String DealId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
@@ -242,6 +238,31 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertEquals(txn2, "Scheduled");
 	}
 
+	public void checkBothTransactionStatusIsScheduled(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+
+		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled")))) {
+
+			Assert.fail("The transaction is not Scheduled");
+		}
+
 	}
 
+	public void checkStatus_AwaitingForDependant(String TSID, String DealId) throws Exception {
 
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+
+		if (!(ScroeStatus2ndrow.equalsIgnoreCase("Awaiting for Dependant"))) {
+
+			Assert.fail("The transaction status should be Awaiting for Dependant ");
+		}
+
+	}
+}

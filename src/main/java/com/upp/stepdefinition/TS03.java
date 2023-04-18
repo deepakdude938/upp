@@ -16,6 +16,7 @@ import com.upp.utils.SwitchWindow;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
+import com.upp.pagemodules.payment.Payment;
 import io.cucumber.java.en.*;
 
 public class TS03 extends BaseClass implements ICallback {
@@ -24,9 +25,11 @@ public class TS03 extends BaseClass implements ICallback {
 	public static String TSID = "";
 	public static String TnxId="";
 	public String dealid;
+	Payment payment;
 public TS03() {
 
 		this.dm=new DashBoard_Module();
+		payment=new Payment();
 	}
 
 
@@ -34,18 +37,9 @@ public TS03() {
 @Then("Create Payments in the scheduled Instructions with given {string}")
 public void create_Payments_in_the_scheduled_Instructions_with_given(String string) throws Exception {
 	
-	dm.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
-    //dm.createPayments(string,"Trial123","Trail1234");
+	payment.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
 }
 
-	
-
-//	@Then("Create new deal with basic details with given {string}.")
-//	public void create_new_deal_POC_with_basic_details_with_given(String TSID) throws  Exception {
-//		
-//		DealBasicDetailCreators createDeal = new  DealBasicDetailCreators();
-//		createDeal.createDealBasicDetails(TSID, this);
-//	}
 
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
