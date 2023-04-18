@@ -506,8 +506,9 @@ public class DashBoard_Module extends BaseClass {
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
 		od.partyResponsibility.click();
 		od.partyResponsibilityinput.sendKeys(input);
+		Thread.sleep(1000);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
-		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 2);
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
 		driver.findElement(party_Responsibility_Option).click();
 
 		if (commonutils.isElementDisplayed(od.responsibilityAttributePopup, 1)) {
@@ -540,151 +541,6 @@ public class DashBoard_Module extends BaseClass {
 	public void logOutOld() throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.logOutIcon, Duration.ofSeconds(40));
 		jsClick.click(od.logOutIcon);
-	}
-
-	public void createPayments(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
-
-		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
-		od.payments_ScheduledInstructionIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
-		od.payments_GetStarted.click();
-		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
-		By InstructionButton = By
-				.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"
-						+ InstructionType + "']");
-		applyExplicitWaitsUntilElementVisible(InstructionButton, 10);
-		driver.findElement(InstructionButton).click();
-		applyExplicitWaitsUntilElementClickable(od.payments_Proceed, Duration.ofSeconds(5));
-		od.payments_Proceed.click();
-		od.payments_BasicName.clear();
-		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Basic Details Name"));
-		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Scheduled", "Purpose"));
-		od.payments_SourceAccount.sendKeys(sourceAccountno);
-		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
-		driver.findElement(sourceaccountselect).click();
-
-		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
-				externalData.getFieldData(TSID, "Scheduled", "Balance Consideration"));
-		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
-				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
-			od.payments_SplitBalanceSlider.click();
-		}
-		if (((externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Y")
-				|| (externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Yes"))) {
-			od.payments_PartialpaymentSlider.click();
-		}
-
-		od.payments_NextArrowButtonTransferBasic.click();
-
-		if (((externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Y")
-				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
-			od.payments_PartialpaymentSlider.click();
-		}
-
-		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
-				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
-			od.payments_SweepInSlider.click();
-		}
-		if (commonutils.isElementDisplayed(od.payments_SweepinNextButton, 1)) {
-			od.payments_SweepinNextButton.click();
-		}
-		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
-		od.payments_ExecutionDate.click();
-
-		if (InstructionType.equalsIgnoreCase("Payment - Retention")) {
-			day = dateutil.getDay();
-			int day_int = Integer.parseInt(day) + 2;
-			day = Integer.toString(day_int);
-		}
-
-		if (InstructionType.equalsIgnoreCase("Payment")) {
-			day = dateutil.getDay();
-		}
-
-		By excecutionDay = By.xpath(
-				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
-						+ day + "']");
-		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
-		driver.findElement(excecutionDay).click();
-
-		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.payments_ScheduleAt,
-				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
-		dropdown.selectByVisibleText(od.payments_HolidayAction,
-				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
-		od.payments_NextArrowButtonTransferSchedule.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
-
-		od.payments_Instrument.click();
-
-		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
-		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
-		driver.findElement(paymentInstrument).click();
-		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 1)) {
-			applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
-			scroll.scrollInToView(od.payments_ToAccountDropdown);
-			dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
-		}
-
-		if (commonutils.isElementDisplayed(od.Payment_Beneficiaryaccno, 1)) {
-			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
-			scroll.scrollInToView(od.Payment_Beneficiaryaccno);
-			od.Payment_Beneficiaryaccno.sendKeys(toaccountNo);
-			By accno = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
-			driver.findElement(accno).click();
-		}
-		if (commonutils.isElementDisplayed(od.payments_beneficiaryBankBic, 1)) {
-			scroll.scrollInToView(od.payments_beneficiaryBankBic);
-			od.payments_beneficiaryBankBic
-					.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
-		}
-
-		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
-		od.payments_beneficiaryCountryOfIncorporationDropdown
-				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-
-		if (commonutils.isElementDisplayed(od.payments_senderPop, 1)) {
-			scroll.scrollInToView(od.payments_senderPop);
-			od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
-		}
-
-		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
-		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
-
-		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
-		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,
-				externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
-
-		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
-		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
-
-		od.parties_Accounts_beneficiaryAddressLine1
-				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
-
-		scroll.scrollInToView(od.payments_Amount);
-		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
-
-		if (commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode, 1)) {
-			od.parties_Accounts_beneficiaryBankIfscCode
-					.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
-		}
-
-		od.payments_AddSubInstructionButton.click();
-		od.payments_NextArrowButtonTransferSubInstruction.click();
-
-		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
-				|| (externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))) {
-			od.payments_RetrySlider.click();
-		}
-		od.payments_NextArrowButtonRetryMechanism.click();
-
-		if (((externalData.getFieldData(TSID, "Scheduled", "Notification-Notification Alerts")).equalsIgnoreCase("Y")
-				|| (externalData.getFieldData(TSID, "Scheduled", "Notification-Notification Alerts"))
-						.equalsIgnoreCase("Yes"))) {
-			od.payments_NotificationAlertSlider.click();
-		}
-
 	}
 
 	public void approveDealFromDealChecker_Old(String dealId) throws Exception {

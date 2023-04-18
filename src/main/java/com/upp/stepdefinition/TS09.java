@@ -25,6 +25,7 @@ import com.upp.pagemodules.Parties.Party_Maker_BasicDetails;
 import com.upp.pagemodules.Parties.Party_Maker_Contacts;
 import com.upp.pagemodules.Parties.Party_Maker_Documents;
 import com.upp.pagemodules.Parties.Party_Maker_Summary;
+import com.upp.pagemodules.payment.Payment;
 
 import io.cucumber.java.en.*;
 
@@ -43,6 +44,7 @@ public class TS09 extends BaseClass  implements ICallback{
 	Party_Maker_Summary pm_Summary;
 	Party_Checker partyChecker;
 	Party_AddExistingPartyForGivenDealid addexistingParty;
+	Payment payment;
 public TS09() {
 		
 		this.dm=new DashBoard_Module();
@@ -53,6 +55,7 @@ public TS09() {
 		pm_Summary=new Party_Maker_Summary();
 		partyChecker=new Party_Checker();
 		addexistingParty=new Party_AddExistingPartyForGivenDealid();
+		payment=new Payment();
 	}
 	
 
@@ -85,7 +88,7 @@ public void edit_the_Live_deal_and_add_Existing_Party_with_given(String string) 
 
 @Then("Add a Transaction using Payment with the updated deal with given {string}")
 public void add_a_Transaction_using_Payment_with_the_updated_deal_with_given(String string) throws Exception {
-	dm.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
+	payment.createPayments(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
 }
 
 
