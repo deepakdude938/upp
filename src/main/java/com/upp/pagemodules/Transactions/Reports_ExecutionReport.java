@@ -79,10 +79,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_SubmitButton);
 		Thread.sleep(2000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType,tm.reports_horizontalWindow1,5,2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				5, 2000);
 		ArrayList<String> subInstruction = new ArrayList();
-		for(WebElement iu : tm.reports_SubInstructions) {
-			
+		for (WebElement iu : tm.reports_SubInstructions) {
+
 			subInstruction.add(iu.getText());
 		}
 		Assert.assertTrue(subInstruction.contains("Payment"));
@@ -184,10 +185,10 @@ public class Reports_ExecutionReport extends BaseClass {
 		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
 
 		Thread.sleep(1000);
-		
+
 		ArrayList<String> subInstruction = new ArrayList();
-		for(WebElement iu : tm.reports_SubInstructions) {
-			
+		for (WebElement iu : tm.reports_SubInstructions) {
+
 			subInstruction.add(iu.getText());
 		}
 		Assert.assertTrue(subInstruction.contains("Payment"));
@@ -262,6 +263,27 @@ public class Reports_ExecutionReport extends BaseClass {
 
 			Assert.fail("The transaction status should be Awaiting for Dependant ");
 		}
+
+	}
+
+	public void checkStatusAndInstructionType(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String status = tm.reports_ScroeStatus.getText();
+
+		if (!(status.equalsIgnoreCase("Scheduled"))) {
+
+			Assert.fail("Transaction not scheduled");
+
+		}
+
+		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
+
+		String instructionname = tm.reports_InstructionName.getText();
+
+		System.out.println(instructionname);
+		Assert.assertTrue(instructionname.equalsIgnoreCase("Alert"));
 
 	}
 }
