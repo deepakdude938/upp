@@ -79,10 +79,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_SubmitButton);
 		Thread.sleep(2000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType,tm.reports_horizontalWindow1,5,2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				5, 2000);
 		ArrayList<String> subInstruction = new ArrayList();
-		for(WebElement iu : tm.reports_SubInstructions) {
-			
+		for (WebElement iu : tm.reports_SubInstructions) {
+
 			subInstruction.add(iu.getText());
 		}
 		Assert.assertTrue(subInstruction.contains("Payment"));
@@ -184,10 +185,10 @@ public class Reports_ExecutionReport extends BaseClass {
 		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
 
 		Thread.sleep(1000);
-		
+
 		ArrayList<String> subInstruction = new ArrayList();
-		for(WebElement iu : tm.reports_SubInstructions) {
-			
+		for (WebElement iu : tm.reports_SubInstructions) {
+
 			subInstruction.add(iu.getText());
 		}
 		Assert.assertTrue(subInstruction.contains("Payment"));
@@ -262,6 +263,29 @@ public class Reports_ExecutionReport extends BaseClass {
 
 			Assert.fail("The transaction status should be Awaiting for Dependant ");
 		}
+
+	}
+
+	public void checkStatusAndInstructionTypeAsBalanceReport(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+
+		if (!(ScroeStatus.equalsIgnoreCase("Scheduled"))) {
+			Assert.fail("Transaction not scheduled");
+		}
+
+		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3000);
+
+		String instructionname1 = tm.reports_InstructionName1.getText();
+		String instructionname2 = tm.reports_InstructionName2.getText();
+		String instructionname3 = tm.reports_InstructionName3.getText();
+
+		Assert.assertTrue(instructionname1.equalsIgnoreCase("Balance Report"));
+		Assert.assertTrue(instructionname2.equalsIgnoreCase("Balance Report"));
+		Assert.assertTrue(instructionname3.equalsIgnoreCase("Balance Report"));
 
 	}
 }

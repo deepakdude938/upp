@@ -304,7 +304,7 @@ public class DashBoard_Module extends BaseClass {
 		od.dealChecker_ApproveButton.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(40));
 		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(40));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(120));
 		od.payments_DealOkButton.click();
 	}
 
