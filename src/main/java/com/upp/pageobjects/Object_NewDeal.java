@@ -793,5 +793,41 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="btn-deals-priorityDependencyEdit-save-v1")
 	public WebElement Priority_SaveButton;
 	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
+	public WebElement Balance_Reporting_SourceAccounts;
+	
+	@FindBy(xpath="//span[contains(text(),'Select All')]")
+	public WebElement Balance_Reporting_SelectAll;
+	
+	@FindBy(xpath="(//span[@id='ic-deals-notifications-addUpdateContacts-v1'])[1]")
+	public WebElement Balance_Reporting_AddPlusIcon;
+	
+	@FindBy(id="btn-generic-pickContacts-addContacts-v1")
+	public WebElement Balance_Reporting_UpadteButton;
+	
+	@FindBy(id="ic-deals-instruction-waterfallBasic-next-v1")
+	public WebElement Balance_Reporting_NextButton;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-datePicker-input-v1'])[1]")
+	public WebElement Balance_Reporting_StartDate;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-datePicker-input-v1'])[2]")
+	public WebElement Balance_Reporting_EndDate;
+	
+	@FindBy(xpath="(//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1'])[1]")
+	public WebElement Balance_Reporting_ScheduleAt;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
+	public WebElement Balance_Reporting_Frequency;
+	
+	@FindBy(xpath="//div[contains(text(),'Days')]")
+	public WebElement Balance_Reporting_Days;
+	
+	@FindBy(id="txt-deals-instruction-fundTransferSchedule-repeatEvery-v1")
+	public WebElement Balance_Reporting_repeatEvery;
+	
+	@FindBy(xpath="(//i[@class='ui-fab ui-fab-next ui-ripple'])[1]")
+	public WebElement Balance_Reporting_NextSummaryArrow;
+	
 	
 }
