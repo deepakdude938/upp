@@ -27,6 +27,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import com.upp.utils.CommonUtils;
+
 public class DealBasicDetailCreators extends BaseClass {
 
 	public static Object_Deal od;
@@ -123,9 +124,8 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.deals_partyResponsibilitiesText.click();
 
 		try {
-			System.out.println("Test");
 			input = externalData.getFieldData(TSID, "Basic Details", "Contact");
-			System.out.println(input);
+
 			if (input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) {
 
 				od.deals_contactConfigure.click();
