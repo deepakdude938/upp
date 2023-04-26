@@ -3,6 +3,7 @@ package com.upp.pagemodules.Deal;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealResponsibilityHandler;
@@ -25,7 +26,7 @@ import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
+import com.upp.utils.CommonUtils;
 public class DealBasicDetailCreators extends BaseClass {
 
 	public static Object_Deal od;
@@ -41,6 +42,7 @@ public class DealBasicDetailCreators extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
+	public static CommonUtils commonutils;
 
 	public DealBasicDetailCreators() {
 
@@ -52,6 +54,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
+		commonutils = new CommonUtils(driver);
 
 	}
 
@@ -100,7 +103,9 @@ public class DealBasicDetailCreators extends BaseClass {
 		}
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
 		od.partyResponsibility.click();
+		Thread.sleep(1500);
 		od.partyResponsibilityinput.sendKeys(input);
+		Thread.sleep(1000);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
 		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
 		driver.findElement(party_Responsibility_Option).click();
@@ -138,7 +143,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		}
 
 		od.nextBtn.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 	}
 
