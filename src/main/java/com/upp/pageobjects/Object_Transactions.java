@@ -184,6 +184,8 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[3]")
 	public WebElement reports_ScroeStatus2ndRow;
 	
+	@FindBy(xpath = "(//div[@col-id='Instruction Type'])[2]")
+	public WebElement reports_InstructionName;
 	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[2]")
 	public WebElement reports_InstructionName1;
 	

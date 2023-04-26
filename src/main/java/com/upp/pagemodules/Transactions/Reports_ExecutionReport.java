@@ -266,6 +266,26 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	}
 
+	public void checkStatusAndInstructionType(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String status = tm.reports_ScroeStatus.getText();
+
+		if (!(status.equalsIgnoreCase("Scheduled"))) {
+
+			Assert.fail("Transaction not scheduled");
+
+		}
+
+		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
+
+		String instructionname = tm.reports_InstructionName.getText();
+
+		System.out.println(instructionname);
+		Assert.assertTrue(instructionname.equalsIgnoreCase("Alert"));
+	}
+
 	public void checkStatusAndInstructionTypeAsBalanceReport(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);

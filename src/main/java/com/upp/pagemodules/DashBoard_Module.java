@@ -87,7 +87,7 @@ public class DashBoard_Module extends BaseClass {
 				externalData.getFieldData(TSID, "Linked", "Balance Consideration"));
 		od.linkedInstruction_NextBtn.click();
 		od.linkedInstruction_LinkedConfigNextBtn.click();
-		od.linkedInstruction_sweepNext.click();
+	//	od.linkedInstruction_sweepNext.click();
 		od.linkedInstruction_Executiondate.click();
 		od.linkedInstruction_Todaydate.click();
 
@@ -101,6 +101,7 @@ public class DashBoard_Module extends BaseClass {
 		od.linkedInstruction_ScheduleNextBtn.click();
 		String instrumentName = externalData.getFieldData(TSID, "Linked", "Instrument");
 		icallback.handleCallback("Instrument_NAME", instrumentName);
+		Thread.sleep(3000);
 		od.linkedInstruction_AddBtn.click();
 		od.linkedInstruction_Summary.click();
 		dealid = od.deals_SummaryRefId.getText();
