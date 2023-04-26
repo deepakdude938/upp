@@ -284,6 +284,8 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		System.out.println(instructionname);
 		Assert.assertTrue(instructionname.equalsIgnoreCase("Alert"));
+	}
+
 	public void checkStatusAndInstructionTypeAsBalanceReport(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
