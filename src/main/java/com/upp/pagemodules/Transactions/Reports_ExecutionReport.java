@@ -110,7 +110,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	}
 
-	public void eCommExecutionsReport(String EndToEndId, String DealId) throws Exception {
+	public void eCommExecutionsReport(String EndToEndId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
