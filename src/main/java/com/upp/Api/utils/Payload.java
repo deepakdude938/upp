@@ -124,7 +124,7 @@ public class Payload {
 
 	}
 
-	public static String createEcommerceTnx(String dealId, String TSID) throws IOException, Exception {
+	public static String createEcommerceTnx(String TSID) throws IOException, Exception {
 		externalData = new ExcelReader();
 		String payLoadString = externalData.getFieldData(TSID, "Ecommerce Tnx Api", "Payload");
 
