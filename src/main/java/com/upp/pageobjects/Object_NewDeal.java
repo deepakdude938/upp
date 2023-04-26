@@ -700,8 +700,13 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="ic-deals-instruction-surplusBasic-next-v1")
 	public WebElement paymentSurplus_NextButton;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+//	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+//	public WebElement paymentSurplus_Instrument;
+	
+	@FindBy(xpath="//label[normalize-space()='Instrument']//following::input[@id='txt-generic-autocomplete-input-v1'][last()]")
 	public WebElement paymentSurplus_Instrument;
+	
+	
 	
 	@FindBy(id = "btn-deals-instruction-surplusSubInstruction-add-v1")
 	public WebElement paymentsSurplus_AddSubInstructionButton;

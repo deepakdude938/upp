@@ -55,7 +55,24 @@ public class Payment_Retention extends BaseClass {
 		Thread.sleep(1000);
 		od.Retention_Summary_close.click();
 		Thread.sleep(1000);
+	}
 	
-		
+	public void createRetentionSurplus(String TSID) throws Exception {
+
+		applyExplicitWaitsUntilElementClickable(od.retention_Tab, Duration.ofSeconds(5));
+		od.retention_Tab.click();
+		applyExplicitWaitsUntilElementClickable(od.retention_Purpose, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.retention_Purpose, "Retention");
+		od.retention_Remarks.sendKeys(externalData.getFieldData(TSID,"PaymentRetention","Remarks"));
+		Thread.sleep(1000);
+		js.sendKeys(od.retention_Execute,"A few days prior");
+	    Thread.sleep(1000);
+		js.click(od.retention_FewDaysPrior);
+		System.out.println(externalData.getFieldData(TSID,"PaymentRetention","NumberOfDays"));
+		od.retention_NoOfDays.sendKeys("3");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(od.retention_nextArrowIcon, Duration.ofSeconds(3));
+		od.retention_nextArrowIcon.click();
+
 	}
 }

@@ -94,9 +94,14 @@ public class Payment extends BaseClass{
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
 		day =friday.toString().split("[/-]")[2];
 		}
+		else if(TSID.equalsIgnoreCase("TS20")) {
+		 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+2);
+		}
 		else {
 			day= DateUtils.getDay();
 		}
+		
+		System.out.println(day);
 		By excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 		driver.findElement(excecutionDay).click();
@@ -115,9 +120,9 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 
 		od.payments_Instrument.click();
-
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
+//		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
 		driver.findElement(paymentInstrument).click();
 		
 		scroll.scrollInToView(od.schedule_IBAN);
