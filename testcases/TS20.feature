@@ -12,7 +12,7 @@ And Create Payment-Surplus in the Scheduled Instructions with given "<TSID>"
 And Create Retention-Surplus with given "<TSID>"
 And Create Surplus in the Scheduled Instructions with given "<TSID>"
 Then Approve the deal from the deal checker
-Then Validate SubInstruction Type as "Payment" and "Surplus" and "Retenetion"
+Then Validate SubInstruction Type as "Payment" and "Surplus" and "Retention"
 Examples:
       |TSID|
       |TS20|
