@@ -61,6 +61,7 @@ public class DealAccountCreator extends BaseClass {
 		accDetails = odpAccount.popelmnt(OdpApi.stack1);
 		System.out.println("the account no is" + accDetails.getAccno());
 		String accountNo = accDetails.getAccno();
+		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
 		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
 		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
 		String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
@@ -69,7 +70,9 @@ public class DealAccountCreator extends BaseClass {
 		} else {
 			dropdown.selectByVisibleText(od.physical, " Virtual ");
 		}
+		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
 		od.searchTextBox.sendKeys(accountNo);
+		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
 		od.searchButton.click();
 		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(5));
 		od.accounts_addAccount.click();
