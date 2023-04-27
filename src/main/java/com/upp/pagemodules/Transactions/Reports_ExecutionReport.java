@@ -64,7 +64,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	}
 
-	public static void checkSubInstructionTypeInExecutionReport() throws Exception {
+	public static void checkSubInstructionTypeInExecutionReport(String payment, String surplus) throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
@@ -86,9 +86,11 @@ public class Reports_ExecutionReport extends BaseClass {
 
 			subInstruction.add(iu.getText());
 		}
-		Assert.assertTrue(subInstruction.contains("Payment"));
-		Assert.assertTrue(subInstruction.contains("Surplus"));
+		Assert.assertTrue(subInstruction.contains(payment));
+		Assert.assertTrue(subInstruction.contains(surplus));
 	}
+	
+	
 
 	public void ExecutionReport(String TSID, String DealId) throws Exception {
 
@@ -265,6 +267,33 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 
 	}
+	
+	public static void checkSubInstructionTypeInExecutionReport(String payment, String surplus,String retention) throws Exception {
+
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+		tm.reports_searchBox.sendKeys("Execution Report");
+		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_ExecutionReport);
+		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
+		tm.reports_DealId.sendKeys(dealId);
+		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_SubmitButton);
+		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType,tm.reports_horizontalWindow1,5,2000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for(WebElement iu : tm.reports_SubInstructions) {
+			
+			subInstruction.add(iu.getText());
+		}
+		Assert.assertTrue(subInstruction.contains(payment));
+		Assert.assertTrue(subInstruction.contains(surplus));
+		Assert.assertTrue(subInstruction.contains(retention));
+	}
+	
 
 	public void checkStatusAndInstructionType(String TSID, String DealId) throws Exception {
 
