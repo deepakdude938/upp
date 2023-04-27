@@ -1,7 +1,7 @@
 Feature: TS08
 
 @Regression @TS08
-Scenario Outline:  Add Party through Api and creating a txn
+Scenario Outline:  ECommerce Transaction + Party API + Transaction API (REST API calls)
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create deal with basic details with given "<TSID>".
@@ -16,6 +16,7 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And  Add the transaction using  Api call with given "<TSID>" and "TS08_01" and "TS08_02"
 Then Verify the Transaction status in eComm Executions Report
+
 Examples:
       |TSID   |
       |TS08   |

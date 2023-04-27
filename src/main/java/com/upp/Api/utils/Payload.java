@@ -68,8 +68,9 @@ public class Payload {
 		String UniqueplatformRefNo = "cplate"+ random;
 
 		String utcdate = DateUtils.getCurrentDateUTC();
+		String utctime = DateUtils.getCurrentTimeUTC();
 
-		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		String utctimeEod = utcdate + "T" + utctime;
 
 		// Used Jackson library to modify Json values
 
@@ -123,7 +124,7 @@ public class Payload {
 
 	}
 
-	public static String createEcommerceTnx(String dealId, String TSID) throws IOException, Exception {
+	public static String createEcommerceTnx(String TSID) throws IOException, Exception {
 		externalData = new ExcelReader();
 		String payLoadString = externalData.getFieldData(TSID, "Ecommerce Tnx Api", "Payload");
 

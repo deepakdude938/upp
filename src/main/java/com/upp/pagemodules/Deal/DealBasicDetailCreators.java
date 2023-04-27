@@ -3,6 +3,7 @@ package com.upp.pagemodules.Deal;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealResponsibilityHandler;
@@ -25,6 +26,7 @@ import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import com.upp.utils.CommonUtils;
 
 public class DealBasicDetailCreators extends BaseClass {
 
@@ -41,6 +43,7 @@ public class DealBasicDetailCreators extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
+	public static CommonUtils commonutils;
 
 	public DealBasicDetailCreators() {
 
@@ -52,6 +55,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
+		commonutils = new CommonUtils(driver);
 
 	}
 
@@ -60,7 +64,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-		
+
 		if (!(productName.equals("1.0"))) {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 			od.deal_Product.sendKeys(productName);
@@ -93,16 +97,18 @@ public class DealBasicDetailCreators extends BaseClass {
 		od.transactionCategory.click();
 		od.transactionCategoryInput.sendKeys(input);
 		By transaction_Category_Option = By.xpath("(//div[contains(text(),'" + input + "')])[1]");
-		//applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
+		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
 		driver.findElement(transaction_Category_Option).click();
 		if (!od.basicDetails_SaveButton_List.isEmpty()) {
 			od.saveButton.click();
 		}
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
 		od.partyResponsibility.click();
+		Thread.sleep(1500);
 		od.partyResponsibilityinput.sendKeys(input);
+		Thread.sleep(1000);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
-		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option,5);
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
 		driver.findElement(party_Responsibility_Option).click();
 
 		try {
@@ -116,28 +122,28 @@ public class DealBasicDetailCreators extends BaseClass {
 		}
 		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.deals_partyResponsibilitiesText.click();
-		
+
 		try {
-		input=externalData.getFieldData(TSID, "Basic Details", "Contact");
-			if(input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) {
-				
+			input = externalData.getFieldData(TSID, "Basic Details", "Contact");
+
+			if (input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) {
+
 				od.deals_contactConfigure.click();
-				String contactName=externalData.getFieldData(TSID, "Basic Details", "Contact-Name");
+				String contactName = externalData.getFieldData(TSID, "Basic Details", "Contact-Name");
 				System.out.println(contactName);
 				od.deals_contactNameTextBox.sendKeys(contactName);
 				od.deals_contactNameSearch.click();
 				applyExplicitWaitsUntilElementClickable(od.deals_contactCheckBox, Duration.ofSeconds(10));
 				od.deals_contactCheckBox.click();
 				od.deals_contactUpdate.click();
-			
+
 			}
+		} catch (NullPointerException e) {
+
 		}
-		catch(NullPointerException e) {
-			
-			}
-		
+
 		od.nextBtn.click();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 	}
 

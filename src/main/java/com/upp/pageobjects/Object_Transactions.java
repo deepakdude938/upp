@@ -168,6 +168,11 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath="(//div[@class='ag-body-horizontal-scroll-viewport'])[1]")
 	public WebElement reports_horizontalWindow;
 	
+	@FindBy(xpath="(//div[@col-id='Status' and @role ='gridcell'])[1]")
+	public WebElement reports_FirstTxnStatus;
+	
+	@FindBy(xpath="(//div[@col-id='Status' and @role ='gridcell'])[2]")
+	public WebElement reports_SecondTxnStatus;
 	@FindBy(xpath="//div[@class='ag-center-cols-viewport']")
 	public WebElement reports_horizontalWindow1;
 	@FindBy(xpath="(//div[@col-id='Sub-Instruction Type'])[2]")
@@ -178,6 +183,17 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[3]")
 	public WebElement reports_ScroeStatus2ndRow;
+	
+	@FindBy(xpath = "(//div[@col-id='Instruction Type'])[2]")
+	public WebElement reports_InstructionName;
+	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[2]")
+	public WebElement reports_InstructionName1;
+	
+	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[3]")
+	public WebElement reports_InstructionName2;
+	
+	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[4]")
+	public WebElement reports_InstructionName3;
 	
 
 	

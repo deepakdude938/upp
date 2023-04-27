@@ -59,12 +59,12 @@ public class TS14 extends BaseClass implements ICallback {
 	public void call_the_ecommerce_transaction_api_with_given(String string) throws Exception {
 		
 		loginApi.loginToUpp();
-		endToEndId=ecommApi.createEcommerceTnx("REF1680523124590",string);
+		endToEndId=ecommApi.createEcommerceTnx(string);
 	}
 
 	@Then("Verify the EcommTnx in eComm Executions Report")
 	public void verify_the_EcommTnx_in_eComm_Executions_Report() throws Exception {
-	    report.eCommExecutionsReport(endToEndId,"REF1680523124590");
+	    report.eCommExecutionsReport(endToEndId);
 		//report.eCommExecutionsReport("XCRO86025","REF1680523124590");
 	}
 

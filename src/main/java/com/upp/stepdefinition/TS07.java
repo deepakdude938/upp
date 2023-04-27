@@ -25,7 +25,7 @@ public class TS07 extends BaseClass implements ICallback {
 	ECommerceTransactionMaker ecommTxn;
 	ECommerceTransactionChecker ecommChecker;
 	ECommerceTransactionVerifier ecommVerifier;
-	public String dealId;
+	public static String dealId;
 	public String sourceAccount = new DealPage(dm).sourceAccountNo;
 	public String toAccount = new DealPage(dm).toaccountNo;
 	public String tsid;
