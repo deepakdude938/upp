@@ -1,15 +1,10 @@
-Feature: TS22
+Feature: TS24
 
- @Regression @TS22
- Scenario Outline:  Create deal with alerts
+ @Regression @TS24
+ Scenario Outline: OnBoard the user and verify responsibility
 		Given Open browser and enter url
     Then Login to the application as "deal_maker"
-    And Create new deal with basic details with given "<TSID>".
-		And Create two Accounts with given "<TSID>"
-		And Add Alert for payment with given "<TSID>"
-		Then submit the deal
-Then approve the deal from the deal checker common method
-And Check the Transaction staus and instruction type in execution report with given "<TSID>"
+    And OnBoard the user with given role
 
 Examples:
       |TSID |
