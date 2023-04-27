@@ -147,54 +147,6 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
-	public static void commonMethodToCreateDeal(String TSID) throws Exception {
-
-		od.deal_SideMenuIcon.click();
-		od.newDealButton.click();
-		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
-		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-		System.out.println(productName);
-		dropdown.selectByVisibleText(od.businessSegmentDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		dropdown.selectByVisibleText(od.countryIndiaDropDown,
-				externalData.getFieldData(TSID, "Basic Details", "Country"));
-		String input = externalData.getFieldData(TSID, "Basic Details", "Transactions to non-registered beneficiaries");
-		if ((input.equalsIgnoreCase("Y") || input.equalsIgnoreCase("Yes")) && !od.beneficiariesCheckBox.isSelected()) {
-			od.beneficiariesCheckBox.click();
-		}
-
-		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
-
-		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
-			od.deals_ProcessingUnits.click();
-			od.deals_selectAll.click();
-			By ProcessingUnit = By.xpath(
-					"//div[contains(@class,'ng-tns-c92-7 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-							+ ProcessingUnits + "']");
-			driver.findElement(ProcessingUnit).click();
-		}
-
-		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		od.transactionCategory.click();
-		By transaction_Category_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);
-		driver.findElement(transaction_Category_Option).click();
-		od.saveButton.click();
-
-		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		od.partyResponsibility.click();
-		By party_Responsibility_Option = By.xpath(
-				"//div[contains(@class,'ng-tns-c92-6 ui-autocomplete-list-item-option ng-star-inserted') and normalize-space()='"
-						+ input + "']");
-		// applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 10);
-		driver.findElement(party_Responsibility_Option).click();
-		od.saveButton.click();
-		od.nextBtn.click();
-
-	}
-
 	public void createNewDeal_Old(String TSID, ICallback icallback) throws Exception {
 
 		od.deal_SideMenuIcon.click();
@@ -206,7 +158,7 @@ public class DashBoard_Module extends BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
-		od.deal_Product.sendKeys(productName);
+		dropdown.selectByVisibleText(od.deal_Product,productName);
 
 		icallback.handleCallback("PRODUCT_NAME", productName);
 
@@ -252,6 +204,7 @@ public class DashBoard_Module extends BaseClass {
 
 		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
 
 	public String submitDeal() throws Exception {
