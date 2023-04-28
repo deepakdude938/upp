@@ -13,7 +13,8 @@ import io.restassured.response.Response;
 
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.Property;
-import io.restassured.response.Response;
+
+
 
 public class EcommTnxApi {
 	public static String response = "";
