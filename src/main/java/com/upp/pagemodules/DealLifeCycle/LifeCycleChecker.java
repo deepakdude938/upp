@@ -16,7 +16,7 @@ import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 import com.upp.utils.DateUtils;
 
-public class LifeCycleMaker extends BaseClass {
+public class LifeCycleChecker extends BaseClass {
 
 	public static Object_NewDeal od;
 	public static ExcelReader externalData;
@@ -28,7 +28,7 @@ public class LifeCycleMaker extends BaseClass {
 	public static DateUtils dateutil;
 	Object_DealLifecycle dl;
 
-	public LifeCycleMaker() {
+	public LifeCycleChecker() {
 		od = new Object_NewDeal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
@@ -39,33 +39,24 @@ public class LifeCycleMaker extends BaseClass {
 		dl = new Object_DealLifecycle();
 	}
 
-	public void CreateLifecycleMakerWorkitem(String dealId, String TSID) throws Exception {
+	public void Approve_From_LifecycleChecker(String dealId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(dl.Deal_Lifecycle, Duration.ofSeconds(5));
 		dl.Deal_Lifecycle.click();
-		applyExplicitWaitsUntilElementClickable(dl.LifecycleMakerIcon, Duration.ofSeconds(5));
-		dl.LifecycleMakerIcon.click();
-		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementClickable(dl.LifecycleCheckerIcon, Duration.ofSeconds(5));
+		dl.LifecycleCheckerIcon.click();
 		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_Dealid, Duration.ofSeconds(5));
 		dl.LifecycleMaker_Dealid.sendKeys(dealId);
 		Thread.sleep(1000);
 		js.click(dl.LifecycleMaker_submit);
-		Thread.sleep(1000);
-		js.click(dl.LifecycleMaker_plusIcon);
-		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_DocumentType, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(dl.LifecycleMaker_DocumentType,
-				externalData.getFieldData(TSID, "Deal Lifecycle", "Document Type"));
-		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_DocumentNature, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(dl.LifecycleMaker_DocumentNature,
-				externalData.getFieldData(TSID, "Deal Lifecycle", "Document Nature"));
-		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_ADDButton, Duration.ofSeconds(5));
-		dl.LifecycleMaker_ADDButton.click();
-		String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\upp-automation-testdata.xlsx";
-		dl.LifecycleMaker_FileInput.sendKeys(filePath);
-        scroll.scrollInToView(dl.LifecycleMaker_SubmitButton);
-		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_SubmitButton, Duration.ofSeconds(5));
-		dl.LifecycleMaker_SubmitButton.click();
+		applyExplicitWaitsUntilElementClickable(dl.AddYourComments, Duration.ofSeconds(5));
+		dl.AddYourComments.sendKeys("Ok");
+		applyExplicitWaitsUntilElementClickable(dl.Appprove_Button, Duration.ofSeconds(5));
+		dl.Appprove_Button.click();
 		applyExplicitWaitsUntilElementClickable(dl.Yes_Icon, Duration.ofSeconds(5));
 		dl.Yes_Icon.click();
+		Thread.sleep(5000);
+		
+		
 
 	}
 

@@ -159,7 +159,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath="(//div[contains(text(),'eComm Executions')])[3]")
 	public WebElement reports_eCommExecutions;
 	
-	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[3]")
+	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_endToendId;
 	
 	@FindBy(xpath="//div[@col-id='Amount']")

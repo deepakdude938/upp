@@ -55,5 +55,16 @@ public class Object_DealLifecycle extends BaseClass{
 	@FindBy(xpath="//button[normalize-space()='submit']")
 	public WebElement LifecycleMaker_SubmitButton;
 	
+	@FindBy(xpath="//a[normalize-space()='Lifecycle Checker']")
+	public WebElement LifecycleCheckerIcon;
+	
+	@FindBy(xpath="//textarea[@placeholder='Add your comments here ...']")
+	public WebElement AddYourComments;
+	
+	@FindBy(xpath="//button[normalize-space()='Approve']")
+	public WebElement Appprove_Button;
+	
+	@FindBy(xpath="(//dd[@class='truncate status'])[1]")
+	public WebElement Deal_Status;
 	
 }
