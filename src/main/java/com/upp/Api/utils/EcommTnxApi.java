@@ -13,16 +13,18 @@ import io.restassured.response.Response;
 
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.Property;
+import io.restassured.response.Response;
 
 public class EcommTnxApi {
-
-	public static String base_Url = Property.getProperty("Dev_base_uri");
 	public static String response = "";
 	public static String endToEndId = "";
 
-	public static String createEcommerceTnx( String TSID) throws Exception {
+	public static String base_Url = Property.getProperty("Dev_base_uri");
+
+	public static String createEcommerceTnx(String TSID) throws Exception {
+
 		RestAssured.baseURI = base_Url;
-		
+
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.createEcommerceTnx(TSID)).when()
 				.post("transaction/api/transaction");
@@ -39,8 +41,8 @@ public class EcommTnxApi {
 			System.out.println("x1   " + x[1]);
 			String y[] = x[1].split("\"");
 			System.out.println("y1   " + y[1]);
-			endToEndId=y[1];
-			System.out.println("The End to end is" +endToEndId);
+			endToEndId = y[1];
+			System.out.println("The End to end is" + endToEndId);
 		}
 		if (res.getStatusCode() == 200) {
 			JsonPath js = new JsonPath(response);

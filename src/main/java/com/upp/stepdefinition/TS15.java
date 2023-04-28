@@ -45,8 +45,8 @@ public class TS15 extends BaseClass implements ICallback{
 	}
 	
 	@Then("Validate SubInstruction Type as {string} and {string}")
-	public void validate_SubInstruction_Type_as_and(String string, String string2) throws Exception {
-		re.checkSubInstructionTypeInExecutionReport();
+	public void validate_SubInstruction_Type_as_and(String payment, String surplus) throws Exception {
+		re.checkSubInstructionTypeInExecutionReport(payment,surplus);
 	}
 
 	@Override
