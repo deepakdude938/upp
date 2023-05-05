@@ -63,4 +63,44 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//button[contains(@class,'ui-btn-primary ui-align-right btn-preference') and normalize-space()='Approve']")
 	public WebElement configuration_HolidayApproveButton;
 	
+	@FindBy(xpath="//a[normalize-space()='Manage Configs']")
+	public WebElement configuration_ManageConfigButton1;
+	
+	@FindBy(xpath="//div[contains(text(),'Processing Units')]")
+	public WebElement configuration_ProcessingUnitButton;
+	
+	@FindBy(xpath="//div[contains(text(),'Add New')]")
+	public WebElement configuration_AddNewButton;
+	
+	@FindBy(xpath="(//input[@id='txt-deals-puDetails-name-v1'])[1]")
+	public WebElement PU_Name;
+	
+	@FindBy(xpath="(//input[@id='txt-deals-puDetails-description-v1'])[1]")
+	public WebElement PU_Description;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
+	public WebElement PU_Countries;
+	
+	@FindBy(xpath="(//div[@class='list ng-star-inserted'])[1]")
+	public WebElement PU_Countries_Select;
+	
+	@FindBy(xpath="//button[normalize-space()='Submit']")
+	public WebElement PU_SubmitButton;
+	
+	@FindBy(xpath="//button[normalize-space()='Admin Checker']")
+	public WebElement PU_AdminChecker;
+	
+	@FindBy(xpath="(//i[@class='ui-icon ic ic-edit_blue ng-star-inserted'])[1]")
+	public WebElement PU_EditIcon;
+	
+	@FindBy(xpath="//textarea[@id='comment']")
+	public WebElement PU_Comment;
+	
+	@FindBy(xpath="//button[normalize-space()='Approve']")
+	public WebElement PU_ApproveButton;
+	
+	@FindBy(xpath="//button[normalize-space()='OK']")
+	public WebElement PU_OkButton;
+	
+
 }
