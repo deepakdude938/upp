@@ -91,11 +91,11 @@ public class Balance_Reporting extends BaseClass {
 		if(externalData.getFieldData(TSID, "Balance Reporting", "Frequency").equalsIgnoreCase("Days"))
 		{
 			od.Balance_Reporting_Days.click();
-			od.Balance_Reporting_repeatEvery.clear();
-			od.Balance_Reporting_repeatEvery.sendKeys(externalData.getFieldData(TSID, "Balance Reporting", "Repeat Every Day"));
+			
 		}
-		
+		Thread.sleep(2000);
 		od.Balance_Reporting_NextSummaryArrow.click();
+		Thread.sleep(2000);
 
 	}
 }
