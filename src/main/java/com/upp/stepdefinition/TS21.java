@@ -52,7 +52,7 @@ public class TS21 extends BaseClass implements ICallback {
 	@And("Check Status and Instruction name as Balance Report with given {string}")
 	public void check_Status_and_Instruction_name_as_Balance_Report(String string) throws Exception {
 	   report.checkStatusAndInstructionTypeAsBalanceReport(string,TS06.dealId);
-	    //report.checkStatusAndInstructionTypeAsBalanceReport(string,"REF1682309461322");
+	   
 	}
 
 	@Override

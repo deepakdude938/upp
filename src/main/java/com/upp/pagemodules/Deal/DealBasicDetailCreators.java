@@ -78,6 +78,23 @@ public class DealBasicDetailCreators extends BaseClass {
 			// dropdown.selectByValue(od.deal_Product, "T1142");
 			icallback.handleCallback("PRODUCT_NAME", productName);
 		}
+		
+		try {
+			String endDate=externalData.getFieldData(TSID, "Basic Details", "Ends On");
+				if(endDate.equalsIgnoreCase("Default Today")) {
+					
+				od.basicDetails_EndDate.click();
+				String day = dateutil.getDay();
+				By excecutionDay = By.xpath(
+						"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
+								+ day + "']");
+				applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+				driver.findElement(excecutionDay).click();
+				}
+			}
+			catch(NullPointerException e) {
+				
+				}
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
 

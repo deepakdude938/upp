@@ -40,6 +40,9 @@ public class LoginToApplication extends BaseClass {
 		ol.username.sendKeys(userName);
 //		ol.nextButton.click();
 //		Thread.sleep(2000);nextButton
+		ol.loginIn.click();
+		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(5));
+
 		ol.password.sendKeys(password);
 		ol.loginIn.click();
 

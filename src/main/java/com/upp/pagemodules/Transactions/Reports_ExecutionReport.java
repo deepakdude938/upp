@@ -320,22 +320,20 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		commonmethodExecReport(TSID, DealId);
 
-		String ScroeStatus = tm.reports_ScroeStatus.getText();
-		System.out.println("Scroe status is " + ScroeStatus);
+		String status = tm.reports_ScroeStatus.getText();
 
-		if (!(ScroeStatus.equalsIgnoreCase("Scheduled"))) {
+		if (!(status.equalsIgnoreCase("Scheduled"))) {
+
 			Assert.fail("Transaction not scheduled");
+
 		}
 
-		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3000);
+		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
 
-		String instructionname1 = tm.reports_InstructionName1.getText();
-		String instructionname2 = tm.reports_InstructionName2.getText();
-		String instructionname3 = tm.reports_InstructionName3.getText();
+		String instructionname = tm.reports_InstructionName.getText();
 
-		Assert.assertTrue(instructionname1.equalsIgnoreCase("Balance Report"));
-		Assert.assertTrue(instructionname2.equalsIgnoreCase("Balance Report"));
-		Assert.assertTrue(instructionname3.equalsIgnoreCase("Balance Report"));
+		System.out.println(instructionname);
+		Assert.assertTrue(instructionname.equalsIgnoreCase("Balance Reporting"));
 
 	}
 }

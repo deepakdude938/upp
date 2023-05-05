@@ -608,4 +608,8 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
 	public WebElement payments_ToAccountInputBox;
 	
+	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[2]")
+	public WebElement basicDetails_EndDate;
+	
+	
 }
