@@ -28,6 +28,7 @@ public class BaseClass {
 	public static boolean isHeadLess;
 	public static Properties prop;
 	public static String dealId = "";
+	public static String config_productName ;
 
 	public boolean isFlexibleFunding;
 
@@ -37,7 +38,7 @@ public class BaseClass {
 		prop = new Properties();
 		prop.load(fis);
 		String browser = prop.getProperty("browser");
-		isHeadLess = false;
+//		isHeadLess = true;
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			ChromeOptions options = new ChromeOptions();

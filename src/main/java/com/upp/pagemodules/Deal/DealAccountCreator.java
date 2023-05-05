@@ -69,9 +69,10 @@ public class DealAccountCreator extends BaseClass {
 		} else {
 			dropdown.selectByVisibleText(od.physical, " Virtual ");
 		}
+	
 		od.searchTextBox.sendKeys(accountNo);
 		od.searchButton.click();
-		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
 		od.accounts_addAccount.click();
 		Thread.sleep(2000);
 		return accountNo;

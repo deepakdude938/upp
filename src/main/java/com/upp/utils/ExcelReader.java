@@ -1,6 +1,7 @@
 package com.upp.utils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -29,11 +30,12 @@ public class ExcelReader {
 	public static String excelFilePath=System.getProperty("user.dir")+"\\src\\main\\resources\\upp-automation-testdata.xlsx";
 	//public static String  excelFilePath =Thread.currentThread().getContextClassLoader().getResource("upp-automation-testdata.xlsx").getFile();
 
-	public  URL pathSource =this.getClass().getResource("upp-automation-testdata.xlsx");
-	InputStream is = getClass().getClassLoader().getResourceAsStream("upp-automation-testdata.xlsx");
-	URL resource = getClass().getClassLoader().getResource("upp-automation-testdata.xlsx");
+//	public  URL pathSource =this.getClass().getResource("upp-automation-testdata.xlsx");
+//	InputStream is = getClass().getClassLoader().getResourceAsStream("upp-automation-testdata.xlsx");
+//	URL resource = getClass().getClassLoader().getResource("upp-automation-testdata.xlsx");
 	public static int rowNum;
 	public static Sheet sheet ;
+	public static FileInputStream inputStream;
 
    public void init() throws EncryptedDocumentException, IOException {
         if(false) {
@@ -47,7 +49,7 @@ public class ExcelReader {
     }
 
     public  String getFieldData(String TSID, String worksheetName, String fieldName) throws InvalidFormatException, IOException {
- 
+    	inputStream=new FileInputStream(excelFilePath);
     	sheet = getWorkBook(excelFilePath).getSheet(worksheetName);
        	rowNum = ExcelReader.findrownum(worksheetName, TSID);
        	    	 
@@ -65,6 +67,7 @@ public class ExcelReader {
     		 cellData = cell.getNumericCellValue() + "";
     	 }
     	 }
+    	 inputStream.close();
     	 return cellData;
     	 
     }
@@ -123,7 +126,7 @@ public class ExcelReader {
     }
 
     private static Workbook getWorkBook(String excelFilePath) throws IOException, InvalidFormatException {
-        return WorkbookFactory.create(new File(excelFilePath));
+        return WorkbookFactory.create(inputStream);
     }
 
     private  List<Map<String, String>> readSheet(Sheet sheet) {

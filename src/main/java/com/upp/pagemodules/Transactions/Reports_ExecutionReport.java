@@ -289,6 +289,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			
 			subInstruction.add(iu.getText());
 		}
+		
 		Assert.assertTrue(subInstruction.contains(payment));
 		Assert.assertTrue(subInstruction.contains(surplus));
 		Assert.assertTrue(subInstruction.contains(retention));

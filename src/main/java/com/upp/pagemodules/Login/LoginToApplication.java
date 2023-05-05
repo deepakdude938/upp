@@ -38,6 +38,8 @@ public class LoginToApplication extends BaseClass {
 		String password = prop.getProperty(pwdKey);
 		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(35));
 		ol.username.sendKeys(userName);
+//		ol.nextButton.click();
+//		Thread.sleep(2000);nextButton
 		ol.password.sendKeys(password);
 		ol.loginIn.click();
 

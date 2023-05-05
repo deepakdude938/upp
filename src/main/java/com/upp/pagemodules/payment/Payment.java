@@ -44,7 +44,11 @@ public class Payment extends BaseClass{
 
 		toAccountNo=DealPage.toaccountNo;
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
-		od.payments_ScheduledInstructionIcon.click();
+		try {
+			od.payments_ScheduledInstructionIcon.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
 		od.payments_GetStarted.click();
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
@@ -171,7 +175,14 @@ public class Payment extends BaseClass{
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
-		od.payments_NextArrowButtonTransferSubInstruction.click();
+		
+		try {
+			od.payments_NextArrowButtonTransferSubInstruction.click();
+			}
+			catch(Exception e) {
+				handleElementClickException(od.payments_NextArrowButtonTransferSubInstruction);
+			}
+	
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))) {
@@ -183,6 +194,19 @@ public class Payment extends BaseClass{
 				|| (externalData.getFieldData(TSID, "Scheduled", "Notification-Notification Alerts"))
 						.equalsIgnoreCase("Yes"))) {
 			od.payments_NotificationAlertSlider.click();
+		}
+		if(TSID.equals("TS25")) {
+		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
+		od.payments_DealsummaryIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
+		dealId = od.deals_SummaryRefId.getText();
+		scroll.scrollInToView(od.payments_DealSubmitButton);
+		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
+		od.payments_DealSubmitButton.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
+		od.payments_DealYesButton.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
+		od.payments_DealOkButton.click();
 		}
     }
 
