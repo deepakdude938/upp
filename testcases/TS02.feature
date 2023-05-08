@@ -1,7 +1,7 @@
 Feature: TC02
 
 
-@Regression @TC02
+@Regression @TS02
 Scenario Outline: Create a Deal having Accounts, Parties for EComm Transactions
 #Given User is on LoginPage 
 #Then Login to the application

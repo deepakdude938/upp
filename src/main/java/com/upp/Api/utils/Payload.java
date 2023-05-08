@@ -132,19 +132,13 @@ public class Payload {
 		String random = Long.toString(number);
 
 		String UniqueplatformRefNo = "cplate" + random;
-
-		ObjectMapper objectMapper = new ObjectMapper();
-		JsonNode rootNode = objectMapper.readTree(payLoadString);
-		JsonNode nodeToModify = rootNode.path("paymentInfo");
-
-		((ObjectNode) nodeToModify).put("platformRefNo", UniqueplatformRefNo);
-		String modifiedJsonString = objectMapper.writeValueAsString(rootNode);
-
+		
 		String utcdate = DateUtils.getCurrentDateUTC();
 
 		String utctimeEod = utcdate + "T" + "14:30:00Z";
 
-		DocumentContext jsonContext = JsonPath.parse(modifiedJsonString);
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.paymentInfo.platformRefNo", UniqueplatformRefNo);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 		jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn", utctimeEod);
 		String modifiedJsonString1 = jsonContext.jsonString();
