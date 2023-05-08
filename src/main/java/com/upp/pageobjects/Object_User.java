@@ -1,5 +1,7 @@
 package com.upp.pageobjects;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -49,12 +51,48 @@ public class Object_User extends BaseClass {
 	@FindBy(xpath = "//button[@id='btn-perms-users-onBoardUpdate-updateOnboard-v1']")
 	public WebElement userMaker_onboard;
 
+	@FindBy(xpath = "//button[contains(text(),'OK')]")
+	public WebElement userMaker_ok;
+
+	@FindBy(xpath = "//div[contains(@class,'ui-remove-icon')]")
+	public WebElement userMaker_remove;
+	
+	@FindBy(xpath = "//label[text()=' Permissions ']")
+	public WebElement userPermissions;
+	
+	@FindBy(xpath = "//a[@href='/user/onboarded']")
+	public WebElement onBoardusers;
+	
+
 	// objects for user checker
 
 	@FindBy(xpath = "//a[contains(text(),'User Checker')]")
 	public WebElement userChecker;
 
-	@FindBy(xpath = "(//td[2])[2]//div//div//span")
-	public WebElement userChecker_user;
+	@FindBy(xpath = "//tr//td[2]//span[contains(@class,'ui-text')]")
+	public List<WebElement> userChecker_user;
 
+	@FindBy(id = "ic-generic-menu-showMenu-v1")
+	public WebElement userChecker_menu;
+
+	@FindBy(xpath = "//div[contains(text(),'Approve ')]")
+	public WebElement userChecker_approve;
+
+	@FindBy(xpath = "//input[@id='swal-input1']")
+	public WebElement userChecker_approveMessage;
+
+	@FindBy(xpath = "//button[contains(text(),'Yes')]")
+	public WebElement userchecker_Yes;
+
+	@FindBy(xpath = "//div[contains(@id,'menu-generic-sidemenu-Deals')]")
+	public WebElement userchecker_dealList;
+
+	@FindBy(xpath = "//div[contains(@id,'menu-generic-sidemenu-Deals')]")
+	public List<WebElement> user_dealList;
+
+	// object for deactivate user
+	@FindBy(xpath = "//button[contains(@class,'stat-inactive')]//span")
+	public WebElement userchecker_inactive;
+	
+	
 }
