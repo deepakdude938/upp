@@ -140,7 +140,7 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONCHECKER']")
 	public WebElement ecommerce_txnChecker;
 
-	@FindBy(xpath = "(//div[@aria-colindex='2']//input)[2]")
+	@FindBy(xpath = "(//div[@aria-colindex='4']//input)[2]")
 	public WebElement ecommerce_TxnDealSearch;
 	
 	@FindBy(xpath = "//div[@class='ag-pinned-left-cols-container']//div[@class='ui-checkbox']//span")
