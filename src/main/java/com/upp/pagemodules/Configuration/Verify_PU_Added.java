@@ -1,4 +1,4 @@
-package com.upp.pagemodules.Configuration;
+package com.upp.pagemodules.configuration;
 
 import java.time.Duration;
 import org.joda.time.DateTimeConstants;
