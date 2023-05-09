@@ -12,8 +12,8 @@ Feature: TS24
     Examples:
       |TSID |
       |TS24|
-     
-    Scenario Outline: Verify the updated user 
+                	
+           	 Scenario Outline: Verify the updated user 
     Given Open browser and enter url
 		Then login with updated user using "<TSID>"
 		Then Verify user is able to login
@@ -24,7 +24,7 @@ Feature: TS24
     Examples:
       |TSID |
       |TS24|	
-           	
+      
 		Scenario Outline: Deactivate  user 
     Given Open browser and enter url
 		Then  Login to the application as "deal_maker"
@@ -34,13 +34,16 @@ Feature: TS24
 		
     Examples:
       |TSID |
-      |TS24|		      
+      |TS24-1|		      
       
-         Scenario Outline: Verify the updated user 
+     
+  
+      
+          Scenario Outline: Verify the updated user 
     Given Open browser and enter url
 		Then login with updated user using "<TSID>"
 		Then Verify user is not  able to login
 			 Examples:
       |TSID |
-      |TS24|	
-
+      |TS24-1|	
+      
