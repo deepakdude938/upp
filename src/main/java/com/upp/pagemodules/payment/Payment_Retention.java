@@ -66,13 +66,13 @@ public class Payment_Retention extends BaseClass {
 		od.retention_Remarks.sendKeys(externalData.getFieldData(TSID,"PaymentRetention","Remarks"));
 		Thread.sleep(1000);
 		js.sendKeys(od.retention_Execute,"A few days prior");
-	    Thread.sleep(1000);
+	    Thread.sleep(2000);
 		js.click(od.retention_FewDaysPrior);
 		System.out.println(externalData.getFieldData(TSID,"PaymentRetention","NumberOfDays"));
 		od.retention_NoOfDays.sendKeys("3");
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(od.retention_nextArrowIcon, Duration.ofSeconds(3));
 		od.retention_nextArrowIcon.click();
-
+		Thread.sleep(5000);
 	}
 }

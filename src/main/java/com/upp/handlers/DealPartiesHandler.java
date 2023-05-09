@@ -68,15 +68,26 @@ public class DealPartiesHandler extends BaseClass {
 		od.parties_AddButton.click();
 		od.parties_AccountsTab.click();
 		od.parties_AddAccounts.click();
-
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 		od.parties_PaymentSystem.click();
 		String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
 		icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
 
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
-		od.parties_DocumentsTab.click();
-		od.parties_AddDocument.click();
+		
+		try {
+			od.parties_DocumentsTab.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_DocumentsTab);
+		}
+		try {
+			od.parties_AddDocument.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_AddDocument);
+		}
+	
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentType, Duration.ofSeconds(5));
 		od.parties_DocumentType.click();
 		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {

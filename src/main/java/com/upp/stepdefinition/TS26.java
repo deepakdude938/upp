@@ -7,9 +7,9 @@ import java.time.Duration;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
-import com.upp.pagemodules.Configuration.PU_AdminChecker;
-import com.upp.pagemodules.Configuration.ProcessingUnit;
-import com.upp.pagemodules.Configuration.Verify_PU_Added;
+import com.upp.pagemodules.configuration.PU_AdminChecker;
+import com.upp.pagemodules.configuration.ProcessingUnit;
+import com.upp.pagemodules.configuration.Verify_PU_Added;
 
 import callbackInterfaces.ICallback;
 

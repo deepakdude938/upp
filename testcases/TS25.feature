@@ -1,17 +1,17 @@
-Feature: TS10
+Feature: TS25
 
 
-@Regression @TS10
-Scenario Outline: Holiday combination
+@Regression @TS25
+Scenario Outline: Product Config
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
-#And Create Holiday "<TSID>"
-#And Approve Holiday
+#Then Create product from Configuration for "<TSID>"
+#Then Approve product
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create Payments in the Scheduled Instructions on Friday "<TSID>"
-Then Check schedule payment next business day
+Then Approve the deal from the deal checker
 Examples:
       |TSID|
-      |TS10|
+      |TS25|

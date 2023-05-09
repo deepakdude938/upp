@@ -59,7 +59,12 @@ public class DealPartiesCreator extends BaseClass {
 
 	public void createParties(String TSID, ICallback icallback) throws Exception, IOException {
 		applyExplicitWaitsUntilElementClickable(od.parties_icon, Duration.ofSeconds(20));
+		try {
 		od.parties_icon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_icon);
+		}
 		od.parties_GetStarted.click();
 		String partyHandle = externalData.getFieldData(TSID, "Party", "Add a new Party");
 		System.out.println(partyHandle);

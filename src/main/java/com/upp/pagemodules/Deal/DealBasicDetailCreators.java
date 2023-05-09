@@ -67,8 +67,14 @@ public class DealBasicDetailCreators extends BaseClass {
 
 		if (!(productName.equals("1.0"))) {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+			if(TSID.equalsIgnoreCase("TS25")) {
+				od.deal_Product.sendKeys(config_productName);
+				dropdown.selectByVisibleText(od.deal_Product, config_productName);
+			}
+			else {
 			od.deal_Product.sendKeys(productName);
 			dropdown.selectByVisibleText(od.deal_Product, productName);
+			}
 			// dropdown.selectByValue(od.deal_Product, "T1142");
 			icallback.handleCallback("PRODUCT_NAME", productName);
 		}
@@ -104,6 +110,7 @@ public class DealBasicDetailCreators extends BaseClass {
 
 		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
 			od.deals_ProcessingUnits.click();
+			applyExplicitWaitsUntilElementClickable(od.deals_selectAll, Duration.ofSeconds(10));
 			od.deals_selectAll.click();
 			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
 			By ProcessingUnit = By.xpath("//div[contains(text(),'" + ProcessingUnits + "')]");
@@ -137,7 +144,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		} catch (Exception e) {
 			System.out.println("Normal flow ");
 		}
-		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
+		
 		od.deals_partyResponsibilitiesText.click();
 
 		try {
@@ -158,7 +165,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		} catch (NullPointerException e) {
 
 		}
-
+		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
