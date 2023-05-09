@@ -47,8 +47,10 @@ public class DealPartiesHandler extends BaseClass {
 		od.parties_Responsibility.click();
 		od.parties_Responsibility_dropdown.click();
 		od.parties_Remarks.sendKeys(externalData.getFieldData(TSID, "Party", "Remarks"));
-//		responsibilities = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-//		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
+		Thread.sleep(1000);
+		responsibilities = externalData.getFieldData(TSID, "Party", "Responsibility");
+		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
+		Thread.sleep(1000);
 		ecommerce = externalData.getFieldData(TSID, "Party", "eCommerce Party-checkbox");
 		System.out.println(ecommerce);
 		if (ecommerce.equalsIgnoreCase("Y")) {

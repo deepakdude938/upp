@@ -154,7 +154,12 @@ public class DashBoard_Module extends BaseClass {
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
 
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
-		dropdown.selectByVisibleText(od.deal_Product, "A");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+		if (!(productName.equals("1.0"))) {
+			od.deal_Product.sendKeys(productName);
+			dropdown.selectByVisibleText(od.deal_Product, productName);
+			icallback.handleCallback("PRODUCT_NAME", productName);
+		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
@@ -191,6 +196,7 @@ public class DashBoard_Module extends BaseClass {
 		}
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
 		od.partyResponsibility.click();
+		Thread.sleep(1000);
 		od.partyResponsibilityinput.sendKeys(input);
 		Thread.sleep(1000);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");
