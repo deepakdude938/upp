@@ -30,7 +30,13 @@ public class DealResponsibilityHandler extends BaseClass implements ICallback {
 	}
 
 	public void handleMarchant() {
-		dropdown.selectByVisibleText(od.parties_CommissionPlan, "Merchant");
+		System.out.println("Merchant callback");
+	}
+	public void handleAcquiree() throws Exception {
+	 Thread.sleep(1000);
+	 od.party_basic_details_acquiree.sendKeys("Test");
+	 od.party_basic_details_acquiree.clear();
+	 od.party_basic_details_acquiree.sendKeys("Test");
 	}
 	
 }

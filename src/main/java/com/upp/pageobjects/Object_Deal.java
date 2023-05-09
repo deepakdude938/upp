@@ -611,5 +611,8 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[2]")
 	public WebElement basicDetails_EndDate;
 	
+	@FindBy(xpath = "(//xcro-party-responsibility-attributes[@placeholder='Select'])[1]//input")
+	public WebElement party_basic_details_acquiree;
+	
 	
 }
