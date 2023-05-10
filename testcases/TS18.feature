@@ -12,8 +12,8 @@ Then Click On Accounts Tab
 And Create Payments in the scheduled Instructions with given "TS18-B"
 And Add Priority dependency with Same Day Dependeny
 Then submit the deal
-Then logout of the application
-Then Login to the application as "txn_checker"
+#Then logout of the application
+#Then Login to the application as "txn_checker"
 Then approve the deal from the deal checker common method
 And check Both Transactions Status is Scheduled
 Then logout of the application

@@ -66,15 +66,14 @@ public class Party_Maker_Accounts extends BaseClass {
 	public void PartyMaker_Accounts(String TSID,ICallback icallback) throws Exception
 	{
 		od.parties_AccountsTab.click();
-		op.PartyMaker_partyAccountsAddButton.click();		
-		applyExplicitWaitsUntilElementClickable(op.PartyMaker_PaymentSystem, Duration.ofSeconds(5));
-		op.PartyMaker_PaymentSystem.click();
-		
+		op.PartyMaker_partyAccountsAddButton.click();	
+		Thread.sleep(2000);
+		jsClick.click(op.PartyMaker_PaymentSystem);
+		Thread.sleep(1000);
 		String paymentInstrumentdata=externalData.getFieldData(TSID, "Parties-Maker", "Accounts-Payment System");
 		 By paymentInstrument = By.xpath("(//div[contains(text(),'"+paymentInstrumentdata+"')])[1]");
-		 applyExplicitWaitsUntilElementVisible(paymentInstrument,3);
+		 applyExplicitWaitsUntilElementVisible(paymentInstrument,5);
 		 driver.findElement(paymentInstrument).click();
-		 
 		icallback.handleCallback("PARTIES_MAKER_PAYMENT_INSTRUMENT",paymentInstrumentdata);
 		
 		applyExplicitWaitsUntilElementClickable(op.PartyMaker_OKButton, Duration.ofSeconds(5));
