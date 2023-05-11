@@ -195,7 +195,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[4]")
 	public WebElement reports_InstructionName3;
 	
-
+// Object for transaction 
 	
 	
 }
