@@ -19,12 +19,30 @@ import io.cucumber.java.After;
 public class Hook extends BaseClass {
 
 	public static WebDriver driver;
-	public static int counter = 1;
 
 	@Before()
-	public void setUp() throws Exception {
+	public void setUp(Scenario scenario) throws Exception {
+
 		WebDriver driver = initialize();
 		this.driver = driver;
+
+		String s[] = scenario.getSourceTagNames().toArray(new String[0]);
+		String tagname = s[1];
+		String TSIDArray[] = tagname.split("@");
+		String TSID = TSIDArray[1];
+
+		System.out.println("The run TSID is" + TSID);
+
+		ExcelReader externalData = new ExcelReader();
+		String run = externalData.getFieldData(TSID, "Test Case Master", "Run TC");
+
+		System.out.println("Run Mode:" + run);
+
+		if ((run.equalsIgnoreCase("no")) || (run.equalsIgnoreCase("n"))) {
+
+			throw new AssumptionViolatedException("Skipping test as mentioned in excel sheet");
+
+		}
 
 	}
 
@@ -49,23 +67,4 @@ public class Hook extends BaseClass {
 
 	}
 
-	@Before()
-	public void before(Scenario scenario) throws Exception {
-		ExcelReader externalData = new ExcelReader();
-
-		String TSID = "TS" + counter;
-
-		System.out.println("The run TSID is" + TSID);
-		String run = externalData.getFieldData(TSID, "Test Case Master", "Run TC");
-		counter = counter + 1;
-
-		System.out.println("Run Mode:" + run);
-
-		if ((run.equalsIgnoreCase("no")) || (run.equalsIgnoreCase("n"))) {
-
-			throw new AssumptionViolatedException("Skipping test as mentioned in excel sheet");
-
-		}
-
-	}
 }

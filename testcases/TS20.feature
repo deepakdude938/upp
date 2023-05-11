@@ -1,7 +1,7 @@
 Feature: TS20 Payment Retention Surplus
 
 
-@Regression @TS15
+@Regression @TS20
 Scenario Outline: Payment Retention Surplus
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
