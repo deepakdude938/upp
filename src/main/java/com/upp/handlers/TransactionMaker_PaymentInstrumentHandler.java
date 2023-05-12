@@ -107,25 +107,23 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 	}
 
-	public void handleBT_INPaymentInstrument(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
+	public void handleBT_UAEPaymentInstrument(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
 
 		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
 		jsClick.click(tm.transactions_ToAccountDropdown);
-		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown,
-				externalData.getFieldData(TSID, "Txn Maker", "to"));
-
-		tm.transactions_bankIFSCCode
-				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
+		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown,toaccountNo);
 		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
 		dropdown.selectByValue(tm.transactions_accountOrIban,
 				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
 
 		tm.transactions_address.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Address Line 1"));
 		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+		tm.transactions_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary BIC"));
 		scroll.scrollInToView(tm.transactions_beneficiaryIncorporation);
 		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
 				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		tm.transactions_senderPop.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Sender POP"));
 		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
 		scroll.scrollInToView(od.payments_AddSubInstructionButton);
 		od.payments_AddSubInstructionButton.click();
