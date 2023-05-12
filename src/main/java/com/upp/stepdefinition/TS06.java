@@ -80,7 +80,7 @@ public class TS06 extends BaseClass implements ICallback {
 
 		TSID = string;
 		// TnxId=tm.createTransactionFromTransactionMaker(string,DealPage.dealId,DealPage.toaccountNo,this);
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string,TS06.dealId, DealPage.toaccountNo);
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string,TS06.dealId, DealPage.sourceAccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
@@ -138,10 +138,10 @@ public class TS06 extends BaseClass implements ICallback {
 				instrumentHandler.handleBTPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
 			}
 
-			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
+			if (paymentInstrument.equalsIgnoreCase("BT_UAE")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleBT_INPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+				instrumentHandler.handleBT_UAEPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
 			}
 
 		}
