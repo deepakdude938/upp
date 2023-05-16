@@ -32,7 +32,7 @@ public class Hook extends BaseClass {
 	public void AfterScenario() throws IOException {
 
 //		driver.quit();
-		driver.close();
+		//driver.close();
 
 	}
 

@@ -31,20 +31,42 @@ public class TS27 extends BaseClass implements ICallback {
 	public static String TnxId = "";
 	public String dealid;
 	Transactions_Maker_Bulkupload bulkUpload;
+	Reports_ExecutionReport report;
 
 
 	public TS27() {
 
 		this.dm = new DashBoard_Module();
 		bulkUpload = new Transactions_Maker_Bulkupload();
+		this.report = new Reports_ExecutionReport();
 	}
 
 	
 	@Then("Bulk upload the transaction")
 	public void bulk_upload_the_transaction() throws Exception {
-		bulkUpload.bulkUpload(DealPage.sourceAccountNo,DealPage.toaccountNo);
+		System.out.println("source Account = "+DealPage.sourceAccountNo);
+		System.out.println("des Account = "+DealPage.toaccountNo);
+		 
+	//	bulkUpload.bulkUpload(DealPage.sourceAccountNo,DealPage.toaccountNo);
+		bulkUpload.bulkUpload("1466443356","9854716055");
 	}
 
+	@Then("Approve multiple transactions from Transaction Checker with given {string}")
+	public void approve_multiple_transactions_from_Transaction_Checker_with_given(String string) throws Exception {
+		System.out.println(TS06.dealId);
+		bulkUpload.approveAllTransaction("REF1682497237686");
+	}
+	
+	@Then("Approve multiple transaction from Transaction Verifier with given {string}")
+	public void approve_multiple_transaction_from_Transaction_Verifier_with_given(String string) throws Exception {
+	    bulkUpload.approveAllTransactionByVerifier("REF1682497237686");
+	}
+	
+	@Then("Check the Transaction status in execution report with given {string}")
+	public void check_the_Transaction_status_in_execution_report_with_given(String string) throws Exception {
+	   report.ExecutionReport(string,"REF1682497237686");
+	}
+	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub
