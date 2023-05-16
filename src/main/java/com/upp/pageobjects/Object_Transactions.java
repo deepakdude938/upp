@@ -194,9 +194,17 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[4]")
 	public WebElement reports_InstructionName3;
+
+// Object for transaction 
+	@FindBy(xpath = "(//input[@id='payment-beneficiaryBankBic-txt-v1'])[1]")
+	public WebElement transactions_beneficiaryBankBic;
 	
-// Object for bulk transaction 
+	@FindBy(xpath = "(//input[@id='payment-senderPop-txt-v1'])[1]")
+	public WebElement transactions_senderPop;
 	
+
+	
+// Object for bulk transaction 	
 	@FindBy(xpath = "//div[contains(@class,'bulk_upload')]")
 	public WebElement transactionMaker_bulk;
 	

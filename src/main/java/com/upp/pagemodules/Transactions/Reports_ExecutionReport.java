@@ -308,7 +308,8 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
+		//scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName,tm.reports_horizontalWindow1,5,2000);
 
 		String instructionname = tm.reports_InstructionName.getText();
 
@@ -328,8 +329,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
-
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName,tm.reports_horizontalWindow1,5,2000);
 		String instructionname = tm.reports_InstructionName.getText();
 
 		System.out.println(instructionname);
