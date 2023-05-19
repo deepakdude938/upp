@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
@@ -37,6 +38,7 @@ public class EcommerceHandler extends BaseClass {
 
 	public void handleEcommerce(String TSID) throws Exception {
 		String debitorFalg;
+		new Actions(driver).moveToElement(od.parties_eCommerceCheckbox);
 		od.parties_eCommerceCheckbox.click();
 		StringBuffer StrBuffer = new StringBuffer();
 		Random random = new Random();

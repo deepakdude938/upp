@@ -336,4 +336,25 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertTrue(instructionname.equalsIgnoreCase("Balance Reporting"));
 
 	}
+
+	public void validateEcommTransaction() throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		tm.reports_ReportsIcon.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		tm.reports_ReportsInternal.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+		tm.reports_searchBox.sendKeys("eComm Executions");
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		tm.reports_eCommExecutionsList.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId, Duration.ofSeconds(5));
+		tm.reports_dealId.sendKeys(dealId);
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for(WebElement record : tm.reports_EcommRecordStatus) {
+			
+			Assert.assertEquals(record.getText(), "Scheduled");
+			
+		}
+		
+	}
 }

@@ -457,6 +457,10 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement payments_NextArrowButtonTransferBasic;
 	
 	@FindBy(id = "ic-instructions-tabSweepIn-next-v1")
+	public WebElement payments_tabSweepInnext;
+	
+	
+	@FindBy(id = "ic-instructions-tabSweepIn-next-v1")
 	public WebElement payments_NextArrowButton;
 	
 
@@ -657,6 +661,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id ="payment-beneficiaryCountryOfIncorporation-sel-v1")
 	public WebElement parties_Accounts_beneficiaryCountryOfIncorporation;
+	
+	@FindBy(xpath ="//select[@id='payment-beneficiaryCurrency-sel-v1']")
+	public WebElement parties_Accounts_beneficiaryCurrency;
+	
 	
 	@FindBy(xpath ="//div[contains(text(),'BT_IN')]")
 	public WebElement parties_PaymentSystem_BT_IN;

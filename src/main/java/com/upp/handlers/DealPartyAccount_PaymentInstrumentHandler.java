@@ -111,6 +111,12 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
 				externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryCurrency);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCurrency, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCurrency,
+				"INR");
+		
 	
 		od.parties_partyAccountsAddButton.click();
 		

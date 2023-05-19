@@ -5,8 +5,8 @@ Feature: TS25
 Scenario Outline: Product Config
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
-#Then Create product from Configuration for "<TSID>"
-#Then Approve product
+Then Create product from Configuration for "<TSID>"
+Then Approve product
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
