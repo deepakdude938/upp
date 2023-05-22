@@ -31,6 +31,7 @@ public class Payment_Summary extends BaseClass{
 	public void checkSchedulePaymentforNextBusinessDay() throws Exception {
 	
 		od.payments_SummaryButton.click();
+		Thread.sleep(2000);
 		od.payments_SimulateButton.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_SimulateExecutionStrikeDate, Duration.ofSeconds(20));
 		String strikeDate = od.payments_SimulateExecutionStrikeDate.getText();

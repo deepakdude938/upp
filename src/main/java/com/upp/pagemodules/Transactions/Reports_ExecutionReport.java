@@ -166,11 +166,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_searchBox.sendKeys("Execution Report");
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
-		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
-		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
-		jsClick.click(tm.reports_SubmitButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 	}
 
@@ -308,7 +306,8 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
+		//scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName,tm.reports_horizontalWindow1,5,2000);
 
 		String instructionname = tm.reports_InstructionName.getText();
 
@@ -328,8 +327,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
-
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName,tm.reports_horizontalWindow1,5,2000);
 		String instructionname = tm.reports_InstructionName.getText();
 
 		System.out.println(instructionname);

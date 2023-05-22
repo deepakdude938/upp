@@ -157,9 +157,9 @@ public class DashBoard_Module extends BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		if (!(productName.equals("1.0"))) {
 			od.deal_Product.sendKeys(productName);
-			dropdown.selectByVisibleText(od.deal_Product, productName);
 			icallback.handleCallback("PRODUCT_NAME", productName);
 		}
+		Thread.sleep(1000);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
 		dropdown.selectByVisibleText(od.businessSegmentDropDown,
 				externalData.getFieldData(TSID, "Basic Details", "Business Segment"));
@@ -214,12 +214,10 @@ public class DashBoard_Module extends BaseClass {
 	}
 
 	public String submitDeal() throws Exception {
-
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
 		od.payments_DealsummaryIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(15));
+		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(50));
 		String dealId = od.deals_SummaryRefId.getText();
-
 		scroll.scrollInToView(od.payments_DealSubmitButton);
 		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(5));
 		od.payments_DealSubmitButton.click();
@@ -246,11 +244,9 @@ public class DashBoard_Module extends BaseClass {
 		jsClick.click(od.dealChecker_Button1);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect, Duration.ofSeconds(25));
 		dropdown.selectByVisibleText(od.dealChecker_searchSelect, "Deal Id");
-		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar, Duration.ofSeconds(25));
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(40));
 		od.dealChecker_searchBar.sendKeys(dealId);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton, Duration.ofSeconds(10));
-		od.dealChecker_searchButton.click();
-		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(40));
 		od.dealChecker_searchButton.click();
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
 		od.dealChecker_showMenu.click();
