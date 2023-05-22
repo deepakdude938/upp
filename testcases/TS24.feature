@@ -12,7 +12,8 @@ Feature: TS24
     Examples:
       |TSID |
       |TS24|
-                	
+      
+             @Regression @TS24  	
            	 Scenario Outline: Verify the updated user 
     Given Open browser and enter url
 		Then login with updated user using "<TSID>"
@@ -25,6 +26,7 @@ Feature: TS24
       |TSID |
       |TS24|	
       
+     @Regression @TS24 
 		Scenario Outline: Deactivate  user 
     Given Open browser and enter url
 		Then  Login to the application as "deal_maker"
@@ -38,7 +40,7 @@ Feature: TS24
       
      
   
-      
+          @Regression @TS24
           Scenario Outline: Verify the updated user 
     Given Open browser and enter url
 		Then login with updated user using "<TSID>"

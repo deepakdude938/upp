@@ -834,5 +834,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//i[@class='ui-fab ui-fab-next ui-ripple'])[1]")
 	public WebElement Balance_Reporting_NextSummaryArrow;
 	
+	@FindBy(xpath="(//span[@id='ic-parties-partiesList-addParty-v1'])[1]")
+	public WebElement party_add_plus_icon;
+	
 	
 }
