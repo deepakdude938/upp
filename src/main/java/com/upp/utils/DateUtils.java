@@ -121,6 +121,19 @@ public class DateUtils {
 	    return utcdate;
 	}
 	
+	public static String getCurrentDate() {
+		
+		
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+		String date1;
+		// Date today = calendar.getTime();
+		calendar.add(Calendar.DATE, 1);
+		Date tomorrow = calendar.getTime();
+		date1 = sdf.format(tomorrow);
+		return date1;
+	}
+	
 	public static String getCurrentTimeUTC() {
 		LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("UTC"));
 

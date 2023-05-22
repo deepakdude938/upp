@@ -8,6 +8,7 @@ import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_Ecommerce;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Transactions;
+import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 
@@ -38,7 +39,13 @@ public class Ecomm_BulkUpload extends BaseClass{
 		ecomm.ecommerce_OkButton.click();
 		driver.navigate().refresh();
 		Thread.sleep(2000);
-		ecomm.ecommerce_Notifications.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Notifications, Duration.ofSeconds(20));
+		try {
+			ecomm.ecommerce_Notifications.click();
+			}
+			catch(Exception e) {
+				handleElementClickException(ecomm.ecommerce_Notifications);
+			}
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_NotificationMessage, Duration.ofSeconds(20));
 		ecomm.ecommerce_NotificationMessage.click();
 		ecomm.ecommerce_NextButton.click();
@@ -46,7 +53,12 @@ public class Ecomm_BulkUpload extends BaseClass{
 		ecomm.ecommerce_SubmitBtn.click();
 		ecomm.ecommerce_ok.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Notifications, Duration.ofSeconds(10));
+		try {
 		ecomm.ecommerce_Notifications.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(ecomm.ecommerce_Notifications);
+		}
 		applyExplicitWaitsUntilElementVisible(ecomm.ecommerce_NotificationCheckerMessage, Duration.ofSeconds(60));
 	
 	}
@@ -56,11 +68,14 @@ public class Ecomm_BulkUpload extends BaseClass{
 		String transactionName1 = "TS28EcommTransaction_"+java.util.UUID.randomUUID().toString().substring(0, 6);
 		 excelFilePath = System.getProperty("user.dir")
 				+ "\\src\\main\\resources\\BulkEcomm.xlsx";
-		System.out.println(excelFilePath);
+		String tomorrowDate = new DateUtils().getCurrentDate();
 		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"dealRefId", dealId);
 		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"transactionName", transactionName);
 		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"dealRefId", dealId);
 		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"transactionName", transactionName1);
+		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"executeOn", tomorrowDate);
+		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"executeOn", tomorrowDate);
+		
 		
 	}	
 }
