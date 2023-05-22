@@ -164,12 +164,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_searchBox.sendKeys("Execution Report");
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
-		Thread.sleep(3000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
-//		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
-//		jsClick.click(tm.reports_SubmitButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 
 	}
 

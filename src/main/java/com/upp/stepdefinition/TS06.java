@@ -102,7 +102,7 @@ public class TS06 extends BaseClass implements ICallback {
 	@Then("Check the Transaction staus in execution report with given {string}")
 	public void check_the_Transaction_staus_in_execution_report_with_given(String string) throws Exception {
 		// tm.checkTnxStatusFromExecutionReport(string,dealId);
-		execReport.ExecutionReport(string, TS06.dealId);
+		execReport.ExecutionReport(string,TS06.dealId);
 
 	}
 
