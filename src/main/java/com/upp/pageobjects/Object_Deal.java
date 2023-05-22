@@ -614,5 +614,8 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//xcro-party-responsibility-attributes[@placeholder='Select'])[1]//input")
 	public WebElement party_basic_details_acquiree;
 	
+	@FindBy(xpath = "(//xcro-party-responsibility-attributes[@placeholder='Select'])[2]//input")
+	public WebElement party_basic_details_acquiree_dasfField;
+	
 	
 }
