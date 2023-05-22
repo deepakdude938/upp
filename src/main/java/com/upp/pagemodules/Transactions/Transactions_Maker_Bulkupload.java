@@ -41,9 +41,9 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 	public static int rowNum;
 	public static OdpApi odpAccount;
 	public static AccountDetails accDetails;
-	DateUtils dateTime = new DateUtils();
+	
 	public static JavascriptClick jsClick;
-	public static int waitingTime = 5;
+	public static int waitingTime = 4;
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
@@ -60,18 +60,20 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 
 	}
 
-	public void bulkUpload(String srcAcc, String desAcc) throws Exception {
+	public void bulkUpload(String srcAcc, String desAcc,String time) throws Exception {
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 		String uniqueTransactionName = "tran" + random;
+		
 		String uniqueTransactionName2 = "transaction1" + random;
 		String excelFilePath = System.getProperty("user.dir")
 				+ "\\src\\main\\resources\\Bulk_ConventionalTransactions_File.xlsx";
-
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "transactionName", uniqueTransactionName);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "transactionName", uniqueTransactionName2);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "sourceAccount", srcAcc);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "sourceAccount", desAcc);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "scheduleTime", time);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
 		tm.transactions_TransactionIcon.click();
 		tm.transactions_TransactionMaker.click();
 		Thread.sleep(5000);
