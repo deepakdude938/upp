@@ -121,6 +121,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[2]")
 	public WebElement reports_ScroeStatus;
+	
+	@FindBy(xpath="//div[@ref='eCenterContainer']//div[@role='row']")
+	public List <WebElement> reports_RecordStatus;
 
 	// object for LT-IN
 	@FindBy(xpath = "//ui-autocomplete[contains(@id,'instruction-fundTransferSubInstruction-paymentInstrument')]")
