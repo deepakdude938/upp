@@ -99,7 +99,7 @@ public class Payment extends BaseClass{
 		day =friday.toString().split("[/-]")[2];
 		}
 		else if(TSID.equalsIgnoreCase("TS20")) {
-		 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+2);
+		 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+5);
 		}
 		else {
 			day= DateUtils.getDay();

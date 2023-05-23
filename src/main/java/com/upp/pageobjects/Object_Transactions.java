@@ -113,9 +113,12 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'Execution Report')]")
 	public WebElement reports_ExecutionReport;
 
-	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
+
+	@FindBy(xpath = "(//span[normalize-space()='Deal Id']/../../../../..//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement reports_DealId;
 
+	
+	
 	@FindBy(xpath = "//button[contains(text(),'Submit')]")
 	public WebElement reports_SubmitButton;
 
@@ -162,8 +165,18 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath="(//div[contains(text(),'eComm Executions')])[3]")
 	public WebElement reports_eCommExecutions;
 	
+	@FindBy(xpath="//div[contains(text(),'eComm Executions')]")
+	public WebElement reports_eCommExecutionsList;
+	
 	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_endToendId;
+	
+	@FindBy(xpath="(//span[normalize-space()='dealRefId']/../../../../..//input[@class='ag-floating-filter-input'])[1]")
+	public WebElement reports_dealId;
+	
+	@FindBy(xpath="//div[@col-id='Status' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List <WebElement> reports_EcommRecordStatus;
+	
 	
 	@FindBy(xpath="//div[@col-id='Amount']")
 	public WebElement reports_Amount;

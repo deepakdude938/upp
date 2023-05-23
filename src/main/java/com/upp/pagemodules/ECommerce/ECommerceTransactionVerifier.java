@@ -64,4 +64,28 @@ public class ECommerceTransactionVerifier extends BaseClass {
 		ecomm.ecommerce_okBtn.click();
 	
 	}
+
+	public void approveRecordFromEcommTxnVerifier() throws Exception {
+
+		ecomm.ecommerce_txnVerifier.click();
+		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox,Duration.ofSeconds(10));
+		ecomm.ecommerce_AllRecordsCheckBox.click();
+		ecomm.ecommerce_Allcomment.click();
+		ecomm.ecommerce_note.sendKeys("Ok approve");
+		ecomm.ecommerce_txnok.click();
+		ecomm.ecommerce_submitBtn.click();
+		try {
+			if (ecomm.ecommerce_warning.isDisplayed()) {
+				ecomm.ecommerce_submitBtn.click();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		ecomm.ecommerce_yesBtn.click();
+		ecomm.ecommerce_okBtn.click();
+	
+		
+	}
 }

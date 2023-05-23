@@ -406,13 +406,13 @@ public class DashBoard_Module extends BaseClass {
 	}
 
 	public String twoEcommerceParties(String TSID, String Party_id, ICallback icallback) throws Exception {
-		String deal;
+//		String deal;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParties(TSID, icallback);
 		od.accountBackbtn.click();
 		creator.createParties(Party_id, icallback);
-		deal = submitDeal();
-		approveDealFromDealChecker(deal);
-		return deal;
+		dealId = submitDeal();
+		approveDealFromDealChecker(dealId);
+		return dealId;
 	}
 }
