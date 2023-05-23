@@ -114,10 +114,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryCurrency);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCurrency, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCurrency,
-				"INR");
-		
-	
+		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCurrency,externalData.getFieldData(TSID, "Party", "Beneficiary Currency"));
 		od.parties_partyAccountsAddButton.click();
 		
 	}
