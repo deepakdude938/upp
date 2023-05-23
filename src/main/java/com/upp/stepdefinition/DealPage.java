@@ -27,6 +27,7 @@ public class DealPage extends BaseClass implements ICallback {
 	public static String sourceAccountNo = "1";
 	public static String toaccountNo = "2";
 	public static String dealId = "";
+	public static String AccountNo1="1";
 
 	public DealPage(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
@@ -69,6 +70,12 @@ public class DealPage extends BaseClass implements ICallback {
 	@Then("Logout from Application")
 	public void logout_from_Application() throws Exception {
 	    dm.logout();
+	}
+	
+	@And("Create Account From excel sheet with given {string}.")
+	public void create_Account_From_excel_sheet_with_given(String string) throws Exception {
+		DealAccountCreator accountCreator = new DealAccountCreator();
+		 AccountNo1 = accountCreator.createNewAccount(string);
 	}
 
 	@Override
