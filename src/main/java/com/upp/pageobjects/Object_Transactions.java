@@ -114,7 +114,7 @@ public class Object_Transactions extends BaseClass {
 	public WebElement reports_ExecutionReport;
 
 
-	@FindBy(xpath = "(//span[normalize-space()='Deal Id']/../../../../..//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement reports_DealId;
 
 	
