@@ -343,24 +343,25 @@ public class Reports_ExecutionReport extends BaseClass {
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		System.out.println(tm.reports_RecordStatus.size());
-		//for (WebElement record : tm.reports_RecordStatus) {
-			if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
-				TimeUnit.MINUTES.sleep(2);
-				driver.navigate().refresh();
-				applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
-				tm.reports_DealId.sendKeys(DealId);
-				String ScroeStatusafter = tm.reports_ScroeStatus.getText();
-				if (ScroeStatusafter.equalsIgnoreCase("Settled")) {
-					flag = 1;
+		// for (WebElement record : tm.reports_RecordStatus) {
+		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
+			TimeUnit.MINUTES.sleep(2);
+			driver.navigate().refresh();
+			applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
+			tm.reports_DealId.sendKeys(DealId);
+			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
+			if (ScroeStatusafter.equalsIgnoreCase("Settled")) {
+				flag = 1;
 
-				} else {
-					flag = 0;
-				}
-				Assert.assertEquals(flag, 1);
+			} else {
+				flag = 0;
 			}
-		//}
-			
+			Assert.assertEquals(flag, 1);
+		}
+		// }
+
 	}
+
 	public void validateEcommTransaction() throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		tm.reports_ReportsIcon.click();
@@ -374,11 +375,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_dealId.sendKeys(dealId);
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
-		for(WebElement record : tm.reports_EcommRecordStatus) {
-			
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+
 			Assert.assertEquals(record.getText(), "Scheduled");
-			
+
 		}
-		
+
 	}
 }
