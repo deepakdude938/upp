@@ -1,4 +1,4 @@
-package com.upp.pagemodules.Parties;
+package com.upp.pagemodules.Parties_Maker_Checker;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;

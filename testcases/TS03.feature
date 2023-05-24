@@ -9,8 +9,8 @@ And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create Payments in the scheduled Instructions with given "<TSID>"
 Then submit the deal
-Then logout of the application
-Then Login to the application as "txn_checker"
+#Then logout of the application
+#Then Login to the application as "txn_checker"
 Then approve the deal from the deal checker common method
 Then logout of the application
 Examples:

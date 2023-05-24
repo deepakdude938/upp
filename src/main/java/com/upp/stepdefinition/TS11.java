@@ -21,8 +21,8 @@ import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
-import com.upp.pagemodules.Parties.Party_Edit_LiveDeal;
-import com.upp.pagemodules.Parties.Party_Verify_PartyApiAdded;
+import com.upp.pagemodules.Parties_Maker_Checker.Party_Edit_LiveDeal;
+import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_PartyApiAdded;
 
 import io.cucumber.java.en.*;
 
