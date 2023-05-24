@@ -89,8 +89,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertTrue(subInstruction.contains(payment));
 		Assert.assertTrue(subInstruction.contains(surplus));
 	}
-	
-	
 
 	public void ExecutionReport(String TSID, String DealId) throws Exception {
 
@@ -265,8 +263,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 
 	}
-	
-	public static void checkSubInstructionTypeInExecutionReport(String payment, String surplus,String retention) throws Exception {
+
+	public static void checkSubInstructionTypeInExecutionReport(String payment, String surplus, String retention)
+			throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
@@ -281,18 +280,18 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_SubmitButton);
 		Thread.sleep(2000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType,tm.reports_horizontalWindow1,5,2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				5, 2000);
 		ArrayList<String> subInstruction = new ArrayList();
-		for(WebElement iu : tm.reports_SubInstructions) {
-			
+		for (WebElement iu : tm.reports_SubInstructions) {
+
 			subInstruction.add(iu.getText());
 		}
-		
+
 		Assert.assertTrue(subInstruction.contains(payment));
 		Assert.assertTrue(subInstruction.contains(surplus));
 		Assert.assertTrue(subInstruction.contains(retention));
 	}
-	
 
 	public void checkStatusAndInstructionType(String TSID, String DealId) throws Exception {
 
@@ -306,8 +305,9 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		//scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName,tm.reports_horizontalWindow1,5,2000);
+		// scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 4000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 5,
+				2000);
 
 		String instructionname = tm.reports_InstructionName.getText();
 
@@ -327,11 +327,38 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName,tm.reports_horizontalWindow1,5,2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 5,
+				2000);
 		String instructionname = tm.reports_InstructionName.getText();
 
 		System.out.println(instructionname);
 		Assert.assertTrue(instructionname.equalsIgnoreCase("Balance Reporting"));
+
+	}
+
+	public void ExecutionReportForBulkUpload(String TSID, String DealId, String times) throws Exception {
+
+		int flag = 0;
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(tm.reports_RecordStatus.size());
+		// for (WebElement record : tm.reports_RecordStatus) {
+		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
+			TimeUnit.MINUTES.sleep(2);
+			driver.navigate().refresh();
+			applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
+			tm.reports_DealId.sendKeys(DealId);
+			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
+			if (ScroeStatusafter.equalsIgnoreCase("Settled")) {
+				flag = 1;
+
+			} else {
+				flag = 0;
+			}
+			Assert.assertEquals(flag, 1);
+		}
+		// }
 
 	}
 
@@ -348,11 +375,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_dealId.sendKeys(dealId);
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
-		for(WebElement record : tm.reports_EcommRecordStatus) {
-			
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+
 			Assert.assertEquals(record.getText(), "Scheduled");
-			
+
 		}
-		
+
 	}
 }

@@ -114,7 +114,7 @@ public class Object_Transactions extends BaseClass {
 	public WebElement reports_ExecutionReport;
 
 
-	@FindBy(xpath = "(//span[normalize-space()='Deal Id']/../../../../..//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement reports_DealId;
 
 	
@@ -124,6 +124,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[2]")
 	public WebElement reports_ScroeStatus;
+	
+	@FindBy(xpath="//div[@ref='eCenterContainer']//div[@role='row']")
+	public List <WebElement> reports_RecordStatus;
 
 	// object for LT-IN
 	@FindBy(xpath = "//ui-autocomplete[contains(@id,'instruction-fundTransferSubInstruction-paymentInstrument')]")
@@ -207,14 +210,47 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[4]")
 	public WebElement reports_InstructionName3;
-	
+
+// Object for transaction 
 	@FindBy(xpath = "(//input[@id='payment-beneficiaryBankBic-txt-v1'])[1]")
 	public WebElement transactions_beneficiaryBankBic;
 	
 	@FindBy(xpath = "(//input[@id='payment-senderPop-txt-v1'])[1]")
 	public WebElement transactions_senderPop;
 	
-// Object for transaction 
+
 	
+// Object for bulk transaction 	
+	@FindBy(xpath = "//div[contains(@class,'bulk_upload')]")
+	public WebElement transactionMaker_bulk;
 	
+	@FindBy(xpath = "//input[@type='file']")
+	public WebElement transactionMaker_browseButton;
+	
+	@FindBy(xpath = "//button[text()=' Upload File ']")
+	public WebElement transactionMaker_uploadButton;
+	
+	@FindBy(xpath = "//select[@class='ui-dropdown-select']")
+	public WebElement transactionMaker_sheetName;
+
+	@FindBy(xpath = "(//div[@class='card valid']//div)[2]")
+	public WebElement transactionMaker_validRecord;
+	
+	@FindBy(xpath = "//button[text()=' Next ']")
+	public WebElement transactionMaker_nextBtn;
+	
+	@FindBy(xpath = "//div[@class='customHeaderLabel']//span")
+	public WebElement transactionMaker_allRecord;
+	
+	@FindBy(xpath = "//button[text()=' Submit ']")
+	public WebElement transactionMaker_submit;
+	
+	@FindBy(xpath = "//div[@class='customHeaderLabel']//i")
+	public WebElement transactionMaker_message;
+	
+	@FindBy(xpath = "//button[contains(text(),'Ok')]")
+	public WebElement transactionMaker_messageOk;
+	
+	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
+	public WebElement transactionMaker_dealSearch;
 }
