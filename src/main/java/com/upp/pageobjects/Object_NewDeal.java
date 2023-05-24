@@ -467,8 +467,11 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferSchedule-repeating-v1']//span[@class='slider round']")
 	public WebElement payments_Repeatingslider;
 
-	@FindBy(id = "txt-generic-datePicker-input-v1")
+	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[1]")
 	public WebElement payments_ExecutionDate;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[2]")
+	public WebElement payments_Documents_ExecutionDate;
 
 	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']")
 	public WebElement payments_ScheduleAt;

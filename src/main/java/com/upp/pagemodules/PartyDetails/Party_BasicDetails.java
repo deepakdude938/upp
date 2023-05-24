@@ -1,4 +1,6 @@
-package com.upp.pagemodules.Parties;
+package com.upp.pagemodules.PartyDetails;
+
+
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -6,6 +8,7 @@ import org.openqa.selenium.Keys;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
+import com.upp.handlers.EcommerceHandler;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pagemodules.DashBoard_Module;
@@ -31,7 +34,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
-public class Party_Checker extends BaseClass {
+public class Party_BasicDetails extends BaseClass {
 
 	public static Object_NewDeal od;
 //	public static Properties prop;
@@ -48,7 +51,9 @@ public class Party_Checker extends BaseClass {
 	public static String productName;
 	public static Object_Parties op;
 	DealPartiesHandler partyHandler = new DealPartiesHandler();
-	public Party_Checker() {
+	public String responsibilities;
+	public String ecommerce;
+	public Party_BasicDetails() {
 
 		od = new Object_NewDeal();
 		externalData = new ExcelReader();
@@ -63,22 +68,27 @@ public class Party_Checker extends BaseClass {
 	}
 
 	
-	public void PartyChecker(String TSID) throws Exception
+	public void Create_Party_BasicDetails(String TSID, ICallback icallback) throws Exception
 	{
-		applyExplicitWaitsUntilElementClickable(op.parties_Icon,Duration.ofSeconds(30));
-		op.parties_Icon.click();
-		applyExplicitWaitsUntilElementClickable(op.PartyChecker_Icon,Duration.ofSeconds(15));
-		op.PartyChecker_Icon.click();
-		applyExplicitWaitsUntilElementClickable(op.PartyChecker_CustomerID_SearchBox,Duration.ofSeconds(20));
-		op.PartyChecker_CustomerID_SearchBox.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
-		Thread.sleep(7000);
-		applyExplicitWaitsUntilElementClickable(op.PartyChecker_EditIcon,Duration.ofSeconds(10));
-		jsClick.click(op.PartyChecker_EditIcon);
-		op.PartyMaker_SummaryTab.click();
-		applyExplicitWaitsUntilElementClickable(op.PartyChecker_AddComment,Duration.ofSeconds(10));
-		op.PartyChecker_AddComment.sendKeys(externalData.getFieldData(TSID, "Parties-Checker", "Summary - Add your comments here"));
-		op.PartyChecker_ApproveButton.click();
-		op.PartyMaker_YesButton.click();
-		Thread.sleep(4000);
+		od.parties_AddnewParty.click();
+		od.parties_CustomerID.sendKeys(externalData.getFieldData(TSID, "Party", "Customer Id"));
+		od.parties_PartyName.sendKeys(externalData.getFieldData(TSID, "Party", "Party Name"));
+
+		od.parties_Responsibility.click();
+		od.parties_Responsibility_dropdown.click();
+		od.parties_Remarks.sendKeys(externalData.getFieldData(TSID, "Party", "Remarks"));
+		Thread.sleep(1000);
+		responsibilities = externalData.getFieldData(TSID, "Party", "Responsibility");
+		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
+		Thread.sleep(1000);
+		ecommerce = externalData.getFieldData(TSID, "Party", "eCommerce Party-checkbox");
+		System.out.println(ecommerce);
+		if (ecommerce.equalsIgnoreCase("Y")) {
+			new EcommerceHandler().handleEcommerce(TSID);
+		} else {
+			od.parties_BasicNextButton.click();
+
+		}
+	    
 	}
 }

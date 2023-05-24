@@ -1,4 +1,4 @@
-package com.upp.pagemodules.Parties;
+package com.upp.pagemodules.Parties_Maker_Checker;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -88,8 +88,8 @@ public class Party_Maker_Documents extends BaseClass {
 			od.parties_DocumentsType_Architect_certificate.click();
 			dropdown.selectByVisibleText(od.parties_DocumentNature1,
 					externalData.getFieldData(TSID, "Parties-Maker", "Document Nature"));
-			applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
-			od.payments_ExecutionDate.click();
+			applyExplicitWaitsUntilElementClickable(od.payments_Documents_ExecutionDate, Duration.ofSeconds(5));
+			od.payments_Documents_ExecutionDate.click();
 			String day = dateutil.getDay();
 			By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
 			applyExplicitWaitsUntilElementVisible(excecutionDay, 5);

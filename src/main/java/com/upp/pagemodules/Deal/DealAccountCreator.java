@@ -79,7 +79,12 @@ public class DealAccountCreator extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
 		od.searchButton.click();
 		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
-		od.accounts_addAccount.click();
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
 		Thread.sleep(2000);
 		return accountNo;
 	}

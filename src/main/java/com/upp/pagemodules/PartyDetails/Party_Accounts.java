@@ -1,4 +1,4 @@
-package com.upp.pagemodules.Parties;
+package com.upp.pagemodules.PartyDetails;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
+import com.upp.handlers.EcommerceHandler;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pagemodules.DashBoard_Module;
@@ -31,10 +32,10 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
-public class Party_AddExistingPartyForGivenDealid extends BaseClass {
+
+public class Party_Accounts extends BaseClass {
 
 	public static Object_NewDeal od;
-//	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
 	public static int rowNum;
@@ -48,7 +49,10 @@ public class Party_AddExistingPartyForGivenDealid extends BaseClass {
 	public static String productName;
 	public static Object_Parties op;
 	DealPartiesHandler partyHandler = new DealPartiesHandler();
-	public Party_AddExistingPartyForGivenDealid() {
+	public String responsibilities;
+	public String ecommerce;
+
+	public Party_Accounts() {
 
 		od = new Object_NewDeal();
 		externalData = new ExcelReader();
@@ -58,33 +62,24 @@ public class Party_AddExistingPartyForGivenDealid extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
-		op=new Object_Parties();
+		op = new Object_Parties();
 
 	}
 
-	public void add_Existing_Party_with_given_DealId(String TSID,String dealId) throws Exception
-	{
-		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
-		 od.deal_SideMenuIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.liveDealIcon,Duration.ofSeconds(15));
-		 od.liveDealIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
-		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
-		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
-		 od.dealChecker_searchBar.sendKeys(dealId);
-		 Thread.sleep(4000);
-		 od.dealChecker_searchButton.click();
-		 Thread.sleep(3000);
-		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
-		 od.dealChecker_showMenu.click();
-		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
-		 od.deal_EditIcon.click();
-		 applyExplicitWaitsUntilElementClickable(od.parties_icon,Duration.ofSeconds(10));
-		 od.parties_icon.click();
-		 applyExplicitWaitsUntilElementClickable(op.PartyMaker_addPartyPlusIcon,Duration.ofSeconds(10));
-		 op.PartyMaker_addPartyPlusIcon.click();
-		 partyHandler.handleLinkedExistingParty(TSID);
+	public void Create_Party_Accounts(String TSID, ICallback icallback) throws Exception {
+
+		Thread.sleep(1000);
+		try {
+			od.parties_AccountsTab.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_AccountsTab);
+		}
+		od.parties_AddAccounts.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
+		od.parties_PaymentSystem.click();
+		String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
+		icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
 
 	}
-
 }

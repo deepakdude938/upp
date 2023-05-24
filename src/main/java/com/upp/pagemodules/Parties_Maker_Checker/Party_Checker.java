@@ -1,4 +1,4 @@
-package com.upp.pagemodules.Parties;
+package com.upp.pagemodules.Parties_Maker_Checker;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
@@ -31,7 +31,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
-public class Party_Maker_Contacts extends BaseClass {
+public class Party_Checker extends BaseClass {
 
 	public static Object_NewDeal od;
 //	public static Properties prop;
@@ -48,7 +48,7 @@ public class Party_Maker_Contacts extends BaseClass {
 	public static String productName;
 	public static Object_Parties op;
 	DealPartiesHandler partyHandler = new DealPartiesHandler();
-	public Party_Maker_Contacts() {
+	public Party_Checker() {
 
 		od = new Object_NewDeal();
 		externalData = new ExcelReader();
@@ -63,16 +63,22 @@ public class Party_Maker_Contacts extends BaseClass {
 	}
 
 	
-	public void PartyMaker_Contacts(String TSID) throws Exception
+	public void PartyChecker(String TSID) throws Exception
 	{
-	    applyExplicitWaitsUntilElementClickable( od.parties_AddContact,Duration.ofSeconds(10));
-	    od.parties_AddContact.click();
-		od.parties_ContactName.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Contact Name"));
-		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Email"));
-		od.parties_AddButton.click();
-		
-		applyExplicitWaitsUntilElementClickable(op.PartyMaker_OKButton, Duration.ofSeconds(5));
-		op.PartyMaker_OKButton.click();
-		
+		applyExplicitWaitsUntilElementClickable(op.parties_Icon,Duration.ofSeconds(30));
+		op.parties_Icon.click();
+		applyExplicitWaitsUntilElementClickable(op.PartyChecker_Icon,Duration.ofSeconds(15));
+		op.PartyChecker_Icon.click();
+		applyExplicitWaitsUntilElementClickable(op.PartyChecker_CustomerID_SearchBox,Duration.ofSeconds(20));
+		op.PartyChecker_CustomerID_SearchBox.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
+		Thread.sleep(7000);
+		applyExplicitWaitsUntilElementClickable(op.PartyChecker_EditIcon,Duration.ofSeconds(10));
+		jsClick.click(op.PartyChecker_EditIcon);
+		op.PartyMaker_SummaryTab.click();
+		applyExplicitWaitsUntilElementClickable(op.PartyChecker_AddComment,Duration.ofSeconds(10));
+		op.PartyChecker_AddComment.sendKeys(externalData.getFieldData(TSID, "Parties-Checker", "Summary - Add your comments here"));
+		op.PartyChecker_ApproveButton.click();
+		op.PartyMaker_YesButton.click();
+		Thread.sleep(4000);
 	}
 }

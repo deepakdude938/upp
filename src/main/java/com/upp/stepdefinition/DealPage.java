@@ -28,7 +28,7 @@ public class DealPage extends BaseClass implements ICallback {
 	public static String toaccountNo = "2";
 	public static String dealId = "";
 	public static String AccountNo1="1";
-
+	public static String AccountNo2="1";
 	public DealPage(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
 	}
@@ -72,12 +72,49 @@ public class DealPage extends BaseClass implements ICallback {
 	    dm.logout();
 	}
 	
-	@And("Create Account From excel sheet with given {string}.")
-	public void create_Account_From_excel_sheet_with_given(String string) throws Exception {
+	@And("Create Account_One From excel sheet with given {string}.")
+	public void create_Account_1From_excel_sheet_with_given(String string) throws Exception {
 		DealAccountCreator accountCreator = new DealAccountCreator();
 		 AccountNo1 = accountCreator.createNewAccount(string);
 	}
+	
+	@And("Create Account_Two From excel sheet with given {string}.")
+	public void create_Account_2From_excel_sheet_with_given(String string) throws Exception {
+		DealAccountCreator accountCreator = new DealAccountCreator();
+		 AccountNo2 = accountCreator.createNewAccount(string);
+	}
+	
+	@Then("Add Party basic_Details with given {string}.")
+	public void add_Party_basic_Details_with_given(String TSID) throws Exception {
+	   
+		tsid = TSID;
+		DealPartiesCreator creator = new DealPartiesCreator();
+		creator.createParty_With_BasicDetails(TSID, this);
+	    
+	}
 
+	@Then("Add Party Contacts with given {string}.")
+	public void add_Party_Contacts_with_given(String TSID) throws Exception {
+		tsid = TSID;
+		DealPartiesCreator creator = new DealPartiesCreator();
+		creator.createParty_With_Contacts(TSID, this);
+	}
+
+	@Then("Add Party Accounts with given {string}.")
+	public void add_Party_Accounts_with_given(String TSID) throws Exception{
+		tsid = TSID;
+		DealPartiesCreator creator = new DealPartiesCreator();
+		creator.createParty_With_Accounts(TSID, this);
+	}
+
+	@Then("Add Party Documents with given {string}.")
+	public void add_Party_Documents_with_given(String TSID) throws Exception{
+		tsid = TSID;
+		DealPartiesCreator creator = new DealPartiesCreator();
+		creator.createParty_With_Documents(TSID, this);
+	}
+
+	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 

@@ -29,6 +29,7 @@ public class DealPartiesHandler extends BaseClass {
 	public String responsibilities;
 	public String ecommerce;
 	public static Object_Parties op;
+	Object_Deal object_deal;
 
 	public DealPartiesHandler() {
 		od = new Object_NewDeal();
@@ -37,6 +38,7 @@ public class DealPartiesHandler extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		op = new Object_Parties();
+		object_deal=new Object_Deal();
 	}
 
 	public void handleAddNewParty(String TSID, ICallback icallback) throws Exception {
@@ -104,8 +106,8 @@ public class DealPartiesHandler extends BaseClass {
 			od.parties_DocumentsType_Architect_certificate.click();
 			dropdown.selectByVisibleText(od.parties_DocumentNature1,
 					externalData.getFieldData(TSID, "Party", "Document Nature"));
-			applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
-			od.payments_ExecutionDate.click();
+			applyExplicitWaitsUntilElementClickable(od.payments_Documents_ExecutionDate, Duration.ofSeconds(5));
+			od.payments_Documents_ExecutionDate.click();
 			String day = dateutil.getDay();
 			By excecutionDay = By.xpath(
 					"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
@@ -126,9 +128,19 @@ public class DealPartiesHandler extends BaseClass {
 		op.Party_linkPartyDetails_searchButton.click();
 		op.Party_selectPartyCircle.click();
 		od.parties_addPartyPlusIcon.click();
+		String responsibility = externalData.getFieldData(TSID, "Party", "Responsibility");
 		applyExplicitWaitsUntilElementClickable(od.parties_Responsibility, Duration.ofSeconds(5));
 		od.parties_Responsibility.click();
 		od.parties_Responsibility_dropdown.click();
+		Thread.sleep(1000);
+		if(responsibility.equalsIgnoreCase("Acquiree"))
+		{
+		object_deal.party_basic_details_acquiree.sendKeys("Test");
+		object_deal.party_basic_details_acquiree.clear();
+		object_deal.party_basic_details_acquiree.sendKeys("Test");
+		Thread.sleep(500);
+	    object_deal.party_basic_details_acquiree_dasfField.sendKeys("2");
+		}
 		od.parties_BasicNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(10));
 		od.parties_AddContact.click();
