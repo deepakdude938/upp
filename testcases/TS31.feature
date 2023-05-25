@@ -19,6 +19,7 @@ Then Add Party basic_Details with given "TS31_1".
 Then Add Party Accounts with given "TS31_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
+And Call the Rule_Non_OBO Api with given "<TSID>".
 Examples:
       |TSID   |
       |TS31   |

@@ -14,7 +14,7 @@ And Close the deal from the Live Deal Section with given "<TSID>"
 Then Create Lifecycle maker workitem with given "<TSID>"
 And Approve the Workitem from Dealchecker with given "<TSID>"
 Then Verify the deal Status as Closed
-Then logout of the application
+#Then logout of the application
 Examples:
       |TSID|
       |TS23|

@@ -73,7 +73,7 @@ public class TS11 extends BaseClass implements ICallback {
 	@Then("Update the Pary Api With given {string}")
 	public void update_the_Pary_Api_With_given(String string) throws Exception {
 	    partyApi.updateParty(TS06.dealId,string);
-	    logoutApi.logOut();
+	   // logoutApi.logOut();
 	}
 
 
