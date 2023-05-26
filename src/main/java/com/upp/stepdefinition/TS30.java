@@ -2,7 +2,8 @@ package com.upp.stepdefinition;
 
 import java.io.IOException;
 
-import com.upp.pagemodules.ECommerce.Rules_Party_EnrichDebtor;
+import com.upp.InitiationRulesApi.Payload;
+import com.upp.InitiationRulesApi.Rules_Party_EnrichDebtor;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 
 import io.cucumber.java.en.Then;
@@ -11,8 +12,10 @@ public class TS30 {
 
 	public Rules_Party_EnrichDebtor enrich;
 	public LoginAPI_UPP loginApi;
+	public Payload pl;
 			public TS30() {
 				enrich = new Rules_Party_EnrichDebtor();
+				pl=new Payload();
 			}
 			
 			@Then("Login to UPP through api")
@@ -20,11 +23,9 @@ public class TS30 {
 				loginApi.loginToUpp();
 			}
 			
-			
-			
 			@Then("Update json for Party_EnrichDebtor rule api {string}")
 			public void update_json_for_Party_EnrichDebtor_rule_api(String TSID) throws Exception {
-				enrich.updateJsonFilePartyEnrichDebtorRule(TSID);
+				pl.updateJsonFilePartyEnrichDebtorRule(TSID);
 			}
 			
 			@Then("Call Party_EnrichDebtor rule api")
