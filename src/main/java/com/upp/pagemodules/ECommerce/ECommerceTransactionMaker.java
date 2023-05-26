@@ -47,7 +47,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 			throws Exception {
 		ecomm.ecommerce_SideMenuIcon.click();
 		ecomm.ecommerce_Txnmaker.click();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		ecomm.ecommerce_TxnSearch.click();
 
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));

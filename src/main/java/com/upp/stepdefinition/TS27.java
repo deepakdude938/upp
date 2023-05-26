@@ -11,6 +11,7 @@ import callbackInterfaces.ICallback;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
 import com.upp.odp.utils.EditAccountApi;
+import com.upp.utils.DateUtils;
 import com.upp.utils.SwitchWindow;
 
 import com.upp.pagemodules.Deal.DealAccountCreator;
@@ -31,20 +32,45 @@ public class TS27 extends BaseClass implements ICallback {
 	public static String TnxId = "";
 	public String dealid;
 	Transactions_Maker_Bulkupload bulkUpload;
-
-
+	Reports_ExecutionReport report;
+	DateUtils dateTime = new DateUtils();
+	public static int waitingTime = 4;
+	String time;
+	
 	public TS27() {
 
 		this.dm = new DashBoard_Module();
 		bulkUpload = new Transactions_Maker_Bulkupload();
+		this.report = new Reports_ExecutionReport();
+		time = dateTime.getTimeAfterMins(waitingTime);
 	}
 
 	
 	@Then("Bulk upload the transaction")
 	public void bulk_upload_the_transaction() throws Exception {
-		bulkUpload.bulkUpload(DealPage.sourceAccountNo,DealPage.toaccountNo);
+		System.out.println("source Account = "+DealPage.sourceAccountNo);
+		System.out.println("des Account = "+DealPage.toaccountNo);
+		
+		bulkUpload.bulkUpload(DealPage.sourceAccountNo,DealPage.toaccountNo,time);
+		//bulkUpload.bulkUpload("1466443356","9854716055");
 	}
 
+	@Then("Approve multiple transactions from Transaction Checker with given {string}")
+	public void approve_multiple_transactions_from_Transaction_Checker_with_given(String string) throws Exception {
+		System.out.println(TS06.dealId);
+		bulkUpload.approveAllTransaction(TS06.dealId);
+	}
+	
+	@Then("Approve multiple transaction from Transaction Verifier with given {string}")
+	public void approve_multiple_transaction_from_Transaction_Verifier_with_given(String string) throws Exception {
+	    bulkUpload.approveAllTransactionByVerifier(TS06.dealId);
+	}
+	
+	@Then("Check the Transaction status in execution report with given {string}")
+	public void check_the_Transaction_status_in_execution_report_with_given(String string) throws Exception {
+	   report.ExecutionReportForBulkUpload(string,TS06.dealId,time);
+	}
+	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub

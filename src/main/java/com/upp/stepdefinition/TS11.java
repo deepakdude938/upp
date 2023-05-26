@@ -21,8 +21,8 @@ import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
-import com.upp.pagemodules.Parties.Party_Edit_LiveDeal;
-import com.upp.pagemodules.Parties.Party_Verify_PartyApiAdded;
+import com.upp.pagemodules.Parties_Maker_Checker.Party_Edit_LiveDeal;
+import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_PartyApiAdded;
 
 import io.cucumber.java.en.*;
 
@@ -73,7 +73,7 @@ public class TS11 extends BaseClass implements ICallback {
 	@Then("Update the Pary Api With given {string}")
 	public void update_the_Pary_Api_With_given(String string) throws Exception {
 	    partyApi.updateParty(TS06.dealId,string);
-	    logoutApi.logOut();
+	   // logoutApi.logOut();
 	}
 
 

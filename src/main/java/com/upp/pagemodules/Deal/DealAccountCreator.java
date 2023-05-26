@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
+import com.upp.odp.utils.Create_ODP_Account_Api;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
@@ -41,6 +42,7 @@ public class DealAccountCreator extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
+	Create_ODP_Account_Api odp_account_api;
 
 	public DealAccountCreator() {
 
@@ -52,6 +54,7 @@ public class DealAccountCreator extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
+		odp_account_api=new Create_ODP_Account_Api();
 
 	}
 
@@ -60,6 +63,37 @@ public class DealAccountCreator extends BaseClass {
 		odpAccount.createAccount(TSID);
 		accDetails = odpAccount.popelmnt(OdpApi.stack1);
 		System.out.println("the account no is" + accDetails.getAccno());
+		String accountNo = accDetails.getAccno();
+		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
+		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
+		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
+		String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
+		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
+			dropdown.selectByVisibleText(od.physical, "Physical");
+		} else {
+			dropdown.selectByVisibleText(od.physical, " Virtual ");
+		}
+		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
+
+		od.searchTextBox.sendKeys(accountNo);
+		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
+		od.searchButton.click();
+		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
+		Thread.sleep(2000);
+		return accountNo;
+	}
+	
+	public String createNewAccount_ODP_From_ExcelSheet(String TSID) throws Exception {
+		
+		accDetails = odpAccount.popelmnt(Create_ODP_Account_Api.stack1);
+		System.out.println("the account no is" + accDetails.getAccno());
+		
 		String accountNo = accDetails.getAccno();
 		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
 		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
@@ -79,7 +113,12 @@ public class DealAccountCreator extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
 		od.searchButton.click();
 		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
-		od.accounts_addAccount.click();
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
 		Thread.sleep(2000);
 		return accountNo;
 	}

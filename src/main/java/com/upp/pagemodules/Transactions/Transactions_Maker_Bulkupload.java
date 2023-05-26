@@ -10,16 +10,19 @@ import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_NewDeal;
+import com.upp.pageobjects.Object_Notification;
 import com.upp.pageobjects.Object_Transactions;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
 import freemarker.template.utility.DateUtil;
+import static org.testng.Assert.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
@@ -38,13 +41,14 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 	public static int rowNum;
 	public static OdpApi odpAccount;
 	public static AccountDetails accDetails;
-	DateUtils dateTime = new DateUtils();
+	
 	public static JavascriptClick jsClick;
-	public static int waitingTime = 5;
+	public static int waitingTime = 4;
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static Object_Transactions tm;
+	public static Object_Notification noti;
 
 	public Transactions_Maker_Bulkupload() {
 
@@ -52,20 +56,116 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
 		tm = new Object_Transactions();
+		noti = new Object_Notification();
 
 	}
 
-	public void bulkUpload(String srcAcc, String desAcc) throws Exception{
+	public void bulkUpload(String srcAcc, String desAcc,String time) throws Exception {
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 		String uniqueTransactionName = "tran" + random;
+		
 		String uniqueTransactionName2 = "transaction1" + random;
 		String excelFilePath = System.getProperty("user.dir")
 				+ "\\src\\main\\resources\\Bulk_ConventionalTransactions_File.xlsx";
-		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"transactionName", uniqueTransactionName);
-		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"transactionName", uniqueTransactionName2);
-		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"sourceAccount", "6543234");
-		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"sourceAccount", "76567894");
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "transactionName", uniqueTransactionName);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "transactionName", uniqueTransactionName2);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "sourceAccount", srcAcc);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "sourceAccount", desAcc);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "scheduleTime", time);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
+		tm.transactions_TransactionIcon.click();
+		tm.transactions_TransactionMaker.click();
+		Thread.sleep(5000);
+		tm.transactionMaker_bulk.click();
+		tm.transactionMaker_browseButton.sendKeys(excelFilePath);
+		Thread.sleep(2000);
+		dropdown.selectByVisibleText(tm.transactionMaker_sheetName, "Sheet");
+		tm.transactionMaker_uploadButton.click();
+		tm.transactions_Ok.click();
+		Thread.sleep(4000);
+		driver.navigate().refresh();
+		Thread.sleep(5000);
+		verifytNotification();
+		verifyTransaction();
+		Thread.sleep(6000);
 	}
 
+	public void verifytNotification() {
+		int flag = 0;
+		noti.notification.click();
+		String notification = noti.notification_Message.getText();
+		if (notification.contains("processing completed")) {
+			flag = 1;
+		}
+		assertEquals(flag, 1);
+		noti.notification_Message.click();
+	}
+
+	public void verifytNotificationForChecker() {
+		int flag = 0;
+		noti.notification.click();
+		String notification = noti.notification_Message.getText();
+		System.out.println("Notification 2 = " + notification);
+		/*
+		 * if (notification.contains("processing completed")) { flag = 1; }
+		 * assertEquals(flag, 1); noti.notification_Message.click();
+		 */
+	}
+
+	public void verifyTransaction() throws Exception {
+		String validTransactionCount = tm.transactionMaker_validRecord.getText();
+		System.out.println(validTransactionCount);
+		int count = Integer.parseInt(validTransactionCount);
+		if (count > 0) {
+			tm.transactionMaker_nextBtn.click();
+			Thread.sleep(5000);
+			tm.transactionMaker_allRecord.click();
+			tm.transactionMaker_submit.click();
+		}
+		tm.transactions_Ok.click();
+		Thread.sleep(5000);
+	}
+
+	public void approveAllTransaction(String dealId) throws Exception {
+//		TimeUnit.MINUTES.sleep(5);
+//		driver.navigate().refresh();
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofMinutes(2));
+		jsClick.click(tm.transactions_TransactionIcon);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofMinutes(2));
+		jsClick.click(tm.transactions_TransactionChecker);
+		Thread.sleep(8000);
+		tm.transactionMaker_dealSearch.sendKeys(dealId);
+		Thread.sleep(5000);
+		tm.transactionMaker_allRecord.click();
+		tm.transactionMaker_message.click();
+		od.dealChecker_addNote.sendKeys("Ok approve");
+		Thread.sleep(3000);
+		tm.transactionMaker_messageOk.click();
+		Thread.sleep(3000);
+		tm.transactionMaker_submit.click();
+		tm.transactions_YesButton.click();
+		tm.transactions_Ok.click();
+	}
+	
+	public void approveAllTransactionByVerifier(String dealId) throws Exception {
+//		TimeUnit.MINUTES.sleep(5);
+//		driver.navigate().refresh();
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofMinutes(2));
+		jsClick.click(tm.transactions_TransactionIcon);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionVerifier, Duration.ofMinutes(2));
+		jsClick.click(tm.transactions_TransactionVerifier);
+		Thread.sleep(8000);
+		tm.transactionMaker_dealSearch.sendKeys(dealId);
+		Thread.sleep(5000);
+		tm.transactionMaker_allRecord.click();
+		tm.transactionMaker_message.click();
+		od.dealChecker_addNote.sendKeys("Ok approve");
+		Thread.sleep(3000);
+		tm.transactionMaker_messageOk.click();
+		Thread.sleep(3000);
+		tm.transactionMaker_submit.click();
+		tm.transactions_YesButton.click();
+		tm.transactions_Ok.click();
+	}
 }
