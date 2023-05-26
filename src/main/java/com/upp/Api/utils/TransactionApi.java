@@ -53,21 +53,5 @@ public class TransactionApi {
 		return endToEndId;
 	}
 
-	public static String createTransaction1(String TSID,String dealId,String participant1) throws Exception {
-		String response = "";
-		String endToEndId = "";
 
-		RestAssured.baseURI = base_Url;
-
-		Response res = given().header("Content-Type", "application/json")
-				.header("Authorization", LoginAPI_UPP.authToken)
-				.body(Payload.rule_static_obo(TSID, dealId, participant1)).when().post("transaction/api/transaction");
-
-		response = res.then().extract().asString();
-
-		System.out.println("The Create Ecomm Api response is " + response);
-
-		System.out.println("the status code is" + res.getStatusCode());
-		return endToEndId;
-	}
 }

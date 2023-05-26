@@ -174,38 +174,7 @@ public class Payload {
 
 	}
 
-	public static String rule_static_obo(String TSID, String dealId, String accountNo) throws IOException, Exception {
-		externalData = new ExcelReader();
-		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
-		int number1 = 0;
-		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
-		String random = Long.toString(number);
+	
 
-		String UniqueplatformRefNo = "cplate" + random;
-
-		String utcdate = DateUtils.getCurrentDateUTC();
-
-		String utctimeEod = utcdate + "T" + "14:30:00Z";
-
-		try {
-			number1 = Integer.valueOf(accountNo);
-			System.out.println(number1);
-		} catch (NumberFormatException e) {
-			System.out.println("not a number");
-		}
-		DocumentContext jsonContext = JsonPath.parse(payLoadString);
-		jsonContext.set("$.dealRefId", UniqueplatformRefNo);
-		jsonContext.set("$.paymentInfo.platformRefNo", UniqueplatformRefNo);
-		jsonContext.set("$.paymentInfo.accountNumber", number1);
-		jsonContext.set("$.ultimateDebtor.name", TSID);
-		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
-
-		// jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn",
-		// utctimeEod);
-		String modifiedJsonString1 = jsonContext.jsonString();
-		System.out.println(modifiedJsonString1);
-		return modifiedJsonString1;
-
-	}
-
+	
 }

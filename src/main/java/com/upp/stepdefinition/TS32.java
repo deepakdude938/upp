@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+import com.upp.Api.utils.LogOutApi;
 import com.upp.Api.utils.Payload;
 import com.upp.Api.utils.TransactionApi;
+import com.upp.InitiationRulesApi.Rule_Static_OBO;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -30,6 +32,7 @@ import com.upp.pagemodules.DealLifeCycle.LifeCycleChecker;
 import com.upp.pagemodules.DealLifeCycle.LifeCycleMaker;
 import com.upp.pagemodules.DealLifeCycle.VerifyClosedStatusforDealId;
 import com.upp.pagemodules.Login.LoginAPI_ODP;
+import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.payment.Balance_Reporting;
 import com.upp.pageobjects.Object_NewDeal;
@@ -46,19 +49,24 @@ public class TS32 extends BaseClass {
 	Logout_ODP_Api logout;
 	Payload payload;
 	TransactionApi txn;
-
+	LoginAPI_UPP login_UPP;
+	LogOutApi logout_UPP;
+	Rule_Static_OBO staticObo;
+	
 	public TS32() {
 
 		this.dm = new DashBoard_Module();
-		login=new LoginAPI_ODP();
-		createAcc=new Create_ODP_Account_Api();
-		logout=new Logout_ODP_Api();
+		login = new LoginAPI_ODP();
+		createAcc = new Create_ODP_Account_Api();
+		logout = new Logout_ODP_Api();
 		txn = new TransactionApi();
+		login_UPP = new LoginAPI_UPP();
 	}
-	
+
 	@Given("Run static obo rule using api with given {string}")
-	public void run_static_obo_rule_using_api_with_given(String string) throws  Exception {
-	    txn.createTransaction1(string,"REF1685000185425","4427900420");
+	public void run_static_obo_rule_using_api_with_given(String string) throws Exception {
+		login_UPP.loginToUpp();
+		staticObo.Rule_Static_OBO_Api(string, TS06.dealId, TS06.sourceAccountNo);
 	}
-	
+
 }
