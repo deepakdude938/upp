@@ -174,10 +174,10 @@ public class Payload {
 
 	}
 
-	public static String rule_static_obo(String TSID,String dealId,String accountNo) throws IOException, Exception {
+	public static String rule_static_obo(String TSID, String dealId, String accountNo) throws IOException, Exception {
 		externalData = new ExcelReader();
 		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
-
+		int number1 = 0;
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 
@@ -187,8 +187,12 @@ public class Payload {
 
 		String utctimeEod = utcdate + "T" + "14:30:00Z";
 
-		int number1 = Integer.parseInt(accountNo);
-		
+		try {
+			number1 = Integer.valueOf(accountNo);
+			System.out.println(number1);
+		} catch (NumberFormatException e) {
+			System.out.println("not a number");
+		}
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.dealRefId", UniqueplatformRefNo);
 		jsonContext.set("$.paymentInfo.platformRefNo", UniqueplatformRefNo);
