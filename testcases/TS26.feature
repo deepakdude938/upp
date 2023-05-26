@@ -9,7 +9,7 @@ Then Approve the PU from Admin Checker
 Then logout of the application
 Then Login to the application as "txn_checker"
 And Verify the created PU is available in Basic Details Page with given "<TSID>"
-Then logout of the application
+#Then logout of the application
 Examples:
       |TSID|
       |TS26|

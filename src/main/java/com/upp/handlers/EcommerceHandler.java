@@ -43,72 +43,33 @@ public class EcommerceHandler extends BaseClass {
 		StringBuffer StrBuffer = new StringBuffer();
 		Random random = new Random();
 		for (int i = 0; i < RANDOM_STRING_LENGTH; i++) {
-			int number = random.nextInt(CHAR_LIST.length());
-			;
-			char ch = CHAR_LIST.charAt(number);
-			StrBuffer.append(ch);
+		int number = random.nextInt(CHAR_LIST.length());
+		;
+		char ch = CHAR_LIST.charAt(number);
+		StrBuffer.append(ch);
 		}
 		String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
 		System.out.println(PraticipantId);
 		od.parties_ParticipantId.sendKeys(PraticipantId);
 		od.parties_BasicNextButton.click();
-		dropdown.selectByVisibleText(od.ecommerce_status, "Active");
+		String status=externalData.getFieldData(TSID,"Party","Party_Status");
+		dropdown.selectByVisibleText(od.ecommerce_status, status);
 		//od.ecommerce_validFrom.click();
 		//od.startDate.click();
 		debitorFalg = externalData.getFieldData(TSID, "Party", "Debit Accounts");
 		System.out.println(debitorFalg);
 		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
-			String hiddenClass = od.accountNumbers.getAttribute("class");
-			if (!(hiddenClass.contains("ag-hidden"))) {
-				jsClick.click(od.ecommerceFirstAccount);
-				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
-			} else {
-				System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
-				
-				jsClick.click(od.ecommerceSecondAccount);
-			}
+		String hiddenClass = od.accountNumbers.getAttribute("class");
+		if (!(hiddenClass.contains("ag-hidden"))) {
+		jsClick.click(od.ecommerceFirstAccount);
+		System.out.println("First = " + od.accountNumbers.getAttribute("class"));
+		} else {
+		System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
+		jsClick.click(od.ecommerceSecondAccount);
+		}
 		}
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
-
-		od.ecommerceSave.click();
-
-	}
-	
-	
-	public void handleOneEcommerce(String TSID) throws Exception {
-		String debitorFalg;
-		new Actions(driver).moveToElement(od.parties_eCommerceCheckbox);
-		od.parties_eCommerceCheckbox.click();
-		StringBuffer StrBuffer = new StringBuffer();
-		Random random = new Random();
-		for (int i = 0; i < RANDOM_STRING_LENGTH; i++) {
-			int number = random.nextInt(CHAR_LIST.length());
-			;
-			char ch = CHAR_LIST.charAt(number);
-			StrBuffer.append(ch);
-		}
-		String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
-		System.out.println(PraticipantId);
-		od.parties_ParticipantId.sendKeys(PraticipantId);
-		od.parties_BasicNextButton.click();
-		dropdown.selectByVisibleText(od.ecommerce_status, "Active");
-		od.ecommerce_validFrom.click();
-		od.startDate.click();
-		debitorFalg = externalData.getFieldData(TSID, "Party", "Debit Accounts");
-		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
-			String hiddenClass = od.accountNumbers.getAttribute("class");
-			if (hiddenClass.contains("ag-hidden")) {
-				jsClick.click(od.ecommerceSecondAccount);
-				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
-			} else {
-				System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
-				jsClick.click(od.ecommerceFirstAccount);
-			}
-		}
-		// od.ecommerce_validTill.click();
-		// od.endDate.click();
-
 		od.ecommerceSave.click();
 
 	}

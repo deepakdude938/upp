@@ -13,7 +13,7 @@ Then submit the deal
 #Then Login to the application as "txn_checker"
 Then approve the deal from the deal checker common method
 And check status and instruction type for payment retention with given "<TSID>"
-Then logout of the application
+#Then logout of the application
 Examples:
       |TSID|
       |TS16|
