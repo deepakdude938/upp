@@ -65,7 +65,12 @@ public class DealPartiesCreator extends BaseClass {
 		catch(Exception e) {
 			handleElementClickException(od.parties_icon);
 		}
+		try {
 		od.parties_GetStarted.click();
+		}
+		catch(Exception n) {
+			handleElementClickException(od.parties_GetStarted);
+		}
 		String partyHandle = externalData.getFieldData(TSID, "Party", "Add a new Party");
 		System.out.println(partyHandle);
 		if (partyHandle.equalsIgnoreCase("Yes")) {
