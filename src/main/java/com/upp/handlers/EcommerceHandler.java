@@ -52,7 +52,8 @@ public class EcommerceHandler extends BaseClass {
 		System.out.println(PraticipantId);
 		od.parties_ParticipantId.sendKeys(PraticipantId);
 		od.parties_BasicNextButton.click();
-		dropdown.selectByVisibleText(od.ecommerce_status, "Active");
+		String status=externalData.getFieldData(TSID,"Party","Party_Status");
+		dropdown.selectByVisibleText(od.ecommerce_status, status);
 		//od.ecommerce_validFrom.click();
 		//od.startDate.click();
 		debitorFalg = externalData.getFieldData(TSID, "Party", "Debit Accounts");
