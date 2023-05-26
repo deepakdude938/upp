@@ -12,7 +12,7 @@ Then submit the deal
 #Then logout of the application
 #Then Login to the application as "txn_checker"
 Then approve the deal from the deal checker common method
-Then logout of the application
+#Then logout of the application
 Examples:
       |TSID   |
       |TS03   |
