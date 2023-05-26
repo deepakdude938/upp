@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+import com.upp.Api.utils.LogOutApi;
+import com.upp.InitiationRulesApi.Rule_Non_OBO;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -28,6 +30,7 @@ import com.upp.pagemodules.DealLifeCycle.LifeCycleChecker;
 import com.upp.pagemodules.DealLifeCycle.LifeCycleMaker;
 import com.upp.pagemodules.DealLifeCycle.VerifyClosedStatusforDealId;
 import com.upp.pagemodules.Login.LoginAPI_ODP;
+import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.payment.Balance_Reporting;
 import com.upp.pageobjects.Object_NewDeal;
@@ -42,31 +45,46 @@ public class TS31 extends BaseClass {
 	LoginAPI_ODP login;
 	Create_ODP_Account_Api createAcc;
 	Logout_ODP_Api logout;
+	Rule_Non_OBO non_obo;
+	LoginAPI_UPP login_UPP;
+	LogOutApi logout_UPP;
 
 	public TS31() {
 
 		this.dm = new DashBoard_Module();
-		login=new LoginAPI_ODP();
-		createAcc=new Create_ODP_Account_Api();
-		logout=new Logout_ODP_Api();
+		login = new LoginAPI_ODP();
+		createAcc = new Create_ODP_Account_Api();
+		logout = new Logout_ODP_Api();
+		non_obo = new Rule_Non_OBO();
+		login_UPP = new LoginAPI_UPP();
+		logout_UPP = new LogOutApi();
+
 	}
+
 	@And("Call the ODP Login Api")
 	public void call_the_ODP_Login_Api() throws Exception {
-	    
+
 		login.loginToUpp();
-	    
+
 	}
-	
+
 	@Then("Create account in Odp with details from excel sheet with given {string}.")
 	public void create_account_with_details_from_excel_sheet_with_given(String string) throws Exception {
-	
+
 		createAcc.createAccount(string);
-	    
+
 	}
+
 	@Then("Call the ODP Logout Api")
 	public void call_the_ODP_Logout_Api() throws Exception {
-	    logout.LogOutOdpApi();
+		logout.LogOutOdpApi();
 	}
-	
-	
+
+	@Then("Call the Rule_Non_OBO Api with given {string}.")
+	public void call_the_Rule_Non_OBO_Api_with_given(String string) throws Exception {
+		login_UPP.loginToUpp();
+		non_obo.Rule_Non_OBO_Api(TS06.dealId, string);
+
+	}
+
 }

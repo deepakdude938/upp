@@ -11,7 +11,7 @@ Then Create Balance Reporting Tnx from Scheduled Instruction Tab with given "<TS
 Then submit the deal
 Then approve the deal from the deal checker common method
 And Check Status and Instruction name as Balance Report with given "<TSID>"
-Then logout of the application
+#Then logout of the application
 Examples:
       |TSID|
       |TS21|

@@ -19,7 +19,7 @@ And Create Payment with budget with given "<TSID>"
 Then submit and approve the deal
 Then approve the deal from the deal checker common method
 Then Verify In Audit Budget Tab whether Budget details are Correct with given "<TSID>"
-Then logout of the application
+#Then logout of the application
 
 Examples:
       |TSID   |
