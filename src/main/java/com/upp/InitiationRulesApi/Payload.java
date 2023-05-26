@@ -24,11 +24,17 @@ public class Payload {
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 		String uniquePlatformRefNo = "PlatformRef" + random;
+		
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
 
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.accountNumber",DealPage.AccountNo1);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn",utctimeEod);
 	
 		String modifiedJsonString = jsonContext.jsonString();
 
