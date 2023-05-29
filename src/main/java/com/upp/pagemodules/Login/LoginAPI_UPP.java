@@ -33,6 +33,5 @@ public class LoginAPI_UPP {
 		String token = js.getString("token");
 
 		authToken = "JWT " + token;
-		
 }
 }
