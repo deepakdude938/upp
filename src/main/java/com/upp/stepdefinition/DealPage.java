@@ -75,13 +75,13 @@ public class DealPage extends BaseClass implements ICallback {
 	@And("Create Account_One From excel sheet with given {string}.")
 	public void create_Account_1From_excel_sheet_with_given(String string) throws Exception {
 		DealAccountCreator accountCreator = new DealAccountCreator();
-		 AccountNo1 = accountCreator.createNewAccount(string);
+		 AccountNo1 = accountCreator.createNewAccount_ODP_From_ExcelSheet(string);
 	}
 	
 	@And("Create Account_Two From excel sheet with given {string}.")
 	public void create_Account_2From_excel_sheet_with_given(String string) throws Exception {
 		DealAccountCreator accountCreator = new DealAccountCreator();
-		 AccountNo2 = accountCreator.createNewAccount(string);
+		 AccountNo2 = accountCreator.createNewAccount_ODP_From_ExcelSheet(string);
 	}
 	
 	@Then("Add Party basic_Details with given {string}.")

@@ -8,6 +8,8 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -177,6 +179,11 @@ public class BaseClass {
 
 		return outcome;
 
+	}
+	
+	public String generateRandomString(int count) {
+	String randomString=	UUID.randomUUID().toString().substring(0, count);
+	return randomString;
 	}
 
 	public String getXpath(List<WebElement> dataServiceNameBifrost) {
