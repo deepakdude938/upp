@@ -54,8 +54,8 @@ public class EcommerceHandler extends BaseClass {
 		od.parties_BasicNextButton.click();
 
 		dropdown.selectByVisibleText(od.ecommerce_status,externalData.getFieldData(TSID, "Party", "Party_Status"));
-		od.ecommerce_validFrom.click();
-		od.startDate.click();
+//		od.ecommerce_validFrom.click();
+//		od.startDate.click();
 
 	//	String status=externalData.getFieldData(TSID,"Party","Party_Status");
 	//	dropdown.selectByVisibleText(od.ecommerce_status, status);
