@@ -1,9 +1,10 @@
-Feature: TS27 Bulk upload transaction
+Feature: TS27
 
 
 @Regression @TS27
 Scenario Outline: Bulk upload transaction
-Given Open browser and enter url 
+Given Open browser and enter url
+ 
 Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
