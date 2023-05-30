@@ -57,7 +57,8 @@ public class Payload {
 
 	}
 
-	public static String createTransaction(String dealId, String TSID,String participant11, String participant2) throws IOException, Exception {
+	public static String createTransaction(String dealId, String TSID, String participant11, String participant2)
+			throws IOException, Exception {
 		externalData = new ExcelReader();
 		String modifiedJsonString;
 		System.out.println("TSID = " + TSID);
@@ -65,7 +66,7 @@ public class Payload {
 
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
-		String UniqueplatformRefNo = "cplate"+ random;
+		String UniqueplatformRefNo = "cplate" + random;
 
 		String utcdate = DateUtils.getCurrentDateUTC();
 		String utctime = DateUtils.getCurrentTimeUTC();
@@ -92,7 +93,8 @@ public class Payload {
 		((ObjectNode) modifiedNode.at("/paymentInfo")).put("platformRefNo", UniqueplatformRefNo);
 
 		ObjectNode newTransaction = objectMapper.createObjectNode();
-		newTransaction.put("fragmentPlatformRefNo", externalData.getFieldData(participant11, "Party", "Participant Id"));
+		newTransaction.put("fragmentPlatformRefNo",
+				externalData.getFieldData(participant11, "Party", "Participant Id"));
 		newTransaction.put("amount", 50);
 		ObjectNode participant = objectMapper.createObjectNode();
 		participant.put("partyRefId", externalData.getFieldData(participant11, "Party", "Participant Id"));
@@ -106,7 +108,8 @@ public class Payload {
 		transactionArrayNode.add(newTransaction);
 
 		ObjectNode newTransaction1 = objectMapper.createObjectNode();
-		newTransaction1.put("fragmentPlatformRefNo", externalData.getFieldData(participant2, "Party", "Participant Id"));
+		newTransaction1.put("fragmentPlatformRefNo",
+				externalData.getFieldData(participant2, "Party", "Participant Id"));
 		newTransaction1.put("amount", 50);
 		ObjectNode participant1 = objectMapper.createObjectNode();
 		participant1.put("partyRefId", externalData.getFieldData(participant2, "Party", "Participant Id"));
@@ -132,7 +135,7 @@ public class Payload {
 		String random = Long.toString(number);
 
 		String UniqueplatformRefNo = "cplate" + random;
-		
+
 		String utcdate = DateUtils.getCurrentDateUTC();
 
 		String utctimeEod = utcdate + "T" + "14:30:00Z";
@@ -146,7 +149,7 @@ public class Payload {
 		return modifiedJsonString1;
 
 	}
-	
+
 	public static String createPartyUsingExcel(String dealId, String TSID) throws IOException, Exception {
 		externalData = new ExcelReader();
 		String payLoadString = externalData.getFieldData(TSID, "PArty API", "Payload");
@@ -170,4 +173,8 @@ public class Payload {
 		return modifiedJsonString;
 
 	}
+
+	
+
+	
 }
