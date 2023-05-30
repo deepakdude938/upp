@@ -7,14 +7,14 @@ import com.upp.utils.*;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
-public class Payload extends BaseClass{
+public class Payload extends BaseClass {
 
 	public static ExcelReader externalData;
-	public static	String modifiedJsonString ="";
-	
-		public Payload() {
-			externalData = new ExcelReader();
-		}
+	public static String modifiedJsonString = "";
+
+	public Payload() {
+		externalData = new ExcelReader();
+	}
 
 	public static String Rule_Non_OBO(String dealId, String TSID) throws IOException, Exception {
 		externalData = new ExcelReader();
@@ -39,20 +39,20 @@ public class Payload extends BaseClass{
 		return modifiedJsonString;
 
 	}
-	
+
 	public String updateJsonFilePartyEnrichDebtorRule(String TSID) throws Exception, IOException {
 		String jsonEnrichDebtor = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
-		String platformRefNo= "Party"+generateRandomString(6);
-		String tomorow = DateUtils.getDate(1)+"T11:28:00Z";
+		String platformRefNo = "Party" + generateRandomString(6);
+		String tomorow = DateUtils.getDate(1) + "T11:28:00Z";
 		DocumentContext jsonContext = JsonPath.parse(jsonEnrichDebtor);
-			 jsonContext.set("$.dealRefId",dealId);
-			 jsonContext.set("$.paymentInfo.accountNumber",DealPage.toaccountNo);
-		     jsonContext.set("$.paymentInfo.platformRefNo", platformRefNo);
-		     jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
-		     modifiedJsonString = jsonContext.jsonString();
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.accountNumber", DealPage.toaccountNo);
+		jsonContext.set("$.paymentInfo.platformRefNo", platformRefNo);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
+		modifiedJsonString = jsonContext.jsonString();
 		System.out.println(modifiedJsonString);
-			return modifiedJsonString;
-		}
+		return modifiedJsonString;
+	}
 
 	public static String rule_static_obo(String TSID, String dealId, String accountNo) throws IOException, Exception {
 		externalData = new ExcelReader();
@@ -87,7 +87,6 @@ public class Payload extends BaseClass{
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 		String uniquePlatformRefNo = "PlatformRef" + random;
-		
 
 		String utcdate = DateUtils.getCurrentDateUTC();
 
@@ -96,9 +95,9 @@ public class Payload extends BaseClass{
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
 		jsonContext.set("$.dealRefId", dealId);
-		jsonContext.set("$.paymentInfo.accountNumber",DealPage.AccountNo1);
-		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn",utctimeEod);
-	
+		jsonContext.set("$.paymentInfo.accountNumber", DealPage.AccountNo1);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+
 		String modifiedJsonString = jsonContext.jsonString();
 
 		return modifiedJsonString;
@@ -130,4 +129,33 @@ public class Payload extends BaseClass{
 
 	}
 
+	public static String rule_ParticipantId_OBODetails(String TSID, String dealId, String accountNo)
+			throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.platformRefNo", "");
+		jsonContext.set("$.paymentInfo.accountNumber", accountNo);
+		jsonContext.set("$.ultimateDebtor.name", "");
+		jsonContext.set("$.creditTransactionInfo[0].participant.partyRefId", "");
+		jsonContext.set("$.creditTransactionInfo[0].participant.beneficiaryCountry", "");
+		jsonContext.set("$.creditTransactionInfo[0].participant.beneficiaryCurrency", "");
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+
+		// jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn",
+		// utctimeEod);
+		String modifiedJsonString1 = jsonContext.jsonString();
+		System.out.println(modifiedJsonString1);
+		return modifiedJsonString1;
+
+	}
 }
