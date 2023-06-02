@@ -9,6 +9,7 @@ import com.upp.Api.utils.Payload;
 import com.upp.Api.utils.TransactionApi;
 import com.upp.InitiationRulesApi.Rule_ParticipantId_OBODetails;
 import com.upp.InitiationRulesApi.Rule_Static_OBO;
+import com.upp.InitiationRulesApi.Rules_EnrichParty_UD1;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -32,6 +33,7 @@ import com.upp.pagemodules.DealLifeCycle.CloseLiveDeal;
 import com.upp.pagemodules.DealLifeCycle.LifeCycleChecker;
 import com.upp.pagemodules.DealLifeCycle.LifeCycleMaker;
 import com.upp.pagemodules.DealLifeCycle.VerifyClosedStatusforDealId;
+import com.upp.pagemodules.ECommerce.ECommerceTransactionVerifier;
 import com.upp.pagemodules.Login.LoginAPI_ODP;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
@@ -40,7 +42,7 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS34 extends BaseClass {
+public class TS37 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
@@ -52,9 +54,11 @@ public class TS34 extends BaseClass {
 	TransactionApi txn;
 	LoginAPI_UPP login_UPP;
 	LogOutApi logout_UPP;
-	Rule_ParticipantId_OBODetails participantObo;
+	Rules_EnrichParty_UD1 enrichParty;
+	ECommerceTransactionVerifier ecommVerifier;
+	public Reports_ExecutionReport execReport;
 
-	public TS34() {
+	public TS37() {
 
 		this.dm = new DashBoard_Module();
 		login = new LoginAPI_ODP();
@@ -62,13 +66,26 @@ public class TS34 extends BaseClass {
 		logout = new Logout_ODP_Api();
 		txn = new TransactionApi();
 		login_UPP = new LoginAPI_UPP();
+		this.ecommVerifier = new ECommerceTransactionVerifier();
+		execReport = new Reports_ExecutionReport();
 	}
 
-	@Given("Run ParticipantId-OBO Details  rule using api with given {string}")
-	public void run_ParticipantId_OBO_Details_rule_using_api_with_given(String string) throws Exception {
+	
+	@Given("Run Rule_EnrichParty_UD1 rule using api with given {string}")
+	public void run_Rule_EnrichParty_UD1_rule_using_api_with_given(String string) throws Exception {
 		login_UPP.loginToUpp();
-		participantObo.Rule_ParticipantId_OBODetails_Api(string, TS06.dealId, TS06.sourceAccountNo);
-		//participantObo.Rule_ParticipantId_OBODetails_Api(string, "REF1685363326759", "8345785391");
+		enrichParty.Rule_EnrichParty_UD1(string, TS06.dealId, TS06.sourceAccountNo);
+	}
+	
+	
+	@Given("Veriy transaction from transaction verifier")
+	public void veriy_transaction_from_transaction_verifier() {
+		ecommVerifier.txnVerifier_ApproveDeal(TS06.dealId);
+	}
+
+	@Then("Validate transaction in ecommerce report")
+	public void validate_transaction_in_ecommerce_report() throws Exception {
+		execReport.validateEcommTransactionwithDealId(TS06.dealId);		
 	}
 
 }
