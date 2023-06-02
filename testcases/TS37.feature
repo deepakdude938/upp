@@ -1,7 +1,7 @@
-Feature: TS34
+Feature: TS37
 
-@Regression @TS34
-Scenario Outline: Rule_OBOParticipant_OBO_Info_Null_OBO
+@Regression @TS37
+Scenario Outline: Rule_EnrichParty_UD1
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
@@ -11,15 +11,17 @@ Then Call the ODP Logout Api
 And Create Account_One From excel sheet with given "<TSID>".
 Then Add Party basic_Details with given "<TSID>".
 Then Click On Accounts Tab
-Then Add Party basic_Details with given "TS34_1".
-#Then Add Party Accounts with given "TS34_1".
+Then Add Party basic_Details with given "TS37_1".
+Then Add Party Accounts with given "TS37_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
-And Run ParticipantId-OBO Details  rule using api with given "<TSID>"
+And Run Rule_EnrichParty_UD1 rule using api with given "<TSID>"
+And Veriy transaction from transaction verifier
+Then Validate transaction in ecommerce report
 
 
 Examples:
       |TSID   |
-      |TS34|
+      |TS37|
 
 
