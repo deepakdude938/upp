@@ -2,7 +2,7 @@ Feature: TS30 - Party_EnrichDebtor
 
 
 @Regression @TS30 @rules
-Scenario Outline: Party_EnrichDebtor
+Scenario Outline: Rule_Party_EnrichDebtor
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSID>".
