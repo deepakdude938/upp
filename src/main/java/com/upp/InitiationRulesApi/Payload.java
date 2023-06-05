@@ -176,4 +176,83 @@ public class Payload extends BaseClass {
 		return modifiedJsonString1;
 
 	}
+	
+	public static String rule_EnrichParty_UD1(String TSID, String dealId, String accountNo) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.paymentInfo.accountNumber", accountNo);
+		jsonContext.set("$.ultimateDebtor.partyRefId", TSID);
+		jsonContext.set("$.ultimateDebtor.dealRefId", "");
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+
+		// jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn",
+		// utctimeEod);
+		String modifiedJsonString1 = jsonContext.jsonString();
+		System.out.println(modifiedJsonString1);
+		return modifiedJsonString1;
+
+	}
+	
+	public static String rule_EnrichParty_UD(String TSID, String dealId, String accountNo) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.paymentInfo.accountNumber", accountNo);
+		jsonContext.set("$.ultimateDebtor.partyRefId", TSID);
+		jsonContext.set("$.ultimateDebtor.dealRefId", TSID);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+
+		// jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn",
+		// utctimeEod);
+		String modifiedJsonString1 = jsonContext.jsonString();
+		System.out.println(modifiedJsonString1);
+		return modifiedJsonString1;
+
+	}
+	public static String Rule_OBOPartyResponsibility_PartyId(String dealId, String TSID) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+		
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
+
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.accountNumber",DealPage.AccountNo1);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn",utctimeEod);
+		jsonContext.set("$.ultimateDebtor.dealRefId",dealId);
+	
+		String modifiedJsonString = jsonContext.jsonString();
+
+		return modifiedJsonString;
+
+	}
 }
