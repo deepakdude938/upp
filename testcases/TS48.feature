@@ -1,7 +1,7 @@
-Feature: TS47
+Feature: TS48
 
-@Regression @TS47
-Scenario Outline: Rule_Creditor_Party_Validate
+@Regression @TS48
+Scenario Outline: Rule_dealRefId_V3_UC
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
@@ -11,15 +11,15 @@ Then Call the ODP Logout Api
 And Create Account_One From excel sheet with given "<TSID>".
 Then Add Party basic_Details with given "<TSID>".
 Then Click On Accounts Tab
-Then Add Party basic_Details with given "TS47_1".
-Then Add Party Accounts with given "TS47_1".
+Then Add Party basic_Details with given "TS48_1".
+Then Add Party Accounts with given "TS48_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
-And Run Rule_Creditor_Party_Validate using api with given "<TSID>"
+And Run Rule_dealRefId_V3_UC using api with given "<TSID>"
 
 
 Examples:
       |TSID   |
-      |TS47|
+      |TS48|
 
 
