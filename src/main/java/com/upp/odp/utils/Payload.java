@@ -81,7 +81,7 @@ public class Payload {
 		+ "        \"aadharNo\": \"123132\",\r\n"
 		+ "        \"ebbsShortName\": \"john\",\r\n"
 		+ "            \"idNo\": 10178,\r\n"
-		+ "           \"testIdMandatory\": 10178,\r\n"
+		+ "        \"testAttribute\": \"test\",\r\n"
 		+ "        \"vehicleNUmber\": null,\r\n"
 		+ "        \"mothersMaidenName\": \"TestName\",\r\n"
 		+ "        \"oboConsideration\": \"NonOBO\",\r\n"
