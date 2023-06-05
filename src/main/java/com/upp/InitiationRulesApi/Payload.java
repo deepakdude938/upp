@@ -66,6 +66,7 @@ public class Payload extends BaseClass {
 		     jsonContext.set("$.paymentInfo.platformRefNo", platformRefNo);
 		     jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
 		     modifiedJsonString = jsonContext.jsonString();
+		     System.out.println(modifiedJsonString);
 			return modifiedJsonString;
 		}
 
