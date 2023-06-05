@@ -41,9 +41,10 @@ public class Rule_dealRefId_V3_UC extends BaseClass {
 		System.out.println("the status code is" + res.getStatusCode());
 
 		if (res.getStatusCode() == 400) {
+
 			JsonPath js = new JsonPath(response);
 			String ExpectederrorMessage = js.getString("errors[0].message");
 			Assert.assertEquals(ExpectederrorMessage, ActualErrorMessage);
-			}
+		}
 	}
 }
