@@ -78,8 +78,7 @@ public class TS48 extends BaseClass {
 	public void run_Rule_dealRefId_V3_UC_using_api_with_given(String string) throws Exception {
 		login_UPP.loginToUpp();
 		dealRef.Rule_dealRefId_V3_UC2(string, TS06.dealId, TS06.sourceAccountNo);
-		//dealRef.Rule_dealRefId_V3_UC2(string, "REF1685956435263", "3102002638");
-	      
+		      
 	}
 
 }
