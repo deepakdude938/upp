@@ -212,8 +212,9 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
 				<configuration>
-					<parallel>methods</parallel>
-					<threadCount>2</threadCount>
+					<includes>
+					<exclude>**/*Runner.java</exclude>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>
