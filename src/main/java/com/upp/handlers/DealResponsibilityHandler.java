@@ -40,5 +40,4 @@ public class DealResponsibilityHandler extends BaseClass implements ICallback {
 	 Thread.sleep(500);
 	 od.party_basic_details_acquiree_dasfField.sendKeys("2");
 	}
-	
 }

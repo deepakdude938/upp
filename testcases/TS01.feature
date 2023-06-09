@@ -1,4 +1,4 @@
-Feature: TC01
+Feature: TS01
 
 
 @Regression @TS01

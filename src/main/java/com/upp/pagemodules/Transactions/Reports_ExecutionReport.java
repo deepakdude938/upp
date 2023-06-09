@@ -78,13 +78,14 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_DealId.sendKeys(dealId);
 //		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
 //		jsClick.click(tm.reports_SubmitButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
 				5, 2000);
 		ArrayList<String> subInstruction = new ArrayList();
 		for (WebElement iu : tm.reports_SubInstructions) {
 
 			subInstruction.add(iu.getText());
+			Thread.sleep(1000);
 		}
 		Assert.assertTrue(subInstruction.contains(payment));
 		Assert.assertTrue(subInstruction.contains(surplus));
