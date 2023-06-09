@@ -1,6 +1,6 @@
 Feature: TS42
 
-@Regression @TS42 @rule
+@Regression @TS42 @InitiationRules
 Scenario Outline: Rule_RemittanceInfo_Validation
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

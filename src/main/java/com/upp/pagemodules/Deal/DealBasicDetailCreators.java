@@ -60,6 +60,7 @@ public class DealBasicDetailCreators extends BaseClass {
 	}
 
 	public static void createDealBasicDetails(String TSID, ICallback icallback) throws Exception {
+		Thread.sleep(3000);
 		od.deal_SideMenuIcon.click();
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));

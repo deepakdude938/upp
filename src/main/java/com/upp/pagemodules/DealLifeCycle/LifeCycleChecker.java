@@ -44,9 +44,9 @@ public class LifeCycleChecker extends BaseClass {
 		dl.Deal_Lifecycle.click();
 		applyExplicitWaitsUntilElementClickable(dl.LifecycleCheckerIcon, Duration.ofSeconds(5));
 		dl.LifecycleCheckerIcon.click();
+		System.out.println("the deal id in checker"+dealId);
 		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_Dealid, Duration.ofSeconds(5));
-		dl.LifecycleMaker_Dealid.sendKeys(dealId);
-		Thread.sleep(1000);
+		js.sendKeys(dl.LifecycleMaker_Dealid, dealId);
 		js.click(dl.LifecycleMaker_submit);
 		applyExplicitWaitsUntilElementClickable(dl.AddYourComments, Duration.ofSeconds(5));
 		dl.AddYourComments.sendKeys("Ok");

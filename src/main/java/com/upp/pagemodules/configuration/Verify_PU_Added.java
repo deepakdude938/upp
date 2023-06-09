@@ -43,7 +43,7 @@ public class Verify_PU_Added extends BaseClass {
 	}
 
 	public void Verify_PU_Added_In_BasicDetailsPage(String TSID,String UniquePU) throws Exception {
-      
+      Thread.sleep(3000);
 		od.deal_SideMenuIcon.click();
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));

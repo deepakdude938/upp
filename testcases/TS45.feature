@@ -1,6 +1,6 @@
 Feature: TS45
 
-@Regression @TS45 @rule
+@Regression @TS45 @InitiationRules
 Scenario Outline: Rule_Charge_Bearer_Validation
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

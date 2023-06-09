@@ -261,4 +261,8 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
 	public WebElement transactionMaker_dealSearch;
+	
+	//reports
+	@FindBy(xpath = "//span[@class='ic ic-cancel_black ic-sm ng-star-inserted']")
+	public WebElement cancelIcon;
 }
