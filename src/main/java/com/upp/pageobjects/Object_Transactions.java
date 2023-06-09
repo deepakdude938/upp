@@ -171,8 +171,13 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_endToendId;
 	
-	@FindBy(xpath="(//span[normalize-space()='dealRefId']/../../../../..//input[@class='ag-floating-filter-input'])[1]")
+//	@FindBy(xpath="(//span[normalize-space()='dealRefId']/../../../../..//input[@class='ag-floating-filter-input'])[1]")
+	@FindBy(xpath="(//span[normalize-space()='Deal Id']/../../../../..//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement reports_dealId;
+	
+	@FindBy(xpath="//span[normalize-space()='Deal ID']/../../../../..//input[@class='ag-floating-filter-input']")
+	public WebElement reports_dealId1;
+	
 	
 	@FindBy(xpath="//div[@col-id='Status' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List <WebElement> reports_EcommRecordStatus;
@@ -189,8 +194,10 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath="(//div[@col-id='Status' and @role ='gridcell'])[2]")
 	public WebElement reports_SecondTxnStatus;
+	
 	@FindBy(xpath="//div[@class='ag-center-cols-viewport']")
 	public WebElement reports_horizontalWindow1;
+	
 	@FindBy(xpath="(//div[@col-id='Sub-Instruction Type'])[2]")
 	public WebElement reports_instructiontype_payment;
 	
@@ -202,6 +209,7 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//div[@col-id='Instruction Type'])[2]")
 	public WebElement reports_InstructionName;
+	
 	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[2]")
 	public WebElement reports_InstructionName1;
 	

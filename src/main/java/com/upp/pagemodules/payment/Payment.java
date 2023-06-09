@@ -96,7 +96,7 @@ public class Payment extends BaseClass{
 		if(TSID.equals("TS10")) {
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
-		day =friday.toString().split("[/-]")[2];
+		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
 		}
 		else if(TSID.equalsIgnoreCase("TS20")) {
 		 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+5);

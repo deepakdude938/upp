@@ -32,7 +32,13 @@ public class Ecomm_BulkUpload extends BaseClass{
 		
 		ecomm.ecommerce_SideMenuIcon.click();
 		ecomm.ecommerce_Txnmaker.click();
+		Thread.sleep(2000);
+		try {
 		ecomm.ecommerce_bulkUpload.click();
+	}
+	catch(Exception e) {
+		handleElementClickException(ecomm.ecommerce_bulkUpload);
+	}
 		ecomm.ecommerce_Browse.sendKeys(excelFilePath);
 		dropdown.selectByVisibleText(ecomm.ecommerce_selectSheet, "Sheet");
 		ecomm.ecommerce_UploadFileButton.click();

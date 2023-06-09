@@ -71,7 +71,13 @@ public class ECommerceTransactionVerifier extends BaseClass {
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox, Duration.ofSeconds(10));
+		try {
 		ecomm.ecommerce_AllRecordsCheckBox.click();
+		}
+		catch(Exception e) {
+			Thread.sleep(2000);
+			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
+		}
 		ecomm.ecommerce_Allcomment.click();
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		ecomm.ecommerce_txnok.click();

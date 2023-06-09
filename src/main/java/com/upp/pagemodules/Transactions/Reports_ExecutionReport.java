@@ -76,8 +76,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 		tm.reports_DealId.sendKeys(dealId);
-		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
-		jsClick.click(tm.reports_SubmitButton);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
+//		jsClick.click(tm.reports_SubmitButton);
 		Thread.sleep(2000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
 				5, 2000);
@@ -369,12 +369,13 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_ReportsInternal.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 		tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		tm.reports_eCommExecutionsList.click();
-		applyExplicitWaitsUntilElementClickable(tm.reports_dealId, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
 		System.out.println(dealId);
-		tm.reports_dealId.sendKeys(dealId);
-		Thread.sleep(2000);
+		tm.reports_dealId1.sendKeys(dealId);
+		Thread.sleep(12000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 

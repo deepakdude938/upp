@@ -72,9 +72,19 @@ public class Budget extends BaseClass {
 	public String createBudget_Payments(String TSID, String sourceAccountno, String toAccountNo) throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(10));
+		try {
 		od.payments_ScheduledInstructionIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
+		try {
 		od.payments_GetStarted.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_GetStarted);
+		}
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
 		By InstructionButton = By
 				.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"
