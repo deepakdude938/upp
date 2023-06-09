@@ -1,6 +1,6 @@
 Feature: TS49
 
-@Regression @TS49 @rule
+@Regression @TS49 @InitiationRules
 Scenario Outline: Rule_OBODetails_Null_Obo
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
