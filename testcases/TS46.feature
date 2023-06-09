@@ -1,6 +1,6 @@
 Feature: TS46
 
-@Regression @TS46
+@Regression @TS46 @InitiationRules
 Scenario Outline: Rule_OBOPartyResponsibility_PartyId_DealRefId
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

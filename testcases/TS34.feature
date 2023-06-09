@@ -1,6 +1,6 @@
 Feature: TS34
 
-@Regression @TS34
+@Regression @TS34 @InitiationRules
 Scenario Outline: Rule_OBOParticipant_OBO_Info_Null_OBO
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
