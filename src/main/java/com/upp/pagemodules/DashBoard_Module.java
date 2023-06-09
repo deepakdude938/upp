@@ -148,7 +148,7 @@ public class DashBoard_Module extends BaseClass {
 	}
 
 	public void createNewDeal_Old(String TSID, ICallback icallback) throws Exception {
-
+		Thread.sleep(3000);
 		od.deal_SideMenuIcon.click();
 		od.newDealButton.click();
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
