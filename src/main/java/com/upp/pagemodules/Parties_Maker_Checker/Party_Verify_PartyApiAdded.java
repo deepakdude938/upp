@@ -95,9 +95,9 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		 od.deal_EditIcon.click();
 		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(10));
 		 od.payments_DealsummaryIcon.click();
-		 
-		 scroll.scrollInToView(op.PartyMaker_Status_Inactive);
-		 applyExplicitWaitsUntilElementClickable(op.PartyMaker_Status_Inactive,Duration.ofSeconds(5));
+		 Thread.sleep(2000);
+		 ScrollTypes.scrollInsideWindowTillWebElementPresent(op.PartyMaker_Status_Inactive,op.Party_status_window, 6,600);
+		 applyExplicitWaitsUntilElementClickable(op.PartyMaker_Status_Inactive,Duration.ofSeconds(10));
 		String status= op.PartyMaker_Status_Inactive.getText();
 		System.out.println("The status is "+status);
 		Assert.assertEquals("Inactive",status);
