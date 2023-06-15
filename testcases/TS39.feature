@@ -1,6 +1,6 @@
 Feature: TS39
 
-@Regression @TS39
+@Regression @TS39 @InitiationRules
 Scenario Outline: Rule_EnrichParty_UD
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

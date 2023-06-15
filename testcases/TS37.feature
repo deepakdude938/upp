@@ -1,6 +1,6 @@
 Feature: TS37
 
-@Regression @TS37
+@Regression @TS37 @InitiationRules
 Scenario Outline: Rule_EnrichParty_UD1
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

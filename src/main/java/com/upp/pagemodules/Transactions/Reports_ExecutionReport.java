@@ -167,6 +167,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
 		Thread.sleep(4000);
+		jsClick.click(tm.cancelIcon);
+		Thread.sleep(5000);
+		
 
 	}
 
@@ -180,7 +183,9 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.fail("Transaction not scheduled");
 		}
 
-		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
+		//scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 5,
+				2000);
 
 		Thread.sleep(1000);
 

@@ -1,6 +1,6 @@
 Feature: TS35
 
-@Regression @TS35
+@Regression @TS35 @InitiationRules
 Scenario Outline: Rule_Participant_OBO
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
