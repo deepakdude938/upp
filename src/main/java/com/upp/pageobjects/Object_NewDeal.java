@@ -470,7 +470,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[1]")
 	public WebElement payments_ExecutionDate;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[2]")
+	@FindBy(css = "#txt-generic-datePicker-input-v1")
 	public WebElement payments_Documents_ExecutionDate;
 
 	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']")
@@ -716,9 +716,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="//label[normalize-space()='Instrument']//following::input[@id='txt-generic-autocomplete-input-v1'][last()]")
 	public WebElement paymentSurplus_Instrument;
-	
-	
-	
+		
 	@FindBy(id = "btn-deals-instruction-surplusSubInstruction-add-v1")
 	public WebElement paymentsSurplus_AddSubInstructionButton;
 	
