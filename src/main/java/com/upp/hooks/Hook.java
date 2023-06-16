@@ -19,6 +19,8 @@ import io.cucumber.java.After;
 public class Hook extends BaseClass {
 
 	public static WebDriver driver;
+    public static int failCount=0;
+	public static int passCount=0;
 
 	@Before()
 	public void setUp(Scenario scenario) throws Exception {
@@ -47,12 +49,33 @@ public class Hook extends BaseClass {
 	}
 
 	@After
-	public void AfterScenario() throws IOException {
+	public void AfterScenario(Scenario scenario) throws IOException {
 
 //		driver.quit();
+		
+		if((scenario.isFailed()))
+		{
+			failCount++;
+		}
+		if(!(scenario.isFailed()))
+		{
+			passCount++;
+		}
+
+		
+		System.out.println("passed count:"+passCount);
+		System.out.println("failed count:"+failCount);
+		
 		driver.close();
 
 	}
+	 public static int getPassedCount() {
+	        return passCount;
+	    }
+
+	    public static int getFailedCount() {
+	        return failCount;
+	    }
 
 	@AfterStep
 	public void AddScreenshot(Scenario scenario) throws IOException {
