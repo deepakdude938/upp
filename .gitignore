@@ -2,4 +2,5 @@
 /report/
 *.png
 /.settings/
+/test-output/
 /downloadedFiles/
