@@ -49,10 +49,10 @@ public class TS50 extends BaseClass implements ICallback {
 	   audit.verify_Audit_Transaction(TS06.dealId);
 	}
 	
-	@Then("verify the downloaded Audit Report with instruction version {string}")
-	public void verify_the_downloaded_Audit_Report_with_instruction_version(String string) throws Exception {
-	//	audit_excel.verify_Audit_Transaction_Excel_Report(TS06.dealId, string);
-		audit_excel.verify_Audit_Transaction_Excel_Report("REF1686806168098", "Create");
+	
+	@Then("verify the downloaded Audit Report with Action version {string} and {string}")
+	public void verify_the_downloaded_Audit_Report_with_action_version_and(String action, String TSID) throws Exception {
+		audit_excel.verify_Audit_Transaction_Excel_Report(TS06.dealId, action,TSID);
 	}
 
 	@Override

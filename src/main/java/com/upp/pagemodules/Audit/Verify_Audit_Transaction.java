@@ -69,7 +69,8 @@ public class Verify_Audit_Transaction extends BaseClass {
 		By DealId = By.xpath("//div[contains(text(),'"+dealId+"')]");
 		applyExplicitWaitsUntilElementVisible(DealId, 3);
 	    driver.findElement(DealId).click();
-		audit.audit_Transaction_Submit.click();
+	    applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Submit, Duration.ofSeconds(5));
+		js.click(audit.audit_Transaction_Submit);
 		applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Ok, Duration.ofSeconds(25));
 		audit.audit_Transaction_Ok.click();
 		Thread.sleep(30000);

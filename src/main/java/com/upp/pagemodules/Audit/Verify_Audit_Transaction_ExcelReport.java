@@ -1,5 +1,6 @@
 package com.upp.pagemodules.Audit;
 
+import java.io.File;
 import java.time.Duration;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
@@ -13,6 +14,7 @@ import com.upp.pageobjects.Object_Audit;
 import com.upp.pageobjects.Object_DealLifecycle;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Parties;
+import com.upp.stepdefinition.DealPage;
 import com.upp.stepdefinition.TS06;
 import com.upp.utils.CommonUtils;
 import com.upp.utils.DropDown;
@@ -46,25 +48,32 @@ public class Verify_Audit_Transaction_ExcelReport extends BaseClass {
 		dateutil = new DateUtils();
 		op = new Object_Parties();
 		audit = new Object_Audit();
-		externalData = new ExcelReader();
 	}
 
-	public void verify_Audit_Transaction_Excel_Report(String dealId,String instruction_version) throws Exception {
-		System.out.println("th change in excel path"+externalData.getFieldData("TS50", "Party", "Responsibility"));
+	public void verify_Audit_Transaction_Excel_Report(String dealId,String action,String TSID) throws Exception {
+		
 		String excelname=dealId+"_AuditReport.xlsx";
 		String path=System.getProperty("user.dir")+"\\downloadedFiles\\"+excelname;
 		System.out.println("The path is:"+path);
 		externalData = new ExcelReader();
-		ExcelReader.excelFilePath=path;
-		System.out.println("Instruction version:"+instruction_version);
-		String amount=externalData.getFieldData(instruction_version, "Transaction Instruction", "NAME");
-		String instructionId=externalData.getFieldData(instruction_version, "Transaction Sub Instruction", "CURRENCY");
-		System.out.println("amount in Audit Report"+amount);
-		System.out.println("instructionId in Audit Report"+instructionId);
-		ExcelReader.excelFilePath=System.getProperty("user.dir")+"\\src\\main\\resources\\upp-automation-testdata.xlsx";
-		System.out.println("th change in excel path"+externalData.getFieldData("TS50", "Party", "Responsibility"));
+		String name=externalData.getFieldData_From_DownloadedExcel(path,action,"Transaction Instruction", "NAME");
+		String currency=externalData.getFieldData_From_DownloadedExcel(path,action,"Transaction Instruction", "CURRENCY");
+		System.out.println("name:"+name);
+		System.out.println("currency"+currency);
+		Assert.assertEquals(name,externalData.getFieldData(TSID,"Txn Maker","Name"));
+		Assert.assertEquals(currency,externalData.getFieldData(TSID, "Party", "Beneficiary Currency"));
+		Thread.sleep(1000);
 		
-
+		File file = new File(path);
+		if (file.exists()) {
+            if (file.delete()) {
+                System.out.println("File deleted successfully.");
+            } else {
+                System.out.println("Failed to delete the file.");
+            }
+        } else {
+            System.out.println("File does not exist.");
+        }
 	}
 
 }

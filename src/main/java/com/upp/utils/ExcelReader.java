@@ -274,12 +274,11 @@ public class ExcelReader {
 	}
 	public String getFieldData_From_DownloadedExcel(String filename,String TSID, String worksheetName, String fieldName)
 			throws InvalidFormatException, IOException {
-//		inputStream = new FileInputStream(excelFilePath);
-//		sheet = getWorkBook(excelFilePath).getSheet(worksheetName);
-//		rowNum = ExcelReader.findrownum(worksheetName, TSID);
-		
-		FileInputStream fis=new FileInputStream(filename);
-		Sheet sheet = getWorkBook(filename).getSheet(worksheetName);
+
+		inputStream = new FileInputStream(filename);
+		sheet = getWorkBook(filename).getSheet(worksheetName);
+		rowNum = ExcelReader.findrownum(worksheetName, TSID);
+
 		String cellData = null;
 		XSSFRow row = (XSSFRow) sheet.getRow(0);
 		int column_Number = 0;
@@ -296,6 +295,8 @@ public class ExcelReader {
 		}
 		inputStream.close();
 		return cellData;
+
+	
 
 	}
 }

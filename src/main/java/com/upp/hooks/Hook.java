@@ -21,6 +21,7 @@ public class Hook extends BaseClass {
 	public static WebDriver driver;
     public static int failCount=0;
 	public static int passCount=0;
+	public static int skipCount=0;
 
 	@Before()
 	public void setUp(Scenario scenario) throws Exception {
@@ -41,7 +42,8 @@ public class Hook extends BaseClass {
 		System.out.println("Run Mode:" + run);
 
 		if ((run.equalsIgnoreCase("no")) || (run.equalsIgnoreCase("n"))) {
-
+			
+            skipCount++;      
 			throw new AssumptionViolatedException("Skipping test as mentioned in excel sheet");
 
 		}
@@ -63,9 +65,6 @@ public class Hook extends BaseClass {
 		}
 
 		
-		System.out.println("passed count:"+passCount);
-		System.out.println("failed count:"+failCount);
-		
 		driver.close();
 
 	}
@@ -75,6 +74,9 @@ public class Hook extends BaseClass {
 
 	    public static int getFailedCount() {
 	        return failCount;
+	    }
+	    public static int getSkippedCount() {
+	    	 return skipCount;
 	    }
 
 	@AfterStep
