@@ -272,4 +272,30 @@ public class ExcelReader {
 		workbook.write(fos);
 		fos.close();
 	}
+	public String getFieldData_From_DownloadedExcel(String filename,String TSID, String worksheetName, String fieldName)
+			throws InvalidFormatException, IOException {
+//		inputStream = new FileInputStream(excelFilePath);
+//		sheet = getWorkBook(excelFilePath).getSheet(worksheetName);
+//		rowNum = ExcelReader.findrownum(worksheetName, TSID);
+		
+		FileInputStream fis=new FileInputStream(filename);
+		Sheet sheet = getWorkBook(filename).getSheet(worksheetName);
+		String cellData = null;
+		XSSFRow row = (XSSFRow) sheet.getRow(0);
+		int column_Number = 0;
+		XSSFCell cell;
+		for (int i = 0; i < row.getLastCellNum(); i++) {
+			if (row.getCell(i).getStringCellValue().trim().equals(fieldName))
+				column_Number = i;
+			cell = (XSSFCell) sheet.getRow(rowNum).getCell(column_Number);
+			if (cell.getCellType() == CellType.STRING) {
+				cellData = cell.getStringCellValue();
+			} else if (cell.getCellType() == CellType.NUMERIC) {
+				cellData = cell.getNumericCellValue() + "";
+			}
+		}
+		inputStream.close();
+		return cellData;
+
+	}
 }
