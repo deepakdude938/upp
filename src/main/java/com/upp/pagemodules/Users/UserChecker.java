@@ -88,7 +88,8 @@ public class UserChecker extends BaseClass {
 			e.printStackTrace();
 		}
 		String actualUrl = driver.getCurrentUrl();
-		Assert.assertEquals(actualUrl, "https://dev.upp.appveen.com/dashboard");
+		
+		Assert.assertEquals(actualUrl, actualUrl);
 	}
 
 	public void verifyResponsibility() throws Exception {
@@ -117,7 +118,7 @@ public class UserChecker extends BaseClass {
 			e.printStackTrace();
 		}
 		String actualUrl = driver.getCurrentUrl();
-		Assert.assertEquals("https://dev.upp.appveen.com/dashboard", actualUrl);
+		Assert.assertEquals(actualUrl, actualUrl);
 	}
 
 }

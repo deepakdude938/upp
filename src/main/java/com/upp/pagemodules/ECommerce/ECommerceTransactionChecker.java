@@ -45,7 +45,8 @@ public class ECommerceTransactionChecker extends BaseClass {
 
 	public void ecommChecker_SubmitDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
-
+		Thread.sleep(5000);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_txnChecker, Duration.ofSeconds(7));
 		ecomm.ecommerce_txnChecker.click();
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
 		ecomm.ecommerce_comment.click();
