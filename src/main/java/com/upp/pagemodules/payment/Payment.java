@@ -313,6 +313,12 @@ public class Payment extends BaseClass{
 		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
 			od.payments_SplitBalanceSlider.click();
+			applyExplicitWaitsUntilElementClickable(od.payment_specifyAmountAs1, Duration.ofSeconds(4));
+			dropdown.selectByVisibleText(od.payment_specifyAmountAs1,externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
+			applyExplicitWaitsUntilElementClickable(od.payment_value1, Duration.ofSeconds(4));
+			od.payment_value1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
+			
+			
 		}
 		if (((externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Yes"))) {

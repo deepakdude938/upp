@@ -48,8 +48,14 @@ public class BaseClass {
 
 			if (System.getProperty("os.name").equals("Linux")) {
 				HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+				
+				System.out.println("In Linux console   ---------------------------------");
+			
 
-				WebDriverManager.chromedriver().setup();
+				//WebDriverManager.chromedriver().setup();
+				String path=System.getProperty("user.dir")+ "\\src\\main\\resources\\chromedriver";
+				System.out.println("the path:"+path);
+				System.setProperty("webdriver.chrome.driver", path);
 				System.setProperty("webdriver.http.factory", "jdk-http-client");
 				options.addArguments("--no-sandbox");
 				options.addArguments("--headless", "--window-size=1296,696", "--disable-gpu",
@@ -66,13 +72,18 @@ public class BaseClass {
 			}
 
 			else {
+				System.out.println("In windows console   ---------------------------------");
+	
 				HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 				chromePrefs.put("profile.default_content_settings.popups", 0);
 				chromePrefs.put("download.default_directory", downloadFilepath);
 				options.addArguments("--remote-allow-origins=*");
 				options.setExperimentalOption("prefs", chromePrefs);
-				WebDriverManager.chromedriver().setup();
+//				WebDriverManager.chromedriver().setup();
 //				WebDriverManager.chromedriver().version("111.0.5563.64").setup();
+				String path=System.getProperty("user.dir")+ "\\src\\main\\resources\\chromedriver.exe";
+				System.out.println("the path:"+path);
+				System.setProperty("webdriver.chrome.driver", path);
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if (isHeadLess) {

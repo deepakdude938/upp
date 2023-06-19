@@ -849,4 +849,13 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement party_add_plus_icon;
 	
 	
+	//split %of amount
+	
+	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']")
+	public WebElement payment_specifyAmountAs1;
+	
+	@FindBy(xpath="//input[@id='txt-deals-instruction-fundTransferBasic-value-v1']")
+	public WebElement payment_value1;
+	
+	
 }
