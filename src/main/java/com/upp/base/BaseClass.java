@@ -52,11 +52,10 @@ public class BaseClass {
 				System.out.println("In Linux console   ---------------------------------");
 			
 
-				WebDriverManager.chromedriver().setup();
-//				String path=System.getProperty("user.dir")+ "//src//main//resources//chromedriver";
-//				System.out.println("the path:"+path);
-//				System.setProperty("webdriver.chrome.driver", path);
-//				System.setProperty("webdriver.http.factory", "jdk-http-client");
+			//	WebDriverManager.chromedriver().setup();
+				String path=System.getProperty("user.dir")+ "//src//main//resources//chromedriver";
+				System.out.println("the path:"+path);
+				System.setProperty("webdriver.chrome.driver", path);
 				options.addArguments("--no-sandbox");
 				options.addArguments("--headless", "--window-size=1296,696", "--disable-gpu",
 						"--disable-dev-shm-usage");
