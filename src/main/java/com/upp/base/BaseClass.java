@@ -56,7 +56,7 @@ public class BaseClass {
 				String path=System.getProperty("user.dir")+ "//src//main//resources//chromedriver";
 				System.out.println("the path:"+path);
 				System.setProperty("webdriver.chrome.driver", path);
-				System.setProperty("webdriver.http.factory", "jdk-http-client");
+//				System.setProperty("webdriver.http.factory", "jdk-http-client");
 				options.addArguments("--no-sandbox");
 				options.addArguments("--headless", "--window-size=1296,696", "--disable-gpu",
 						"--disable-dev-shm-usage");
