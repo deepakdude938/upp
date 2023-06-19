@@ -27,6 +27,7 @@ public class LifeCycleMaker extends BaseClass {
 	public JavascriptClick js;
 	public static DateUtils dateutil;
 	Object_DealLifecycle dl;
+	private String dealfilePath="";
 
 	public LifeCycleMaker() {
 		od = new Object_NewDeal();
@@ -59,8 +60,14 @@ public class LifeCycleMaker extends BaseClass {
 				externalData.getFieldData(TSID, "Deal Lifecycle", "Document Nature"));
 		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_ADDButton, Duration.ofSeconds(5));
 		dl.LifecycleMaker_ADDButton.click();
-		String filePath = System.getProperty("user.dir") + "\\src\\main\\resources\\upp-automation-testdata.xlsx";
-		dl.LifecycleMaker_FileInput.sendKeys(filePath);
+		if (System.getProperty("os.name").equals("Linux")) {
+		 dealfilePath = System.getProperty("user.dir") + "//src//main//resources//upp-automation-testdata.xlsx";
+		}
+		else
+		{
+			 dealfilePath = System.getProperty("user.dir") + "\\src\\main\\resources\\upp-automation-testdata.xlsx";
+		}
+		dl.LifecycleMaker_FileInput.sendKeys(dealfilePath);
         scroll.scrollInToView(dl.LifecycleMaker_SubmitButton);
 		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_SubmitButton, Duration.ofSeconds(5));
 		dl.LifecycleMaker_SubmitButton.click();

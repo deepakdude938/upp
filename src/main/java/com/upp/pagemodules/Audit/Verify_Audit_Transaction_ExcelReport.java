@@ -38,7 +38,7 @@ public class Verify_Audit_Transaction_ExcelReport extends BaseClass {
 	public static DateUtils dateutil;
 	Object_Parties op;
 	Object_Audit audit;
-
+    private String audit_path="";
 	public Verify_Audit_Transaction_ExcelReport() {
 		od = new Object_NewDeal();
 		dropdown = new DropDown(driver);
@@ -53,18 +53,25 @@ public class Verify_Audit_Transaction_ExcelReport extends BaseClass {
 	public void verify_Audit_Transaction_Excel_Report(String dealId,String action,String TSID) throws Exception {
 		
 		String excelname=dealId+"_AuditReport.xlsx";
-		String path=System.getProperty("user.dir")+"\\downloadedFiles\\"+excelname;
-		System.out.println("The path is:"+path);
+		if (System.getProperty("os.name").equals("Linux")) {
+			audit_path=System.getProperty("user.dir")+"//downloadedFiles//"+excelname;
+			}
+			else
+			{
+				audit_path= System.getProperty("user.dir")+"\\downloadedFiles\\"+excelname;
+			}
+		
+		System.out.println("The path is:"+audit_path);
 		externalData = new ExcelReader();
-		String name=externalData.getFieldData_From_DownloadedExcel(path,action,"Transaction Instruction", "NAME");
-		String currency=externalData.getFieldData_From_DownloadedExcel(path,action,"Transaction Instruction", "CURRENCY");
+		String name=externalData.getFieldData_From_DownloadedExcel(audit_path,action,"Transaction Instruction", "NAME");
+		String currency=externalData.getFieldData_From_DownloadedExcel(audit_path,action,"Transaction Instruction", "CURRENCY");
 		System.out.println("name:"+name);
 		System.out.println("currency"+currency);
 		Assert.assertEquals(name,externalData.getFieldData(TSID,"Txn Maker","Name"));
 		Assert.assertEquals(currency,externalData.getFieldData(TSID, "Party", "Beneficiary Currency"));
 		Thread.sleep(1000);
 		
-		File file = new File(path);
+		File file = new File(audit_path);
 		if (file.exists()) {
             if (file.delete()) {
                 System.out.println("File deleted successfully.");
