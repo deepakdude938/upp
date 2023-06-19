@@ -120,5 +120,6 @@ public class Object_Parties extends BaseClass{
 	@FindBy(xpath="(//div[normalize-space()='Inactive'])[1]")
 	public WebElement PartyMaker_Status_Inactive;
 	
-	
+	@FindBy(xpath="(//div[@class='ag-body-horizontal-scroll-viewport'])[2]")
+	public WebElement Party_status_window;
 }

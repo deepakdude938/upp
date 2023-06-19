@@ -68,7 +68,12 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
 		od.parties_AddButton.click();
-		od.parties_AccountsTab.click();
+		try {
+			od.parties_AccountsTab.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_AccountsTab);
+		}
 		od.parties_AddAccounts.click();
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 		od.parties_PaymentSystem.click();

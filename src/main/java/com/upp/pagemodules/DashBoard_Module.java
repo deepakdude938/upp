@@ -178,7 +178,9 @@ public class DashBoard_Module extends BaseClass {
 
 		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
 			od.deals_ProcessingUnits.click();
-			od.deals_selectAll.click();
+			applyExplicitWaitsUntilElementClickable(od.deals_selectAll, Duration.ofSeconds(10));
+			jsClick.click(od.deals_selectAll);
+			applyExplicitWaitsUntilElementClickable(od.deals_ProcessingUnitsSearch, Duration.ofSeconds(5));
 			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
 			By ProcessingUnit = By.xpath("//div[contains(text(),'" + ProcessingUnits + "')]");
 			driver.findElement(ProcessingUnit).click();
