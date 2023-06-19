@@ -53,7 +53,7 @@ public class BaseClass {
 			
 
 				//WebDriverManager.chromedriver().setup();
-				String path=System.getProperty("user.dir")+ "\\src\\main\\resources\\chromedriver";
+				String path=System.getProperty("user.dir")+ "//src//main//resources//chromedriver";
 				System.out.println("the path:"+path);
 				System.setProperty("webdriver.chrome.driver", path);
 				System.setProperty("webdriver.http.factory", "jdk-http-client");
