@@ -85,7 +85,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		tm.transactions_Ok.click();
 		Thread.sleep(4000);
 		driver.navigate().refresh();
-		Thread.sleep(5000);
+		Thread.sleep(8000);
 		verifytNotification();
 		verifyTransaction();
 		Thread.sleep(6000);

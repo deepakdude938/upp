@@ -43,10 +43,12 @@ public class ECommerceTransactionVerifier extends BaseClass {
 		scroll = new ScrollTypes(driver);
 	}
 
-	public void txnVerifier_ApproveDeal(String dealId) {
+	public void txnVerifier_ApproveDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
 		ecomm.ecommerce_SideMenuIcon.click();
+		Thread.sleep(3000);
 		ecomm.ecommerce_txnVerifier.click();
+		TimeUnit.MINUTES.sleep(3);
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
 		ecomm.ecommerce_comment.click();
 		ecomm.ecommerce_note.sendKeys("Ok approve");

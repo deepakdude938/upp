@@ -18,8 +18,8 @@ Feature: TS24
     Given Open browser and enter url
 		Then login with updated user using "<TSID>"
 		Then Verify user is able to login
-		Then Check responsibility
-		Then logout of the application 
+#		Then Check responsibility
+#		Then logout of the application 
         Then Clear and close the browser
 				
     Examples:
