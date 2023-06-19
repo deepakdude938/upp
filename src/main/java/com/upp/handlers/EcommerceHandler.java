@@ -65,6 +65,7 @@ public class EcommerceHandler extends BaseClass {
 		System.out.println(debitorFalg);
 		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
 		String hiddenClass = od.accountNumbers.getAttribute("class");
+		System.out.println(hiddenClass);
 		if (!(hiddenClass.contains("ag-hidden"))) {
 		jsClick.click(od.ecommerceFirstAccount);
 		Thread.sleep(2000);

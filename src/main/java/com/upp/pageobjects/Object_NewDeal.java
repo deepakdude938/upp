@@ -716,9 +716,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="//label[normalize-space()='Instrument']//following::input[@id='txt-generic-autocomplete-input-v1'][last()]")
 	public WebElement paymentSurplus_Instrument;
-	
-	
-	
+		
 	@FindBy(id = "btn-deals-instruction-surplusSubInstruction-add-v1")
 	public WebElement paymentsSurplus_AddSubInstructionButton;
 	
