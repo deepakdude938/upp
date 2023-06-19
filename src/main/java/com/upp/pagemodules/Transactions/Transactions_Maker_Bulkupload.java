@@ -83,7 +83,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		dropdown.selectByVisibleText(tm.transactionMaker_sheetName, "Sheet");
 		tm.transactionMaker_uploadButton.click();
 		tm.transactions_Ok.click();
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 		driver.navigate().refresh();
 		Thread.sleep(8000);
 		verifytNotification();
@@ -140,7 +140,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		tm.transactionMaker_allRecord.click();
 		tm.transactionMaker_message.click();
 		od.dealChecker_addNote.sendKeys("Ok approve");
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 		tm.transactionMaker_messageOk.click();
 		Thread.sleep(3000);
 		tm.transactionMaker_submit.click();
