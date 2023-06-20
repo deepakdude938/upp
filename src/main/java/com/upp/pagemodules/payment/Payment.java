@@ -29,6 +29,7 @@ public class Payment extends BaseClass{
 	public String toAccountNo="";
 	public static DateUtils dateutil;
 	public static String day = "";
+	public static JavascriptClick js;
 
 	public Payment() {
 		od = new Object_NewDeal();
@@ -37,6 +38,7 @@ public class Payment extends BaseClass{
 		scroll = new ScrollTypes(driver);
 		commonutils=new CommonUtils(driver);
 		dateutil = new DateUtils();
+		js=new JavascriptClick(driver);
 	}
 	
 	
@@ -317,6 +319,7 @@ public class Payment extends BaseClass{
 			dropdown.selectByVisibleText(od.payment_specifyAmountAs1,externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
 			applyExplicitWaitsUntilElementClickable(od.payment_value1, Duration.ofSeconds(4));
 			od.payment_value1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
+			Thread.sleep(1500);
 			
 			
 		}
@@ -329,7 +332,16 @@ public class Payment extends BaseClass{
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
-			od.payments_PartialpaymentSlider.click();
+			  od.payments_Repeatingslider.click();   
+			  dropdown.selectByVisibleText(od.payment_Frequency1,externalData.getFieldData(TSID, "Scheduled", "Frequency"));
+		}
+	      
+		//Repeating slider is enabled by default so have to disbale the slider
+		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
+			System.out.println("inside------------- Split and Repeat");
+			Thread.sleep(2000);
+			js.click(od.payments_Repeatingslider);
 		}
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
@@ -433,6 +445,7 @@ public class Payment extends BaseClass{
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 
 		scroll.scrollInToView(od.payments_Amount);
+		applyExplicitWaitsUntilElementClickable(od.payments_Amount, Duration.ofSeconds(5));
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
 
 		if (commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode, 1)) {
@@ -455,5 +468,6 @@ public class Payment extends BaseClass{
 			od.payments_NotificationAlertSlider.click();
 		}
 
+		}
 	}
-}
+
