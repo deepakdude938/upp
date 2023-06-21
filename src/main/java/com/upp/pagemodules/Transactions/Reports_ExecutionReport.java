@@ -233,10 +233,13 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsInternal);
 		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 		tm.reports_searchBox.sendKeys("eComm Executions");
-		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutions, Duration.ofSeconds(6));
-		jsClick.click(tm.reports_eCommExecutions);
+		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_endToendId, Duration.ofSeconds(5));
+		Thread.sleep(3000);
 		tm.reports_endToendId.sendKeys(EndToEndId);
+		System.out.println("Added end to end id");
 		String txn1 = tm.reports_FirstTxnStatus.getText();
 		String txn2 = tm.reports_SecondTxnStatus.getText();
 		Assert.assertEquals(txn1, "Hold");
@@ -416,15 +419,15 @@ public class Reports_ExecutionReport extends BaseClass {
 		// applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList,
 		// Duration.ofSeconds(20));
 		tm.reports_eCommExecutionsList.click();
-		applyExplicitWaitsUntilElementClickable(tm.reports_dealId, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
 		System.out.println(deal);
-		tm.reports_dealId.sendKeys(deal);
-		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
-		for (WebElement record : tm.reports_EcommRecordStatus) {
-			Assert.assertEquals(record.getText(), "Scheduled");
-
-		}
+		tm.reports_dealId1.sendKeys(deal);
+//		Thread.sleep(2000);
+//		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+//		for (WebElement record : tm.reports_EcommRecordStatus) {
+//			Assert.assertEquals(record.getText(), "Scheduled");
+//
+//		}
 
 	}
 

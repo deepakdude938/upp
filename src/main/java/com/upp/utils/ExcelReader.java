@@ -31,7 +31,7 @@ import com.upp.base.Constants;
 public class ExcelReader {
 
 	public static String excelFilePath = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\upp-automation-testdata.xlsx";
+			+ "//src//main//resources//upp-automation-testdata.xlsx";
 	// public static String excelFilePath
 	// =Thread.currentThread().getContextClassLoader().getResource("upp-automation-testdata.xlsx").getFile();
 
@@ -271,5 +271,32 @@ public class ExcelReader {
 		fos = new FileOutputStream(fileName);
 		workbook.write(fos);
 		fos.close();
+	}
+	public String getFieldData_From_DownloadedExcel(String filename,String TSID, String worksheetName, String fieldName)
+			throws InvalidFormatException, IOException {
+
+		inputStream = new FileInputStream(filename);
+		sheet = getWorkBook(filename).getSheet(worksheetName);
+		rowNum = ExcelReader.findrownum(worksheetName, TSID);
+
+		String cellData = null;
+		XSSFRow row = (XSSFRow) sheet.getRow(0);
+		int column_Number = 0;
+		XSSFCell cell;
+		for (int i = 0; i < row.getLastCellNum(); i++) {
+			if (row.getCell(i).getStringCellValue().trim().equals(fieldName))
+				column_Number = i;
+			cell = (XSSFCell) sheet.getRow(rowNum).getCell(column_Number);
+			if (cell.getCellType() == CellType.STRING) {
+				cellData = cell.getStringCellValue();
+			} else if (cell.getCellType() == CellType.NUMERIC) {
+				cellData = cell.getNumericCellValue() + "";
+			}
+		}
+		inputStream.close();
+		return cellData;
+
+	
+
 	}
 }

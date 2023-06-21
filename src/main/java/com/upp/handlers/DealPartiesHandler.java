@@ -68,12 +68,14 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
 		od.parties_AddButton.click();
+		
 		try {
 		od.parties_AccountsTab.click();
 		}
 		catch(Exception e) {
 		handleElementClickException(od.parties_AccountsTab);
 		}
+		
 		try {
 		od.parties_AddAccounts.click();
 		}

@@ -12,8 +12,8 @@ And Create Parties in the Parties Tab with given "<TSID>"
 Then submit the deal
 Then approve the deal from the deal checker common method
 Then Bulk upload the transaction
-#Then Logout from Application
-#Then Login to the application as "txn_checker"
+Then Logout from Application
+Then Login to the application as "txn_checker"
 Then Approve multiple transactions from Transaction Checker with given "<TSID>"
 #Then Logout from Application
 #Then Login to the application as "txn_verifier"

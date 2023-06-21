@@ -726,9 +726,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="//label[normalize-space()='Instrument']//following::input[@id='txt-generic-autocomplete-input-v1'][last()]")
 	public WebElement paymentSurplus_Instrument;
-	
-	
-	
+		
 	@FindBy(id = "btn-deals-instruction-surplusSubInstruction-add-v1")
 	public WebElement paymentsSurplus_AddSubInstructionButton;
 	
@@ -857,6 +855,15 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//span[@id='ic-parties-partiesList-addParty-v1'])[1]")
 	public WebElement party_add_plus_icon;
+	
+	
+	//split %of amount
+	
+	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']")
+	public WebElement payment_specifyAmountAs1;
+	
+	@FindBy(xpath="//input[@id='txt-deals-instruction-fundTransferBasic-value-v1']")
+	public WebElement payment_value1;
 	
 	
 }

@@ -61,7 +61,7 @@ public class TS07 extends BaseClass implements ICallback {
 	}
 
 	@Then("Ecommerce transaction verifier approve the deal")
-	public void ecommerce_transaction_verifier_approve_the_deal() {
+	public void ecommerce_transaction_verifier_approve_the_deal() throws Exception {
 		ecommVerifier.txnVerifier_ApproveDeal(dealId);
 	}
 

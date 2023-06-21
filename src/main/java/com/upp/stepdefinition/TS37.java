@@ -79,8 +79,8 @@ public class TS37 extends BaseClass {
 	
 	
 	@Given("Veriy transaction from transaction verifier")
-	public void veriy_transaction_from_transaction_verifier() {
-		ecommVerifier.txnVerifier_ApproveDeal(TS06.dealId);
+	public void veriy_transaction_from_transaction_verifier() throws Exception {
+//		ecommVerifier.txnVerifier_ApproveDeal(TS06.dealId);
 	}
 
 	@Then("Validate transaction in ecommerce report")

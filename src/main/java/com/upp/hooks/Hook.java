@@ -19,6 +19,9 @@ import io.cucumber.java.After;
 public class Hook extends BaseClass {
 
 	public static WebDriver driver;
+    public static int failCount=0;
+	public static int passCount=0;
+	public static int skipCount=0;
 
 	@Before()
 	public void setUp(Scenario scenario) throws Exception {
@@ -39,7 +42,8 @@ public class Hook extends BaseClass {
 		System.out.println("Run Mode:" + run);
 
 		if ((run.equalsIgnoreCase("no")) || (run.equalsIgnoreCase("n"))) {
-
+			
+            skipCount++;      
 			throw new AssumptionViolatedException("Skipping test as mentioned in excel sheet");
 
 		}
@@ -47,12 +51,33 @@ public class Hook extends BaseClass {
 	}
 
 	@After
-	public void AfterScenario() throws IOException {
+	public void AfterScenario(Scenario scenario) throws IOException {
 
 //		driver.quit();
-//		driver.close();
+		
+		if((scenario.isFailed()))
+		{
+			failCount++;
+		}
+		if(!(scenario.isFailed()))
+		{
+			passCount++;
+		}
+	
+		driver.close();
+
 
 	}
+	 public static int getPassedCount() {
+	        return passCount;
+	    }
+
+	    public static int getFailedCount() {
+	        return failCount;
+	    }
+	    public static int getSkippedCount() {
+	    	 return skipCount;
+	    }
 
 	@AfterStep
 	public void AddScreenshot(Scenario scenario) throws IOException {

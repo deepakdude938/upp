@@ -21,38 +21,34 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONMAKER']")
 	public WebElement ecommerce_Txnmaker;
-	
+
 	@FindBy(xpath = "//div[@class='bulk_upload ng-star-inserted']")
 	public WebElement ecommerce_bulkUpload;
-	
+
 	@FindBy(xpath = "//div[@class='input-container']/input[@type='file']")
 	public WebElement ecommerce_Browse;
-	
+
 	@FindBy(xpath = "//select[@class='ui-dropdown-select']")
 	public WebElement ecommerce_selectSheet;
-	
+
 	@FindBy(xpath = "//button[@class='ui-btn-primary ng-star-inserted' and normalize-space()='Upload File']")
 	public WebElement ecommerce_UploadFileButton;
-	
+
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	public WebElement ecommerce_OkButton;
-	
+
 	@FindBy(xpath = "//div[@title='Notifications']")
 	public WebElement ecommerce_Notifications;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'submitted to checker successfully')]")
 	public WebElement ecommerce_NotificationCheckerMessage;
-	
-	
-	
+
 	@FindBy(xpath = "//div[contains(@class,'message-card')]//span")
 	public WebElement ecommerce_NotificationMessage;
-	
+
 	@FindBy(xpath = "//button[normalize-space()='Next']")
 	public WebElement ecommerce_NextButton;
-	
-	
-	
+
 	@FindBy(xpath = "(//div[@aria-colindex='3']//input)[2]")
 	public WebElement ecommerce_TxnSearch;
 
@@ -86,7 +82,7 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "//div[text()=' Save & Continue ']")
 	public WebElement ecommerce_saveAndContinue;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'All')]/..//span[@class='ui-pseudo-checkbox']")
 	public WebElement ecommerce_AllRecordsCheckBox;
 	
@@ -170,24 +166,24 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "//button[text()='OK']")
 	public WebElement ecommerce_ok;
-	
-	
-	//object for ecomm transaction checker
-	
+
+	// object for ecomm transaction checker
+
 	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONCHECKER']")
 	public WebElement ecommerce_txnChecker;
 
+
 //	@FindBy(xpath = "(//div[@aria-colindex='4']//input)[2]")
-	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
-	
+//	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
+	@FindBy(css = "xcro-wrapper.theme-wrapper:nth-child(1) xcro-protected.ng-tns-c433-0.ng-star-inserted:nth-child(2) div.ui-wrapper-container.ng-tns-c433-0 div.ui-wrapper-ct.ui-col-md-12.ng-tns-c433-0 div.ui-content-ct.ng-tns-c433-0 div.ui-content.ng-tns-c433-0 xcro-deal-management.ng-star-inserted xcro-transaction-list.ng-star-inserted:nth-child(2) div.ui-section-row div.ui-section-row div.ui-section-row.ng-star-inserted div.ui-section-row div.ui-section-body div.ui-section-container ag-grid-angular.ag-theme-balham.custom-ag-grid-list.list-new.ng-star-inserted div.ag-root-wrapper.ag-layout-normal.ag-ltr div.ag-root-wrapper-body.ag-layout-normal div.ag-root.ag-unselectable.ag-layout-normal div.ag-header.ag-pivot-off div.ag-header-viewport div.ag-header-container div.ag-header-row:nth-child(2) div.ag-header-cell:nth-child(2) div.ag-floating-filter-body div.ag-input-wrapper > input.ag-floating-filter-input")
 	public WebElement ecommerce_TxnDealSearch;
-	
+
 	@FindBy(xpath = "//div[@class='ag-pinned-left-cols-container']//div[@class='ui-checkbox']//span")
 	public WebElement ecommerce_txnCheckbox;
 
 	@FindBy(xpath = "(//div[contains(@class,' ag-cell-first-right-pinned')]//i)[3]")
 	public WebElement ecommerce_comment;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'Manage')]/..//i[@class='ui-icon ui-icon-note ng-star-inserted']")
 	public WebElement ecommerce_Allcomment;
 
@@ -205,19 +201,19 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "//button[text()='Yes']")
 	public WebElement ecommerce_yesBtn;
-	
+
 	@FindBy(xpath = "(//div[@col-id ='warnings'])[2]")
 	public WebElement ecommerce_warning;
-	
-	//Object for  E-commerce verifier
-	
+
+	// Object for E-commerce verifier
+
 	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONVERIFIER']")
 	public WebElement ecommerce_txnVerifier;
-	
+
 	@FindBy(xpath = "(//div[contains(text(),'Deal Id')]/../../../../..//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement ecommerce_dealIdInline;
-	
+
 	@FindBy(xpath = "//div[@col-id='_id' and contains(@class,'ag-cell-not-inline-editing')]")
 	public WebElement ecommerce_TxnIdRecord;
-	
+
 }

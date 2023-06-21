@@ -26,3 +26,4 @@ Then Transaction verifier approve deal
 Examples:
       |TcId|
       |TS04|
+      
