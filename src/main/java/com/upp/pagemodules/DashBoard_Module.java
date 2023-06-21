@@ -215,7 +215,12 @@ public class DashBoard_Module extends BaseClass {
 
 	public String submitDeal() throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
+		try {
 		od.payments_DealsummaryIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_DealsummaryIcon);
+		}
 		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(50));
 		String dealId = od.deals_SummaryRefId.getText();
 		scroll.scrollInToView(od.payments_DealSubmitButton);

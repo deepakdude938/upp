@@ -90,7 +90,9 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'All')]/..//span[@class='ui-pseudo-checkbox']")
 	public WebElement ecommerce_AllRecordsCheckBox;
 	
-
+	@FindBy(xpath = "//div[contains(@class,'loader') and not(contains(@class,'xcro-loader'))]")
+	public WebElement ecommerce_Loader;
+	
 	// Object for Sub instruction on ecomm treansaction maker
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-fdt-participant-id-v1']//input[@placeholder='Creditor Participant Id']")
 	public WebElement ecommerce_creatorParticipant;
@@ -175,7 +177,9 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONCHECKER']")
 	public WebElement ecommerce_txnChecker;
 
-	@FindBy(xpath = "(//div[@aria-colindex='4']//input)[2]")
+//	@FindBy(xpath = "(//div[@aria-colindex='4']//input)[2]")
+	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
+	
 	public WebElement ecommerce_TxnDealSearch;
 	
 	@FindBy(xpath = "//div[@class='ag-pinned-left-cols-container']//div[@class='ui-checkbox']//span")

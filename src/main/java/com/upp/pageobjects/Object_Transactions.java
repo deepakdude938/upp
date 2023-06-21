@@ -265,4 +265,15 @@ public class Object_Transactions extends BaseClass {
 	//reports
 	@FindBy(xpath = "//span[@class='ic ic-cancel_black ic-sm ng-star-inserted']")
 	public WebElement cancelIcon;
+	
+	@FindBy(xpath = "//span[normalize-space()='Deal ID']")
+	public WebElement reports_dealIDText;
+	
+	@FindBy(xpath = "//span[normalize-space()='Original Amount']")
+	public WebElement reports_OriginalAmount;
+	
+	@FindBy(xpath = "//div[@col-id='Original Amount' and not(contains(@class,'ag-header-cell'))]")
+	public WebElement reports_OriginalAmountValue;
+	
+	
 }

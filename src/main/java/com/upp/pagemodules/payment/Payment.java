@@ -72,6 +72,14 @@ public class Payment extends BaseClass{
 		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
 			od.payments_SplitBalanceSlider.click();
+			Thread.sleep(2000);
+			System.out.println(externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
+		
+			dropdown.selectByVisibleText(od.payments_SpecifyAmountAs, externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
+			Thread.sleep(1000);
+			od.payments_SpecifyAmountValue.clear();
+			od.payments_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
+			
 		}
 		if (((externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Yes"))) {
@@ -84,7 +92,12 @@ public class Payment extends BaseClass{
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
 			od.payments_PartialpaymentSlider.click();
 		}
-
+		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
+			od.payments_Repeatingslider.click();
+			
+		}
+		
 		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
 			od.payments_SweepInSlider.click();
@@ -93,7 +106,7 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
 		String day="";
-		if(TSID.equals("TS10")) {
+		if(TSID.equals("TS10") || TSID.equals("TS51")) {
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
 		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
@@ -133,6 +146,7 @@ public class Payment extends BaseClass{
 		System.out.println(DealPage.sourceAccountNo);
 		System.out.println(DealPage.toaccountNo);
 		od.schedule_IBAN.sendKeys(toAccountNo);
+		Thread.sleep(1000);
 		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
 		driver.findElement(account).click();
 		
@@ -195,7 +209,7 @@ public class Payment extends BaseClass{
 						.equalsIgnoreCase("Yes"))) {
 			od.payments_NotificationAlertSlider.click();
 		}
-		if(TSID.equals("TS25")) {
+		if(TSID.equals("TS25") || TSID.equals("TS51")) {
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
 		od.payments_DealsummaryIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));

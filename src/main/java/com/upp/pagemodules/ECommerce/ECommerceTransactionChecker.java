@@ -3,6 +3,7 @@ package com.upp.pagemodules.ECommerce;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.upp.base.BaseClass;
@@ -72,10 +73,17 @@ public class ECommerceTransactionChecker extends BaseClass {
 		catch(Exception n) {
 			handleElementClickException(ecomm.ecommerce_txnChecker);
 		}
+//		ecomm.ecommerce_TxnDealSearch.clear();
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox,Duration.ofSeconds(10));
+		try {
 		ecomm.ecommerce_AllRecordsCheckBox.click();
+		}
+		catch(Exception e) {
+			Thread.sleep(2000);
+			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
+		}
 		ecomm.ecommerce_Allcomment.click();
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		ecomm.ecommerce_txnok.click();
@@ -87,6 +95,7 @@ public class ECommerceTransactionChecker extends BaseClass {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		new Actions(driver).moveToElement(ecomm.ecommerce_yesBtn);
 		ecomm.ecommerce_yesBtn.click();
 		ecomm.ecommerce_okBtn.click();
 	}
