@@ -6,13 +6,13 @@ Feature: TS24
     Then Login to the application as "deal_maker"
     And OnBoard the user with given role for "<TSID>"
     And Approve the same user
-    #Then logout of the application 
-        Then Clear and close the browser
-          
-    Examples:
-      |TSID |
-      |TS24|
-      
+ Then Logout from Application
+        #Then Clear and close the browser
+          #
+    #Examples:
+      #|TSID |
+      #|TS24|
+      #
              @Regression @TS24  	
            	 Scenario Outline: Verify the updated user 
     Given Open browser and enter url
@@ -20,7 +20,7 @@ Feature: TS24
 		Then Verify user is able to login
 #		Then Check responsibility
 #		Then logout of the application 
-        Then Clear and close the browser
+        #Then Clear and close the browser
 				
     Examples:
       |TSID |
@@ -32,7 +32,7 @@ Feature: TS24
 		Then  Login to the application as "deal_maker"
 		Then Deactivate the user using "<TSID>"
 		  And Approve the same user
-		    Then Clear and close the browser		
+#		    Then Clear and close the browser		
 		
     Examples:
       |TSID |
