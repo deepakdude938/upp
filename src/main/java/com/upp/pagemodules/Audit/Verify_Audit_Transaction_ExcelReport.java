@@ -54,7 +54,7 @@ public class Verify_Audit_Transaction_ExcelReport extends BaseClass {
 		
 		String excelname=dealId+"_AuditReport.xlsx";
 		if (System.getProperty("os.name").equals("Linux")) {
-			audit_path=System.getProperty("user.dir")+"//downloadedFiles//"+excelname;
+			audit_path=System.getProperty("user.dir")+excelname;
 			}
 			else
 			{
