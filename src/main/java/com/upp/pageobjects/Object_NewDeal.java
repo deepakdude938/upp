@@ -866,4 +866,7 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement payment_value1;
 	
 	
+	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
+	public WebElement payment_Frequency1;
+	
 }

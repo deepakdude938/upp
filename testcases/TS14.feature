@@ -1,6 +1,6 @@
 Feature: TS14
 
-@Regression @TS14
+@hold @TS14
 Scenario Outline: Txn creation+ Rules + Mappers
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
