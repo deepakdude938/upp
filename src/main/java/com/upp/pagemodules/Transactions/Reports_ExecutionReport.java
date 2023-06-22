@@ -433,15 +433,13 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	public void validateSplitFixedAmountInExecutionReport(String TSID) throws Exception {
 		commonmethodExecReport(TSID,dealId);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmount, tm.reports_horizontalWindow1, 10,
-				1000);
-		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColoumnName, tm.reports_horizontalWindow1, 10,1000);
 		Thread.sleep(1000);
 		String originalAmount = tm.reports_OriginalAmountValue.getText();
 		String expectedOriginalAmount =(int) Float.parseFloat(externalData.getFieldData(TSID, "Scheduled", "value"))+"" ;
 		Assert.assertEquals(originalAmount, expectedOriginalAmount);
 	}
-}
+
 	public void check_Original_amount_and_Trnasferinfo_as_percentage(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
