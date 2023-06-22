@@ -103,6 +103,7 @@ public class DashBoard_Module extends BaseClass {
 		icallback.handleCallback("Instrument_NAME", instrumentName);
 		Thread.sleep(3000);
 		od.linkedInstruction_AddBtn.click();
+		Thread.sleep(3000);
 		od.linkedInstruction_Summary.click();
 		dealid = od.deals_SummaryRefId.getText();
 		od.linkedInstruction_Submit.click();

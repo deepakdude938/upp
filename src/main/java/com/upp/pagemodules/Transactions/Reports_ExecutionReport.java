@@ -236,7 +236,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_endToendId, Duration.ofSeconds(5));
+		Thread.sleep(3000);
 		tm.reports_endToendId.sendKeys(EndToEndId);
+		System.out.println("Added end to end id");
 		String txn1 = tm.reports_FirstTxnStatus.getText();
 		String txn2 = tm.reports_SecondTxnStatus.getText();
 		Assert.assertEquals(txn1, "Hold");
