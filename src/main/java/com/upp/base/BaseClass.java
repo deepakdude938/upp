@@ -40,7 +40,7 @@ public class BaseClass {
 		prop = new Properties();
 		prop.load(fis);
 		String browser = prop.getProperty("browser");
-		isHeadLess = true;
+//		isHeadLess = true;
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			ChromeOptions options = new ChromeOptions();
@@ -83,7 +83,7 @@ public class BaseClass {
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if (isHeadLess) {
-					options.addArguments("--headless==new", "--window-size=1296,696", "--no-sandbox", "--disable-gpu",
+					options.addArguments("--headless=new", "--window-size=1296,696", "--no-sandbox", "--disable-gpu",
 							"--disable-dev-shm-usage");
 				}
 			}
