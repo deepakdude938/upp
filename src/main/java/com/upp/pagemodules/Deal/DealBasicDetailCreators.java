@@ -129,8 +129,9 @@ public class DealBasicDetailCreators extends BaseClass {
 			od.saveButton.click();
 		}
 		input = externalData.getFieldData(TSID, "Basic Details", "Party Responsibilities");
-		od.partyResponsibility.click();
-		Thread.sleep(1500);
+		Thread.sleep(1000);
+			od.partyResponsibility.click();
+			Thread.sleep(1500);
 		od.partyResponsibilityinput.sendKeys(input);
 		Thread.sleep(1000);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + input + "')]");

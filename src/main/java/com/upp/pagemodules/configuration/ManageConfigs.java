@@ -41,35 +41,35 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_SelectTab = externalData.getFieldData(tSID, "Configuration", "Select Tabs");
 		config.configurationProduct_SelectTabs.click();
-		By selectTabs = By.xpath("//label[normalize-space()='Select Tabs']//following::span[@class='ng-tns-c92-1 ui-autocomplete-list-item-option' and normalize-space()='"+input_SelectTab+"']");
+		By selectTabs = By.xpath("//label[normalize-space()='Select Tabs']//following::span[@class='ng-tns-c93-1 ui-autocomplete-list-item-option' and normalize-space()='"+input_SelectTab+"']");
 		applyExplicitWaitsUntilElementVisible(selectTabs, 10);
 		driver.findElement(selectTabs).click();
 		config.configurationProduct_SelectTabsText.click();
 		
 		String input_ScheduleInstructionType = externalData.getFieldData(tSID, "Configuration", "Schedule Instruction Types");
 		config.configurationProduct_ScheduleInstructionType.click();
-		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[@class='ng-tns-c92-2 ui-autocomplete-list-item-option' and normalize-space()='"+input_ScheduleInstructionType+"']");
+		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[@class='ng-tns-c93-2 ui-autocomplete-list-item-option' and normalize-space()='"+input_ScheduleInstructionType+"']");
 		applyExplicitWaitsUntilElementVisible(scheduleInstructionType, 10);
 		driver.findElement(scheduleInstructionType).click();
 		config.configurationProduct_ScheduleInstructionTypeText.click();
 		
 		String input_LinkedInstructionType = externalData.getFieldData(tSID, "Configuration", "Linked Instruction Types");
 		config.configurationProduct_LinkedInstructionTypes.click();
-		By linkedInstructionInstructionType= By.xpath("//label[normalize-space()='Linked Instruction Types']//following::div[@class='ng-tns-c92-3 ui-autocomplete-list-item-option ng-star-inserted' and normalize-space()='"+input_LinkedInstructionType+"']");
+		By linkedInstructionInstructionType= By.xpath("//label[normalize-space()='Linked Instruction Types']//following::div[@class='ng-tns-c93-3 ui-autocomplete-list-item-option ng-star-inserted' and normalize-space()='"+input_LinkedInstructionType+"']");
 		applyExplicitWaitsUntilElementVisible(linkedInstructionInstructionType, 10);
 		driver.findElement(linkedInstructionInstructionType).click();
 		config.configurationProduct_LinkedInstructionTypesText.click();
 		
 		String input_FeeInstructionType = externalData.getFieldData(tSID, "Configuration", "Fee Instruction Types");
 		config.configurationProduct_FeeInstructionTypes.click();
-		By feeInstructionInstructionType= By.xpath("//label[normalize-space()='Fee Instruction Types']//following::span[@class='ng-tns-c92-4 ui-autocomplete-list-item-option' and normalize-space()='"+input_FeeInstructionType+"']");
+		By feeInstructionInstructionType= By.xpath("//label[normalize-space()='Fee Instruction Types']//following::span[@class='ng-tns-c93-4 ui-autocomplete-list-item-option' and normalize-space()='"+input_FeeInstructionType+"']");
 		applyExplicitWaitsUntilElementVisible(feeInstructionInstructionType, 10);
 		driver.findElement(feeInstructionInstructionType).click();
 		config.configurationProduct_FeeInstructionTypesText.click();
 		
 		String input_Notifications = externalData.getFieldData(tSID, "Configuration", "Notifications");
 		config.configurationProduct_Notifications.click();
-		By configurationProduct_Notifications= By.xpath("//label[normalize-space()='Notifications']//following::div[@class='ng-tns-c92-5 ui-autocomplete-list-item-option ng-star-inserted' and normalize-space()='"+input_Notifications+"']");
+		By configurationProduct_Notifications= By.xpath("//label[normalize-space()='Notifications']//following::div[@class='ng-tns-c93-5 ui-autocomplete-list-item-option ng-star-inserted' and normalize-space()='"+input_Notifications+"']");
 		applyExplicitWaitsUntilElementVisible(configurationProduct_Notifications, 10);
 		driver.findElement(configurationProduct_Notifications).click();
 		config.configurationProduct_NotificationsText.click();
