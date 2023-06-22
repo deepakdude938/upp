@@ -178,14 +178,8 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_dealId1;
 	
-
 //	@FindBy(xpath="//span[normalize-space()='Deal ID']/../../../../..//input[@class='ag-floating-filter-input']")
 //	public WebElement reports_dealId1;
-	
-	
-	@FindBy(xpath="//div[@col-id='Status' and contains(@class,'ag-cell-not-inline-editing')]")
-	public List <WebElement> reports_EcommRecordStatus;
-	
 	
 //	@FindBy(xpath="//div[@col-id='Amount']")
 	@FindBy(xpath = "//div[@col-id='Status' and contains(@class,'ag-cell-not-inline-editing')]")

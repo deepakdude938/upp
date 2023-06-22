@@ -85,6 +85,7 @@ public class ECommerceTransactionChecker extends BaseClass {
 			Thread.sleep(2000);
 			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
 		}
+		Thread.sleep(1000);
 		ecomm.ecommerce_Allcomment.click();
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		ecomm.ecommerce_txnok.click();
