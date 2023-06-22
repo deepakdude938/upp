@@ -162,6 +162,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsInternal);
 		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 		tm.reports_searchBox.sendKeys("Execution Report");
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
@@ -414,4 +415,44 @@ public class Reports_ExecutionReport extends BaseClass {
 //		}
 
 	}
-}
+	public void check_Original_amount_and_Trnasferinfo_as_percentage(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		
+		String amount1=externalData.getFieldData(TSID, "Scheduled", "Amount");
+	    float amount= Float.parseFloat(amount1);
+	    int amount_int=(int) amount;
+	    int amount2=100-amount_int;
+	    String strNumberamount2 = Integer.toString(amount2);
+	    String strNumberamount1=Integer.toString(amount_int);
+	    
+	    System.out.println("amount1 :"+strNumberamount1);
+	    System.out.println("amount2 :"+strNumberamount2);
+	 
+
+		String status = tm.reports_ScroeStatus.getText();
+
+		if (!(status.equalsIgnoreCase("Scheduled"))) {
+
+			Assert.fail("Transaction not scheduled");
+
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn, tm.reports_horizontalWindow1, 8,
+				1000);
+
+		Thread.sleep(500);
+
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_OriginalAmount) {
+
+			subInstruction.add(iu.getText());
+		}
+		Assert.assertTrue(subInstruction.contains(strNumberamount1));
+		Assert.assertTrue(subInstruction.contains(strNumberamount2));
+	}
+
+		
+
+	}
+

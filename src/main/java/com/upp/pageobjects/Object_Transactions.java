@@ -254,4 +254,16 @@ public class Object_Transactions extends BaseClass {
 	// reports
 	@FindBy(xpath = "//span[@class='ic ic-cancel_black ic-sm ng-star-inserted']")
 	public WebElement cancelIcon;
+	
+	@FindBy(xpath = "//div[@col-id='Original Amount' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List<WebElement> reports_OriginalAmount;
+	
+	@FindBy(xpath = "//div[@col-id='Transfer Info' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List<WebElement> reports_TransferInfo;
+	
+	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Original Amount']")
+	public WebElement reports_OriginalAmountColumn;
+	
+	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Transfer Info']")
+	public WebElement reports_TransferInfoColumn;
 }

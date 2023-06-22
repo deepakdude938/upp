@@ -104,7 +104,11 @@ public class DealPartiesCreator extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(od.parties_icon);
 		}
-		od.parties_GetStarted.click();
+		try {
+			od.parties_GetStarted.click();
+		} catch (Exception e) {
+			handleElementClickException(od.parties_GetStarted);
+		}
 
 		basic_details.Create_Party_BasicDetails(TSID, icallback);
 
