@@ -64,7 +64,7 @@ public class Verify_Budget_Details extends BaseClass {
 		catch(Exception e) {
 			handleElementClickException(audit.Audit_Budget);
 		}
-		
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(audit.Budget_DealId, Duration.ofSeconds(10));
 		audit.Budget_DealId.sendKeys(dealId);
 		
