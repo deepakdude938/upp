@@ -865,11 +865,22 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//input[@id='txt-deals-instruction-fundTransferBasic-value-v1']")
 	public WebElement payment_value1;
 	
-	// Objects for entitlements
+	
 	
 	
 	
 	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
 	public WebElement payment_Frequency1;
+	
+	// Objects for entitlements
+	@FindBy(xpath = "//div[@id='tab-deals-entitlementWizard-v1']")
+	public WebElement entitlementsTab;
+	
+	@FindBy(xpath = "//span[@id='btn-deals-authMatrix-add-v1']")
+	public WebElement add_Dealentitlements;
+	
+	@FindBy(xpath = "//select[@class='ui-dropdown-select']")
+	public WebElement currencyDropdpwn;
+	
 	
 }
