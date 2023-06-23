@@ -61,12 +61,15 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 	}
 
 	public void Transactions_Maker_BasicDetails(String TSID, String DealId, String sourceAccno) throws Exception {
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
 		tm.transactions_TransactionIcon.click();
+		Thread.sleep(3000);
 		tm.transactions_TransactionMaker.click();
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon,Duration.ofSeconds(15));
 		jsClick.click(tm.transactions_AddNewButon);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId,Duration.ofSeconds(20));
 		tm.transactions_DealId.sendKeys(DealId);
 		By transactions_DealId = By.xpath("//div[contains(text(),'"+DealId+"')]");
 	    driver.findElement(transactions_DealId).click();

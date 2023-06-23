@@ -7,6 +7,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import com.upp.base.BaseClass;
 import com.upp.utils.ExcelReader;
+import com.upp.utils.Screenshots;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.AfterStep;
@@ -22,6 +23,7 @@ public class Hook extends BaseClass {
     public static int failCount=0;
 	public static int passCount=0;
 	public static int skipCount=0;
+	public static Screenshots sh;
 
 	@Before()
 	public void setUp(Scenario scenario) throws Exception {
@@ -87,6 +89,14 @@ public class Hook extends BaseClass {
 			File sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
 			scenario.attach(fileContent, "image/png", "image");
+			
+			String s[] = scenario.getSourceTagNames().toArray(new String[0]);
+			String tagname = s[1];
+			String TSIDArray[] = tagname.split("@");
+			String TSID = TSIDArray[1];
+			sh=new Screenshots(driver);
+			sh.takeScreenshot(driver, TSID);
+		
 
 		}
 
