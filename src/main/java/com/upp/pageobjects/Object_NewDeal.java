@@ -855,5 +855,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//input[@id='txt-deals-instruction-fundTransferBasic-value-v1']")
 	public WebElement payment_value1;
 	
+	// Objects for entitlements
+	
+	
 	
 }
