@@ -41,14 +41,13 @@ public class Rule_dealRefId_V3_UD {
 		Object object = jsonParser.parse(response);
 		JSONObject jsonObject = (JSONObject) object;
 		JSONArray er = (JSONArray) jsonObject.get("errors");
+		Assert.assertEquals(res.getStatusCode(), 400);
 		int errorCount = 0;
-
+		
 		for (int i = 0; i < er.size(); i++) {
 			JSONObject obj = (JSONObject) er.get(i);
 			String code = (String) obj.get("code");
 			String message = (String) obj.get("message");
-			System.out.println(code);
-			System.out.println(message);
 			if (ActualErrorCode.equalsIgnoreCase(code) && ActualErrorMessage.equalsIgnoreCase(message)
 					&& res.getStatusCode() == 400) {
 				errorCount++;
