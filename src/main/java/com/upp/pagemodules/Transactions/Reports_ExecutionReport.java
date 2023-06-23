@@ -76,15 +76,16 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 		tm.reports_DealId.sendKeys(dealId);
-		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
-		jsClick.click(tm.reports_SubmitButton);
-		Thread.sleep(2000);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
+//		jsClick.click(tm.reports_SubmitButton);
+		Thread.sleep(4000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
-				5, 2000);
+				10, 1000);
 		ArrayList<String> subInstruction = new ArrayList();
 		for (WebElement iu : tm.reports_SubInstructions) {
 
 			subInstruction.add(iu.getText());
+			Thread.sleep(1000);
 		}
 		Assert.assertTrue(subInstruction.contains(payment));
 		Assert.assertTrue(subInstruction.contains(surplus));
@@ -162,6 +163,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsInternal);
 		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 		tm.reports_searchBox.sendKeys("Execution Report");
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
@@ -281,15 +283,17 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsInternal);
 		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 		tm.reports_searchBox.sendKeys("Execution Report");
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
+		Thread.sleep(2000);
+		jsClick.click(tm.cancelIcon);
+		Thread.sleep(4000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 		tm.reports_DealId.sendKeys(dealId);
-		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
-		jsClick.click(tm.reports_SubmitButton);
-		Thread.sleep(2000);
+		
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
-				5, 2000);
+				10, 1000);
 		ArrayList<String> subInstruction = new ArrayList();
 		for (WebElement iu : tm.reports_SubInstructions) {
 
@@ -371,18 +375,30 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public void validateEcommTransaction() throws Exception {
+	
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		tm.reports_ReportsIcon.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		tm.reports_ReportsInternal.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 		tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		tm.reports_eCommExecutionsList.click();
-		applyExplicitWaitsUntilElementClickable(tm.reports_dealId, Duration.ofSeconds(5));
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
 		System.out.println(dealId);
-		tm.reports_dealId.sendKeys(dealId);
+		tm.reports_dealId1.sendKeys(dealId);
 		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10,
+				1000);
+		jsClick.click(tm.cancelIcon);
+		
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+		
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 
@@ -414,4 +430,54 @@ public class Reports_ExecutionReport extends BaseClass {
 //		}
 
 	}
-}
+
+	public void validateSplitFixedAmountInExecutionReport(String TSID) throws Exception {
+		commonmethodExecReport(TSID,dealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColoumnName, tm.reports_horizontalWindow1, 10,1000);
+		Thread.sleep(1000);
+		String originalAmount = tm.reports_OriginalAmountValue.getText();
+		String expectedOriginalAmount =(int) Float.parseFloat(externalData.getFieldData(TSID, "Scheduled", "value"))+"" ;
+		Assert.assertEquals(originalAmount, expectedOriginalAmount);
+	}
+
+	public void check_Original_amount_and_Trnasferinfo_as_percentage(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		
+		String amount1=externalData.getFieldData(TSID, "Scheduled", "Amount");
+	    float amount= Float.parseFloat(amount1);
+	    int amount_int=(int) amount;
+	    int amount2=100-amount_int;
+	    String strNumberamount2 = Integer.toString(amount2);
+	    String strNumberamount1=Integer.toString(amount_int);
+	    
+	    System.out.println("amount1 :"+strNumberamount1);
+	    System.out.println("amount2 :"+strNumberamount2);
+	 
+
+		String status = tm.reports_ScroeStatus.getText();
+
+		if (!(status.equalsIgnoreCase("Scheduled"))) {
+
+			Assert.fail("Transaction not scheduled");
+
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn, tm.reports_horizontalWindow1, 8,
+				1000);
+
+		Thread.sleep(500);
+
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_OriginalAmount) {
+
+			subInstruction.add(iu.getText());
+		}
+		Assert.assertTrue(subInstruction.contains(strNumberamount1));
+		Assert.assertTrue(subInstruction.contains(strNumberamount2));
+	}
+
+		
+
+	}
+

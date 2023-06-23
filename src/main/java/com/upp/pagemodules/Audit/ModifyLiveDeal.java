@@ -143,8 +143,10 @@ public class ModifyLiveDeal extends BaseClass {
 		driver.findElement(budgetPurpose).click();
 		driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='Phone Bill']"));
 		scroll.scrollInToView(od.payments_ToAccountInputBox);
+		Thread.sleep(1000);
 		od.payments_ToAccountInputBox.sendKeys(toAccountNo);
 		By acoount = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+		Thread.sleep(2000);
 		driver.findElement(acoount).click();
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));

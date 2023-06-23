@@ -72,9 +72,19 @@ public class Budget extends BaseClass {
 	public String createBudget_Payments(String TSID, String sourceAccountno, String toAccountNo) throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(10));
+		try {
 		od.payments_ScheduledInstructionIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
+		try {
 		od.payments_GetStarted.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_GetStarted);
+		}
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
 		By InstructionButton = By
 				.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"
@@ -140,8 +150,9 @@ public class Budget extends BaseClass {
 		driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='Phone Bill']"));
 		scroll.scrollInToView(od.payments_ToAccountInputBox);
 		od.payments_ToAccountInputBox.sendKeys(toAccountNo);
-		By acoount = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
-		driver.findElement(acoount).click();
+		Thread.sleep(1000);		
+		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+		driver.findElement(account).click();
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));

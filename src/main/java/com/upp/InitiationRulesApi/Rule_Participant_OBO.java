@@ -25,7 +25,7 @@ public class Rule_Participant_OBO {
 	
 		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_Url;		
      	Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).body(pay.rule_ParticipantOBO(TSID,dealId)).when()
 				.post("transaction/api/transaction");

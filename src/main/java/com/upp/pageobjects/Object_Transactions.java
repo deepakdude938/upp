@@ -168,12 +168,20 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_endToendId;
 
+	
+//	@FindBy(xpath="(//span[normalize-space()='dealRefId']/../../../../..//input[@class='ag-floating-filter-input'])[1]")
+//	@FindBy(xpath="(//span[normalize-space()='Deal Id']/../../../../..//input[@class='ag-floating-filter-input'])[2]")
+
 	@FindBy(xpath = "(//span[normalize-space()='dealRefId']/../../../../..//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_dealId;
 
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_dealId1;
 	
+//	@FindBy(xpath="//span[normalize-space()='Deal ID']/../../../../..//input[@class='ag-floating-filter-input']")
+//	public WebElement reports_dealId1;
+	
+//	@FindBy(xpath="//div[@col-id='Amount']")
 	@FindBy(xpath = "//div[@col-id='Status' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_EcommRecordStatus;
 
@@ -188,8 +196,15 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//div[@col-id='Status' and @role ='gridcell'])[2]")
 	public WebElement reports_SecondTxnStatus;
+	
+//	@FindBy(xpath="//div[@class='ag-center-cols-viewport']")
+//	public WebElement reports_horizontalWindow1;
+	
+//	@FindBy(xpath="(//div[@col-id='Sub-Instruction Type'])[2]")
+
 	@FindBy(xpath = "//div[@class='ag-center-cols-viewport']")
 	public WebElement reports_horizontalWindow1;
+	
 	@FindBy(xpath = "(//div[@col-id='Sub-Instruction Type'])[2]")
 	public WebElement reports_instructiontype_payment;
 
@@ -201,6 +216,7 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//div[@col-id='Instruction Type'])[2]")
 	public WebElement reports_InstructionName;
+	
 	@FindBy(xpath = "(//div[@col-id='Instruction Name'])[2]")
 	public WebElement reports_InstructionName1;
 
@@ -254,4 +270,26 @@ public class Object_Transactions extends BaseClass {
 	// reports
 	@FindBy(xpath = "//span[@class='ic ic-cancel_black ic-sm ng-star-inserted']")
 	public WebElement cancelIcon;
+	
+	@FindBy(xpath = "//span[normalize-space()='Deal ID']")
+	public WebElement reports_dealIDText;
+	
+	@FindBy(xpath = "//div[@col-id='Original Amount' and not(contains(@class,'ag-header-cell'))]")
+	public WebElement reports_OriginalAmountValue;
+	
+	
+	@FindBy(xpath = "//div[@col-id='Original Amount' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List<WebElement> reports_OriginalAmount;
+	
+	@FindBy(xpath = "//span[normalize-space()='Original Amount']")
+	public WebElement reports_OriginalAmountColoumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Transfer Info' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List<WebElement> reports_TransferInfo;
+	
+	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Original Amount']")
+	public WebElement reports_OriginalAmountColumn;
+	
+	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Transfer Info']")
+	public WebElement reports_TransferInfoColumn;
 }

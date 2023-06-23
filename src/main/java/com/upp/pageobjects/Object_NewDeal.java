@@ -449,7 +449,17 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferBasic-split-v1']//span[@class='slider round']")
 	public WebElement payments_SplitBalanceSlider;
-
+	
+	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']")
+	public WebElement payments_SpecifyAmountAs;
+	
+	@FindBy(id = "txt-deals-instruction-fundTransferBasic-value-v1")
+	public WebElement payments_SpecifyAmountValue;
+	
+	@FindBy(xpath = "//label[normalize-space()='Repeating']/..//span[@class='slider round']")
+	public WebElement payments_RepeatingSlider;
+	
+	
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferBasic-partial-v1']//span[@class='slider round']")
 	public WebElement payments_PartialpaymentSlider;
 
@@ -858,5 +868,8 @@ public class Object_NewDeal extends BaseClass {
 	// Objects for entitlements
 	
 	
+	
+	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
+	public WebElement payment_Frequency1;
 	
 }

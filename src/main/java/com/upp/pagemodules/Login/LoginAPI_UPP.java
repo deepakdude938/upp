@@ -15,7 +15,7 @@ public class LoginAPI_UPP {
 
 
 		String base_Url = Property.getProperty("Dev_base_uri");
-
+	
 //Login api
 		RestAssured.baseURI = base_Url;
 		String responseLogin = given()

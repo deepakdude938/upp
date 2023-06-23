@@ -29,6 +29,7 @@ public class Payment extends BaseClass{
 	public String toAccountNo="";
 	public static DateUtils dateutil;
 	public static String day = "";
+	public static JavascriptClick js;
 
 	public Payment() {
 		od = new Object_NewDeal();
@@ -37,6 +38,7 @@ public class Payment extends BaseClass{
 		scroll = new ScrollTypes(driver);
 		commonutils=new CommonUtils(driver);
 		dateutil = new DateUtils();
+		js=new JavascriptClick(driver);
 	}
 	
 	
@@ -72,6 +74,14 @@ public class Payment extends BaseClass{
 		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
 			od.payments_SplitBalanceSlider.click();
+			Thread.sleep(2000);
+			System.out.println(externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
+		
+			dropdown.selectByVisibleText(od.payments_SpecifyAmountAs, externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
+			Thread.sleep(1000);
+			od.payments_SpecifyAmountValue.clear();
+			od.payments_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
+			
 		}
 		if (((externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Yes"))) {
@@ -84,7 +94,12 @@ public class Payment extends BaseClass{
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
 			od.payments_PartialpaymentSlider.click();
 		}
-
+		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
+			od.payments_Repeatingslider.click();
+			
+		}
+		
 		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
 			od.payments_SweepInSlider.click();
@@ -93,10 +108,10 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
 		String day="";
-		if(TSID.equals("TS10")) {
+		if(TSID.equals("TS10") || TSID.equals("TS51")) {
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
-		day =friday.toString().split("[/-]")[2];
+		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
 		}
 		else if(TSID.equalsIgnoreCase("TS20")) {
 		 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+5);
@@ -133,6 +148,7 @@ public class Payment extends BaseClass{
 		System.out.println(DealPage.sourceAccountNo);
 		System.out.println(DealPage.toaccountNo);
 		od.schedule_IBAN.sendKeys(toAccountNo);
+		Thread.sleep(1000);
 		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
 		driver.findElement(account).click();
 		
@@ -195,7 +211,7 @@ public class Payment extends BaseClass{
 						.equalsIgnoreCase("Yes"))) {
 			od.payments_NotificationAlertSlider.click();
 		}
-		if(TSID.equals("TS25")) {
+		if(TSID.equals("TS25") || TSID.equals("TS51")) {
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
 		od.payments_DealsummaryIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
@@ -317,6 +333,7 @@ public class Payment extends BaseClass{
 			dropdown.selectByVisibleText(od.payment_specifyAmountAs1,externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
 			applyExplicitWaitsUntilElementClickable(od.payment_value1, Duration.ofSeconds(4));
 			od.payment_value1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
+			Thread.sleep(1500);
 			
 			
 		}
@@ -329,7 +346,16 @@ public class Payment extends BaseClass{
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
-			od.payments_PartialpaymentSlider.click();
+			  od.payments_Repeatingslider.click();   
+			  dropdown.selectByVisibleText(od.payment_Frequency1,externalData.getFieldData(TSID, "Scheduled", "Frequency"));
+		}
+	      
+		//Repeating slider is enabled by default so have to disbale the slider
+		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
+			System.out.println("inside------------- Split and Repeat");
+			Thread.sleep(2000);
+			js.click(od.payments_Repeatingslider);
 		}
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
@@ -433,6 +459,7 @@ public class Payment extends BaseClass{
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 
 		scroll.scrollInToView(od.payments_Amount);
+		applyExplicitWaitsUntilElementClickable(od.payments_Amount, Duration.ofSeconds(5));
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
 
 		if (commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode, 1)) {
@@ -455,5 +482,6 @@ public class Payment extends BaseClass{
 			od.payments_NotificationAlertSlider.click();
 		}
 
+		}
 	}
-}
+

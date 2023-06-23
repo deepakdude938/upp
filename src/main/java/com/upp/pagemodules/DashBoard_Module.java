@@ -216,8 +216,13 @@ public class DashBoard_Module extends BaseClass {
 	}
 
 	public String submitDeal() throws Exception {
-		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
-		od.payments_DealsummaryIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(15));
+		try {
+			od.payments_DealsummaryIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_DealsummaryIcon);
+		}
 		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(50));
 		String dealId = od.deals_SummaryRefId.getText();
 		scroll.scrollInToView(od.payments_DealSubmitButton);
@@ -257,6 +262,7 @@ public class DashBoard_Module extends BaseClass {
 		od.dealChecker_showMenu.click();
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_Open, Duration.ofSeconds(25));
 		od.dealChecker_Open.click();
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_addComments, Duration.ofSeconds(10));
 		jsClick.click(od.dealChecker_addComments);
 		od.dealChecker_addNote.sendKeys("Ok approved");

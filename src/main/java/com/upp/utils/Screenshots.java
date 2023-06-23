@@ -28,7 +28,7 @@ public class Screenshots {
 		// DataGenerator generate = new DataGenerator();
 
 		fileName = fileName + ".png";
-		String directory = "report/";
+		String directory = "test-output/Screenshots/";
 		File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(sourceFile, new File(directory + fileName));
 		return fileName;

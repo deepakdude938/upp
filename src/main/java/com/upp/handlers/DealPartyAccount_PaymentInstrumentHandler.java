@@ -79,6 +79,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		
 		System.out.println("inside BT_IN");
 		scroll.scrollInToView(od.parties_PaymentSystem_BT_IN);
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_BT_IN, Duration.ofSeconds(5));
 		od.parties_PaymentSystem_BT_IN.click();
 		
@@ -144,6 +145,7 @@ public void handle_LTTest_PaymentInstrument(String TSID) throws Exception {
 public void handle_LT_IN_PaymentInstrument(String TSID) throws Exception {
 	scroll.scrollInToView(od.parties_PaymentSystem_LT_IN);
 	applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_LT_IN, Duration.ofSeconds(5));
+	Thread.sleep(2000);
 	od.parties_PaymentSystem_LT_IN.click();
 	
 	od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary bank IFSC code"));

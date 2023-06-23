@@ -45,6 +45,7 @@ public class Rules_Party_EnrichDebtor extends BaseClass{
 	public void verify_transaction_should_be_present_at_Ecomm_Transaction_Verifier_que() throws Exception {
 		
 		ecom.ecommerce_SideMenuIcon.click();
+		Thread.sleep(1000);
 		ecom.ecommerce_txnVerifier.click();
 		ecom.ecommerce_dealIdInline.sendKeys(dealId,Keys.ENTER);
 		applyExplicitWaitsUntilElementVisible(	ecom.ecommerce_dealIdInline, Duration.ofSeconds(10));

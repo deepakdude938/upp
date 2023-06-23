@@ -68,13 +68,20 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
 		od.parties_AddButton.click();
+		
 		try {
-			od.parties_AccountsTab.click();
+		od.parties_AccountsTab.click();
 		}
 		catch(Exception e) {
-			handleElementClickException(od.parties_AccountsTab);
+		handleElementClickException(od.parties_AccountsTab);
 		}
+		
+		try {
 		od.parties_AddAccounts.click();
+		}
+		catch(Exception e ) {
+			handleElementClickException(od.parties_AddAccounts);
+		}
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 		od.parties_PaymentSystem.click();
 		String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
@@ -96,7 +103,12 @@ public class DealPartiesHandler extends BaseClass {
 		}
 	
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentType, Duration.ofSeconds(5));
-		od.parties_DocumentType.click();
+		try {
+			od.parties_DocumentType.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_DocumentType);
+		}
 		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {
 			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Blueprint, Duration.ofSeconds(5));
 			od.parties_DocumentsType_Blueprint.click();

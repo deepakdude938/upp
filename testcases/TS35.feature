@@ -15,7 +15,7 @@ Then Add Party basic_Details with given "TS35_1".
 Then Add Party Accounts with given "TS35_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
-#And Run Rule_Participant_OBO using api with given "<TSID>"
+And Run Rule_Participant_OBO using api with given "<TSID>"
 
 Examples:
       |TSID   |

@@ -1,17 +1,16 @@
-Feature: TS10
+Feature: TS51 - Scheduled_Split_FixedAmount
 
 
-@Regression @TS10
-Scenario Outline: Holiday combination
+@Regression @TS51
+Scenario Outline: Scheduled_Split_FixedAmount
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
-And Create Holiday "<TSID>"
-And Approve Holiday
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create Payments in the Scheduled Instructions on Friday "<TSID>"
-Then Check schedule payment next business day
+Then Approve the deal from the deal checker
+Then Validate Execution Report "<TSID>"
 Examples:
       |TSID|
-      |TS10|
+      |TS51|

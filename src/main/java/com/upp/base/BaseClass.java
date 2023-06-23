@@ -83,7 +83,7 @@ public class BaseClass {
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if (isHeadLess) {
-					options.addArguments("--headless", "--window-size=1296,696", "--no-sandbox", "--disable-gpu",
+					options.addArguments("--headless=new", "--window-size=1296,696", "--no-sandbox", "--disable-gpu",
 							"--disable-dev-shm-usage");
 				}
 			}
@@ -130,7 +130,14 @@ public class BaseClass {
 		WebDriverWait wait = new WebDriverWait(driver, i);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(element)));
 	}
-
+	
+	public static void applyExplicitWaitsUntilElementInvisible(WebElement element, int i)
+			throws MalformedURLException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(i));
+		 wait.until(ExpectedConditions.invisibilityOf(element));
+	}
+	
+	
 	public void applyWaitForDynamicWebElement(By locator, Duration time) {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
