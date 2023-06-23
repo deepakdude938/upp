@@ -882,5 +882,9 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//select[@class='ui-dropdown-select']")
 	public WebElement currencyDropdpwn;
 	
+	@FindBy(xpath = "//input[@id='txt-deals-addUpdateAuthMatrix-rangeFrom-v1']")
+	public WebElement rangeFrom;
+	
+	
 	
 }
