@@ -60,14 +60,16 @@ public class DealEntitlements extends BaseClass {
 		externalData = new ExcelReader();
 	}
 
-	public void createDealEntitlements() throws Exception {
+	public void createDealEntitlements(String TSID) throws Exception {
 		od.entitlementsTab.click();
 		od.add_Dealentitlements.click();
 		Thread.sleep(3000);
 		od.currency.click();
-		od.currency.sendKeys("INR", Keys.ENTER);
+		String currency1 = externalData.getFieldData(TSID, "Entitlements", "Currency");
+		od.currency.sendKeys(currency1, Keys.ENTER);
 		// dropdown.selectByValue(od.currency, " INR ");
-		od.rangeFrom.sendKeys("1000");
+		
+		od.rangeFrom.sendKeys(externalData.getFieldData(TSID, "Entitlements", "Range From"));
 		od.initiatingContact.click();
 		// String contactName = externalData.getFieldData(TSID, "Basic Details",
 		// "Contact-Name");

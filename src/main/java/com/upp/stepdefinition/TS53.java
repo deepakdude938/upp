@@ -46,7 +46,7 @@ public class TS53 extends BaseClass implements ICallback {
 
 	@Then("Add entitlements for deal with given {string}")
 	public void add_entitlements_for_deal_with_given(String string) throws Exception {
-		de.createDealEntitlements();
+		de.createDealEntitlements(string);
 	}
 
 	@Then("Verify Entitlement in transaction {string}")
