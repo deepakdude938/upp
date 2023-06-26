@@ -292,4 +292,16 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Transfer Info']")
 	public WebElement reports_TransferInfoColumn;
+	
+	
+	//Entitlements 
+	
+	
+	@FindBy(xpath = "//i[contains(@class,'deal-entitlement')]")
+	public WebElement entitlementsIcon;
+	
+	@FindBy(xpath = "//td[3]//div[contains(@title,'Name:')]")
+	public WebElement initiatingContact;
+	
 }
+
