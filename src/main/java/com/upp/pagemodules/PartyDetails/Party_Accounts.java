@@ -68,9 +68,10 @@ public class Party_Accounts extends BaseClass {
 
 	public void Create_Party_Accounts(String TSID, ICallback icallback) throws Exception {
 
-		Thread.sleep(1000);
+		Thread.sleep(4000);
 		try {
 			od.parties_AccountsTab.click();
+			System.out.println("Account tab open");
 		}
 		catch(Exception e) {
 			handleElementClickException(od.parties_AccountsTab);

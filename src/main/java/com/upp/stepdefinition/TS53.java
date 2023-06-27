@@ -22,6 +22,7 @@ import com.upp.utils.SwitchWindow;
 
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
+import com.upp.pagemodules.Deal.DealEntitlements;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
 import com.upp.pagemodules.payment.Payment;
 import io.cucumber.java.en.*;
@@ -34,19 +35,24 @@ public class TS53 extends BaseClass implements ICallback {
 	Payment payment;
 	Verify_Audit_Transaction audit;
 	Verify_Audit_Transaction_ExcelReport audit_excel;
-
+	DealEntitlements de;
 
 	public TS53() {
 
-		this.dm = new DashBoard_Module();		
- 
+		this.dm = new DashBoard_Module();
+		this.de = new DealEntitlements();
+
 	}
 
 	@Then("Add entitlements for deal with given {string}")
-	public void add_entitlements_for_deal_with_given(String string) {
-	   
+	public void add_entitlements_for_deal_with_given(String string) throws Exception {
+		de.createDealEntitlements(string);
 	}
-	
+
+	@Then("Verify Entitlement in transaction {string}")
+	public void verify_Entitlement_in_transaction(String string) throws Exception {
+		de.verifyEntitlementsInTransaction(string, TS06.dealId, DealPage.sourceAccountNo);
+	}
 
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
