@@ -1,6 +1,6 @@
-Feature: TS53
-
- @Regression @TS53
+ Feature: Entitlements
+ 
+ @Regression @TS54
  Scenario Outline:  Create Entitlments
 		Given Open browser and enter url
     Then Login to the application as "deal_maker"
@@ -11,7 +11,6 @@ Feature: TS53
     Then submit the deal
     Then approve the deal from the deal checker common method
     Then Verify Entitlement in transaction "<TSID>"
-
 Examples:
       |TSID |
-      |TS53|
+      |TS54|
