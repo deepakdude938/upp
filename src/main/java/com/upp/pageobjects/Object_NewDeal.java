@@ -69,7 +69,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = " //select[@id='country']")
 	public WebElement country;
 
-	@FindBy(xpath = "(//select[@class='ui-dropdown-select full-border'])[2]")
+	@FindBy(xpath = "//ui-dropdown[@placeholder='Currency']//select")
 	public WebElement currency;
 
 	@FindBy(xpath = "//select[@id='accountIdentifierKey']")
@@ -369,7 +369,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-generic-partyContacts-name-v1")
 	public WebElement parties_ContactName;
 
-	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[4]")
+	@FindBy(xpath = "(//input[@id='chk-deals-partyContacts-authorisedSignatoryYes-v1']//following::span)[1]")
 	public WebElement parties_AuthrorizedSignatoryYes;
 
 	@FindBy(id = "txt-generic-partyContacts-email-v1")
@@ -885,8 +885,15 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-deals-addUpdateAuthMatrix-rangeFrom-v1']")
 	public WebElement rangeFrom;
 	
+
+	@FindBy(xpath = "//span[@id='btn-deals-addUpdateAuthMatrix-selectMakers-v1']")
+	public WebElement initiatingContact;
 	
+
+	@FindBy(xpath = "//span[@id='btn-deals-addUpdateAuthMatrix-selectCheckers-v1']")
+	public WebElement authorzingContact;
 	
-	
+	@FindBy(xpath = "//button[@id='btn-deals-addUpdateAuthMatrix-saveAuthMatrix-v1']")
+	public WebElement addEntitlements;
 	
 }
