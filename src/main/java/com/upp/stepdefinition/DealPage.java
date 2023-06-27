@@ -113,6 +113,13 @@ public class DealPage extends BaseClass implements ICallback {
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParty_With_Documents(TSID, this);
 	}
+	
+	@Then("Create One Account with given {string}")
+	public void create_One_Account_with_given(String string) throws Exception {
+		
+		DealAccountCreator accountCreator = new DealAccountCreator();
+		sourceAccountNo = accountCreator.createNewAccount(string);
+	}
 
 	
 	@Override
