@@ -14,6 +14,7 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And Login to UPP through api
 And Call the Rule_IN_BT Api with given "<TSID>".
+Then Verify in Ecomm Execution Report with given "<TSID>".
 Examples:
       |TSID   |
       |TS55   |

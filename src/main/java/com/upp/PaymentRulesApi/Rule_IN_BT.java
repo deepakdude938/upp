@@ -21,8 +21,10 @@ public class Rule_IN_BT {
 	public static String base_Url = Property.getProperty("Dev_base_uri");
 
 	public static ExcelReader externalData;
+	
+	public static String endToEndId;
 
-	public static void Rule_Non_OBO_Api(String dealId, String TSID) throws Exception {
+	public static String Rule_IN_BT_System_Level(String dealId, String TSID) throws Exception {
 
 		externalData = new ExcelReader();
 
@@ -37,7 +39,15 @@ public class Rule_IN_BT {
 		System.out.println("The Rule_IN_BT response is " + response);
 
 		System.out.println("the status code is" + res.getStatusCode());
+		
+		if (res.getStatusCode() == 200) {
+			JsonPath js = new JsonPath(response);
+			endToEndId = js.getString("endToEndId");
+			System.out.println("The End to end is" + endToEndId);
+		}
 
+		
+		return endToEndId;
 	}
 
 }

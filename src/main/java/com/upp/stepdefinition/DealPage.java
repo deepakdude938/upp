@@ -162,6 +162,11 @@ public class DealPage extends BaseClass implements ICallback {
 				handler.handle_LT_IN_PaymentInstrument(tsid);
 				
 			}
+			if(paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
+				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
+				handler.handle_SC_Payment_Profile_PaymentInstrument(tsid);
+				
+			}
 		}
 	}
 

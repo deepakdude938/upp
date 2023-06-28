@@ -48,6 +48,8 @@ public class TS55 extends BaseClass {
 	LoginAPI_UPP login_UPP;
 	LogOutApi logout_UPP;
 	Rule_IN_BT rule;
+	Reports_ExecutionReport report;
+	public static String endToEndIdRule="";
 
 	public TS55() {
 
@@ -58,13 +60,19 @@ public class TS55 extends BaseClass {
 		login_UPP = new LoginAPI_UPP();
 		logout_UPP = new LogOutApi();
 		rule=new Rule_IN_BT();
+		report=new Reports_ExecutionReport();
 
 	}
 	
 
 	@And("Call the Rule_IN_BT Api with given {string}.")
 	public void call_the_Rule_IN_BT_Api_with_given(String string) throws Exception {
-	  rule.Rule_Non_OBO_Api(TS06.dealId, string);
+		 endToEndIdRule= rule.Rule_IN_BT_System_Level(TS06.dealId, string);
+	}
+	
+	@Then("Verify in Ecomm Execution Report with given {string}.")
+	public void verify_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
+	   report.eCommExecutionsReportCommon(endToEndIdRule);
 	}
 	
 

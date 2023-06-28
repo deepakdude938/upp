@@ -292,4 +292,7 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Transfer Info']")
 	public WebElement reports_TransferInfoColumn;
+	
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2] | (//input[@ref='eFloatingFilterText'])[5]")
+	public WebElement reports_End_To_End_common;
 }
