@@ -76,7 +76,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 	
 	public void Transaction_Maker_Sub_Instruction(String TSID,ICallback icallback) throws Exception
 	{
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument,Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument,Duration.ofSeconds(15));
 		tm.transactions_Instrument.click();
 		String paymentInstrumentdata=externalData.getFieldData(TSID,"Txn Maker","Sub Instruction - Instrument");
 	    By paymentInstrument = By.xpath("(//div[contains(text(),'"+paymentInstrumentdata+"')])[1]");

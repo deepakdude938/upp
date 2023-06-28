@@ -76,6 +76,7 @@ public class AddDealWithDocument extends BaseClass {
 		od.requiredDoc_reminderDays.click();
 		od.requiredDoc_repeat.sendKeys("1");
 		od.requiredDoc_scheduleBtn.click();
+		Thread.sleep(3000);
 		String reminderdate = od.requiredDoc_reminderDate.getText();
 		System.out.println(reminderdate);
 		// Assert.assertNotEquals(reminderdate,"");

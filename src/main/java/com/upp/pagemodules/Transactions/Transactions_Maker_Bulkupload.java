@@ -67,7 +67,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		
 		String uniqueTransactionName2 = "transaction1" + random;
 		String excelFilePath = System.getProperty("user.dir")
-				+ "\\src\\main\\resources\\Bulk_ConventionalTransactions_File.xlsx";
+				+ "//src//main//resources//Bulk_ConventionalTransactions_File.xlsx";
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "transactionName", uniqueTransactionName);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "transactionName", uniqueTransactionName2);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "sourceAccount", srcAcc);

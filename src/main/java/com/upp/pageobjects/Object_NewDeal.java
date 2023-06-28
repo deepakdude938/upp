@@ -69,7 +69,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = " //select[@id='country']")
 	public WebElement country;
 
-	@FindBy(xpath = "(//select[@class='ui-dropdown-select full-border'])[2]")
+	@FindBy(xpath = "//ui-dropdown[@placeholder='Currency']//select")
 	public WebElement currency;
 
 	@FindBy(xpath = "//select[@id='accountIdentifierKey']")
@@ -369,7 +369,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-generic-partyContacts-name-v1")
 	public WebElement parties_ContactName;
 
-	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[4]")
+	@FindBy(xpath = "(//input[@id='chk-deals-partyContacts-authorisedSignatoryYes-v1']//following::span)[1]")
 	public WebElement parties_AuthrorizedSignatoryYes;
 
 	@FindBy(id = "txt-generic-partyContacts-email-v1")
@@ -866,6 +866,9 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement payment_value1;
 	
 	
+	
+	
+	
 	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
 	public WebElement payment_Frequency1;
 	
@@ -883,4 +886,33 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id="payment-beneficiaryCountryOfIncorporation-txt-v1")
 	public WebElement parties_SC_Payment_beneficiaryCountryOfIncorporation;
+	// Objects for entitlements
+	@FindBy(xpath = "//div[@id='tab-deals-entitlementWizard-v1']")
+	public WebElement entitlementsTab;
+	
+	@FindBy(xpath = "//span[@id='btn-deals-authMatrix-add-v1']")
+	public WebElement add_Dealentitlements;
+	
+	@FindBy(xpath = "//p[normalize-space()='Account']")
+	public WebElement entitlements_Account;
+	
+	@FindBy(id = "txt-generic-autocomplete-input-v1")
+	public WebElement entitlements_addAccount;
+	
+	
+	@FindBy(xpath = "//select[@class='ui-dropdown-select']")
+	public WebElement currencyDropdpwn;
+	
+	@FindBy(xpath = "//input[@id='txt-deals-addUpdateAuthMatrix-rangeFrom-v1']")
+	public WebElement rangeFrom;
+	
+	@FindBy(xpath = "//span[@id='btn-deals-addUpdateAuthMatrix-selectMakers-v1']")
+	public WebElement initiatingContact;
+	
+	@FindBy(xpath = "//span[@id='btn-deals-addUpdateAuthMatrix-selectCheckers-v1']")
+	public WebElement authorzingContact;
+	
+	@FindBy(xpath = "//button[@id='btn-deals-addUpdateAuthMatrix-saveAuthMatrix-v1']")
+	public WebElement addEntitlements;
+	
 }

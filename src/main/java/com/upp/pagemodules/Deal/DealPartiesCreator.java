@@ -77,13 +77,11 @@ public class DealPartiesCreator extends BaseClass {
 			handleElementClickException(od.parties_icon);
 		}
 		try {
-		od.parties_GetStarted.click();
-		}
-		catch(Exception n) {
+			od.parties_GetStarted.click();
+		} catch (Exception n) {
 			handleElementClickException(od.parties_GetStarted);
 		}
 		String partyHandle = externalData.getFieldData(TSID, "Party", "Add a new Party");
-		System.out.println(partyHandle);
 		if (partyHandle.equalsIgnoreCase("Yes")) {
 			partyHandler.handleAddNewParty(TSID, icallback);
 		} else {
@@ -125,7 +123,7 @@ public class DealPartiesCreator extends BaseClass {
 		party_account.Create_Party_Accounts(TSID, icallback);
 
 	}
-	
+
 	public void createParty_With_Documents(String TSID, ICallback icallback) throws Exception, IOException {
 
 		party_documents.Create_Party_Document(TSID, icallback);

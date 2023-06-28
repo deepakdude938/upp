@@ -43,42 +43,43 @@ public class EcommerceHandler extends BaseClass {
 		StringBuffer StrBuffer = new StringBuffer();
 		Random random = new Random();
 		for (int i = 0; i < RANDOM_STRING_LENGTH; i++) {
-		int number = random.nextInt(CHAR_LIST.length());
-		;
-		char ch = CHAR_LIST.charAt(number);
-		StrBuffer.append(ch);
+			int number = random.nextInt(CHAR_LIST.length());
+			;
+			char ch = CHAR_LIST.charAt(number);
+			StrBuffer.append(ch);
 		}
 		String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
 		System.out.println(PraticipantId);
 		od.parties_ParticipantId.sendKeys(PraticipantId);
 		od.parties_BasicNextButton.click();
 
-		dropdown.selectByVisibleText(od.ecommerce_status,externalData.getFieldData(TSID, "Party", "Party_Status"));
+		dropdown.selectByVisibleText(od.ecommerce_status, externalData.getFieldData(TSID, "Party", "Party_Status"));
 //		od.ecommerce_validFrom.click();
 //		od.startDate.click();
 
-	//	String status=externalData.getFieldData(TSID,"Party","Party_Status");
-	//	dropdown.selectByVisibleText(od.ecommerce_status, status);
-		//od.ecommerce_validFrom.click();
-		//od.startDate.click();
+		// String status=externalData.getFieldData(TSID,"Party","Party_Status");
+		// dropdown.selectByVisibleText(od.ecommerce_status, status);
+		// od.ecommerce_validFrom.click();
+		// od.startDate.click();
 		debitorFalg = externalData.getFieldData(TSID, "Party", "Debit Accounts");
 		System.out.println(debitorFalg);
 		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
-		String hiddenClass = od.accountNumbers.getAttribute("class");
-		System.out.println(hiddenClass);
-		if (!(hiddenClass.contains("ag-hidden"))) {
-		jsClick.click(od.ecommerceFirstAccount);
-		Thread.sleep(2000);
-		System.out.println("First = " + od.accountNumbers.getAttribute("class"));
-		} else {
-		System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
-		jsClick.click(od.ecommerceSecondAccount);
-		Thread.sleep(2000);
-		}
+			String hiddenClass = od.accountNumbers.getAttribute("class");
+			System.out.println(hiddenClass);
+			if (!(hiddenClass.contains("ag-hidden"))) {
+				jsClick.click(od.ecommerceFirstAccount);
+				Thread.sleep(2000);
+				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
+			} else {
+				System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
+				jsClick.click(od.ecommerceSecondAccount);
+				Thread.sleep(2000);
+			}
 		}
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
 		jsClick.click(od.ecommerceSave);
+		System.out.println("save button click");
 		Thread.sleep(2000);
 
 	}

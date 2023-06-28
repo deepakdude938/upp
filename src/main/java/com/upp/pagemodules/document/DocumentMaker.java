@@ -51,7 +51,7 @@ public class DocumentMaker extends BaseClass {
 	}
 
 	public void uploaddocument(String dealid) throws Exception {
-		 String filePath=System.getProperty("user.dir")+"\\src\\main\\resources\\upp-automation-testdata.xlsx";
+		 String filePath=System.getProperty("user.dir")+"//src//main//resources//upp-automation-testdata.xlsx";
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_DocumentMaker, Duration.ofSeconds(20));
 		Thread.sleep(4000);
 		od.requiredDoc_DocumentMaker.click();

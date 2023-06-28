@@ -38,7 +38,7 @@ public class DealPartiesHandler extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		op = new Object_Parties();
-		object_deal=new Object_Deal();
+		object_deal = new Object_Deal();
 	}
 
 	public void handleAddNewParty(String TSID, ICallback icallback) throws Exception {
@@ -68,18 +68,15 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
 		od.parties_AddButton.click();
-		
 		try {
-		od.parties_AccountsTab.click();
+			od.parties_AccountsTab.click();
+		} catch (Exception e) {
+			handleElementClickException(od.parties_AccountsTab);
 		}
-		catch(Exception e) {
-		handleElementClickException(od.parties_AccountsTab);
-		}
-		
+
 		try {
-		od.parties_AddAccounts.click();
-		}
-		catch(Exception e ) {
+			od.parties_AddAccounts.click();
+		} catch (Exception e) {
 			handleElementClickException(od.parties_AddAccounts);
 		}
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
@@ -88,25 +85,22 @@ public class DealPartiesHandler extends BaseClass {
 		icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
 
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
-		
+
 		try {
 			od.parties_DocumentsTab.click();
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			handleElementClickException(od.parties_DocumentsTab);
 		}
 		try {
 			od.parties_AddDocument.click();
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			handleElementClickException(od.parties_AddDocument);
 		}
-	
+
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentType, Duration.ofSeconds(5));
 		try {
 			od.parties_DocumentType.click();
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			handleElementClickException(od.parties_DocumentType);
 		}
 		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {
@@ -150,13 +144,12 @@ public class DealPartiesHandler extends BaseClass {
 		od.parties_Responsibility.click();
 		od.parties_Responsibility_dropdown.click();
 		Thread.sleep(1000);
-		if(responsibility.equalsIgnoreCase("Acquiree"))
-		{
-		object_deal.party_basic_details_acquiree.sendKeys("Test");
-		object_deal.party_basic_details_acquiree.clear();
-		object_deal.party_basic_details_acquiree.sendKeys("Test");
-		Thread.sleep(500);
-	    object_deal.party_basic_details_acquiree_dasfField.sendKeys("2");
+		if (responsibility.equalsIgnoreCase("Acquiree")) {
+			object_deal.party_basic_details_acquiree.sendKeys("Test");
+			object_deal.party_basic_details_acquiree.clear();
+			object_deal.party_basic_details_acquiree.sendKeys("Test");
+			Thread.sleep(500);
+			object_deal.party_basic_details_acquiree_dasfField.sendKeys("2");
 		}
 		od.parties_BasicNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(10));
