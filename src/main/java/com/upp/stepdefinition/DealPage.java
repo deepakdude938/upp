@@ -113,6 +113,13 @@ public class DealPage extends BaseClass implements ICallback {
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParty_With_Documents(TSID, this);
 	}
+	
+	@Then("Create One Account with given {string}")
+	public void create_One_Account_with_given(String string) throws Exception {
+		
+		DealAccountCreator accountCreator = new DealAccountCreator();
+		sourceAccountNo = accountCreator.createNewAccount(string);
+	}
 
 	
 	@Override
@@ -153,6 +160,11 @@ public class DealPage extends BaseClass implements ICallback {
 			if(paymentInstrument.equalsIgnoreCase("LT_IN")) {
 				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
 				handler.handle_LT_IN_PaymentInstrument(tsid);
+				
+			}
+			if(paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
+				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
+				handler.handle_SC_Payment_Profile_PaymentInstrument(tsid);
 				
 			}
 		}
