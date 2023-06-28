@@ -15,6 +15,7 @@ import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Payment;
 import com.upp.pageobjects.Object_Transactions;
+import com.upp.stepdefinition.DealPage;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
@@ -116,5 +117,30 @@ public class DealEntitlements extends BaseClass {
 			flag =1;
 		}
 		Assert.assertEquals(flag, 1);
+	}
+
+	public void addAccountEntitlements(String TSID) throws Exception {
+		String sourceAccno = DealPage.sourceAccountNo;
+		od.entitlementsTab.click();
+		od.add_Dealentitlements.click();
+		od.entitlements_Account.click();
+		od.add_Dealentitlements.click();
+		od.entitlements_addAccount.click();
+		Thread.sleep(1000);
+		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+		driver.findElement(transactions_SouceAccno).click();
+		
+		od.rangeFrom.sendKeys(externalData.getFieldData(TSID, "Entitlements", "Range From"));
+		od.initiatingContact.click();
+		
+		applyExplicitWaitsUntilElementClickable(op.Alerts_contactCheckBox, Duration.ofSeconds(10));
+		op.Alerts_contactCheckBox.click();
+		op.Alerts_contactUpdate.click();
+		
+		od.authorzingContact.click();
+		applyExplicitWaitsUntilElementClickable(op.Alerts_contactCheckBox, Duration.ofSeconds(10));
+		op.Alerts_contactCheckBox.click();
+		op.Alerts_contactUpdate.click();
+		od.addEntitlements.click();
 	}
 }
