@@ -177,5 +177,50 @@ public void handle_LT_IN_PaymentInstrument(String TSID) throws Exception {
 	od.parties_partyAccountsAddButton.click();
 	
 }
+public void handle_SC_Payment_Profile_PaymentInstrument(String TSID) throws Exception {
+	scroll.scrollInToView(od.party_SC_PaymentProfile);
+	applyExplicitWaitsUntilElementClickable(od.party_SC_PaymentProfile, Duration.ofSeconds(15));
+	Thread.sleep(2000);
+	od.party_SC_PaymentProfile.click();
 	
+	od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Name"));
+  
+	scroll.scrollInToView(od.parties_Accounts_Type);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_Type, Duration.ofSeconds(5));
+	dropdown.selectByVisibleText(od.parties_Accounts_Type,externalData.getFieldData(TSID, "Party", "Account Type"));
+	
+	scroll.scrollInToView(od.parties_paymentTo);
+	applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
+	od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Account Number / IBAN"));
+	
+	
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
+	od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Address Line 1"));
+	
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine2);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine2, Duration.ofSeconds(5));
+	od.parties_Accounts_beneficiaryAddressLine2.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Address Line 2"));
+	
+	scroll.scrollInToView(od.parties_SC_Payment_beneficiaryCountryOfIncorporation);
+	applyExplicitWaitsUntilElementClickable(od.parties_SC_Payment_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
+	od.parties_SC_Payment_beneficiaryCountryOfIncorporation.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
+	
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryCurrency);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCurrency, Duration.ofSeconds(5));
+	dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCurrency,externalData.getFieldData(TSID, "Party", "Beneficiary Currency"));
+	
+	
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryBankCode);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryBankCode, Duration.ofSeconds(5));
+	od.parties_Accounts_beneficiaryBankCode.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Bank Code"));
+	
+	scroll.scrollInToView(od.parties_BeneficiaryCountry);
+	applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(15));
+	dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
+			externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
+
+	od.parties_partyAccountsAddButton.click();
+	
+}
 }

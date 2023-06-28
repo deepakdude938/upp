@@ -872,6 +872,20 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
 	public WebElement payment_Frequency1;
 	
+	@FindBy(xpath="//div[contains(text(),'SC-PaymentProfile')]")
+	public WebElement party_SC_PaymentProfile;
+	
+	@FindBy(id="payment-beneficiaryAddressLine2-txt-v1")
+	public WebElement parties_Accounts_beneficiaryAddressLine2;
+	
+	@FindBy(id="payment-beneficiaryBankCode-txt-v1")
+	public WebElement parties_Accounts_beneficiaryBankCode;
+	
+	@FindBy(id="payment-accountType-sel-v1")
+	public WebElement parties_Accounts_Type;
+	
+	@FindBy(id="payment-beneficiaryCountryOfIncorporation-txt-v1")
+	public WebElement parties_SC_Payment_beneficiaryCountryOfIncorporation;
 	// Objects for entitlements
 	@FindBy(xpath = "//div[@id='tab-deals-entitlementWizard-v1']")
 	public WebElement entitlementsTab;
