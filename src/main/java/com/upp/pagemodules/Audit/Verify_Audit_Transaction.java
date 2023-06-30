@@ -77,9 +77,9 @@ public class Verify_Audit_Transaction extends BaseClass {
 		js.click(audit.audit_Transaction_Notification);
 		applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Reload, Duration.ofSeconds(25));
 		js.click(audit.audit_Transaction_Reload);
-        Thread.sleep(2000);
+        Thread.sleep(4000);
 		By Report = By.xpath("//span[contains(text(),'" + dealId + "')]");
-		driver.findElement(Report).click();
+		js.click(driver.findElement(Report));
 		Thread.sleep(8000);
 
 	}
