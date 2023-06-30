@@ -80,8 +80,18 @@ public class Balance_Reporting extends BaseClass {
 		By excecutionEndDay = By.xpath(
 				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
 						+ enddate + "']");
-		applyExplicitWaitsUntilElementVisible(excecutionEndDay, 5);
-		driver.findElement(excecutionEndDay).click();
+		Thread.sleep(1000);
+		try {
+			driver.findElement(excecutionEndDay).click();
+			}
+			catch(Exception e)
+			{   
+			if(Integer.parseInt(DateUtils.getDay())>=29)
+			{
+				excecutionEndDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
+				driver.findElement(excecutionEndDay).click();
+			}
+			}
 
 		dropdown.selectByVisibleText(od.Balance_Reporting_ScheduleAt,
 				externalData.getFieldData(TSID, "Balance Reporting", "Schedule At"));
