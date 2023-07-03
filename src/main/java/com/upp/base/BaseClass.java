@@ -2,14 +2,12 @@ package com.upp.base;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -31,6 +29,7 @@ public class BaseClass {
 	public static Properties prop;
 	public static String dealId = "";
 	public static String config_productName ;
+	public static	List<String> object ;
 
 	public boolean isFlexibleFunding;
 

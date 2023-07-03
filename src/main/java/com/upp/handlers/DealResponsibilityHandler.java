@@ -1,6 +1,9 @@
 package com.upp.handlers;
 
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
@@ -39,5 +42,22 @@ public class DealResponsibilityHandler extends BaseClass implements ICallback {
 	 od.party_basic_details_acquiree.sendKeys("Test");
 	 Thread.sleep(500);
 	 od.party_basic_details_acquiree_dasfField.sendKeys("2");
+	}
+
+	public void handleAutomationAttributes() throws Exception {
+		
+		od.party_basic_details_automationAttribute_partyname.sendKeys("Party");
+		od.party_basic_details_automationAttribute_panno.sendKeys("12345543");
+		od.party_basic_details_automationAttribute_dob.click();
+		String	day= DateUtils.getDay();
+		By excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
+		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+		driver.findElement(excecutionDay).click();
+		Thread.sleep(1000);
+		object = new ArrayList();
+		for(WebElement a : od.party_basic_details_ResponsibilityAttributes) {
+			object.add(a.getText().trim());
+		}
+		object.sort(null);		
 	}
 }

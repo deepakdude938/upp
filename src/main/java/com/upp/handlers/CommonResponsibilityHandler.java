@@ -9,9 +9,13 @@ public class CommonResponsibilityHandler {
 				DealResponsibilityHandler responsibilityHandler = new DealResponsibilityHandler();
 				responsibilityHandler.handleMarchant();
 			}
-			if (responsibility.equalsIgnoreCase("Acquiree")) {
+			else	if (responsibility.equalsIgnoreCase("Acquiree")) {
 				DealResponsibilityHandler responsibilityHandler = new DealResponsibilityHandler();
 				responsibilityHandler.handleAcquiree();
+			}
+			else	if (responsibility.equalsIgnoreCase("AutomationAttributes")) {
+				DealResponsibilityHandler responsibilityHandler = new DealResponsibilityHandler();
+				responsibilityHandler.handleAutomationAttributes();
 			}
 		}
 	}
