@@ -913,6 +913,20 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
 	public WebElement payment_Frequency1;
 	
+	@FindBy(xpath="//div[contains(text(),'SC-PaymentProfile')]")
+	public WebElement party_SC_PaymentProfile;
+	
+	@FindBy(id="payment-beneficiaryAddressLine2-txt-v1")
+	public WebElement parties_Accounts_beneficiaryAddressLine2;
+	
+	@FindBy(id="payment-beneficiaryBankCode-txt-v1")
+	public WebElement parties_Accounts_beneficiaryBankCode;
+	
+	@FindBy(id="payment-accountType-sel-v1")
+	public WebElement parties_Accounts_Type;
+	
+	@FindBy(id="payment-beneficiaryCountryOfIncorporation-txt-v1")
+	public WebElement parties_SC_Payment_beneficiaryCountryOfIncorporation;
 	// Objects for entitlements
 	@FindBy(xpath = "//div[@id='tab-deals-entitlementWizard-v1']")
 	public WebElement entitlementsTab;
@@ -920,15 +934,22 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//span[@id='btn-deals-authMatrix-add-v1']")
 	public WebElement add_Dealentitlements;
 	
+	@FindBy(xpath = "//p[normalize-space()='Account']")
+	public WebElement entitlements_Account;
+	
+	@FindBy(id = "txt-generic-autocomplete-input-v1")
+	public WebElement entitlements_addAccount;
+	
+	
 	@FindBy(xpath = "//select[@class='ui-dropdown-select']")
 	public WebElement currencyDropdpwn;
 	
 	@FindBy(xpath = "//input[@id='txt-deals-addUpdateAuthMatrix-rangeFrom-v1']")
 	public WebElement rangeFrom;
-
+	
 	@FindBy(xpath = "//span[@id='btn-deals-addUpdateAuthMatrix-selectMakers-v1']")
 	public WebElement initiatingContact;
-
+	
 	@FindBy(xpath = "//span[@id='btn-deals-addUpdateAuthMatrix-selectCheckers-v1']")
 	public WebElement authorzingContact;
 	

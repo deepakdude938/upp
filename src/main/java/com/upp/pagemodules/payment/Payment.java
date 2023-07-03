@@ -7,6 +7,8 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.stepdefinition.DealPage;
@@ -108,20 +110,34 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
 		String day="";
+		boolean dayFlag=false;
 		if(TSID.equals("TS10") || TSID.equals("TS51")) {
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
 		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
 		}
 		else if(TSID.equalsIgnoreCase("TS20")) {
-		 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+5);
+		
+				if(Integer.parseInt(DateUtils.getDay())>25){
+					dayFlag=true;
+				}
+				else {
+					 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+5);
+				}
 		}
 		else {
 			day= DateUtils.getDay();
 		}
 		
 		System.out.println(day);
-		By excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
+		By excecutionDay =null;
+		if(!dayFlag) {
+		excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
+		}
+		else {
+			
+			excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='4']");
+		}
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 		driver.findElement(excecutionDay).click();
 
@@ -381,9 +397,18 @@ public class Payment extends BaseClass{
 		By excecutionDay = By.xpath(
 				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
 						+ day + "']");
-		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+		Thread.sleep(1000);
+		try {
 		driver.findElement(excecutionDay).click();
-
+		}
+		catch(Exception e)
+		{
+		if(Integer.parseInt(DateUtils.getDay())>=29)
+		{
+			 excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
+			driver.findElement(excecutionDay).click();
+		}
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.payments_ScheduleAt,
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
