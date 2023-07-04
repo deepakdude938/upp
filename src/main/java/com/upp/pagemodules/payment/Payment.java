@@ -7,6 +7,8 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.stepdefinition.DealPage;
@@ -395,9 +397,18 @@ public class Payment extends BaseClass{
 		By excecutionDay = By.xpath(
 				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
 						+ day + "']");
-		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+		Thread.sleep(1000);
+		try {
 		driver.findElement(excecutionDay).click();
-
+		}
+		catch(Exception e)
+		{
+		if(Integer.parseInt(DateUtils.getDay())>=29)
+		{
+			 excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
+			driver.findElement(excecutionDay).click();
+		}
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.payments_ScheduleAt,
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
