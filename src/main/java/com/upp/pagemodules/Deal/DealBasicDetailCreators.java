@@ -168,6 +168,20 @@ public class DealBasicDetailCreators extends BaseClass {
 		} catch (NullPointerException e) {
 
 		}
+		
+		try {
+			String context=externalData.getFieldData(TSID, "Basic Details", "Contextualize");
+				if(context.equalsIgnoreCase("Yes")||context.equalsIgnoreCase("Y")) {
+					
+					
+					String PaymentRule=TSID+"_DEAL_LEVEL_RULE";
+					icallback.handleCallback("DEAL_LEVEL_RULE",PaymentRule);
+					
+				}
+			}
+			catch(NullPointerException e) {
+				
+				}
 		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));

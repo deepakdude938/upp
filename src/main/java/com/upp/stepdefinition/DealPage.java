@@ -8,6 +8,7 @@ import com.upp.handlers.CommonResponsibilityHandler;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.handlers.DealPartyAccount_PaymentInstrumentHandler;
 import com.upp.handlers.DealResponsibilityHandler;
+import com.upp.handlers.Deal_Level_Rule_Handler;
 import com.upp.handlers.EcommerceHandler;
 import com.upp.handlers.PartyMaker_PaymentInstrumentHandler;
 import com.upp.pagemodules.BasicDetails;
@@ -47,7 +48,7 @@ public class DealPage extends BaseClass implements ICallback {
 
 	@Then("Create new deal with basic details with given {string}.")
 	public void create_new_deal_with_basic_details_with_given(String TSID) throws Exception {
-
+		tsid = TSID;
 		DealBasicDetailCreators deal=new DealBasicDetailCreators();
 		deal.createDealBasicDetails(TSID,this);
 	}
@@ -165,6 +166,17 @@ public class DealPage extends BaseClass implements ICallback {
 			if(paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
 				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
 				handler.handle_SC_Payment_Profile_PaymentInstrument(tsid);
+				
+			}
+			
+		}
+		if(callbackid.equalsIgnoreCase("DEAL_LEVEL_RULE"))
+		{
+			String PaymentRule=tsid+"_DEAL_LEVEL_RULE";
+			System.out.println("The Deal Level rule :"+PaymentRule);
+			if(PaymentRule.equalsIgnoreCase("TS58_DEAL_LEVEL_RULE")) {
+				Deal_Level_Rule_Handler rule_handler=new Deal_Level_Rule_Handler();
+				rule_handler.handle_Rule_IN_BT_DealLevel(tsid);
 				
 			}
 		}

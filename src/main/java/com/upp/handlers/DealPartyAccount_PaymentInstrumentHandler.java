@@ -9,6 +9,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Transactions;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -25,6 +26,7 @@ public class DealPartyAccount_PaymentInstrumentHandler extends BaseClass  implem
 	public static ScrollTypes scroll;
 	public static JavascriptClick jsClick;
 	public static Object_Transactions tm ;
+	CommonUtils commonutils;
 
 	public DealPartyAccount_PaymentInstrumentHandler() {
 		od = new Object_NewDeal();
@@ -33,6 +35,7 @@ public class DealPartyAccount_PaymentInstrumentHandler extends BaseClass  implem
 		jsClick=new JavascriptClick(driver);
 		tm=new Object_Transactions();
 		externalData = new ExcelReader();
+		commonutils=new CommonUtils(driver);
 	}
 
 	@Override
@@ -219,6 +222,12 @@ public void handle_SC_Payment_Profile_PaymentInstrument(String TSID) throws Exce
 	applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(15));
 	dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
 			externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
+	
+	if (commonutils.isElementDisplayed(od.payment_account_test1, 1)) {
+		scroll.scrollInToView(od.payment_account_test1);
+		Thread.sleep(500);
+		od.payment_account_test1.sendKeys("test1");
+	}
 
 	od.parties_partyAccountsAddButton.click();
 	
