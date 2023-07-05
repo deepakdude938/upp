@@ -15,7 +15,7 @@ import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
-public class Rule_IN_BT {
+public class Rule_IN_LT {
 	public static String response = "";
 
 	public static String base_Url = Property.getProperty("Dev_base_uri");
@@ -23,10 +23,8 @@ public class Rule_IN_BT {
 	public static ExcelReader externalData;
 	
 	public static String endToEndId;
-	
-	public static SSHConnection ssh;
 
-	public static String Rule_IN_BT_System_Level(String dealId, String TSID) throws Exception {
+	public static String Rule_IN_LT_System_Level(String dealId, String TSID) throws Exception {
 
 		externalData = new ExcelReader();
 
@@ -34,7 +32,7 @@ public class Rule_IN_BT {
 		RestAssured.baseURI = base_Url;
 
 		Response res = given().header("Content-Type", "application/json")
-				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.Rule_IN_BT(dealId, TSID)).when()
+				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.Rule_IN_LT(dealId, TSID)).when()
 				.post("transaction/api/transaction");
 
 		response = res.then().extract().asString();
@@ -50,18 +48,6 @@ public class Rule_IN_BT {
 
 		
 		return endToEndId;
-	}
-	
-	public void verify_Rule_IN_BT_System_Level_PainFile(String batchId)
-	{
-		ssh=new SSHConnection();
-		ArrayList<String> tagNames = new ArrayList<>(Arrays.asList("Cd","ChrgBr"));
-		
-		ArrayList<String> ActualResult=ssh.getPainFileDetails(batchId,tagNames);
-		ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList("BKTR", "DEBT"));
-
-		Assert.assertEquals(ActualResult,ExcpectedResult);
-		
 	}
 
 }
