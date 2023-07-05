@@ -23,6 +23,8 @@ public class Rule_IN_BT {
 	public static ExcelReader externalData;
 	
 	public static String endToEndId;
+	
+	public static SSHConnection ssh;
 
 	public static String Rule_IN_BT_System_Level(String dealId, String TSID) throws Exception {
 
@@ -48,6 +50,18 @@ public class Rule_IN_BT {
 
 		
 		return endToEndId;
+	}
+	
+	public void verify_Rule_IN_BT_System_Level_PainFile(String batchId)
+	{
+		ssh=new SSHConnection();
+		ArrayList<String> tagNames = new ArrayList<>(Arrays.asList("Cd","ChrgBr"));
+		
+		ArrayList<String> ActualResult=ssh.getPainFileDetails(batchId,tagNames);
+		ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList("BKTR", "DEBT"));
+
+		Assert.assertEquals(ActualResult,ExcpectedResult);
+		
 	}
 
 }
