@@ -476,14 +476,17 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertTrue(subInstruction.contains(strNumberamount2));
 	}
 
-	public void eCommExecutionsReportCommon(String EndToEndId) throws Exception {
+	public String eCommExecutionsReportCommon(String EndToEndId) throws Exception {
+		
+		System.out.println("Waiting for 3 minutes for Transactions to be triggered");
+		TimeUnit.MINUTES.sleep(3);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
 		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 		tm.reports_searchBox.sendKeys("eComm Executions");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_eCommExecutionsList);
@@ -493,9 +496,38 @@ public class Reports_ExecutionReport extends BaseClass {
 		// tm.transactionMaker_dealSearch.sendKeys(EndToEndId);
 		Thread.sleep(3000);
 		String status = tm.reports_FirstTxnStatus.getText();
-		System.out.println("The status is:" + status);
-		Assert.assertEquals(status, "Scheduled");
+		System.out.println("The status is:"+status);
+		Assert.assertEquals(status, "Triggered");
+	    String paymentRefId=tm.ecommPaymentLink.getText();
+	    System.out.println("The Payment Ref id:"+paymentRefId);
+	
+		return paymentRefId;
+		
+	}
+	
+	public String getBatchIdFromEcommPayments(String paymentRefId) throws Exception
+	{
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+		tm.reports_searchBox.sendKeys("eComm Payments");
+		Thread.sleep(2000);
+		scroll.scrollInToView(tm.reports_eCommPaymentsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommPaymentsList, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommPaymentsList);
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementVisible(tm.ecommPayments_PaymentId,Duration.ofSeconds(10));
+		tm.ecommPayments_PaymentId.sendKeys(paymentRefId);
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementVisible(tm.ecommBatch,Duration.ofSeconds(10));
+		String batchId=tm.ecommBatch.getText();
+		System.out.println("The batch id is:"+batchId);
+		
+		return batchId;
+	}
 
 	}
 
-}
+

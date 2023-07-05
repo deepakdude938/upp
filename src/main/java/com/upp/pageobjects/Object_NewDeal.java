@@ -956,4 +956,30 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//button[@id='btn-deals-addUpdateAuthMatrix-saveAuthMatrix-v1']")
 	public WebElement addEntitlements;
 	
+	// Objects for Contextualize
+	
+	@FindBy(xpath = "//span[normalize-space()='Contextualize']")
+	public WebElement contextualize_Icon;
+	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[5]")
+	public WebElement contextualize_Dropdown;
+	
+	@FindBy(xpath = "//button[normalize-space()='Add']")
+	public WebElement contextualize_AddButton;
+	
+	@FindBy(xpath = "(//div[@id='right'])[1]")
+	public WebElement contextualize_RightArrow;
+	
+	@FindBy(xpath = "(//span[@title='Book Transfer'][normalize-space()='BT'])[1]")
+	public WebElement contextualize_BT;
+	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[7]")
+	public WebElement contextualize_ChargeBearer;
+	
+	@FindBy(xpath = "//button[normalize-space()='Done']")
+	public WebElement contextualize_DoneButton;
+	
+	@FindBy(id = "payment-test1-txt-v1")
+	public WebElement payment_account_test1;
+	
 }

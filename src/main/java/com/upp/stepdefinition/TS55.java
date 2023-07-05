@@ -50,6 +50,8 @@ public class TS55 extends BaseClass {
 	Rule_IN_BT rule;
 	Reports_ExecutionReport report;
 	public static String endToEndIdRule="";
+	public static String batchId = "";
+	public static String paymentRefId = "";
 
 	public TS55() {
 
@@ -61,7 +63,6 @@ public class TS55 extends BaseClass {
 		logout_UPP = new LogOutApi();
 		rule=new Rule_IN_BT();
 		report=new Reports_ExecutionReport();
-
 	}
 	
 
@@ -72,8 +73,16 @@ public class TS55 extends BaseClass {
 	
 	@Then("Verify in Ecomm Execution Report with given {string}.")
 	public void verify_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
-	   report.eCommExecutionsReportCommon(endToEndIdRule);
+		paymentRefId=report.eCommExecutionsReportCommon(endToEndIdRule);	
 	}
 	
-
+	@And("Get the BatchId from Ecomm Payments")
+	public void get_the_BatchId_from_Ecomm_Payments() throws Exception {
+		batchId= report.getBatchIdFromEcommPayments(paymentRefId);
+	}
+    
+	@And("Verify the Pain File For Rule_IN_BT_SystemLevel")
+	public void verify_the_Pain_File_For_Rule_IN_BT_SystemLevel() {
+		rule.verify_Rule_IN_BT_System_Level_PainFile(batchId);
+	}
 }
