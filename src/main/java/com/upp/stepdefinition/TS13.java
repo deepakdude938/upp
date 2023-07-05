@@ -53,7 +53,7 @@ public class TS13 extends BaseClass implements ICallback {
 		this.tv = new Transactions_Verifier();
 		this.execReport = new Reports_ExecutionReport();
 		externalData = new ExcelReader();
-		
+
 	}
 
 	@Then("Create a Transaction for Non Registered Beneficiary user from Transaction Maker with given {string}")
@@ -65,7 +65,7 @@ public class TS13 extends BaseClass implements ICallback {
 		tm_sub.Non_Registered_Beneficiary(toaccountNumber);
 		tm_doc.Transactions_Maker_Documents(string);
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
-		
+
 	}
 
 	@Override
@@ -97,16 +97,14 @@ public class TS13 extends BaseClass implements ICallback {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 				String checkbox = externalData.getFieldData(TSID, "Basic Details",
 						"Transactions to non-registered beneficiaries");
-
-				if (checkbox.equalsIgnoreCase("N")) {
-					instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(TSID, callbackid,toaccountNo);
-				}else if (checkbox.equalsIgnoreCase("Y")){
+				System.out.println("Checkbox value = " + checkbox);
+				if (checkbox.equalsIgnoreCase("Y")) {
 					instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_checked(
 							TSID, callbackid, toaccountNumber);
 				}
 
 			}
 		}
-		
+
 	}
 }
