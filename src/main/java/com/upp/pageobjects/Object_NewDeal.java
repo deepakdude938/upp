@@ -325,6 +325,19 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//div[@title='Parties']/i")
 	public WebElement parties_icon;
 
+	@FindBy(xpath = "(//div[@col-id='customerId'])[2]")
+	public WebElement parties_recordRow;
+	
+	@FindBy(xpath = "//div[@class='ag-center-cols-viewport']")
+	public WebElement parties_HorizontalSlider;
+	
+	@FindBy(xpath = "//i[contains(@class,'ui-icon ic ic-edit')]")
+	public WebElement parties_recordEditButton;
+	
+	@FindBy(xpath = "//div[contains(@class,'party-basic-form ng-tns')]")
+	public WebElement parties_verticalSlider;
+	
+	
 	@FindBy(id = "ic-parties-partiesList-addParty-v1")
 	public WebElement parties_GetStarted;
 
@@ -544,8 +557,41 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//div[@title='Summary']/i")
 	public WebElement payments_DealsummaryIcon;
 
+	@FindBy(xpath = "//div[@class='ui-side-bar']")
+	public WebElement dealSummary_LeftVerticalScroller;
+	
+	@FindBy(xpath = "//span[normalize-space()='Party Responsibilities']//following::span[@id='ic-deals-view-partyResponsibility-v1']")
+	public WebElement dealSummary_LeftVerticalPartyResponsibilityOption;
+	
+	@FindBy(xpath = "//span[@class='ui-chip']")
+	public WebElement dealSummary_partyResponsibilityOption;
+	
+	@FindBy(xpath = "//div[@class='ag-center-cols-viewport']")
+	public WebElement dealSummary_HorizontalSlider;
+	
+	@FindBy(xpath = "//div[@class='customHeaderLabel' and normalize-space()='Attributes']")
+	public WebElement dealSummary_CustomHeaderLabel_Attributes;
+	
+	@FindBy(xpath = "//div[@col-id='attributes']//descendant::div[@class='ui-text-xs ui-surround-circle ng-star-inserted']")
+	public WebElement dealSummary_CustomHeaderLabel_AttributesValue;
+	
+	@FindBy(xpath = "//tr[@class='ui-grid-row']/td[1]/div[@class='ui-grid-cell-inner ui-grid-transparent']")
+	public List<WebElement> dealSummary_partyResponsibilityOption_Attributes;
+	
+	
+	@FindBy(xpath = "//span[@class='ag-group-value']")
+	public List<WebElement> dealSummary_partyResponsibilityOptions;
+	
+	@FindBy(xpath = "//div[contains(@class,'ui-icon-close ui-icon ui-align-right')]")
+	public WebElement dealSummary_CloseButton;
+	
+	
+			
+			
 	@FindBy(id = "btn-deals-summary-submit-v1")
 	public WebElement payments_DealSubmitButton;
+	
+	
 
 //	@FindBy(xpath="(//button[normalize-space()='Yes'])[1]")
 //	public WebElement payments_DealYesButton;
@@ -856,7 +902,6 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//span[@id='ic-parties-partiesList-addParty-v1'])[1]")
 	public WebElement party_add_plus_icon;
 	
-	
 	//split %of amount
 	
 	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']")
@@ -864,10 +909,6 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="//input[@id='txt-deals-instruction-fundTransferBasic-value-v1']")
 	public WebElement payment_value1;
-	
-	
-	
-	
 	
 	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
 	public WebElement payment_Frequency1;

@@ -41,4 +41,32 @@ public class Payload extends BaseClass {
 
 	}
 
+	public static String Rule_IN_LT(String dealId, String TSID) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payLoadString = externalData.getFieldData(TSID, "Payment Profiles", "Payload");
+
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+		
+		String utcTime = DateUtils.getCurrentTimeUTC();
+		
+		System.out.println(utcTime);
+
+		String utctimeEod = utcdate + "T" + utcTime;
+
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.accountNumber", DealPage.sourceAccountNo);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+
+		String modifiedJsonString = jsonContext.jsonString();
+
+		return modifiedJsonString;
+
+	}
+
 }

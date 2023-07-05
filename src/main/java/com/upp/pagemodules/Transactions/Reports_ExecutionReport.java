@@ -171,7 +171,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(4000);
 		jsClick.click(tm.cancelIcon);
 		Thread.sleep(5000);
-		
 
 	}
 
@@ -185,7 +184,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.fail("Transaction not scheduled");
 		}
 
-		//scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
+		// scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 5,
 				2000);
 
@@ -291,7 +290,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(4000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 		tm.reports_DealId.sendKeys(dealId);
-		
+
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
 				10, 1000);
 		ArrayList<String> subInstruction = new ArrayList();
@@ -375,7 +374,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public void validateEcommTransaction() throws Exception {
-	
+
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		tm.reports_ReportsIcon.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
@@ -390,14 +389,13 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(dealId);
 		tm.reports_dealId1.sendKeys(dealId);
 		Thread.sleep(2000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10,
-				1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
 		jsClick.click(tm.cancelIcon);
-		
+
 		Thread.sleep(1000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
 				-1000);
-		
+
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
@@ -432,28 +430,29 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public void validateSplitFixedAmountInExecutionReport(String TSID) throws Exception {
-		commonmethodExecReport(TSID,dealId);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColoumnName, tm.reports_horizontalWindow1, 10,1000);
+		commonmethodExecReport(TSID, dealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColoumnName,
+				tm.reports_horizontalWindow1, 10, 1000);
 		Thread.sleep(1000);
 		String originalAmount = tm.reports_OriginalAmountValue.getText();
-		String expectedOriginalAmount =(int) Float.parseFloat(externalData.getFieldData(TSID, "Scheduled", "value"))+"" ;
+		String expectedOriginalAmount = (int) Float.parseFloat(externalData.getFieldData(TSID, "Scheduled", "value"))
+				+ "";
 		Assert.assertEquals(originalAmount, expectedOriginalAmount);
 	}
 
 	public void check_Original_amount_and_Trnasferinfo_as_percentage(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-		
-		String amount1=externalData.getFieldData(TSID, "Scheduled", "Amount");
-	    float amount= Float.parseFloat(amount1);
-	    int amount_int=(int) amount;
-	    int amount2=100-amount_int;
-	    String strNumberamount2 = Integer.toString(amount2);
-	    String strNumberamount1=Integer.toString(amount_int);
-	    
-	    System.out.println("amount1 :"+strNumberamount1);
-	    System.out.println("amount2 :"+strNumberamount2);
-	 
+
+		String amount1 = externalData.getFieldData(TSID, "Scheduled", "Amount");
+		float amount = Float.parseFloat(amount1);
+		int amount_int = (int) amount;
+		int amount2 = 100 - amount_int;
+		String strNumberamount2 = Integer.toString(amount2);
+		String strNumberamount1 = Integer.toString(amount_int);
+
+		System.out.println("amount1 :" + strNumberamount1);
+		System.out.println("amount2 :" + strNumberamount2);
 
 		String status = tm.reports_ScroeStatus.getText();
 
@@ -462,9 +461,9 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.fail("Transaction not scheduled");
 
 		}
-		
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn, tm.reports_horizontalWindow1, 8,
-				1000);
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
+				tm.reports_horizontalWindow1, 8, 1000);
 
 		Thread.sleep(500);
 
@@ -494,6 +493,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
 		Thread.sleep(3000);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
+		// tm.transactionMaker_dealSearch.sendKeys(EndToEndId);
 		Thread.sleep(3000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:"+status);
@@ -530,3 +530,4 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	}
 
+}
