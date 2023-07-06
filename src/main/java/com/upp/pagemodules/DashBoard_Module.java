@@ -151,7 +151,7 @@ public class DashBoard_Module extends BaseClass {
 		Thread.sleep(3000);
 		od.deal_SideMenuIcon.click();
 		od.newDealButton.click();
-		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name"));
+		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name")+"@"+DateUtils.getCurrentDateTime());
 
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
