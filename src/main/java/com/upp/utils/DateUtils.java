@@ -157,4 +157,14 @@ public class DateUtils {
 		String formattedDateTime = zonedDateTime.format(formatter);
 		return formattedDateTime;
 	}
+	
+	public static String getCurrentDateTime(){
+		
+		 LocalDateTime currentDateTime = LocalDateTime.now();
+	     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yyyy:HH_mm");
+	     String formattedDateTime = currentDateTime.format(formatter);
+	     
+		return formattedDateTime;
+			
+		}
 }

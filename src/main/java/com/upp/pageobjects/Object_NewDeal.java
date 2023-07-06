@@ -442,7 +442,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//div[@title='Scheduled']/i")
 	public WebElement payments_ScheduledInstructionIcon;
 
-	@FindBy(id = "btn-deals-instructions-getStarted-v2")
+	@FindBy(xpath = "//button[@id='btn-deals-instructions-getStarted-v2' or @id='btn-deals-instructions-getStarted-v1']")
 	public WebElement payments_GetStarted;
 
 	@FindBy(id = "btn-deals-instructions-instructionTypeList-proceed-v1")
