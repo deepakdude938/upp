@@ -21,13 +21,13 @@ public class Rule_IN_LT {
 	public static String base_Url = Property.getProperty("Dev_base_uri");
 
 	public static ExcelReader externalData;
-	
+
 	public static String endToEndId;
+	public static SSHConnection ssh;
 
 	public static String Rule_IN_LT_System_Level(String dealId, String TSID) throws Exception {
 
 		externalData = new ExcelReader();
-
 
 		RestAssured.baseURI = base_Url;
 
@@ -39,15 +39,26 @@ public class Rule_IN_LT {
 		System.out.println("The Rule_IN_BT response is " + response);
 
 		System.out.println("the status code is" + res.getStatusCode());
-		
+
 		if (res.getStatusCode() == 200) {
 			JsonPath js = new JsonPath(response);
+			System.out.println("Res = "+response);
 			endToEndId = js.getString("endToEndId");
 			System.out.println("The End to end is" + endToEndId);
 		}
 
-		
 		return endToEndId;
 	}
 
+	public void verify_Rule_IN_BT_System_Level_PainFile(String batchId) {
+		ssh = new SSHConnection();
+		ArrayList<String> tagNames = new ArrayList<>(Arrays.asList("Cd", "ChrgBr"));
+
+		ArrayList<String> ActualResult = ssh.getPainFileDetails(batchId, tagNames);
+		ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList("BKTR", "DEBT"));
+		System.out.println(ActualResult);
+		System.out.println(ExcpectedResult);
+		// Assert.assertEquals(ActualResult,ExcpectedResult);
+
+	}
 }

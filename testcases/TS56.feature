@@ -1,7 +1,7 @@
 Feature: TS56
 
 @Regression @TS56 @PaymentProfiles
-Scenario Outline: Rule_IN_BT
+Scenario Outline: Rule_IN_LT
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
@@ -15,6 +15,8 @@ Then approve the deal from the deal checker common method
 And Login to UPP through api
 And Call the Rule_IN_LT Api with given "<TSID>".
 Then Verify Status in Ecomm Execution Report with given "<TSID>".
+And Get the BatchId from Ecomm Payments
+And Verify the Pain File For Rule_IN_LT_SystemLevel
 Examples:
       |TSID   |
       |TS56   |

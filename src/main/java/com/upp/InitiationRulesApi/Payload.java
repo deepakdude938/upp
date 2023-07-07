@@ -208,6 +208,7 @@ public class Payload extends BaseClass {
 			throws IOException, Exception {
 		externalData = new ExcelReader();
 		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+		
 
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
@@ -220,7 +221,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
 		jsonContext.set("$.paymentInfo.accountNumber", accountNo);
-		jsonContext.set("$.ultimateDebtor.partyRefId", TSID);
+		jsonContext.set("$.ultimateDebtor.partyRefId", "RRRMerchant");
 		jsonContext.set("$.ultimateDebtor.dealRefId", TSID);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
