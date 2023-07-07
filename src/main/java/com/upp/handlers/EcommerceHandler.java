@@ -28,12 +28,14 @@ public class EcommerceHandler extends BaseClass {
 	public static JavascriptClick jsClick;
 	public static final String CHAR_LIST = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	public static final int RANDOM_STRING_LENGTH = 10;
+	ScrollTypes scroll;
 
 	public EcommerceHandler() {
 		od = new Object_Deal();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
 		jsClick = new JavascriptClick(driver);
+		scroll=new ScrollTypes(driver);
 	}
 
 	public void handleEcommerce(String TSID) throws Exception {
@@ -78,6 +80,8 @@ public class EcommerceHandler extends BaseClass {
 		}
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
+		scroll.scrollInToView(od.ecommerceSave);
+		Thread.sleep(500);
 		jsClick.click(od.ecommerceSave);
 		System.out.println("save button click");
 		Thread.sleep(2000);
