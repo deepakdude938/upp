@@ -617,10 +617,10 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//xcro-party-responsibility-attributes[@placeholder='Select'])[2]//input")
 	public WebElement party_basic_details_acquiree_dasfField;
 	
-	@FindBy(xpath = "//div[normalize-space()='partyname' and contains(@class,'ellipsis')]/parent::div/following-sibling::div//input")
+	@FindBy(xpath = "//div[normalize-space()='partyname' and contains(@class,'ellipsis')]/parent::div/following-sibling::div//input | //div[normalize-space()='name' and contains(@class,'ellipsis')]/parent::div/following-sibling::div//input")
 	public WebElement party_basic_details_automationAttribute_partyname;
 	
-	@FindBy(xpath = "//div[normalize-space()='panno' and contains(@class,'ellipsis')]/parent::div/following-sibling::div//input")
+	@FindBy(xpath = "//div[normalize-space()='panno' and contains(@class,'ellipsis')]/parent::div/following-sibling::div//input | //div[normalize-space()='panNo' and contains(@class,'ellipsis')]/parent::div/following-sibling::div//input")
 	public WebElement party_basic_details_automationAttribute_panno;
 	
 	@FindBy(xpath = "//div[normalize-space()='dob' and contains(@class,'ellipsis')]/parent::div/following-sibling::div//input")
