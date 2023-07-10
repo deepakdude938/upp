@@ -41,20 +41,20 @@ public class TS08 extends BaseClass implements ICallback {
 	Party_Edit_LiveDeal editDeal;
 	Party_Verify_PartyApiAdded partApiAdded;
 	Reports_ExecutionReport report;
-	public static String endToEndId="";
+	public static String endToEndId = "";
 
 	public TS08(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
 		editDeal = new Party_Edit_LiveDeal();
 		partApiAdded = new Party_Verify_PartyApiAdded();
-		report=new Reports_ExecutionReport();
-		
+		report = new Reports_ExecutionReport();
+
 	}
 
 	@Then("Add the Party using  Api call with given {string}")
 	public void add_the_Party_using_Api_call_with_given(String string) throws Exception {
 		loginApi.loginToUpp();
-		System.out.println("deal id ="+TS07.dealId);
+		System.out.println("deal id =" + TS07.dealId);
 		partyApi.createPartyUsingExcel(TS07.dealId, string);
 		// System.out.println(DealPage.dealId);
 
@@ -74,16 +74,15 @@ public class TS08 extends BaseClass implements ICallback {
 
 	@Then("Verify the Transaction status in eComm Executions Report")
 	public void verify_the_Transaction_status_in_eComm_Executions_Report() throws Exception {
-		report.eCommExecutionsReportToCheckTransactionStatus(endToEndId,TS07.dealId);
+		report.eCommExecutionsReportToCheckTransactionStatus(endToEndId, TS07.dealId);
 		logoutApi.logOut();
 	}
 
 	@Then("Update the Pary Api using given {string}")
 	public void update_the_Pary_Api_using_given(String string) throws Exception {
-		 partyApi.updateParty(TS07.dealId,string);
+		partyApi.updateParty(TS07.dealId, string);
 	}
 
-	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 
