@@ -50,7 +50,7 @@ public class TS55 extends BaseClass {
 	Rule_IN_BT rule;
 	Reports_ExecutionReport report;
 	public static String endToEndIdRule="";
-	public static String batchId = "";
+	public static  String batchId = "";
 	public static String paymentRefId = "";
 
 	public TS55() {
