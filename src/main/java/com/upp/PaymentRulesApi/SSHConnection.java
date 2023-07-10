@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 public class SSHConnection {
    public static String file="";
    public static  ArrayList<String> Result = new ArrayList<String>();
+   public static String paymentProcessor="";
    
     public static ArrayList<String> getPainFileDetails(String batchId,ArrayList<String> tagNames){
     	
@@ -26,7 +27,6 @@ public class SSHConnection {
         String username = "ubuntu";
         String host=Property.getProperty("host");
         String namespace=Property.getProperty("namespace");
-        String podName=Property.getProperty("podName");
         int port = 22;
 
         JSch jSch = new JSch();
@@ -52,8 +52,35 @@ public class SSHConnection {
                 // Create a list to store the command output
                 List<String> output = new ArrayList<>();
                 List<String> output1 = new ArrayList<>();
-                String grepCommand="kubectl  -n "+namespace+" exec "+podName+" -- ls /mnt/payments | grep "+batchId;
+                List<String> output3 = new ArrayList<>();
+                
+                String podcommand="kubectl get pods -n "+namespace;
+                
+                Channel channel3 = session.openChannel("exec");
+                ((ChannelExec) channel3).setCommand(podcommand);
+                channel3.connect();
+                // Read the command output
+                InputStream in3 = channel3.getInputStream();
+                BufferedReader reader3 = new BufferedReader(new InputStreamReader(in3));
 
+                String line3;
+                while ((line3 = reader3.readLine()) != null) {
+                    output3.add(line3);
+                }
+                
+                for (String line4 : output3) {
+                	
+                	if(line4.startsWith("paymentprocessor"))
+                	{
+                		paymentProcessor=line4;
+                		 System.out.println("Paymnt processor is "+paymentProcessor);
+                	}
+                 
+              }
+                
+                
+                String grepCommand="kubectl  -n "+namespace+" exec "+paymentProcessor+" -- ls /mnt/payments | grep "+batchId;
+                
                 // Execute  commands
                 String[] commands = {grepCommand};
                 for (String command : commands) {
@@ -80,7 +107,7 @@ public class SSHConnection {
                 System.out.println("The UPP File name is:"+file);
     
                 
-                String catCommand="kubectl -n "+namespace+" exec "+podName+" -- cat /mnt/payments/"+file;
+                String catCommand="kubectl -n "+namespace+" exec "+paymentProcessor+" -- cat /mnt/payments/"+file;
                 
                 Channel channel1 = session.openChannel("exec");
                 ((ChannelExec) channel1).setCommand(catCommand);
