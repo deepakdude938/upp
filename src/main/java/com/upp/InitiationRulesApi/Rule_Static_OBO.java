@@ -40,6 +40,7 @@ public class Rule_Static_OBO {
 		if (res.getStatusCode() == 400) {
 			JsonPath js = new JsonPath(response);
 			String ExpectederrorMessage = js.getString("errors[0].message");
+			System.out.println(ExpectederrorMessage);
 			Assert.assertEquals(ExpectederrorMessage, ActualErrorMessage);
 		}
 	}
