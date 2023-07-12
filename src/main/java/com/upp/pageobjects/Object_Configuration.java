@@ -133,7 +133,7 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//button[normalize-space()='OK']")
 	public WebElement configurationProduct_OkButton;
 	
-	@FindBy(xpath="//a[normalize-space()='Manage Configs']")
+	@FindBy(xpath="//a[normalize-space()='System Configs']")
 	public WebElement configuration_ManageConfigButton1;
 	
 	@FindBy(xpath="//div[contains(text(),'Processing Units')]")
