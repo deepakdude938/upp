@@ -982,4 +982,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-test1-txt-v1")
 	public WebElement payment_account_test1;
 	
+	@FindBy(xpath = "//span[text()='LT']")
+	public WebElement contextualize_LT;
+	
+	
 }

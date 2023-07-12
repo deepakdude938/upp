@@ -74,4 +74,36 @@ public class Deal_Level_Rule_Handler extends BaseClass  implements ICallback {
 	}
 	
 
+	public void handle_Rule_IN_LT_DealLevel(String TSID) throws Exception {
+		
+		System.out.println("inside handle_Rule_IN_LT_DealLevel");
+		
+		scroll.scrollInToView(od.contextualize_Icon);
+		applyExplicitWaitsUntilElementClickable(od.contextualize_Icon, Duration.ofSeconds(15));
+		od.contextualize_Icon.click();
+
+		applyExplicitWaitsUntilElementClickable(od.contextualize_Dropdown, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.contextualize_Dropdown,"Payment Profile");
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_AddButton, Duration.ofSeconds(5));
+		od.contextualize_AddButton.click();
+		
+		Thread.sleep(1000);
+		jsClick.click(od.contextualize_RightArrow);
+		
+		Thread.sleep(1000);
+		jsClick.click(od.contextualize_RightArrow);
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_LT, Duration.ofSeconds(5));
+		od.contextualize_BT.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_ChargeBearer, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.contextualize_ChargeBearer,"SHA");
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.contextualize_DoneButton, Duration.ofSeconds(5));
+	    od.contextualize_DoneButton.click();
+	    Thread.sleep(1000);
+		
+	}
+
 }

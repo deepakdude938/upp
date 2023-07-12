@@ -177,8 +177,12 @@ public class DealPage extends BaseClass implements ICallback {
 			if(PaymentRule.equalsIgnoreCase("TS58_DEAL_LEVEL_RULE")) {
 				Deal_Level_Rule_Handler rule_handler=new Deal_Level_Rule_Handler();
 				rule_handler.handle_Rule_IN_BT_DealLevel(tsid);
-				
+							
 			}
+			
+			//String account_Payment_System = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
+			
+			
 		}
 	}
 

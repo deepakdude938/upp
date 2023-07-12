@@ -175,6 +175,7 @@ public class DealBasicDetailCreators extends BaseClass {
 					
 					
 					String PaymentRule=TSID+"_DEAL_LEVEL_RULE";
+					System.out.println(PaymentRule);
 					icallback.handleCallback("DEAL_LEVEL_RULE",PaymentRule);
 					
 				}
