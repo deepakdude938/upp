@@ -31,7 +31,7 @@ public class Budget extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
-	public static	String odpRecordJson;
+
 
 	public Budget() {
 		od = new Object_NewDeal();
@@ -221,6 +221,9 @@ public class Budget extends BaseClass {
 		 jsonMap1.put("scheduledOnTime",dateAndTime);
 		 odpRecord.put("tcData", jsonMap1);
 		 odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+		 
+		 System.out.println(odpRecordJson);
+		 
 		scroll.scrollInToView(od.payments_DealSubmitButton);
 		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
 		od.payments_DealSubmitButton.click();
@@ -233,7 +236,7 @@ public class Budget extends BaseClass {
 
 	}
 
-	public static void createRecordInOdp() throws Exception {
+	public static void createRecordInOdp(String TSID) throws Exception {
 		
 		String base_Url = Property.getProperty("Odp_base_uri");
 
@@ -255,7 +258,7 @@ public class Budget extends BaseClass {
 						.header("Content-Type", "application/json")
 						.header("Authorization", authToken)
 						.body(odpRecordJson).when()
-						.post("api/c/XCRO6-DIY/testAutomationAssertions").then()
+						.put("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
 						.assertThat()
 						.statusCode(200).extract()
 						.response().asString();

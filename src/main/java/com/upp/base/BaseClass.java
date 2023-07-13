@@ -30,6 +30,8 @@ public class BaseClass {
 	public static String dealId = "";
 	public static String config_productName ;
 	public static	List<String> object ;
+	public static	String odpRecordJson;
+	public static String dealID_Assertion ;
 
 	public boolean isFlexibleFunding;
 
