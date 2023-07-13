@@ -9,6 +9,7 @@ And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create Payments in the Scheduled Instructions on Friday "<TSID>"
+And Submit the deal
 Then Approve the deal from the deal checker
 Then Validate Execution Report "<TSID>"
 Examples:

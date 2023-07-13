@@ -24,7 +24,10 @@ public class Rule_Participant_OBO {
 	public void runRuleParticipantOBO(String TSID, String dealId) throws Exception{
 	
 		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
-
+		if(Property.getProperty("QAUrl").contains("13.126.59.0:32080")) {
+			base_Url="http://13.126.59.0:32080/";
+		}
+		
 		RestAssured.baseURI = base_Url;		
      	Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).body(pay.rule_ParticipantOBO(TSID,dealId)).when()
