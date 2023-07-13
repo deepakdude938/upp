@@ -444,7 +444,10 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//button[@id='btn-deals-instructions-getStarted-v2' or @id='btn-deals-instructions-getStarted-v1']")
 	public WebElement payments_GetStarted;
-
+	
+	@FindBy(xpath = "//span[@id='btn-deals-accounts-addUpdateAdvice-ok-v1']")
+	public WebElement payments_AddInstruction;
+	
 	@FindBy(id = "btn-deals-instructions-instructionTypeList-proceed-v1")
 	public WebElement payments_Proceed;
 
@@ -531,7 +534,6 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id = "btn-instructions-simulateSchedule-close-v1")
 	public WebElement payments_SimulateCloseButton;
-	
 
 	@FindBy(id = "payment-beneficiaryCountryOfIncorporation-sel-v1")
 	public WebElement payments_beneficiaryCountryOfIncorporationDropdown;
@@ -578,21 +580,15 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//tr[@class='ui-grid-row']/td[1]/div[@class='ui-grid-cell-inner ui-grid-transparent']")
 	public List<WebElement> dealSummary_partyResponsibilityOption_Attributes;
 	
-	
 	@FindBy(xpath = "//span[@class='ag-group-value']")
 	public List<WebElement> dealSummary_partyResponsibilityOptions;
 	
 	@FindBy(xpath = "//div[contains(@class,'ui-icon-close ui-icon ui-align-right')]")
 	public WebElement dealSummary_CloseButton;
-	
-	
-			
 			
 	@FindBy(id = "btn-deals-summary-submit-v1")
 	public WebElement payments_DealSubmitButton;
 	
-	
-
 //	@FindBy(xpath="(//button[normalize-space()='Yes'])[1]")
 //	public WebElement payments_DealYesButton;
 //	
@@ -724,7 +720,6 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="//select[@id='payment-beneficiaryCurrency-sel-v1']")
 	public WebElement parties_Accounts_beneficiaryCurrency;
 	
-	
 	@FindBy(xpath ="//div[contains(text(),'BT_IN')]")
 	public WebElement parties_PaymentSystem_BT_IN;
 	
@@ -743,6 +738,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input[@id='txt-generic-autocomplete-input-v1']")
 	public WebElement schedule_IBAN;
 	
+	@FindBy(xpath ="//select[@id='payment-to-sel-v1']")
+	public WebElement schedule_IBAN_Split;
 	
 	@FindBy(id="payment-beneficiaryAddressLine1-txt-v1")
 	public WebElement parties_Accounts_beneficiaryAddressLine1;
@@ -796,6 +793,45 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id="ic-deals-instruction-retentionBasic-next-v1")
 	public WebElement retention_nextArrowIcon;
+	
+	@FindBy(xpath = "//select[@id='sel-deals-instruction-retentionSchedule-scheduleAt-v1']")
+	public WebElement retention_ScheduleAt;
+	
+	@FindBy(id = "txt-generic-timePicker-input-v1")
+	public WebElement retention_ScheduleTime;
+	
+	@FindBy(xpath= "//select[@id='sel-deals-instruction-retentionSchedule-priorScheduleConfig-v1']")
+	public WebElement retention_Execute1;
+	
+	@FindBy(id = "btn-deals-instruction-retentionSchedule-next-v1")
+	public WebElement retention_ScheduleNextButton;
+	
+	@FindBy(id = "ic-deals-instruction-retentionSubInstruction-next-v1")
+	public WebElement retention_SubInstructionNextButton;
+	
+	@FindBy(id = "ic-instructions-tabRetryMechanism-next-v1")
+	public WebElement retention_RetryNextButton;
+	
+	@FindBy(xpath = "//span[@class='ui-widget-ct ui-text-s ui-instruction-title' and normalize-space()='Summary']")
+	public WebElement retention_Summary;
+	
+	@FindBy(id = "lbl-deals-instructions-summary-purpose-v1")
+	public WebElement retention_SummaryPurpose;
+	
+	@FindBy(xpath = "//div[@class='ui-back-btn']")
+	public WebElement retention_BackButton;
+	
+	@FindBy(id = "txt-deals-instruction-retentionSchedule-priorDay-v1")
+	public WebElement retention_ScheduleNoOfDays;
+	
+	@FindBy(id="txt-deals-instruction-retentionBasic-name-v1")
+	public WebElement retention_basicDetils_Name;
+	
+	@FindBy(xpath = "//select[@id='sel-deals-instruction-retentionBasic-typeOfTransfer-v1']")
+	public WebElement retention_SpecifyAmountAs;
+
+	@FindBy(id = "txt-deals-instruction-retentionBasic-formula-v1")
+	public WebElement retention_SpecifyAmountValue;
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement Payment_Beneficiaryaccno;

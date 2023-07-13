@@ -13,6 +13,7 @@ import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
+import com.upp.utils.Property;
 import com.upp.utils.ScrollTypes;
 
 import callbackInterfaces.ICallback;
