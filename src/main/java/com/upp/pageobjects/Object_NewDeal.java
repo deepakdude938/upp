@@ -982,4 +982,17 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-test1-txt-v1")
 	public WebElement payment_account_test1;
 	
+	@FindBy(xpath = "//virtual-scroller[@class='vertical ng-star-inserted']")
+	public WebElement account_horizontal_window;
+	
+	@FindBy(xpath = "//span[@class='ui-icon ic ic-edit_blue flex-center ng-star-inserted']")
+	public WebElement account_edit_icon;
+	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[1]")
+	public WebElement account_obo_repsonsibility;
+	
+	@FindBy(xpath = "//button[normalize-space()='OK']")
+	public WebElement account_OK_Button;
+	
+	
 }
