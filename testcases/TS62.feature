@@ -9,6 +9,7 @@
 #Then Create account in Odp with details from excel sheet with given "<TSID>".
 #Then Call the ODP Logout Api
 #And Create Account_One From excel sheet with given "<TSID>".
+#Then Edit the account and select OBO Responsibility with given "TS62_1".
 #Then Add Party basic_Details with given "<TSID>".
 #Then Click On Accounts Tab
 #Then Add Party basic_Details with given "TS62_1".
@@ -17,6 +18,8 @@
 #Then approve the deal from the deal checker common method
 #And Login to UPP through api
 #And Call the Rule_OBO_Participant_Enrich with given "<TSID>".
+#Then Verify in EcommExecution the status
+#And Logout of UPP through api
 #Examples:
       #|TSID   |
       #|TS62   |
