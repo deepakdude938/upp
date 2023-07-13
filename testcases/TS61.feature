@@ -12,6 +12,7 @@ And Create Retention in the Scheduled Instructions with given "<TSID_1>"
 And Create Payment-Surplus in the Scheduled Instructions with given "<TSID>"
 And Submit the deal
 Then Approve the deal from the deal checker
+Then Validate in execution report "<TSID>"
 Then Create json payload file "<TSID>"
 And Create record in ODP "<TSID>"
 Examples:

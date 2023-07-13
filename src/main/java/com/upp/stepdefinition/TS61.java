@@ -4,6 +4,7 @@ import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.payment.Payment_Retention;
 import com.upp.pagemodules.payment.Retention;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class TS61 {
@@ -24,6 +25,16 @@ public class TS61 {
 	@Then("Create json payload file {string}")
 	public void create_json_payload_file(String TSID) throws Exception {
 		retention.createJsonFile(TSID);
+	}
+	
+	@Given("Fetch record from ODP with {string}")
+	public void fetch_record_from_ODP_with(String TSID) throws Exception {
+	   retention.fetchInputsFromODP(TSID);
+	}
+	
+	@Then("Validate in execution report {string}")
+	public void validate_in_execution_report(String TSID) throws Exception {
+	   re.validateInExecutionReport(TSID);
 	}
 	
 }
