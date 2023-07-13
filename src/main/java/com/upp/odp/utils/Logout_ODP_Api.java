@@ -16,6 +16,7 @@ public class Logout_ODP_Api {
 		String base_Url = Property.getProperty("Odp_base_uri");
 
 //logout api
+		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.baseURI = base_Url;
 		String response_LogOut = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_ODP.OdpauthToken).when().delete("api/a/rbac/logout").then()

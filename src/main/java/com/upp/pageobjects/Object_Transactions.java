@@ -110,7 +110,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(id = "txt-generic-autocomplete-input-v1")
 	public WebElement reports_searchBox;
 
-	@FindBy(xpath = "//div[contains(text(),'Execution Report')]")
+	@FindBy(xpath = "//div[starts-with(text(),'Execution Report')]")
 	public WebElement reports_ExecutionReport;
 
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
@@ -162,13 +162,13 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//div[contains(text(),'eComm Executions')])[3]")
 	public WebElement reports_eCommExecutions;
 
-	@FindBy(xpath = "//div[contains(text(),'eComm Executions')]")
+	@FindBy(xpath = "//div[starts-with(text(),'eComm Executions')]")
 	public WebElement reports_eCommExecutionsList;
 	
 	@FindBy(xpath = "//div[contains(text(),'eComm Payments')]")
 	public WebElement reports_eCommPaymentsList;
 
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement reports_endToendId;
 
 	
@@ -298,6 +298,7 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2] | (//input[@ref='eFloatingFilterText'])[5]")
 	public WebElement reports_End_To_End_common;
+	
 	
 	//Entitlements 
 	

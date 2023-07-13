@@ -161,9 +161,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("Execution Report");
-		Thread.sleep(3000);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
@@ -477,15 +477,15 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public String eCommExecutionsReportCommon(String EndToEndId) throws Exception {
-		
+
 		System.out.println("Waiting for 3 minutes for Transactions to be triggered");
 		TimeUnit.MINUTES.sleep(3);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("eComm Executions");
+	//	applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+	//	tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
@@ -493,20 +493,19 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
 		Thread.sleep(3000);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		// tm.transactionMaker_dealSearch.sendKeys(EndToEndId);
 		Thread.sleep(3000);
+		driver.navigate().refresh();
 		String status = tm.reports_FirstTxnStatus.getText();
-		System.out.println("The status is:"+status);
+		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Triggered");
-	    String paymentRefId=tm.ecommPaymentLink.getText();
-	    System.out.println("The Payment Ref id:"+paymentRefId);
-	
+		String paymentRefId = tm.ecommPaymentLink.getText();
+		System.out.println("The Payment Ref id:" + paymentRefId);
+
 		return paymentRefId;
-		
+
 	}
-	
-	public String getBatchIdFromEcommPayments(String paymentRefId) throws Exception
-	{
+
+	public String getBatchIdFromEcommPayments(String paymentRefId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
@@ -518,16 +517,14 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommPaymentsList, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_eCommPaymentsList);
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementVisible(tm.ecommPayments_PaymentId,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementVisible(tm.ecommPayments_PaymentId, Duration.ofSeconds(10));
 		tm.ecommPayments_PaymentId.sendKeys(paymentRefId);
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementVisible(tm.ecommBatch,Duration.ofSeconds(10));
-		String batchId=tm.ecommBatch.getText();
-		System.out.println("The batch id is:"+batchId);
-		
+		applyExplicitWaitsUntilElementVisible(tm.ecommBatch, Duration.ofSeconds(10));
+		String batchId = tm.ecommBatch.getText();
+		System.out.println("The batch id is:" + batchId);
+
 		return batchId;
 	}
 
-	}
-
-
+}

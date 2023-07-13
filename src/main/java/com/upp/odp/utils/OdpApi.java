@@ -18,6 +18,7 @@ public class OdpApi {
 		String base_Url = Property.getProperty("Odp_base_uri");
 
 //login api
+		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.baseURI = base_Url;
 		String responseLogin = given()
 				.header("Content-Type", "application/json")
@@ -34,6 +35,7 @@ public class OdpApi {
 		String authToken = "JWT " + token;
 
 //createAccount api
+		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.baseURI = base_Url;
 		String response_account = given()
 				.header("Content-Type", "application/json")
@@ -57,6 +59,7 @@ public class OdpApi {
 		pushelmnt(stack1, accDetails);
 
 //logout api
+		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.baseURI = base_Url;
 		String response_LogOut = given()
 				.header("Content-Type", "application/json")

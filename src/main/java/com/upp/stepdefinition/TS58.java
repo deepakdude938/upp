@@ -6,7 +6,7 @@ import java.time.Duration;
 
 import com.upp.Api.utils.LogOutApi;
 import com.upp.PaymentRulesApi.Rule_IN_BT;
-import com.upp.PaymentRulesApi.Rule_IN_LT;
+import com.upp.PaymentRulesApi.Rule_IN_BT_DealLevel;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -38,7 +38,7 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS56 extends BaseClass {
+public class TS58 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
@@ -48,11 +48,12 @@ public class TS56 extends BaseClass {
 	Logout_ODP_Api logout;
 	LoginAPI_UPP login_UPP;
 	LogOutApi logout_UPP;
-	Rule_IN_LT rule;
+	Rule_IN_BT_DealLevel rule;
 	Reports_ExecutionReport report;
-	public static String endToEndIdRule = "";
+	public static String batchId = "";
+	public static String paymentRefId = "";
 
-	public TS56() {
+	public TS58() {
 
 		this.dm = new DashBoard_Module();
 		login = new LoginAPI_ODP();
@@ -60,27 +61,18 @@ public class TS56 extends BaseClass {
 		logout = new Logout_ODP_Api();
 		login_UPP = new LoginAPI_UPP();
 		logout_UPP = new LogOutApi();
-		rule = new Rule_IN_LT();
-		report = new Reports_ExecutionReport();
-
+		rule=new Rule_IN_BT_DealLevel();
+		report=new Reports_ExecutionReport();
+	}
+	
+	@And("Call the Rule_IN_BT_DealLevel Api with given {string}.")
+	public void call_the_Rule_IN_BT_DealLevel_Api_with_given(String string) throws Exception {
+		 TS55.endToEndIdRule= rule.Rule_IN_BT_dealLevel(TS06.dealId, string);
 	}
 
-	@And("Call the Rule_IN_LT Api with given {string}.")
-	public void call_the_Rule_IN_LT_Api_with_given(String string) throws Exception {
-		endToEndIdRule = rule.Rule_IN_LT_System_Level(TS06.dealId, string);
-		System.out.println(endToEndIdRule);
-	}
-
-	@Then("Verify Status in Ecomm Execution Report with given {string}.")
-	public void verify_Status_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
-		System.out.println(endToEndIdRule);
-		report.eCommExecutionsReportCommon(endToEndIdRule);
-	}
-
-	@And("Verify the Pain File For Rule_IN_LT_SystemLevel")
-	public void verify_the_Pain_File_For_Rule_IN_LT_SystemLevel() {
-		String bID = TS55.batchId;
-		rule.verify_Rule_IN_BT_System_Level_PainFile(bID);
+	@And("Verify the Pain File For Rule_IN_BT_DealLevel")
+	public void verify_the_Pain_File_For_Rule_IN_BT_DealLevel() throws Exception {
+		rule.verify_Rule_IN_BT_Deal_Level_PainFile(TS55.batchId);
 	}
 
 }

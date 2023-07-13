@@ -66,7 +66,8 @@ public class Verify_PU_Added extends BaseClass {
 		}
 
 		od.deals_ProcessingUnits.click();
-		od.deals_selectAll.click();
+		Thread.sleep(1500);
+		js.click(od.deals_selectAll);
 		od.deals_ProcessingUnitsSearch.sendKeys(UniquePU);
 		By ProcessingUnit = By.xpath("//div[contains(text(),'" + UniquePU + "')]");
 		if(!(commonutils.isElementDisplayed(driver.findElement(ProcessingUnit), 2)))
