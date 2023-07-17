@@ -44,7 +44,7 @@ public class Rule_OBO_Participant_Enrich {
 		}
 		else
 		{
-			Assert.fail("Statu code should be 200");
+			Assert.fail("Status code should be 200");
 		}
         return endToEndId;
 	}
