@@ -1,5 +1,8 @@
 package com.upp.pagemodules.payment;
 
+import static io.restassured.RestAssured.given;
+
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -13,6 +16,7 @@ import org.testng.asserts.SoftAssert;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.upp.base.BaseClass;
+import com.upp.odp.utils.Payload;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.stepdefinition.DealPage;
 import com.upp.utils.CommonUtils;
@@ -20,7 +24,12 @@ import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
+import com.upp.utils.Property;
 import com.upp.utils.ScrollTypes;
+
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 
 public class Retention extends BaseClass{
 	public static Object_NewDeal od;
@@ -109,5 +118,60 @@ public class Retention extends BaseClass{
 		 HashMap jsonMap1 = new HashMap();
 		 odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
 		  System.out.println(odpRecordJson);
+	}
+
+	public void fetchInputsFromODP(String TSID) throws Exception {
+		
+
+		
+		String base_Url = Property.getProperty("Odp_base_uri");
+
+				RestAssured.baseURI = base_Url;
+				String responseLogin = given()
+						.header("Content-Type", "application/json")
+						.body(Payload.Login()).when()
+						.post("api/a/rbac/login").then()
+						.assertThat().statusCode(200)
+						.extract()
+						.response().asString();
+
+				JsonPath js = new JsonPath(responseLogin);
+				String token = js.getString("token");
+				String authToken = "JWT " + token;
+				
+
+				Response res = given()
+						.header("Content-Type", "application/json")
+						.header("Authorization", authToken).when()
+						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID);
+				int statusCode = res.getStatusCode();
+				System.out.println(statusCode+"++++");
+				
+				RestAssured.baseURI = base_Url;
+				String response_account = given()
+						.header("Content-Type", "application/json")
+						.header("Authorization", authToken)
+						.when()
+						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
+						.assertThat()
+						.statusCode(200).extract()
+						.response().asString();
+				System.out.println("-----------");
+				System.out.println(response_account);
+				System.out.println("-----------");
+				JsonPath js1 = new JsonPath(response_account);
+				dealId = js1.getString("dealRefId");
+				String dealId = js1.getString("dealId");
+			
+				System.out.println("Deal Ref Id is Assertion"+super.dealId);
+				System.out.println("Deal Id is Assertion"+dealId);
+				
+				RestAssured.baseURI = base_Url;
+				String response_LogOut = given()
+						.header("Content-Type", "application/json")
+						.header("Authorization", authToken)
+						.when().delete("api/a/rbac/logout").then()
+						.assertThat().statusCode(200)
+						.extract().response().asString();
 	}
 }

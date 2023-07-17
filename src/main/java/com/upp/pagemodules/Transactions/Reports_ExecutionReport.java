@@ -257,8 +257,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("Execution Report");
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
@@ -501,6 +501,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println("The batch id is:" + batchId);
 
 		return batchId;
+	}
+
+	public void validateInExecutionReport(String TSID) throws Exception {
+		commonmethodExecReport(TSID,dealId);
+		
 	}
 
 	public void eCommExecutionsReport_Status(String EndToEndId) throws Exception {

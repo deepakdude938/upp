@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.Payload;
+import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
@@ -20,6 +21,7 @@ import com.upp.utils.Property;
 import com.upp.utils.ScrollTypes;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 
 public class Budget extends BaseClass {
 
@@ -254,14 +256,36 @@ public class Budget extends BaseClass {
 				String authToken = "JWT " + token;
 
 				RestAssured.baseURI = base_Url;
-				String response_account = given()
+				
+				Response res = given()
 						.header("Content-Type", "application/json")
-						.header("Authorization", authToken)
-						.body(odpRecordJson).when()
-						.put("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
-						.assertThat()
-						.statusCode(200).extract()
-						.response().asString();
+						.header("Authorization", authToken).when()
+						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID);
+				int statusCode = res.getStatusCode();
+				System.out.println(statusCode);
+				
+				if(statusCode==404) {
+					String response_account = given()
+							.header("Content-Type", "application/json")
+							.header("Authorization", authToken)
+							.body(odpRecordJson).when()
+							.post("api/c/XCRO6-DIY/testAutomationAssertions/").then()
+							.assertThat()
+							.statusCode(200).extract()
+							.response().asString();
+				}
+				else {
+					String response_account = given()
+							.header("Content-Type", "application/json")
+							.header("Authorization", authToken)
+							.body(odpRecordJson).when()
+							.put("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
+							.assertThat()
+							.statusCode(200).extract()
+							.response().asString();
+				}
+				
+			
 				
 				RestAssured.baseURI = base_Url;
 				String response_LogOut = given()
