@@ -228,10 +228,10 @@ public class Payment extends BaseClass{
 		}
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		
+		if(isWebElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown)) {
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-		
+		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
 		
