@@ -471,7 +471,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
 		Thread.sleep(3000);
-		driver.navigate().refresh();
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Triggered");
@@ -519,7 +518,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
 		Thread.sleep(3000);
-		driver.navigate().refresh();
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");
