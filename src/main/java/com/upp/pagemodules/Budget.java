@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.Payload;
+import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
@@ -20,6 +21,7 @@ import com.upp.utils.Property;
 import com.upp.utils.ScrollTypes;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 
 public class Budget extends BaseClass {
 
@@ -31,7 +33,7 @@ public class Budget extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
-	public static	String odpRecordJson;
+
 
 	public Budget() {
 		od = new Object_NewDeal();
@@ -171,9 +173,11 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
 		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		if(isWebElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown)) {
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-
+		}
+		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
@@ -221,6 +225,9 @@ public class Budget extends BaseClass {
 		 jsonMap1.put("scheduledOnTime",dateAndTime);
 		 odpRecord.put("tcData", jsonMap1);
 		 odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+		 
+		 System.out.println(odpRecordJson);
+		 
 		scroll.scrollInToView(od.payments_DealSubmitButton);
 		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
 		od.payments_DealSubmitButton.click();
@@ -233,7 +240,7 @@ public class Budget extends BaseClass {
 
 	}
 
-	public static void createRecordInOdp() throws Exception {
+	public static void createRecordInOdp(String TSID) throws Exception {
 		
 		String base_Url = Property.getProperty("Odp_base_uri");
 
@@ -251,14 +258,36 @@ public class Budget extends BaseClass {
 				String authToken = "JWT " + token;
 
 				RestAssured.baseURI = base_Url;
-				String response_account = given()
+				
+				Response res = given()
 						.header("Content-Type", "application/json")
-						.header("Authorization", authToken)
-						.body(odpRecordJson).when()
-						.post("api/c/XCRO6-DIY/testAutomationAssertions").then()
-						.assertThat()
-						.statusCode(200).extract()
-						.response().asString();
+						.header("Authorization", authToken).when()
+						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID);
+				int statusCode = res.getStatusCode();
+				System.out.println(statusCode);
+				
+				if(statusCode==404) {
+					String response_account = given()
+							.header("Content-Type", "application/json")
+							.header("Authorization", authToken)
+							.body(odpRecordJson).when()
+							.post("api/c/XCRO6-DIY/testAutomationAssertions/").then()
+							.assertThat()
+							.statusCode(200).extract()
+							.response().asString();
+				}
+				else {
+					String response_account = given()
+							.header("Content-Type", "application/json")
+							.header("Authorization", authToken)
+							.body(odpRecordJson).when()
+							.put("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
+							.assertThat()
+							.statusCode(200).extract()
+							.response().asString();
+				}
+				
+			
 				
 				RestAssured.baseURI = base_Url;
 				String response_LogOut = given()

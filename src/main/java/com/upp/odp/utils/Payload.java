@@ -33,6 +33,7 @@ public class Payload {
 		String country=externalData.getFieldData(TSID,"Accounts","Country Code");
 		String currency=externalData.getFieldData(TSID,"Accounts","Currency");
 		String accountIdentifierKey=externalData.getFieldData(TSID,"Accounts","Physical");
+		String accountBalance=externalData.getFieldData(TSID,"Accounts","Account Balance");
 		
 		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		 String accno = Long.toString(number);
@@ -51,7 +52,7 @@ public class Payload {
 		+ "    \"accountNumber\":\""+accno+"\" ,\r\n"
 		+ "    \"balances\": {\r\n"
 		+ "        \"available\": {\r\n"
-		+ "            \"amount\": 150000,\r\n"
+		+ "            \"amount\": "+accountBalance+",\r\n"
 		+ "            \"currency\":\""+currency+"\",\r\n"
 		+ "            \"indicator\": \"Credit\",\r\n"
 		+ "            \"lastUpdatedOn\": \"2023-01-20T18:30:00.000Z\"\r\n"

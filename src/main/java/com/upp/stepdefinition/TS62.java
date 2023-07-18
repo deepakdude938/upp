@@ -10,9 +10,11 @@ import com.upp.InitiationRulesApi.Rule_OBODetails_Null_OBO;
 import com.upp.InitiationRulesApi.Rule_OBOParticipant_OBO_Info_Not_Null;
 import com.upp.InitiationRulesApi.Rule_OBOPartyResponsibility_PartyId;
 import com.upp.InitiationRulesApi.Rule_OBOPartyResponsibility_PartyId_DealRefId;
+import com.upp.InitiationRulesApi.Rule_OBO_Participant_Enrich;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
+import com.upp.pagemodules.Account.EditOBOResponsibilty;
 import com.upp.pagemodules.configuration.PU_AdminChecker;
 import com.upp.pagemodules.configuration.ProcessingUnit;
 import com.upp.pagemodules.configuration.Verify_PU_Added;
@@ -51,7 +53,11 @@ public class TS62 extends BaseClass {
 	Logout_ODP_Api logout;
 	LoginAPI_UPP login_UPP;
 	LogOutApi logout_UPP;
-	Rule_OBOPartyResponsibility_PartyId_DealRefId rule;
+	EditOBOResponsibilty edit;
+	Rule_OBO_Participant_Enrich rule;
+	public String endId="";
+	Reports_ExecutionReport report;
+	LogOutApi logoutUPPApi;
 
 	public TS62() {
 
@@ -61,11 +67,30 @@ public class TS62 extends BaseClass {
 		logout = new Logout_ODP_Api();
 		login_UPP = new LoginAPI_UPP();
 		logout_UPP = new LogOutApi();
-		rule=new Rule_OBOPartyResponsibility_PartyId_DealRefId();
+	    edit=new EditOBOResponsibilty();
+	    rule=new Rule_OBO_Participant_Enrich();
+	    logoutUPPApi=new LogOutApi();
+	    report=new Reports_ExecutionReport();
 
 	}
 	@And("Call the Rule_OBO_Participant_Enrich with given {string}.")
 	public void call_the_Rule_OBO_Participant_Enrich_with_given(String string) throws Exception {
-	  
+		endId = rule.Rule_OBO_Participant_Enrich_Api(TS06.dealId, string);
 	}
+	
+	@Then("Edit the account and select OBO Responsibility with given {string}.")
+	public void edit_the_account_and_select_OBO_Responsibility_with_given(String string) throws Exception {
+	   edit.EditOBOResponsibilty_In_Account(string);
+	}
+	
+	@Then("Verify in EcommExecution the status")
+	public void verify_in_EcommExecution_the_status() throws Exception {
+	    report.eCommExecutionsReport_Status(endId);
+	}
+	
+	@Given("Logout of UPP through api")
+	public void logout_of_UPP_through_api() throws Exception {
+		logoutUPPApi.logOut();
+	}
+
 }

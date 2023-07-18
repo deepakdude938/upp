@@ -22,6 +22,7 @@ public class Create_ODP_Account_Api {
 
 
 //createAccount api
+		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.baseURI = base_Url;
 		String response_account = given()
 				.header("Content-Type", "application/json")

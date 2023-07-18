@@ -73,12 +73,15 @@ public class Party_BasicDetails extends BaseClass {
 		od.parties_AddnewParty.click();
 		od.parties_CustomerID.sendKeys(externalData.getFieldData(TSID, "Party", "Customer Id"));
 		od.parties_PartyName.sendKeys(externalData.getFieldData(TSID, "Party", "Party Name"));
-
-		od.parties_Responsibility.click();
-		od.parties_Responsibility_dropdown.click();
+		
+		responsibilities = externalData.getFieldData(TSID, "Party", "Responsibility");
+		od.parties_Responsibility.sendKeys(responsibilities);
+		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + responsibilities + "')]");
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
+		driver.findElement(party_Responsibility_Option).click();
+		
 		od.parties_Remarks.sendKeys(externalData.getFieldData(TSID, "Party", "Remarks"));
 		Thread.sleep(1000);
-		responsibilities = externalData.getFieldData(TSID, "Party", "Responsibility");
 		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
 		Thread.sleep(1000);
 		ecommerce = externalData.getFieldData(TSID, "Party", "eCommerce Party-checkbox");

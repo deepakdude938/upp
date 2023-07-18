@@ -7,6 +7,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 
 import com.upp.base.BaseClass;
@@ -20,7 +21,6 @@ import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
 
 public class Payment extends BaseClass{
-	
 	
 	public static Object_NewDeal od;
 	public static ExcelReader externalData;
@@ -43,7 +43,6 @@ public class Payment extends BaseClass{
 		js=new JavascriptClick(driver);
 	}
 	
-	
 	public void createPaymentsInScheduledInstructionsOnFriday(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
 
 		toAccountNo=DealPage.toaccountNo;
@@ -53,8 +52,14 @@ public class Payment extends BaseClass{
 		} catch (Exception e) {
 			handleElementClickException(od.payments_ScheduledInstructionIcon);
 		}
+		if(TSID.equalsIgnoreCase("TS61")) {
+			applyExplicitWaitsUntilElementClickable(od.payments_AddInstruction, Duration.ofSeconds(5));
+			od.payments_AddInstruction.click();
+			
+		}else {
 		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
 		od.payments_GetStarted.click();
+		}
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
 		By InstructionButton = By
 				.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"
@@ -68,6 +73,7 @@ public class Payment extends BaseClass{
 		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Basic Details Name"));
 		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Scheduled", "Purpose"));
 		od.payments_SourceAccount.sendKeys(sourceAccountno);
+		Thread.sleep(1000);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
 		driver.findElement(sourceaccountselect).click();
 
@@ -128,7 +134,6 @@ public class Payment extends BaseClass{
 		else {
 			day= DateUtils.getDay();
 		}
-		
 		System.out.println(day);
 		By excecutionDay =null;
 		if(!dayFlag) {
@@ -147,11 +152,19 @@ public class Payment extends BaseClass{
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 	if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
-		String time = dateutil.getTimeAfterMins(10);
+		String time="";
+		if (TSID.equalsIgnoreCase("TS61")) {
+			time=dateutil.getTimeAfterMins(30);
+		}
+		else {
+			time = dateutil.getTimeAfterMins(10);
+		}
 		od.payments_ScheduleTime.clear();
 		od.payments_ScheduleTime.sendKeys(time);
 	}
 		od.payments_NextArrowButtonTransferSchedule.click();
+		
+		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 
 		od.payments_Instrument.click();
@@ -160,13 +173,21 @@ public class Payment extends BaseClass{
 //		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
 		driver.findElement(paymentInstrument).click();
 		
-		scroll.scrollInToView(od.schedule_IBAN);
-		System.out.println(DealPage.sourceAccountNo);
-		System.out.println(DealPage.toaccountNo);
-		od.schedule_IBAN.sendKeys(toAccountNo);
-		Thread.sleep(1000);
-		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
-		driver.findElement(account).click();
+		if(TSID.equalsIgnoreCase("TS61")) {
+			scroll.scrollInToView(od.schedule_IBAN_Split);
+			System.out.println(DealPage.sourceAccountNo);
+			System.out.println(DealPage.toaccountNo);
+			od.schedule_IBAN_Split.sendKeys(toAccountNo,Keys.ENTER);
+		}
+		else {
+			scroll.scrollInToView(od.schedule_IBAN);
+			System.out.println(DealPage.sourceAccountNo);
+			System.out.println(DealPage.toaccountNo);
+			od.schedule_IBAN.sendKeys(toAccountNo);
+			Thread.sleep(1000);
+			By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+			driver.findElement(account).click();
+		}
 		
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
@@ -186,8 +207,14 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
 		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 		
+		scroll.scrollInToView(od.payments_beneficiaryCountry);
+		try {
 		od.payments_beneficiaryCountry.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-
+		}
+		catch(Exception e) {
+			
+		}
+		
 		if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
 		scroll.scrollInToView(od.payments_beneficiaryBankBic);
 		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
@@ -201,10 +228,10 @@ public class Payment extends BaseClass{
 		}
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		
+		if(isWebElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown)) {
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-		
+		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
 		
@@ -214,7 +241,6 @@ public class Payment extends BaseClass{
 			catch(Exception e) {
 				handleElementClickException(od.payments_NextArrowButtonTransferSubInstruction);
 			}
-	
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))) {
@@ -226,22 +252,12 @@ public class Payment extends BaseClass{
 				|| (externalData.getFieldData(TSID, "Scheduled", "Notification-Notification Alerts"))
 						.equalsIgnoreCase("Yes"))) {
 			od.payments_NotificationAlertSlider.click();
+			
 		}
-		if(TSID.equals("TS25") || TSID.equals("TS51")) {
-		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
-		od.payments_DealsummaryIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
-		dealId = od.deals_SummaryRefId.getText();
-		scroll.scrollInToView(od.payments_DealSubmitButton);
-		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
-		od.payments_DealSubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
-		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
-		od.payments_DealOkButton.click();
-		}
+		String url = driver.getCurrentUrl();
+		 dealID_Assertion = url.split("[/]")[url.split("/").length - 1];
+		 System.out.println(dealID_Assertion+"--------------");
     }
-
 
 	public void createPaymentSurplus(String TSID) throws Exception, IOException {
 		od.paymentSurplus_SurplusButton.click();
@@ -350,7 +366,6 @@ public class Payment extends BaseClass{
 			applyExplicitWaitsUntilElementClickable(od.payment_value1, Duration.ofSeconds(4));
 			od.payment_value1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
 			Thread.sleep(1500);
-			
 			
 		}
 		if (((externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Y")
@@ -509,4 +524,3 @@ public class Payment extends BaseClass{
 
 		}
 	}
-

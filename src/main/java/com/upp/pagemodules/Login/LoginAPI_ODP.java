@@ -17,6 +17,7 @@ public class LoginAPI_ODP {
 		String base_Url = Property.getProperty("Odp_base_uri");
 		
 		//login api
+		        RestAssured.useRelaxedHTTPSValidation();
 				RestAssured.baseURI = base_Url;
 				String responseLogin = given()
 						.header("Content-Type", "application/json")

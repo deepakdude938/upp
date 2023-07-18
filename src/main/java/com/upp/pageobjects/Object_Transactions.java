@@ -110,7 +110,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(id = "txt-generic-autocomplete-input-v1")
 	public WebElement reports_searchBox;
 
-	@FindBy(xpath = "//div[contains(text(),'Execution Report')]")
+	@FindBy(xpath = "//div[starts-with(text(),'Execution Report')]")
 	public WebElement reports_ExecutionReport;
 
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")

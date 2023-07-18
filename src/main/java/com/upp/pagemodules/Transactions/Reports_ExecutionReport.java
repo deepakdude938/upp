@@ -70,8 +70,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("Execution Report");
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
@@ -161,9 +161,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("Execution Report");
-		Thread.sleep(3000);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
@@ -199,31 +199,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertTrue(subInstruction.contains("Retention"));
 	}
 
-	public void checkStatusTriggeredOrSettled(String TSID, String DealId) throws Exception {
+	
 
-		commonmethodExecReport(TSID, DealId);
-
-		String ScroeStatus = tm.reports_ScroeStatus.getText();
-		System.out.println("Scroe status is " + ScroeStatus);
-
-		if (!((ScroeStatus.equalsIgnoreCase("Triggered")) || ScroeStatus.equalsIgnoreCase("Settled"))) {
-
-			Assert.fail("The transaction is not triggered or settled");
-		}
-	}
-
-	public void checkStatusRejected(String TSID, String DealId) throws Exception {
-
-		commonmethodExecReport(TSID, DealId);
-
-		String ScroeStatus = tm.reports_ScroeStatus.getText();
-		System.out.println("Scroe status is " + ScroeStatus);
-
-		if (!(ScroeStatus.equalsIgnoreCase("Rejected"))) {
-
-			Assert.fail("The transaction is not Rejected");
-		}
-	}
 
 	public void eCommExecutionsReportToCheckTransactionStatus(String EndToEndId, String DealId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
@@ -280,8 +257,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("Execution Report");
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
@@ -420,12 +397,12 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
 		System.out.println(deal);
 		tm.reports_dealId1.sendKeys(deal);
-//		Thread.sleep(2000);
-//		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
-//		for (WebElement record : tm.reports_EcommRecordStatus) {
-//			Assert.assertEquals(record.getText(), "Scheduled");
-//
-//		}
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+			Assert.assertEquals(record.getText(), "Scheduled");
+
+		}
 
 	}
 
@@ -484,8 +461,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("eComm Executions");
+	//	applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+	//	tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
@@ -494,9 +471,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		System.out.println("Test = "+EndToEndId);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		// tm.transactionMaker_dealSearch.sendKeys(EndToEndId);
 		Thread.sleep(3000);
-		driver.navigate().refresh();
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		//Assert.assertEquals(status, "Triggered");
@@ -512,8 +487,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("eComm Payments");
+	//	applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+	//	tm.reports_searchBox.sendKeys("eComm Payments");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommPaymentsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommPaymentsList, Duration.ofSeconds(6));
@@ -529,4 +504,28 @@ public class Reports_ExecutionReport extends BaseClass {
 		return batchId;
 	}
 
+	public void validateInExecutionReport(String TSID) throws Exception {
+		commonmethodExecReport(TSID,dealId);
+		
+	}
+
+	public void eCommExecutionsReport_Status(String EndToEndId) throws Exception {
+
+		
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+		Thread.sleep(2000);
+		scroll.scrollInToView(tm.reports_eCommExecutionsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommExecutionsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
+		Thread.sleep(3000);
+		tm.reports_End_To_End_common.sendKeys(EndToEndId);
+		Thread.sleep(3000);
+		String status = tm.reports_FirstTxnStatus.getText();
+		System.out.println("The status is:" + status);
+		Assert.assertEquals(status, "Scheduled");
+	}
 }

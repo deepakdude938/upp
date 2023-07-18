@@ -30,7 +30,9 @@ public class Rules_Party_EnrichDebtor extends BaseClass{
 	}
 	
 	public void partyEnrichDebtorRule() throws Exception {
-	
+		if(Property.getProperty("QAUrl").contains("13.126.59.0:32080")) {
+			base_Url="http://13.126.59.0:32080/";
+		}
 		RestAssured.baseURI = base_Url;
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
