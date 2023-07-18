@@ -184,7 +184,7 @@ public class Payload extends BaseClass {
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 		String uniquePlatformRefNo = "PlatformRef" + random;
-
+		String partyref = externalData.getFieldData(TSID, "Party", "Party Name");
 		String utcdate = DateUtils.getCurrentDateUTC();
 
 		String utctimeEod = utcdate + "T" + "14:30:00Z";
@@ -192,7 +192,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
 		jsonContext.set("$.paymentInfo.accountNumber", accountNo);
-		jsonContext.set("$.ultimateDebtor.partyRefId", TSID);
+		jsonContext.set("$.ultimateDebtor.partyRefId", partyref);
 		jsonContext.set("$.ultimateDebtor.dealRefId", "");
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
@@ -299,7 +299,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
 		jsonContext.set("$.paymentInfo.accountNumber", accountNo);
-		jsonContext.set("$.ultimateDebtor.name", TSID);
+		//jsonContext.set("$.ultimateDebtor.name", "");
 		jsonContext.set("$.creditTransactionInfo[0].ultimateCreditor.dealRefId", "Test");
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
