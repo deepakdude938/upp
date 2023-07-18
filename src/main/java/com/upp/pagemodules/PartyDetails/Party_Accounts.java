@@ -76,7 +76,13 @@ public class Party_Accounts extends BaseClass {
 		catch(Exception e) {
 			handleElementClickException(od.parties_AccountsTab);
 		}
+		try {
 		od.parties_AddAccounts.click();
+	}
+	catch(Exception e) {
+		Thread.sleep(1000);
+		handleElementClickException(od.parties_AddAccounts);
+	}
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 		od.parties_PaymentSystem.click();
 		String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");

@@ -173,9 +173,11 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
 		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		if(isWebElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown)) {
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
-
+		}
+		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
