@@ -70,8 +70,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("Execution Report");
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
@@ -397,12 +397,12 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
 		System.out.println(deal);
 		tm.reports_dealId1.sendKeys(deal);
-//		Thread.sleep(2000);
-//		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
-//		for (WebElement record : tm.reports_EcommRecordStatus) {
-//			Assert.assertEquals(record.getText(), "Scheduled");
-//
-//		}
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+			Assert.assertEquals(record.getText(), "Scheduled");
+
+		}
 
 	}
 
@@ -526,7 +526,5 @@ public class Reports_ExecutionReport extends BaseClass {
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");
-		
-
 	}
 }
