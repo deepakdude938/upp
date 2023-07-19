@@ -131,9 +131,8 @@ public class SSHConnection {
                 for(String tag: tagNames)
                 {
                String res= getTagContent(htmlLines,tag);
-               Result.add(res);
-                
-                }
+               Result.add(res);             
+                   }
                
                 
                 // Close the SSH session

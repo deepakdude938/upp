@@ -20,5 +20,3 @@ And Verify the Pain File For Rule_IN_LT_SystemLevel
 Examples:
       |TSID   |
       |TS56   |
-
-

@@ -95,7 +95,11 @@ public class Deal_Level_Rule_Handler extends BaseClass  implements ICallback {
 		jsClick.click(od.contextualize_RightArrow);
 		
 		applyExplicitWaitsUntilElementClickable(od.contextualize_LT, Duration.ofSeconds(5));
-		od.contextualize_BT.click();
+		od.contextualize_LT.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_PaymentType, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.contextualize_PaymentType,"RTGS");
+		Thread.sleep(1000);
 		
 		applyExplicitWaitsUntilElementClickable(od.contextualize_ChargeBearer, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.contextualize_ChargeBearer,"SHA");

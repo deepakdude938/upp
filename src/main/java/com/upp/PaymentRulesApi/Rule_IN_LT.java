@@ -55,10 +55,19 @@ public class Rule_IN_LT {
 		ArrayList<String> tagNames = new ArrayList<>(Arrays.asList("Cd", "ChrgBr"));
 
 		ArrayList<String> ActualResult = ssh.getPainFileDetails(batchId, tagNames);
-		//ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList("BKTR", "DEBT"));
-		System.out.println(ActualResult);
-		//System.out.println(ExcpectedResult);
-		// Assert.assertEquals(ActualResult,ExcpectedResult);
+		ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList("NURG", "DEBT"));
+		Assert.assertEquals(ActualResult,ExcpectedResult);
+
+	}
+	
+	public void verify_Rule_IN_LT_Deal_Level_PainFile(String batchId) {
+		ssh = new SSHConnection();
+		ArrayList<String> tagNames = new ArrayList<>(Arrays.asList("Cd", "ChrgBr"));
+
+		ArrayList<String> ActualResult = ssh.getPainFileDetails(batchId, tagNames);
+		//System.out.println("Actual Result = "+ActualResult);
+		ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList("URGP", "SHAR"));
+		Assert.assertEquals(ActualResult,ExcpectedResult);
 
 	}
 }
