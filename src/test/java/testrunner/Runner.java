@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 
 
 
-@CucumberOptions(features="./testcases/TS61_Assertion.feature",
+@CucumberOptions(features="./testcases/",
 
 
 //				dryRun = true,
