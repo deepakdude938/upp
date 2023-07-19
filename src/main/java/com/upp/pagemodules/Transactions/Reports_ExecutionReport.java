@@ -472,7 +472,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
 		Thread.sleep(3000);
-		driver.navigate().refresh();
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Triggered");
@@ -488,8 +487,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("eComm Payments");
+	//	applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+	//	tm.reports_searchBox.sendKeys("eComm Payments");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommPaymentsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommPaymentsList, Duration.ofSeconds(6));
@@ -566,7 +565,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
 		Thread.sleep(3000);
-		driver.navigate().refresh();
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");

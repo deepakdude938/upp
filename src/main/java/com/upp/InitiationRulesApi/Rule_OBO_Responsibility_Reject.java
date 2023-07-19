@@ -15,38 +15,41 @@ import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
-public class Rule_OBO_Participant_Enrich {
+public class Rule_OBO_Responsibility_Reject {
 	public static String response = "";
 
 	public static String base_Url = Property.getProperty("Dev_base_uri");
 
 	public static ExcelReader externalData;
-	public static String endToEndId="";
 
-	public static String Rule_OBO_Participant_Enrich_Api(String dealId, String TSID) throws Exception {
+	public static void Rule_OBO_Responsibility_reject(String dealId, String TSID) throws Exception {
 
 		externalData = new ExcelReader();
+
+		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
 
 		RestAssured.baseURI = base_Url;
 
 		Response res = given().header("Content-Type", "application/json")
-				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.Rule_OBO_Participant_Enrich(dealId, TSID)).when()
+				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.Rule_OBO_Responsibility_Reject(dealId, TSID)).when()
 				.post("transaction/api/transaction");
 
 		response = res.then().extract().asString();
-		System.out.println("TheRule_OBO_Participant_Enrich response is " + response);
+		System.out.println("The Rule_OBO_Responsibility_Reject is " + response);
 
 		System.out.println("the status code is" + res.getStatusCode());
 
-		if (res.getStatusCode() == 200) {
+		if (res.getStatusCode() == 400) {
 			JsonPath js = new JsonPath(response);
-			endToEndId=js.getString("endToEndId");
+			String ExpectederrorMessage = js.getString("errors[0].message");
+			Assert.assertEquals(ExpectederrorMessage, ActualErrorMessage);
+
 		}
 		else
 		{
 			Assert.fail("Status code should be 200");
 		}
-        return endToEndId;
+
 	}
 
 }

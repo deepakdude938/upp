@@ -18,11 +18,10 @@ import java.util.regex.Pattern;
 
 public class SSHConnection {
    public static String file="";
-   public static  ArrayList<String> Result = new ArrayList<String>();
    public static String paymentProcessor="";
    
     public static ArrayList<String> getPainFileDetails(String batchId,ArrayList<String> tagNames){
-    	
+        ArrayList<String> Result = new ArrayList<String>();
         String privateKeyPath = System.getProperty("user.dir") + "//src//main//resources//av.pem";
         String username = "ubuntu";
         String host=Property.getProperty("host");
@@ -134,7 +133,6 @@ public class SSHConnection {
                Result.add(res);
                 
                 }
-               
                 
                 // Close the SSH session
                 session.disconnect();
