@@ -151,10 +151,12 @@ public class Payment extends BaseClass{
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+		dropdown.selectByValue(od.retention_SelectTimezone, "Asia/Calcutta")	;
+		
 	if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
 		String time="";
 		if (TSID.equalsIgnoreCase("TS61")) {
-			time=dateutil.getTimeAfterMins(30);
+			time=dateutil.getTimeAfterMins(10);
 		}
 		else {
 			time = dateutil.getTimeAfterMins(10);
