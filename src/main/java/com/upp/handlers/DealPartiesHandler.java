@@ -43,8 +43,8 @@ public class DealPartiesHandler extends BaseClass {
 
 	public void handleAddNewParty(String TSID, ICallback icallback) throws Exception {
 		od.parties_AddnewParty.click();
-		od.parties_CustomerID.sendKeys(externalData.getFieldData(TSID, "Party", "Customer Id"));
-		od.parties_PartyName.sendKeys(externalData.getFieldData(TSID, "Party", "Party Name"));
+		od.parties_CustomerID.sendKeys(externalData.getFieldData(TSID, "Party", "Customer Id")+generateRandomString(10));
+		od.parties_PartyName.sendKeys(externalData.getFieldData(TSID, "Party", "Party Name")+generateRandomString(10));
 
 		od.parties_Responsibility.click();
 		od.parties_Responsibility_dropdown.click();
