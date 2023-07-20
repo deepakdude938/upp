@@ -41,7 +41,7 @@ public class OdpApi {
 				.header("Content-Type", "application/json")
 				.header("Authorization", authToken)
 				.body(Payload.createAccount(TSID)).when()
-				.post("api/c/XCRO6-DIY/accounts").then()
+				.post("api/c/acache/accounts").then()
 				.assertThat()
 				.statusCode(200).extract()
 				.response().asString();
