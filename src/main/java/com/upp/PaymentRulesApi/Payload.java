@@ -51,17 +51,15 @@ public class Payload extends BaseClass {
 
 		String utcdate = DateUtils.getCurrentDateUTC();
 		
-		String utcTime = DateUtils.getCurrentTimeUTC();
-		
-		System.out.println(utcTime);
-
-		String utctimeEod = utcdate + "T" + utcTime;
+		String utctimePlus2 = DateUtils.getCurrentTimeUTCPlus2Minutes();
+		String utctimePlus2Minutes = utcdate + "T" + utctimePlus2;
+		System.out.println("Scheduled Time is:"+utctimePlus2Minutes);
 
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.accountNumber", DealPage.sourceAccountNo);
-		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimePlus2Minutes);
 
 		String modifiedJsonString = jsonContext.jsonString();
 
