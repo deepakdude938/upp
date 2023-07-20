@@ -457,7 +457,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public String eCommExecutionsReportCommon(String EndToEndId) throws Exception {
 
 		System.out.println("Waiting for 3 minutes for Transactions to be triggered");
-		TimeUnit.MINUTES.sleep(5);
+		TimeUnit.MINUTES.sleep(3);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
