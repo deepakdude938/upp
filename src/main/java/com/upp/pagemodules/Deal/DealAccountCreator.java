@@ -11,6 +11,7 @@ import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
+import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
@@ -30,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class DealAccountCreator extends BaseClass {
 
 	public static Object_Deal od;
+	public static Object_NewDeal od1;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -55,6 +57,7 @@ public class DealAccountCreator extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		odp_account_api=new Create_ODP_Account_Api();
+		od1 = new Object_NewDeal();
 
 	}
 
@@ -125,4 +128,37 @@ public class DealAccountCreator extends BaseClass {
 		return accountNo;
 	}
 
+	public void addContextualize() throws Exception {
+		applyExplicitWaitsUntilElementClickable(od.accounts_Contextualize, Duration.ofSeconds(5));
+		od.accounts_Contextualize.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_Dropdown, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.contextualize_Dropdown,"Payment Profile");
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_AddButton, Duration.ofSeconds(5));
+		od.contextualize_AddButton.click();
+		
+		Thread.sleep(1000);
+		jsClick.click(od.contextualize_RightArrow);
+		
+		Thread.sleep(1000);
+		jsClick.click(od.contextualize_RightArrow);
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_LT, Duration.ofSeconds(5));
+		od1.contextualize_LT.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_PaymentType, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.contextualize_PaymentType,"IBFT");
+		Thread.sleep(1000);
+		
+		applyExplicitWaitsUntilElementClickable(od.contextualize_ChargeBearer, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.contextualize_ChargeBearer,"BEN");
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od1.contextualize_DoneButton, Duration.ofSeconds(5));
+	    od1.contextualize_DoneButton.click();
+	    od1.account_OK_Button.click();
+	    
+	    Thread.sleep(1000);
+		
+	}
 }

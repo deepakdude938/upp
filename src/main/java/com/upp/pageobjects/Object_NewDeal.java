@@ -1022,6 +1022,9 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-test1-txt-v1")
 	public WebElement payment_account_test1;
 	
+	@FindBy(xpath = "//span[text()='LT']")
+	public WebElement contextualize_LT;
+	
 	@FindBy(xpath = "//virtual-scroller[@class='vertical ng-star-inserted']")
 	public WebElement account_horizontal_window;
 	
@@ -1034,5 +1037,6 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	public WebElement account_OK_Button;
 	
-	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[6]")
+	public WebElement contextualize_PaymentType;
 }
