@@ -17,6 +17,7 @@ import com.upp.pagemodules.Login.LoginToApplication;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
+import com.upp.utils.ExcelReader;
 import com.upp.utils.SwitchWindow;
 
 import callbackInterfaces.ICallback;
@@ -28,10 +29,13 @@ public class DealPage extends BaseClass implements ICallback {
 	public static String sourceAccountNo = "1";
 	public static String toaccountNo = "2";
 	public static String dealId = "";
-	public static String AccountNo1="1";
-	public static String AccountNo2="1";
+	public static String AccountNo1 = "1";
+	public static String AccountNo2 = "1";
+	public static ExcelReader externalData;
+
 	public DealPage(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
+		externalData = new ExcelReader();
 	}
 
 	@Given("Open browser and enter url")
@@ -41,21 +45,21 @@ public class DealPage extends BaseClass implements ICallback {
 
 	@Then("Login to the application as {string}")
 	public void login_to_the_application_as(String users) throws Exception {
-		//new LoginToApplication().login(users, prop);
-		LoginToApplication login=new LoginToApplication();
+		// new LoginToApplication().login(users, prop);
+		LoginToApplication login = new LoginToApplication();
 		login.login(users, prop);
 	}
 
 	@Then("Create new deal with basic details with given {string}.")
 	public void create_new_deal_with_basic_details_with_given(String TSID) throws Exception {
 		tsid = TSID;
-		DealBasicDetailCreators deal=new DealBasicDetailCreators();
-		deal.createDealBasicDetails(TSID,this);
+		DealBasicDetailCreators deal = new DealBasicDetailCreators();
+		deal.createDealBasicDetails(TSID, this);
 	}
 
 	@Then("Create two Accounts with given {string}")
 	public void create_two_Accounts_with_given(String string) throws Exception {
-		
+
 		DealAccountCreator accountCreator = new DealAccountCreator();
 		sourceAccountNo = accountCreator.createNewAccount(string);
 		toaccountNo = accountCreator.createNewAccount(string);
@@ -67,31 +71,31 @@ public class DealPage extends BaseClass implements ICallback {
 		DealPartiesCreator crator = new DealPartiesCreator();
 		crator.createParties(TSID, this);
 	}
-	
+
 	@Then("Logout from Application")
 	public void logout_from_Application() throws Exception {
-	    dm.logout();
+		dm.logout();
 	}
-	
+
 	@And("Create Account_One From excel sheet with given {string}.")
 	public void create_Account_1From_excel_sheet_with_given(String string) throws Exception {
 		DealAccountCreator accountCreator = new DealAccountCreator();
-		 AccountNo1 = accountCreator.createNewAccount_ODP_From_ExcelSheet(string);
+		AccountNo1 = accountCreator.createNewAccount_ODP_From_ExcelSheet(string);
 	}
-	
+
 	@And("Create Account_Two From excel sheet with given {string}.")
 	public void create_Account_2From_excel_sheet_with_given(String string) throws Exception {
 		DealAccountCreator accountCreator = new DealAccountCreator();
-		 AccountNo2 = accountCreator.createNewAccount_ODP_From_ExcelSheet(string);
+		AccountNo2 = accountCreator.createNewAccount_ODP_From_ExcelSheet(string);
 	}
-	
+
 	@Then("Add Party basic_Details with given {string}.")
 	public void add_Party_basic_Details_with_given(String TSID) throws Exception {
-	   
+
 		tsid = TSID;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParty_With_BasicDetails(TSID, this);
-	    
+
 	}
 
 	@Then("Add Party Contacts with given {string}.")
@@ -102,27 +106,26 @@ public class DealPage extends BaseClass implements ICallback {
 	}
 
 	@Then("Add Party Accounts with given {string}.")
-	public void add_Party_Accounts_with_given(String TSID) throws Exception{
+	public void add_Party_Accounts_with_given(String TSID) throws Exception {
 		tsid = TSID;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParty_With_Accounts(TSID, this);
 	}
 
 	@Then("Add Party Documents with given {string}.")
-	public void add_Party_Documents_with_given(String TSID) throws Exception{
+	public void add_Party_Documents_with_given(String TSID) throws Exception {
 		tsid = TSID;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParty_With_Documents(TSID, this);
 	}
-	
+
 	@Then("Create One Account with given {string}")
 	public void create_One_Account_with_given(String string) throws Exception {
-		
+
 		DealAccountCreator accountCreator = new DealAccountCreator();
 		sourceAccountNo = accountCreator.createNewAccount(string);
 	}
 
-	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 
@@ -136,49 +139,52 @@ public class DealPage extends BaseClass implements ICallback {
 				ecommerce.handleEcommerce(tsid);
 			}
 		}
-		
-		if(callbackid.equalsIgnoreCase("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT")) {
+
+		if (callbackid.equalsIgnoreCase("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT")) {
 			String paymentInstrument = (String) data;
-			
-			if(paymentInstrument.equalsIgnoreCase("BT")) {
-				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
+
+			if (paymentInstrument.equalsIgnoreCase("BT")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
 				handler.handle_BT_PaymentInstrument(tsid);
-				
+
 			}
-			
-			if(paymentInstrument.equalsIgnoreCase("LTTest")) {
-				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
+
+			if (paymentInstrument.equalsIgnoreCase("LTTest")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
 				handler.handle_LTTest_PaymentInstrument(tsid);
-				
+
 			}
-			
-			if(paymentInstrument.equalsIgnoreCase("BT_IN")) {
-				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
+
+			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
 				handler.handleBT_IN_PaymentInstrument(tsid);
-				
+
 			}
-			
-			if(paymentInstrument.equalsIgnoreCase("LT_IN")) {
-				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
+
+			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
 				handler.handle_LT_IN_PaymentInstrument(tsid);
-				
+
 			}
-			if(paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
-				DealPartyAccount_PaymentInstrumentHandler handler=new DealPartyAccount_PaymentInstrumentHandler();
+			if (paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
 				handler.handle_SC_Payment_Profile_PaymentInstrument(tsid);
-				
+
 			}
-			
+
 		}
-		if(callbackid.equalsIgnoreCase("DEAL_LEVEL_RULE"))
-		{
-			String PaymentRule=tsid+"_DEAL_LEVEL_RULE";
-			System.out.println("The Deal Level rule :"+PaymentRule);
-			if(PaymentRule.equalsIgnoreCase("TS58_DEAL_LEVEL_RULE")) {
-				Deal_Level_Rule_Handler rule_handler=new Deal_Level_Rule_Handler();
+		if (callbackid.equalsIgnoreCase("DEAL_LEVEL_RULE")) {
+			String PaymentRule = tsid + "_DEAL_LEVEL_RULE";
+			System.out.println("The Deal Level rule :" + PaymentRule);
+			if (PaymentRule.equalsIgnoreCase("TS58_DEAL_LEVEL_RULE")) {
+				Deal_Level_Rule_Handler rule_handler = new Deal_Level_Rule_Handler();
 				rule_handler.handle_Rule_IN_BT_DealLevel(tsid);
-				
+			}else if (PaymentRule.equalsIgnoreCase("TS60_DEAL_LEVEL_RULE")) {
+				Deal_Level_Rule_Handler rule_handler = new Deal_Level_Rule_Handler();
+				rule_handler.handle_Rule_IN_LT_DealLevel(tsid);
 			}
+			// String account_Payment_System = externalData.getFieldData(tsid, "Party", "Accounts-Payment System");
+
 		}
 	}
 
