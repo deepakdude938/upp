@@ -44,7 +44,7 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS60 extends BaseClass {
+public class TS65 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
@@ -62,8 +62,9 @@ public class TS60 extends BaseClass {
 	public static String endToEndIdRule = "";
 	public static String batchId = "";
 	public static String paymentRefId = "";
+	public static DealAccountCreator account;
 
-	public TS60() {
+	public TS65() {
 
 		this.dm = new DashBoard_Module();
 		login = new LoginAPI_ODP();
@@ -75,32 +76,19 @@ public class TS60 extends BaseClass {
 		rule = new Rule_IN_LT();
 		logoutUPPApi = new LogOutApi();
 		report = new Reports_ExecutionReport();
+		account = new DealAccountCreator();
 
 	}
 
-	@Given("Call the Rule_IN_LT Api with given {string} for deal Level.")
-	public void call_the_Rule_IN_LT_Api_with_given_for_deal_Level(String string) throws Exception {
-		endToEndIdRule = rule.Rule_IN_LT_System_Level(TS06.dealId, string);
-		System.out.println(endToEndIdRule);
+	@Given("Add Contextualize in account")
+	public void add_Contextualize_in_account() throws Exception {
+		account.addContextualize();
 	}
 
-	@Then("Verify Status in Ecomm Execution Report with given {string} for dealLevel.")
-	public void verify_Status_in_Ecomm_Execution_Report_with_given_for_dealLevel(String string) throws Exception {
-		System.out.println(endToEndIdRule);
-		paymentRefId = report.eCommExecutionsReportCommon(endToEndIdRule);
-	}
-
-	@Then("Get the BatchId from payment refID for dealLevel")
-	public void get_the_BatchId_from_payment_refID_for_dealLevel() throws Exception {
-		batchId = report.getBatchIdFromEcommPayments(paymentRefId);
-		System.out.println("Batch Id = " + batchId);
-	}
-
-	@Then("Verify the Pain File For Rule_IN_LT_DealLevel")
-	public void verify_the_Pain_File_For_Rule_IN_LT_DealLevel() {
-
-		String bID = batchId;
-		System.out.println("B Id = " + bID);
-		rule.verify_Rule_IN_LT_Deal_Level_PainFile(bID);
+	@Given("Verify the Pain File For Rule_IN_LT_AccountLevel")
+	public void verify_the_Pain_File_For_Rule_IN_LT_AccountLevel() {
+		String bID = TS60.batchId;
+		System.out.println("BId = "+bID);
+		rule.verify_Rule_IN_LT_Account_Level_PainFile(bID);
 	}
 }
