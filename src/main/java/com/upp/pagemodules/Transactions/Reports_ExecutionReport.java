@@ -30,6 +30,7 @@ import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
 
@@ -505,7 +506,48 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public void validateInExecutionReport(String TSID) throws Exception {
+		
 		commonmethodExecReport(TSID,dealId);
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		ArrayList<String> scroeStatus = new ArrayList();
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+
+			scroeStatus.add(iu.getText().trim());
+			Assert.assertEquals(iu.getText().trim(), "Scheduled");
+		}
+		Assert.assertEquals(scroeStatus.size(), 2);
+		
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumnName, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> originalAmount = new ArrayList();
+		for (WebElement iu : tm.reports_OriginalAmountRecords) {
+
+			originalAmount.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		
+		LinkedHashMap<String ,String> expectedOriginalAmount =new LinkedHashMap();
+		expectedOriginalAmount.put("Payment", "100");
+		expectedOriginalAmount.put("Retention", "50000");
+		
+		LinkedHashMap<String ,String> actualOriginalAmount =new LinkedHashMap();
+		actualOriginalAmount.put(subInstruction.get(0), originalAmount.get(0));
+		actualOriginalAmount.put(subInstruction.get(1), originalAmount.get(1));
+		
+		boolean t=	actualOriginalAmount.equals(expectedOriginalAmount);
+		Assert.assertTrue(t);
 		
 	}
 
@@ -527,5 +569,50 @@ public class Reports_ExecutionReport extends BaseClass {
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");
+	}
+
+	public void validateassertionInExecutionReport(String TSID) throws Exception {
+		commonmethodExecReport(TSID,dealId);
+		System.out.println(dealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		ArrayList<String> scroeStatus = new ArrayList();
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+
+			scroeStatus.add(iu.getText().trim());
+			Assert.assertEquals(iu.getText().trim(), "Settled");
+		}
+		Assert.assertEquals(scroeStatus.size(), 2);
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmountColumnName, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> settledAmount = new ArrayList();
+		for (WebElement iu : tm.reports_SettledAmountRecords) {
+
+			settledAmount.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		
+		LinkedHashMap<String ,String> expectedSettledAmount =new LinkedHashMap();
+		expectedSettledAmount.put("Payment", "39000.12");
+		expectedSettledAmount.put("Retention", "50000");
+		
+		LinkedHashMap<String ,String> actualSettledAmount =new LinkedHashMap();
+		actualSettledAmount.put(subInstruction.get(0), settledAmount.get(0));
+		actualSettledAmount.put(subInstruction.get(1), settledAmount.get(1));
+		
+		boolean t=	expectedSettledAmount.equals(actualSettledAmount);
+		Assert.assertTrue(t);
+		
+		
 	}
 }

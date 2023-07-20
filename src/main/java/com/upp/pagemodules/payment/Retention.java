@@ -67,6 +67,7 @@ public class Retention extends BaseClass{
 		od.retention_basicDetils_Name.sendKeys(externalData.getFieldData(TSID, "PaymentRetention", "Name"));
 		dropdown.selectByVisibleText(od.retention_Purpose, externalData.getFieldData(TSID, "PaymentRetention", "Purpose"));
 		od.payments_SourceAccount.sendKeys(sourceAccountno);
+		Thread.sleep(1000);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
 		driver.findElement(sourceaccountselect).click();
 		dropdown.selectByVisibleText(od.retention_SpecifyAmountAs, externalData.getFieldData(TSID, "PaymentRetention", "Specify amount as"));
@@ -83,12 +84,17 @@ public class Retention extends BaseClass{
 		driver.findElement(excecutionDay).click();
 		System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Schedule At"));
 		dropdown.selectByVisibleText(od.retention_ScheduleAt,externalData.getFieldData(TSID, "PaymentRetention", "Schedule At"));
-		String time = DateUtils.getTimeAfterMins(15);
+		String time = DateUtils.getTimeAfterMins(5);
 		od.retention_ScheduleTime.clear();
 		od.retention_ScheduleTime.sendKeys(time);
+		Thread.sleep(1000);
+		dropdown.selectByValue(od.retention_SelectTimezone, "Asia/Calcutta")	;
+		Thread.sleep(1000);
+		dropdown.selectByVisibleText(od.retention_Execute1,"On scheduled date");
+		if(isWebElementDisplayed(od.retention_ScheduleNoOfDays)) {
+			od.retention_ScheduleNoOfDays.sendKeys("3");
+		}
 		
-		dropdown.selectByVisibleText(od.retention_Execute1,"A few days prior");
-		od.retention_ScheduleNoOfDays.sendKeys("3");
 		od.retention_ScheduleNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.retention_SubInstructionNextButton, Duration.ofSeconds(10));
 		od.retention_SubInstructionNextButton.click();

@@ -101,6 +101,25 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@col-id='Sub-Instruction Type' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_SubInstructions;
 
+	@FindBy(xpath = "//div[@col-id='SCROE Status' and not(contains(@class,'header'))]")
+	public List<WebElement> reports_ScroeStatusRecords;
+	
+	@FindBy(xpath = "//div[@col-id='SCROE Status' and contains(@class,'header')]")
+	public WebElement reports_ScroeStatusColumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Original Amount' and contains(@class,'header')]")
+	public WebElement reports_OriginalAmountColumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Settled Amount' and contains(@class,'header')]")
+	public WebElement reports_SettledAmountColumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Original Amount' and not(contains(@class,'header'))]")
+	public List<WebElement> reports_OriginalAmountRecords;
+	
+	@FindBy(xpath = "//div[@col-id='Settled Amount' and not(contains(@class,'header'))]")
+	public List<WebElement> reports_SettledAmountRecords;
+	
+	
 	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Sub-Instruction Type']")
 	public WebElement reports_SubInstructionType;
 

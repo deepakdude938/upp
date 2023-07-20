@@ -37,4 +37,8 @@ public class TS61 {
 	   re.validateInExecutionReport(TSID);
 	}
 	
+	@Then("Validate assertion in execution report {string}")
+	public void validate_assertion_in_execution_report(String TSID) throws Exception {
+	   re.validateassertionInExecutionReport(TSID);
+	}
 }

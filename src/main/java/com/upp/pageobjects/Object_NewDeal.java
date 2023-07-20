@@ -800,6 +800,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-generic-timePicker-input-v1")
 	public WebElement retention_ScheduleTime;
 	
+	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundsTransferSchedule-timezone']")
+	public WebElement retention_SelectTimezone;
+	
+	
 	@FindBy(xpath= "//select[@id='sel-deals-instruction-retentionSchedule-priorScheduleConfig-v1']")
 	public WebElement retention_Execute1;
 	
