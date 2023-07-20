@@ -69,11 +69,13 @@ public class EcommerceHandler extends BaseClass {
 			String hiddenClass = od.accountNumbers.getAttribute("class");
 			System.out.println(hiddenClass);
 			if (!(hiddenClass.contains("ag-hidden"))) {
+				Thread.sleep(500);
 				jsClick.click(od.ecommerceFirstAccount);
 				Thread.sleep(2000);
 				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
 			} else {
 				System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
+				Thread.sleep(500);
 				jsClick.click(od.ecommerceSecondAccount);
 				Thread.sleep(2000);
 			}
