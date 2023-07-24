@@ -262,7 +262,7 @@ public class Budget extends BaseClass {
 				Response res = given()
 						.header("Content-Type", "application/json")
 						.header("Authorization", authToken).when()
-						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID);
+						.get("api/c/acache/testAutomationAssertions/"+TSID);
 				int statusCode = res.getStatusCode();
 				System.out.println(statusCode);
 				
@@ -271,7 +271,7 @@ public class Budget extends BaseClass {
 							.header("Content-Type", "application/json")
 							.header("Authorization", authToken)
 							.body(odpRecordJson).when()
-							.post("api/c/XCRO6-DIY/testAutomationAssertions/").then()
+							.post("api/c/acache/testAutomationAssertions/").then()
 							.assertThat()
 							.statusCode(200).extract()
 							.response().asString();
@@ -281,13 +281,11 @@ public class Budget extends BaseClass {
 							.header("Content-Type", "application/json")
 							.header("Authorization", authToken)
 							.body(odpRecordJson).when()
-							.put("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
+							.put("api/c/acache/testAutomationAssertions/"+TSID).then()
 							.assertThat()
 							.statusCode(200).extract()
 							.response().asString();
 				}
-				
-			
 				
 				RestAssured.baseURI = base_Url;
 				String response_LogOut = given()

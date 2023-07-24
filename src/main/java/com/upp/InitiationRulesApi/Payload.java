@@ -1,6 +1,9 @@
 package com.upp.InitiationRulesApi;
 
 import java.io.IOException;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.stepdefinition.DealPage;
@@ -405,6 +408,31 @@ public class Payload extends BaseClass {
 
 		return modifiedJsonString;
 
+	}
+
+	public String rule_InstructedControlAmountRegression(String excelFilePath,String TSID, String payLoadString,  int rowNumber,DocumentContext jsonContext) throws InvalidFormatException, IOException {
+
+		double fragA =Double.parseDouble(externalData.getFieldData(excelFilePath, "Positive", "fragA",rowNumber));
+		double fragB =	Double.parseDouble(externalData.getFieldData(excelFilePath, "Positive", "fragB",rowNumber));
+		double fragC =	Double.parseDouble(externalData.getFieldData(excelFilePath, "Positive", "fragC",rowNumber));
+		double fragD =	Double.parseDouble(externalData.getFieldData(excelFilePath, "Positive", "fragD",rowNumber));
+		double instructedControlSum =Double.parseDouble(externalData.getFieldData(excelFilePath, "Positive", "instructedControlSum",rowNumber));
+		
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		jsonContext.set("$.paymentInfo.instructedControlSum", instructedControlSum);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.creditTransactionInfo[0].amount", fragA);
+		jsonContext.set("$.creditTransactionInfo[1].amount", fragB);
+		jsonContext.set("$.creditTransactionInfo[2].amount", fragC);
+		jsonContext.set("$.creditTransactionInfo[3].amount", fragD);
+
+		String modifiedJsonString = jsonContext.jsonString();
+
+		return modifiedJsonString;
+	
 	}
 
 }
