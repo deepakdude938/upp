@@ -470,6 +470,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
 		Thread.sleep(3000);
+		System.out.println("Test = "+EndToEndId);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
 		Thread.sleep(3000);
 		String status = tm.reports_FirstTxnStatus.getText();

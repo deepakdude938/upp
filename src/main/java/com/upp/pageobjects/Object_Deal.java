@@ -104,6 +104,33 @@ public class Object_Deal extends BaseClass {
 
 	@FindBy(id = "ic-deals-account-accountDetails-addAccount-v1")
 	public WebElement accounts_addAccount;
+	
+	@FindBy(xpath = "//span[contains(@class,'ic-attributes ng-star-inserted')]")
+	public WebElement accounts_Contextualize;
+	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[1]")
+	public WebElement contextualize_Dropdown;
+	
+	@FindBy(xpath = "//button[normalize-space()='Add']")
+	public WebElement contextualize_AddButton;
+	
+	@FindBy(xpath = "(//div[@id='right'])[1]")
+	public WebElement contextualize_RightArrow;
+	
+	@FindBy(xpath = "(//span[@title='Local Transfer'][normalize-space()='LT'])[1]")
+	public WebElement contextualize_LT;
+	
+	@FindBy(xpath = "//button[normalize-space()='Done']")
+	public WebElement contextualize_DoneButton;
+	
+	@FindBy(id = "payment-test1-txt-v1")
+	public WebElement payment_account_test1;
+	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[2]")
+	public WebElement contextualize_PaymentType;
+	
+	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[3]")
+	public WebElement contextualize_ChargeBearer;
 
 	// Objects for flexible finding attributes
 	@FindBy(xpath = "(//*[@id='txt-deals-basicDetails-addAttribute-attributeValue-v1']//select)[1]")

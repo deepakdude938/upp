@@ -88,10 +88,11 @@ public class Payment_SubInstruction extends BaseClass {
 			od.payments_beneficiaryBankBic
 					.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
 		}
-
+		if (commonutils.isElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown, 1)) {
 		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
 		od.payments_beneficiaryCountryOfIncorporationDropdown
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
+		}
 
 		if (commonutils.isElementDisplayed(od.payments_senderPop, 1)) {
 			scroll.scrollInToView(od.payments_senderPop);

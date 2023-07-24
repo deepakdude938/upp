@@ -52,6 +52,10 @@ public class EditOBOResponsibilty extends BaseClass {
 		scroll.scrollInToView(od.account_edit_icon);
 		js.click(od.account_edit_icon);
 		Thread.sleep(1500);
+		applyExplicitWaitsUntilElementClickable(od.account_shortName, Duration.ofSeconds(5));
+		scroll.scrollInToView(od.account_shortName);
+		od.account_shortName.sendKeys("karthik1234");
+		Thread.sleep(1000);
 		scroll.scrollInToView(od.account_obo_repsonsibility);
 		applyExplicitWaitsUntilElementClickable(od.account_obo_repsonsibility, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.account_obo_repsonsibility,externalData.getFieldData(TSID, "Party", "Responsibility"));

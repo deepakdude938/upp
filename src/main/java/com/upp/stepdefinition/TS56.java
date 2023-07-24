@@ -51,6 +51,8 @@ public class TS56 extends BaseClass {
 	Rule_IN_LT rule;
 	Reports_ExecutionReport report;
 	public static String endToEndIdRule = "";
+	public static String batchId = "";
+	public static String paymentRefId = "";
 
 	public TS56() {
 
@@ -74,13 +76,22 @@ public class TS56 extends BaseClass {
 	@Then("Verify Status in Ecomm Execution Report with given {string}.")
 	public void verify_Status_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
 		System.out.println(endToEndIdRule);
-		report.eCommExecutionsReportCommon(endToEndIdRule);
+		paymentRefId = report.eCommExecutionsReportCommon(endToEndIdRule);
+	}
+
+	@Given("Get the BatchId from payment refID")
+	public void get_the_BatchId_from_payment_refID() throws Exception {
+		batchId = report.getBatchIdFromEcommPayments(paymentRefId);
+		System.out.println("Batch Id = "+batchId);
+
 	}
 
 	@And("Verify the Pain File For Rule_IN_LT_SystemLevel")
 	public void verify_the_Pain_File_For_Rule_IN_LT_SystemLevel() {
-		String bID = TS55.batchId;
-		rule.verify_Rule_IN_BT_System_Level_PainFile(bID);
+		
+		String bID = batchId;
+		System.out.println("B Id = "+bID);
+		rule.verify_Rule_IN_LT_System_Level_PainFile(bID);
 	}
 
 }

@@ -11,6 +11,7 @@ import com.upp.InitiationRulesApi.Rule_OBOParticipant_OBO_Info_Not_Null;
 import com.upp.InitiationRulesApi.Rule_OBOPartyResponsibility_PartyId;
 import com.upp.InitiationRulesApi.Rule_OBOPartyResponsibility_PartyId_DealRefId;
 import com.upp.InitiationRulesApi.Rule_OBO_Participant_Enrich;
+import com.upp.PaymentRulesApi.Rule_IN_LT;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -43,7 +44,7 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS62 extends BaseClass {
+public class TS60 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
@@ -54,12 +55,15 @@ public class TS62 extends BaseClass {
 	LoginAPI_UPP login_UPP;
 	LogOutApi logout_UPP;
 	EditOBOResponsibilty edit;
-	Rule_OBO_Participant_Enrich rule;
-	public static String endId="";
+	Rule_IN_LT rule;
+	public String endId = "";
 	Reports_ExecutionReport report;
 	LogOutApi logoutUPPApi;
+	public static String endToEndIdRule = "";
+	public static String batchId = "";
+	public static String paymentRefId = "";
 
-	public TS62() {
+	public TS60() {
 
 		this.dm = new DashBoard_Module();
 		login = new LoginAPI_ODP();
@@ -67,30 +71,36 @@ public class TS62 extends BaseClass {
 		logout = new Logout_ODP_Api();
 		login_UPP = new LoginAPI_UPP();
 		logout_UPP = new LogOutApi();
-	    edit=new EditOBOResponsibilty();
-	    rule=new Rule_OBO_Participant_Enrich();
-	    logoutUPPApi=new LogOutApi();
-	    report=new Reports_ExecutionReport();
+		edit = new EditOBOResponsibilty();
+		rule = new Rule_IN_LT();
+		logoutUPPApi = new LogOutApi();
+		report = new Reports_ExecutionReport();
 
 	}
-	@And("Call the Rule_OBO_Participant_Enrich with given {string}.")
-	public void call_the_Rule_OBO_Participant_Enrich_with_given(String string) throws Exception {
-		endId = rule.Rule_OBO_Participant_Enrich_Api(TS06.dealId, string);
-	}
-	
-	@Then("Edit the account and select OBO Responsibility with given {string}.")
-	public void edit_the_account_and_select_OBO_Responsibility_with_given(String string) throws Exception {
-	   edit.EditOBOResponsibilty_In_Account(string);
-	}
-	
-	@Then("Verify in EcommExecution the status")
-	public void verify_in_EcommExecution_the_status() throws Exception {
-	    report.eCommExecutionsReport_Status(endId);
-	}
-	
-	@Given("Logout of UPP through api")
-	public void logout_of_UPP_through_api() throws Exception {
-		logoutUPPApi.logOut();
+
+	@Given("Call the Rule_IN_LT Api with given {string} for deal Level.")
+	public void call_the_Rule_IN_LT_Api_with_given_for_deal_Level(String string) throws Exception {
+		endToEndIdRule = rule.Rule_IN_LT_System_Level(TS06.dealId, string);
+		System.out.println(endToEndIdRule);
 	}
 
+	@Then("Verify Status in Ecomm Execution Report with given {string} for dealLevel.")
+	public void verify_Status_in_Ecomm_Execution_Report_with_given_for_dealLevel(String string) throws Exception {
+		System.out.println(endToEndIdRule);
+		paymentRefId = report.eCommExecutionsReportCommon(endToEndIdRule);
+	}
+
+	@Then("Get the BatchId from payment refID for dealLevel")
+	public void get_the_BatchId_from_payment_refID_for_dealLevel() throws Exception {
+		batchId = report.getBatchIdFromEcommPayments(paymentRefId);
+		System.out.println("Batch Id = " + batchId);
+	}
+
+	@Then("Verify the Pain File For Rule_IN_LT_DealLevel")
+	public void verify_the_Pain_File_For_Rule_IN_LT_DealLevel() {
+
+		String bID = batchId;
+		System.out.println("B Id = " + bID);
+		rule.verify_Rule_IN_LT_Deal_Level_PainFile(bID);
+	}
 }

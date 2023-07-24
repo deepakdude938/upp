@@ -11,6 +11,8 @@ import com.upp.InitiationRulesApi.Rule_OBOParticipant_OBO_Info_Not_Null;
 import com.upp.InitiationRulesApi.Rule_OBOPartyResponsibility_PartyId;
 import com.upp.InitiationRulesApi.Rule_OBOPartyResponsibility_PartyId_DealRefId;
 import com.upp.InitiationRulesApi.Rule_OBO_Participant_Enrich;
+import com.upp.InitiationRulesApi.Rule_OBO_Responsibility_Reject;
+import com.upp.InitiationRulesApi.Rule_OBO_Responsibility_Reject1;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -43,7 +45,7 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS62 extends BaseClass {
+public class TS67 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
@@ -54,12 +56,10 @@ public class TS62 extends BaseClass {
 	LoginAPI_UPP login_UPP;
 	LogOutApi logout_UPP;
 	EditOBOResponsibilty edit;
-	Rule_OBO_Participant_Enrich rule;
-	public static String endId="";
-	Reports_ExecutionReport report;
 	LogOutApi logoutUPPApi;
+	Rule_OBO_Responsibility_Reject1 reject1;
 
-	public TS62() {
+	public TS67() {
 
 		this.dm = new DashBoard_Module();
 		login = new LoginAPI_ODP();
@@ -67,30 +67,14 @@ public class TS62 extends BaseClass {
 		logout = new Logout_ODP_Api();
 		login_UPP = new LoginAPI_UPP();
 		logout_UPP = new LogOutApi();
-	    edit=new EditOBOResponsibilty();
-	    rule=new Rule_OBO_Participant_Enrich();
-	    logoutUPPApi=new LogOutApi();
-	    report=new Reports_ExecutionReport();
+		edit = new EditOBOResponsibilty();
+		reject1=new Rule_OBO_Responsibility_Reject1();
 
 	}
-	@And("Call the Rule_OBO_Participant_Enrich with given {string}.")
-	public void call_the_Rule_OBO_Participant_Enrich_with_given(String string) throws Exception {
-		endId = rule.Rule_OBO_Participant_Enrich_Api(TS06.dealId, string);
-	}
 	
-	@Then("Edit the account and select OBO Responsibility with given {string}.")
-	public void edit_the_account_and_select_OBO_Responsibility_with_given(String string) throws Exception {
-	   edit.EditOBOResponsibilty_In_Account(string);
-	}
-	
-	@Then("Verify in EcommExecution the status")
-	public void verify_in_EcommExecution_the_status() throws Exception {
-	    report.eCommExecutionsReport_Status(endId);
-	}
-	
-	@Given("Logout of UPP through api")
-	public void logout_of_UPP_through_api() throws Exception {
-		logoutUPPApi.logOut();
+	@And("Call the Rule_OBO_Responsibility_Reject1 with given {string}.")
+	public void call_the_Rule_OBO_Responsibility_Reject1_with_given(String string) throws Exception {
+	    reject1.Rule_OBO_Responsibility_reject1(TS06.dealId, string);
 	}
 
 }

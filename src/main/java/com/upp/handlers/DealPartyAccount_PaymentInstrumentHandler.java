@@ -172,10 +172,10 @@ public void handle_LT_IN_PaymentInstrument(String TSID) throws Exception {
 	dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
 			externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
 	
-	scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
-	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
-	dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
-			externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
+//	scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
+//	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
+//	dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
+//			externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
 
 	od.parties_partyAccountsAddButton.click();
 	
