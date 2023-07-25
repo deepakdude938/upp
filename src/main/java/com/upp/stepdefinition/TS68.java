@@ -80,9 +80,27 @@ public class TS68 extends BaseClass {
 
 	}
 
-	@Given("Verify the Pain File For Rule_IN_LT_PendingStatus")
-	public void verify_the_Pain_File_For_Rule_IN_LT_PendingStatus() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@Given("Call the Rule_IN_LT Api with given {string} for Pendding status.")
+	public void call_the_Rule_IN_LT_Api_with_given_for_Pendding_status(String string) throws Exception {
+		endToEndIdRule = rule.Rule_IN_LT_PenddingStatus(TS06.dealId, string);
+		System.out.println(endToEndIdRule);
 	}
+
+	@Then("Verify Status in Ecomm Execution Report with given {string} for Pendding status.")
+	public void verify_Status_in_Ecomm_Execution_Report_with_given_for_Pendding_status(String string) throws Exception {
+		System.out.println(endToEndIdRule);
+		paymentRefId = report.eCommExecutionsReportCommon(endToEndIdRule);
+	}
+
+	@Then("Get the BatchId from payment refID for Pendding status")
+	public void get_the_BatchId_from_payment_refID_for_Pendding_status() throws Exception {
+		batchId = report.getBatchIdFromEcommPayments(paymentRefId);
+		System.out.println("Batch Id = " + batchId);
+	}
+
+	@Given("Verify BatchId Status in Ecomm Execution Report with given {string}")
+	public void verify_BatchId_Status_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
+	   report.verify_Rule_IN_LT_PenddingStatus(batchId);
+	}
+
 }

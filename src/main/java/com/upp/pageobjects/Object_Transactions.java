@@ -341,5 +341,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement ecommPayments_PaymentId;
 	
+	@FindBy(xpath = "(//div[@col-id='Status'])[2]")
+	public WebElement ecommPaymentStatus;
+	
+	
 }
 
