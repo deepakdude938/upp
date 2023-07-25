@@ -225,7 +225,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		String txn2 = tm.reports_SecondTxnStatus.getText();
 		System.out.println("Test1"+txn1);
 		System.out.println("Test2"+txn2);
-		Assert.assertEquals(txn1, "Hold");
+		Assert.assertEquals(txn1, "HOLD");
 		Assert.assertEquals(txn2, "Scheduled");
 	}
 

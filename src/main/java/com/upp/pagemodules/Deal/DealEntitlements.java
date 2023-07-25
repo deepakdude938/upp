@@ -112,6 +112,9 @@ public class DealEntitlements extends BaseClass {
 		jsClick.click(tm.transactions_SubmitButton);
 		Thread.sleep(2000);
 		tm.entitlementsIcon.click();
+		Thread.sleep(2000);
+		tm.contactDetails.click();
+		
 		String contacts = externalData.getFieldData(TSID, "Party", "Email");
 		if(tm.initiatingContact.getText().contains(contacts)) {
 			flag =1;
