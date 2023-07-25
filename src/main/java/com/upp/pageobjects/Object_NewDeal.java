@@ -1039,4 +1039,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[6]")
 	public WebElement contextualize_PaymentType;
+	
+	@FindBy(xpath="(//input[@type='text'])[2]")
+	public WebElement account_shortName;
 }

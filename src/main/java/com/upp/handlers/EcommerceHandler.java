@@ -71,19 +71,19 @@ public class EcommerceHandler extends BaseClass {
 			if (!(hiddenClass.contains("ag-hidden"))) {
 				Thread.sleep(500);
 				jsClick.click(od.ecommerceFirstAccount);
-				Thread.sleep(2000);
+				Thread.sleep(2500);
 				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
 			} else {
 				System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
 				Thread.sleep(500);
 				jsClick.click(od.ecommerceSecondAccount);
-				Thread.sleep(2000);
+				Thread.sleep(2500);
 			}
 		}
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
 		scroll.scrollInToView(od.ecommerceSave);
-		Thread.sleep(500);
+		Thread.sleep(1500);
 		jsClick.click(od.ecommerceSave);
 		System.out.println("save button click");
 		Thread.sleep(2000);
