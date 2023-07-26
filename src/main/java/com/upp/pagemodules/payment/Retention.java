@@ -149,7 +149,7 @@ public class Retention extends BaseClass{
 				Response res = given()
 						.header("Content-Type", "application/json")
 						.header("Authorization", authToken).when()
-						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID);
+						.get("api/c/acache/testAutomationAssertions/"+TSID);
 				int statusCode = res.getStatusCode();
 				System.out.println(statusCode+"++++");
 				
@@ -158,7 +158,7 @@ public class Retention extends BaseClass{
 						.header("Content-Type", "application/json")
 						.header("Authorization", authToken)
 						.when()
-						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
+						.get("api/c/acache/testAutomationAssertions/"+TSID).then()
 						.assertThat()
 						.statusCode(200).extract()
 						.response().asString();

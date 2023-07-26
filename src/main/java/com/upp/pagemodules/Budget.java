@@ -49,6 +49,7 @@ public class Budget extends BaseClass {
 		od.budget_CreateBudget.click();
 		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
 		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
+		Thread.sleep(500);
 		By sourceAccountNoDropDown = By
 				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
 						+ sourceAccountNo + "')]");
@@ -206,6 +207,7 @@ public class Budget extends BaseClass {
 		String dateAndTime = DateUtils.getDate(0)+"T"+displayFormat.format(date);
 
 		HashMap odpRecord = new HashMap<>();
+		odpRecord.put("_id", TSID);
 		odpRecord.put("originTcId", TSID);
 		odpRecord.put("dealId", dealID);
 		odpRecord.put("dealRefId", dealRefId);
@@ -262,7 +264,7 @@ public class Budget extends BaseClass {
 				Response res = given()
 						.header("Content-Type", "application/json")
 						.header("Authorization", authToken).when()
-						.get("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID);
+						.get("api/c/acache/testAutomationAssertions/"+TSID);
 				int statusCode = res.getStatusCode();
 				System.out.println(statusCode);
 				
@@ -271,7 +273,7 @@ public class Budget extends BaseClass {
 							.header("Content-Type", "application/json")
 							.header("Authorization", authToken)
 							.body(odpRecordJson).when()
-							.post("api/c/XCRO6-DIY/testAutomationAssertions/").then()
+							.post("api/c/acache/testAutomationAssertions/").then()
 							.assertThat()
 							.statusCode(200).extract()
 							.response().asString();
@@ -281,13 +283,11 @@ public class Budget extends BaseClass {
 							.header("Content-Type", "application/json")
 							.header("Authorization", authToken)
 							.body(odpRecordJson).when()
-							.put("api/c/XCRO6-DIY/testAutomationAssertions/"+TSID).then()
+							.put("api/c/acache/testAutomationAssertions/"+TSID).then()
 							.assertThat()
 							.statusCode(200).extract()
 							.response().asString();
 				}
-				
-			
 				
 				RestAssured.baseURI = base_Url;
 				String response_LogOut = given()

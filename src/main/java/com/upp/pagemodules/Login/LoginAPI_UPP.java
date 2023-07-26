@@ -22,7 +22,7 @@ public class LoginAPI_UPP {
 				.header("Content-Type", "application/json")
 				.body(Payload.loginToUPP()).when()
 				.post("idm/api/v1/login").then()
-				//.assertThat().statusCode(200)
+				.assertThat().statusCode(200)
 				.extract()
 				.response().asString();
 		
