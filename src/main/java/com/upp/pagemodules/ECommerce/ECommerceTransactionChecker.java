@@ -75,7 +75,7 @@ public class ECommerceTransactionChecker extends BaseClass {
 			handleElementClickException(ecomm.ecommerce_txnChecker);
 		}
 //		ecomm.ecommerce_TxnDealSearch.clear();
-		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
+		ecomm.ecommerce_TxnDealSearch1.sendKeys(dealId);
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox,Duration.ofSeconds(10));
 		try {
