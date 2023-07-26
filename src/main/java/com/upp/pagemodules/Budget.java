@@ -49,6 +49,7 @@ public class Budget extends BaseClass {
 		od.budget_CreateBudget.click();
 		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
 		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
+		Thread.sleep(500);
 		By sourceAccountNoDropDown = By
 				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
 						+ sourceAccountNo + "')]");
@@ -206,6 +207,7 @@ public class Budget extends BaseClass {
 		String dateAndTime = DateUtils.getDate(0)+"T"+displayFormat.format(date);
 
 		HashMap odpRecord = new HashMap<>();
+		odpRecord.put("_id", TSID);
 		odpRecord.put("originTcId", TSID);
 		odpRecord.put("dealId", dealID);
 		odpRecord.put("dealRefId", dealRefId);
@@ -294,5 +296,20 @@ public class Budget extends BaseClass {
 						.when().delete("api/a/rbac/logout").then()
 						.assertThat().statusCode(200)
 						.extract().response().asString();
+	}
+	
+	public void CreateBudget_Consolidated_Yearly(String TSID, String sourceAccountNo, String toAccountNo) throws Exception, IOException {
+		od.budget_BudgetIcon.click();
+		od.budget_CreateBudget.click();
+		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
+		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
+		By sourceAccountNoDropDown = By
+				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
+						+ sourceAccountNo + "')]");
+		applyExplicitWaitsUntilElementVisible(sourceAccountNoDropDown, 10);
+		driver.findElement(sourceAccountNoDropDown).click();
+		od.budget_AddBudget.click();
+		od.budget_budgetDetailsAddBudget.click();
+		
 	}
 }

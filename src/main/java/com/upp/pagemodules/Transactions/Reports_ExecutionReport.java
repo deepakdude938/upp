@@ -363,8 +363,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_ReportsIcon.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		tm.reports_ReportsInternal.click();
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("eComm Executions");
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		tm.reports_eCommExecutionsList.click();
