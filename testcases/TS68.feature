@@ -15,7 +15,10 @@ Then approve the deal from the deal checker common method
 And Login to UPP through api
 And Call the Rule_IN_LT Api with given "<TSID>" for Pendding status.
 Then Verify Status in Ecomm Execution Report with given "<TSID>" for Pendding status.
-#And Get the BatchId from payment refID for Pendding status
+And Get the BatchId from payment refID for Pendding status
+#And Verify BatchId Status in Ecomm Execution Report with given "<TSID>"
+And Call the Rule_IN_LT Api for IBFT  with given "TS68_1" for Pendding status.
+Then Verify Status in Ecomm Execution Report with given "<TSID>" for Pendding status.
 And Verify BatchId Status in Ecomm Execution Report with given "<TSID>"
 
 Examples:

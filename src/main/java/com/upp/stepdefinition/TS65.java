@@ -84,6 +84,24 @@ public class TS65 extends BaseClass {
 	public void add_Contextualize_in_account() throws Exception {
 		account.addContextualize();
 	}
+	
+	@Given("Call the Rule_IN_LT Api with given {string} for account Level.")
+	public void call_the_Rule_IN_LT_Api_with_given_for_deal_Level(String string) throws Exception {
+		endToEndIdRule = rule.Rule_IN_LT_System_Level(TS06.dealId, string);
+		System.out.println(endToEndIdRule);
+	}
+
+	@Then("Verify Status in Ecomm Execution Report with given {string} for accountLevel.")
+	public void verify_Status_in_Ecomm_Execution_Report_with_given_for_dealLevel(String string) throws Exception {
+		System.out.println(endToEndIdRule);
+		paymentRefId = report.eCommExecutionsReportCommon(endToEndIdRule);
+	}
+
+	@Then("Get the BatchId from payment refID for accountLevel")
+	public void get_the_BatchId_from_payment_refID_for_dealLevel() throws Exception {
+		batchId = report.getBatchIdFromEcommPayments(paymentRefId);
+		System.out.println("Batch Id = " + batchId);
+	}
 
 	@Given("Verify the Pain File For Rule_IN_LT_AccountLevel")
 	public void verify_the_Pain_File_For_Rule_IN_LT_AccountLevel() {

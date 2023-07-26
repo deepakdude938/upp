@@ -179,9 +179,12 @@ public class DealPage extends BaseClass implements ICallback {
 			if (PaymentRule.equalsIgnoreCase("TS58_DEAL_LEVEL_RULE")) {
 				Deal_Level_Rule_Handler rule_handler = new Deal_Level_Rule_Handler();
 				rule_handler.handle_Rule_IN_BT_DealLevel(tsid);
-			}else if (PaymentRule.equalsIgnoreCase("TS60_DEAL_LEVEL_RULE")||PaymentRule.equalsIgnoreCase("TS68_DEAL_LEVEL_RULE")) {
+			}else if (PaymentRule.equalsIgnoreCase("TS60_DEAL_LEVEL_RULE")) {
 				Deal_Level_Rule_Handler rule_handler = new Deal_Level_Rule_Handler();
 				rule_handler.handle_Rule_IN_LT_DealLevel(tsid);
+			}else if (PaymentRule.equalsIgnoreCase("TS68_DEAL_LEVEL_RULE")) {
+				Deal_Level_Rule_Handler rule_handler = new Deal_Level_Rule_Handler();
+				rule_handler.handle_Rule_IN_LT_DealLevel_PenddingStatus(tsid);
 			}
 			// String account_Payment_System = externalData.getFieldData(tsid, "Party", "Accounts-Payment System");
 

@@ -51,7 +51,7 @@ public class Payload extends BaseClass {
 
 		String utcdate = DateUtils.getCurrentDateUTC();
 		
-		String utctimePlus2 = DateUtils.getCurrentTimeUTCPlus2Minutes();
+		String utctimePlus2 = DateUtils.getCurrentTimeUTC();
 		String utctimePlus2Minutes = utcdate + "T" + utctimePlus2;
 		System.out.println("Scheduled Time is:"+utctimePlus2Minutes);
 

@@ -86,6 +86,13 @@ public class TS68 extends BaseClass {
 		System.out.println(endToEndIdRule);
 	}
 
+	@Given("Call the Rule_IN_LT Api for IBFT  with given {string} for Pendding status.")
+	public void call_the_Rule_IN_LT_Api_for_IBFT_with_given_for_Pendding_status(String string) throws Exception {
+		endToEndIdRule = rule.Rule_IN_LT_PenddingStatus(TS06.dealId, string);
+		System.out.println(endToEndIdRule);
+	}
+
+	
 	@Then("Verify Status in Ecomm Execution Report with given {string} for Pendding status.")
 	public void verify_Status_in_Ecomm_Execution_Report_with_given_for_Pendding_status(String string) throws Exception {
 		System.out.println(endToEndIdRule);

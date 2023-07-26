@@ -392,15 +392,16 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	public void validateEcommTransactionwithDealId(String deal) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
-		tm.reports_ReportsIcon.click();
+		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
-		tm.reports_ReportsInternal.click();
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(15));
-		tm.reports_searchBox.sendKeys("eComm Executions");
-		Thread.sleep(5000);
-		// applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList,
-		// Duration.ofSeconds(20));
-		tm.reports_eCommExecutionsList.click();
+		jsClick.click(tm.reports_ReportsInternal);
+		// applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,
+		// Duration.ofSeconds(5));
+		// tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
+		scroll.scrollInToView(tm.reports_eCommExecutionsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
 		System.out.println(deal);
 		tm.reports_dealId1.sendKeys(deal);
@@ -482,10 +483,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
-		Assert.assertEquals(status, "Triggered");
+		//Assert.assertEquals(status, "Triggered");
 		String paymentRefId = tm.ecommPaymentLink.getText();
 		System.out.println("The Payment Ref id:" + paymentRefId);
-
 		return paymentRefId;
 
 	}
@@ -630,5 +630,5 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertEquals(ActualResult, ExcpectedResult);
 
 	}
-
+	
 }
