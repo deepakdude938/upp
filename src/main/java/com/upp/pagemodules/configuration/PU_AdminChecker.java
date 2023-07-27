@@ -43,8 +43,8 @@ public class PU_AdminChecker extends BaseClass {
 
 	public void Aprrove_PU_From_AdminChecker() throws Exception {
 		
-		applyExplicitWaitsUntilElementClickable(oc.configuration_ProcessingUnitButton, Duration.ofSeconds(5));
-		oc.configuration_ProcessingUnitButton.click();
+//		applyExplicitWaitsUntilElementClickable(oc.configuration_ProcessingUnitButton, Duration.ofSeconds(5));
+//		oc.configuration_ProcessingUnitButton.click();
 		applyExplicitWaitsUntilElementClickable(oc.PU_AdminChecker, Duration.ofSeconds(5));
 		oc.PU_AdminChecker.click();
 		Thread.sleep(1000);
