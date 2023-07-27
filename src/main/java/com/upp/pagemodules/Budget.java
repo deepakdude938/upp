@@ -143,7 +143,6 @@ public class Budget extends BaseClass {
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
-
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
 		od.payments_budgetPurpose.sendKeys(budget);
 
@@ -308,8 +307,19 @@ public class Budget extends BaseClass {
 						+ sourceAccountNo + "')]");
 		applyExplicitWaitsUntilElementVisible(sourceAccountNoDropDown, 10);
 		driver.findElement(sourceAccountNoDropDown).click();
+		Thread.sleep(500);
 		od.budget_AddBudget.click();
+		applyExplicitWaitsUntilElementClickable(od.budget_budgetDetailsAddBudget, Duration.ofSeconds(10));
 		od.budget_budgetDetailsAddBudget.click();
-		
+		applyExplicitWaitsUntilElementClickable(od.budget_consolidated, Duration.ofSeconds(5));
+		od.budget_consolidated.click();
+		applyExplicitWaitsUntilElementClickable(od.budget_interval, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.budget_interval,externalData.getFieldData(TSID, "Budget", "Interval"));
+		Thread.sleep(1000);
+		od.budget_duration.sendKeys(externalData.getFieldData(TSID, "Budget", "Year"));
+		applyExplicitWaitsUntilElementClickable(od.budget_allocatedAmount, Duration.ofSeconds(5));
+		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
+		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
+		od.budget_AddButton.click();
 	}
 }

@@ -8,6 +8,7 @@
 #And Create two Accounts with given "<TSID>"
 #And Create Parties in the Parties Tab with given "<TSID>"
 #Then Create Budget_Consolidated_Yearly with given "<TSID>"
+#And Create Payments in the scheduled Instructions with given "<TSID>"
 #Examples:
       #|TSID|
       #|TS70|
