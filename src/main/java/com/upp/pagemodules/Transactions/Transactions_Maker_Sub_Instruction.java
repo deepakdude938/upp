@@ -65,7 +65,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 
 	public void Non_Registered_Beneficiary(String toaccount) {
 		int flag = 0;
-		By toAccount = By.xpath("//span[contains(text(),'" + toaccount + "')]");
+		By toAccount = By.xpath("//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input");
 
 		if (driver.findElement(toAccount).isDisplayed()) {
 			flag=1;
