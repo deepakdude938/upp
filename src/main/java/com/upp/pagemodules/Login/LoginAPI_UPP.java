@@ -26,7 +26,7 @@ public class LoginAPI_UPP {
 				.extract()
 				.response().asString();
 		
-		System.out.println("The login Api response is "+responseLogin);
+	//	System.out.println("The login Api response is "+responseLogin);
    
 		JsonPath js = new JsonPath(responseLogin);
 
