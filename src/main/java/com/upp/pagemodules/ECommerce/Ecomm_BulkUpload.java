@@ -78,10 +78,10 @@ public class Ecomm_BulkUpload extends BaseClass{
 		String tomorrowDate = new DateUtils().getCurrentDate();
 		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"dealRefId", dealId);
 		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"transactionName", transactionName);
-		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"dealRefId", dealId);
-		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"transactionName", transactionName1);
+//		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"dealRefId", dealId);
+//		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"transactionName", transactionName1);
 		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"executeOn", tomorrowDate);
-		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"executeOn", tomorrowDate);
+//		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"executeOn", tomorrowDate);
 		
 		
 	}	

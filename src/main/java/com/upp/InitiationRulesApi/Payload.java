@@ -403,7 +403,8 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.accountNumber", DealPage.AccountNo1);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
-
+		jsonContext.set("$.ultimateDebtor.dealRefId", dealId);
+		
 		String modifiedJsonString = jsonContext.jsonString();
 
 		return modifiedJsonString;

@@ -169,7 +169,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//select[contains(@id,'beneficiaryCountryOfIncorporation')]")
 	public WebElement transactions_beneficiaryIncorporation;
 
-	@FindBy(id = "sel-deals-basicDetails-processingUnit-v1")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
 	public WebElement transactions_beneficiaryaccountNumber;
 
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
@@ -179,6 +179,7 @@ public class Object_Transactions extends BaseClass {
 	public WebElement transactions_addSubInstruction;
 
 	@FindBy(xpath = "(//div[contains(text(),'eComm Executions')])[3]")
+	
 	public WebElement reports_eCommExecutions;
 
 	@FindBy(xpath = "//div[starts-with(text(),'eComm Executions')]")
@@ -330,6 +331,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//td[3]//div[contains(@title,'Name:')]")
 	public WebElement initiatingContact;
 	
+	@FindBy(xpath = "//div[text()='View Contact Details']")
+	public WebElement contactDetails;
+	
 	//Ecomm Payments
 	
 	@FindBy(xpath = "//a[contains(text(),'ECOMMPAYMENT')]")
@@ -340,6 +344,10 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement ecommPayments_PaymentId;
+	
+	@FindBy(xpath = "(//div[@col-id='Status'])[2]")
+	public WebElement ecommPaymentStatus;
+	
 	
 }
 

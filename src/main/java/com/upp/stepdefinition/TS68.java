@@ -44,7 +44,7 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS65 extends BaseClass {
+public class TS68 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
@@ -64,7 +64,7 @@ public class TS65 extends BaseClass {
 	public static String paymentRefId = "";
 	public static DealAccountCreator account;
 
-	public TS65() {
+	public TS68() {
 
 		this.dm = new DashBoard_Module();
 		login = new LoginAPI_ODP();
@@ -80,33 +80,34 @@ public class TS65 extends BaseClass {
 
 	}
 
-	@Given("Add Contextualize in account")
-	public void add_Contextualize_in_account() throws Exception {
-		account.addContextualize();
-	}
-	
-	@Given("Call the Rule_IN_LT Api with given {string} for account Level.")
-	public void call_the_Rule_IN_LT_Api_with_given_for_deal_Level(String string) throws Exception {
-		endToEndIdRule = rule.Rule_IN_LT_System_Level(TS06.dealId, string);
+	@Given("Call the Rule_IN_LT Api with given {string} for Pendding status.")
+	public void call_the_Rule_IN_LT_Api_with_given_for_Pendding_status(String string) throws Exception {
+		endToEndIdRule = rule.Rule_IN_LT_PenddingStatus(TS06.dealId, string);
 		System.out.println(endToEndIdRule);
 	}
 
-	@Then("Verify Status in Ecomm Execution Report with given {string} for accountLevel.")
-	public void verify_Status_in_Ecomm_Execution_Report_with_given_for_dealLevel(String string) throws Exception {
+	@Given("Call the Rule_IN_LT Api for IBFT  with given {string} for Pendding status.")
+	public void call_the_Rule_IN_LT_Api_for_IBFT_with_given_for_Pendding_status(String string) throws Exception {
+		endToEndIdRule = rule.Rule_IN_LT_PenddingStatus(TS06.dealId, string);
+		System.out.println(endToEndIdRule);
+	}
+
+	
+	@Then("Verify Status in Ecomm Execution Report with given {string} for Pendding status.")
+	public void verify_Status_in_Ecomm_Execution_Report_with_given_for_Pendding_status(String string) throws Exception {
 		System.out.println(endToEndIdRule);
 		paymentRefId = report.eCommExecutionsReportCommon(endToEndIdRule);
 	}
 
-	@Then("Get the BatchId from payment refID for accountLevel")
-	public void get_the_BatchId_from_payment_refID_for_dealLevel() throws Exception {
+	@Then("Get the BatchId from payment refID for Pendding status")
+	public void get_the_BatchId_from_payment_refID_for_Pendding_status() throws Exception {
 		batchId = report.getBatchIdFromEcommPayments(paymentRefId);
 		System.out.println("Batch Id = " + batchId);
 	}
 
-	@Given("Verify the Pain File For Rule_IN_LT_AccountLevel")
-	public void verify_the_Pain_File_For_Rule_IN_LT_AccountLevel() {
-		String bID = TS60.batchId;
-		System.out.println("BId = "+bID);
-		rule.verify_Rule_IN_LT_Account_Level_PainFile(bID);
+	@Given("Verify BatchId Status in Ecomm Execution Report with given {string}")
+	public void verify_BatchId_Status_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
+	   report.verify_Rule_IN_LT_PenddingStatus(batchId);
 	}
+
 }

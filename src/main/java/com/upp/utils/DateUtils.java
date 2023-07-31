@@ -137,7 +137,7 @@ public class DateUtils {
 	public static String getCurrentTimeUTC() {
 		LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("UTC"));
 
-		LocalDateTime newDateTime = currentDateTime.plusMinutes(5);
+		LocalDateTime newDateTime = currentDateTime.plusMinutes(1);
 
 		ZonedDateTime zonedDateTime = newDateTime.atZone(ZoneId.of("UTC"));
 

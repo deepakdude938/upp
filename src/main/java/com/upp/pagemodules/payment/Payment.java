@@ -429,6 +429,13 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.payments_ScheduleAt,
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
+		if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
+		
+			String time=dateutil.getTimeAfterMins(5);
+			
+			od.payments_ScheduleTime.clear();
+			od.payments_ScheduleTime.sendKeys(time);
+		}
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 		od.payments_NextArrowButtonTransferSchedule.click();
@@ -456,6 +463,8 @@ public class Payment extends BaseClass{
 
 		if (commonutils.isElementDisplayed(od.Payment_Beneficiaryaccno, 1)) {
 			
+			if(!(TSID.equalsIgnoreCase("TS70"))) {
+			
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
 				scroll.scrollInToView(od.Payment_Beneficiaryaccno);
@@ -468,6 +477,7 @@ public class Payment extends BaseClass{
 				od.Payment_Beneficiaryaccno.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
 				By accno = By.xpath("//div[contains(text(),'" + externalData.getFieldData(TSID, "Scheduled", "to") + "')]");
 				driver.findElement(accno).click();
+			}
 			}
 
 		}
