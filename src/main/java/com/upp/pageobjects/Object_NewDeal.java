@@ -1052,5 +1052,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//select[@id='sel-deals-addUpdateBudget-duration-v1'])[1]")
 	public WebElement budget_duration;
 	
+	@FindBy(xpath="//button[normalize-space()='Yes']")
+	public WebElement deal_Edit_Yes_Button;
+	
 	
 }

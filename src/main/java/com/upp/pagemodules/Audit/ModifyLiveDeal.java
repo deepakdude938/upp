@@ -65,6 +65,10 @@ public class ModifyLiveDeal extends BaseClass {
 		od.dealChecker_showMenu.click();
 		applyExplicitWaitsUntilElementClickable(od.deal_EditIcon, Duration.ofSeconds(20));
 		od.deal_EditIcon.click();
+		if(commonutils.isElementDisplayed(od.deal_Edit_Yes_Button,2))
+		 {
+			 od.deal_Edit_Yes_Button.click();
+		 }
 		applyExplicitWaitsUntilElementClickable(od.parties_icon, Duration.ofSeconds(10));
 		od.parties_icon.click();
 		applyExplicitWaitsUntilElementClickable(od.party_add_plus_icon, Duration.ofSeconds(5));
@@ -76,7 +80,12 @@ public class ModifyLiveDeal extends BaseClass {
 	public void create_payment_with_budget(String TSID, String sourceAccountno, String toAccountNo) throws Exception {
 		
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(10));
-		od.payments_ScheduledInstructionIcon.click();
+		try {
+			od.payments_ScheduledInstructionIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
 		od.payments_GetStarted.click();
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
