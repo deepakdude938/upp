@@ -615,4 +615,18 @@ public class Reports_ExecutionReport extends BaseClass {
 		
 		
 	}
+
+	public void validateScheduledStatusforRecord(String TSID) throws Exception {
+	commonmethodExecReport(TSID,dealId);
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		ArrayList<String> scroeStatus = new ArrayList();
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+
+			scroeStatus.add(iu.getText().trim());
+			Assert.assertEquals(iu.getText().trim(), "Scheduled");
+		}
+		
+	}
 }
