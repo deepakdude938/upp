@@ -163,13 +163,24 @@ public class DealPartiesHandler extends BaseClass {
 		od.parties_ConatctPlusIcon.click();
 		Thread.sleep(1500);
 		applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab, Duration.ofSeconds(10));
-		od.parties_AccountsTab.click();
+		try {
+			od.parties_AccountsTab.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_AccountsTab);
+		}
 		applyExplicitWaitsUntilElementClickable(od.parties_AddAccounts, Duration.ofSeconds(10));
 		od.parties_AddAccounts.click();
 		od.parties_LinkPartyCheckboxIcon.click();
 		od.parties_AccountPlusIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(10));
-		od.parties_DocumentsTab.click();
+		try {
+			od.parties_DocumentsTab.click();
+		
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_DocumentsTab);
+		}
 		applyExplicitWaitsUntilElementClickable(od.parties_AddDocument, Duration.ofSeconds(10));
 		od.parties_AddDocument.click();
 		od.parties_LinkPartyCheckboxIcon.click();

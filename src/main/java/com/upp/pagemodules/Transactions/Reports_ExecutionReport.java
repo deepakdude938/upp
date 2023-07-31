@@ -631,4 +631,24 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	}
 	
+	public void check_Triggered_or_Settled_Status(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		
+		if ((ScroeStatus.equalsIgnoreCase("Triggered"))||(ScroeStatus.equalsIgnoreCase("Settled"))) {
+              
+			System.out.println("Transaction succesfully settled or triggered");
+		}
+		else
+		{
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+
+	}
+
+	
+	
 }

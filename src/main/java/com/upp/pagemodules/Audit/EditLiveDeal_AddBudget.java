@@ -63,6 +63,11 @@ public class EditLiveDeal_AddBudget extends BaseClass {
 		 od.dealChecker_showMenu.click();
 		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
 		 od.deal_EditIcon.click();
+		 if(commonutils.isElementDisplayed(od.deal_Edit_Yes_Button,2))
+		 {
+			 od.deal_Edit_Yes_Button.click();
+		 }
+
 		 Thread.sleep(3000);
 		 
 	}
