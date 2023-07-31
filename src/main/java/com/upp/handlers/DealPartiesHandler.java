@@ -58,9 +58,9 @@ public class DealPartiesHandler extends BaseClass {
 		if (ecommerce.equalsIgnoreCase("Y")) {
 			new EcommerceHandler().handleEcommerce(TSID);
 		} else {
-			od.parties_BasicNextButton.click();
-
+			od.parties_BasicNextButton.click();	
 		}
+		
 		try {
 		od.parties_AddContact.click();
 		}

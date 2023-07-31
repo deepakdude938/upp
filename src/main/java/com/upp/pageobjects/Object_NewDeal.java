@@ -379,6 +379,14 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-generic-partyContacts-getStarted-v1")
 	public WebElement parties_AddContact;
 
+	
+	@FindBy(xpath = "//h2[@class='swal2-title']")
+	public List <WebElement> parties_ConflictErrorMessage;
+	
+	@FindBy(xpath = "//button[@class='swal2-cancel swal2-styled']")
+	public WebElement parties_CreateNewButton;
+	
+	
 	@FindBy(id = "txt-generic-partyContacts-name-v1")
 	public WebElement parties_ContactName;
 
@@ -673,6 +681,9 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id="txt-deals-addUpdateBudget-purpose-v1")
 	public WebElement budget_Purpose;
+	
+	@FindBy(id="btn-deals-addUpdateBudget-card3-v1")
+	public WebElement budget_TypeDestination;
 	
 	
 	@FindBy(xpath="//label[normalize-space()='Budget Carry forward']/following::span[@class='slider round']")
