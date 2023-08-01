@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 
 //				dryRun = true,
 				glue={"com.upp.stepdefinition","com.upp.hooks"},
-//				monochrome=true,tags="@Regression",
+				monochrome=true,tags="@Regression",
 				strict = true,
 				plugin = { "pretty"
 						,"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
