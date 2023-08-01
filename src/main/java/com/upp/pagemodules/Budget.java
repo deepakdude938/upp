@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
 import org.openqa.selenium.By;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.Payload;
@@ -33,7 +34,6 @@ public class Budget extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
-
 
 	public Budget() {
 		od = new Object_NewDeal();
@@ -82,16 +82,14 @@ public class Budget extends BaseClass {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(10));
 		try {
-		od.payments_ScheduledInstructionIcon.click();
-		}
-		catch(Exception e) {
+			od.payments_ScheduledInstructionIcon.click();
+		} catch (Exception e) {
 			handleElementClickException(od.payments_ScheduledInstructionIcon);
 		}
 		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
 		try {
-		od.payments_GetStarted.click();
-		}
-		catch(Exception e) {
+			od.payments_GetStarted.click();
+		} catch (Exception e) {
 			handleElementClickException(od.payments_GetStarted);
 		}
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
@@ -137,8 +135,10 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
 		driver.findElement(excecutionDay).click();
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.payments_ScheduleAt,externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
-		dropdown.selectByVisibleText(od.payments_HolidayAction,externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+		dropdown.selectByVisibleText(od.payments_ScheduleAt,
+				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
+		dropdown.selectByVisibleText(od.payments_HolidayAction,
+				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 		String time = dateutil.getTimeAfterMins(5);
 		od.payments_ScheduleTime.clear();
 		od.payments_ScheduleTime.sendKeys(time);
@@ -150,6 +150,7 @@ public class Budget extends BaseClass {
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
+		System.out.println(budget);
 		od.payments_budgetPurpose.sendKeys(budget);
 		if(!TSID.equals("TS69")) {
 		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
@@ -159,12 +160,14 @@ public class Budget extends BaseClass {
 		}
 		scroll.scrollInToView(od.payments_ToAccountInputBox);
 		od.payments_ToAccountInputBox.sendKeys(toAccountNo);
-		Thread.sleep(1000);		
-		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+		Thread.sleep(1000);
+		By account = By.xpath(
+				"//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
 		driver.findElement(account).click();
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
+		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,
+				externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
 
 		scroll.scrollInToView(od.payments_Amount);
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
@@ -178,13 +181,15 @@ public class Budget extends BaseClass {
 		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
-		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
+		od.parties_Accounts_beneficiaryAddressLine1
+				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		if(isWebElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown)) {
-		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
-		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
+		if (isWebElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown)) {
+			scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
+			od.payments_beneficiaryCountryOfIncorporationDropdown
+					.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
 		}
-		
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
 		od.payments_NextArrowButtonTransferSubInstruction.click();
@@ -210,32 +215,31 @@ public class Budget extends BaseClass {
 		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
 		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
 		Date date = parseFormat.parse(time.replace('.', ':'));
-		String dateAndTime = DateUtils.getDate(0)+"T"+displayFormat.format(date);
+		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
 
 		HashMap odpRecord = new HashMap<>();
 		odpRecord.put("_id", TSID);
 		odpRecord.put("originTcId", TSID);
 		odpRecord.put("dealId", dealID);
 		odpRecord.put("dealRefId", dealRefId);
-		
-		
+
 		HashMap tcDataRecord = new HashMap();
-		tcDataRecord.put("allocatedBudgetAmount",externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
+		tcDataRecord.put("allocatedBudgetAmount", externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		tcDataRecord.put("executionDate", DateUtils.getDate(0));
 		tcDataRecord.put("scheduledTime", time);
 		tcDataRecord.put("utilizedAmount", externalData.getFieldData(TSID, "Scheduled", "Amount"));
-		
+
 		ObjectMapper mapper = new ObjectMapper();
-		 String json = mapper.writeValueAsString(tcDataRecord);
-		
-		 HashMap jsonMap1 = new HashMap();
-		 jsonMap1.put("data", json);
-		 jsonMap1.put("scheduledOnTime",dateAndTime);
-		 odpRecord.put("tcData", jsonMap1);
-		 odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
-		 
-		 System.out.println(odpRecordJson);
-		 
+		String json = mapper.writeValueAsString(tcDataRecord);
+
+		HashMap jsonMap1 = new HashMap();
+		jsonMap1.put("data", json);
+		jsonMap1.put("scheduledOnTime", dateAndTime);
+		odpRecord.put("tcData", jsonMap1);
+		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+
+		System.out.println(odpRecordJson);
+
 		scroll.scrollInToView(od.payments_DealSubmitButton);
 		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
 		od.payments_DealSubmitButton.click();
@@ -249,62 +253,43 @@ public class Budget extends BaseClass {
 	}
 
 	public static void createRecordInOdp(String TSID) throws Exception {
-		
+
 		String base_Url = Property.getProperty("Odp_base_uri");
 
-				RestAssured.baseURI = base_Url;
-				String responseLogin = given()
-						.header("Content-Type", "application/json")
-						.body(Payload.Login()).when()
-						.post("api/a/rbac/login").then()
-						.assertThat().statusCode(200)
-						.extract()
-						.response().asString();
+		RestAssured.baseURI = base_Url;
+		String responseLogin = given().header("Content-Type", "application/json").body(Payload.Login()).when()
+				.post("api/a/rbac/login").then().assertThat().statusCode(200).extract().response().asString();
 
-				JsonPath js = new JsonPath(responseLogin);
-				String token = js.getString("token");
-				String authToken = "JWT " + token;
+		JsonPath js = new JsonPath(responseLogin);
+		String token = js.getString("token");
+		String authToken = "JWT " + token;
 
-				RestAssured.baseURI = base_Url;
-				
-				Response res = given()
-						.header("Content-Type", "application/json")
-						.header("Authorization", authToken).when()
-						.get("api/c/acache/testAutomationAssertions/"+TSID);
-				int statusCode = res.getStatusCode();
-				System.out.println(statusCode);
-				
-				if(statusCode==404) {
-					String response_account = given()
-							.header("Content-Type", "application/json")
-							.header("Authorization", authToken)
-							.body(odpRecordJson).when()
-							.post("api/c/acache/testAutomationAssertions/").then()
-							.assertThat()
-							.statusCode(200).extract()
-							.response().asString();
-				}
-				else {
-					String response_account = given()
-							.header("Content-Type", "application/json")
-							.header("Authorization", authToken)
-							.body(odpRecordJson).when()
-							.put("api/c/acache/testAutomationAssertions/"+TSID).then()
-							.assertThat()
-							.statusCode(200).extract()
-							.response().asString();
-				}
-				
-				RestAssured.baseURI = base_Url;
-				String response_LogOut = given()
-						.header("Content-Type", "application/json")
-						.header("Authorization", authToken)
-						.when().delete("api/a/rbac/logout").then()
-						.assertThat().statusCode(200)
-						.extract().response().asString();
+		RestAssured.baseURI = base_Url;
+
+		Response res = given().header("Content-Type", "application/json").header("Authorization", authToken).when()
+				.get("api/c/acache/testAutomationAssertions/" + TSID);
+		int statusCode = res.getStatusCode();
+		System.out.println(statusCode);
+
+		if (statusCode == 404) {
+			String response_account = given().header("Content-Type", "application/json")
+					.header("Authorization", authToken).body(odpRecordJson).when()
+					.post("api/c/acache/testAutomationAssertions/").then().assertThat().statusCode(200).extract()
+					.response().asString();
+		} else {
+			String response_account = given().header("Content-Type", "application/json")
+					.header("Authorization", authToken).body(odpRecordJson).when()
+					.put("api/c/acache/testAutomationAssertions/" + TSID).then().assertThat().statusCode(200).extract()
+					.response().asString();
+		}
+
+		RestAssured.baseURI = base_Url;
+		String response_LogOut = given().header("Content-Type", "application/json").header("Authorization", authToken)
+				.when().delete("api/a/rbac/logout").then().assertThat().statusCode(200).extract().response().asString();
 	}
-	
-	public void CreateBudget_Consolidated_Yearly(String TSID, String sourceAccountNo, String toAccountNo) throws Exception, IOException {
+
+	public void CreateBudget_Consolidated_Yearly(String TSID, String sourceAccountNo, String toAccountNo)
+			throws Exception, IOException {
 		od.budget_BudgetIcon.click();
 		od.budget_CreateBudget.click();
 		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
@@ -321,8 +306,41 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.budget_consolidated, Duration.ofSeconds(5));
 		od.budget_consolidated.click();
 		applyExplicitWaitsUntilElementClickable(od.budget_interval, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.budget_interval,externalData.getFieldData(TSID, "Budget", "Interval"));
+		dropdown.selectByVisibleText(od.budget_interval, externalData.getFieldData(TSID, "Budget", "Interval"));
 		Thread.sleep(1000);
+		od.budget_duration.sendKeys(externalData.getFieldData(TSID, "Budget", "Year"));
+		applyExplicitWaitsUntilElementClickable(od.budget_allocatedAmount, Duration.ofSeconds(5));
+		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
+		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
+		od.budget_AddButton.click();
+	}
+
+	public void CreateBudget_Purpose_HalfYearly(String TSID, String sourceAccountNo, String toAccountNo)
+			throws Exception, IOException {
+		od.budget_BudgetIcon.click();
+		od.budget_CreateBudget.click();
+		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
+		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
+		Thread.sleep(2000);
+		By sourceAccountNoDropDown = By
+				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
+						+ sourceAccountNo + "')]");
+		applyExplicitWaitsUntilElementVisible(sourceAccountNoDropDown, 10);
+		driver.findElement(sourceAccountNoDropDown).click();
+		od.budget_AddBudget.click();
+		System.out.println("Buget 1st screen ");
+		applyExplicitWaitsUntilElementClickable(od.budget_budgetDetailsAddBudget, Duration.ofSeconds(10));
+		od.budget_budgetDetailsAddBudget.click();
+		applyExplicitWaitsUntilElementClickable(od.budget_purpose, Duration.ofSeconds(5));
+		od.budget_purpose.click();
+		applyExplicitWaitsUntilElementClickable(od.budget_purposetxt, Duration.ofSeconds(5));
+		od.budget_purposetxt.sendKeys(externalData.getFieldData(TSID, "Budget", "Purpose"));
+		applyExplicitWaitsUntilElementClickable(od.budget_interval, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.budget_interval, externalData.getFieldData(TSID, "Budget", "Interval"));
+		Thread.sleep(1000);
+		String halfYearValue = externalData.getFieldData(TSID, "Budget", "Half Year");
+		applyExplicitWaitsUntilElementClickable(od.budget_halfYear, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.budget_halfYear, halfYearValue);
 		od.budget_duration.sendKeys(externalData.getFieldData(TSID, "Budget", "Year"));
 		applyExplicitWaitsUntilElementClickable(od.budget_allocatedAmount, Duration.ofSeconds(5));
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));

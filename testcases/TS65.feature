@@ -1,7 +1,7 @@
 Feature: TS65
 
 @Regression @TS65 @PaymentProfiles
-Scenario Outline: Rule_IN_LT_DealLeavel
+Scenario Outline: Rule_IN_LT_AccountLevel
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
