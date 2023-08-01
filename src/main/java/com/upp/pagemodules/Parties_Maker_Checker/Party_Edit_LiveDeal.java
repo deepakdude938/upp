@@ -9,6 +9,7 @@ import com.upp.handlers.DealPartiesHandler;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pagemodules.DashBoard_Module;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_NewDeal;
@@ -48,6 +49,7 @@ public class Party_Edit_LiveDeal extends BaseClass {
 	public static String productName;
 	public static Object_Parties op;
 	DealPartiesHandler partyHandler = new DealPartiesHandler();
+	CommonUtils util;
 	public Party_Edit_LiveDeal() {
 
 		od = new Object_NewDeal();
@@ -59,6 +61,7 @@ public class Party_Edit_LiveDeal extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		op=new Object_Parties();
+		util=new CommonUtils(driver);
 
 	}
 
@@ -79,14 +82,10 @@ public class Party_Edit_LiveDeal extends BaseClass {
 		 od.dealChecker_showMenu.click();
 		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
 		 od.deal_EditIcon.click();
-		try{
-			Thread.sleep(3000);
-			if(od.edit_Popup.isDisplayed()) {
-				od.linkedInstruction_YesBtn.click();
-			}
-		}catch (Exception e) {
-			System.out.println("Pop up not displayed ");
-		}
+		 if(util.isElementDisplayed(od.deal_Edit_Yes_Button,2))
+		 {
+			 od.deal_Edit_Yes_Button.click();
+		 }
 
 	}
 

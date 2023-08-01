@@ -49,7 +49,7 @@ public class Budget extends BaseClass {
 		od.budget_CreateBudget.click();
 		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
 		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		By sourceAccountNoDropDown = By
 				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
 						+ sourceAccountNo + "')]");
@@ -57,11 +57,17 @@ public class Budget extends BaseClass {
 		driver.findElement(sourceAccountNoDropDown).click();
 		od.budget_AddBudget.click();
 		od.budget_budgetDetailsAddBudget.click();
+		String budgetType = externalData.getFieldData(TSID, "Budget", "Budget-Type");
+		System.out.println(budgetType);
+		if(budgetType.equals("Purpose and Destination")) {
 		od.budget_Purpose.sendKeys(externalData.getFieldData(TSID, "Budget", "Purpose"));
-		Thread.sleep(1000);
-		System.out.println(toAccountNo);
+		}
+		
+		else if(budgetType.equals("Destination")) {
+			od.budget_TypeDestination.click();
+		}
+		
 		od.budget_budgetDestination.sendKeys(toAccountNo);
-
 		By destination = By.xpath("//div[@id='grid-generic-destinationSearch-panelClick-v1']//li[contains(text(),'"
 				+ toAccountNo + "')]");
 		applyExplicitWaitsUntilElementVisible(destination, 10);
@@ -146,12 +152,12 @@ public class Budget extends BaseClass {
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
 		System.out.println(budget);
 		od.payments_budgetPurpose.sendKeys(budget);
-
+		if(!TSID.equals("TS69")) {
 		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
 		applyExplicitWaitsUntilElementVisible(budgetPurpose, 10);
 		driver.findElement(budgetPurpose).click();
-		driver.findElement(
-				By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='Phone Bill']"));
+		driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='Phone Bill']"));
+		}
 		scroll.scrollInToView(od.payments_ToAccountInputBox);
 		od.payments_ToAccountInputBox.sendKeys(toAccountNo);
 		Thread.sleep(1000);
