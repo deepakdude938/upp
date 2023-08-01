@@ -73,7 +73,7 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(destination, 10);
 		driver.findElement(destination).click();
 		dropdown.selectByVisibleText(od.budget_Interval, externalData.getFieldData(TSID, "Budget", "Interval"));
-		dropdown.selectByIndex(od.budget_Duration, 2);
+		dropdown.selectByIndex(od.budget_Duration, 1);
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		od.budget_AddButton.click();
 	}

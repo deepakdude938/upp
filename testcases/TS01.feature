@@ -1,4 +1,4 @@
-Feature: TS01
+Feature: TS01_Deal_TwoAccounts
 
 
 @Regression @TS01

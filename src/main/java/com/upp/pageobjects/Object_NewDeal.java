@@ -510,7 +510,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']")
 	public WebElement payments_ScheduleAt;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1']")
+	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1'] | //select[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']")
 	public WebElement payments_HolidayAction;
 
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
