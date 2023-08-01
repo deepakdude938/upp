@@ -72,7 +72,12 @@ public class DealPartiesHandler extends BaseClass {
 			od.parties_AuthrorizedSignatoryYes.click();
 		}
 		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
-		od.parties_AddButton.click();
+		
+		try {
+			od.parties_AddButton.click();
+		} catch (Exception e) {
+			handleElementClickException(od.parties_AddButton);
+		}
 		try {
 			od.parties_AccountsTab.click();
 		} catch (Exception e) {
@@ -110,7 +115,12 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {
 			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Blueprint, Duration.ofSeconds(5));
-			od.parties_DocumentsType_Blueprint.click();
+			
+			try {
+				od.parties_DocumentsType_Blueprint.click();
+			} catch (Exception e) {
+				handleElementClickException(od.parties_DocumentsType_Blueprint);
+			}
 			dropdown.selectByVisibleText(od.parties_DocumentNature1,
 					externalData.getFieldData(TSID, "Party", "Document Nature"));
 			od.parties_DocumentsAddButton.click();

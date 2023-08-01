@@ -650,5 +650,20 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	
-	
+	public void check_one_Tnx_settled_and_second_Tnx_rejected(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, dealId);
+		System.out.println(dealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		ArrayList<String> scroeStatus = new ArrayList();
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+			scroeStatus.add(iu.getText().trim());
+		}
+		Assert.assertTrue(scroeStatus.contains("Rejected"));
+		Assert.assertTrue(scroeStatus.contains("Settled"));
+		
+
+	}
+
 }
