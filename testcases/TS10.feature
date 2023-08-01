@@ -1,4 +1,4 @@
-Feature: TS10
+Feature: TS10_HolidayAction
 
 
 @Regression @TS10

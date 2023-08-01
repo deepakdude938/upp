@@ -147,10 +147,8 @@ public class Payment extends BaseClass{
 		driver.findElement(excecutionDay).click();
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.payments_ScheduleAt,
-				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
-		dropdown.selectByVisibleText(od.payments_HolidayAction,
-				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+		dropdown.selectByVisibleText(od.payments_ScheduleAt,externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
+		dropdown.selectByVisibleText(od.payments_HolidayAction,externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 		dropdown.selectByValue(od.retention_SelectTimezone, "Asia/Calcutta")	;
 		
 	if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
@@ -278,6 +276,7 @@ public class Payment extends BaseClass{
 		System.out.println(DealPage.sourceAccountNo);
 		System.out.println(DealPage.toaccountNo);
 		od.schedule_IBAN.sendKeys(toAccountNo);
+		Thread.sleep(1000);
 		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
 		driver.findElement(account).click();
 		

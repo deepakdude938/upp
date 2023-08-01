@@ -1,4 +1,4 @@
-Feature: TS19
+Feature: TS19_Contacts Configuration
 
   @Regression @TS19
   Scenario Outline: Contacts Configuration
