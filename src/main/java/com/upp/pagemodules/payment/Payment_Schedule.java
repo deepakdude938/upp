@@ -82,12 +82,30 @@ public class Payment_Schedule extends BaseClass {
 		By excecutionDay = By.xpath(
 				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
 						+ day + "']");
-		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+		
+		Thread.sleep(1000);
+		try {
 		driver.findElement(excecutionDay).click();
+		}
+		catch(Exception e)
+		{
+		if(Integer.parseInt(DateUtils.getDay())>=29)
+		{
+			 excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
+			driver.findElement(excecutionDay).click();
+		}
+		}
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.payments_ScheduleAt,
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
+		if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
+			
+			String time=dateutil.getTimeAfterMins(5);
+			
+			od.payments_ScheduleTime.clear();
+			od.payments_ScheduleTime.sendKeys(time);
+		}
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 		od.payments_NextArrowButtonTransferSchedule.click();
