@@ -49,9 +49,15 @@ public class Holiday extends BaseClass{
 		 hd.configuration_HolidayInputDate.click();
 		 LocalDate now = new LocalDate();
 		 LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
+		 String friday1=friday+"";
+		String today=DateUtils.getDate(0);
 		 String day = (Integer.parseInt(friday.toString().split("[/-]")[2])/1)+"";
 		 System.out.println(day);
 		 By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day+"']");
+		 if(Integer.parseInt(today.split("-")[1])!=Integer.parseInt(friday1.split("-")[1])) {
+			 excecutionDay = By.xpath("//td[contains(@class,today) and contains(@class,'ui-calendar-outFocus')]//a[normalize-space()='"+day+"']");
+		 }
+	
 		 driver.findElement(excecutionDay).click();
 		 String holdayApplicableForInput =  externalData.getFieldData(iD,"Holidays and Holiday Drafts","Applicable For").trim();
 

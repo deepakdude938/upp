@@ -67,8 +67,6 @@ public class Hook extends BaseClass {
 		}
 	
 		driver.close();
-
-
 	}
 	 public static int getPassedCount() {
 	        return passCount;
