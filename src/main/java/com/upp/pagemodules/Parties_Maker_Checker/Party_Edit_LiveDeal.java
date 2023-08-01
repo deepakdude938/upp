@@ -79,6 +79,14 @@ public class Party_Edit_LiveDeal extends BaseClass {
 		 od.dealChecker_showMenu.click();
 		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
 		 od.deal_EditIcon.click();
+		try{
+			Thread.sleep(3000);
+			if(od.edit_Popup.isDisplayed()) {
+				od.linkedInstruction_YesBtn.click();
+			}
+		}catch (Exception e) {
+			System.out.println("Pop up not displayed ");
+		}
 
 	}
 

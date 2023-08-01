@@ -223,8 +223,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		String txn1 = tm.reports_FirstTxnStatus.getText();
 		String txn2 = tm.reports_SecondTxnStatus.getText();
-		System.out.println("Test1"+txn1);
-		System.out.println("Test2"+txn2);
+		System.out.println("Test1" + txn1);
+		System.out.println("Test2" + txn2);
 		Assert.assertEquals(txn1, "HOLD");
 		Assert.assertEquals(txn2, "Scheduled");
 	}
@@ -483,7 +483,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
-		//Assert.assertEquals(status, "Triggered");
+		// Assert.assertEquals(status, "Triggered");
 		String paymentRefId = tm.ecommPaymentLink.getText();
 		System.out.println("The Payment Ref id:" + paymentRefId);
 		return paymentRefId;
@@ -630,5 +630,5 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertEquals(ActualResult, ExcpectedResult);
 
 	}
-	
+
 }

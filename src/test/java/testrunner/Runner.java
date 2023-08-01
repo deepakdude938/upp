@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="./testcases/",
+@CucumberOptions(features="./testcases/TS65.feature",
 
 //				dryRun = true,
 				glue={"com.upp.stepdefinition","com.upp.hooks"},

@@ -1052,5 +1052,18 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//select[@id='sel-deals-addUpdateBudget-duration-v1'])[1]")
 	public WebElement budget_duration;
 	
+	@FindBy(xpath = "//select[@id='sel-deals-addUpdateBudget-duration-v1']")
+	public WebElement budget_halfYear;
+	
+	@FindBy(xpath="//div[@id='btn-deals-addUpdateBudget-card2-v1']")
+	public WebElement budget_purpose;
+	
+	@FindBy(xpath="//input[@id='txt-deals-addUpdateBudget-purpose-v1']")
+	public WebElement budget_purposetxt;
+	
+	
+	@FindBy(xpath = "//h2[@id='swal2-title']")
+	public WebElement edit_Popup;
+	
 	
 }
