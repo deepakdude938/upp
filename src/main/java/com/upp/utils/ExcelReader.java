@@ -76,8 +76,8 @@ public class ExcelReader {
 		return cellData;
 
 	}
-	
-	public String getFieldData(String excelFilePath, String worksheetName, String fieldName,int k)
+
+	public String getFieldData(String excelFilePath, String worksheetName, String fieldName, int k)
 			throws InvalidFormatException, IOException {
 		inputStream = new FileInputStream(excelFilePath);
 		sheet = getWorkBook(excelFilePath).getSheet(worksheetName);
@@ -88,19 +88,18 @@ public class ExcelReader {
 		int column_Number = 0;
 		XSSFCell cell;
 		for (int i = 0; i < row.getLastCellNum(); i++) {
-		
+
 			if (row.getCell(i).getStringCellValue().trim().equals(fieldName)) {
 				column_Number = i;
 			}
-			
+
 			cell = (XSSFCell) sheet.getRow(rowNum).getCell(column_Number);
-		
+
 			if (cell.getCellType() == CellType.STRING) {
 				cellData = cell.getStringCellValue();
 			} else if (cell.getCellType() == CellType.NUMERIC) {
 				cellData = cell.getNumericCellValue() + "";
-			}
-			else if (cell.getCellType() == CellType.FORMULA) {
+			} else if (cell.getCellType() == CellType.FORMULA) {
 				cellData = cell.getNumericCellValue() + "";
 			}
 		}
@@ -121,13 +120,13 @@ public class ExcelReader {
 			Row rowH = sheet.getRow(i);
 			Cell cell = rowH.getCell(0);
 			String cellvalue = null;
-
+		
 			if (cell.getCellType() == CellType.STRING) {
 				cellvalue = cell.getStringCellValue();
 			} else if (cell.getCellType() == CellType.NUMERIC) {
 				cellvalue = cell.getNumericCellValue() + "";
 			}
-
+			
 			if (cellvalue.equalsIgnoreCase(TSID)) {
 				check = false;
 			} else {
@@ -275,7 +274,8 @@ public class ExcelReader {
 		return columnMapdata;
 	}
 
-	public void writeDataToExcel(String fileName, String sheetName, int rownum,String columnHeader, Object data) throws Exception {
+	public void writeDataToExcel(String fileName, String sheetName, int rownum, String columnHeader, Object data)
+			throws Exception {
 		FileInputStream fis = new FileInputStream(fileName);
 		FileOutputStream fos = null;
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
@@ -298,14 +298,15 @@ public class ExcelReader {
 		if (cell == null)
 			cell = row.createCell(col_Num);
 
-		cell.setCellValue((String)data);
+		cell.setCellValue((String) data);
 
 		fos = new FileOutputStream(fileName);
 		workbook.write(fos);
 		fos.close();
 	}
-	public String getFieldData_From_DownloadedExcel(String filename,String TSID, String worksheetName, String fieldName)
-			throws InvalidFormatException, IOException {
+
+	public String getFieldData_From_DownloadedExcel(String filename, String TSID, String worksheetName,
+			String fieldName) throws InvalidFormatException, IOException {
 
 		inputStream = new FileInputStream(filename);
 		sheet = getWorkBook(filename).getSheet(worksheetName);
@@ -329,14 +330,14 @@ public class ExcelReader {
 		return cellData;
 
 	}
-	
-	 public static int getRowCount(String excelFilePath,String sheetName) throws IOException {
-	        FileInputStream fileInputStream = new FileInputStream(new File(excelFilePath));
-	        Workbook workbook = WorkbookFactory.create(fileInputStream);
-	        Sheet sheet = workbook.getSheet(sheetName);
-	        int rowCount = sheet.getLastRowNum() + 1;
-	        workbook.close();
-	        fileInputStream.close();
-	        return rowCount;
-	    }
+
+	public static int getRowCount(String excelFilePath, String sheetName) throws IOException {
+		FileInputStream fileInputStream = new FileInputStream(new File(excelFilePath));
+		Workbook workbook = WorkbookFactory.create(fileInputStream);
+		Sheet sheet = workbook.getSheet(sheetName);
+		int rowCount = sheet.getLastRowNum() + 1;
+		workbook.close();
+		fileInputStream.close();
+		return rowCount;
+	}
 }

@@ -66,7 +66,14 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 		tm.transactions_TransactionIcon.click();
 		tm.transactions_TransactionMaker.click();
 		od.TxnMaker_searchDealId.sendKeys(dealid);
-		od.TxnMaker_txnCheckbox.click();
+		try {
+			od.TxnMaker_txnCheckbox.click();
+		} catch (Exception e) {
+			
+			handleElementClickException(tm.transactions_TransactionMaker);
+			od.TxnMaker_searchDealId.sendKeys(dealid);
+			od.TxnMaker_txnCheckbox.click();
+		}
 		od.TxnMaker_submitBtn.click();
 		od.TxnMaker_okBtn.click();
 		Thread.sleep(3000);

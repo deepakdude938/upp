@@ -60,7 +60,7 @@ public class TS13 extends BaseClass implements ICallback {
 	public void create_a_Transaction_for_Non_Registered_Beneficiary_user_from_Transaction_Maker_with_given(
 			String string) throws Exception {
 		TSID = string;
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string, DealPage.dealId, DealPage.toaccountNo);
+		tm_BasicDetails.Transactions_Maker_BasicDetails1(string, DealPage.dealId, DealPage.toaccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(TSID, this);
 		tm_sub.Non_Registered_Beneficiary(toaccountNumber);
 		tm_doc.Transactions_Maker_Documents(string);

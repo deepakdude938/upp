@@ -319,8 +319,11 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2] | (//input[@ref='eFloatingFilterText'])[5]")
 	public WebElement reports_End_To_End_common;
 	
+	@FindBy(xpath = "//label[contains(@class,'instruction_icon sidemenu_icon')]")
+	public WebElement transactions_TransactionIcon1;
 	
-	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
+	public WebElement transactions_SourceAccNo1;
 	
 	//Entitlements 
 	
