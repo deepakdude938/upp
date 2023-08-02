@@ -15,7 +15,7 @@ Then Edit the Live deal and add Existing Party with given "<TSID>"
 And Add a Transaction using Payment with the updated deal with given "<TSID>"
 Then submit the deal
 Then approve the deal from the deal checker common method
-#Then logout of the application
+Then logout of the application
 Examples:
       |TSID   |
       |TS09   |
