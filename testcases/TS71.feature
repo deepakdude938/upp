@@ -1,4 +1,4 @@
-Feature: TS69_Budget_Purpose_HalfYearly
+Feature: TS71_Budget_Purpose_HalfYearly
 
 @Regression @TS71
 Scenario Outline: Budget_Purpose_HalfYearly
