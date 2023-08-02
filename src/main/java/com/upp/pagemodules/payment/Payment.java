@@ -519,7 +519,9 @@ public class Payment extends BaseClass{
 		}
 
 		od.payments_AddSubInstructionButton.click();
+		Thread.sleep(1500);
 		od.payments_NextArrowButtonTransferSubInstruction.click();
+		Thread.sleep(1000);
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))) {
