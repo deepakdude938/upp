@@ -3,6 +3,7 @@ package com.upp.pagemodules;
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -18,11 +19,15 @@ import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
+import com.upp.utils.JavascriptClick;
 import com.upp.utils.Property;
 import com.upp.utils.ScrollTypes;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.testng.Assert;
+
+
 
 public class Budget extends BaseClass {
 
@@ -34,6 +39,7 @@ public class Budget extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
+	JavascriptClick js;
 
 	public Budget() {
 		od = new Object_NewDeal();
@@ -42,6 +48,7 @@ public class Budget extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		commonutils = new CommonUtils(driver);
+		js=new JavascriptClick(driver);
 	}
 
 	public void createBudget(String TSID, String sourceAccountNo, String toAccountNo) throws Exception, IOException {
@@ -73,7 +80,7 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(destination, 10);
 		driver.findElement(destination).click();
 		dropdown.selectByVisibleText(od.budget_Interval, externalData.getFieldData(TSID, "Budget", "Interval"));
-		dropdown.selectByIndex(od.budget_Duration, 2);
+		dropdown.selectByIndex(od.budget_Duration, 1);
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		od.budget_AddButton.click();
 	}
@@ -314,6 +321,85 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
 		od.budget_AddButton.click();
 	}
+	
+	public void Edit_Deal_And_Verify_Utilized_Budget(String TSID,String DealID) throws Exception
+	{
+		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
+		 od.deal_SideMenuIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.liveDealIcon,Duration.ofSeconds(15));
+		 od.liveDealIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
+		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
+		 od.dealChecker_searchBar.sendKeys(DealID);
+		 Thread.sleep(4000);
+		 od.dealChecker_searchButton.click();
+		 Thread.sleep(3000);
+		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
+		 od.dealChecker_showMenu.click();
+		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
+		 od.deal_EditIcon.click();
+		 if(commonutils.isElementDisplayed(od.deal_Edit_Yes_Button,2))
+		 {
+			 od.deal_Edit_Yes_Button.click();
+		 }
+				 
+		 if(commonutils.isElementDisplayed(od.AlreadyExistPopup,2))
+		 {
+			 applyExplicitWaitsUntilElementClickable(od.account_OK_Button,Duration.ofSeconds(15));
+			 od.account_OK_Button.click();
+			 try {
+				 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
+				 od.deal_SideMenuIcon.click();
+			 }
+			 catch(Exception e) {
+					handleElementClickException(od.deal_SideMenuIcon);
+			     }
+			 
+			 applyExplicitWaitsUntilElementClickable(od.DealDraftsIcon,Duration.ofSeconds(15));
+			 od.DealDraftsIcon.click();
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
+			 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
+			 od.dealChecker_searchBar.sendKeys(DealID);
+			 Thread.sleep(4000);
+			 od.dealChecker_searchButton.click();
+			 Thread.sleep(3000);
+			 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
+			 od.dealChecker_showMenu.click();
+			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
+			 od.DealDraftsOpen.click();
+			 
+		 }
+		 applyExplicitWaitsUntilElementClickable(od.budget_BudgetIcon,Duration.ofSeconds(20));
+		
+		 try {
+			 od.budget_BudgetIcon.click();
+		 }
+		catch(Exception e) {
+			handleElementClickException( od.budget_BudgetIcon);
+	     }
+		 
+		 By Budget=By.xpath("//div[@title='"+TSID+"']");
+		 applyExplicitWaitsUntilElementVisible(Budget,10);
+		 driver.findElement(Budget).click();
+		 
+		 By AllocatedBudgetAmount=By.cssSelector("td[class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted']");
+		 applyExplicitWaitsUntilElementVisible(AllocatedBudgetAmount,10);
+		 js.click(driver.findElement(AllocatedBudgetAmount));
+		 Thread.sleep(2000);
+		 
+		String Utilized_Budget= od.Utilized_Budget_Amount.getText();
+		System.out.println(Utilized_Budget);
+		String UtilizedBudgetINR[]=Utilized_Budget.split("₹");
+		double d=  Double.parseDouble(UtilizedBudgetINR[1]);
+		int Actualamount=(int) d;
+	
+		double ExpectedAmountdouble=Double.parseDouble(externalData.getFieldData(TSID, "Scheduled", "Amount"));
+		int ExpectedAmountint=(int) ExpectedAmountdouble;
+		
+		Assert.assertEquals(Actualamount, ExpectedAmountint, "Utilized Budget amount is different");
+	} 
 
 	public String CreateBudget_Purpose_HalfYearly(String TSID, String sourceAccountNo, String toAccountNo)
 			throws Exception, IOException {

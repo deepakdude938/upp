@@ -17,4 +17,9 @@ public class TS69 {
 	public void validate_in_execution_report_for_scheduled_record(String tsid) throws Exception {
 	   re.validateScheduledStatusforRecord(tsid);
 	}
+	
+	@Then("Validate status in execution report {string}")
+	public void validate_status_in_execution_report(String string) {
+	   
+	}
 }

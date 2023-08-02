@@ -1,4 +1,4 @@
-Feature: TS15
+Feature: TS15_Payment-Surplus
 
 
 @Regression @TS15

@@ -1,4 +1,4 @@
-Feature: TS05
+Feature: TS05_Budget and Payments
 
 
 @Regression @TS05
@@ -12,6 +12,7 @@ And Create a Budget with given "<TSID>"
 And Create Payments in the Scheduled Instructions with given "<TSID>"
 And Create record in ODP "<TSID>"
 Then Approve the deal from the deal checker
+Then Validate in execution report for scheduled record "<TSID>"
 Examples:
       |TSID|
       |TS05|

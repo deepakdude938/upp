@@ -45,12 +45,17 @@ public class Payment_SubInstruction extends BaseClass {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 
-		od.payments_Instrument.click();
-
+		
+		try {
+			od.payments_Instrument.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_Instrument);
+		}
+        Thread.sleep(500);
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
-		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 1)) {
+		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 2)) {
 
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
@@ -66,6 +71,7 @@ public class Payment_SubInstruction extends BaseClass {
 		}
 
 		if (commonutils.isElementDisplayed(od.Payment_Beneficiaryaccno, 1)) {
+			if(!(TSID.equalsIgnoreCase("TS70"))) {
 
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
@@ -81,7 +87,7 @@ public class Payment_SubInstruction extends BaseClass {
 						.xpath("//div[contains(text(),'" + externalData.getFieldData(TSID, "Scheduled", "to") + "')]");
 				driver.findElement(accno).click();
 			}
-
+			}
 		}
 		if (commonutils.isElementDisplayed(od.payments_beneficiaryBankBic, 1)) {
 			scroll.scrollInToView(od.payments_beneficiaryBankBic);

@@ -510,7 +510,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']")
 	public WebElement payments_ScheduleAt;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1']")
+	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1'] | //select[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']")
 	public WebElement payments_HolidayAction;
 
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
@@ -1078,5 +1078,18 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//button[normalize-space()='Yes']")
 	public WebElement deal_Edit_Yes_Button;
 	
+	@FindBy(xpath="(//span[@id='lbl-deals-addUpdateBudget-availableAmount-v1'])[2]")
+	public WebElement Utilized_Budget_Amount;
 	
+	@FindBy(id="txt-deals-addUpdateBudget-available-v1")
+	public WebElement Available_Budget_Amount;
+	
+	@FindBy(xpath="//h2[normalize-space()='WorkItem already exists']")
+	public WebElement AlreadyExistPopup;
+	
+	@FindBy(xpath="//a[normalize-space()='Deal Drafts']")
+	public WebElement DealDraftsIcon;
+	
+	@FindBy(xpath="//div[normalize-space()='open']")
+	public WebElement DealDraftsOpen;
 }
