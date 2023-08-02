@@ -1,4 +1,4 @@
-Feature: TS20 Payment Retention Surplus
+Feature: TS20_Payment Retention Surplus
 
 
 @Regression @TS20

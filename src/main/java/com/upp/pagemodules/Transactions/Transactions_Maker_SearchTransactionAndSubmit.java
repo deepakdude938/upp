@@ -28,10 +28,11 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
+
 public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 
 	public static Object_NewDeal od;
-	public static  Object_Transactions tm;
+	public static Object_Transactions tm;
 //	public static Properties prop;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
@@ -44,7 +45,7 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
-	
+
 	public Transactions_Maker_SearchTransactionAndSubmit() {
 
 		od = new Object_NewDeal();
@@ -55,23 +56,20 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
-		tm=new Object_Transactions();
+		tm = new Object_Transactions();
 
 	}
 
-	
 	public void txnMaker_SubmitDeal(String dealid) throws Exception {
 		System.out.println("deal id in maker = " + dealid);
 		TimeUnit.MINUTES.sleep(waitingTime);
 		tm.transactions_TransactionIcon.click();
 		tm.transactions_TransactionMaker.click();
-
 		od.TxnMaker_searchDealId.sendKeys(dealid);
-
 		od.TxnMaker_txnCheckbox.click();
 		od.TxnMaker_submitBtn.click();
 		od.TxnMaker_okBtn.click();
-
+		Thread.sleep(3000);
 	}
 
 }

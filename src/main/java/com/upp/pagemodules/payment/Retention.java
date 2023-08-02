@@ -84,6 +84,9 @@ public class Retention extends BaseClass{
 		driver.findElement(excecutionDay).click();
 		System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Schedule At"));
 		dropdown.selectByVisibleText(od.retention_ScheduleAt,externalData.getFieldData(TSID, "PaymentRetention", "Schedule At"));
+		System.out.println(externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+		dropdown.selectByVisibleText(od.payments_HolidayAction,externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+
 		String time = DateUtils.getTimeAfterMins(5);
 		od.retention_ScheduleTime.clear();
 		od.retention_ScheduleTime.sendKeys(time);
@@ -151,7 +154,6 @@ public class Retention extends BaseClass{
 						.header("Authorization", authToken).when()
 						.get("api/c/acache/testAutomationAssertions/"+TSID);
 				int statusCode = res.getStatusCode();
-				System.out.println(statusCode+"++++");
 				
 				RestAssured.baseURI = base_Url;
 				String response_account = given()

@@ -1,4 +1,4 @@
-Feature: TS02
+Feature: TS02_Deal_Account_Party
 
 
 @Regression @TS02

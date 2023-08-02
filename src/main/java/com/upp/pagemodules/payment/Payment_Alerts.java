@@ -66,6 +66,7 @@ public class Payment_Alerts extends BaseClass {
 		op.Alerts_contactCheckBox.click();
 		op.Alerts_contactUpdate.click();
 		op.Alerts_basicDetailsNext.click();
+		Thread.sleep(4000);
 		op.Alerts_startsDate.click();
 		op.Alerts_todaysDate.click();
 		op.Alerts_Frequency.click();
@@ -77,8 +78,11 @@ public class Payment_Alerts extends BaseClass {
 		Thread.sleep(4000);
 		op.Alerts_scheduleAt.click();
 		dropdown.selectByVisibleText(op.Alerts_scheduleAt, "At specific time");
-		op.Alerts_scheduleTime.sendKeys("11:30AM");
+		String time1 = DateUtils.getCurrentTimeUTC();
+		op.Alerts_scheduleTime.sendKeys(time1);
+		Thread.sleep(4000);
 		op.Alerts_nextBtn.click();
+		Thread.sleep(4000);
 		}
 
 }

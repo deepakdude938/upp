@@ -422,8 +422,10 @@ public class DashBoard_Module extends BaseClass {
 //		String deal;
 		DealPartiesCreator creator = new DealPartiesCreator();
 		creator.createParties(TSID, icallback);
+		Thread.sleep(3000);
 		od.accountBackbtn.click();
 		creator.createParties(Party_id, icallback);
+		Thread.sleep(4000);
 		dealId = submitDeal();
 		approveDealFromDealChecker(dealId);
 		return dealId;

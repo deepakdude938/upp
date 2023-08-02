@@ -69,6 +69,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_purpose.sendKeys(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
 		dropdown.selectByVisibleText(ecomm.ecommerce_purpose,
 				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(3000);
 		ecomm.ecommerce_participantAccount.click();
 		ecomm.ecommerce_firstParticipantAccount.click();
 		dropdown.selectByVisibleText(ecomm.ecommerce_balanceConsideration,
