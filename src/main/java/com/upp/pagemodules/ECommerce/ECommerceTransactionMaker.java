@@ -78,7 +78,11 @@ public class ECommerceTransactionMaker extends BaseClass {
 	}
 
 	public void addSubInstructionToEcommerceTxn(String TSID) throws Exception {
-		ecomm.ecommerce_creatorParticipant.click();
+		try {
+			ecomm.ecommerce_creatorParticipant.click();
+		} catch (Exception e) {
+			handleElementClickException(ecomm.ecommerce_creatorParticipant);
+		}
 		ecomm.ecommerce_creatorParticipantIdOpt.click();
 		Select creatorAcc = new Select(ecomm.ecommerce_creatorAccount);
 		creatorAcc.selectByIndex(1);
@@ -127,5 +131,4 @@ public class ECommerceTransactionMaker extends BaseClass {
 
 	}
 
-	
 }
