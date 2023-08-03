@@ -55,6 +55,16 @@ public class Payment_SubInstruction extends BaseClass {
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
+		
+		if(TSID.equalsIgnoreCase("TS72")) {
+		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
+		System.out.println(budget);
+		od.payments_budgetPurpose.sendKeys(budget);
+		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
+		applyExplicitWaitsUntilElementVisible(budgetPurpose, 10);
+		driver.findElement(budgetPurpose).click();
+		}
+		
 		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 2)) {
 
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
@@ -71,7 +81,7 @@ public class Payment_SubInstruction extends BaseClass {
 		}
 
 		if (commonutils.isElementDisplayed(od.Payment_Beneficiaryaccno, 1)) {
-			if(!(TSID.equalsIgnoreCase("TS70"))) {
+			if(!((TSID.equalsIgnoreCase("TS70")) || (TSID.equalsIgnoreCase("TS72")))) {
 
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
@@ -129,6 +139,6 @@ public class Payment_SubInstruction extends BaseClass {
 		}
 
 		od.payments_AddSubInstructionButton.click();
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 	}
 }
