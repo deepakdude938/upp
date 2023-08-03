@@ -44,10 +44,12 @@ public class TS70 extends BaseClass {
 	public void verify_Tnx_Status_as_Triggered_with_given(String string) throws Exception {
 	    report.check_Triggered_or_Settled_Status(string,dealId);
 	}
+	
 	@Then("Verify in Budget tab Utilized Budget Amount with given {string}")
 	public void verify_in_Budget_tab_Utilized_Budget_Amount_and_Available_Budget_Amount(String string) throws Exception {
 	   budget.Edit_Deal_And_Verify_Utilized_Budget(string, dealId);
 	}
+	
 	@Then("Verify in Report that one Transaction is Settled and the other is Rejected with given {string}")
 	public void verify_in_Report_that_one_Transaction_is_Settled_and_the_other_is_Rejected(String string) throws Exception {
 		report.check_one_Tnx_settled_and_second_Tnx_rejected(string, dealId);

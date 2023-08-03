@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 public class JavascriptClick {
 
 	private static WebDriver driver;
@@ -37,5 +38,10 @@ public class JavascriptClick {
 		js.executeScript("arguments[0].setAttribute('style', 'background: yellow;');", element);
 	}
 
+	public String 	getText(WebElement element) {
+	
+		return (String) javascriptExecutor.executeScript("return arguments[0].textContent;", element);
+		
+	}
 	
 }

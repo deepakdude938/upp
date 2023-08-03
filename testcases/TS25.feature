@@ -1,4 +1,4 @@
-Feature: TS25
+Feature: TS25_Product Config
 
 
 @Regression @TS25
