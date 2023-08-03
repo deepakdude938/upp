@@ -562,5 +562,61 @@ public class Budget extends BaseClass {
 		int expectedAvailableBudget =(int) ( allocatedAmount- expectedAmount);
 		Assert.assertEquals(actualAvailableBudgetAmount, expectedAvailableBudget);
 		
+	public void CreateBudget_Purpose_And_Destination_With_DateRange(String TSID, String sourceAccountNo, String toAccountNo)
+			throws Exception, IOException {
+		od.budget_BudgetIcon.click();
+		od.budget_CreateBudget.click();
+		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
+		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
+		By sourceAccountNoDropDown = By
+				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
+						+ sourceAccountNo + "')]");
+		applyExplicitWaitsUntilElementVisible(sourceAccountNoDropDown, 10);
+		driver.findElement(sourceAccountNoDropDown).click();
+		Thread.sleep(500);
+		od.budget_AddBudget.click();
+		applyExplicitWaitsUntilElementClickable(od.budget_budgetDetailsAddBudget, Duration.ofSeconds(10));
+		od.budget_budgetDetailsAddBudget.click();
+		String budgetType = externalData.getFieldData(TSID, "Budget", "Budget-Type");
+		System.out.println(budgetType);
+		if(budgetType.equals("Purpose and Destination")) {
+		od.budget_Purpose.sendKeys(externalData.getFieldData(TSID, "Budget", "Purpose"));
+		}
+		od.budget_budgetDestination.sendKeys(toAccountNo);
+		By destination = By.xpath("//div[@id='grid-generic-destinationSearch-panelClick-v1']//li[contains(text(),'"
+				+ toAccountNo + "')]");
+		applyExplicitWaitsUntilElementVisible(destination, 10);
+		driver.findElement(destination).click();
+		applyExplicitWaitsUntilElementClickable(od.budget_interval, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.budget_interval, externalData.getFieldData(TSID, "Budget", "Interval"));
+		Thread.sleep(1000);
+		
+		applyExplicitWaitsUntilElementClickable(od.budget_allocatedAmount, Duration.ofSeconds(5));
+		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
+		Thread.sleep(1000);
+		
+		od.StartsOn.click();
+		Thread.sleep(1000);
+		String Startday = dateutil.getDay();
+		By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+ Startday + "']");
+		driver.findElement(excecutionDay).click();
+		
+		od.EndsOn.click();
+		Thread.sleep(1000);
+		By endDate = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+ 30 + "']");
+		driver.findElement(endDate).click();
+		
+		
+		
+		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
+		od.budget_AddButton.click();
+		 try {
+			 od.budget_AddButton.click();
+		 }
+		catch(Exception e) {
+			handleElementClickException( od.budget_AddButton);
+	     }
+		 //Taking too much time manually also to add the budget
+		 Thread.sleep(7000);
 	}
 }

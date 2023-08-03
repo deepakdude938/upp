@@ -36,9 +36,9 @@ public class TS70 extends BaseClass {
 		budget.CreateBudget_Consolidated_Yearly(string, DealPage.sourceAccountNo, DealPage.toaccountNo);
 	}
 
-	@Then("Create odp json payload file for TS70 with given {string}")
+	@Then("Create odp json payload file for Budget with given {string}")
 	public void create_odp_json_payload_file_for_TS70_with_given(String string) throws Exception {
-		payload.Odp_Json_for_TS70(string);
+		payload.Odp_Json_for_Budget(string);
 	}
 	@Then("Verify Tnx Status as Triggered or settled with given {string}")
 	public void verify_Tnx_Status_as_Triggered_with_given(String string) throws Exception {

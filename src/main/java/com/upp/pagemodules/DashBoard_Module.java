@@ -427,7 +427,7 @@ public class DashBoard_Module extends BaseClass {
 		creator.createParties(Party_id, icallback);
 		Thread.sleep(4000);
 		dealId = submitDeal();
-		approveDealFromDealChecker(dealId);
+		approveDealFromDealChecker_Old(dealId);
 		return dealId;
 	}
 }
