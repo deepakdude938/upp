@@ -1,4 +1,4 @@
-Feature: TS30 - Party_EnrichDebtor
+Feature: TS30_Party_EnrichDebtor
 
 
 @Regression @TS30 @InitiationRules
