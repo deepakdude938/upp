@@ -9,6 +9,9 @@ And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create a Budget with given "<TSID>"
 And Create Payments in the Scheduled Instructions with given "<TSID>"
+And Create Payments in the Scheduled Instructions with given "TS69_1"
+And Create payload file for ODP record "<TSID>"
+And Submit the deal
 And Create record in ODP "<TSID>"
 Then Approve the deal from the deal checker
 Then Validate in execution report for scheduled record "<TSID>"

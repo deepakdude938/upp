@@ -45,6 +45,11 @@ public class TS05 extends BaseClass  implements ICallback{
 
 	}
 	
+	@Then("Create payload file for ODP record {string}")
+	public void create_payload_file_for_ODP_record(String string) throws Exception {
+		dm.createPayloadFile(string);
+	}
+	
 	@Then("Create record in ODP {string}")
 	public void create_record_in_ODP(String TSID) throws Exception {
 	 dm.createRecordInOdp(TSID);
