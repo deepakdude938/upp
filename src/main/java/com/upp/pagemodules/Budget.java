@@ -3,6 +3,7 @@ package com.upp.pagemodules;
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -34,6 +35,7 @@ public class Budget extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
+	public String executiontime ;
 
 	public Budget() {
 		od = new Object_NewDeal();
@@ -86,11 +88,11 @@ public class Budget extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(od.payments_ScheduledInstructionIcon);
 		}
-		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_AddInstruction, Duration.ofSeconds(5));
 		try {
-			od.payments_GetStarted.click();
+			od.payments_AddInstruction.click();
 		} catch (Exception e) {
-			handleElementClickException(od.payments_GetStarted);
+			handleElementClickException(od.payments_AddInstruction);
 		}
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
 		By InstructionButton = By
@@ -139,9 +141,9 @@ public class Budget extends BaseClass {
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
-		String time = dateutil.getTimeAfterMins(5);
+		 executiontime = dateutil.getTimeAfterMins(5);
 		od.payments_ScheduleTime.clear();
-		od.payments_ScheduleTime.sendKeys(time);
+		od.payments_ScheduleTime.sendKeys(executiontime);
 		String t = od.linkedInstruction_Executiondate.getText();
 		od.payments_NextArrowButtonTransferSchedule.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(20));
@@ -152,7 +154,7 @@ public class Budget extends BaseClass {
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
 		System.out.println(budget);
 		od.payments_budgetPurpose.sendKeys(budget);
-		if(!TSID.equals("TS69")) {
+		if(TSID.equals("TS05")) {
 		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
 		applyExplicitWaitsUntilElementVisible(budgetPurpose, 10);
 		driver.findElement(budgetPurpose).click();
@@ -210,43 +212,6 @@ public class Budget extends BaseClass {
 		od.payments_DealsummaryIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
 		String dealRefId = od.deals_SummaryRefId.getText();
-		String url = driver.getCurrentUrl();
-		String dealID = url.split("[/]")[url.split("/").length - 1];
-		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
-		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
-		Date date = parseFormat.parse(time.replace('.', ':'));
-		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
-
-		HashMap odpRecord = new HashMap<>();
-		odpRecord.put("_id", TSID);
-		odpRecord.put("originTcId", TSID);
-		odpRecord.put("dealId", dealID);
-		odpRecord.put("dealRefId", dealRefId);
-
-		HashMap tcDataRecord = new HashMap();
-		tcDataRecord.put("allocatedBudgetAmount", externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
-		tcDataRecord.put("executionDate", DateUtils.getDate(0));
-		tcDataRecord.put("scheduledTime", time);
-		tcDataRecord.put("utilizedAmount", externalData.getFieldData(TSID, "Scheduled", "Amount"));
-
-		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(tcDataRecord);
-
-		HashMap jsonMap1 = new HashMap();
-		jsonMap1.put("data", json);
-		jsonMap1.put("scheduledOnTime", dateAndTime);
-		odpRecord.put("tcData", jsonMap1);
-		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
-
-		System.out.println(odpRecordJson);
-
-		scroll.scrollInToView(od.payments_DealSubmitButton);
-		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
-		od.payments_DealSubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
-		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
-		od.payments_DealOkButton.click();
 
 		return dealRefId;
 
@@ -346,5 +311,42 @@ public class Budget extends BaseClass {
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
 		od.budget_AddButton.click();
+	}
+
+	public void createPayloadFile(String TSID) throws Exception {
+		
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
+//		od.payments_DealsummaryIcon.click();
+//		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
+		String dealRefId = od.deals_SummaryRefId.getText();
+		String url = driver.getCurrentUrl();
+		String dealID = url.split("[/]")[url.split("/").length - 1];
+		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+		Date date = parseFormat.parse(executiontime.replace('.', ':'));
+		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
+
+		HashMap odpRecord = new HashMap<>();
+		odpRecord.put("_id", TSID);
+		odpRecord.put("originTcId", TSID);
+		odpRecord.put("dealId", dealID);
+		odpRecord.put("dealRefId", dealRefId);
+
+		HashMap tcDataRecord = new HashMap();
+		tcDataRecord.put("allocatedBudgetAmount", externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
+		tcDataRecord.put("executionDate", DateUtils.getDate(0));
+		tcDataRecord.put("scheduledTime", executiontime);
+		tcDataRecord.put("utilizedAmount", externalData.getFieldData(TSID, "Scheduled", "Amount"));
+
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(tcDataRecord);
+
+		HashMap jsonMap1 = new HashMap();
+		jsonMap1.put("data", json);
+		jsonMap1.put("scheduledOnTime", dateAndTime);
+		odpRecord.put("tcData", jsonMap1);
+		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+
+		System.out.println(odpRecordJson);
 	}
 }

@@ -1,10 +1,11 @@
 package com.upp.stepdefinition;
 
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 
 import io.cucumber.java.en.Then;
 
-public class TS69 {
+public class TS69 extends BaseClass{
 
 	public Reports_ExecutionReport re;
 	
@@ -19,7 +20,7 @@ public class TS69 {
 	}
 	
 	@Then("Validate status in execution report {string}")
-	public void validate_status_in_execution_report(String string) {
-	   
+	public void validate_status_in_execution_report(String string) throws Exception {
+		 re.check_Triggered_or_Settled_Status(string,dealId);
 	}
 }
