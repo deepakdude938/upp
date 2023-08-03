@@ -1092,4 +1092,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="//div[normalize-space()='open']")
 	public WebElement DealDraftsOpen;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-datePicker-input-v1'])[1]")
+	public WebElement StartsOn;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-datePicker-input-v1'])[2]")
+	public WebElement EndsOn;
 }
