@@ -41,7 +41,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 	public static int rowNum;
 	public static OdpApi odpAccount;
 	public static AccountDetails accDetails;
-	
+
 	public static JavascriptClick jsClick;
 	public static int waitingTime = 4;
 	public static DateUtils dateutil;
@@ -60,11 +60,11 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 
 	}
 
-	public void bulkUpload(String srcAcc, String desAcc,String time) throws Exception {
+	public void bulkUpload(String srcAcc, String desAcc, String time) throws Exception {
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 		String uniqueTransactionName = "tran" + random;
-		
+
 		String uniqueTransactionName2 = "transaction1" + random;
 		String excelFilePath = System.getProperty("user.dir")
 				+ "//src//main//resources//Bulk_ConventionalTransactions_File.xlsx";
@@ -120,8 +120,14 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		if (count > 0) {
 			tm.transactionMaker_nextBtn.click();
 			Thread.sleep(5000);
-			tm.transactionMaker_allRecord.click();
-			tm.transactionMaker_submit.click();
+			try {
+				tm.transactionMaker_allRecord.click();
+				tm.transactionMaker_submit.click();
+			} catch (Exception e) {
+				handleElementClickException(tm.transactionMaker_allRecord);
+				handleElementClickException(tm.transactionMaker_submit);
+			}
+
 		}
 		tm.transactions_Ok.click();
 		Thread.sleep(5000);
@@ -144,11 +150,16 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		Thread.sleep(6000);
 		tm.transactionMaker_messageOk.click();
 		Thread.sleep(3000);
-		tm.transactionMaker_submit.click();
+		try {
+			tm.transactionMaker_submit.click();
+		} catch (Exception e) {
+			handleElementClickException(tm.transactionMaker_submit);
+		}
+
 		tm.transactions_YesButton.click();
 		tm.transactions_Ok.click();
 	}
-	
+
 	public void approveAllTransactionByVerifier(String dealId) throws Exception {
 //		TimeUnit.MINUTES.sleep(5);
 //		driver.navigate().refresh();

@@ -13,6 +13,7 @@ Then submit the deal
 #Then Login to the application as "txn_checker"
 Then approve the deal from the deal checker common method
 #Then logout of the application
+And Check the Transaction staus in execution report with given "<TSID>"
 Examples:
       |TSID   |
       |TS03   |

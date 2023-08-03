@@ -17,7 +17,7 @@ And Add a Transaction using Payment with the updated deal with given "<TSID>"
 Then submit the deal
 Then approve the deal from the deal checker common method
 And Verify that Party Api got addded in the live deal
-#Then logout of the application
+Then logout of the application
 Examples:
       |TSID   |
       |TS11   |
