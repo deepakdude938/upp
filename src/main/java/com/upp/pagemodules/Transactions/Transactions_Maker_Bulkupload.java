@@ -143,13 +143,24 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		Thread.sleep(8000);
 		tm.transactionMaker_dealSearch.sendKeys(dealId);
 		Thread.sleep(5000);
-		tm.transactionMaker_allRecord.click();
-		tm.transactionMaker_message.click();
-		Thread.sleep(2000);
-		od.dealChecker_addNote.sendKeys("Ok approve");
-		Thread.sleep(6000);
-		tm.transactionMaker_messageOk.click();
-		Thread.sleep(3000);
+		try {
+			tm.transactionMaker_allRecord.click();
+			tm.transactionMaker_message.click();
+			Thread.sleep(2000);
+			od.dealChecker_addNote.sendKeys("Ok approve");
+			Thread.sleep(6000);
+			tm.transactionMaker_messageOk.click();
+			Thread.sleep(3000);
+		} catch (Exception e) {
+			handleElementClickException(tm.transactionMaker_allRecord);
+			handleElementClickException(tm.transactionMaker_message);
+			Thread.sleep(2000);
+			od.dealChecker_addNote.sendKeys("Ok approve");
+			Thread.sleep(6000);
+			tm.transactionMaker_messageOk.click();
+			Thread.sleep(3000);
+		}
+		
 		try {
 			tm.transactionMaker_submit.click();
 		} catch (Exception e) {
@@ -170,13 +181,23 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		Thread.sleep(8000);
 		tm.transactionMaker_dealSearch.sendKeys(dealId);
 		Thread.sleep(5000);
+		try {
 		tm.transactionMaker_allRecord.click();
 		tm.transactionMaker_message.click();
 		od.dealChecker_addNote.sendKeys("Ok approve");
 		Thread.sleep(3000);
 		tm.transactionMaker_messageOk.click();
 		Thread.sleep(3000);
+		}catch(Exception e) {
+			handleElementClickException(tm.transactionMaker_allRecord);
+			handleElementClickException(tm.transactionMaker_message);
+			od.dealChecker_addNote.sendKeys("Ok approve");
+			Thread.sleep(3000);
+			tm.transactionMaker_messageOk.click();
+			Thread.sleep(3000);
+		}
 		tm.transactionMaker_submit.click();
+		Thread.sleep(3000);
 		tm.transactions_YesButton.click();
 		tm.transactions_Ok.click();
 	}

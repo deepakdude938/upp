@@ -67,20 +67,21 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		Thread.sleep(3000);
 		tm.transactions_TransactionMaker.click();
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon,Duration.ofSeconds(15));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
 		jsClick.click(tm.transactions_AddNewButon);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId,Duration.ofSeconds(20));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(20));
 		tm.transactions_DealId.sendKeys(DealId);
-		By transactions_DealId = By.xpath("//div[contains(text(),'"+DealId+"')]");
-	    driver.findElement(transactions_DealId).click();
-	    tm.transactions_SourceAccNo.sendKeys(sourceAccno);
-		By transactions_SouceAccno = By.xpath("//div[contains(text(),'"+sourceAccno+"')]");
-	    driver.findElement(transactions_SouceAccno).click();
-	    jsClick.click(tm.transactions_SubmitButton);
-	    od.payments_BasicName.clear();
-		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID,"Txn Maker","Name"));
-		dropdown.selectByVisibleText(od.payments_Purpose,externalData.getFieldData(TSID,"Txn Maker","Purpose"));
-		dropdown.selectByVisibleText(od.payments_BalanceConsideration,externalData.getFieldData(TSID,"Txn Maker","Balance Consideration"));
+		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
+		driver.findElement(transactions_DealId).click();
+		tm.transactions_SourceAccNo.sendKeys(sourceAccno);
+		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+		driver.findElement(transactions_SouceAccno).click();
+		jsClick.click(tm.transactions_SubmitButton);
+		od.payments_BasicName.clear();
+		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Name"));
+		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Txn Maker", "Purpose"));
+		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
+				externalData.getFieldData(TSID, "Txn Maker", "Balance Consideration"));
 		Thread.sleep(2000);
 		if (((externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Yes"))) {
@@ -97,20 +98,22 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		Thread.sleep(3000);
 		tm.transactions_TransactionMaker.click();
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon,Duration.ofSeconds(15));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
 		jsClick.click(tm.transactions_AddNewButon);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId,Duration.ofSeconds(20));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(20));
 		tm.transactions_DealId.sendKeys(DealId);
-		By transactions_DealId = By.xpath("//div[contains(text(),'"+DealId+"')]");
-	    driver.findElement(transactions_DealId).click();
-	    tm.transactions_SourceAccNo1.sendKeys(sourceAccno);
-		By transactions_SouceAccno = By.xpath("//div[contains(text(),'"+sourceAccno+"')]");
-	    driver.findElement(transactions_SouceAccno).click();
-	    jsClick.click(tm.transactions_SubmitButton);
-	    od.payments_BasicName.clear();
-		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID,"Txn Maker","Name"));
-		dropdown.selectByVisibleText(od.payments_Purpose,externalData.getFieldData(TSID,"Txn Maker","Purpose"));
-		dropdown.selectByVisibleText(od.payments_BalanceConsideration,externalData.getFieldData(TSID,"Txn Maker","Balance Consideration"));
+		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
+		driver.findElement(transactions_DealId).click();
+		Thread.sleep(3000);
+		tm.transactions_SourceAccNo1.sendKeys(sourceAccno);
+		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+		driver.findElement(transactions_SouceAccno).click();
+		jsClick.click(tm.transactions_SubmitButton);
+		od.payments_BasicName.clear();
+		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Name"));
+		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Txn Maker", "Purpose"));
+		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
+				externalData.getFieldData(TSID, "Txn Maker", "Balance Consideration"));
 		Thread.sleep(2000);
 		if (((externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Yes"))) {

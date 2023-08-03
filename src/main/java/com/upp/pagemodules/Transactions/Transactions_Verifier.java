@@ -102,12 +102,21 @@ public class Transactions_Verifier extends BaseClass {
 		// TODO Auto-generated method stub
 		od.TxnChecker_Transaction.click();
 		tm.transactions_TransactionVerifier.click();
+		try {
+			od.TxnChecker_searchDealId.sendKeys(dealId);
+			od.TxnChecker_comment.click();
+			od.TxnChecker_note.sendKeys("Ok");
+			od.TxnChecker_ok.click();
+			od.TxnChecker_txnCheckbox.click();
+		} catch (Exception e) {
+			handleElementClickException(tm.transactions_TransactionVerifier);
+			od.TxnChecker_searchDealId.sendKeys(dealId);
+			od.TxnChecker_comment.click();
+			od.TxnChecker_note.sendKeys("Ok");
+			od.TxnChecker_ok.click();
+			od.TxnChecker_txnCheckbox.click();
+		}
 		
-		od.TxnChecker_searchDealId.sendKeys(dealId);
-		od.TxnChecker_comment.click();
-		od.TxnChecker_note.sendKeys("Ok");
-		od.TxnChecker_ok.click();
-		od.TxnChecker_txnCheckbox.click();
 		od.TxnChecker_submitBtn.click();
 		tm.transactions_YesButton.click();
 		od.TxnChecker_okBtn.click();
