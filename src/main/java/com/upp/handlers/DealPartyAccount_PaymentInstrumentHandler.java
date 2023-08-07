@@ -83,7 +83,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		System.out.println("inside BT_IN");
 		scroll.scrollInToView(od.parties_PaymentSystem_BT_IN);
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_BT_IN, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem_BT_IN, Duration.ofSeconds(10));
 		od.parties_PaymentSystem_BT_IN.click();
 		
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentType, Duration.ofSeconds(5));

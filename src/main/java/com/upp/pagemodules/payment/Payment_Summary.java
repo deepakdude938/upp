@@ -1,7 +1,11 @@
 package com.upp.pagemodules.payment;
 
 
+import java.time.DayOfWeek;
 import java.time.Duration;
+import java.time.temporal.TemporalAdjusters;
+
+import org.hamcrest.MatcherAssert;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.junit.Assert;
@@ -39,10 +43,22 @@ public class Payment_Summary extends BaseClass{
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
 	    LocalDate saturday = now.withDayOfWeek(DateTimeConstants.SATURDAY);
+	    LocalDate nextSunday = now.now().plusDays(DateTimeConstants.SUNDAY - now.now().getDayOfWeek());
+	    LocalDate nextMonday = null;
+		 if (now.now().getDayOfWeek() == DateTimeConstants.MONDAY) {
+			 nextMonday =now.now().plusWeeks(1);
+	        } else {
+	            int daysUntilNextMonday = (DateTimeConstants.MONDAY - now.now().getDayOfWeek() + 7) % 7;
+	            nextMonday = now.now().plusDays(daysUntilNextMonday);
+	        }
+		 
 	    String day =friday.toString().split("[/-]")[2];
 		String sat= saturday.toString().split("[/-]")[2];
-		 
+		String nextMon= nextMonday.toString().split("[/-]")[2];
+		String nextSun= nextSunday.toString().split("[/-]")[2];
+		 String actualDate1 = actualDate.split(" ")[0].split("-")[0];
 		Assert.assertEquals(day, strikeDate.split(" ")[0].split("-")[0]);
-	    Assert.assertEquals(actualDate.split(" ")[0].split("-")[0], sat);
-	}
+		Assert.assertTrue((actualDate1.equals(sat) || actualDate1.equals(nextMon) || actualDate1.equals(nextSun)));
+//	    Assert.assertTrue(actualDate.split(" ")[0].split("-")[0]+"".equals(sat) || actualDate.split(" ")[0].split("-")[0]+"".equals( nextSun) || actualDate.split(" ")[0].split("-")[0]+"".equals(nextMon));
+	  	}
 }

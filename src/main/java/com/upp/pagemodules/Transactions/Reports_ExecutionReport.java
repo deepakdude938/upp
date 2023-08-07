@@ -516,7 +516,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void validateInExecutionReport(String TSID) throws Exception {
 
 		commonmethodExecReport(TSID, dealId);
-
+		Thread.sleep(1000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
 		ArrayList<String> scroeStatus = new ArrayList();
