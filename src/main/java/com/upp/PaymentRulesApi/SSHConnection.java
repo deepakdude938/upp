@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 public class SSHConnection {
    public static String file="";
    public static String paymentProcessor="";
+   public static String paymentProcessorpodname="";
    
     public static ArrayList<String> getPainFileDetails(String batchId,ArrayList<String> tagNames){
         ArrayList<String> Result = new ArrayList<String>();
@@ -71,12 +72,16 @@ public class SSHConnection {
                 	
                 	if(line4.startsWith("paymentprocessor"))
                 	{
-                		paymentProcessor=line4;
-                		 System.out.println("Paymnt processor is "+paymentProcessor);
+                		 paymentProcessorpodname=line4;
+                		 System.out.println("Paymnt processor pod name is "+paymentProcessorpodname);
                 	}
                  
               }
                 
+                // code to extract podname
+                String split[]=paymentProcessorpodname.split(" ");
+                paymentProcessor=split[0];
+                System.out.println("the extracted paymentpodname is"+paymentProcessor);
                 
                 String grepCommand="kubectl  -n "+namespace+" exec "+paymentProcessor+" -- ls /mnt/payments | grep "+batchId;
                 
@@ -94,7 +99,7 @@ public class SSHConnection {
                     while ((line = reader.readLine()) != null) {
                         output.add(line);
                     }
-                   file= output.get(0);
+                   file= output.get(1);
                    
                    
                     // Close the channel

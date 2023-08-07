@@ -61,29 +61,36 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 
 	}
 
-	
-
-	public void Non_Registered_Beneficiary(String toaccount) {
+	public void Non_Registered_Beneficiary(String toaccount) throws InterruptedException {
 		int flag = 0;
-		By toAccount = By.xpath("//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input");
-
-		if (driver.findElement(toAccount).isDisplayed()) {
-			flag=1;
+		By toAccount;
+		try {
+			toAccount= By.xpath("//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input");
+			if (driver.findElement(toAccount).isDisplayed()) {
+				flag = 1;
+			}
+		} catch (Exception e) {
+			Thread.sleep(3000);
+			toAccount= By.xpath("//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input");
+			if (driver.findElement(toAccount).isDisplayed()) {
+				flag = 1;
+			}
+			
 		}
-		Assert.assertEquals(flag,1);
+
+		Assert.assertEquals(flag, 1);
 		od.payments_NextArrowButtonTransferSubInstruction.click();
 	}
-	
-	public void Transaction_Maker_Sub_Instruction(String TSID,ICallback icallback) throws Exception
-	{
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument,Duration.ofSeconds(15));
+
+	public void Transaction_Maker_Sub_Instruction(String TSID, ICallback icallback) throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
 		tm.transactions_Instrument.click();
-		String paymentInstrumentdata=externalData.getFieldData(TSID,"Txn Maker","Sub Instruction - Instrument");
-	    By paymentInstrument = By.xpath("(//div[contains(text(),'"+paymentInstrumentdata+"')])[1]");
-		 applyExplicitWaitsUntilElementVisible(paymentInstrument,3);
-		 driver.findElement(paymentInstrument).click();
-		 System.out.println("the to data is "+externalData.getFieldData(TSID,"Txn Maker","to"));
-		 icallback.handleCallback("PAYMENT_INSTRUMENT",paymentInstrumentdata);
+		String paymentInstrumentdata = externalData.getFieldData(TSID, "Txn Maker", "Sub Instruction - Instrument");
+		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[1]");
+		applyExplicitWaitsUntilElementVisible(paymentInstrument, 3);
+		driver.findElement(paymentInstrument).click();
+		System.out.println("the to data is " + externalData.getFieldData(TSID, "Txn Maker", "to"));
+		icallback.handleCallback("PAYMENT_INSTRUMENT", paymentInstrumentdata);
 	}
 
 }

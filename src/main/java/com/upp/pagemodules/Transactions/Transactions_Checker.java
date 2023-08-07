@@ -69,10 +69,10 @@ public class Transactions_Checker extends BaseClass {
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(10));
 		tm.transactions_TransactionEditButton.click();
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));
-		Thread.sleep(1000);
 		tm.transactions_SummaryTab.click();
-        Thread.sleep(3000);
+		Thread.sleep(3000);
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
 		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
 		applyExplicitWaitsUntilElementVisible(AmountID, 2);
@@ -101,12 +101,24 @@ public class Transactions_Checker extends BaseClass {
 	public void txnChecker_SubmitDeal(String dealId) {
 		// TODO Auto-generated method stub
 		od.TxnChecker_Transaction.click();
+
 		od.TxnChecker_TrasactionChecker.click();
-		od.TxnChecker_searchDealId.sendKeys(dealId);
-		od.TxnChecker_comment.click();
-		od.TxnChecker_note.sendKeys("Ok");
-		od.TxnChecker_ok.click();
-		od.TxnChecker_txnCheckbox.click();
+		try {
+			od.TxnChecker_searchDealId.sendKeys(dealId);
+			od.TxnChecker_comment.click();
+			od.TxnChecker_note.sendKeys("Ok");
+			od.TxnChecker_ok.click();
+			od.TxnChecker_txnCheckbox.click();
+		} catch (Exception e) {
+
+			handleElementClickException(od.TxnChecker_TrasactionChecker);
+			od.TxnChecker_searchDealId.sendKeys(dealId);
+			od.TxnChecker_comment.click();
+			od.TxnChecker_note.sendKeys("Ok");
+			od.TxnChecker_ok.click();
+			od.TxnChecker_txnCheckbox.click();
+		}
+
 		od.TxnChecker_submitBtn.click();
 		tm.transactions_YesButton.click();
 		od.TxnChecker_okBtn.click();
