@@ -1101,4 +1101,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//input[@id='txt-generic-datePicker-input-v1'])[2]")
 	public WebElement EndsOn;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	public WebElement PaymentBudget_Beneficiaryaccno;
+	
+	@FindBy(xpath="//select[@id='payment-beneficiaryCountry-sel-v1']")
+	public WebElement PaymentBudget_BeneficiaryCountry;
 }

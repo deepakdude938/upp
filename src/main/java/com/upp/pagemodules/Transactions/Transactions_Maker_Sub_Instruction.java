@@ -65,13 +65,13 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		int flag = 0;
 		By toAccount;
 		try {
-			toAccount= By.xpath("//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input");
+			toAccount= By.xpath("//span[@class='truncate ng-star-inserted']");
 			if (driver.findElement(toAccount).isDisplayed()) {
 				flag = 1;
 			}
 		} catch (Exception e) {
 			Thread.sleep(3000);
-			toAccount= By.xpath("//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input");
+			toAccount= By.xpath("//span[@class='truncate ng-star-inserted']");
 			if (driver.findElement(toAccount).isDisplayed()) {
 				flag = 1;
 			}

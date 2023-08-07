@@ -98,10 +98,11 @@ public class Transactions_Verifier extends BaseClass {
 
 	}
 
-	public void txnVerifier_ApproveDeal(String dealId) {
+	public void txnVerifier_ApproveDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
 		od.TxnChecker_Transaction.click();
 		tm.transactions_TransactionVerifier.click();
+		
 		try {
 			od.TxnChecker_searchDealId.sendKeys(dealId);
 			od.TxnChecker_comment.click();
@@ -116,10 +117,14 @@ public class Transactions_Verifier extends BaseClass {
 			od.TxnChecker_ok.click();
 			od.TxnChecker_txnCheckbox.click();
 		}
-		
+		Thread.sleep(3000);
+		try {
 		od.TxnChecker_submitBtn.click();
 		tm.transactions_YesButton.click();
 		od.TxnChecker_okBtn.click();
+		}catch(Exception e ) {
+			od.TxnChecker_submitBtn.click();
+		}
 	}
 
 }

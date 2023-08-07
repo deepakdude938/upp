@@ -92,22 +92,48 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 	}
 
 	public void Transactions_Maker_BasicDetails1(String TSID, String DealId, String sourceAccno) throws Exception {
-		Thread.sleep(2000);
+		Thread.sleep(5000);
+		By transactions_DealId;
+		System.out.println("Deal id in tm"+DealId);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon1, Duration.ofSeconds(15));
 		tm.transactions_TransactionIcon1.click();
 		Thread.sleep(3000);
 		tm.transactions_TransactionMaker.click();
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
-		jsClick.click(tm.transactions_AddNewButon);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(20));
-		tm.transactions_DealId.sendKeys(DealId);
-		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
-		driver.findElement(transactions_DealId).click();
-		Thread.sleep(3000);
-		tm.transactions_SourceAccNo1.sendKeys(sourceAccno);
-		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
-		driver.findElement(transactions_SouceAccno).click();
+		tm.transactions_AddNewButon.click();
+		Thread.sleep(6000);
+		try {
+			applyExplicitWaitsUntilElementClickable(tm.transactions_DealId1, Duration.ofSeconds(20));
+			tm.transactions_DealId1.click();
+			tm.transactions_DealId.sendKeys(DealId);
+			transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
+			driver.findElement(transactions_DealId).click();
+			System.out.println("Step1");
+			tm.transactions_SourceAccNo1.click();
+			tm.transactions_SourceAccNo1.sendKeys(sourceAccno);
+			By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+			Thread.sleep(3000);
+			driver.findElement(transactions_SouceAccno).click();
+			System.out.println("Step2");
+
+		} catch (Exception e) {
+			tm.transactions_TransactionMaker.click();
+			Thread.sleep(2000);
+			applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
+			jsClick.click(tm.transactions_AddNewButon);
+			System.out.println("Step1");
+			applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(20));
+			tm.transactions_DealId.sendKeys(DealId);
+			transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
+			driver.findElement(transactions_DealId).click();
+			System.out.println("Step1");
+			jsClick.click(tm.transactions_SourceAccNo1);
+			tm.transactions_SourceAccNo1.sendKeys(sourceAccno);
+			By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+			Thread.sleep(3000);
+			driver.findElement(transactions_SouceAccno).click();
+		}
 		jsClick.click(tm.transactions_SubmitButton);
 		od.payments_BasicName.clear();
 		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Name"));

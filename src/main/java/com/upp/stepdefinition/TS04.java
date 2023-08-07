@@ -58,12 +58,12 @@ public class TS04 extends BaseClass implements ICallback {
 	}
 
 	@Then("Submit the deal to transaction verifier")
-	public void submit_the_deal_to_transaction_verifier() {
+	public void submit_the_deal_to_transaction_verifier() throws Exception {
 		txnChecker.txnChecker_SubmitDeal(dealId);
 	}
 
 	@Then("Transaction verifier approve deal")
-	public void transaction_verifier_approve_deal() {
+	public void transaction_verifier_approve_deal() throws Exception {
 		txnVerifier.txnVerifier_ApproveDeal(dealId);
 
 	}
