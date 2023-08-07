@@ -2,6 +2,7 @@ package com.upp.pagemodules.ECommerce;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -86,7 +87,13 @@ public class ECommerceTransactionChecker extends BaseClass {
 			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
 		}
 		Thread.sleep(1000);
+		try {
 		ecomm.ecommerce_Allcomment.click();
+		}
+		catch(ElementClickInterceptedException e) {
+			Thread.sleep(2000);
+			handleElementClickException(ecomm.ecommerce_Allcomment);
+		}
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		ecomm.ecommerce_txnok.click();
 		ecomm.ecommerce_submitBtn.click();

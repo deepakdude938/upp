@@ -70,12 +70,15 @@ public class Budget extends BaseClass {
 		System.out.println(budgetType);
 		if(budgetType.equals("Purpose and Destination")) {
 		od.budget_Purpose.sendKeys(externalData.getFieldData(TSID, "Budget", "Purpose"));
-		}
-		
+		}	
 		else if(budgetType.equals("Destination")) {
 			od.budget_TypeDestination.click();
 		}
-		
+		String isCarryForward = externalData.getFieldData(TSID, "Budget", "Budget-CarryForward");
+		System.out.println(isCarryForward);
+		if(isCarryForward.equalsIgnoreCase("Y") || isCarryForward.equalsIgnoreCase("Yes")) {
+		od.budget_CarryForward.click();
+		}	
 		od.budget_budgetDestination.sendKeys(toAccountNo);
 		By destination = By.xpath("//div[@id='grid-generic-destinationSearch-panelClick-v1']//li[contains(text(),'"
 				+ toAccountNo + "')]");
@@ -134,7 +137,7 @@ public class Budget extends BaseClass {
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
 			od.payments_PartialpaymentSlider.click();
 		}
-		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(15));
 		od.payments_ExecutionDate.click();
 		String day = DateUtils.getDay();
 		By excecutionDay = By.xpath(
@@ -201,6 +204,8 @@ public class Budget extends BaseClass {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
+		
+		Thread.sleep(5000);
 		od.payments_NextArrowButtonTransferSubInstruction.click();
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
@@ -562,6 +567,7 @@ public class Budget extends BaseClass {
 		int expectedAvailableBudget =(int) ( allocatedAmount- expectedAmount);
 		Assert.assertEquals(actualAvailableBudgetAmount, expectedAvailableBudget);
 	}
+	
 		
 	public void CreateBudget_Purpose_And_Destination_With_DateRange(String TSID, String sourceAccountNo, String toAccountNo)
 			throws Exception, IOException {

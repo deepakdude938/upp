@@ -113,7 +113,7 @@ public class Payment extends BaseClass{
 			od.payments_SweepInSlider.click();
 		}
 //		od.payments_SweepinNextButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(10));
 		od.payments_ExecutionDate.click();
 		String day="";
 		boolean dayFlag=false;
@@ -267,14 +267,11 @@ public class Payment extends BaseClass{
 			
 		od.paymentSurplus_Instrument.click();
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Payment-Surplus", "Instrument");
-		System.out.println(paymentInstrumentdata);
 		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[2]");
 		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
 		driver.findElement(paymentInstrument).click();
 		
 		scroll.scrollInToView(od.schedule_IBAN);
-		System.out.println(DealPage.sourceAccountNo);
-		System.out.println(DealPage.toaccountNo);
 		od.schedule_IBAN.sendKeys(toAccountNo);
 		Thread.sleep(1000);
 		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
@@ -319,6 +316,7 @@ public class Payment extends BaseClass{
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.paymentsSurplus_AddSubInstructionButton.click();
+		Thread.sleep(5000);
 		
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
 		od.payments_DealsummaryIcon.click();
@@ -343,9 +341,7 @@ public class Payment extends BaseClass{
 		od.PaymentsPlusIcon.click();
 		Thread.sleep(1000);
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
-		By InstructionButton = By
-				.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"
-						+ InstructionType + "']");
+		By InstructionButton = By.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"+ InstructionType + "']");
 		applyExplicitWaitsUntilElementVisible(InstructionButton, 10);
 		driver.findElement(InstructionButton).click();
 		applyExplicitWaitsUntilElementClickable(od.payments_Proceed, Duration.ofSeconds(5));
@@ -357,8 +353,7 @@ public class Payment extends BaseClass{
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
 		driver.findElement(sourceaccountselect).click();
 
-		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
-				externalData.getFieldData(TSID, "Scheduled", "Balance Consideration"));
+		dropdown.selectByVisibleText(od.payments_BalanceConsideration,externalData.getFieldData(TSID, "Scheduled", "Balance Consideration"));
 		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
 			od.payments_SplitBalanceSlider.click();
@@ -533,7 +528,6 @@ public class Payment extends BaseClass{
 				|| (externalData.getFieldData(TSID, "Scheduled", "Notification-Notification Alerts"))
 						.equalsIgnoreCase("Yes"))) {
 			od.payments_NotificationAlertSlider.click();
-		}
-
+			}
 		}
 	}
