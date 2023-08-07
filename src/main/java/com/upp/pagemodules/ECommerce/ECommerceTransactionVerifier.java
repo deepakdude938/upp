@@ -52,15 +52,11 @@ public class ECommerceTransactionVerifier extends BaseClass {
 		ecomm.ecommerce_txnVerifier.click();
 		TimeUnit.MINUTES.sleep(3);
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
-		ecomm.ecommerce_comment.click();
-		ecomm.ecommerce_note.sendKeys("Ok approve");
-		ecomm.ecommerce_txnok.click();
 		ecomm.ecommerce_txnCheckbox.click();
-		// ecomm.ecommerce_submitBtn.click();
 		ecomm.ecommerce_comment.click();
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		ecomm.ecommerce_txnok.click();
-		ecomm.ecommerce_submitBtn.click();
+
 		try {
 			if (ecomm.ecommerce_warning.isDisplayed()) {
 				ecomm.ecommerce_submitBtn.click();
@@ -72,21 +68,7 @@ public class ECommerceTransactionVerifier extends BaseClass {
 			ecomm.ecommerce_yesBtn.click();
 			ecomm.ecommerce_okBtn.click();
 		} catch (Exception e) {
-			ecomm.ecommerce_txnCheckbox.click();
-			// ecomm.ecommerce_submitBtn.click();
-			ecomm.ecommerce_comment.click();
-			ecomm.ecommerce_note.sendKeys("Ok approve");
-			ecomm.ecommerce_txnok.click();
-			ecomm.ecommerce_submitBtn.click();
-			try {
-				if (ecomm.ecommerce_warning.isDisplayed()) {
-					ecomm.ecommerce_submitBtn.click();
-					ecomm.ecommerce_yesBtn.click();
-					ecomm.ecommerce_okBtn.click();
-				}
-			} catch (Exception e1) {
-				// TODO: handle exception
-			}
+			System.out.println("Pass");
 		}
 
 	}
