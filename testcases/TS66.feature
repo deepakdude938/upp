@@ -1,4 +1,4 @@
-Feature: TS66
+Feature: TS66_Instructed Control Amount
 
  @InstructedControlAmount @TS66  
 Scenario Outline: Instructed Control Amount

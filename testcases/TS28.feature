@@ -1,4 +1,4 @@
-Feature: TS28
+Feature: TS28_Bulk Upload Ecomm Transaction
 
 
 @Regression @TS28

@@ -1072,9 +1072,9 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//input[@id='txt-deals-addUpdateBudget-purpose-v1']")
 	public WebElement budget_purposetxt;
 	
-	
 	@FindBy(xpath = "//h2[@id='swal2-title']")
 	public WebElement edit_Popup;
+	
 	@FindBy(xpath="//button[normalize-space()='Yes']")
 	public WebElement deal_Edit_Yes_Button;
 	
@@ -1083,6 +1083,9 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id="txt-deals-addUpdateBudget-available-v1")
 	public WebElement Available_Budget_Amount;
+	
+	@FindBy(xpath="//input[@id='txt-deals-addUpdateBudget-available-v1']")
+	public WebElement available_Budget_Amount1;
 	
 	@FindBy(xpath="//h2[normalize-space()='WorkItem already exists']")
 	public WebElement AlreadyExistPopup;

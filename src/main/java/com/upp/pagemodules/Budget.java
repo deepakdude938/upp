@@ -3,6 +3,7 @@ package com.upp.pagemodules;
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -39,6 +40,7 @@ public class Budget extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
+	public String executiontime ;
 	JavascriptClick js;
 
 	public Budget() {
@@ -93,11 +95,11 @@ public class Budget extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(od.payments_ScheduledInstructionIcon);
 		}
-		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_AddInstruction, Duration.ofSeconds(5));
 		try {
-			od.payments_GetStarted.click();
+			od.payments_AddInstruction.click();
 		} catch (Exception e) {
-			handleElementClickException(od.payments_GetStarted);
+			handleElementClickException(od.payments_AddInstruction);
 		}
 		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
 		By InstructionButton = By
@@ -146,9 +148,9 @@ public class Budget extends BaseClass {
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
-		String time = dateutil.getTimeAfterMins(5);
+		 executiontime = dateutil.getTimeAfterMins(5);
 		od.payments_ScheduleTime.clear();
-		od.payments_ScheduleTime.sendKeys(time);
+		od.payments_ScheduleTime.sendKeys(executiontime);
 		String t = od.linkedInstruction_Executiondate.getText();
 		od.payments_NextArrowButtonTransferSchedule.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(20));
@@ -159,7 +161,7 @@ public class Budget extends BaseClass {
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
 		System.out.println(budget);
 		od.payments_budgetPurpose.sendKeys(budget);
-		if(!TSID.equals("TS69")) {
+		if(TSID.equals("TS05")) {
 		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
 		applyExplicitWaitsUntilElementVisible(budgetPurpose, 10);
 		driver.findElement(budgetPurpose).click();
@@ -217,43 +219,6 @@ public class Budget extends BaseClass {
 		od.payments_DealsummaryIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
 		String dealRefId = od.deals_SummaryRefId.getText();
-		String url = driver.getCurrentUrl();
-		String dealID = url.split("[/]")[url.split("/").length - 1];
-		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
-		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
-		Date date = parseFormat.parse(time.replace('.', ':'));
-		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
-
-		HashMap odpRecord = new HashMap<>();
-		odpRecord.put("_id", TSID);
-		odpRecord.put("originTcId", TSID);
-		odpRecord.put("dealId", dealID);
-		odpRecord.put("dealRefId", dealRefId);
-
-		HashMap tcDataRecord = new HashMap();
-		tcDataRecord.put("allocatedBudgetAmount", externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
-		tcDataRecord.put("executionDate", DateUtils.getDate(0));
-		tcDataRecord.put("scheduledTime", time);
-		tcDataRecord.put("utilizedAmount", externalData.getFieldData(TSID, "Scheduled", "Amount"));
-
-		ObjectMapper mapper = new ObjectMapper();
-		String json = mapper.writeValueAsString(tcDataRecord);
-
-		HashMap jsonMap1 = new HashMap();
-		jsonMap1.put("data", json);
-		jsonMap1.put("scheduledOnTime", dateAndTime);
-		odpRecord.put("tcData", jsonMap1);
-		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
-
-		System.out.println(odpRecordJson);
-
-		scroll.scrollInToView(od.payments_DealSubmitButton);
-		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
-		od.payments_DealSubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
-		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
-		od.payments_DealOkButton.click();
 
 		return dealRefId;
 
@@ -401,7 +366,7 @@ public class Budget extends BaseClass {
 		Assert.assertEquals(Actualamount, ExpectedAmountint, "Utilized Budget amount is different");
 	} 
 
-	public String CreateBudget_Purpose_HalfYearly(String TSID, String sourceAccountNo, String toAccountNo)
+	public void CreateBudget_Purpose_HalfYearly(String TSID, String sourceAccountNo, String toAccountNo)
 			throws Exception, IOException {
 		String time = dateutil.getTimeAfterMins(5);
 		od.budget_BudgetIcon.click();
@@ -428,21 +393,69 @@ public class Budget extends BaseClass {
 		String halfYearValue = externalData.getFieldData(TSID, "Budget", "Half Year");
 		applyExplicitWaitsUntilElementClickable(od.budget_halfYear, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.budget_halfYear, halfYearValue);
-		od.budget_duration.sendKeys(externalData.getFieldData(TSID, "Budget", "Year"));
+		//od.budget_duration.sendKeys(externalData.getFieldData(TSID, "Budget", "Year"));
 		applyExplicitWaitsUntilElementClickable(od.budget_allocatedAmount, Duration.ofSeconds(5));
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
 		od.budget_AddButton.click();
+//		
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
+//		od.payments_DealsummaryIcon.click();
+//		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
+//		String dealRefId = od.deals_SummaryRefId.getText();
+//		String url = driver.getCurrentUrl();
+//		String dealID = url.split("[/]")[url.split("/").length - 1];
+//		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
+//		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+//		Date date = parseFormat.parse(time.replace('.', ':'));
+//		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
+//
+//		HashMap odpRecord = new HashMap<>();
+//		odpRecord.put("_id", TSID);
+//		odpRecord.put("originTcId", TSID);
+//		odpRecord.put("dealId", dealID);
+//		odpRecord.put("dealRefId", dealRefId);
+//
+//		HashMap tcDataRecord = new HashMap();
+//		tcDataRecord.put("allocatedBudgetAmount", externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
+//		tcDataRecord.put("executionDate", DateUtils.getDate(0));
+//		tcDataRecord.put("scheduledTime", time);
+//		tcDataRecord.put("utilizedAmount", externalData.getFieldData(TSID, "Scheduled", "Amount"));
+//
+//		ObjectMapper mapper = new ObjectMapper();
+//		String json = mapper.writeValueAsString(tcDataRecord);
+//
+//		HashMap jsonMap1 = new HashMap();
+//		jsonMap1.put("data", json);
+//		jsonMap1.put("scheduledOnTime", dateAndTime);
+//		odpRecord.put("tcData", jsonMap1);
+//		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+//
+//		System.out.println(odpRecordJson);
+//
+//		scroll.scrollInToView(od.payments_DealSubmitButton);
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
+//		od.payments_DealSubmitButton.click();
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
+//		od.payments_DealYesButton.click();
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
+//		od.payments_DealOkButton.click();
+//
+//		return dealRefId;
+
+	}
+
+	public void createPayloadFile(String TSID) throws Exception {
 		
-		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
-		od.payments_DealsummaryIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
+//		od.payments_DealsummaryIcon.click();
+//		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
 		String dealRefId = od.deals_SummaryRefId.getText();
 		String url = driver.getCurrentUrl();
 		String dealID = url.split("[/]")[url.split("/").length - 1];
 		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
 		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
-		Date date = parseFormat.parse(time.replace('.', ':'));
+		Date date = parseFormat.parse(executiontime.replace('.', ':'));
 		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
 
 		HashMap odpRecord = new HashMap<>();
@@ -454,7 +467,7 @@ public class Budget extends BaseClass {
 		HashMap tcDataRecord = new HashMap();
 		tcDataRecord.put("allocatedBudgetAmount", externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		tcDataRecord.put("executionDate", DateUtils.getDate(0));
-		tcDataRecord.put("scheduledTime", time);
+		tcDataRecord.put("scheduledTime", executiontime);
 		tcDataRecord.put("utilizedAmount", externalData.getFieldData(TSID, "Scheduled", "Amount"));
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -467,18 +480,89 @@ public class Budget extends BaseClass {
 		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
 
 		System.out.println(odpRecordJson);
-
-		scroll.scrollInToView(od.payments_DealSubmitButton);
-		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
-		od.payments_DealSubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
-		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
-		od.payments_DealOkButton.click();
-
-		return dealRefId;
-
 	}
+
+	public void edit_Deal_And_Verify_Utilized_Budget_Available_Budget(String TSID, String DealID) throws Exception {
+	
+		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
+		 od.deal_SideMenuIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.liveDealIcon,Duration.ofSeconds(15));
+		 od.liveDealIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
+		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
+		 od.dealChecker_searchBar.sendKeys(DealID);
+		 Thread.sleep(4000);
+		 od.dealChecker_searchButton.click();
+		 Thread.sleep(3000);
+		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
+		 od.dealChecker_showMenu.click();
+		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
+		 od.deal_EditIcon.click();
+		 if(commonutils.isElementDisplayed(od.deal_Edit_Yes_Button,2))
+		 {
+			 od.deal_Edit_Yes_Button.click();
+		 }
+				 
+		 if(commonutils.isElementDisplayed(od.AlreadyExistPopup,2))
+		 {
+			 applyExplicitWaitsUntilElementClickable(od.account_OK_Button,Duration.ofSeconds(15));
+			 od.account_OK_Button.click();
+			 try {
+				 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
+				 od.deal_SideMenuIcon.click();
+			 }
+			 catch(Exception e) {
+					handleElementClickException(od.deal_SideMenuIcon);
+			     }
+			 
+			 applyExplicitWaitsUntilElementClickable(od.DealDraftsIcon,Duration.ofSeconds(15));
+			 od.DealDraftsIcon.click();
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
+			 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
+			 od.dealChecker_searchBar.sendKeys(DealID);
+			 Thread.sleep(4000);
+			 od.dealChecker_searchButton.click();
+			 Thread.sleep(3000);
+			 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
+			 od.dealChecker_showMenu.click();
+			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
+			 od.DealDraftsOpen.click();
+			 
+		 }
+			 
+		 applyExplicitWaitsUntilElementClickable(od.budget_BudgetIcon,Duration.ofSeconds(20));
+		
+		 try {
+			 od.budget_BudgetIcon.click();
+		 }
+		catch(Exception e) {
+			handleElementClickException( od.budget_BudgetIcon);
+	     }
+		 
+		 By Budget=By.xpath("//div[@title='"+TSID+"']");
+		 applyExplicitWaitsUntilElementVisible(Budget,10);
+		 driver.findElement(Budget).click();
+		 
+		 By AllocatedBudgetAmount=By.cssSelector("td[class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted']");
+		 applyExplicitWaitsUntilElementVisible(AllocatedBudgetAmount,10);
+		 js.click(driver.findElement(AllocatedBudgetAmount));
+		 Thread.sleep(2000);
+		 
+		String utilized_Budget= od.Utilized_Budget_Amount.getText();
+		int actualUtilizedAmount=(int) Double.parseDouble(utilized_Budget.split("₹")[1]);
+		int expectedUtilizedAmount=(int) Double.parseDouble(externalData.getFieldData(TSID, "Scheduled", "Amount"));
+		Assert.assertEquals(actualUtilizedAmount, expectedUtilizedAmount, "Utilized Budget amount is different");
+	
+		String available_Budget= od.available_Budget_Amount1.getAttribute("value");
+		int actualAvailableBudgetAmount=(int) Double.parseDouble(available_Budget.split("₹")[1]);
+		double allocatedAmount=Double.parseDouble(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
+		double expectedAmount=Double.parseDouble(externalData.getFieldData(TSID, "Scheduled", "Amount"));
+		int expectedAvailableBudget =(int) ( allocatedAmount- expectedAmount);
+		Assert.assertEquals(actualAvailableBudgetAmount, expectedAvailableBudget);
+	}
+		
 	public void CreateBudget_Purpose_And_Destination_With_DateRange(String TSID, String sourceAccountNo, String toAccountNo)
 			throws Exception, IOException {
 		od.budget_BudgetIcon.click();
