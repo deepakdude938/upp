@@ -70,9 +70,10 @@ public class Transactions_Verifier extends BaseClass {
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(10));
 		tm.transactions_TransactionEditButton.click();
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));
 		tm.transactions_SummaryTab.click();
-
+        Thread.sleep(2000);
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
 		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
 		applyExplicitWaitsUntilElementVisible(AmountID, 2);
