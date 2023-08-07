@@ -685,6 +685,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="btn-deals-addUpdateBudget-card3-v1")
 	public WebElement budget_TypeDestination;
 	
+	@FindBy(xpath="//label[normalize-space()='Budget Carry forward']/following-sibling::ui-switch//div[@class='ui-toggle-switch']//span")
+	public WebElement budget_CarryForward;
 	
 	@FindBy(xpath="//label[normalize-space()='Budget Carry forward']/following::span[@class='slider round']")
 	public WebElement budget_budgetCarryForward;
