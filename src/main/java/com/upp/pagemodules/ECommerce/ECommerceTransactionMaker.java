@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.pagemodules.Transactions.Transactions_Maker_Sub_Instruction;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
@@ -34,16 +35,19 @@ public class ECommerceTransactionMaker extends BaseClass {
 	DropDown dropdown;
 	public ExcelReader externalData;
 	ScrollTypes scroll;
-
+	Transactions_Maker_Sub_Instruction tm;
+	
 	public ECommerceTransactionMaker() {
 
 		ecomm = new Object_Ecommerce();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
 		scroll = new ScrollTypes(driver);
+		tm = new Transactions_Maker_Sub_Instruction();
+		
 	}
 
-	public void addDealAsEcommerceTxn(String dealId, String TSID, String srcAccount, String toAccount)
+	public void addDealAsEcommerceTxn(String dealId, String TSID, String srcAccount, String toAccount,ICallback icallback)
 			throws Exception {
 		ecomm.ecommerce_SideMenuIcon.click();
 		ecomm.ecommerce_Txnmaker.click();
@@ -60,6 +64,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_SubmitBtn.click();
 		addBasicDetailsToEcommerceTxn(TSID, srcAccount, toAccount);
 		addSubInstructionToEcommerceTxn(TSID);
+		//tm.Transaction_Maker_Sub_Instruction(TSID, icallback);
 		addDocument(TSID);
 	}
 
@@ -78,6 +83,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 	}
 
 	public void addSubInstructionToEcommerceTxn(String TSID) throws Exception {
+		
 		try {
 			ecomm.ecommerce_creatorParticipant.click();
 		} catch (Exception e) {

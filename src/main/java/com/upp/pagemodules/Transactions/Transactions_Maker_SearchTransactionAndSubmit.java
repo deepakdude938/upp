@@ -64,18 +64,26 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 		System.out.println("deal id in maker = " + dealid);
 		TimeUnit.MINUTES.sleep(waitingTime);
 		tm.transactions_TransactionIcon.click();
-		tm.transactions_TransactionMaker.click();
-		od.TxnMaker_searchDealId.sendKeys(dealid);
 		try {
-			od.TxnMaker_txnCheckbox.click();
-		} catch (Exception e) {
-			
-			handleElementClickException(tm.transactions_TransactionMaker);
+			tm.transactions_TransactionMaker.click();
 			od.TxnMaker_searchDealId.sendKeys(dealid);
-			od.TxnMaker_txnCheckbox.click();
+			try {
+				od.TxnMaker_txnCheckbox.click();
+				od.TxnMaker_submitBtn.click();
+				od.TxnMaker_okBtn.click();
+			} catch (Exception e) {
+
+				handleElementClickException(tm.transactions_TransactionMaker);
+				od.TxnMaker_searchDealId.sendKeys(dealid);
+				od.TxnMaker_txnCheckbox.click();
+				Thread.sleep(4000);
+				od.TxnMaker_submitBtn.click();
+				od.TxnMaker_okBtn.click();
+			}
+		} catch (Exception e) {
+			System.out.println("Pass");
+			tm.transactions_TransactionMaker.click();
 		}
-		od.TxnMaker_submitBtn.click();
-		od.TxnMaker_okBtn.click();
 		Thread.sleep(3000);
 	}
 
