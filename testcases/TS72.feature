@@ -1,4 +1,4 @@
-Feature: TS72
+Feature: TS72_Budget_PurposeandDestination_DateRange
 
 @Regression @TS72
 Scenario Outline: Budget_PurposeandDestination_DateRange
