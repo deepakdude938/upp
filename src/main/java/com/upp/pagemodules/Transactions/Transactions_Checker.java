@@ -73,17 +73,17 @@ public class Transactions_Checker extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));
 		tm.transactions_SummaryTab.click();
 		Thread.sleep(3000);
-//		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
-//		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
-//		applyExplicitWaitsUntilElementVisible(AmountID, 2);
-//		String amount_checker = driver.findElement(AmountID).getText();
-//		System.out.println("This is the amount from checker" + amount_checker);
-//
-//		if (!(amount_checker.contains(amount))) {
-//			System.out.println("amount doesn't match");
-//			assertTrue(false);
-//
-//		}
+		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
+		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
+		applyExplicitWaitsUntilElementVisible(AmountID, 2);
+		String amount_checker = driver.findElement(AmountID).getText();
+		System.out.println("This is the amount from checker" + amount_checker);
+
+		if (!(amount_checker.contains(amount))) {
+			System.out.println("amount doesn't match");
+			assertTrue(false);
+
+		}
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_Add_comments, Duration.ofSeconds(3));
 		scroll.scrollInToView(tm.transactions_Checker_Add_comments);
 		tm.transactions_Checker_Add_comments
