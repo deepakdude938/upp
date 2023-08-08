@@ -1,7 +1,7 @@
-Feature: TS06
+Feature: TS06_Adhoc_Tnansaction
 
 @Regression @TS06
-Scenario Outline: Traditional XCRO Transaction (Maker, Checker, Verifier) 
+Scenario Outline: Traditional UPP Transaction (Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create deal with basic details with given "<TSID>".

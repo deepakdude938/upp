@@ -83,6 +83,11 @@ public class Payment_BasicDetails extends BaseClass{
 			od.payments_PartialpaymentSlider.click();
 		}
 
-		od.payments_NextArrowButtonTransferBasic.click();
+		Thread.sleep(500);
+		try {
+			od.payments_NextArrowButtonTransferBasic.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_NextArrowButtonTransferBasic);
+		}
 	}
 }

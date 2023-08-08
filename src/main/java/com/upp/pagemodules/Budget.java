@@ -335,6 +335,9 @@ public class Budget extends BaseClass {
 			 Thread.sleep(4000);
 			 od.dealChecker_searchButton.click();
 			 Thread.sleep(3000);
+			 od.dealChecker_searchButton.click();
+			 Thread.sleep(5000);
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
 			 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
 			 od.dealChecker_showMenu.click();
 			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
@@ -354,7 +357,7 @@ public class Budget extends BaseClass {
 		 applyExplicitWaitsUntilElementVisible(Budget,10);
 		 driver.findElement(Budget).click();
 		 
-		 By AllocatedBudgetAmount=By.cssSelector("td[class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted']");
+		 By AllocatedBudgetAmount=By.xpath("//td[@class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted'] | //td[@class='dir_col_large ui-text-m semi ui-ripple date-range ng-star-inserted']");
 		 applyExplicitWaitsUntilElementVisible(AllocatedBudgetAmount,10);
 		 js.click(driver.findElement(AllocatedBudgetAmount));
 		 Thread.sleep(2000);
@@ -530,8 +533,10 @@ public class Budget extends BaseClass {
 			 Thread.sleep(4000);
 			 od.dealChecker_searchButton.click();
 			 Thread.sleep(3000);
-			 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
-			 od.dealChecker_showMenu.click();
+			 od.dealChecker_searchButton.click();
+			Thread.sleep(5000);
+			applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
+			od.dealChecker_showMenu.click();
 			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
 			 od.DealDraftsOpen.click();
 			 
@@ -550,10 +555,11 @@ public class Budget extends BaseClass {
 		 applyExplicitWaitsUntilElementVisible(Budget,10);
 		 driver.findElement(Budget).click();
 		 
-		 By AllocatedBudgetAmount=By.cssSelector("td[class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted']");
+		 By AllocatedBudgetAmount=By.xpath("//td[@class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted'] | //td[@class='dir_col_large ui-text-m semi ui-ripple date-range ng-star-inserted']");
 		 applyExplicitWaitsUntilElementVisible(AllocatedBudgetAmount,10);
 		 js.click(driver.findElement(AllocatedBudgetAmount));
 		 Thread.sleep(2000);
+
 		 
 		String utilized_Budget= od.Utilized_Budget_Amount.getText();
 		int actualUtilizedAmount=(int) Double.parseDouble(utilized_Budget.split("₹")[1]);
