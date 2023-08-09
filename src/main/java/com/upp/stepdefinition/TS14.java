@@ -62,9 +62,9 @@ public class TS14 extends BaseClass implements ICallback {
 		endToEndId=ecommApi.createEcommerceTnx(string);
 	}
 
-	@Then("Verify the EcommTnx in eComm Executions Report")
+	@Then("Verify the status and amount in eComm Executions Report")
 	public void verify_the_EcommTnx_in_eComm_Executions_Report() throws Exception {
-	    report.eCommExecutionsReport(endToEndId);
+	    report.Verify_Status_And_Amount_eCommExecutionsReport(endToEndId);
 	}
 
 

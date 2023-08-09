@@ -8,18 +8,18 @@ import org.testng.Assert;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.Property;
 
-public class PartyApi {
+public class PartyApi extends BaseClass {
 
-	public static String base_Url = Property.getProperty("Dev_base_uri");
 	public static String partyRefId="";
 	public static String partyId="";
 	public static void createParty(String dealId,String TSID) throws Exception {
 
 // Create Party api
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 		String response = given()
 				.header("Content-Type", "application/json")
 				.header("Authorization",LoginAPI_UPP.authToken)
@@ -40,7 +40,7 @@ public class PartyApi {
 	public static void getParty(String dealId,String TSID) throws Exception{
 //Get Party Api
 		
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 		String response = given()
 				.header("Content-Type", "application/json")
 				.queryParam("filter","{\"name\":\""+partyRefId+"\"}")
@@ -61,7 +61,7 @@ public class PartyApi {
 	public static void updateParty(String dealId,String TSID) throws Exception{
 		
 		String putPath="mdm/api/party/"+partyId;
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 		String response = given()
 				.header("Content-Type", "application/json")
 				.header("Authorization",LoginAPI_UPP.authToken)
@@ -78,7 +78,7 @@ public class PartyApi {
 	public static void createPartyUsingExcel(String dealId,String TSID) throws Exception {
 
 		// Create Party api
-				RestAssured.baseURI = base_Url;
+				RestAssured.baseURI = base_url;
 				String response = given()
 						.header("Content-Type", "application/json")
 						.header("Authorization",LoginAPI_UPP.authToken)
