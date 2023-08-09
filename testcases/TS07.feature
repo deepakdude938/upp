@@ -11,7 +11,7 @@ And Create two Accounts with given "<TcId>"
 And Create two eCommerce  Parties in the Parties Tab with given "<TcId>" and "<PartiesID>"
 And Add deal in ecommerce transaction maker queue "<TcId>"
 And Submit the deal to ecommerce transaction checker
-And Ecommerce transaction verifier approve the deal
+  And Ecommerce transaction verifier approve the deal
 Examples:
       |TcId||PartiesID|
       |TS07||TS07_Participant1|

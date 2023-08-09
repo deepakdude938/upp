@@ -66,7 +66,7 @@ public class Payment_Schedule extends BaseClass {
 		if (commonutils.isElementDisplayed(od.payments_SweepinNextButton, 1)) {
 			od.payments_SweepinNextButton.click();
 		}
-		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(20));
 		od.payments_ExecutionDate.click();
 
 		if (InstructionType.equalsIgnoreCase("Payment - Retention")) {

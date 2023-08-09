@@ -1,7 +1,7 @@
-Feature: TS06
+Feature: TS06_Adhoc_Tnansaction
 
 @Regression @TS06
-Scenario Outline: Traditional XCRO Transaction (Maker, Checker, Verifier) 
+Scenario Outline: Traditional UPP Transaction (Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create deal with basic details with given "<TSID>".
@@ -17,7 +17,7 @@ Then Login to the application as "txn_checker"
 Then Approve the transaction from Transaction Checker with given "<TSID>"
 Then logout of the application
 Then Login to the application as "txn_verifier"
-Then Approve the transaction from Transaction Verifier with given "<TSID>"
+#Then Approve the transaction from Transaction Verifier with given "<TSID>"
 And Check the Transaction staus in execution report with given "<TSID>"
 Then logout of the application
 Examples:

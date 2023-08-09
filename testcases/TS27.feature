@@ -15,8 +15,8 @@ Then Bulk upload the transaction
 Then Logout from Application
 Then Login to the application as "txn_checker"
 Then Approve multiple transactions from Transaction Checker with given "<TSID>"
-#Then Logout from Application
-#Then Login to the application as "txn_verifier"
+Then Logout from Application
+Then Login to the application as "txn_verifier"
 Then Approve multiple transaction from Transaction Verifier with given "<TSID>"
 And Check the Transaction status in execution report with given "<TSID>"
 Examples:

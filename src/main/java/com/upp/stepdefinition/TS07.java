@@ -9,6 +9,7 @@ import com.upp.handlers.CommonResponsibilityHandler;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.handlers.DealPartyAccount_PaymentInstrumentHandler;
+import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
@@ -45,14 +46,15 @@ public class TS07 extends BaseClass implements ICallback {
 //	}
 
 	@Then("Create two eCommerce  Parties in the Parties Tab with given {string} and {string}")
-	public void create_two_eCommerce_Parties_in_the_Parties_Tab_with_given_and(String TSID, String string2) throws Exception {
+	public void create_two_eCommerce_Parties_in_the_Parties_Tab_with_given_and(String TSID, String string2)
+			throws Exception {
 		tsid = TSID;
-		dealId = dm.twoEcommerceParties(TSID,string2, this);
+		dealId = dm.twoEcommerceParties(TSID, string2, this);
 	}
 
 	@Then("Add deal in ecommerce transaction maker queue {string}")
 	public void add_deal_in_ecommerce_transaction_maker_queue(String TSID) throws Exception {
-		ecommTxn.addDealAsEcommerceTxn(dealId, TSID, sourceAccount, toAccount);
+		ecommTxn.addDealAsEcommerceTxn(dealId, TSID, sourceAccount, toAccount, this);
 	}
 
 	@Then("Submit the deal to ecommerce transaction checker")
@@ -79,5 +81,40 @@ public class TS07 extends BaseClass implements ICallback {
 
 			}
 		}
+		if (callbackid.equalsIgnoreCase("PRODUCT_NAME")) {
+			String productName = (String) data;
+			if (productName.equalsIgnoreCase("flexible funding")) {
+				DealGroupAttributesHandler handleAttribute = new DealGroupAttributesHandler();
+				handleAttribute.handleFlexibleFundding();
+			}
+			if (productName.equalsIgnoreCase("1.0")) {
+				DealGroupAttributesHandler handleAttribute = new DealGroupAttributesHandler();
+				handleAttribute.handleoneProduct();
+			}
+
+		}
+
+		if (callbackid.equalsIgnoreCase("PAYMENT_INSTRUMENT")) {
+			String paymentInstrument = (String) data;
+			if (paymentInstrument.equalsIgnoreCase("BT")) {
+				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
+
+				instrumentHandler.handleBTPaymentInstrument(tsid, DealPage.sourceAccountNo, DealPage.toaccountNo);
+			}
+
+			/*
+			 * if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
+			 * TransactionMaker_PaymentInstrumentHandler instrumentHandler = new
+			 * TransactionMaker_PaymentInstrumentHandler(); String
+			 * checkbox=externalData.getFieldData(tsid, "Basic Details",
+			 * "Transactions to non-registered beneficiaries");
+			 * 
+			 * if(checkbox.equalsIgnoreCase("N")) { instrumentHandler.
+			 * handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked
+			 * (TSID,DealPage.sourceAccountNo,DealPage.toaccountNo); }
+			 */
+
+		}
+
 	}
 }

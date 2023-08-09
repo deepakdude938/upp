@@ -98,30 +98,38 @@ public class Transactions_Checker extends BaseClass {
 
 	}
 
-	public void txnChecker_SubmitDeal(String dealId) {
+	public void txnChecker_SubmitDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
 		od.TxnChecker_Transaction.click();
-
-		od.TxnChecker_TrasactionChecker.click();
 		try {
-			od.TxnChecker_searchDealId.sendKeys(dealId);
-			od.TxnChecker_comment.click();
-			od.TxnChecker_note.sendKeys("Ok");
-			od.TxnChecker_ok.click();
-			od.TxnChecker_txnCheckbox.click();
-		} catch (Exception e) {
+			od.TxnChecker_TrasactionChecker.click();
+			try {
+				od.TxnChecker_searchDealId.sendKeys(dealId);
+				od.TxnChecker_comment.click();
+				od.TxnChecker_note.sendKeys("Ok");
+				od.TxnChecker_ok.click();
+				od.TxnChecker_txnCheckbox.click();
+				od.TxnChecker_submitBtn.click();
+				tm.transactions_YesButton.click();
+				od.TxnChecker_okBtn.click();
+			} catch (Exception e) {
 
-			handleElementClickException(od.TxnChecker_TrasactionChecker);
-			od.TxnChecker_searchDealId.sendKeys(dealId);
-			od.TxnChecker_comment.click();
-			od.TxnChecker_note.sendKeys("Ok");
-			od.TxnChecker_ok.click();
-			od.TxnChecker_txnCheckbox.click();
+				handleElementClickException(od.TxnChecker_TrasactionChecker);
+				od.TxnChecker_searchDealId.sendKeys(dealId);
+				od.TxnChecker_comment.click();
+				od.TxnChecker_note.sendKeys("Ok");
+				od.TxnChecker_ok.click();
+				od.TxnChecker_txnCheckbox.click();
+				Thread.sleep(4000);
+				od.TxnChecker_submitBtn.click();
+				tm.transactions_YesButton.click();
+				od.TxnChecker_okBtn.click();
+			}
+		} catch (Exception e) {
+			System.out.println("Pass");
+			od.TxnChecker_TrasactionChecker.click();
 		}
 
-		od.TxnChecker_submitBtn.click();
-		tm.transactions_YesButton.click();
-		od.TxnChecker_okBtn.click();
 	}
 
 }

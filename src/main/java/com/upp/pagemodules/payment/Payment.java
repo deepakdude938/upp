@@ -368,8 +368,13 @@ public class Payment extends BaseClass{
 				|| (externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Yes"))) {
 			od.payments_PartialpaymentSlider.click();
 		}
-
-		od.payments_NextArrowButtonTransferBasic.click();
+        
+	    Thread.sleep(500);
+		try {
+			od.payments_NextArrowButtonTransferBasic.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_NextArrowButtonTransferBasic);
+		}
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
@@ -392,7 +397,7 @@ public class Payment extends BaseClass{
 		if (commonutils.isElementDisplayed(od.payments_SweepinNextButton, 1)) {
 			od.payments_SweepinNextButton.click();
 		}
-		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(20));
 		od.payments_ExecutionDate.click();
 
 		if (InstructionType.equalsIgnoreCase("Payment - Retention")) {

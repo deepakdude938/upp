@@ -352,5 +352,8 @@ public class Object_Transactions extends BaseClass {
 	public WebElement ecommPaymentStatus;
 	
 	
+	@FindBy(xpath = "//ui-autocomplete[@formcontrolname='refId']")
+	public WebElement transactions_DealId1;
+	
 }
 

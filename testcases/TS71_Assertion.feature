@@ -1,7 +1,7 @@
-Feature: TS70_Assertion
+Feature: TS71_Assertion
 
 
-@Assertion @TS70
+@Assertion @TS71
 Scenario Outline: Budget_Consolidated_Yearly Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
@@ -10,4 +10,4 @@ Then Verify in Report that one Transaction is Settled and the other is Rejected 
 Then Verify in Budget tab Utilized Budget Amount with given "<TSID>"
 Examples:
       |TSID|
-      |TS70|
+      |TS71|
