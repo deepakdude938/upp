@@ -7,6 +7,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
@@ -248,7 +249,12 @@ public class DashBoard_Module extends BaseClass {
 		System.out.println("The deal id is" + dealId);
 
 		applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon, Duration.ofSeconds(15));
+		try {
 		od.deal_SideMenuIcon.click();
+		}
+		catch(ElementClickInterceptedException e) {
+			handleElementClickException(od.deal_SideMenuIcon);
+		}
 		Thread.sleep(4000);
 		jsClick.click(od.dealChecker_Button1);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect, Duration.ofSeconds(25));
