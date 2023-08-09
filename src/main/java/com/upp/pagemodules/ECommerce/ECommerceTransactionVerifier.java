@@ -93,7 +93,12 @@ public class ECommerceTransactionVerifier extends BaseClass {
 			Thread.sleep(2000);
 			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
 		}
+		try {
 		ecomm.ecommerce_Allcomment.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(ecomm.ecommerce_Allcomment);
+		}
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		ecomm.ecommerce_txnok.click();
 		ecomm.ecommerce_submitBtn.click();

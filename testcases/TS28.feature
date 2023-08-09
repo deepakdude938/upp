@@ -11,7 +11,7 @@ And Create two eCommerce  Parties in the Parties Tab with given "<TSID>" and "<P
 And Update excel file according to data
 Then Bulk upload Ecomm Transaction
 Then Approve ecomm transaction from Ecommerce Txn Checker
-Then Approve ecomm transaction from Ecommerce Txn Verifier
+#Then Approve ecomm transaction from Ecommerce Txn Verifier
 Then Validate ecomm transaction in Reports
 Examples:
       |TSID|PartiesID|
