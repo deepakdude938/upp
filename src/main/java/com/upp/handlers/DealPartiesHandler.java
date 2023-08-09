@@ -89,11 +89,15 @@ public class DealPartiesHandler extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(od.parties_AddAccounts);
 		}
-		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
-		od.parties_PaymentSystem.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(15));
+		try {
+			od.parties_PaymentSystem.click();
+		} catch (Exception e) {
+			handleElementClickException(od.parties_PaymentSystem);
+		}
 		String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
 		icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
-
+        Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
 
 		try {
@@ -101,6 +105,8 @@ public class DealPartiesHandler extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(od.parties_DocumentsTab);
 		}
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.parties_AddDocument, Duration.ofSeconds(20));
 		try {
 			od.parties_AddDocument.click();
 		} catch (Exception e) {
