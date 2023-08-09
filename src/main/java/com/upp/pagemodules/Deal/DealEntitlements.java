@@ -1,6 +1,7 @@
 package com.upp.pagemodules.Deal;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -22,7 +23,6 @@ import com.upp.utils.ScrollTypes;
 
 import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
-import junit.framework.Assert;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -113,6 +113,8 @@ public class DealEntitlements extends BaseClass {
 		Thread.sleep(2000);
 		tm.entitlementsIcon.click();
 		Thread.sleep(2000);
+		tm.entitlements_Account.click();
+		Thread.sleep(1000);
 		tm.contactDetails.click();
 		
 		String contacts = externalData.getFieldData(TSID, "Party", "Email");
