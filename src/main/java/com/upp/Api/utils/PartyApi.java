@@ -61,6 +61,7 @@ public class PartyApi {
 	public static void updateParty(String dealId,String TSID) throws Exception{
 		
 		String putPath="mdm/api/party/"+partyId;
+		System.out.println("Updated path = "+putPath);
 		RestAssured.baseURI = base_Url;
 		String response = given()
 				.header("Content-Type", "application/json")

@@ -107,7 +107,7 @@ public class TS68 extends BaseClass {
 
 	@Given("Verify BatchId Status in Ecomm Execution Report with given {string}")
 	public void verify_BatchId_Status_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
-	   report.verify_Rule_IN_LT_PenddingStatus(batchId);
+	   report.verify_Rule_IN_LT_PenddingStatus(paymentRefId);
 	}
 
 }

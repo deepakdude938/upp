@@ -340,7 +340,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(tm.reports_RecordStatus.size());
 		// for (WebElement record : tm.reports_RecordStatus) {
 		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
-			TimeUnit.MINUTES.sleep(2);
+			TimeUnit.MINUTES.sleep(3);
 			driver.navigate().refresh();
 			applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 			tm.reports_DealId.sendKeys(DealId);
@@ -622,8 +622,8 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public void validateScheduledStatusforRecord(String TSID) throws Exception {
-	commonmethodExecReport(TSID,dealId);
-		
+		commonmethodExecReport(TSID, dealId);
+
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
 		ArrayList<String> scroeStatus = new ArrayList();
@@ -632,37 +632,48 @@ public class Reports_ExecutionReport extends BaseClass {
 			scroeStatus.add(iu.getText().trim());
 			Assert.assertEquals(iu.getText().trim(), "Scheduled");
 		}
-		
+
 	}
-	public void verify_Rule_IN_LT_PenddingStatus(String batchId) throws Exception {
+
+	public void verify_Rule_IN_LT_PenddingStatus(String paymentRefId) throws Exception {
 		System.out.println("Inside ecomm reprot");
-		tm.ecommPaymentLink.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+		// applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,
+		// Duration.ofSeconds(5));
+		// tm.reports_searchBox.sendKeys("eComm Payments");
+		Thread.sleep(2000);
+		scroll.scrollInToView(tm.reports_eCommPaymentsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommPaymentsList, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommPaymentsList);
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementVisible(tm.ecommPayments_PaymentId, Duration.ofSeconds(10));
+		tm.ecommPayments_PaymentId.sendKeys(paymentRefId);
 		Thread.sleep(3000);
 		String ActualResult = tm.ecommPaymentStatus.getText();
-		String ExcpectedResult = "Pendding";
+		String ExcpectedResult = "Pending";
 		Assert.assertEquals(ActualResult, ExcpectedResult);
 
 	}
-	
+
 	public void check_Triggered_or_Settled_Status(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
 
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
-		
-		if ((ScroeStatus.equalsIgnoreCase("Triggered"))||(ScroeStatus.equalsIgnoreCase("Settled"))) {
-              
+
+		if ((ScroeStatus.equalsIgnoreCase("Triggered")) || (ScroeStatus.equalsIgnoreCase("Settled"))) {
+
 			System.out.println("Transaction succesfully settled or triggered");
-		}
-		else
-		{
+		} else {
 			Assert.fail("Transaction Staus should be either settled or triggered");
 		}
 
 	}
 
-	
 	public void check_one_Tnx_settled_and_second_Tnx_rejected(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, dealId);
@@ -675,7 +686,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertTrue(scroeStatus.contains("Rejected"));
 		Assert.assertTrue(scroeStatus.contains("Settled"));
-		
 
 	}
 
