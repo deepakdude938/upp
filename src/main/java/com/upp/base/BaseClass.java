@@ -32,6 +32,9 @@ public class BaseClass {
 	public static	List<String> object ;
 	public static	String odpRecordJson;
 	public static String dealID_Assertion ;
+	public static String url;
+	public static String base_url;
+	public static String  api_Password;
 
 	public boolean isFlexibleFunding;
 
@@ -42,6 +45,45 @@ public class BaseClass {
 		prop.load(fis);
 		String browser = prop.getProperty("browser");
 //		isHeadLess = true;
+		
+		String env = prop.getProperty("env");
+		System.out.println(env);
+		switch(env.toLowerCase()) {
+		
+					case "sit":
+						System.out.println("In sit");
+						url = prop.getProperty("SIT_Url");
+						api_Password= prop.getProperty("api_password");
+						
+						
+						
+						break;
+						
+					case "qa":
+						System.out.println("In QA");
+						url = prop.getProperty("QA_Url");
+						api_Password= prop.getProperty("QA_api_password");
+						
+						
+						
+						break;
+						
+					case "dev":
+						System.out.println("In dev");
+						url = prop.getProperty("DEV_Url");
+						api_Password= prop.getProperty("api_password");
+						break;
+						
+						
+						
+					case "scb":
+						System.out.println("In scb");
+						url = prop.getProperty("SCB_Url");
+						api_Password= prop.getProperty("api_password");
+						break;	
+		}
+		
+				base_url=	url.replace("login", "");
 
 		if (browser.equalsIgnoreCase("chrome")) {
 			ChromeOptions options = new ChromeOptions();
@@ -49,17 +91,11 @@ public class BaseClass {
 
 			if (System.getProperty("os.name").equals("Linux")) {
 				HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-				
-				System.out.println("In Linux console   ---------------------------------");
-			
-
-			//	WebDriverManager.chromedriver().setup();
 				String path=System.getProperty("user.dir")+ "//src//main//resources//chromedriver";
 				System.out.println("the path:"+path);
 				System.setProperty("webdriver.chrome.driver", path);
 				options.addArguments("--no-sandbox");
-				options.addArguments("--headless", "--window-size=1296,696", "--disable-gpu",
-						"--disable-dev-shm-usage");
+				options.addArguments("--headless", "--window-size=1296,696", "--disable-gpu",	"--disable-dev-shm-usage");
 				options.addArguments("--disable-extensions");
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--disable-software-rasterizer");
@@ -72,7 +108,6 @@ public class BaseClass {
 			}
 
 			else {
-				System.out.println("In windows console   ---------------------------------");
 	
 				HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 				chromePrefs.put("profile.default_content_settings.popups", 0);

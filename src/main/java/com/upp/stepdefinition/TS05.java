@@ -6,6 +6,8 @@ import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
 import com.upp.pagemodules.Budget;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Deal.DealAccountCreator;
+import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
+
 import callbackInterfaces.ICallback;
 import io.cucumber.java.en.Then;
 
@@ -18,12 +20,12 @@ public class TS05 extends BaseClass  implements ICallback{
 	public static String sourceAccountNo = "";
 	public static String toAccountNo = "";
 	public DashBoard_Module dm1;
-
+	public Reports_ExecutionReport re;
 
 	public TS05() {
 		this.dm = new Budget();
 		this.dm1 = new DashBoard_Module();
-
+		re= new Reports_ExecutionReport();
 	}
 	
 	@Then("Create a Budget with given {string}")
@@ -55,6 +57,10 @@ public class TS05 extends BaseClass  implements ICallback{
 	 dm.createRecordInOdp(TSID);
 	}
 	
+	@Then("Validate record to be settled in execution report {string}")
+	public void validate_record_to_be_settled_in_execution_report(String TSID) throws Exception {
+	   re.check_Triggered_or_Settled_Status(TSID, dealId);
+	}
 	
 	@Override
 	public  void handleCallback(String callbackid, Object data) throws Exception {

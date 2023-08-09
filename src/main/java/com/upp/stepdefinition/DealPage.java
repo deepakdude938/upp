@@ -40,7 +40,8 @@ public class DealPage extends BaseClass implements ICallback {
 
 	@Given("Open browser and enter url")
 	public void open_browser_and_enter_url() {
-		driver.get(prop.getProperty("QAUrl"));
+//		driver.get(prop.getProperty("QAUrl"));
+		driver.get(url);
 	}
 
 	@Then("Login to the application as {string}")

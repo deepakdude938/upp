@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
+import com.upp.base.BaseClass;
 import com.upp.utils.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
-public class Payload {
+public class Payload extends BaseClass{
 
 	public static ExcelReader externalData;
 
@@ -43,7 +44,7 @@ public class Payload {
 	public static String loginToUPP() throws IOException {
 
 		String api_userName = Property.getProperty("api_username");
-		String api_password = Property.getProperty("api_password");
+		String api_password =api_Password;
 
 		return "{\r\n" + "    \"username\":\"" + api_userName + "\",\r\n" + "    \"password\":\"" + api_password
 				+ "\"\r\n" + "}";

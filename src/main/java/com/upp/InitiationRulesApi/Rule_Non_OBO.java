@@ -11,14 +11,14 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
-public class Rule_Non_OBO {
+public class Rule_Non_OBO extends BaseClass {
 	public static String response = "";
 
-	public static String base_Url = Property.getProperty("Dev_base_uri");
 
 	public static ExcelReader externalData;
 
@@ -28,7 +28,7 @@ public class Rule_Non_OBO {
 
 		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.Rule_Non_OBO(dealId, TSID)).when()
@@ -45,7 +45,5 @@ public class Rule_Non_OBO {
 			Assert.assertEquals(ExpectederrorMessage, ActualErrorMessage);
 
 		}
-
 	}
-
 }
