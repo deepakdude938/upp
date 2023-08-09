@@ -114,19 +114,29 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	}
 
-	public void eCommExecutionsReport(String EndToEndId) throws Exception {
+	public void Verify_Status_And_Amount_eCommExecutionsReport(String EndToEndId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-		tm.reports_searchBox.sendKeys("eComm Executions");
-		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutions, Duration.ofSeconds(6));
-		jsClick.click(tm.reports_eCommExecutions);
-		applyExplicitWaitsUntilElementClickable(tm.reports_endToendId, Duration.ofSeconds(5));
-		tm.reports_endToendId.sendKeys(EndToEndId);
-
-		scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 1800);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
+		scroll.scrollInToView(tm.reports_eCommExecutionsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommExecutionsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
+		Thread.sleep(3000);
+		System.out.println("EndtoEndId" + EndToEndId);
+		tm.reports_End_To_End_common.sendKeys(EndToEndId);
+		Thread.sleep(3000);
+		String status = tm.reports_FirstTxnStatus.getText();
+		System.out.println("The status is :"+ status);
+		
+		Assert.assertEquals(status,"Scheduled");
+		
+	
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Amount, tm.reports_horizontalWindow1,9,1000);
 
 		Thread.sleep(3000);
 
@@ -140,14 +150,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		String amount2 = driver.findElement(Amount2).getText();
 		System.out.println("the amount2 is:" + amount2);
 
-		By Status = By.xpath("//div[normalize-space()='Scheduled']");
-		applyExplicitWaitsUntilElementVisible(Status, 3);
-		String status = driver.findElement(Status).getText();
-		System.out.println("the status is:" + status);
-
-		if (!(status.equalsIgnoreCase("Scheduled"))) {
-			Assert.fail("Transaction is not scheduled");
-		}
+		
 
 		if (!(amount1.equalsIgnoreCase("925"))) {
 			Assert.fail("Amount is mismatched");

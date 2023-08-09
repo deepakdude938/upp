@@ -290,6 +290,14 @@ public class Budget extends BaseClass {
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
 		od.budget_AddButton.click();
+		 try {
+			 od.budget_AddButton.click();
+		 }
+		catch(Exception e) {
+			handleElementClickException( od.budget_AddButton);
+	     }
+		 //Taking too much time manually also to add the budget
+		 Thread.sleep(8000);
 	}
 	
 	public void Edit_Deal_And_Verify_Utilized_Budget(String TSID,String DealID) throws Exception
@@ -335,6 +343,9 @@ public class Budget extends BaseClass {
 			 Thread.sleep(4000);
 			 od.dealChecker_searchButton.click();
 			 Thread.sleep(3000);
+			 od.dealChecker_searchButton.click();
+			 Thread.sleep(5000);
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
 			 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
 			 od.dealChecker_showMenu.click();
 			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
@@ -354,7 +365,7 @@ public class Budget extends BaseClass {
 		 applyExplicitWaitsUntilElementVisible(Budget,10);
 		 driver.findElement(Budget).click();
 		 
-		 By AllocatedBudgetAmount=By.cssSelector("td[class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted']");
+		 By AllocatedBudgetAmount=By.xpath("//td[@class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted'] | //td[@class='dir_col_large ui-text-m semi ui-ripple date-range ng-star-inserted']");
 		 applyExplicitWaitsUntilElementVisible(AllocatedBudgetAmount,10);
 		 js.click(driver.findElement(AllocatedBudgetAmount));
 		 Thread.sleep(2000);
@@ -537,8 +548,10 @@ public class Budget extends BaseClass {
 			 Thread.sleep(4000);
 			 od.dealChecker_searchButton.click();
 			 Thread.sleep(3000);
-			 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
-			 od.dealChecker_showMenu.click();
+			 od.dealChecker_searchButton.click();
+			Thread.sleep(5000);
+			applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
+			od.dealChecker_showMenu.click();
 			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
 			 od.DealDraftsOpen.click();
 			 
@@ -557,10 +570,11 @@ public class Budget extends BaseClass {
 		 applyExplicitWaitsUntilElementVisible(Budget,10);
 		 driver.findElement(Budget).click();
 		 
-		 By AllocatedBudgetAmount=By.cssSelector("td[class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted']");
+		 By AllocatedBudgetAmount=By.xpath("//td[@class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted'] | //td[@class='dir_col_large ui-text-m semi ui-ripple date-range ng-star-inserted']");
 		 applyExplicitWaitsUntilElementVisible(AllocatedBudgetAmount,10);
 		 js.click(driver.findElement(AllocatedBudgetAmount));
 		 Thread.sleep(2000);
+
 		 
 		String utilized_Budget= od.Utilized_Budget_Amount.getText();
 		int actualUtilizedAmount=(int) Double.parseDouble(utilized_Budget.split("₹")[1]);
@@ -631,7 +645,7 @@ public class Budget extends BaseClass {
 			handleElementClickException( od.budget_AddButton);
 	     }
 		 //Taking too much time manually also to add the budget
-		 Thread.sleep(7000);
+		 Thread.sleep(8000);
 	}
 	
 	public String createBudget_Payments_ForPuposeBudget(String TSID, String sourceAccountno, String toAccountNo) throws Exception {

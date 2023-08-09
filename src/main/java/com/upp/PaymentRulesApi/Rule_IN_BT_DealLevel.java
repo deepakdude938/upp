@@ -11,14 +11,13 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
-public class Rule_IN_BT_DealLevel {
+public class Rule_IN_BT_DealLevel extends BaseClass {
 	public static String response = "";
-
-	public static String base_Url = Property.getProperty("Dev_base_uri");
 
 	public static ExcelReader externalData;
 	
@@ -31,7 +30,7 @@ public class Rule_IN_BT_DealLevel {
 		externalData = new ExcelReader();
 
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.Rule_IN_BT_dealLevel(dealId, TSID)).when()

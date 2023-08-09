@@ -7,6 +7,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.testng.Assert;
+
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
@@ -14,10 +16,9 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
-public class Rule_dealRefId_V3_UD {
+public class Rule_dealRefId_V3_UD extends BaseClass{
 
 	public static String response = "";
-	public static String base_Url = Property.getProperty("Dev_base_uri");
 	public static ExcelReader externalData;
 	public Payload pay;
 
@@ -34,10 +35,7 @@ public class Rule_dealRefId_V3_UD {
 		if(TSID.equalsIgnoreCase("TS38")||TSID.equalsIgnoreCase("TS41")) {
 			statusCode=200;
 		}
-		if(Property.getProperty("QAUrl").contains("13.126.59.0:32080")) {
-			base_Url="http://13.126.59.0:32080/";
-		}
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).body(pay.rule_ParticipantOBO(TSID, dealId)).when()
 				.post("transaction/api/transaction");
