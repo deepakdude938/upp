@@ -17,7 +17,6 @@ import io.restassured.response.Response;
 public class Rules_Party_EnrichDebtor extends BaseClass{
 	
 	public static ExcelReader externalData;
-	public static String base_Url = Property.getProperty("Dev_base_uri");
 	String modifiedJsonString ="";
 	String response = "";
 	public	Object_Ecommerce ecom;
@@ -30,10 +29,8 @@ public class Rules_Party_EnrichDebtor extends BaseClass{
 	}
 	
 	public void partyEnrichDebtorRule() throws Exception {
-		if(Property.getProperty("QAUrl").contains("13.126.59.0:32080")) {
-			base_Url="http://13.126.59.0:32080/";
-		}
-		RestAssured.baseURI = base_Url;
+
+		RestAssured.baseURI = base_url;
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
 				.body(pl.modifiedJsonString).when()
