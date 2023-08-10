@@ -16,7 +16,6 @@ public class TS69 extends BaseClass{
 		budget = new Budget();
 	}
 	
-	
 	@Then("Validate in execution report for scheduled record {string}")
 	public void validate_in_execution_report_for_scheduled_record(String tsid) throws Exception {
 	   re.validateScheduledStatusforRecord(tsid);
@@ -31,5 +30,4 @@ public class TS69 extends BaseClass{
 	public void verify_in_Budget_tab_Utilized_Budget_Available_Budget_Amount_with_given(String string) throws Exception {
 		   budget.edit_Deal_And_Verify_Utilized_Budget_Available_Budget(string, dealId);
 	}
-	
 }
