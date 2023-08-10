@@ -26,7 +26,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 	public static ScrollTypes scroll;
 	public static JavascriptClick jsClick;
-	public static Object_Transactions tm ;
+	public static Object_Transactions tm;
 	public static CommonUtils commonutils;
 
 	public TransactionMaker_PaymentInstrumentHandler() {
@@ -36,7 +36,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		jsClick = new JavascriptClick(driver);
 		tm = new Object_Transactions();
 		externalData = new ExcelReader();
-		commonutils=new CommonUtils(driver);
+		commonutils = new CommonUtils(driver);
 	}
 
 	@Override
@@ -107,12 +107,13 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 	}
 
-	public void handleBT_UAEPaymentInstrument(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
+	public void handleBT_UAEPaymentInstrument(String TSID, String sourceAccountno, String toaccountNo)
+			throws Exception {
 
 		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
 		jsClick.click(tm.transactions_ToAccountDropdown);
-		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown,toaccountNo);
+		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown, toaccountNo);
 		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
 		dropdown.selectByValue(tm.transactions_accountOrIban,
 				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
