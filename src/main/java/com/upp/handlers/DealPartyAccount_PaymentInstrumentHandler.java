@@ -119,7 +119,9 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryCurrency);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCurrency, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCurrency,externalData.getFieldData(TSID, "Party", "Beneficiary Currency"));
-		od.parties_partyAccountsAddButton.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.parties_partyAccountsAddButton, Duration.ofSeconds(7));
+		jsClick.click(od.parties_partyAccountsAddButton);
 		
 	}
 	
@@ -172,12 +174,14 @@ public void handle_LT_IN_PaymentInstrument(String TSID) throws Exception {
 	dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
 			externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
 	
-//	scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
-//	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
-//	dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
-//			externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
+	dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
+			externalData.getFieldData(TSID, "Party", "Beneficiary Country Of Incorporation"));
 
-	od.parties_partyAccountsAddButton.click();
+	Thread.sleep(1000);
+	applyExplicitWaitsUntilElementClickable(od.parties_partyAccountsAddButton, Duration.ofSeconds(7));
+	jsClick.click(od.parties_partyAccountsAddButton);
 	
 }
 public void handle_SC_Payment_Profile_PaymentInstrument(String TSID) throws Exception {
@@ -229,7 +233,9 @@ public void handle_SC_Payment_Profile_PaymentInstrument(String TSID) throws Exce
 		od.payment_account_test1.sendKeys("test1");
 	}
 
-	od.parties_partyAccountsAddButton.click();
+	Thread.sleep(1000);
+	applyExplicitWaitsUntilElementClickable(od.parties_partyAccountsAddButton, Duration.ofSeconds(7));
+	jsClick.click(od.parties_partyAccountsAddButton);
 	
 }
 }
