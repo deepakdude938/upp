@@ -10,11 +10,13 @@ import org.testng.Assert;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
-public class Rule_Static_OBO {
+public class Rule_Static_OBO extends BaseClass{
 	public static String response = "";
 
 	public static String base_Url = Property.getProperty("Dev_base_uri");
@@ -26,7 +28,7 @@ public class Rule_Static_OBO {
 
 		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)

@@ -11,7 +11,7 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And Create Transaction from Transaction Maker and check whether To Field is accepting Non Registered Beneficiary with given "<TSID>" 
 Then Approve the transaction from Transaction Checker with given "<TSID>"
-#Then Approve the transaction from Transaction Verifier with given "<TSID>"
+Then Approve the transaction from Transaction Verifier with given "<TSID>"
 And verify Audit Transcation with given "<TSID>"
 Then verify the downloaded Audit Report with Action version "Create" and "<TSID>"
 Examples:
