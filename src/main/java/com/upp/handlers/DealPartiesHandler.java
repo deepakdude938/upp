@@ -120,7 +120,7 @@ public class DealPartiesHandler extends BaseClass {
 	     js.click(od.parties_DocumentType);
 		
 		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {
-			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Blueprint, Duration.ofSeconds(5));
+			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Blueprint, Duration.ofSeconds(15));
 			
 			try {
 				od.parties_DocumentsType_Blueprint.click();
@@ -138,7 +138,7 @@ public class DealPartiesHandler extends BaseClass {
 			od.parties_DocumentsType_Architect_certificate.click();
 			dropdown.selectByVisibleText(od.parties_DocumentNature1,
 					externalData.getFieldData(TSID, "Party", "Document Nature"));
-			applyExplicitWaitsUntilElementClickable(od.payments_Documents_ExecutionDate, Duration.ofSeconds(5));
+			applyExplicitWaitsUntilElementClickable(od.payments_Documents_ExecutionDate, Duration.ofSeconds(15));
 			od.payments_Documents_ExecutionDate.click();
 			String day = dateutil.getDay();
 			By excecutionDay = By.xpath(

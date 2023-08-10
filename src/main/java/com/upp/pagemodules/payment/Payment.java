@@ -234,7 +234,7 @@ public class Payment extends BaseClass{
 		}
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		od.payments_AddSubInstructionButton.click();
-		
+		Thread.sleep(5000);
 		try {
 			od.payments_NextArrowButtonTransferSubInstruction.click();
 			}

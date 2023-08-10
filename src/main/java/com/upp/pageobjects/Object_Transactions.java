@@ -332,6 +332,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//i[contains(@class,'deal-entitlement')]")
 	public WebElement entitlementsIcon;
 	
+	@FindBy(xpath = "//p[@class='ui-text-s ui-tab' and normalize-space()='Account']")
+	public WebElement entitlements_Account;
+	
 	@FindBy(xpath = "//td[3]//div[contains(@title,'Name:')]")
 	public WebElement initiatingContact;
 	
