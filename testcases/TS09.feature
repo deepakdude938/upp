@@ -1,4 +1,4 @@
-Feature: TS09
+Feature: TS09_Party_Maker_Checker
 
 @Regression @TS09
 Scenario Outline: Creating a new Party under Parties tab and onboarding the party to the deal and creating a txn 
