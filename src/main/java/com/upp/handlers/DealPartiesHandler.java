@@ -30,6 +30,7 @@ public class DealPartiesHandler extends BaseClass {
 	public String ecommerce;
 	public static Object_Parties op;
 	Object_Deal object_deal;
+	JavascriptClick js;
 
 	public DealPartiesHandler() {
 		od = new Object_NewDeal();
@@ -39,6 +40,7 @@ public class DealPartiesHandler extends BaseClass {
 		dateutil = new DateUtils();
 		op = new Object_Parties();
 		object_deal = new Object_Deal();
+		js=new JavascriptClick(driver);
 	}
 
 	public void handleAddNewParty(String TSID, ICallback icallback) throws Exception {
@@ -112,13 +114,11 @@ public class DealPartiesHandler extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(od.parties_AddDocument);
 		}
-
+		
+         Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.parties_DocumentType, Duration.ofSeconds(15));
-		try {
-			od.parties_DocumentType.click();
-		} catch (Exception e) {
-			handleElementClickException(od.parties_DocumentType);
-		}
+	     js.click(od.parties_DocumentType);
+		
 		if (externalData.getFieldData(TSID, "Party", "Document Type").equalsIgnoreCase("Blueprint")) {
 			applyExplicitWaitsUntilElementClickable(od.parties_DocumentsType_Blueprint, Duration.ofSeconds(15));
 			

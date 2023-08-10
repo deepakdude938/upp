@@ -16,6 +16,8 @@ import com.jayway.jsonpath.JsonPath;
 public class Payload extends BaseClass{
 
 	public static ExcelReader externalData;
+	public static String MappersDealId="";
+	
 
 	public static String createParty(String dealId, String TSID) throws IOException, Exception {
 		externalData = new ExcelReader();
@@ -131,6 +133,13 @@ public class Payload extends BaseClass{
 	public static String createEcommerceTnx(String TSID) throws IOException, Exception {
 		externalData = new ExcelReader();
 		String payLoadString = externalData.getFieldData(TSID, "Ecommerce Tnx Api", "Payload");
+		
+		if(prop.getProperty("env").equalsIgnoreCase("qa")) {
+			MappersDealId="";	
+		}
+		if(prop.getProperty("env").equalsIgnoreCase("sit")) {
+			MappersDealId="REF1691047172720";	
+		}
 
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
@@ -142,6 +151,7 @@ public class Payload extends BaseClass{
 		String utctimeEod = utcdate + "T" + "14:30:00Z";
 
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.dealRefId",MappersDealId);
 		jsonContext.set("$.paymentInfo.platformRefNo", UniqueplatformRefNo);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 		jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn", utctimeEod);

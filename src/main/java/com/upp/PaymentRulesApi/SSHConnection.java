@@ -12,21 +12,32 @@ import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+import com.upp.base.BaseClass;
 import com.upp.utils.Property;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SSHConnection {
+public class SSHConnection extends BaseClass{
    public static String file="";
    public static String paymentProcessor="";
    public static String paymentProcessorpodname="";
+   public static String host="";
+   public static String namespace="";
    
     public static ArrayList<String> getPainFileDetails(String batchId,ArrayList<String> tagNames){
         ArrayList<String> Result = new ArrayList<String>();
         String privateKeyPath = System.getProperty("user.dir") + "//src//main//resources//av.pem";
         String username = "ubuntu";
-        String host=Property.getProperty("host");
-        String namespace=Property.getProperty("namespace");
+
+        if(prop.getProperty("env").equalsIgnoreCase("qa")) {
+			host="13.126.59.0";
+			namespace="upp-qa";				
+		}
+        
+        if(prop.getProperty("env").equalsIgnoreCase("sit")) {
+			host="3.7.121.236";
+			namespace="appveensit";				
+		}
         int port = 22;
 
         JSch jSch = new JSch();

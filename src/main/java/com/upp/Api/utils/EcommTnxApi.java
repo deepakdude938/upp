@@ -11,20 +11,19 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.Property;
 
 
 
-public class EcommTnxApi {
+public class EcommTnxApi extends BaseClass {
 	public static String response = "";
 	public static String endToEndId = "";
 
-	public static String base_Url = Property.getProperty("Dev_base_uri");
-
 	public static String createEcommerceTnx(String TSID) throws Exception {
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).body(Payload.createEcommerceTnx(TSID)).when()
