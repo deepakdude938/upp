@@ -159,4 +159,29 @@ public class Payload {
 	      
 		return modifiedJsonString ;
 	}
+	
+	public static String createVirtualAccountFromExcelSheet(String TSID) throws Exception
+	{
+		
+		externalData = new ExcelReader();
+		
+		String country=externalData.getFieldData(TSID,"Accounts","Country Code");
+		String currency=externalData.getFieldData(TSID,"Accounts","Currency");
+		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		 String accountno = Long.toString(number);
+		
+		String payLoadString =externalData.getFieldData(TSID, "ODP Api", "Payload");
+		String physicalAccountNumber=DealPage.AccountNo1;
+		
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		 jsonContext.set("$._id",accountno);
+		 jsonContext.set("$.accountNumber",accountno);
+	     jsonContext.set("$.currency", currency);
+	     jsonContext.set("$.country", country);
+	     jsonContext.set("$.accountIdentifierKey", "virtual");
+	     jsonContext.set("$.extendedAttributes.physicalAccountNumber",physicalAccountNumber);
+	    String modifiedJsonString = jsonContext.jsonString();
+	      
+		return modifiedJsonString ;
+	}
 }
