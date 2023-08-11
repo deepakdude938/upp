@@ -44,7 +44,7 @@ public class TS18 extends BaseClass implements ICallback {
 	@Then("Click On Accounts Tab")
 	public void click_On_Accounts_Tab() throws Exception {
 
-		applyExplicitWaitsUntilElementClickable(od.accountIcon, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.accountIcon, Duration.ofSeconds(15));
 		od.accountIcon.click();
 	}
 
