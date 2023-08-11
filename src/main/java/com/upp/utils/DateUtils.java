@@ -167,4 +167,14 @@ public class DateUtils {
 		return formattedDateTime;
 			
 		}
+	
+	public static String getCurrentDateTime1(){
+		
+		 LocalDateTime currentDateTime = LocalDateTime.now();
+	     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH_mm");
+	     String formattedDateTime = currentDateTime.format(formatter);
+	     
+		return formattedDateTime;
+			
+		}
 }

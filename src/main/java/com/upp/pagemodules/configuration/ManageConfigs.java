@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_Configuration;
 import com.upp.pageobjects.Object_NewDeal;
+import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.ScrollTypes;
@@ -35,7 +36,7 @@ public class ManageConfigs extends BaseClass{
 		config.configuration_ManageConfigs.click();
 		config.configuaration_Product.click();
 		config.configurationProduct_AddNew.click();
-		config_productName =externalData.getFieldData(tSID, "Configuration", "Name")+UUID.randomUUID().toString().substring(0, 4);
+		config_productName =externalData.getFieldData(tSID, "Configuration", "Name")+"_"+DateUtils.getCurrentDateTime1();
 		config.configurationProduct_Name.sendKeys(config_productName);
 		config.configurationProduct_Description.sendKeys(externalData.getFieldData(tSID, "Configuration", "Description"));
 		
@@ -45,6 +46,7 @@ public class ManageConfigs extends BaseClass{
 		applyExplicitWaitsUntilElementVisible(selectTabs, 10);
 		driver.findElement(selectTabs).click();
 		config.configurationProduct_SelectTabsText.click();
+		Thread.sleep(1000);
 		
 		String input_ScheduleInstructionType = externalData.getFieldData(tSID, "Configuration", "Schedule Instruction Types");
 		config.configurationProduct_ScheduleInstructionType.click();
@@ -52,6 +54,7 @@ public class ManageConfigs extends BaseClass{
 		applyExplicitWaitsUntilElementVisible(scheduleInstructionType, 10);
 		driver.findElement(scheduleInstructionType).click();
 		config.configurationProduct_ScheduleInstructionTypeText.click();
+		Thread.sleep(1000);
 		
 		String input_LinkedInstructionType = externalData.getFieldData(tSID, "Configuration", "Linked Instruction Types");
 		config.configurationProduct_LinkedInstructionTypes.click();
@@ -59,6 +62,7 @@ public class ManageConfigs extends BaseClass{
 		applyExplicitWaitsUntilElementVisible(linkedInstructionInstructionType, 10);
 		driver.findElement(linkedInstructionInstructionType).click();
 		config.configurationProduct_LinkedInstructionTypesText.click();
+		Thread.sleep(1000);
 		
 		String input_FeeInstructionType = externalData.getFieldData(tSID, "Configuration", "Fee Instruction Types");
 		config.configurationProduct_FeeInstructionTypes.click();
@@ -66,6 +70,7 @@ public class ManageConfigs extends BaseClass{
 		applyExplicitWaitsUntilElementVisible(feeInstructionInstructionType, 10);
 		driver.findElement(feeInstructionInstructionType).click();
 		config.configurationProduct_FeeInstructionTypesText.click();
+		Thread.sleep(1000);
 		
 		String input_Notifications = externalData.getFieldData(tSID, "Configuration", "Notifications");
 		config.configurationProduct_Notifications.click();
@@ -73,6 +78,7 @@ public class ManageConfigs extends BaseClass{
 		applyExplicitWaitsUntilElementVisible(configurationProduct_Notifications, 10);
 		driver.findElement(configurationProduct_Notifications).click();
 		config.configurationProduct_NotificationsText.click();
+		Thread.sleep(1000);
 		config.configurationProduct_TransactionPurpose.sendKeys(externalData.getFieldData(tSID, "Configuration", "Transaction Purpose"));
 		Thread.sleep(1000);
 		config.configurationProduct_Submit.click();
