@@ -13,6 +13,7 @@ import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
+import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.Transactions.Transactions_Checker;
 import com.upp.pagemodules.Transactions.Transactions_Maker_SearchTransactionAndSubmit;
 import com.upp.pagemodules.Transactions.Transactions_Verifier;
@@ -29,6 +30,7 @@ public class TS04 extends BaseClass implements ICallback {
 	Transactions_Verifier txnVerifier;
 	String tsid;
 	public static String toAccount, sourceAccount;
+	Reports_ExecutionReport execReport;
 
 	public TS04(DashBoard_Module dm) {
 		this.dm = new DashBoard_Module();
@@ -37,6 +39,7 @@ public class TS04 extends BaseClass implements ICallback {
 		this.txnVerifier = new Transactions_Verifier();
 		sourceAccount = new DealPage(dm).sourceAccountNo;
 		toAccount = new DealPage(dm).toaccountNo;
+		this.execReport = new Reports_ExecutionReport();
 	}
 
 	@Then("create Linked Instruction Payment with given  {string}.")
@@ -67,7 +70,16 @@ public class TS04 extends BaseClass implements ICallback {
 		txnVerifier.txnVerifier_ApproveDeal(dealId);
 
 	}
+	
+	@Then("Go to execution report and check the status it should be schedule for {string}")
+	public void go_to_execution_report_and_check_the_status_it_should_be_schedule_for(String string) throws Exception {
+		execReport.ExecutionReportForSchedule(string,dealId);
+	}
 
+	@Then("Post schedule time ,check the status. it should be awaiting for {string}")
+	public void post_schedule_time_check_the_status_it_should_be_awaiting_for(String string) throws Exception {
+		execReport.ExecutionReportAwaitingTransaction(string, dealId);
+	}
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub
