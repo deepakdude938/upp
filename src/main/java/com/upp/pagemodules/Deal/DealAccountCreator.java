@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.Create_ODP_Account_Api;
+import com.upp.odp.utils.Create_ODP_Virtual_Account_Api;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
@@ -74,7 +75,7 @@ public class DealAccountCreator extends BaseClass {
 		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
 			dropdown.selectByVisibleText(od.physical, "Physical");
 		} else {
-			dropdown.selectByVisibleText(od.physical, " Virtual ");
+			dropdown.selectByVisibleText(od.physical, "Virtual");
 		}
 		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
 
@@ -107,7 +108,43 @@ public class DealAccountCreator extends BaseClass {
 		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
 			dropdown.selectByVisibleText(od.physical, "Physical");
 		} else {
-			dropdown.selectByVisibleText(od.physical, " Virtual ");
+			dropdown.selectByVisibleText(od.physical, "Virtual");
+		}
+
+	
+
+		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
+
+		od.searchTextBox.sendKeys(accountNo);
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
+		od.searchButton.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
+		Thread.sleep(2000);
+		return accountNo;
+	}
+	
+public String OnBoard_Virtual_Account(String TSID) throws Exception {
+		
+		accDetails = odpAccount.popelmnt(Create_ODP_Virtual_Account_Api.stack1);
+		System.out.println("the account no is" + accDetails.getAccno());
+		
+		String accountNo = accDetails.getAccno();
+		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
+		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
+		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
+		String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
+		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
+			dropdown.selectByVisibleText(od.physical, "Physical");
+		} else {
+			dropdown.selectByVisibleText(od.physical, "Virtual");
 		}
 
 	
