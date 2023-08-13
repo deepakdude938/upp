@@ -110,7 +110,7 @@ public class SSHConnection extends BaseClass{
                     while ((line = reader.readLine()) != null) {
                         output.add(line);
                     }
-                   file= output.get(1);
+                   file= output.get(0);
                    
                    
                     // Close the channel
