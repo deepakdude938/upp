@@ -69,16 +69,20 @@ public class ECommerceTransactionMaker extends BaseClass {
 	}
 
 	public void addBasicDetailsToEcommerceTxn(String TSID, String srcAccount, String toAccount) throws Exception {
+		Thread.sleep(2000);
 		ecomm.ecommerce_purpose.click();
 		System.out.println(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(2000);
 		ecomm.ecommerce_purpose.sendKeys(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
 		dropdown.selectByVisibleText(ecomm.ecommerce_purpose,
 				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
 		Thread.sleep(3000);
 		ecomm.ecommerce_participantAccount.click();
 		ecomm.ecommerce_firstParticipantAccount.click();
+		Thread.sleep(2000);
 		dropdown.selectByVisibleText(ecomm.ecommerce_balanceConsideration,
 				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Balance Consideration"));
+		Thread.sleep(2000);
 		ecomm.ecommerce_saveAndContinue.click();
 	}
 

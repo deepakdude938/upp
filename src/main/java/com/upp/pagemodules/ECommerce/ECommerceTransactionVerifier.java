@@ -48,32 +48,6 @@ public class ECommerceTransactionVerifier extends BaseClass {
 	public void txnVerifier_ApproveDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
 		ecomm.ecommerce_SideMenuIcon.click();
-		Thread.sleep(3000);
-		ecomm.ecommerce_txnVerifier.click();
-		TimeUnit.MINUTES.sleep(3);
-		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
-		ecomm.ecommerce_txnCheckbox.click();
-		ecomm.ecommerce_comment.click();
-		ecomm.ecommerce_note.sendKeys("Ok approve");
-		ecomm.ecommerce_txnok.click();
-
-		try {
-			if (ecomm.ecommerce_warning.isDisplayed()) {
-				ecomm.ecommerce_submitBtn.click();
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		try {
-			ecomm.ecommerce_yesBtn.click();
-			ecomm.ecommerce_okBtn.click();
-		} catch (Exception e) {
-			System.out.println("Pass");
-		}
-
-	}
-
-	public void approveRecordFromEcommTxnVerifier() throws Exception {
 		try {
 			ecomm.ecommerce_txnVerifier.click();
 		} catch (ElementClickInterceptedException e) {
@@ -97,6 +71,48 @@ public class ECommerceTransactionVerifier extends BaseClass {
 		ecomm.ecommerce_Allcomment.click();
 		}
 		catch(Exception e) {
+			handleElementClickException(ecomm.ecommerce_Allcomment);
+		}
+		ecomm.ecommerce_note.sendKeys("Ok approve");
+		ecomm.ecommerce_txnok.click();
+		ecomm.ecommerce_submitBtn.click();
+		try {
+			if (ecomm.ecommerce_warning.isDisplayed()) {
+				ecomm.ecommerce_submitBtn.click();
+			}
+		} catch (Exception e) {
+
+		}
+		new Actions(driver).moveToElement(ecomm.ecommerce_yesBtn);
+		ecomm.ecommerce_yesBtn.click();
+		ecomm.ecommerce_okBtn.click();
+
+	
+	}
+
+	public void approveRecordFromEcommTxnVerifier() throws Exception {
+		try {
+			ecomm.ecommerce_txnVerifier.click();
+		} catch (ElementClickInterceptedException e) {
+			Thread.sleep(2000);
+			handleElementClickException(ecomm.ecommerce_txnVerifier);
+		}
+
+//		ecomm.ecommerce_txnVerifier.click();
+
+		ecomm.ecommerce_TxnDealSearch1.clear();
+		ecomm.ecommerce_TxnDealSearch1.sendKeys(dealId);
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox, Duration.ofSeconds(10));
+		try {
+			ecomm.ecommerce_AllRecordsCheckBox.click();
+		} catch (Exception e) {
+			Thread.sleep(2000);
+			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
+		}
+		try {
+			ecomm.ecommerce_Allcomment.click();
+		} catch (Exception e) {
 			handleElementClickException(ecomm.ecommerce_Allcomment);
 		}
 		ecomm.ecommerce_note.sendKeys("Ok approve");
