@@ -403,9 +403,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
-		System.out.println(deal);
+		System.out.println("Deal in roprt= "+deal);
 		tm.reports_dealId1.sendKeys(deal);
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 			Assert.assertEquals(record.getText(), "Scheduled");
