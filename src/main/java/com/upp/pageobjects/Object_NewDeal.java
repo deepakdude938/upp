@@ -627,6 +627,12 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//div[normalize-space()='edit'])[1]")
 	public WebElement deal_EditIcon;
 	
+	@FindBy(xpath="(//div[normalize-space()='View'])[1]")
+	public WebElement deal_ViewIcon;
+	
+	@FindBy(xpath="(//i[@id='ic-deals-view-editDeal-v1 '])[1]")
+	public WebElement deal_EditPencilButton;
+	
 	@FindBy(xpath="(//span[@class='ui-pseudo-checkbox'])[1]")
 	public WebElement parties_LinkPartyCheckboxIcon;
 	

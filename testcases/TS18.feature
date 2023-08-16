@@ -1,7 +1,7 @@
-Feature: TS18
+Feature: TS18_PriorityDependency_SameDay
 
 @Regression @TS18
-Scenario Outline: Create a XCRO Deal with 2 Payments where 1 payment is dependent on other Payment
+Scenario Outline: Create a UPP Deal with 2 Payments where 1 payment is dependent on other Payment
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create deal with basic details with given "<TSID>".
