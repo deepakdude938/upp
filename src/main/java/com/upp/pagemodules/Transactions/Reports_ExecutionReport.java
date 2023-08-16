@@ -172,6 +172,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
+		
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
 		Thread.sleep(4000);
