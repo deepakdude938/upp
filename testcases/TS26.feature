@@ -1,4 +1,4 @@
-Feature: TS26
+Feature: TS26_Processing Unit
 
 @Regression @TS26
 Scenario Outline: Create Processing Unit From Configuration Tab and Verify The PU is Available in BasicDetails

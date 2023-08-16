@@ -140,23 +140,23 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		Thread.sleep(3000);
 
-		By Amount1 = By.xpath("//div[normalize-space()='925']");
+		By Amount1 = By.xpath("//div[normalize-space()='75']");
 		applyExplicitWaitsUntilElementVisible(Amount1, 3);
 		String amount1 = driver.findElement(Amount1).getText();
 		System.out.println("the amount1 is:" + amount1);
 
-		By Amount2 = By.xpath("//div[normalize-space()='75']");
+		By Amount2 = By.xpath("//div[normalize-space()='100']");
 		applyExplicitWaitsUntilElementVisible(Amount2, 3);
 		String amount2 = driver.findElement(Amount2).getText();
 		System.out.println("the amount2 is:" + amount2);
 
 		
 
-		if (!(amount1.equalsIgnoreCase("925"))) {
+		if (!(amount1.equalsIgnoreCase("75"))) {
 			Assert.fail("Amount is mismatched");
 		}
 
-		if (!(amount2.equalsIgnoreCase("75"))) {
+		if (!(amount2.equalsIgnoreCase("100"))) {
 			Assert.fail("Amount is mismatched");
 		}
 	}

@@ -1,4 +1,4 @@
-Feature: TS29
+Feature: TS29_Audit_Deal_Audit_Budget
 
 @Regression @TS29
 Scenario Outline: Update the Details in Party Tab and check whether changes visible in Audit
