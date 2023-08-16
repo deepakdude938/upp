@@ -162,7 +162,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 			tm.transactionMaker_messageOk.click();
 			Thread.sleep(3000);
 		}
-		
+
 		try {
 			tm.transactionMaker_submit.click();
 		} catch (Exception e) {
@@ -184,23 +184,29 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		tm.transactionMaker_dealSearch.sendKeys(dealId);
 		Thread.sleep(5000);
 		try {
-		tm.transactionMaker_allRecord.click();
-		tm.transactionMaker_message.click();
-		od.dealChecker_addNote.sendKeys("Ok approve");
-		Thread.sleep(3000);
-		tm.transactionMaker_messageOk.click();
-		Thread.sleep(3000);
-		}catch(Exception e) {
-			handleElementClickException(tm.transactionMaker_allRecord);
-			handleElementClickException(tm.transactionMaker_message);
-			od.dealChecker_addNote.sendKeys("Ok approve");
+			if (tm.noRows.isDisplayed()) {
+				System.out.println("Record will displayed in execution report");
+			}
+		} catch (Exception ee) {
+			try {
+				tm.transactionMaker_allRecord.click();
+				tm.transactionMaker_message.click();
+				od.dealChecker_addNote.sendKeys("Ok approve");
+				Thread.sleep(3000);
+				tm.transactionMaker_messageOk.click();
+				Thread.sleep(3000);
+			} catch (Exception e) {
+				handleElementClickException(tm.transactionMaker_allRecord);
+				handleElementClickException(tm.transactionMaker_message);
+				od.dealChecker_addNote.sendKeys("Ok approve");
+				Thread.sleep(3000);
+				tm.transactionMaker_messageOk.click();
+				Thread.sleep(3000);
+			}
+			tm.transactionMaker_submit.click();
 			Thread.sleep(3000);
-			tm.transactionMaker_messageOk.click();
-			Thread.sleep(3000);
+			tm.transactions_YesButton.click();
+			tm.transactions_Ok.click();
 		}
-		tm.transactionMaker_submit.click();
-		Thread.sleep(3000);
-		tm.transactions_YesButton.click();
-		tm.transactions_Ok.click();
 	}
 }

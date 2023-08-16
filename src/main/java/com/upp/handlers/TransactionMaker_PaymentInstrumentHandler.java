@@ -157,4 +157,34 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		tm.transactions_addSubInstruction.click();
 
 	}
+
+	public void handleBT_INPaymentInstrumentForAdhocTransaction(String TSID, String sourceAccountno, String toaccountNo)
+			throws Exception {
+		System.out.println("Inside Adhoc transaction");
+
+		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
+		jsClick.click(tm.transactions_ToAccountDropdown);
+		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown,
+				externalData.getFieldData(TSID, "Txn Maker", "to"));
+		System.out.println("the to data is " + externalData.getFieldData(TSID, "Txn Maker", "to"));
+
+		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
+		applyExplicitWaitsUntilElementClickable(od.payments_beneficiaryCountryOfIncorporationDropdown,
+				Duration.ofSeconds(7));
+		od.payments_beneficiaryCountryOfIncorporationDropdown
+				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+
+		applyExplicitWaitsUntilElementClickable(od.payments_Amount, Duration.ofSeconds(5));
+		scroll.scrollInToView(od.payments_Amount);
+		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+
+		scroll.scrollInToView(od.payments_AddSubInstructionButton);
+		od.payments_AddSubInstructionButton.click();
+		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
+		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
+				Duration.ofSeconds(10));
+		od.payments_NextArrowButtonTransferSubInstruction.click();
+
+	}
 }

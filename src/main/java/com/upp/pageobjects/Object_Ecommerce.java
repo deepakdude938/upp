@@ -220,4 +220,6 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//div[@col-id='_id' and contains(@class,'ag-cell-not-inline-editing')]")
 	public WebElement ecommerce_TxnIdRecord;
 
+	@FindBy(xpath = "//span[@class='ag-overlay-no-rows-center']")
+	public WebElement noRows;
 }

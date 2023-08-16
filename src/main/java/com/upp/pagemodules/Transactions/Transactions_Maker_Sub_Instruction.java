@@ -86,6 +86,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
 		tm.transactions_Instrument.click();
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Txn Maker", "Sub Instruction - Instrument");
+		System.out.println("Excel data in payment = "+paymentInstrumentdata);
 		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[1]");
 		applyExplicitWaitsUntilElementVisible(paymentInstrument, 3);
 		driver.findElement(paymentInstrument).click();
