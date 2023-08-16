@@ -35,6 +35,7 @@ public class BaseClass {
 	public static String url;
 	public static String base_url;
 	public static String  api_Password;
+	public static String virtual_Account_Number;
 
 	public boolean isFlexibleFunding;
 

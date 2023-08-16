@@ -28,7 +28,7 @@ public class Rule_dealRefId_V3_UC extends BaseClass {
 
 		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)

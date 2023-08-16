@@ -131,12 +131,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
 		Thread.sleep(3000);
 		String status = tm.reports_FirstTxnStatus.getText();
-		System.out.println("The status is :"+ status);
-		
-		Assert.assertEquals(status,"Scheduled");
-		
-	
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Amount, tm.reports_horizontalWindow1,9,1000);
+		System.out.println("The status is :" + status);
+
+		Assert.assertEquals(status, "Scheduled");
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Amount, tm.reports_horizontalWindow1, 9, 1000);
 
 		Thread.sleep(3000);
 
@@ -149,8 +148,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(Amount2, 3);
 		String amount2 = driver.findElement(Amount2).getText();
 		System.out.println("the amount2 is:" + amount2);
-
-		
 
 		if (!(amount1.equalsIgnoreCase("925"))) {
 			Assert.fail("Amount is mismatched");
@@ -407,9 +404,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
-		System.out.println(deal);
+		System.out.println("Deal in roprt= "+deal);
 		tm.reports_dealId1.sendKeys(deal);
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 			Assert.assertEquals(record.getText(), "Scheduled");
@@ -484,7 +481,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		System.out.println("Test = " + EndToEndId);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		// Assert.assertEquals(status, "Triggered");
@@ -690,6 +687,27 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertTrue(scroeStatus.contains("Rejected"));
 		Assert.assertTrue(scroeStatus.contains("Settled"));
+
+	}
+
+	public void ExecutionReportAwaitingTransaction(String TSID, String DealId) throws Exception {
+		String timem = dateTime.getTimeAfterMins(waitingTime);
+//		long wait = Long.parseLong(timem);
+		TimeUnit.MINUTES.sleep(7);
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		Assert.assertEquals(ScroeStatus, "Awaiting for Dependant");
+	}
+
+	public void ExecutionReportForSchedule(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		Assert.assertEquals(ScroeStatus, "Scheduled");
 
 	}
 

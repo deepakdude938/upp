@@ -9,6 +9,7 @@ import com.upp.pagemodules.DashBoard_Module;
 import callbackInterfaces.ICallback;
 
 import com.upp.handlers.DealGroupAttributesHandler;
+import com.upp.handlers.DealPartyAccount_PaymentInstrumentHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.Transactions.Transactions_Checker;
@@ -105,6 +106,41 @@ public class TS13 extends BaseClass implements ICallback {
 
 			}
 		}
+		
+		if (callbackid.equalsIgnoreCase("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT")) {
+			String paymentInstrument = (String) data;
+
+			if (paymentInstrument.equalsIgnoreCase("BT")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
+				handler.handle_BT_PaymentInstrument(TSID);
+
+			}
+
+			if (paymentInstrument.equalsIgnoreCase("LTTest")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
+				handler.handle_LTTest_PaymentInstrument(TSID);
+
+			}
+
+			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
+				handler.handleBT_IN_PaymentInstrument(TSID);
+
+			}
+
+			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
+				handler.handle_LT_IN_PaymentInstrument(TSID);
+
+			}
+			if (paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
+				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
+				handler.handle_SC_Payment_Profile_PaymentInstrument(TSID);
+
+			}
+
+		}
+
 
 	}
 }

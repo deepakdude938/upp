@@ -99,7 +99,7 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		tm.transactions_TransactionIcon1.click();
 		Thread.sleep(3000);
 		tm.transactions_TransactionMaker.click();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
 		tm.transactions_AddNewButon.click();
 		Thread.sleep(6000);

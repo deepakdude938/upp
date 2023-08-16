@@ -62,7 +62,7 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 
 	public void txnMaker_SubmitDeal(String dealid) throws Exception {
 		System.out.println("deal id in maker = " + dealid);
-		TimeUnit.MINUTES.sleep(waitingTime);
+		//TimeUnit.MINUTES.sleep(waitingTime);
 		tm.transactions_TransactionIcon.click();
 		try {
 			tm.transactions_TransactionMaker.click();
