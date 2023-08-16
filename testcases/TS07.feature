@@ -12,6 +12,7 @@ And Create two eCommerce  Parties in the Parties Tab with given "<TcId>" and "<P
 And Add deal in ecommerce transaction maker queue "<TcId>"
 And Submit the deal to ecommerce transaction checker
 And Ecommerce transaction verifier approve the deal
+And Check the Transaction staus in execution report with given "<TSID>" 
 Examples:
       |TcId||PartiesID|
       |TS07||TS07_Participant1|

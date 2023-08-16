@@ -28,7 +28,7 @@ public class Rules_Creditor_Party_Validate extends BaseClass {
 
 		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)

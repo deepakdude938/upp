@@ -28,7 +28,7 @@ public class Rules_EnrichParty_UD1 extends BaseClass {
 
 		String ActualErrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
