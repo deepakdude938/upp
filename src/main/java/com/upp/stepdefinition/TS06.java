@@ -80,7 +80,7 @@ public class TS06 extends BaseClass implements ICallback {
 
 		TSID = string;
 		// TnxId=tm.createTransactionFromTransactionMaker(string,DealPage.dealId,DealPage.toaccountNo,this);
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string,TS06.dealId, DealPage.sourceAccountNo);
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.sourceAccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
@@ -102,7 +102,7 @@ public class TS06 extends BaseClass implements ICallback {
 	@Then("Check the Transaction staus in execution report with given {string}")
 	public void check_the_Transaction_staus_in_execution_report_with_given(String string) throws Exception {
 		// tm.checkTnxStatusFromExecutionReport(string,dealId);
-		execReport.ExecutionReport(string,TS06.dealId);
+		execReport.ExecutionReport(string, TS06.dealId);
 
 	}
 
@@ -135,15 +135,20 @@ public class TS06 extends BaseClass implements ICallback {
 			if (paymentInstrument.equalsIgnoreCase("BT")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleBTPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+				instrumentHandler.handleBTPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
 
 			if (paymentInstrument.equalsIgnoreCase("BT_UAE")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleBT_UAEPaymentInstrument(TSID,DealPage.sourceAccountNo,DealPage.toaccountNo);
+				instrumentHandler.handleBT_UAEPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
 
+			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
+				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
+
+				instrumentHandler.handleBT_INPaymentInstrumentForAdhocTransaction(TSID,  DealPage.sourceAccountNo, DealPage.toaccountNo);
+			}
 		}
 
 	}

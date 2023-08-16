@@ -359,5 +359,8 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//ui-autocomplete[@formcontrolname='refId']")
 	public WebElement transactions_DealId1;
 	
+	@FindBy(xpath = "//span[@class='ag-overlay-no-rows-center']")
+	public WebElement noRows;
+	
 }
 

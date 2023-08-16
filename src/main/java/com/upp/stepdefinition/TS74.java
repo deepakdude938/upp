@@ -76,55 +76,11 @@ public class TS74 extends BaseClass implements ICallback {
 
 		if (callbackid.equalsIgnoreCase("PAYMENT_INSTRUMENT")) {
 			String paymentInstrument = (String) data;
-			if (paymentInstrument.equalsIgnoreCase("BT")) {
-				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
-
-				instrumentHandler.handleBTPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
-			}
-
-			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
-				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
-				String checkbox = externalData.getFieldData(TSID, "Basic Details",
-						"Transactions to non-registered beneficiaries");
-				System.out.println("Checkbox value = " + checkbox);
-				if (checkbox.equalsIgnoreCase("Y")) {
-					instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_checked(
-							TSID, callbackid, toaccountNumber);
-				}
-
-			}
-		}
-
-		if (callbackid.equalsIgnoreCase("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT")) {
-			String paymentInstrument = (String) data;
-
-			if (paymentInstrument.equalsIgnoreCase("BT")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_BT_PaymentInstrument(TSID);
-
-			}
-
-			if (paymentInstrument.equalsIgnoreCase("LTTest")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_LTTest_PaymentInstrument(TSID);
-
-			}
-
 			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handleBT_IN_PaymentInstrument(TSID);
+				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-			}
-
-			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_LT_IN_PaymentInstrument(TSID);
-
-			}
-			if (paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_SC_Payment_Profile_PaymentInstrument(TSID);
-
+				instrumentHandler.handleBT_INPaymentInstrumentForAdhocTransaction(TSID, DealPage.sourceAccountNo,
+						DealPage.toaccountNo);
 			}
 
 		}
