@@ -1,4 +1,4 @@
-Feature: TS23
+Feature: TS23_Lifecycle_Maker_and_Checker
 
 @Regression @TS23
 Scenario Outline: Deal Lifecycle Maker and Checker

@@ -1,7 +1,7 @@
-Feature: TS16
+Feature: TS16_Payment Retention
 
 @Regression @TS16
-Scenario Outline: Create a XCRO Deal with Payment Retention
+Scenario Outline: Create a UPP Deal with Payment Retention
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create deal with basic details with given "<TSID>".
