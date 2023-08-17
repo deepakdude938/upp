@@ -75,7 +75,7 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 	public void handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_Unchecked(String TSID,
 			String sourceAccountno, String toaccountNo) throws Exception {
-
+		System.out.println("Inside LT_IN");
 		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
 		jsClick.click(tm.transactions_ToAccountDropdown);
@@ -158,33 +158,48 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 
 	}
 
-	public void handleBT_INPaymentInstrumentForAdhocTransaction(String TSID, String sourceAccountno, String toaccountNo)
+	public void handleLT_INPaymentInstrumentForAdhocTransaction(String TSID, String sourceAccountno, String toaccountNo)
 			throws Exception {
 		System.out.println("Inside Adhoc transaction");
 
-		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
-		jsClick.click(tm.transactions_ToAccountDropdown);
-		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown,
-				externalData.getFieldData(TSID, "Txn Maker", "to"));
-		System.out.println("the to data is " + externalData.getFieldData(TSID, "Txn Maker", "to"));
+		System.out.println("Inside LT_IN");
+//		scroll.scrollInToView(tm.toAccount);
+//		applyExplicitWaitsUntilElementClickable(tm.toAccount, Duration.ofSeconds(7));
+//		jsClick.click(tm.toAccount);
+//		dropdown.selectByVisibleText(tm.toAccount, sourceAccountno);
 
-		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
-		applyExplicitWaitsUntilElementClickable(od.payments_beneficiaryCountryOfIncorporationDropdown,
-				Duration.ofSeconds(7));
-		od.payments_beneficiaryCountryOfIncorporationDropdown
-				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		tm.transactions_bankIFSCCode
+				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
+		dropdown.selectByValue(tm.transactions_accountOrIban,
+				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
 
-		applyExplicitWaitsUntilElementClickable(od.payments_Amount, Duration.ofSeconds(5));
-		scroll.scrollInToView(od.payments_Amount);
-		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+		tm.transactions_address.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Address Line 1"));
+		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
 
+//		if ((commonutils.isElementDisplayed(tm.transactions_beneficiaryaccountNumberInput, 1))) {
+//			Assert.fail("The non registered Beneficiary_WithCheckbox_Unchecked should accept only registered accounts");
+//		}
+
+		scroll.scrollInToView(tm.transactions_country);
+		dropdown.selectByValue(tm.transactions_country,
+				externalData.getFieldData(TSID, "Txn Maker", "beneficiaryCountry"));
+		
+		scroll.scrollInToView(tm.transactions_beneficiaryaccountNumberInput);
+		tm.transactions_beneficiaryaccountNumberInput.sendKeys(sourceAccountno);
+		dropdown.selectByValue(tm.transactions_beneficiaryaccountNumberInput,sourceAccountno);
+		
+		scroll.scrollInToView(tm.transactions_beneficiaryIncorporation);
+		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
+				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		
+		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
 		scroll.scrollInToView(od.payments_AddSubInstructionButton);
 		od.payments_AddSubInstructionButton.click();
 		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
 				Duration.ofSeconds(10));
-		od.payments_NextArrowButtonTransferSubInstruction.click();
+		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
 
 	}
 }
