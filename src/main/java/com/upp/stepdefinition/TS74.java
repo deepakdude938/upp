@@ -74,17 +74,6 @@ public class TS74 extends BaseClass implements ICallback {
 
 		}
 
-		if (callbackid.equalsIgnoreCase("PAYMENT_INSTRUMENT")) {
-			String paymentInstrument = (String) data;
-			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
-				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
-
-				instrumentHandler.handleBT_INPaymentInstrumentForAdhocTransaction(TSID, DealPage.sourceAccountNo,
-						DealPage.toaccountNo);
-			}
-
-		}
-
 	}
 
 }

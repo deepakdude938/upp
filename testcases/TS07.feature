@@ -1,4 +1,4 @@
-Feature: TS07
+Feature: TS07_Ecommerce_Transaction
 
 
 @Regression @TS07
