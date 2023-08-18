@@ -60,14 +60,10 @@ public class UserChecker extends BaseClass {
 		Thread.sleep(3000);
 		ou.userMaker_ok.click();
 		Thread.sleep(4000);
-//		applyExplicitWaitsUntilElementClickable(ol.logout, Duration.ofSeconds(40));
-//		jsClick.click(ol.logout);
-//		Thread.sleep(4000);	
-
 	}
 
 	public void login(String TSID) throws Exception {
-
+		System.out.println("Updated user login");
 		Thread.sleep(3000);
 		// driver.manage().deleteAllCookies();
 		// driver.navigate().refresh();
@@ -79,19 +75,14 @@ public class UserChecker extends BaseClass {
 		System.out.println("before loginsucessful");
 		ol.loginIn.click();
 		System.out.println("loginsucessful");
+		Thread.sleep(5000);
 	}
 
 	public void verifyUser() {
-
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		String actualUrl = driver.getCurrentUrl();
 		String expected[] = actualUrl.split(".com");
-		String expectedUrl = expected[0] + ".com/login";
+		String expectedUrl = expected[0] + ".com/dashboard";
 		Assert.assertEquals(expectedUrl, actualUrl);
 	}
 
