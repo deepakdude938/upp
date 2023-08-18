@@ -15,6 +15,9 @@ public class Object_User extends BaseClass {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(xpath = "//button[contains(@class,'stat-active')]")
+	public WebElement usersActive;
+	
 	@FindBy(xpath = "//label[(text() = ' USERS ' or . = ' USERS ')]")
 	public WebElement usersTab;
 
@@ -30,6 +33,9 @@ public class Object_User extends BaseClass {
 	@FindBy(id = "btn-generic-searchBar-search-v1")
 	public WebElement userMaker_searchIcon;
 
+	@FindBy(xpath="(//td[@class='ui-grid-cell ng-star-inserted'])[1]//div//span")
+	public WebElement userMaker_userList;
+	
 	@FindBy(xpath = "//div[contains(@class,'icon-edit')]")
 	public WebElement userMaker_editIcon;
 
