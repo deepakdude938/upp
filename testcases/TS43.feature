@@ -1,4 +1,4 @@
-Feature: TS43
+Feature: TS43_Rule_OBOPartyResponsibility_PartyId
 
 @Regression @TS43 @InitiationRules
 Scenario Outline: Rule_OBOPartyResponsibility_PartyId

@@ -1,4 +1,4 @@
-Feature: TS31
+Feature: TS31_Rule_Non_OBO
 
 @Regression @TS31 @InitiationRules
 Scenario Outline: Rule_Non_OBO

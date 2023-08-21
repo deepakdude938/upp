@@ -1,4 +1,4 @@
-Feature: TS06_Adhoc_Tnansaction
+Feature: TS06_Adhoc_Transaction
 
 @Regression @TS06
 Scenario Outline: Traditional UPP Transaction (Maker, Checker, Verifier) 
