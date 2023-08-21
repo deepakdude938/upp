@@ -1,4 +1,4 @@
-Feature: TS46
+Feature: TS46_Rule_OBOPartyResponsibility_PartyId_DealRefId
 
 @Regression @TS46 @InitiationRules
 Scenario Outline: Rule_OBOPartyResponsibility_PartyId_DealRefId

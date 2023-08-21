@@ -72,6 +72,8 @@ public class Verify_Budget_Details extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(DealId, 3);
 	    driver.findElement(DealId).click();
 	    
+	    Thread.sleep(1000);
+	    applyExplicitWaitsUntilElementClickable(audit.Budget_budgetDropdown, Duration.ofSeconds(10));
 	    dropdown.selectByVisibleText(audit.Budget_budgetDropdown,TSID);
 	    audit.Budget_submitButton.click();
 	    Thread.sleep(1500);
