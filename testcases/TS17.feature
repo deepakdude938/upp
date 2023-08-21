@@ -1,4 +1,4 @@
-Feature: TS17
+Feature: TS17_RequiredDocument
 
 @Regression @TS17
 Scenario Outline:  Document

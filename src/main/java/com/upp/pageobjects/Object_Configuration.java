@@ -172,5 +172,10 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//button[normalize-space()='OK']")
 	public WebElement PU_OkButton;
 	
-
+	@FindBy(xpath = "//ui-dropdown[@formcontrolname='currency']//select")
+	public WebElement transactionLimit_currency;
+	
+	@FindBy(xpath = "//input[@formcontrolname='value']")
+	public WebElement transactionLimit_amount;
+	
 }

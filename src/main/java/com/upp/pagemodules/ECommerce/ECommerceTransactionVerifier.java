@@ -62,32 +62,36 @@ public class ECommerceTransactionVerifier extends BaseClass {
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox, Duration.ofSeconds(10));
 		try {
-			ecomm.ecommerce_AllRecordsCheckBox.click();
-		} catch (Exception e) {
-			Thread.sleep(2000);
-			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
-		}
-		try {
-		ecomm.ecommerce_Allcomment.click();
-		}
-		catch(Exception e) {
-			handleElementClickException(ecomm.ecommerce_Allcomment);
-		}
-		ecomm.ecommerce_note.sendKeys("Ok approve");
-		ecomm.ecommerce_txnok.click();
-		ecomm.ecommerce_submitBtn.click();
-		try {
-			if (ecomm.ecommerce_warning.isDisplayed()) {
-				ecomm.ecommerce_submitBtn.click();
+			if (ecomm.noRows.isDisplayed()) {
+				System.out.println("Record is displayed in ecomm report");
 			}
-		} catch (Exception e) {
+		} catch (Exception ee) {
+			try {
+				ecomm.ecommerce_AllRecordsCheckBox.click();
+			} catch (Exception e) {
+				Thread.sleep(2000);
+				handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
+			}
+			try {
+				ecomm.ecommerce_Allcomment.click();
+			} catch (Exception e) {
+				handleElementClickException(ecomm.ecommerce_Allcomment);
+			}
+			ecomm.ecommerce_note.sendKeys("Ok approve");
+			ecomm.ecommerce_txnok.click();
+			ecomm.ecommerce_submitBtn.click();
+			try {
+				if (ecomm.ecommerce_warning.isDisplayed()) {
+					ecomm.ecommerce_submitBtn.click();
+				}
+			} catch (Exception e) {
 
+			}
+			new Actions(driver).moveToElement(ecomm.ecommerce_yesBtn);
+			ecomm.ecommerce_yesBtn.click();
+			ecomm.ecommerce_okBtn.click();
 		}
-		new Actions(driver).moveToElement(ecomm.ecommerce_yesBtn);
-		ecomm.ecommerce_yesBtn.click();
-		ecomm.ecommerce_okBtn.click();
 
-	
 	}
 
 	public void approveRecordFromEcommTxnVerifier() throws Exception {

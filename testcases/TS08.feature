@@ -1,4 +1,4 @@
-Feature: TS08
+Feature: TS08_EcommerceTransaction_With_APIS
 
 @Regression @TS08
 Scenario Outline:  ECommerce Transaction + Party API + Transaction API (REST API calls)

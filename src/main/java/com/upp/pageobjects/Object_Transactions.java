@@ -359,5 +359,14 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//ui-autocomplete[@formcontrolname='refId']")
 	public WebElement transactions_DealId1;
 	
+	@FindBy(xpath = "//span[@class='ag-overlay-no-rows-center']")
+	public WebElement noRows;
+	
+	//Webelement for Adhoc transaction BT_IN
+	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
+	public WebElement toAccount;
+	
+	
+	
 }
 
