@@ -1,4 +1,4 @@
-Feature: TS57
+Feature: TS57_Party Responsibilty
 
  @Regression @TS57
  Scenario Outline:  Party Responsibilty

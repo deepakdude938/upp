@@ -1,4 +1,4 @@
-Feature: TS59
+Feature: TS59_DealMaker&&DealChecker
 
 @Regression @TS59
 Scenario Outline: Create a Deal having Accounts, Parties
