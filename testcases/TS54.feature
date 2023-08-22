@@ -1,4 +1,4 @@
- Feature: TS54_Entitlements-Account
+ Feature: Entitlements-Account
  
  @Regression @TS54
  Scenario Outline:  Create Entitlments-Account

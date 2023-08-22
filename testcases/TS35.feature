@@ -1,4 +1,4 @@
-Feature: TS35_Rule_Participant_OBO
+Feature: TS35
 
 @Regression @TS35 @InitiationRules
 Scenario Outline: Rule_Participant_OBO

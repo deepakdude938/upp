@@ -1,4 +1,4 @@
-Feature: TS42_Rule_RemittanceInfo_Validation
+Feature: TS42
 
 @Regression @TS42 @InitiationRules
 Scenario Outline: Rule_RemittanceInfo_Validation

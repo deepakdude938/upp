@@ -1,4 +1,4 @@
-Feature: TS45_Rule_Charge_Bearer_Validation
+Feature: TS45
 
 @Regression @TS45 @InitiationRules
 Scenario Outline: Rule_Charge_Bearer_Validation

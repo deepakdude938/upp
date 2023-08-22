@@ -1,4 +1,4 @@
-Feature: TS49_Rule_OBODetails_Null_Obo
+Feature: TS49
 
 @Regression @TS49 @InitiationRules
 Scenario Outline: Rule_OBODetails_Null_Obo

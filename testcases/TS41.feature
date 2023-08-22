@@ -1,4 +1,4 @@
-Feature: TS41_Rule_OBOParticipant_PartyRefId_Null
+Feature: TS41
 
 @Regression @TS41 @InitiationRules
 Scenario Outline: Rule_OBOParticipant_PartyRefId_Null
