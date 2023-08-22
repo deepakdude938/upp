@@ -80,8 +80,14 @@ public class Party_Edit_LiveDeal extends BaseClass {
 		 Thread.sleep(3000);
 		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
 		 od.dealChecker_showMenu.click();
-		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
-		 od.deal_EditIcon.click();
+//		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
+//		 od.deal_EditIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.deal_ViewIcon,Duration.ofSeconds(20));
+		 od.deal_ViewIcon.click();
+		 Thread.sleep(1000);
+		 applyExplicitWaitsUntilElementClickable(od.deal_EditPencilButton,Duration.ofSeconds(20));
+		 od.deal_EditPencilButton.click();
+		 
 		 if(util.isElementDisplayed(od.deal_Edit_Yes_Button,2))
 		 {
 			 od.deal_Edit_Yes_Button.click();

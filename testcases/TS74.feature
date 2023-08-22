@@ -1,10 +1,13 @@
-Feature: TS06_Adhoc_Transaction
+Feature: TS74_Verify_Trasaction_Limit
 
-@Regression @TS06
-Scenario Outline: Traditional UPP Transaction (Maker, Checker, Verifier) 
+
+@Regression @TS74
+Scenario Outline: Verify Trasaction Limit
 Given Open browser and enter url 
-Then Login to the application as "txn_maker"
-And Create deal with basic details with given "<TSID>".
+Then Login to the application as "deal_maker"
+Then Create product from Configuration with transaction limit for "<TSID>"
+Then Approve product
+And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 Then submit the deal
@@ -17,11 +20,8 @@ And Create a Transaction from Transaction Maker with given "<TSID>"
 Then Approve the transaction from Transaction Checker with given "<TSID>"
 #Then logout of the application
 #Then Login to the application as "txn_verifier"
-#Then Approve the transaction from Transaction Verifier with given "<TSID>"
 And Check the Transaction staus in execution report with given "<TSID>"
-Then logout of the application
+
 Examples:
-      |TSID   |
-      |TS06   |
-
-
+      |TSID|
+      |TS74| 	

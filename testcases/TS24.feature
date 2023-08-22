@@ -6,46 +6,18 @@ Feature: TS24
     Then Login to the application as "deal_maker"
     And OnBoard the user with given role for "<TSID>"
     And Approve the same user
- Then Logout from Application
-        #Then Clear and close the browser
-          #
-    #Examples:
-      #|TSID |
-      #|TS24|
-      #
-             @Regression @TS24  	
-           	 Scenario Outline: Verify the updated user 
-    Given Open browser and enter url
-		Then login with updated user using "<TSID>"
-		Then Verify user is able to login
-#		Then Check responsibility
-#		Then logout of the application 
-        #Then Clear and close the browser
-				
-    Examples:
-      |TSID |
-      |TS24|	
-      
-     @Regression @TS24 
-		Scenario Outline: Deactivate  user 
-    Given Open browser and enter url
+    Then Logout from Application
+    Then login with updated user using "<UserID>"
+    Then Verify user is able to login
+    Then Check responsibility
+		Then logout of the application 
 		Then  Login to the application as "deal_maker"
-		Then Deactivate the user using "<TSID>"
-		  And Approve the same user
-#		    Then Clear and close the browser		
-		
-    Examples:
-      |TSID |
-      |TS24-1|		      
-      
+		Then Deactivate the user using "<UserID>"
+		And Approve the same user
+		 Then Logout from Application
+		 Then login with updated user using "<UserID>"
+		 Then Verify user is not  able to login
+    Examples:	
+      |TSID |UserID|
+      |TS24|TS24-1|
      
-  
-          @Regression @TS24
-          Scenario Outline: Verify the updated user 
-    Given Open browser and enter url
-		Then login with updated user using "<TSID>"
-		Then Verify user is not  able to login
-			 Examples:
-      |TSID |
-      |TS24-1|	
-      
