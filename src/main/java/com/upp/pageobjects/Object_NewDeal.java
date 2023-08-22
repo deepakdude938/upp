@@ -916,6 +916,9 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//span[@class='radio-span ng-star-inserted'])[2]")
 	public WebElement Priority_SameDay;
 	
+	@FindBy(xpath="//select[@class='ui-dropdown-select']")
+	public WebElement Priority_Dependency_Dropdown;
+	
 	@FindBy(xpath="(//span[@class='radio-span ng-star-inserted'])[1]")
 	public WebElement Priority_Cyclic;
 	
