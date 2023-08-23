@@ -80,6 +80,8 @@ public class TS08 extends BaseClass implements ICallback {
 
 	@Then("Update the Pary Api using given {string}")
 	public void update_the_Pary_Api_using_given(String string) throws Exception {
+		loginApi.loginToUpp();
+		System.out.println("deal id =" + TS07.dealId);
 		partyApi.updateParty(TS07.dealId, string);
 	}
 

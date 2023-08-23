@@ -92,7 +92,7 @@ public class TS06 extends BaseClass implements ICallback {
 	@Then("Approve the transaction from Transaction Checker with given {string}")
 	public void approve_the_transaction_from_Transaction_Checker(String string) throws Exception {
 		// tm.approveTransactionFromChecker(string,TnxId);
-		tc.TransactionsChecker(string, TS06.TnxId);
+		tc.TransactionsChecker1(string, TS06.TnxId);
 	}
 
 	@Then("Approve the transaction from Transaction Verifier with given {string}")
