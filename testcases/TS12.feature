@@ -1,4 +1,4 @@
-Feature: TS12
+Feature: TS12_AdhocTransaction_with_Non_Registered_Beneficiary_Checkbox_Unckecked
 
 @Regression @TS12
 Scenario Outline: Transaction Maker with Transaction to Non Registered Beneficiary Checkbox  Unckecked in Basic Details Page in Deal 

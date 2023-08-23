@@ -1,4 +1,4 @@
-Feature: TS36
+Feature: TS36_Rule_OBOParticipant_OBO_Info_Not_Null
 
 @Regression @TS36 @InitiationRules
 Scenario Outline: Rule_OBOParticipant_OBO_Info_Not_Null

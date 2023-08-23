@@ -116,7 +116,7 @@ public class BaseClass {
 				options.addArguments("--remote-allow-origins=*");
 				options.setExperimentalOption("prefs", chromePrefs);
 				WebDriverManager.chromedriver().setup();
-//				WebDriverManager.chromedriver().version("111.0.5563.64").setup();
+//				WebDriverManager.chromedriver().browserVersion("116.0.5845.97").setup();
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if (isHeadLess) {

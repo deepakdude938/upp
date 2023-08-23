@@ -1,4 +1,4 @@
-Feature: TS11
+Feature: TS11_Party_Apis
 
 @Regression @TS11
 Scenario Outline:  Add Party through Api and creating a txn

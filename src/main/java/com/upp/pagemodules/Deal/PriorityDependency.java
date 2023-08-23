@@ -34,9 +34,11 @@ public class PriorityDependency extends BaseClass {
 		od.Priority_EditIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.Priority_Select_Checkbox, Duration.ofSeconds(5));
 		od.Priority_Select_Checkbox.click();
-		scroll.scrollInToView(od.Priority_SameDay);
 		Thread.sleep(1500);
-		jsClick.click(od.Priority_SameDay);
+//		scroll.scrollInToView(od.Priority_SameDay);
+//		jsClick.click(od.Priority_SameDay);
+		applyExplicitWaitsUntilElementClickable(od.Priority_Dependency_Dropdown, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.Priority_Dependency_Dropdown,"SameDay");
 		applyExplicitWaitsUntilElementClickable(od.Priority_SaveButton, Duration.ofSeconds(5));
 		od.Priority_SaveButton.click();
 
