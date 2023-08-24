@@ -80,8 +80,8 @@ public class TS06 extends BaseClass implements ICallback {
 
 		TSID = string;
 		// TnxId=tm.createTransactionFromTransactionMaker(string,DealPage.dealId,DealPage.toaccountNo,this);
-//		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.sourceAccountNo);
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string, "REF1692709682363", "3836803854 - ACC1212 IN INR");
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.sourceAccountNo);
+//		tm_BasicDetails.Transactions_Maker_BasicDetails(string, "REF1692709682363", "3836803854 - ACC1212 IN INR");
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
