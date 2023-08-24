@@ -77,6 +77,7 @@ public class Transactions_Checker extends BaseClass {
 		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
 		applyExplicitWaitsUntilElementVisible(AmountID, 2);
 		String amount_checker = driver.findElement(AmountID).getText();
+//		String amount_checker = tm.amount.getText();
 		System.out.println("This is the amount from checker" + amount_checker);
 
 		if (!(amount_checker.contains(amount))) {
@@ -129,6 +130,45 @@ public class Transactions_Checker extends BaseClass {
 			System.out.println("Pass");
 			od.TxnChecker_TrasactionChecker.click();
 		}
+
+	}
+	
+	public void TransactionsChecker1(String TSID, String TnxId) throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.transactions_TransactionIcon);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(25));
+		jsClick.click(tm.transactions_TransactionChecker);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(10));
+		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(10));
+		tm.transactions_TransactionEditButton.click();
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));
+		tm.transactions_SummaryTab.click();
+		Thread.sleep(3000);
+		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
+//		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
+//		applyExplicitWaitsUntilElementVisible(AmountID, 2);
+//		String amount_checker = driver.findElement(AmountID).getText();
+////		String amount_checker = tm.amount.getText();
+//		System.out.println("This is the amount from checker" + amount_checker);
+//
+//		if (!(amount_checker.contains(amount))) {
+//			System.out.println("amount doesn't match");
+//			assertTrue(false);
+//
+//		}
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_Add_comments, Duration.ofSeconds(3));
+		scroll.scrollInToView(tm.transactions_Checker_Add_comments);
+		tm.transactions_Checker_Add_comments
+				.sendKeys(externalData.getFieldData(TSID, "Txn checker", "Summary - Add your comments here"));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_SubmitButton, Duration.ofSeconds(3));
+		tm.transactions_Checker_SubmitButton.click();
+		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(10));
+		tm.transactions_YesButton.click();
+
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(10));
+		tm.transactions_Ok.click();
 
 	}
 

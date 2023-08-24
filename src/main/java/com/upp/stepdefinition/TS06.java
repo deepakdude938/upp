@@ -140,7 +140,8 @@ public class TS06 extends BaseClass implements ICallback {
 
 			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
-				instrumentHandler.handleLT_INPaymentInstrumentForAdhocTransaction(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
+				instrumentHandler.handleLT_INPaymentInstrumentForAdhocTransaction(TSID, DealPage.sourceAccountNo,
+						DealPage.toaccountNo);
 			}
 		}
 
