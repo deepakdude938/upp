@@ -14,7 +14,7 @@ import com.upp.utils.Property;
 
 public class ODP_JSON_ASSERTIONS_PAYLOAD extends BaseClass{
 
-	public void Odp_Json_for_Budget(String TSID) throws Exception  {
+	public void Odp_Json_With_DealId(String TSID) throws Exception  {
 
 		HashMap odpRecord = new HashMap<>();
 		odpRecord.put("_id", TSID);

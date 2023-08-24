@@ -430,7 +430,7 @@ public class Payment extends BaseClass{
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
 		if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
 		
-			String time=dateutil.getTimeAfterMins(5);
+			String time=dateutil.getTimeAfterMins(10);
 			
 			od.payments_ScheduleTime.clear();
 			od.payments_ScheduleTime.sendKeys(time);

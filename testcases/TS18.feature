@@ -14,6 +14,8 @@ And Add Priority dependency with Same Day Dependeny
 Then submit the deal
 #Then logout of the application
 #Then Login to the application as "txn_checker"
+Then Create odp json payload file with DealId with given "<TSID>"
+And Create record in ODP "<TSID>"
 Then approve the deal from the deal checker common method
 And check Both Transactions Status is Scheduled
 #Then logout of the application

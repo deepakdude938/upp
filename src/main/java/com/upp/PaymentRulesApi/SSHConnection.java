@@ -105,12 +105,15 @@ public class SSHConnection extends BaseClass{
                     // Read the command output
                     InputStream in = channel.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
+ 
+                    int counter=0;
                     String line;
                     while ((line = reader.readLine()) != null) {
+                    	counter++;
                         output.add(line);
                     }
-                   file= output.get(0);
+                    int latest_file=counter-1;
+                   file= output.get(latest_file);
                    
                    
                     // Close the channel
