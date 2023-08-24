@@ -1,8 +1,8 @@
-Feature: TS71_Assertion
+Feature: TS71_Budget_Purpose_HalfYearly_Assertion
 
 
 @Assertion @TS71
-Scenario Outline: Budget_Consolidated_Yearly Assertion
+Scenario Outline: Budget_Purpose_HalfYearly Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 Then Fetch record from ODP with "<TSID>"
