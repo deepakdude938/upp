@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import com.upp.base.BaseClass;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Screenshots;
@@ -39,7 +41,7 @@ public class Hook extends BaseClass {
 		System.out.println("The run TSID is" + TSID);
 
 		ExcelReader externalData = new ExcelReader();
-		String run = externalData.getFieldData(TSID, "Test Case Master", "Run TC");
+		String run = externalData.getFieldData(TSID, "Test Case Master", "Run Mode");
 
 		System.out.println("Run Mode:" + run);
 
@@ -48,6 +50,11 @@ public class Hook extends BaseClass {
             skipCount++;      
 			throw new AssumptionViolatedException("Skipping test as mentioned in excel sheet");
 
+		}
+		
+		if(!((run.equalsIgnoreCase("no"))||(run.equalsIgnoreCase("yes"))))
+		{
+			Assert.fail("Run mode should be Yes/No");
 		}
 
 	}
