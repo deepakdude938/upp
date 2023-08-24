@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
 import com.upp.base.BaseClass;
@@ -35,7 +36,7 @@ public class EcommerceHandler extends BaseClass {
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
 		jsClick = new JavascriptClick(driver);
-		scroll=new ScrollTypes(driver);
+		scroll = new ScrollTypes(driver);
 	}
 
 	public void handleEcommerce(String TSID) throws Exception {
@@ -50,11 +51,11 @@ public class EcommerceHandler extends BaseClass {
 			char ch = CHAR_LIST.charAt(number);
 			StrBuffer.append(ch);
 		}
-			String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
-			System.out.println(PraticipantId);
-			od.parties_ParticipantId.sendKeys(PraticipantId);
-			od.parties_BasicNextButton.click();
-			dropdown.selectByVisibleText(od.ecommerce_status, externalData.getFieldData(TSID, "Party", "Party_Status"));
+		String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
+		System.out.println(PraticipantId);
+		od.parties_ParticipantId.sendKeys(PraticipantId);
+		od.parties_BasicNextButton.click();
+		dropdown.selectByVisibleText(od.ecommerce_status, externalData.getFieldData(TSID, "Party", "Party_Status"));
 
 		// od.ecommerce_validFrom.click();
 //		od.startDate.click();
@@ -82,6 +83,12 @@ public class EcommerceHandler extends BaseClass {
 		}
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
+		if (TSID.equalsIgnoreCase("TS08")) {
+			od.exePolicies.click();
+			od.exePoliciesdropdown.sendKeys(" Hold Execution(s) ");
+			od.exePoliciesdropdown.sendKeys(Keys.ENTER);
+			dropdown.deSelectByVisibleText(od.exePoliciesdropdown, " Hold Execution(s) ");
+		}
 		scroll.scrollInToView(od.ecommerceSave);
 		Thread.sleep(1500);
 		jsClick.click(od.ecommerceSave);

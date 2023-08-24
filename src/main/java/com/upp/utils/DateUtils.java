@@ -2,6 +2,7 @@ package com.upp.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -177,4 +178,13 @@ public class DateUtils {
 		return formattedDateTime;
 			
 		}
+	
+	public static String getNextUTCtDate() {
+		 LocalDateTime date= LocalDateTime.now(ZoneOffset.UTC);
+	    LocalDateTime tomorrow = date.plusDays(1);
+	    System.out.println(tomorrow.isAfter(date));
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    String utcdate= tomorrow.format(formatter);
+	    return utcdate;
+	}
 }
