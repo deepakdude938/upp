@@ -122,7 +122,7 @@ public class SSHConnection extends BaseClass{
 
                
                 
-                System.out.println("The UPP File name is:"+file);
+                System.out.println("The UPP Pain File name is:"+file);
     
                 
                 String catCommand="kubectl -n "+namespace+" exec "+paymentProcessor+" -- cat /mnt/payments/"+file;
