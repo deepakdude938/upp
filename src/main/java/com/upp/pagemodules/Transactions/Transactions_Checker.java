@@ -77,7 +77,6 @@ public class Transactions_Checker extends BaseClass {
 		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
 		applyExplicitWaitsUntilElementVisible(AmountID, 2);
 		String amount_checker = driver.findElement(AmountID).getText();
-//		String amount_checker = tm.amount.getText();
 		System.out.println("This is the amount from checker" + amount_checker);
 
 		if (!(amount_checker.contains(amount))) {

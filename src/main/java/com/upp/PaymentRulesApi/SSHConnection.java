@@ -105,12 +105,15 @@ public class SSHConnection extends BaseClass{
                     // Read the command output
                     InputStream in = channel.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
+ 
+                    int counter=0;
                     String line;
                     while ((line = reader.readLine()) != null) {
+                    	counter++;
                         output.add(line);
                     }
-                   file= output.get(0);
+                    int latest_file=counter-1;
+                   file= output.get(latest_file);
                    
                    
                     // Close the channel
@@ -119,7 +122,7 @@ public class SSHConnection extends BaseClass{
 
                
                 
-                System.out.println("The UPP File name is:"+file);
+                System.out.println("The UPP Pain File name is:"+file);
     
                 
                 String catCommand="kubectl -n "+namespace+" exec "+paymentProcessor+" -- cat /mnt/payments/"+file;
