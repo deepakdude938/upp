@@ -9,10 +9,11 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.Property;
 
-public class TransactionApi {
+public class TransactionApi extends BaseClass {
 
 	public static String base_Url = Property.getProperty("Dev_base_uri");
 
@@ -21,7 +22,7 @@ public class TransactionApi {
 		String response = "";
 		String endToEndId = "";
 
-		RestAssured.baseURI = base_Url;
+		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)

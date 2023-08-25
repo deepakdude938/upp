@@ -71,8 +71,8 @@ public class Payload extends BaseClass{
 		String random = Long.toString(number);
 		String UniqueplatformRefNo = "cplate" + random;
 
-		String utcdate = DateUtils.getCurrentDateUTC();
-		String utctime = DateUtils.getCurrentTimeUTC();
+		String utcdate = DateUtils.getNextUTCtDate();
+		String utctime = DateUtils.getCurrentTimeUTCPlus2Minutes();
 
 		String utctimeEod = utcdate + "T" + utctime;
 

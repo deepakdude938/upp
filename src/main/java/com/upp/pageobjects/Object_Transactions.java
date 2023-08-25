@@ -366,6 +366,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
 	public WebElement toAccount;
 	
+	@FindBy(xpath = "(//div[@col-id='totalAmount'])[2]")
+	public WebElement amount;
+	
 	
 	
 }

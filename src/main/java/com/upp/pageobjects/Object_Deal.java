@@ -170,6 +170,13 @@ public class Object_Deal extends BaseClass {
 	@FindBy(id = "btn-parties-ecommerce-updateParty-v1")
 	public WebElement ecommerceSave;
 	
+	@FindBy(xpath = "//div[text()=' Execution Policies ']//i")
+	public WebElement exePolicies;
+	
+	@FindBy(xpath = "//ui-dropdown[@formcontrolname='onPartyDeactivate']//select")
+	public WebElement exePoliciesdropdown;
+	
+	
 	//	Objects for Linked Instructions
 
 	@FindBy(xpath = "//div[@title='Linked']/i")
