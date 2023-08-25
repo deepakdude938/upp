@@ -64,6 +64,7 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		
 		try {
+		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(30));
 		od.parties_AddContact.click();
 		}
 		catch(Exception e) {
