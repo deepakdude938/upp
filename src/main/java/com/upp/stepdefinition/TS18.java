@@ -57,6 +57,10 @@ public class TS18 extends BaseClass implements ICallback {
 	public void check_Both_Transactions_Status_is_Scheduled() throws Exception {
 	 report.checkBothTransactionStatusIsScheduled(TSID,TS06.dealId);
 	}
+	@Then("Check the Execution Report that both Tnx are rejected and verify the Error Message with given {string}")
+	public void check_the_Execution_Report_that_both_Tnx_are_rejected_and_verify_the_Error_Message_with_given(String string) throws Exception {
+	  report.Check_Both_Tnx_Rejected_Verify_Error_Message(string,dealId);
+	}
 
 
 	@Override
