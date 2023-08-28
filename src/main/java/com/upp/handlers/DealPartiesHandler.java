@@ -64,6 +64,7 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		
 		try {
+		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(30));
 		od.parties_AddContact.click();
 		}
 		catch(Exception e) {
@@ -80,7 +81,9 @@ public class DealPartiesHandler extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(od.parties_AddButton);
 		}
+		Thread.sleep(500);
 		try {
+			applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab, Duration.ofSeconds(30));
 			od.parties_AccountsTab.click();
 		} catch (Exception e) {
 			handleElementClickException(od.parties_AccountsTab);
@@ -173,23 +176,24 @@ public class DealPartiesHandler extends BaseClass {
 			object_deal.party_basic_details_acquiree_dasfField.sendKeys("2");
 		}
 		od.parties_BasicNextButton.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(20));
 		od.parties_AddContact.click();
 		od.parties_LinkPartyCheckboxIcon.click();
 		od.parties_ConatctPlusIcon.click();
-		Thread.sleep(1500);
-		applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab, Duration.ofSeconds(10));
+		Thread.sleep(4000);
+		applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab, Duration.ofSeconds(20));
 		try {
 			od.parties_AccountsTab.click();
 		}
 		catch(Exception e) {
 			handleElementClickException(od.parties_AccountsTab);
 		}
-		applyExplicitWaitsUntilElementClickable(od.parties_AddAccounts, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_AddAccounts, Duration.ofSeconds(20));
 		od.parties_AddAccounts.click();
 		od.parties_LinkPartyCheckboxIcon.click();
 		od.parties_AccountPlusIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(10));
+		Thread.sleep(4000);
+		applyExplicitWaitsUntilElementClickable(od.parties_DocumentsTab, Duration.ofSeconds(20));
 		try {
 			od.parties_DocumentsTab.click();
 		
@@ -197,7 +201,7 @@ public class DealPartiesHandler extends BaseClass {
 		catch(Exception e) {
 			handleElementClickException(od.parties_DocumentsTab);
 		}
-		applyExplicitWaitsUntilElementClickable(od.parties_AddDocument, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.parties_AddDocument, Duration.ofSeconds(20));
 		od.parties_AddDocument.click();
 		od.parties_LinkPartyCheckboxIcon.click();
 		od.parties_DocumentsPlusIcon.click();

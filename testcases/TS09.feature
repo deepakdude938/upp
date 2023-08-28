@@ -4,7 +4,7 @@ Feature: TS09_Party_Maker_Checker
 Scenario Outline: Creating a new Party under Parties tab and onboarding the party to the deal and creating a txn 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
-And Create deal with basic details with given "<TSID>".
+And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 Then submit the deal
