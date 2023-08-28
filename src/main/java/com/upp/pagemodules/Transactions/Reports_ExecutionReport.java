@@ -725,5 +725,35 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertEquals(ScroeStatus, "Scheduled");
 
 	}
+	
+	public void Check_Both_Tnx_Rejected_Verify_Error_Message(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+
+		if (!((ScroeStatus.equalsIgnoreCase("Rejected")) && (ScroeStatus2ndrow.equalsIgnoreCase("Rejected")))) {
+
+			Assert.fail("The transaction should be rejected");
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Errors, tm.reports_horizontalWindow1,10, 1000);
+		
+		By ErrorMessageA = By.xpath("//div[starts-with(text(),'amount 400000.00 to be transferred is not available in source account ')]");
+		if(!(driver.findElement(ErrorMessageA).isDisplayed())) {
+				
+			Assert.fail("Wrong Error Message displayed");
+		}
+		
+		By ErrorMessageB = By.xpath("//div[contains(text(),'Rejected due to dependent instruction')]");
+		if(!(driver.findElement(ErrorMessageB).isDisplayed())) {
+				
+			Assert.fail("Wrong Error Message displayed");
+		}
+		
+
+	}
 
 }

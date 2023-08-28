@@ -369,6 +369,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//div[@col-id='totalAmount'])[2]")
 	public WebElement amount;
 	
+	@FindBy(xpath = "(//div[@col-id='Errors'])[1]")
+	public WebElement Reports_Errors;
+	
 	
 	
 }
