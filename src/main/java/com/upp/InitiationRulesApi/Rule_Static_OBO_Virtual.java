@@ -16,36 +16,33 @@ import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
-public class Rule_Static_OBO extends BaseClass {
+public class Rule_Static_OBO_Virtual extends BaseClass {
 	public static String response = "";
+	public ExcelReader externalData;
 
-	public static String base_Url = Property.getProperty("Dev_base_uri");
+	public void Rule_Static_OBO_Virtual_Api(String dealId, String TSID, String virtualaccount) throws Exception {
 
-	public static ExcelReader externalData;
-
-	public static void Rule_Static_OBO_Api(String TSID, String dealId, String participant1) throws Exception {
 		externalData = new ExcelReader();
 
 		String ExpectederrorMessage = externalData.getFieldData(TSID, "Initiation Rules", "Response Message");
-		System.out.println("ExpectederrorMessage" + ExpectederrorMessage);
-		System.out.println("Account number = " + participant1);
+
 		RestAssured.baseURI = base_url;
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
-				.body(Payload.rule_static_obo(TSID, dealId, participant1)).when().post("transaction/api/transaction");
+				.body(Payload.Rule_Static_OBO_Virtual(dealId, TSID, virtualaccount)).when()
+				.post("transaction/api/transaction");
 
 		response = res.then().extract().asString();
-		System.out.println("The Rule_Non_OBO response is " + response);
+		System.out.println("The Rule_Non_OBO_Virtual response is " + response);
 
 		System.out.println("the status code is" + res.getStatusCode());
 
 		if (res.getStatusCode() == 400) {
 			JsonPath js = new JsonPath(response);
 			String ActualErrorMessage = js.getString("errors[0].message");
-			System.out.println("ActualErrorMessage" + ActualErrorMessage);
 			Assert.assertEquals(ExpectederrorMessage, ActualErrorMessage);
+
 		}
 	}
-
 }

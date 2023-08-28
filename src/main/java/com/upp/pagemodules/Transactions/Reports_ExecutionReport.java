@@ -228,7 +228,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
 		jsClick.click(tm.cancelIcon);
 		Thread.sleep(1000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_FirstTxnStatus, tm.reports_horizontalWindow1, 10, 1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_FirstTxnStatus, tm.reports_horizontalWindow1, 10, -1000);
 		Thread.sleep(1000);
 		String txn1 = tm.reports_FirstTxnStatus.getText();
 		String txn2 = tm.reports_SecondTxnStatus.getText();
