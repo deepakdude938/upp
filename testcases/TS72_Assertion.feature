@@ -1,4 +1,4 @@
-Feature: TS72_Assertion Budget_PurposeandDestination_DateRange_Assertion
+Feature: TS72_Budget_PurposeandDestination_DateRange_Assertion
 
 
 @Assertion @TS72

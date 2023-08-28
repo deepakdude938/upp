@@ -4,7 +4,7 @@ Feature: TS18_PriorityDependency_SameDay
 Scenario Outline: Create a UPP Deal with 2 Payments where 1 payment is dependent on other Payment
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
-And Create deal with basic details with given "<TSID>".
+And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create Payments in the scheduled Instructions with given "<TSID>"

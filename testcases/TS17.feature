@@ -4,7 +4,7 @@ Feature: TS17_RequiredDocument
 Scenario Outline:  Document
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
-And Create deal with basic details with given "<TSID>".
+And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create document using data given in  "<TSID>"
 And Schedule reminder for required Document with "<TSID>"

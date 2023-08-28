@@ -1,4 +1,4 @@
-Feature: TS18_Assertion PriorityDependency_SameDay_Assertion
+Feature: TS18_PriorityDependency_SameDay_Assertion
 
 
 @Assertion @TS18
