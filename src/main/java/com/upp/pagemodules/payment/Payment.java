@@ -117,10 +117,17 @@ public class Payment extends BaseClass{
 		od.payments_ExecutionDate.click();
 		String day="";
 		boolean dayFlag=false;
+		boolean monthFlag=false;
 		if(TSID.equals("TS10") || TSID.equals("TS51")) {
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
 		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
+		
+		    String fridayMonth= friday.toString().split("-")[1];
+		    String currentMonth= DateUtils.getCurrentDate().split("-")[0];
+			if(fridayMonth!=currentMonth) {
+				monthFlag=true;
+			}
 		}
 		else if(TSID.equalsIgnoreCase("TS20")) {
 		
@@ -137,7 +144,13 @@ public class Payment extends BaseClass{
 		System.out.println(day);
 		By excecutionDay =null;
 		if(!dayFlag) {
-		excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
+			
+			if(!monthFlag) {
+				excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
+			}
+			else {
+				excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='"+day+"']");
+			}
 		}
 		else {
 			
