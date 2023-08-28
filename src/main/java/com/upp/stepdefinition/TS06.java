@@ -53,12 +53,6 @@ public class TS06 extends BaseClass implements ICallback {
 		this.execReport = new Reports_ExecutionReport();
 	}
 
-	@Then("Create deal with basic details with given {string}.")
-	public void create_deal_with_basic_details_with_given(String string) throws Exception {
-
-		dm.createNewDeal_Old(string, this);
-	}
-
 	@Then("submit the deal")
 	public void submit_the_deal() throws Exception {
 		// Write code here that turns the phrase above into concrete actions
