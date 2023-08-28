@@ -543,21 +543,21 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertEquals(scroeStatus.size(), 2);
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
-				10, 1000);
-		ArrayList<String> subInstruction = new ArrayList();
-		for (WebElement iu : tm.reports_SubInstructions) {
-
-			subInstruction.add(iu.getText());
-			System.out.println(iu.getText());
-		}
-
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumnName,
 				tm.reports_horizontalWindow1, 10, 1000);
 		ArrayList<String> originalAmount = new ArrayList();
 		for (WebElement iu : tm.reports_OriginalAmountRecords) {
 
 			originalAmount.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
 			System.out.println(iu.getText());
 		}
 
