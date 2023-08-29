@@ -46,9 +46,27 @@ public class PartyApi extends BaseClass {
 				.extract().response().asString();
 		System.out.println("The get Party Api response is " + response);
 		JsonPath js = new JsonPath(response);
+		
 		String dealid_Response = js.getString("data[0].refId");
+		String partyname = js.getString("data[0].name");
+		String particpantId=js.getString("data[0].participantId");
+		String remarks=js.getString("data[0].remarks");
+		String country=js.getString("data[0].country");
+		String EcommerceEnabled=js.getString("data[0].eCommerceEnabled");
+		
 		System.out.println("The deal id in response body " + dealid_Response);
+		System.out.println("The party name in response body " + partyname);
+		System.out.println("The participantId in response body " + particpantId);
+		System.out.println("The remarks in response body " + remarks);
+		System.out.println("The country in response body " + country);
+		System.out.println("The EcommerceEnabled in response body " + EcommerceEnabled);
+		
 		Assert.assertEquals(dealId, dealid_Response);
+		Assert.assertEquals(partyRefId, partyname);
+		Assert.assertEquals(partyRefId, particpantId);
+		Assert.assertEquals(remarks, "Test09");
+		Assert.assertEquals(country, "IN");
+		Assert.assertEquals(EcommerceEnabled, "true");
 
 	}
 

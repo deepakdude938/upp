@@ -1118,4 +1118,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="//select[@id='payment-beneficiaryCountry-sel-v1']")
 	public WebElement PaymentBudget_BeneficiaryCountry;
+	
+	@FindBy(xpath="(//i[@class='ui-icon ic ic-edit_blue ng-star-inserted'])[1]")
+	public WebElement party_EditPencilButton;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
+	public WebElement party_responsibility;
 }

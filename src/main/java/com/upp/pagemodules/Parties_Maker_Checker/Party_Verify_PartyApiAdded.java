@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
+import com.upp.Api.utils.PartyApi;
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.odp.utils.AccountDetails;
@@ -52,6 +53,7 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 	public static Object_Parties op;
 	DealPartiesHandler partyHandler = new DealPartiesHandler();
 	CommonUtils util;
+	PartyApi partyapi;
 	public Party_Verify_PartyApiAdded() {
 
 		od = new Object_NewDeal();
@@ -64,6 +66,7 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		dateutil = new DateUtils();
 		op=new Object_Parties();
 		util=new CommonUtils(driver);
+		partyapi=new PartyApi();
 
 	}
 
@@ -105,6 +108,38 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		 {
 			 od.deal_Edit_Yes_Button.click();
 		 }
+		 
+		 try {
+			    applyExplicitWaitsUntilElementClickable(od.parties_icon,Duration.ofSeconds(15));
+				od.parties_icon.click();
+			} catch (Exception e) {
+				handleElementClickException(od.parties_icon);
+			}
+		 applyExplicitWaitsUntilElementClickable(od.party_EditPencilButton,Duration.ofSeconds(15));
+	     jsClick.click(od.party_EditPencilButton);
+	     
+	     Thread.sleep(3000);
+	     
+	     applyExplicitWaitsUntilElementVisible(od.parties_PartyName,Duration.ofSeconds(10));
+	     String partyname=od.parties_PartyName.getAttribute("value");
+	     applyExplicitWaitsUntilElementVisible(od.parties_Remarks,Duration.ofSeconds(5));
+	     String remarks=od.parties_Remarks.getAttribute("value");
+	     applyExplicitWaitsUntilElementVisible(od.parties_ParticipantId,Duration.ofSeconds(5));
+	     String ParticipantID=od.parties_ParticipantId.getAttribute("value");
+	     applyExplicitWaitsUntilElementVisible(od.party_responsibility,Duration.ofSeconds(5));
+	     String party_responsibility=od.party_responsibility.getAttribute("value");
+	     
+	     System.out.println("The partyname is:"+partyname);
+	     System.out.println("The remarks  is:"+remarks);
+	     System.out.println("The ParticipantID  is:"+ParticipantID);
+	     System.out.println("The party_responsibility  is:"+party_responsibility);
+	     
+	     Assert.assertEquals(partyapi.partyRefId, partyname);
+		 Assert.assertEquals(partyapi.partyRefId, ParticipantID);
+		 Assert.assertEquals(remarks, "Test09");
+		 Assert.assertEquals(party_responsibility,"Acquirer");
+	    
+		 
 		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(10));
 		 od.payments_DealsummaryIcon.click();
 		 Thread.sleep(2000);
