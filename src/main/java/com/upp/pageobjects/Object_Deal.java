@@ -158,7 +158,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//td[contains(@class,'today')]/following::td[3]")
 	public WebElement endDate;	
 	
-	@FindBy(xpath = "//span[contains(@class,'ag-selection-checkbox')]")
+	@FindBy(xpath = "//div[@role='presentation']//span[contains(@class,'ag-selection-checkbox')]")
 	public WebElement accountNumbers;
 	
 	@FindBy(xpath = "(//div[@col-id='accountNumber'])[2]")

@@ -1,8 +1,8 @@
-Feature: TS79_Verify_Trasaction_Limit
+Feature: TS79_Verify_Trasaction_Amount_Greater_Than_Limit
 
 
 @Regression @TS79
-Scenario Outline: Verify Trasaction Limit
+Scenario Outline: Verify Trasaction amount greater than limit
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
 Then Create product from Configuration with transaction limit for "<TSID>"
@@ -18,9 +18,9 @@ And Create a Transaction from Transaction Maker with given "<TSID>"
 #Then logout of the application
 #Then Login to the application as "txn_checker"
 Then Approve the transaction from Transaction Checker with given "<TSID>" for transaction amount greater than limit
-#Then logout of the application
-#Then Login to the application as "txn_verifier"
-And Ecommerce transaction verifier approve the deal
+Then logout of the application
+Then Login to the application as "txn_verifier"
+#And Ecommerce transaction verifier approve the deal
 #And Check the Transaction staus in execution report with given "<TSID>"
 
 Examples:

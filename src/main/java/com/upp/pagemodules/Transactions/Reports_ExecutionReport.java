@@ -228,7 +228,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
 		jsClick.click(tm.cancelIcon);
 		Thread.sleep(1000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_FirstTxnStatus, tm.reports_horizontalWindow1, 10, 1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_FirstTxnStatus, tm.reports_horizontalWindow1, 10, -1000);
 		Thread.sleep(1000);
 		String txn1 = tm.reports_FirstTxnStatus.getText();
 		String txn2 = tm.reports_SecondTxnStatus.getText();
@@ -543,21 +543,21 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertEquals(scroeStatus.size(), 2);
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
-				10, 1000);
-		ArrayList<String> subInstruction = new ArrayList();
-		for (WebElement iu : tm.reports_SubInstructions) {
-
-			subInstruction.add(iu.getText());
-			System.out.println(iu.getText());
-		}
-
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumnName,
 				tm.reports_horizontalWindow1, 10, 1000);
 		ArrayList<String> originalAmount = new ArrayList();
 		for (WebElement iu : tm.reports_OriginalAmountRecords) {
 
 			originalAmount.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
 			System.out.println(iu.getText());
 		}
 

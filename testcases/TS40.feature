@@ -1,4 +1,4 @@
-Feature: TS40
+Feature: TS40_Rule_dealRefId_V3_UD1
 
 @Regression @TS40 @InitiationRules
 Scenario Outline: Rule_dealRefId_V3_UD1
