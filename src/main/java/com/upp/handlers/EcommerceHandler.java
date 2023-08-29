@@ -75,9 +75,10 @@ public class EcommerceHandler extends BaseClass {
 				Thread.sleep(2500);
 				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
 			} else {
-				System.out.println("Secound = " + od.ecommerceSecondAccount.isSelected());
-				Thread.sleep(500);
-				jsClick.click(od.ecommerceSecondAccount);
+				System.out.println(od.ecommerceSecondAccount.isSelected());
+				{
+					jsClick.click(od.ecommerceSecondAccount);
+				}
 				Thread.sleep(2500);
 			}
 		}

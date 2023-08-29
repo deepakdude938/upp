@@ -18,6 +18,7 @@ Then approve the deal from the deal checker common method
 And Run static obo rule using api with given "<TSID>"
 
 
+
 Examples:
       |TSID   |
       |TS32|
