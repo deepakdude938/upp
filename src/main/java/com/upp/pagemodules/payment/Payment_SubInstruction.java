@@ -250,4 +250,8 @@ public class Payment_SubInstruction extends BaseClass {
 		od.payments_AddSubInstructionButton.click();
 		Thread.sleep(1500);
 	}
+
+	public void editSubInstruction(String tSID) {
+		
+	}
 }
