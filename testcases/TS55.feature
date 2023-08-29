@@ -1,4 +1,4 @@
-Feature: TS55
+Feature: TS55_Rule_IN_BT_SystemLevel
 
 @Regression @TS55 @PaymentProfiles
 Scenario Outline: Rule_IN_BT_SystemLevel

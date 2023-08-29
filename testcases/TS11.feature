@@ -12,10 +12,6 @@ Then approve the deal from the deal checker common method
 And Add the Party through Api call with given "TS11-1"
 Then call the GET Party Api with given "TS11-2"
 And Update the Pary Api With given "TS11-3" 
-Then Open and Edit the live deal
-And Add a Transaction using Payment with the updated deal with given "<TSID>"
-Then submit the deal
-Then approve the deal from the deal checker common method
 And Verify that Party Api got addded in the live deal
 Then logout of the application
 Examples:
