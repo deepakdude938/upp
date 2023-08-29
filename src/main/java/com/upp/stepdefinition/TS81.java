@@ -7,7 +7,7 @@ import java.time.Duration;
 import com.upp.Api.utils.LogOutApi;
 import com.upp.InitiationRulesApi.Rule_Non_OBO;
 import com.upp.InitiationRulesApi.Rule_Non_OBO_Virtual;
-import com.upp.InitiationRulesApi.Rule_OBODetails_Null_OBO_Virtual;
+import com.upp.InitiationRulesApi.Rule_Static_OBO_Virtual;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
@@ -35,30 +35,45 @@ import com.upp.pagemodules.DealLifeCycle.VerifyClosedStatusforDealId;
 import com.upp.pagemodules.Login.LoginAPI_ODP;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
-import com.upp.pagemodules.Transactions.Transactions_Checker;
 import com.upp.pagemodules.payment.Balance_Reporting;
 import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS79 extends BaseClass {
+public class TS81 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
 	public static String TnxId = "";
-	Transactions_Checker tc;
+	LoginAPI_ODP login;
+	Create_ODP_Account_Api createAcc;
+	Logout_ODP_Api logout;
+	LoginAPI_UPP login_UPP;
+	LogOutApi logout_UPP;
+	Create_ODP_Virtual_Account_Api virtual;
+	DealAccountCreator acc;
+	Rule_Static_OBO_Virtual rule_virtual_static;
+	
 
-	public TS79() {
+	public TS81() {
 
 		this.dm = new DashBoard_Module();
-		this.tc = new Transactions_Checker();
+		login = new LoginAPI_ODP();
+		createAcc = new Create_ODP_Account_Api();
+		logout = new Logout_ODP_Api();
+		login_UPP = new LoginAPI_UPP();
+		logout_UPP = new LogOutApi();
+		virtual=new Create_ODP_Virtual_Account_Api();
+		acc=new DealAccountCreator();
+		rule_virtual_static=new Rule_Static_OBO_Virtual();
+
 	}
 
-	@Then("Approve the transaction from Transaction Checker with given {string} for transaction amount greater than limit")
-	public void approve_the_transaction_from_Transaction_Checker_with_given_for_transaction_amount_greater_than_limit(
-			String string) throws Exception {
-		System.out.println("test = "+TS06.TnxId);
-		tc.TransactionsChecker1("TS79", TS06.TnxId);
+	@Then("Call the Rule_Static_OBO_Virtual Api with given {string}.")
+	public void call_the_Rule_Static_OBO_Virtual_Api_with_given(String string) throws Exception {
+		System.out.println("virtual account = "+ TS75.virtual_Account_Number);
+		rule_virtual_static.Rule_Static_OBO_Virtual_Api(TS06.dealId,string,TS75.virtual_Account_Number);
 	}
+	
 
 }

@@ -165,7 +165,6 @@ public class Transactions_Checker extends BaseClass {
 		tm.transactions_Checker_SubmitButton.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(10));
 		tm.transactions_YesButton.click();
-
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(10));
 		tm.transactions_Ok.click();
 
