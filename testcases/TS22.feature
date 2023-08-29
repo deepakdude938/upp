@@ -1,4 +1,4 @@
-Feature: TS22
+Feature: TS22_Payment_Alert_Instruction
 
  @Regression @TS22
  Scenario Outline:  Create deal with alerts

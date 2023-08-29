@@ -148,7 +148,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		try {
 			tm.transactionMaker_allRecord.click();
 			tm.transactionMaker_message.click();
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			od.dealChecker_addNote.sendKeys("Ok approve");
 			Thread.sleep(6000);
 			tm.transactionMaker_messageOk.click();

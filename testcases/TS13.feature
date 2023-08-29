@@ -1,4 +1,4 @@
-Feature: TS13
+Feature: TS13_AdhocTransaction_with_Non_Registered_Beneficiary_Checkbox_Checked
 
 @Regression @TS13
 Scenario Outline: Create a Transaction in Transaction Maker , with Transaction to Non Registered Beneficiary Checkbox  Checked in Basic Details Page in Deal 
