@@ -1,4 +1,4 @@
-Feature: TS39
+Feature: TS39_Rule_EnrichParty_UD
 
 @Regression @TS39 @InitiationRules
 Scenario Outline: Rule_EnrichParty_UD

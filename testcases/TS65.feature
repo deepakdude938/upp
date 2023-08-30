@@ -1,4 +1,4 @@
-Feature: TS65
+Feature: TS65_PaymentLevel_Rule_IN_LT_AccountLevel
 
 @Regression @TS65 @PaymentProfiles
 Scenario Outline: Rule_IN_LT_AccountLevel

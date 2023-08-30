@@ -1,4 +1,4 @@
-Feature: TS53
+Feature: TS53_Create_Deal_Entitlments
 
  @Regression @TS53
  Scenario Outline:  Create Entitlments
