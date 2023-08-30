@@ -154,6 +154,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 			tm.transactionMaker_messageOk.click();
 			Thread.sleep(3000);
 		} catch (Exception e) {
+			Thread.sleep(4000);
 			handleElementClickException(tm.transactionMaker_allRecord);
 			handleElementClickException(tm.transactionMaker_message);
 			Thread.sleep(2000);
