@@ -456,12 +456,20 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println("amount2 :" + strNumberamount2);
 
 		String status = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 
 		if (!(status.equalsIgnoreCase("Scheduled"))) {
 
-			Assert.fail("Transaction not scheduled");
+			Assert.fail("Transaction should be scheduled");
 
 		}
+		
+		if (!(ScroeStatus2ndrow.equalsIgnoreCase("Scheduled"))) {
+
+			Assert.fail("Transaction should be scheduled");
+
+		}
+		
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
 				tm.reports_horizontalWindow1, 8, 1000);
@@ -754,6 +762,48 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		
 
+	}
+	
+	public void check_Original_amount_addupto_100_percentage(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String amount1 = externalData.getFieldData(TSID, "Scheduled", "Amount");
+		float amount = Float.parseFloat(amount1);
+		int amount_int = (int) amount;
+		int amount2 = 100 - amount_int;
+		String strNumberamount2 = Integer.toString(amount2);
+		String strNumberamount1 = Integer.toString(amount_int);
+
+		System.out.println("amount1 :" + strNumberamount1);
+		System.out.println("amount2 :" + strNumberamount2);
+
+		String status = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+
+		if (!((status.equalsIgnoreCase("Settled")) || (status.equalsIgnoreCase("Triggered")))) {
+
+			Assert.fail("Transaction should be scheduled or Settled Or Triggered");
+
+		}
+		if (!((ScroeStatus2ndrow.equalsIgnoreCase("Settled")) || (ScroeStatus2ndrow.equalsIgnoreCase("Triggered")))) {
+
+			Assert.fail("Transaction should be scheduled or Settled Or Triggered");
+
+		}
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
+				tm.reports_horizontalWindow1, 8, 1000);
+
+		Thread.sleep(500);
+
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_OriginalAmount) {
+
+			subInstruction.add(iu.getText());
+		}
+		Assert.assertTrue(subInstruction.contains(strNumberamount1));
+		Assert.assertTrue(subInstruction.contains(strNumberamount2));
 	}
 
 }

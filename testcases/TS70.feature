@@ -1,4 +1,4 @@
-Feature: TS70
+Feature: TS70_Budget_Consolidated_Yearly
 
 @Regression @TS70
 Scenario Outline: Budget_Consolidated_Yearly

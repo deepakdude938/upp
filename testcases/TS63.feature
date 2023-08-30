@@ -1,4 +1,4 @@
-Feature: TS63
+Feature: TS63_Rule_OBO_Responsibility_Reject
 
 @Regression @TS63 @InitiationRules
 Scenario Outline: Rule_OBO_Responsibility_Reject
