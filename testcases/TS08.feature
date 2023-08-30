@@ -4,7 +4,7 @@ Feature: TS08_EcommerceTransaction_With_APIS
 Scenario Outline:  ECommerce Transaction + Party API + Transaction API (REST API calls)
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
-And Create deal with basic details with given "<TSID>".
+And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create two eCommerce  Parties in the Parties Tab with given "<TSID>" and "TS08_02"
 #Then submit the deal
