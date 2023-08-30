@@ -30,7 +30,6 @@ public class TS52 extends BaseClass implements ICallback {
 	DealPage dp;
 	public static String TSID = "";
 	public static String TnxId = "";
-	public String dealid;
 	Payment_BasicDetails basic;
 	Payment_Schedule schedule;
 	Payment_SubInstruction inx;
@@ -76,6 +75,11 @@ public class TS52 extends BaseClass implements ICallback {
 	@Then("Verify in Execution Report the Original Amount and Transfer info as percentage with given {string}")
 	public void verify_in_Execution_Report_the_Original_Amount_and_Transfer_info(String string) throws Exception {
 	   report.check_Original_amount_and_Trnasferinfo_as_percentage(string,TS06.dealId);
+	}
+	
+	@And("Verify in Execution Report the Original Amount of both Transactions add upto {int}% {string}")
+	public void verify_in_Execution_Report_the_Original_Amount_of_both_Transactions_add_upto(Integer int1, String string) throws Exception {
+	    report.check_Original_amount_addupto_100_percentage(string,dealId);
 	}
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
