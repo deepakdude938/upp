@@ -1,4 +1,4 @@
-Feature: TS56
+Feature: TS56_Paymentlevel_Rule_IN_LT
 
 @Regression @TS56 @PaymentProfiles
 Scenario Outline: Rule_IN_LT

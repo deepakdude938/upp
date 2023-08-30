@@ -70,7 +70,7 @@ public class DealBasicDetailCreators extends BaseClass {
 
 		if (!(productName.equals("1.0"))) {
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-			if(TSID.equalsIgnoreCase("TS25")||TSID.equalsIgnoreCase("TS74")) {
+			if(TSID.equalsIgnoreCase("TS25")||TSID.equalsIgnoreCase("TS74")||TSID.equalsIgnoreCase("TS79")) {
 				od.deal_Product.sendKeys(config_productName);
 				dropdown.selectByVisibleText(od.deal_Product, config_productName);
 			}
