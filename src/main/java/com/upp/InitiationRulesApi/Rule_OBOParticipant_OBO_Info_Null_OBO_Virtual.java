@@ -16,11 +16,11 @@ import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
-public class Rule_Static_OBO_Virtual extends BaseClass {
+public class Rule_OBOParticipant_OBO_Info_Null_OBO_Virtual extends BaseClass {
 	public static String response = "";
 	public ExcelReader externalData;
 
-	public void Rule_Static_OBO_Virtual_Api(String dealId, String TSID, String virtualaccount) throws Exception {
+	public void Rule_OBOParticipant_OBO_Info_Null_OBO_Virtual_Api(String dealId, String TSID, String virtualaccount) throws Exception {
 
 		externalData = new ExcelReader();
 
