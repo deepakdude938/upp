@@ -24,7 +24,7 @@ Then Add Party Accounts with given "TS83_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
 And Login to UPP through api
-And Call the Rule_Non_OBO_Virtual Api with given "<TSID>".
+And Call the Rule_ParticipantId_OBODetails_Virtual Api with given "<TSID>".
 And Logout of UPP through api
 Examples:
       |TSID|
