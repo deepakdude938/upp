@@ -1,7 +1,7 @@
-Feature: TS83_Rule_OBOParticipant_OBO_Info_Null_OBO
+Feature: TS83_Rule_OBOParticipant_OBO_Info_Null_OBO_VirtualAccount
 
 @Regression @TS83 @InitiationRules
-Scenario Outline: TS83_Rule_OBOParticipant_OBO_Info_Null_OBO
+Scenario Outline: TS83_Rule_OBOParticipant_OBO_Info_Null_OBO_VirtualAccount
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
