@@ -64,7 +64,7 @@ public class PartyApi extends BaseClass {
 		Assert.assertEquals(dealId, dealid_Response);
 		Assert.assertEquals(partyRefId, partyname);
 		Assert.assertEquals(partyRefId, particpantId);
-		Assert.assertEquals(remarks, "Test09");
+		Assert.assertEquals(remarks, "Test11");
 		Assert.assertEquals(country, "IN");
 		Assert.assertEquals(EcommerceEnabled, "true");
 

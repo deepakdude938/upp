@@ -1,4 +1,4 @@
-Feature: TS52_Split_%OfBalance
+Feature: TS52_Split_%OfBalance_Assertion
 
 
 @Assertion @TS52

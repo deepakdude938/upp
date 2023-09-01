@@ -1124,4 +1124,28 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement party_responsibility;
+	
+	@FindBy(xpath="(//span[@class='ui-pseudo-checkbox'])[2]")
+	public WebElement party_kyc_checkbox;
+	
+	@FindBy(xpath="(//i[@class='ic ic-lg ic-right'])[1]")
+	public WebElement party_executionpolicy_rightIcon;
+	
+	@FindBy(xpath="(//select[@class='ui-dropdown-select'])[1]")
+	public WebElement party_Hold_Execution_Dropdown;
+	
+	@FindBy(xpath="(//div[@id='ic-generic-menu-showMenu-v1'])[1]")
+	public WebElement party_Contacts_Showmenu;
+	
+	@FindBy(xpath="//div[contains(text(),'Edit')]")
+	public WebElement party_Contacts_Edit;
+	
+	@FindBy(id = "btn-parties-ecommerce-updateParty-v1")
+	public WebElement ecommerceSave;
+	
+	@FindBy(xpath="(//div[@id='ic-generic-menu-showMenu-v1'])[2]")
+	public WebElement party_Accounts_Showmenu;
+	
+	@FindBy(xpath="(//div[@id='ic-generic-partyContacts-close-v1'])[1]")
+	public WebElement party_Contacts_Close;
 }
