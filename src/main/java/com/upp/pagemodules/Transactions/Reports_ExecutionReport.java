@@ -716,7 +716,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void ExecutionReportAwaitingTransaction(String TSID, String DealId) throws Exception {
 		String timem = dateTime.getTimeAfterMins(waitingTime);
 //		long wait = Long.parseLong(timem);
-		TimeUnit.MINUTES.sleep(7);
+		TimeUnit.MINUTES.sleep(8);
 		commonmethodExecReport(TSID, DealId);
 
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
