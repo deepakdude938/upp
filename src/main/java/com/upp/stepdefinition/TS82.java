@@ -13,7 +13,7 @@ public class TS82 {
 	}
 	
 	@Then("Edit subinstruction {string}")
-	public void edit_subinstruction(String TSID) {
+	public void edit_subinstruction(String TSID) throws Exception {
 	  ps.editSubInstruction(TSID);
 	}
 

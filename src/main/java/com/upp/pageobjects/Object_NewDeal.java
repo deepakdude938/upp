@@ -449,6 +449,12 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//div[@title='Scheduled']/i")
 	public WebElement payments_ScheduledInstructionIcon;
+	
+	@FindBy(id = "ic-generic-menu-showMenu-v1")
+	public WebElement payments_KebabScheduledInstructionIcon;
+	
+	@FindBy(xpath = "//div[contains(@class,'onbd_action_option ') and normalize-space()='Edit']")
+	public WebElement payments_KebabScheduledInstructionIconEdit;
 
 	@FindBy(xpath = "//button[@id='btn-deals-instructions-getStarted-v2' or @id='btn-deals-instructions-getStarted-v1']")
 	public WebElement payments_GetStarted;
@@ -549,6 +555,12 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-amount-txt-v1")
 	public WebElement payments_Amount;
 
+	@FindBy(id = "payment-beneficiaryAddressLine1-txt-v1")
+	public WebElement payments_Address;
+	
+	@FindBy(id = "btn-instructions-updateSubinstruction-update-v1")
+	public WebElement payments_UpdateSubInstruction;
+	
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement payments_AddSubInstructionButton;
 

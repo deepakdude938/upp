@@ -438,6 +438,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		String originalAmount = tm.reports_OriginalAmountValue.getText();
 		String expectedOriginalAmount = (int) Float.parseFloat(externalData.getFieldData(TSID, "Scheduled", "value"))
 				+ "";
+		if(TSID.equals("TS82")) {
+			expectedOriginalAmount="600";
+		}
 		Assert.assertEquals(originalAmount, expectedOriginalAmount);
 	}
 
@@ -754,6 +757,45 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		
 
+	}
+
+	public void validateTriggeredOrSetteledForMultipleRecords(String TSID) throws Exception {
+		commonmethodExecReport(TSID, dealId);
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		System.out.println(tm.reports_ScroeStatusRecords.size()+" Records");
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+			System.out.println(iu.getText().trim());
+			Assert.assertEquals(iu.getText().trim(),"Settled");
+		}
+		
+	}
+
+	public void validateSplitFixedAmounts(String TSID) throws Exception {
+		commonmethodExecReport(TSID, dealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		ArrayList<String> scroeStatus = new ArrayList();
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+
+			scroeStatus.add(iu.getText().trim());
+			Assert.assertEquals(iu.getText().trim(), "Scheduled");
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
+				tm.reports_horizontalWindow1, 8, 1000);
+
+		Thread.sleep(500);
+
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_OriginalAmount) {
+
+			subInstruction.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		Assert.assertTrue(subInstruction.contains("200"));
+		Assert.assertTrue(subInstruction.contains("300"));
 	}
 
 }

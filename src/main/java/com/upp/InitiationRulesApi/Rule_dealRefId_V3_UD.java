@@ -52,6 +52,7 @@ public class Rule_dealRefId_V3_UD extends BaseClass{
 					JSONObject obj = (JSONObject) er.get(i);
 					String code = (String) obj.get("code");
 					String message = (String) obj.get("message");
+					System.err.println(res.getStatusCode()+" -> "+message);
 					if (ActualErrorCode.equalsIgnoreCase(code) && ActualErrorMessage.equalsIgnoreCase(message)
 							&& res.getStatusCode() == statusCode) {
 						errorCount++;

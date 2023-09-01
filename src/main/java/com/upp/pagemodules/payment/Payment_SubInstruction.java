@@ -1,12 +1,15 @@
 package com.upp.pagemodules.payment;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.stepdefinition.DealPage;
@@ -251,7 +254,55 @@ public class Payment_SubInstruction extends BaseClass {
 		Thread.sleep(1500);
 	}
 
-	public void editSubInstruction(String tSID) {
+	public void editSubInstruction(String tSID) throws Exception {
+		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(15));
+		try {
+			od.payments_DealsummaryIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_DealsummaryIcon);
+		}
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
+		try {
+			od.payments_ScheduledInstructionIcon.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
+		applyExplicitWaitsUntilElementClickable(od.payments_KebabScheduledInstructionIcon, Duration.ofSeconds(5));
+		try {
+			od.payments_KebabScheduledInstructionIcon.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_KebabScheduledInstructionIcon);
+		}
+		applyExplicitWaitsUntilElementClickable(od.payments_KebabScheduledInstructionIconEdit, Duration.ofSeconds(5));
+		od.payments_KebabScheduledInstructionIconEdit.click();
+		Thread.sleep(3000);
 		
+		od.payments_SpecifyAmountValue.clear();
+		od.payments_SpecifyAmountValue.sendKeys(Keys.CONTROL + "a");
+		od.payments_SpecifyAmountValue.sendKeys(Keys.DELETE);
+		Thread.sleep(1000);
+		od.payments_SpecifyAmountValue.sendKeys("600");
+		od.payments_NextArrowButtonTransferBasic.click();
+		Thread.sleep(2000);
+		od.payments_NextArrowButtonTransferSchedule.click();
+		Thread.sleep(2000);
+		od.payments_KebabScheduledInstructionIcon.click();
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(od.payments_KebabScheduledInstructionIconEdit, Duration.ofSeconds(5));
+		od.payments_KebabScheduledInstructionIconEdit.click();
+		Thread.sleep(2000);
+		od.payments_Amount.clear();
+		Thread.sleep(2000);
+		od.payments_Amount.sendKeys("600");
+		Thread.sleep(2000);
+		od.payments_Address.clear();
+		 int textLength = od.payments_Address.getAttribute("value").length();
+		 System.out.println(textLength);
+	        for (int i = 0; i < textLength; i++) {
+	        	od.payments_Address.sendKeys("\b");
+	        }
+		od.payments_Address.sendKeys("Pune");
+		od.payments_UpdateSubInstruction.click();
 	}
 }
