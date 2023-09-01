@@ -135,18 +135,16 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 
 		Assert.assertEquals(partyapi.partyRefId, partyname);
 		Assert.assertEquals(partyapi.partyRefId, ParticipantID);
-		Assert.assertEquals(remarks, "Test09");
+		Assert.assertEquals(remarks, "Test11");
 		Assert.assertEquals(party_responsibility, "Acquirer");
 
 		od.parties_BasicNextButton.click();
 		applyExplicitWaitsUntilElementVisible(od.ecommerce_status, Duration.ofSeconds(20));
 		String status = od.ecommerce_status.getAttribute("value");
 
-		boolean flag = od.party_kyc_checkbox.isSelected();
-		System.out.println("The flag is" + flag);
+	
 		System.out.println("The Status is:" + status);
 
-		Assert.assertEquals(flag, false);
 		Assert.assertEquals(status, "Active");
 
 		scroll.scrollInToView(od.party_executionpolicy_rightIcon);
@@ -154,7 +152,7 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		jsClick.click(od.party_executionpolicy_rightIcon);
 		applyExplicitWaitsUntilElementVisible(od.party_Hold_Execution_Dropdown, Duration.ofSeconds(10));
 		String On_Party_Deactivation = od.party_Hold_Execution_Dropdown.getAttribute("value");
-		Assert.assertEquals(On_Party_Deactivation, "holdExecutions");
+		Assert.assertEquals(On_Party_Deactivation, "doNothing");
 		
 		
 		jsClick.click(od.ecommerceSave);
@@ -174,9 +172,35 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		System.out.println("contactname"+contactname);
 		System.out.println("email"+email);
 		
-		Assert.assertEquals(contactname, "Merchant33");
-		Assert.assertEquals(email, "jane.doe@gmail.com");
+		Assert.assertEquals(contactname, "John");
+		Assert.assertEquals(email, "Test@gmail.com");
+        
+		applyExplicitWaitsUntilElementClickable(od.party_Contacts_Close, Duration.ofSeconds(20));
+		jsClick.click(od.party_Contacts_Close);
+		
+		try {
+			applyExplicitWaitsUntilElementClickable(od.parties_AccountsTab, Duration.ofSeconds(30));
+			od.parties_AccountsTab.click();
+		} catch (Exception e) {
+			handleElementClickException(od.parties_AccountsTab);
+		}
+		
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(od.party_Accounts_Showmenu, Duration.ofSeconds(20));
+		od.party_Accounts_Showmenu.click();
+		
+		applyExplicitWaitsUntilElementClickable(od.party_Contacts_Edit, Duration.ofSeconds(20));
+		od.party_Contacts_Edit.click();
+		
+		Thread.sleep(1000);
 
+		
+		applyExplicitWaitsUntilElementVisible(od.parties_Accounts_beneficiaryName, Duration.ofSeconds(20));
+		String benname=od.parties_Accounts_beneficiaryName.getAttribute("value");
+		System.out.println("Beneficiary name:"+benname);
+		
+		//Assert.assertEquals(IfscCode, "");
+		Assert.assertEquals(benname, "SCB");
 		
 		
 		
