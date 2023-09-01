@@ -1,4 +1,4 @@
-Feature: TS68
+Feature: TS68_Paymentlevel_Rule_IN_LT_PenddingStatus
 
 @Regression @TS68 @PaymentProfiles
 Scenario Outline: Rule_IN_LT_PenddingStatus

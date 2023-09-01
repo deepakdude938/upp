@@ -1,4 +1,4 @@
-Feature: TS27
+Feature: TS27_Bulk_Upload_Adhoc_Transaction
 
 
 @Regression @TS27

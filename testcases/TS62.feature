@@ -1,4 +1,4 @@
-Feature: TS62
+Feature: TS62_Rule_OBO_Participant_Enrich
 
 @Regression @TS62 @InitiationRules
 Scenario Outline: Rule_OBO_Participant_Enrich

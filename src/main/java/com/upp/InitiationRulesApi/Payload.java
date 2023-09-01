@@ -517,5 +517,39 @@ public class Payload extends BaseClass {
 		return modifiedJsonString1;
 
 	}
+	
+	public static String rule_ParticipantId_OBODetails_Virtual(String TSID, String dealId, String accountNo)
+			throws IOException, Exception {
+		externalData = new ExcelReader();
+//		System.out.println("Account number = " + DealPage.AccountNo1);
+//		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+//		System.out.println(payLoadString);
+		
+		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.paymentInfo.accountNumber", DealPage.AccountNo1);
+		jsonContext.set("$.ultimateDebtor.name", "");
+//		jsonContext.set("$.ultimateDebtor.country", "");
+//		jsonContext.set("$.ultimateDebtor.addressLine1", "");
+//		jsonContext.set("$.ultimateDebtor.addressLine2", "");
+//		jsonContext.set("$.ultimateDebtor.partyRefId", "");
+		jsonContext.set("$.creditTransactionInfo[0].participant.partyRefId", "");
+		jsonContext.set("$.creditTransactionInfo[0].participant.beneficiaryCountry", "");
+		jsonContext.set("$.creditTransactionInfo[0].participant.beneficiaryCurrency", "");
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+
+		String modifiedJsonString1 = jsonContext.jsonString();
+		return modifiedJsonString1;
+
+	}
 
 }

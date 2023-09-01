@@ -1,4 +1,4 @@
-Feature: TS32
+Feature: TS32_Rule_Static_OBO
 
 @Regression @TS32 @InitiationRules
 Scenario Outline: Rule_Static_OBO

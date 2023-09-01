@@ -1,4 +1,4 @@
-Feature: TS47
+Feature: TS47_Rule_Creditor_Party_Validate
 
 @Regression @TS47 @InitiationRules
 Scenario Outline: Rule_Creditor_Party_Validate

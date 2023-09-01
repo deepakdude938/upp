@@ -44,8 +44,12 @@ public class Payment_BasicDetails extends BaseClass{
 	
 	public void createPayments_BasicDetails(String TSID, String sourceAccountno, String toaccountNo) throws Exception {
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
-		od.payments_ScheduledInstructionIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(40));
+		try {
+			od.payments_ScheduledInstructionIcon.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.PaymentsPlusIcon, Duration.ofSeconds(5));
 		od.PaymentsPlusIcon.click();

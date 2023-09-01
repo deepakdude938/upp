@@ -1,4 +1,4 @@
-Feature: TS37
+Feature: TS37_Rule_EnrichParty_UD1
 
 @Regression @TS37 @InitiationRules
 Scenario Outline: Rule_EnrichParty_UD1
@@ -16,7 +16,7 @@ Then Add Party Accounts with given "TS37_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
 And Run Rule_EnrichParty_UD1 rule using api with given "<TSID>"
-#And Veriy transaction from transaction verifier
+And Veriy transaction from transaction verifier
 Then Validate transaction in ecommerce report
 
 

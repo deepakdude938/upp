@@ -1,4 +1,4 @@
-Feature: TS60
+Feature: TS60_Paymentlevel_Rule_IN_LT_DealLeavel
 
 @Regression @TS60 @PaymentProfiles
 Scenario Outline: Rule_IN_LT_DealLeavel

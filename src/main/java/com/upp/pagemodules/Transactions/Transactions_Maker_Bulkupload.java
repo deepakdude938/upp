@@ -148,12 +148,16 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		try {
 			tm.transactionMaker_allRecord.click();
 			tm.transactionMaker_message.click();
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 			od.dealChecker_addNote.sendKeys("Ok approve");
 			Thread.sleep(6000);
 			tm.transactionMaker_messageOk.click();
 			Thread.sleep(3000);
+			handleElementClickException(tm.transactionMaker_submit);
+			tm.transactions_YesButton.click();
+			tm.transactions_Ok.click();
 		} catch (Exception e) {
+			Thread.sleep(4000);
 			handleElementClickException(tm.transactionMaker_allRecord);
 			handleElementClickException(tm.transactionMaker_message);
 			Thread.sleep(2000);
@@ -161,16 +165,10 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 			Thread.sleep(6000);
 			tm.transactionMaker_messageOk.click();
 			Thread.sleep(3000);
-		}
-
-		try {
-			tm.transactionMaker_submit.click();
-		} catch (Exception e) {
 			handleElementClickException(tm.transactionMaker_submit);
+			tm.transactions_YesButton.click();
+			tm.transactions_Ok.click();
 		}
-
-		tm.transactions_YesButton.click();
-		tm.transactions_Ok.click();
 	}
 
 	public void approveAllTransactionByVerifier(String dealId) throws Exception {

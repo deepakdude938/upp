@@ -14,6 +14,8 @@ And Create Payment_SubInstruction in the scheduled Instructions with given "TS52
 And Create Payment_Retry in the scheduled Instructions with given "<TSID>"
 And Create Payment_Notification in the scheduled Instructions with given "<TSID>"
 Then submit the deal
+Then Create odp json payload file with DealId with given "<TSID>"
+And Create record in ODP "<TSID>"
 Then approve the deal from the deal checker common method
 And Verify in Execution Report the Original Amount and Transfer info as percentage with given "<TSID>"
 Examples:

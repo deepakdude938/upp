@@ -1,4 +1,4 @@
-Feature: TS50
+Feature: TS50_Audit_Transaction
 
 @Regression @TS50
 Scenario Outline: Create a UPP Deal with 1 Transaction and Edit the Transaction an check in Audit
