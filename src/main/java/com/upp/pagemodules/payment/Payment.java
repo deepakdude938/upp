@@ -1,6 +1,7 @@
 package com.upp.pagemodules.payment;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -118,7 +119,7 @@ public class Payment extends BaseClass{
 		String day="";
 		boolean dayFlag=false;
 		boolean monthFlag=false;
-		if(TSID.equals("TS10") || TSID.equals("TS51")) {
+		if(TSID.equals("TS10") || TSID.equals("TS51")|| TSID.equals("TS82")) {
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
 		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
@@ -269,7 +270,6 @@ public class Payment extends BaseClass{
 		}
 		String url = driver.getCurrentUrl();
 		 dealID_Assertion = url.split("[/]")[url.split("/").length - 1];
-		 System.out.println(dealID_Assertion+"--------------");
     }
 
 	public void createPaymentSurplus(String TSID) throws Exception, IOException {
@@ -331,17 +331,17 @@ public class Payment extends BaseClass{
 		od.paymentsSurplus_AddSubInstructionButton.click();
 		Thread.sleep(5000);
 		
-		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
-		od.payments_DealsummaryIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
-		dealId = od.deals_SummaryRefId.getText();
-		scroll.scrollInToView(od.payments_DealSubmitButton);
-		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
-		od.payments_DealSubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
-		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
-		od.payments_DealOkButton.click();
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
+//		od.payments_DealsummaryIcon.click();
+//		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
+//		dealId = od.deals_SummaryRefId.getText();
+//		scroll.scrollInToView(od.payments_DealSubmitButton);
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
+//		od.payments_DealSubmitButton.click();
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
+//		od.payments_DealYesButton.click();
+//		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
+//		od.payments_DealOkButton.click();
 		
 	}
 	
@@ -548,4 +548,215 @@ public class Payment extends BaseClass{
 			od.payments_NotificationAlertSlider.click();
 			}
 		}
+
+	public void createPaymentsScheduleInstruction(String TSID, String sourceAccountNo, String toaccountNo) throws Exception, Exception {
+		toAccountNo=DealPage.toaccountNo;
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
+		try {
+			od.payments_ScheduledInstructionIcon.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
+		if(TSID.equalsIgnoreCase("TS61")) {
+			applyExplicitWaitsUntilElementClickable(od.payments_AddInstruction, Duration.ofSeconds(5));
+			od.payments_AddInstruction.click();
+			
+		}else {
+		applyExplicitWaitsUntilElementClickable(od.payments_GetStarted, Duration.ofSeconds(5));
+		od.payments_GetStarted.click();
+		}
+		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
+		By InstructionButton = By
+				.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"
+						+ InstructionType + "']");
+		applyExplicitWaitsUntilElementVisible(InstructionButton, 10);
+		driver.findElement(InstructionButton).click();
+
+		applyExplicitWaitsUntilElementClickable(od.payments_Proceed, Duration.ofSeconds(5));
+		od.payments_Proceed.click();
+		od.payments_BasicName.clear();
+		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Basic Details Name"));
+		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Scheduled", "Purpose"));
+		od.payments_SourceAccount.sendKeys(sourceAccountNo);
+		Thread.sleep(1000);
+		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountNo + "')]");
+		driver.findElement(sourceaccountselect).click();
+
+		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
+				externalData.getFieldData(TSID, "Scheduled", "Balance Consideration"));
+		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
+			od.payments_SplitBalanceSlider.click();
+			Thread.sleep(2000);
+			System.out.println(externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
+		
+			dropdown.selectByVisibleText(od.payments_SpecifyAmountAs, externalData.getFieldData(TSID, "Scheduled", "Specify amount as"));
+			Thread.sleep(1000);
+			od.payments_SpecifyAmountValue.clear();
+			od.payments_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
+			
+		}
+		if (((externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Yes"))) {
+			od.payments_PartialpaymentSlider.click();
+		}
+
+		od.payments_NextArrowButtonTransferBasic.click();
+
+		if (((externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
+			od.payments_PartialpaymentSlider.click();
+		}
+		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
+			od.payments_Repeatingslider.click();
+			
+		}
+		
+		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
+				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {
+			od.payments_SweepInSlider.click();
+		}
+//		od.payments_SweepinNextButton.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(10));
+		od.payments_ExecutionDate.click();
+		String day="";
+		boolean dayFlag=false;
+		boolean monthFlag=false;
+		if(TSID.equals("TS10") || TSID.equals("TS51")|| TSID.equals("TS82")) {
+		LocalDate now = new LocalDate();
+	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
+		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
+		
+		    String fridayMonth= friday.toString().split("-")[1];
+		    String currentMonth= DateUtils.getCurrentDate().split("-")[0];
+			if(fridayMonth!=currentMonth) {
+				monthFlag=true;
+			}
+		}
+		else if(TSID.equalsIgnoreCase("TS20")) {
+		
+				if(Integer.parseInt(DateUtils.getDay())>25){
+					dayFlag=true;
+				}
+				else {
+					 day =String.valueOf(Integer.parseInt(DateUtils.getDay())+5);
+				}
+		}
+		else {
+			day= DateUtils.getDay();
+		}
+		System.out.println(day);
+		By excecutionDay =null;
+		if(!dayFlag) {
+			
+			if(!monthFlag) {
+				excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
+			}
+			else {
+				excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='"+day+"']");
+			}
+		}
+		else {
+			
+			excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='4']");
+		}
+		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
+		driver.findElement(excecutionDay).click();
+
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.payments_ScheduleAt,externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
+		dropdown.selectByVisibleText(od.payments_HolidayAction,externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+		dropdown.selectByValue(od.retention_SelectTimezone, "Asia/Calcutta")	;
+		
+	if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
+		String time="";
+		if (TSID.equalsIgnoreCase("TS61")) {
+			time=dateutil.getTimeAfterMins(10);
+		}
+		else {
+			time = dateutil.getTimeAfterMins(10);
+		}
+		od.payments_ScheduleTime.clear();
+		od.payments_ScheduleTime.sendKeys(time);
+	}
+		od.payments_NextArrowButtonTransferSchedule.click();
+		
+		
+	}
+
+	public void createPaymentsSubInstruction(String TSID, String sourceAccountNo, String toaccountNo2) throws Exception {
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
+
+		od.payments_Instrument.click();
+		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
+		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
+//		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
+		driver.findElement(paymentInstrument).click();
+		
+		if(TSID.equalsIgnoreCase("TS61")) {
+			scroll.scrollInToView(od.schedule_IBAN_Split);
+			System.out.println(DealPage.sourceAccountNo);
+			System.out.println(DealPage.toaccountNo);
+			od.schedule_IBAN_Split.sendKeys(toAccountNo,Keys.ENTER);
+		}
+		else {
+			scroll.scrollInToView(od.schedule_IBAN);
+			System.out.println(DealPage.sourceAccountNo);
+			System.out.println(DealPage.toaccountNo);
+			od.schedule_IBAN.sendKeys(toAccountNo);
+			Thread.sleep(1000);
+			By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+			driver.findElement(account).click();
+		}
+		
+		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
+		
+		scroll.scrollInToView(od.payments_Amount);
+		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
+		
+		if(commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode,1)) {
+			od.parties_Accounts_beneficiaryBankIfscCode.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary bank IFSC code"));
+			}
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryName);
+		od.parties_Accounts_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Name"));
+		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
+		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
+		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
+		
+		scroll.scrollInToView(od.payments_beneficiaryCountry);
+		try {
+		od.payments_beneficiaryCountry.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
+		}
+		catch(Exception e) {
+			
+		}
+		
+		if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
+		scroll.scrollInToView(od.payments_beneficiaryBankBic);
+		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Bank Bic"));
+		}
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		if(commonutils.isElementDisplayed(od.payments_senderPop,1)) {
+		scroll.scrollInToView(od.payments_senderPop);
+		od.payments_senderPop.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Sender POP"));
+		}
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		if(isWebElementDisplayed(od.payments_beneficiaryCountryOfIncorporationDropdown)) {
+		scroll.scrollInToView(od.payments_beneficiaryCountryOfIncorporationDropdown);
+		od.payments_beneficiaryCountryOfIncorporationDropdown.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation"));
+		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		od.payments_AddSubInstructionButton.click();
+		Thread.sleep(5000);
+		
+	}
 	}

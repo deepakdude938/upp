@@ -57,6 +57,11 @@ public class TS05 extends BaseClass  implements ICallback{
 	 dm.createRecordInOdp(TSID);
 	}
 	
+	@Then("Create json payload file for ODP record {string}")
+	public void create_json_payload_file_for_ODP_record(String string) throws Exception {
+		dm.createJsonPayloadFile(string);
+	}
+	
 	@Then("Validate record to be settled in execution report {string}")
 	public void validate_record_to_be_settled_in_execution_report(String TSID) throws Exception {
 	   re.check_Triggered_or_Settled_Status(TSID, dealId);
