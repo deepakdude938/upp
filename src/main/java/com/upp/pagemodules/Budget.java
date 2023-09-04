@@ -11,11 +11,13 @@ import java.util.Date;
 import java.util.HashMap;
 import org.openqa.selenium.By;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.Payload;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pageobjects.Object_NewDeal;
+import com.upp.stepdefinition.TS06;
 import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
@@ -772,5 +774,32 @@ public class Budget extends BaseClass {
 
 		return dealRefId;
 
+	}
+
+	public void createJsonPayloadFile(String TSID) throws Exception {
+		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(15));
+		try {
+			od.payments_DealsummaryIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_DealsummaryIcon);
+		}
+		
+		String dealRefId = od.deals_SummaryRefId.getText();
+		String url = driver.getCurrentUrl();
+		String dealID = url.split("[/]")[url.split("/").length - 1];
+		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+//		Date date = parseFormat.parse(executiontime.replace('.', ':'));
+//		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
+
+		HashMap odpRecord = new HashMap<>();
+		odpRecord.put("_id", TSID);
+		odpRecord.put("originTcId", TSID);
+		odpRecord.put("dealId", dealID);
+		odpRecord.put("dealRefId", dealRefId);
+		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+		System.out.println(odpRecordJson);
+		
 	}
 }
