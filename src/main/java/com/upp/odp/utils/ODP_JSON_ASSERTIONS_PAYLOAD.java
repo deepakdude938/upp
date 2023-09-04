@@ -27,4 +27,18 @@ public class ODP_JSON_ASSERTIONS_PAYLOAD extends BaseClass{
 		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
 		System.out.println(odpRecordJson);
 	}
+	
+	public void Odp_Json_With_DealDetails(String TSID,String dealid) throws Exception  {
+
+		HashMap odpRecord = new HashMap<>();
+		odpRecord.put("_id", TSID);
+		odpRecord.put("originTcId", TSID);
+		odpRecord.put("dealId", dealid);
+		odpRecord.put("dealRefId", dealid);
+
+		ObjectMapper mapper = new ObjectMapper();
+		HashMap jsonMap1 = new HashMap();
+		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+		System.out.println(odpRecordJson);
+	}
 }

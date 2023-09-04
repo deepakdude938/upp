@@ -490,7 +490,7 @@ public class Payload extends BaseClass {
 	
 	
 	
-	public static String Rule_Static_OBO_Virtual(String dealId, String TSID, String virtualaccount)
+	public static String Rule_Static_OBO_Virtual( String TSID,String dealId, String virtualaccount)
 			throws IOException, Exception {
 		externalData = new ExcelReader();
 		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
