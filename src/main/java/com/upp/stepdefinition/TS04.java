@@ -11,6 +11,7 @@ import com.upp.handlers.CommonLinkedInstructionInstrument;
 import com.upp.handlers.CommonProductHandler;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.DealPartiesHandler;
+import com.upp.odp.utils.ODP_JSON_ASSERTIONS_PAYLOAD;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
@@ -30,6 +31,7 @@ public class TS04 extends BaseClass implements ICallback {
 	Transactions_Verifier txnVerifier;
 	String tsid;
 	public static String toAccount, sourceAccount;
+	ODP_JSON_ASSERTIONS_PAYLOAD payload;
 	Reports_ExecutionReport execReport;
 
 	public TS04(DashBoard_Module dm) {
@@ -40,6 +42,7 @@ public class TS04 extends BaseClass implements ICallback {
 		sourceAccount = new DealPage(dm).sourceAccountNo;
 		toAccount = new DealPage(dm).toaccountNo;
 		this.execReport = new Reports_ExecutionReport();
+		payload = new ODP_JSON_ASSERTIONS_PAYLOAD();
 	}
 
 	@Then("create Linked Instruction Payment with given  {string}.")
@@ -80,6 +83,13 @@ public class TS04 extends BaseClass implements ICallback {
 	public void post_schedule_time_check_the_status_it_should_be_awaiting_for(String string) throws Exception {
 		execReport.ExecutionReportAwaitingTransaction(string, dealId);
 	}
+	
+	@Then("Create odp json payload file with DealDetails with given {string}")
+	public void create_odp_json_payload_file_with_DealDetails_with_given(String string) throws Exception {
+		System.out.println("dealid = "+string);
+		payload.Odp_Json_With_DealDetails(string,dealId);
+	}
+	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub

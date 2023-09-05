@@ -20,7 +20,7 @@ public class Rule_Static_OBO_Virtual extends BaseClass {
 	public static String response = "";
 	public ExcelReader externalData;
 
-	public void Rule_Static_OBO_Virtual_Api(String dealId, String TSID, String virtualaccount) throws Exception {
+	public void Rule_Static_OBO_Virtual_Api( String TSID,String dealId, String virtualaccount) throws Exception {
 
 		externalData = new ExcelReader();
 
@@ -30,7 +30,7 @@ public class Rule_Static_OBO_Virtual extends BaseClass {
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
-				.body(Payload.rule_ParticipantId_OBODetails_Virtual(dealId, TSID, virtualaccount)).when()
+				.body(Payload.Rule_Static_OBO_Virtual(TSID,dealId, virtualaccount)).when()
 				.post("transaction/api/transaction");
 
 		response = res.then().extract().asString();

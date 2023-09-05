@@ -72,7 +72,7 @@ public class TS81 extends BaseClass {
 	@Then("Call the Rule_Static_OBO_Virtual Api with given {string}.")
 	public void call_the_Rule_Static_OBO_Virtual_Api_with_given(String string) throws Exception {
 		System.out.println("virtual account = "+ TS75.virtual_Account_Number);
-		rule_virtual_static.Rule_Static_OBO_Virtual_Api(TS06.dealId,string,TS75.virtual_Account_Number);
+		rule_virtual_static.Rule_Static_OBO_Virtual_Api(string,TS06.dealId,TS75.virtual_Account_Number);
 	}
 	
 

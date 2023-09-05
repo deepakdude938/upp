@@ -10,6 +10,8 @@ And Create new deal with basic details with given "<TcId>".
 And Create two Accounts with given "<TcId>"
 And Create Parties in the Parties Tab with given "<TcId>"
 Then create Linked Instruction Payment with given  "<TcId>".
+Then Create odp json payload file with DealDetails with given "<TcId>"
+And Create record in ODP "<TcId>"
 Then approve the deal from the deal checker
 Then  Go to execution report and check the status it should be schedule for "<TcId>"
 Then Post schedule time ,check the status. it should be awaiting for "<TcId>"
