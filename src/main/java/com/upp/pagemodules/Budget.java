@@ -802,4 +802,15 @@ public class Budget extends BaseClass {
 		System.out.println(odpRecordJson);
 		
 	}
+
+	public void createJsonFile(String TSID) throws Exception {
+		HashMap odpRecord = new HashMap<>();
+		odpRecord.put("_id", TSID);
+		odpRecord.put("originTcId", TSID);
+		odpRecord.put("dealId", dealId);
+		odpRecord.put("dealRefId", dealId);
+		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
+		System.out.println(odpRecordJson);
+		
+	}
 }
