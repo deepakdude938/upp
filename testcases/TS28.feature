@@ -8,6 +8,8 @@ Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create two eCommerce  Parties in the Parties Tab with given "<TSID>" and "<PartiesID>"
+And Create jsonPayload file for ODP record "<TSID>"
+And Create record in ODP "<TSID>"
 And Update excel file according to data
 Then Bulk upload Ecomm Transaction
 Then Approve ecomm transaction from Ecommerce Txn Checker
