@@ -153,6 +153,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 			handleElementClickException(tm.transactionMaker_allRecord);
 		}
 		try {
+			Thread.sleep(4000);
 			jsClick.click(tm.transactionMaker_message);
 		} catch (Exception e3) {
 			handleElementClickException(tm.transactionMaker_message);
