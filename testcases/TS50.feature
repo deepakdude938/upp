@@ -1,7 +1,7 @@
 Feature: TS50_Audit_Transaction
 
 @Regression @TS50
-Scenario Outline: Create a UPP Deal with 1 Transaction and Edit the Transaction an check in Audit
+Scenario Outline: Create a UPP Deal with 1 Transaction and check in Audit Transaction
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
