@@ -123,10 +123,10 @@ public class Payment extends BaseClass{
 		LocalDate now = new LocalDate();
 	    LocalDate friday = now.withDayOfWeek(DateTimeConstants.FRIDAY);
 		day =""+Integer.parseInt(friday.toString().split("[/-]")[2])/1;
-		
+		System.out.println(day);
 		    String fridayMonth= friday.toString().split("-")[1];
 		    String currentMonth= DateUtils.getCurrentDate().split("-")[0];
-			if(fridayMonth!=currentMonth) {
+			if(!fridayMonth.equals(currentMonth)) {
 				monthFlag=true;
 			}
 		}
@@ -145,7 +145,6 @@ public class Payment extends BaseClass{
 		System.out.println(day);
 		By excecutionDay =null;
 		if(!dayFlag) {
-			
 			if(!monthFlag) {
 				excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
 			}
@@ -154,7 +153,7 @@ public class Payment extends BaseClass{
 			}
 		}
 		else {
-			
+			System.out.println("else");
 			excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='4']");
 		}
 		applyExplicitWaitsUntilElementVisible(excecutionDay, 5);
@@ -630,7 +629,7 @@ public class Payment extends BaseClass{
 		
 		    String fridayMonth= friday.toString().split("-")[1];
 		    String currentMonth= DateUtils.getCurrentDate().split("-")[0];
-			if(fridayMonth!=currentMonth) {
+			if(!fridayMonth.equals(currentMonth)) {
 				monthFlag=true;
 			}
 		}
