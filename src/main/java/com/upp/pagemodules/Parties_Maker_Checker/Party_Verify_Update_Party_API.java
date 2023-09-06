@@ -38,7 +38,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
 
-public class Party_Verify_PartyApiAdded extends BaseClass {
+public class Party_Verify_Update_Party_API extends BaseClass {
 
 	public static Object_NewDeal od;
 //	public static Properties prop;
@@ -58,7 +58,7 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 	CommonUtils util;
 	PartyApi partyapi;
 
-	public Party_Verify_PartyApiAdded() {
+	public Party_Verify_Update_Party_API() {
 
 		od = new Object_NewDeal();
 		externalData = new ExcelReader();
@@ -74,7 +74,7 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 
 	}
 
-	public void Verify_PartyApiAdded(String dealId) throws Exception {
+	public void Verify_Update_PartyApi_In_UI(String dealId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon, Duration.ofSeconds(15));
 		od.deal_SideMenuIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.liveDealIcon, Duration.ofSeconds(15));
@@ -86,24 +86,12 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		Thread.sleep(4000);
 		od.dealChecker_searchButton.click();
 		Thread.sleep(3000);
-		applyExplicitWaitsUntilElementClickable(op.Party_PartiesNumber, Duration.ofSeconds(15));
-		String partyNumber = op.Party_PartiesNumber.getText();
-		System.out.println("Parties number is " + partyNumber);
-		if (!(partyNumber.equals("2"))) {
-			Assert.fail();
-		} else {
-			System.out.println("Party successfully added through Api");
-		}
 
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(30));
 		od.dealChecker_showMenu.click();
-//		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
-//		 od.deal_EditIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.deal_ViewIcon, Duration.ofSeconds(20));
-		od.deal_ViewIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.deal_EditIcon, Duration.ofSeconds(30));
+		od.deal_EditIcon.click();
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(od.deal_EditPencilButton, Duration.ofSeconds(20));
-		od.deal_EditPencilButton.click();
 		if (util.isElementDisplayed(od.deal_Edit_Yes_Button, 2)) {
 			od.deal_Edit_Yes_Button.click();
 		}
@@ -133,9 +121,9 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		System.out.println("The ParticipantID  is:" + ParticipantID);
 		System.out.println("The party_responsibility  is:" + party_responsibility);
 
-		Assert.assertEquals(partyapi.partyRefId, partyname);
+		Assert.assertEquals(partyname,"Shiva");
 		Assert.assertEquals(partyapi.partyRefId, ParticipantID);
-		Assert.assertEquals(remarks, "Test11");
+		Assert.assertEquals(remarks, "testing");
 		Assert.assertEquals(party_responsibility, "Acquirer");
 
 		od.parties_BasicNextButton.click();
@@ -145,14 +133,14 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 	
 		System.out.println("The Status is:" + status);
 
-		Assert.assertEquals(status, "Active");
+		Assert.assertEquals(status, "Inactive");
 
 		scroll.scrollInToView(od.party_executionpolicy_rightIcon);
 		Thread.sleep(2000);
 		jsClick.click(od.party_executionpolicy_rightIcon);
 		applyExplicitWaitsUntilElementVisible(od.party_Hold_Execution_Dropdown, Duration.ofSeconds(10));
 		String On_Party_Deactivation = od.party_Hold_Execution_Dropdown.getAttribute("value");
-		Assert.assertEquals(On_Party_Deactivation, "doNothing");
+		Assert.assertEquals(On_Party_Deactivation, "holdExecutions");
 		
 		
 		jsClick.click(od.ecommerceSave);
@@ -172,8 +160,8 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		System.out.println("contactname"+contactname);
 		System.out.println("email"+email);
 		
-		Assert.assertEquals(contactname, "John");
-		Assert.assertEquals(email, "Test@gmail.com");
+		Assert.assertEquals(contactname, "Merchant293");
+		Assert.assertEquals(email, "jane.doe@gmail.com");
         
 		applyExplicitWaitsUntilElementClickable(od.party_Contacts_Close, Duration.ofSeconds(20));
 		jsClick.click(od.party_Contacts_Close);
@@ -198,22 +186,13 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(od.parties_Accounts_beneficiaryName, Duration.ofSeconds(20));
 		String benname=od.parties_Accounts_beneficiaryName.getAttribute("value");
 		System.out.println("Beneficiary name:"+benname);
+		
 		Assert.assertEquals(benname, "SCB");
 		
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
 		applyExplicitWaitsUntilElementVisible(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
 		String addressLine1=od.parties_Accounts_beneficiaryAddressLine1.getAttribute("value");
 		Assert.assertEquals(addressLine1, "BeneAdd1");
-		
-		
-//		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(10));
-//		 od.payments_DealsummaryIcon.click();
-//		 Thread.sleep(2000);
-//		 ScrollTypes.scrollInsideWindowTillWebElementPresent(op.PartyMaker_Status_Inactive,op.Party_status_window, 6,600);
-//		 applyExplicitWaitsUntilElementClickable(op.PartyMaker_Status_Inactive,Duration.ofSeconds(10));
-//		String status= op.PartyMaker_Status_Inactive.getText();
-//		System.out.println("The status is "+status);
-//		Assert.assertEquals("Inactive",status);
 
 	}
 
