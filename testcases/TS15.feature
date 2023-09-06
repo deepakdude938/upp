@@ -10,7 +10,10 @@ And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 And Create Payment-Surplus in the Scheduled Instructions with given "<TSID>"
 And Create Surplus in the Scheduled Instructions with given "<TSID>"
+And Create json payload file for ODP record "<TSID>"
+And Submit the deal
 Then Approve the deal from the deal checker
+And Create record in ODP "<TSID>"
 Then Validate SubInstruction Type as "Payment" and "Surplus"
 Examples:
       |TSID|

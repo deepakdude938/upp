@@ -1,4 +1,4 @@
-Feature: TS61_Assertion
+Feature: TS61_Payment Retention Decimal Assertion
 
 
 @Assertion @TS61 

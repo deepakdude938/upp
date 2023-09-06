@@ -1,6 +1,7 @@
 package com.upp.stepdefinition;
 
 import com.upp.base.BaseClass;
+import com.upp.pagemodules.Budget;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.ECommerce.ECommerceTransactionChecker;
 import com.upp.pagemodules.ECommerce.ECommerceTransactionVerifier;
@@ -17,6 +18,7 @@ public class TS28 extends BaseClass implements ICallback{
 	public ECommerceTransactionChecker ecomChecker;
 	public ECommerceTransactionVerifier ecomVerifier;
 	public Reports_ExecutionReport execReport;
+	public Budget dm;
 	
 	public TS28() {
 
@@ -25,6 +27,7 @@ public class TS28 extends BaseClass implements ICallback{
 		ecomChecker=new ECommerceTransactionChecker();
 		ecomVerifier=new ECommerceTransactionVerifier();
 		execReport = new Reports_ExecutionReport();
+		this.dm = new Budget();
 	}
 	
 	@Then("Bulk upload Ecomm Transaction")
@@ -50,6 +53,11 @@ public class TS28 extends BaseClass implements ICallback{
 	@Then("Approve ecomm transaction from Ecommerce Txn Verifier")
 	public void approve_ecomm_transaction_from_Ecommerce_Txn_Verifier() throws Exception {
 		ecomVerifier.approveRecordFromEcommTxnVerifier();
+	}
+	
+	@Then("Create jsonPayload file for ODP record {string}")
+	public void create_jsonPayload_file_for_ODP_record(String string) throws Exception {
+	  dm.createJsonFile(string);
 	}
 	
 	

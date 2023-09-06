@@ -48,6 +48,12 @@ public class TS15 extends BaseClass implements ICallback{
 	public void validate_SubInstruction_Type_as_and(String payment, String surplus) throws Exception {
 		re.checkSubInstructionTypeInExecutionReport(payment,surplus);
 	}
+	
+	
+	@Then("Validate Triggered or Setteled status for multiple records in execution report for {string}")
+	public void validate_Triggered_or_Setteled_status_for_multiple_records_in_execution_report_for(String TSID) throws Exception {
+	  re.validateTriggeredOrSetteledForMultipleRecords(TSID);
+	}
 
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
