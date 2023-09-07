@@ -1160,4 +1160,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//div[@id='ic-generic-partyContacts-close-v1'])[1]")
 	public WebElement party_Contacts_Close;
+	
+	@FindBy(xpath="//button[normalize-space()='No, Create New']")
+	public WebElement party_Maker_Create_New;
+	
+	@FindBy(xpath="(//h2[normalize-space()=\"There aren't any parties configured yet.\"])[1]")
+	public WebElement party_no_party_configured;
 }
