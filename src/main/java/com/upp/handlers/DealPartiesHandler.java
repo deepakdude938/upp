@@ -13,6 +13,7 @@ import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Parties;
 import com.upp.stepdefinition.DealPage;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -31,6 +32,7 @@ public class DealPartiesHandler extends BaseClass {
 	public static Object_Parties op;
 	Object_Deal object_deal;
 	JavascriptClick js;
+	CommonUtils utils;
 
 	public DealPartiesHandler() {
 		od = new Object_NewDeal();
@@ -41,6 +43,7 @@ public class DealPartiesHandler extends BaseClass {
 		op = new Object_Parties();
 		object_deal = new Object_Deal();
 		js=new JavascriptClick(driver);
+		utils=new CommonUtils(driver);
 	}
 
 	public void handleAddNewParty(String TSID, ICallback icallback) throws Exception {
@@ -176,6 +179,11 @@ public class DealPartiesHandler extends BaseClass {
 			object_deal.party_basic_details_acquiree_dasfField.sendKeys("2");
 		}
 		od.parties_BasicNextButton.click();
+
+		if(utils.isElementDisplayed(od.party_Maker_Create_New, 2))
+		{
+		od.party_Maker_Create_New.click();
+		}
 		applyExplicitWaitsUntilElementClickable(od.parties_AddContact, Duration.ofSeconds(20));
 		od.parties_AddContact.click();
 		od.parties_LinkPartyCheckboxIcon.click();
