@@ -109,5 +109,30 @@ public class Party_Verify_Delete_Party_Api extends BaseClass {
 			Assert.fail("Party is not deleted");
 		}
 	}
+	
+	public void EditLiveDeal(String dealId) throws Exception {
+		
+		applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon, Duration.ofSeconds(15));
+		od.deal_SideMenuIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.liveDealIcon, Duration.ofSeconds(15));
+		od.liveDealIcon.click();
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect, Duration.ofSeconds(25));
+		dropdown.selectByVisibleText(od.dealChecker_searchSelect, "Deal Id");
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar, Duration.ofSeconds(15));
+		od.dealChecker_searchBar.sendKeys(dealId);
+		Thread.sleep(4000);
+		od.dealChecker_searchButton.click();
+		Thread.sleep(3000);
+
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(30));
+		od.dealChecker_showMenu.click();
+		applyExplicitWaitsUntilElementClickable(od.deal_EditIcon, Duration.ofSeconds(30));
+		od.deal_EditIcon.click();
+		Thread.sleep(1000);
+		if (util.isElementDisplayed(od.deal_Edit_Yes_Button, 2)) {
+			od.deal_Edit_Yes_Button.click();
+		}
+		Thread.sleep(1000);
+	}
 
 }
