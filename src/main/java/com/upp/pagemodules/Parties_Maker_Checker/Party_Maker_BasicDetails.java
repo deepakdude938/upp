@@ -82,14 +82,14 @@ public class Party_Maker_BasicDetails extends BaseClass {
 		op.PartyMaker_internal_slider.click();
 		}
 		
-		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
-		 String accno = Long.toString(number);
+		 
+		 String UniqueString = generateRandomString(10);
 		 
 		
 		String customerID=externalData.getFieldData(TSID, "Parties-Maker", "Customer Id");
-		String UniquecustomerID=customerID.concat(accno);
+		String UniquecustomerID=customerID.concat(UniqueString);
 		String partyName=externalData.getFieldData(TSID, "Parties-Maker", "Party Name");
-		String UniquepartyName=partyName.concat(accno);
+		String UniquepartyName=partyName.concat(UniqueString);
 		
 		applyExplicitWaitsUntilElementVisible(op.PartyMaker_customerId,Duration.ofSeconds(5));
 		op.PartyMaker_customerId.sendKeys(UniquecustomerID);
