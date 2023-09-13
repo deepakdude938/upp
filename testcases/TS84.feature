@@ -1,6 +1,6 @@
 Feature: TS84_Attach_Detach_Account
 
-@Api @TS84 
+@Regression @TS84 @Api
 Scenario Outline: API_Attach_Detach_Account
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -117,6 +117,8 @@ public class Object_User extends BaseClass {
 	@FindBy(xpath = "//button[contains(@class,'stat-active')]")
 	public WebElement usermaker_active;
 	
+	@FindBy(id = "swal2-content")
+	public WebElement user_deleted_message;
 	
 	
 }
