@@ -42,7 +42,7 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS91 extends BaseClass {
+public class TS93 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
@@ -58,7 +58,7 @@ public class TS91 extends BaseClass {
 	UserChecker checker;
 	String userName;
 
-	public TS91() {
+	public TS93() {
 
 		this.dm = new DashBoard_Module();
 		login = new LoginAPI_ODP();
@@ -70,10 +70,9 @@ public class TS91 extends BaseClass {
 	}
 
 
-	@Then("Call the Update User Status Api with given {string}")
-	public void call_the_Update_User_Status_Api_with_given(String string) throws Exception {
-		
-	   user.updateUsers(string, prop);
+	@Then("Call the Update User Attribute Api with given {string}")
+	public void call_the_Update_User_Attribute_Api_with_given(String string) throws Exception {
+	    user.updateUsers(string, prop);
 	}
 
 

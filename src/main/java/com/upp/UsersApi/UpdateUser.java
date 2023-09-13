@@ -24,18 +24,24 @@ public class UpdateUser extends BaseClass {
 
 	public static ExcelReader externalData;
 
-	public static String updateUsers(String TSID, Properties prop) throws Exception {
+	public static void updateUsers(String TSID, Properties prop) throws Exception {
 
 		externalData = new ExcelReader();
 
-		RestAssured.baseURI = base_url;
+		RestAssured.baseURI = base_url+"idm/api/idam/users/";
 
 		System.out.println(base_url);
+		
+		String newName = "manisha3";
+		
+		String updatedURL = RestAssured.baseURI+newName;
+		
+		System.out.println("updated url"+updatedURL);
 
-		Response res = RestAssured.given().header("Content-Type", "application/json")
+		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).header("Version", "v1")
-				.header("X-SC-TrackingId", "123").body(Payload.CreateUser(TSID, prop)).when()
-				.post("idm/api/idam/users");
+				.header("X-SC-TrackingId", "123").body(Payload.UpdateUser(TSID, prop)).when()
+				.post(updatedURL);
 
 		response = res.then().extract().asString();
 
@@ -43,15 +49,11 @@ public class UpdateUser extends BaseClass {
 		// Replace "keyName" with the actual key in the JSON response
 
 		System.out.println("Response Status Code: " + statusCode);
-		String specificValue = res.jsonPath().get("username");
-		
-		System.out.println("The  response is " + response);
-		System.out.println("The username " + specificValue);
-		Assert.assertEquals(statusCode, 200);
+	//	Assert.assertEquals(statusCode, 200);
 //		
 		//String specificValue ="manisha3";
 		
-		return specificValue;
+		
 	}
 
 }

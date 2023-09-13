@@ -79,39 +79,9 @@ public class Payload extends BaseClass {
 		
 		System.out.println("test case id = "+TSID);
 		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
-		
-		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
-		
-
-	        try (FileInputStream fis = new FileInputStream("global.properties")) {
-	            Properties properties = new Properties();
-	            properties.load(fis);
-	            
-	            // Get the current count from the properties file
-	            usercount1 = Integer.parseInt(properties.getProperty("usercount", "0"));
-	            System.out.println("Count = "+usercount1 );
-	            // Increment the count
-	            usercount1++;
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	        String username = externalData.getFieldData(excelFilePath, "Sheet", "UserName",usercount1);
-	        //String password = externalData.getFieldData(excelFilePath, "Sheet", "Password",usercount1);
-	        DocumentContext jsonContext = JsonPath.parse(payLoadString);
-			jsonContext.set("$.name", username);
-		
-		//	jsonContext.set("$.username", password);
-			String modifiedJsonString = jsonContext.jsonString();
-	        try (FileOutputStream fos = new FileOutputStream("global.properties")) {
-	            Properties properties = new Properties();
-	            String countdata= Integer.toString(usercount1);
-	            properties.setProperty("usercount", countdata);
-	            properties.store(fos,"Testing");
-	            System.out.println("count in prop = "+countdata);
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		String modifiedJsonString = jsonContext.jsonString();
+	        	
 		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
