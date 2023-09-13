@@ -36,11 +36,12 @@ public class BaseClass {
 	public static String base_url;
 	public static String  api_Password;
 	public static String virtual_Account_Number;
+	public static int usercount1 = 0;
 
 	public boolean isFlexibleFunding;
 
 	public WebDriver initialize() throws Exception {
-
+		
 		FileInputStream fis = new FileInputStream(Constants.PROJECT_PATH + Constants.PROPERTY_FILE_PATH);
 		prop = new Properties();
 		prop.load(fis);
@@ -144,7 +145,7 @@ public class BaseClass {
 		}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-
+		
 		return driver;
 
 	}
