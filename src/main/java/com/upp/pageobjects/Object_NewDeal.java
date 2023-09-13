@@ -423,7 +423,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-beneficiaryCurrency-txt-v1")
 	public WebElement parties_beneficiaryCurrency;
 
-	@FindBy(id = "btn-generic-partyAccounts-addUpdate-v2")
+	@FindBy(xpath = "//button[normalize-space()='Add']")
 	public WebElement parties_partyAccountsAddButton;
 
 	@FindBy(xpath = "//p[normalize-space()='Documents']")
