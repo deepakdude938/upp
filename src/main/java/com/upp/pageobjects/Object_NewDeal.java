@@ -423,7 +423,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-beneficiaryCurrency-txt-v1")
 	public WebElement parties_beneficiaryCurrency;
 
-	@FindBy(id = "btn-generic-partyAccounts-addUpdate-v2")
+	@FindBy(xpath = "//button[normalize-space()='Add']")
 	public WebElement parties_partyAccountsAddButton;
 
 	@FindBy(xpath = "//p[normalize-space()='Documents']")
@@ -522,7 +522,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
 	public WebElement payments_NextArrowButtonTransferSchedule;
 
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4] | (//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
 	public WebElement payments_Instrument;
 
 	@FindBy(id = "payment-to-sel-v1")
@@ -1163,4 +1163,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//div[@id='ic-generic-partyContacts-close-v1'])[1]")
 	public WebElement party_Contacts_Close;
+	
+	@FindBy(xpath="//button[normalize-space()='No, Create New']")
+	public WebElement party_Maker_Create_New;
+	
+	@FindBy(xpath="(//h2[normalize-space()=\"There aren't any parties configured yet.\"])[1]")
+	public WebElement party_no_party_configured;
 }

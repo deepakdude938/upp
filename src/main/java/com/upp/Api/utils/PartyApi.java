@@ -117,5 +117,34 @@ public class PartyApi extends BaseClass {
 		JsonPath js = new JsonPath(response);
 
 	}
+	
+	public static void DeleteParty(String dealId, String TSID) throws Exception {
+
+		String putPath = "mdm/api/party/" + partyId;
+		RestAssured.baseURI = base_url;
+		System.out.println("path = " + putPath);
+		String response = given().header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken).when()
+				.delete(putPath).then()
+			    .assertThat().statusCode(200)
+				.extract().response().asString();
+		System.out.println("The Delete Party Api response is " + response);
+		JsonPath js = new JsonPath(response);
+
+	}
+	public static void DeleteParty_In_Deal_Draft_State(String dealId, String TSID) throws Exception {
+
+		String putPath = "mdm/api/party/" + partyId;
+		RestAssured.baseURI = base_url;
+		System.out.println("path = " + putPath);
+		String response = given().header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken).when()
+				.delete(putPath).then()
+			    .assertThat().statusCode(200)
+				.extract().response().asString();
+		System.out.println("The Delete Party Api response is " + response);
+		JsonPath js = new JsonPath(response);
+
+	}
 
 }

@@ -198,10 +198,12 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(od.parties_Accounts_beneficiaryName, Duration.ofSeconds(20));
 		String benname=od.parties_Accounts_beneficiaryName.getAttribute("value");
 		System.out.println("Beneficiary name:"+benname);
-		
-		//Assert.assertEquals(IfscCode, "");
 		Assert.assertEquals(benname, "SCB");
 		
+		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
+		applyExplicitWaitsUntilElementVisible(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
+		String addressLine1=od.parties_Accounts_beneficiaryAddressLine1.getAttribute("value");
+		Assert.assertEquals(addressLine1, "BeneAdd1");
 		
 		
 //		 applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon,Duration.ofSeconds(10));

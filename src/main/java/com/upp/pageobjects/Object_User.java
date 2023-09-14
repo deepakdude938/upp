@@ -101,4 +101,24 @@ public class Object_User extends BaseClass {
 	public WebElement userchecker_inactive;
 	
 	
+	//verify user objects
+	@FindBy(xpath = "(//div[@class='ui-icon ui-circle ui-icon-edit ui-ripple ng-star-inserted'])[1]")
+	public WebElement usermaker_editIcon;
+	
+	@FindBy(id = "txt-perms-users-onBoardUpdate-email-v1")
+	public WebElement usermaker_email;
+	
+	@FindBy(id = "txt-perms-users-onBoardUpdate-phone-v1")
+	public WebElement usermaker_phone;
+	
+	@FindBy(xpath = "(//select[@id='sel-perms-users-onBoardUpdate-roles-v1'])[1]")
+	public WebElement usermaker_role;
+	
+	@FindBy(xpath = "//button[contains(@class,'stat-active')]")
+	public WebElement usermaker_active;
+	
+	@FindBy(id = "swal2-content")
+	public WebElement user_deleted_message;
+	
+	
 }
