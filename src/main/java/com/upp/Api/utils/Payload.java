@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import com.upp.base.BaseClass;
+import com.upp.stepdefinition.DealPage;
 import com.upp.utils.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +18,7 @@ public class Payload extends BaseClass{
 
 	public static ExcelReader externalData;
 	public static String MappersDealId="";
+	public static String modifiedJsonString = "";
 	
 
 	public static String createParty(String dealId, String TSID) throws IOException, Exception {
@@ -186,6 +188,21 @@ public class Payload extends BaseClass{
 
 		return modifiedJsonString;
 
+	}
+
+	public String api_createTransaction(String TSID) throws Exception, IOException {
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		String platformRefNo = "Party" + generateRandomString(6);
+		String tomorow = DateUtils.getDate(1) + "T11:28:00Z";
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.paymentInfo.accountNumber", DealPage.AccountNo1);
+		jsonContext.set("$.paymentInfo.platformRefNo", platformRefNo);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
 	}
 
 	

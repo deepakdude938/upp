@@ -17,7 +17,7 @@ public class Object_Configuration extends BaseClass {
 	
 	//Holiday
 	
-	@FindBy(id="menu-generic-sidemenu-Settings-holidays-v1")
+	@FindBy(xpath="//a[normalize-space()='Holidays']")
 	public WebElement configuration_HolidayButton;
 	
 	@FindBy(id="btn-config-holidays-master-add-v1")
@@ -48,9 +48,9 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//button[contains(@class,'swal2-confirm')]")
 	public WebElement configuration_HolidayOkButton;
 	
-	@FindBy(id="menu-generic-sidemenu-Settings-HD-v1")
+	@FindBy(xpath="//a[normalize-space()='Holiday Drafts']")
 	public WebElement configuration_HolidayDraftsButton;
-	
+
 	@FindBy(id="sel-generic-searchBar-searchInput-v1")
 	public WebElement configuration_HolidaySearchBox;
 	

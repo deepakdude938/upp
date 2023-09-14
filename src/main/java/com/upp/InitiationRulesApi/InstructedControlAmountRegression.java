@@ -28,7 +28,7 @@ import io.restassured.response.Response;
 
 public class InstructedControlAmountRegression extends BaseClass{
 	public static String response = "";
-	public static String base_Url = Property.getProperty("Dev_base_uri");
+//	public static String base_Url = Property.getProperty("Dev_base_uri");
 	public static ExcelReader externalData;
 	public Payload pay;
 
@@ -59,7 +59,7 @@ public class InstructedControlAmountRegression extends BaseClass{
 			for (int rowNumber = 1; rowNumber < rowCount; rowNumber++) {
 				
 				String payload = pay.rule_InstructedControlAmountRegression(excelFilePath,TSID, payLoadString,rowNumber,jsonContext);
-					RestAssured.baseURI = base_Url;
+					RestAssured.baseURI = base_url;
 					Response res = 
 							given()
 								.header("Content-Type", "application/json")

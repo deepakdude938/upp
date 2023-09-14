@@ -1,6 +1,8 @@
 package com.upp.Api.utils;
 
 import static io.restassured.RestAssured.*;
+
+import java.io.IOException;
 import java.util.*;
 
 import org.testng.Assert;
@@ -11,11 +13,20 @@ import io.restassured.response.Response;
 
 import com.upp.base.BaseClass;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
+import com.upp.utils.ExcelReader;
 import com.upp.utils.Property;
 
 public class TransactionApi extends BaseClass {
 
 	public static String base_Url = Property.getProperty("Dev_base_uri");
+	public static ExcelReader externalData;
+	public Payload pay;
+	
+	public TransactionApi() {
+		externalData = new ExcelReader();
+		pay = new Payload();
+	}
+	
 
 	public static String createTransaction(String dealId, String TSID, String participant1, String participant2)
 			throws Exception {
@@ -52,6 +63,20 @@ public class TransactionApi extends BaseClass {
 		}
 
 		return endToEndId;
+	}
+
+	public void createTransaction(String TSID) throws Exception {
+		RestAssured.baseURI = base_url;
+	
+		String res = (String) given().header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken)
+				.body(pay.api_createTransaction(TSID))
+				.when()
+				.post("transaction/api/transaction")
+				.then()
+				.assertThat().statusCode(200).toString();
+	
+		
 	}
 
 

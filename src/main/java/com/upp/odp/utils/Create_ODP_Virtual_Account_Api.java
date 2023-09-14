@@ -19,8 +19,6 @@ public class Create_ODP_Virtual_Account_Api {
 
 		String base_Url = Property.getProperty("Odp_base_uri");
 
-
-
 //createAccount api
 		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.baseURI = base_Url;
@@ -44,7 +42,6 @@ public class Create_ODP_Virtual_Account_Api {
 		accDetails.setCurrency(currency);
 
 		pushelmnt(stack1, accDetails);
-
 
 	}
 

@@ -19,8 +19,6 @@ public class Create_ODP_Account_Api {
 
 		String base_Url = Property.getProperty("Odp_base_uri");
 
-
-
 //createAccount api
 		RestAssured.useRelaxedHTTPSValidation();
 		RestAssured.baseURI = base_Url;
