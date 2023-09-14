@@ -718,7 +718,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-generic-autocomplete-input-v1")
 	public WebElement payments_BudgetPurpose;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement payments_budgetPurpose;
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
