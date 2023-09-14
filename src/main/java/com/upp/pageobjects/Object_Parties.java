@@ -31,7 +31,6 @@ public class Object_Parties extends BaseClass{
 	
 	@FindBy(xpath="//p[normalize-space()='Ecommerce Config']")
 	public WebElement parties_Ecommerce_Config_Tab;
-	//p[normalize-space()='Ecommerce Config']
 	
 	@FindBy(xpath="//a[normalize-space()='Party Maker']")
 	public WebElement partyMaker_Icon;

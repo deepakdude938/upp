@@ -1,11 +1,9 @@
 package com.upp.stepdefinition;
 
 import java.io.IOException;
-
 import com.upp.Api.utils.AttachDetach_Account_Api;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
-
 import io.cucumber.java.en.Then;
 
 public class TS84 {
@@ -49,6 +47,5 @@ public class TS84 {
 	public void verify_Virtual_Account_is_not_disable_in_Party(String TSID) throws Exception {
 		api.verifyVirtualAccountisDisableInParty(TSID);
 	}
-
 	
 }

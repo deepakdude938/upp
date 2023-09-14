@@ -1,6 +1,6 @@
 Feature: TS87_API_Attach_PhysicalAccount
 
-@Api @TS87
+@Regression @Api @TS87
 Scenario Outline: API_Attach_PhysicalAccount
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
