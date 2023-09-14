@@ -29,7 +29,7 @@ public class TS06 extends BaseClass implements ICallback {
 	DealPage dp;
 	public static String sourceAccountNo = "";
 	public static String toaccountNo = "";
-	public static String dealId = "";
+//	public static String dealId = "";
 	public static String TSID = "";
 	public static String TnxId = "";
 	Transactions_Maker_Sub_Instruction tm_sub;

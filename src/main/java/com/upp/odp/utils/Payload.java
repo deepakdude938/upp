@@ -4,11 +4,12 @@ package com.upp.odp.utils;
 import java.io.IOException;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
+import com.upp.base.BaseClass;
 import com.upp.stepdefinition.DealPage;
 import com.upp.utils.*;
 
 
-public class Payload {
+public class Payload extends BaseClass{
 	
 	DealPage dp;
 	public static ExcelReader externalData;
@@ -137,7 +138,7 @@ public class Payload {
 		
 		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		 String accountno = Long.toString(number);
-		 
+		 physical_Account_Number=accountno;
 		if((accountIdentifierKey.equalsIgnoreCase("Yes"))||(accountIdentifierKey.equalsIgnoreCase("Y")))
 		{
 			accountIdentifierKey="physical";
@@ -169,7 +170,7 @@ public class Payload {
 		String currency=externalData.getFieldData(TSID,"Accounts","Currency");
 		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		 String accountno = Long.toString(number);
-		
+		 virtual_Account_Number = accountno;
 		String payLoadString =externalData.getFieldData(TSID, "ODP Api", "Payload");
 		
 		String physicalAccountNumber=DealPage.AccountNo1;

@@ -552,4 +552,38 @@ public class Payload extends BaseClass {
 
 	}
 
+	public String api_AttachAccount(String TSID) throws Exception {
+	
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		jsonContext.set("$.accountNumber", virtual_Account_Number);
+		jsonContext.set("$.extendedAttributes[0].value", physical_Account_Number);
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
+	}
+
+	public String api_DetachAccount(String TSID) throws Exception {
+		
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		jsonContext.set("$.accountNumber", virtual_Account_Number);
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
+	}
+	
+	public String api_AttachPhysicalAccount(String TSID) throws Exception {
+		
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		jsonContext.set("$.accountNumber", physical_Account_Number);
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
+	}
+	
 }
