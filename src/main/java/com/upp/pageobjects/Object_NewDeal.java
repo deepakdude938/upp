@@ -522,7 +522,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
 	public WebElement payments_NextArrowButtonTransferSchedule;
 
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
 	public WebElement payments_Instrument;
 
 	@FindBy(id = "payment-to-sel-v1")
@@ -718,7 +718,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-generic-autocomplete-input-v1")
 	public WebElement payments_BudgetPurpose;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement payments_budgetPurpose;
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")

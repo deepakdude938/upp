@@ -31,35 +31,37 @@ public class Payload extends BaseClass {
 				+ "//src//main//resources//UserList.xlsx";
 	
 		
+		String filePath = System.getProperty("user.dir")
+				+ "//src//test//resources//usercount.properties";
 		System.out.println("test case id = "+TSID);
 		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
 		
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		
 
-	        try (FileInputStream fis = new FileInputStream("global.properties")) {
+	        try (FileInputStream fis = new FileInputStream(filePath)) {
 	            Properties properties = new Properties();
 	            properties.load(fis);
 	            
 	            // Get the current count from the properties file
-	            usercount1 = Integer.parseInt(properties.getProperty("usercount", "0"));
-	            System.out.println("Count = "+usercount1 );
+	            usercount2 = Integer.parseInt(properties.getProperty("usercount1", "0"));
+	            System.out.println("Count = "+usercount2 );
 	            // Increment the count
-	            usercount1++;
+	            usercount2++;
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-	        String username = externalData.getFieldData(excelFilePath, "Sheet", "UserName",usercount1);
-	        String password = externalData.getFieldData(excelFilePath, "Sheet", "Password",usercount1);
+	        String username = externalData.getFieldData(excelFilePath, "Sheet", "UserName",usercount2);
+	        String password = externalData.getFieldData(excelFilePath, "Sheet", "Password",usercount2);
 	        DocumentContext jsonContext = JsonPath.parse(payLoadString);
 			jsonContext.set("$.name", username);
 		
 			jsonContext.set("$.username", password);
 			String modifiedJsonString = jsonContext.jsonString();
-	        try (FileOutputStream fos = new FileOutputStream("global.properties")) {
+	        try (FileOutputStream fos = new FileOutputStream(filePath)) {
 	            Properties properties = new Properties();
-	            String countdata= Integer.toString(usercount1);
-	            properties.setProperty("usercount", countdata);
+	            String countdata= Integer.toString(usercount2);
+	            properties.setProperty("usercount1", countdata);
 	            properties.store(fos,"Testing");
 	            System.out.println("count in prop = "+countdata);
 	        } catch (IOException e) {
@@ -77,10 +79,14 @@ public class Payload extends BaseClass {
 				+ "//src//main//resources//UserList.xlsx";
 	
 		
-		System.out.println("test case id = "+TSID);
+		//System.out.println("test case id = "+TSID);
 		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
-		DocumentContext jsonContext = JsonPath.parse(payLoadString);
-		String modifiedJsonString = jsonContext.jsonString();
+		 DocumentContext jsonContext = JsonPath.parse(payLoadString);
+			jsonContext.set("$.status", "SUSPENDED");
+		
+			//jsonContext.set("$.username", password);
+			String modifiedJsonString = jsonContext.jsonString();
+	    
 	        	
 		System.out.println(modifiedJsonString);
 		return modifiedJsonString;

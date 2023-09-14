@@ -36,7 +36,7 @@ public class BaseClass {
 	public static String base_url;
 	public static String  api_Password;
 	public static String virtual_Account_Number;
-	public static int usercount1 = 0;
+	public static int usercount2 = 0;
 
 	public boolean isFlexibleFunding;
 

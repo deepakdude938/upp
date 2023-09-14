@@ -72,9 +72,15 @@ public class TS91 extends BaseClass {
 
 	@Then("Call the Update User Status Api with given {string}")
 	public void call_the_Update_User_Status_Api_with_given(String string) throws Exception {
-		
-	   user.updateUsers(string, prop);
+		login_UPP.loginToUpp();
+		userName = user.updateUsers(string, prop);
 	}
+
+	@Then("login with updated user using update API")
+	public void login_with_updated_user_using_update_API() throws Exception {
+		 checker.loginWithUSerAddedUsingAPI(userName);
+	}
+
 
 
 
