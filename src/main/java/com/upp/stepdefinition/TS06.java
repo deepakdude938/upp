@@ -29,7 +29,7 @@ public class TS06 extends BaseClass implements ICallback {
 	DealPage dp;
 	public static String sourceAccountNo = "";
 	public static String toaccountNo = "";
-//	public static String dealId = "";
+	public static String dealId = "";
 	public static String TSID = "";
 	public static String TnxId = "";
 	Transactions_Maker_Sub_Instruction tm_sub;
@@ -57,6 +57,7 @@ public class TS06 extends BaseClass implements ICallback {
 	public void submit_the_deal() throws Exception {
 		// Write code here that turns the phrase above into concrete actions
 		dealId = dm.submitDeal();
+		BaseClass.dealId=dealId;
 	}
 
 	@Then("approve the deal from the deal checker common method")
