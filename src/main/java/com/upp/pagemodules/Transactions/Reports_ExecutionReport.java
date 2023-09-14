@@ -101,14 +101,14 @@ public class Reports_ExecutionReport extends BaseClass {
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
-			System.out.println("Waiting for Transaction to be triggered");
+			//System.out.println("Waiting for Transaction to be triggered");
 			TimeUnit.SECONDS.sleep(3);
 			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
 			if (ScroeStatusafter.equalsIgnoreCase("triggered")) {
-				System.out.println("Transaction is triggered");
+				//System.out.println("Transaction is triggered");
 
 			} else {
-				System.out.println("Transaction is not yet triggered");
+				//System.out.println("Transaction is not yet triggered");
 			}
 		}
 
@@ -174,9 +174,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
-		Thread.sleep(4000);
+		Thread.sleep(7000);
 		jsClick.click(tm.cancelIcon);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 
 	}
 
