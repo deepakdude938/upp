@@ -1,7 +1,7 @@
 Feature: TS61_Payment Retention Decimal Assertion
 
 
-@Assertion @TS61 
+@Assertion @TS61 @Regression
 Scenario Outline: Payment Retention Decimal Assertion
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

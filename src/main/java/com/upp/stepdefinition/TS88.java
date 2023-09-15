@@ -26,4 +26,14 @@ public class TS88 {
 	   ta.createTransaction(TSID);
 	}
 	
+	@Then("Call the Rollback Transaction Api")
+	public void call_the_Rollback_Transaction_Api() {
+	  
+	}
+
+	@Then("Validate in execution report record should not be there")
+	public void validate_in_execution_report_record_should_not_be_there() {
+	 
+	}
+	
 }
