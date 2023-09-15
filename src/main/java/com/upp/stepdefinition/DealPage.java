@@ -98,6 +98,13 @@ public class DealPage extends BaseClass implements ICallback {
 		creator.createParty_With_BasicDetails(TSID, this);
 
 	}
+	
+	// Only Party Basic Details.No ecommerce Config
+	@Then("Add Party Basic Details with given {string}.")
+	public void add_Party_Basic_Details_with_given(String TSID) throws Exception, Exception {
+		DealPartiesCreator creator = new DealPartiesCreator();
+		creator.createParty_BasicDetails(TSID, this);
+	}
 
 	@Then("Add Party Contacts with given {string}.")
 	public void add_Party_Contacts_with_given(String TSID) throws Exception {

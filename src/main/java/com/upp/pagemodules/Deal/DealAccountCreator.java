@@ -98,9 +98,10 @@ public class DealAccountCreator extends BaseClass {
 	public String createNewAccount_ODP_From_ExcelSheet(String TSID) throws Exception {
 		
 		accDetails = odpAccount.popelmnt(Create_ODP_Account_Api.stack1);
-		System.out.println("the account no is" + accDetails.getAccno());
+		System.out.println("the account no is " + accDetails.getAccno());
 		
 		String accountNo = accDetails.getAccno();
+		physical_Account_Number=accountNo;
 		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
 		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
 		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));

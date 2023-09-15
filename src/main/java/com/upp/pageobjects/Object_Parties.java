@@ -19,6 +19,19 @@ public class Object_Parties extends BaseClass{
 	@FindBy(xpath="//label[contains(text(),'Parties')]")
 	public WebElement parties_Icon;
 	
+	@FindBy(id="tab-deals-partyWizard-v1")
+	public WebElement parties_PartyTab;
+	
+	@FindBy(xpath="//i[@class='ui-icon ic ic-edit_blue ng-star-inserted']")
+	public WebElement parties_EditParty;
+	
+	@FindBy(xpath="//div[@class='ag-center-cols-viewport']")
+	public WebElement parties_PartyTabViewPort;
+	
+	
+	@FindBy(xpath="//p[normalize-space()='Ecommerce Config']")
+	public WebElement parties_Ecommerce_Config_Tab;
+	
 	@FindBy(xpath="//a[normalize-space()='Party Maker']")
 	public WebElement partyMaker_Icon;
 	

@@ -36,11 +36,13 @@ public class BaseClass {
 	public static String base_url;
 	public static String  api_Password;
 	public static String virtual_Account_Number;
+	public static int usercount2 = 0;
+	public static String physical_Account_Number;
 
 	public boolean isFlexibleFunding;
 
 	public WebDriver initialize() throws Exception {
-
+		
 		FileInputStream fis = new FileInputStream(Constants.PROJECT_PATH + Constants.PROPERTY_FILE_PATH);
 		prop = new Properties();
 		prop.load(fis);
@@ -48,25 +50,18 @@ public class BaseClass {
 //		isHeadLess = true;
 		
 		String env = prop.getProperty("env");
-		System.out.println(env);
 		switch(env.toLowerCase()) {
 		
 					case "sit":
 						System.out.println("In sit");
 						url = prop.getProperty("SIT_Url");
 						api_Password= prop.getProperty("api_password");
-						
-						
-						
 						break;
 						
 					case "qa":
 						System.out.println("In QA");
 						url = prop.getProperty("QA_Url");
 						api_Password= prop.getProperty("QA_api_password");
-						
-						
-						
 						break;
 						
 					case "dev":
@@ -74,8 +69,6 @@ public class BaseClass {
 						url = prop.getProperty("DEV_Url");
 						api_Password= prop.getProperty("api_password");
 						break;
-						
-						
 						
 					case "scb":
 						System.out.println("In scb");
@@ -144,7 +137,7 @@ public class BaseClass {
 		}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-
+		
 		return driver;
 
 	}

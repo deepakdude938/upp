@@ -81,6 +81,13 @@ public class Object_Deal extends BaseClass {
 	public WebElement nextBtn;
 
 	//objects   Accounts page 
+	@FindBy (id = "tab-deals-accountWizard-v1")
+	public WebElement account_AccountTab;
+	
+	@FindBy (xpath = "//table[contains(@class,'acc-tbl')]//td[2]//span")
+	public List<WebElement> account_AccountNoList;
+	
+	
 	@FindBy (xpath = "//div[@title='Accounts']/i")
 	public WebElement accountIcon;
 	
