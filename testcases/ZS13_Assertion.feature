@@ -1,7 +1,7 @@
 Feature: TS13_AdhocTransaction_with_Non_Registered_Beneficiary_Checkbox_Checked_Assertion
 
 
-@Assertion @TS13
+@Assertion @TS13 @Regression
 Scenario Outline: TS13_AdhocTransaction_with_Non_Registered_Beneficiary_Checkbox_Checked_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

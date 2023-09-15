@@ -148,22 +148,25 @@ public class Payment_SubInstruction extends BaseClass {
 	public void createPayments_Subinstruction_For_PurposeBudget(String TSID, String sourceAccountno, String toaccountNo)
 			throws Exception {
 
-		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_Instrument1, Duration.ofSeconds(5));
 
 		
 		try {
-			od.payments_Instrument.click();
+			od.payments_Instrument1.click();
 		} catch (Exception e) {
-			handleElementClickException(od.payments_Instrument);
+			handleElementClickException(od.payments_Instrument1);
 		}
-        Thread.sleep(500);
+        Thread.sleep(5000);
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
+		System.out.println("payment = "+paymentInstrumentdata);
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
+		System.out.println("Test case id = "+TSID);
 		
 		if(TSID.equalsIgnoreCase("TS71")||TSID.equalsIgnoreCase("TS71_1")) {
+			
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
-		System.out.println(budget);
+		System.out.println("Budget == "+budget);
 		od.payments_budgetPurpose.sendKeys(budget);
 		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
 		applyExplicitWaitsUntilElementVisible(budgetPurpose, 10);
@@ -235,7 +238,7 @@ public class Payment_SubInstruction extends BaseClass {
 		od.parties_Accounts_beneficiaryAddressLine1
 				.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 
-		od.PaymentBudget_Beneficiaryaccno.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
+		od.PaymentBudget_BeneficiaryaccnoPurpose.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Beneficiary Address Line 1"));
 		scroll.scrollInToView(od.payments_Amount);
 		applyExplicitWaitsUntilElementClickable(od.payments_Amount, Duration.ofSeconds(5));
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
