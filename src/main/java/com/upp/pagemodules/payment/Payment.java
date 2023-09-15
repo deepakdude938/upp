@@ -452,7 +452,8 @@ public class Payment extends BaseClass{
 		od.payments_NextArrowButtonTransferSchedule.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 
-		od.payments_Instrument.click();
+		//od.payments_Instrument.click();
+		js.click(od.payments_Instrument);
 
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
