@@ -871,7 +871,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-deals-instruction-retentionBasic-formula-v1")
 	public WebElement retention_SpecifyAmountValue;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement Payment_Beneficiaryaccno;
 	
 	@FindBy(xpath="//span[normalize-space()='Summary']")
@@ -1169,4 +1169,5 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//h2[normalize-space()=\"There aren't any parties configured yet.\"])[1]")
 	public WebElement party_no_party_configured;
+	
 }

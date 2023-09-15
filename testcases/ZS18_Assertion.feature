@@ -1,7 +1,7 @@
 Feature: TS18_PriorityDependency_SameDay_Assertion
 
 
-@Assertion @TS18
+@Assertion @TS18 @Regression
 Scenario Outline: PriorityDependency_SameDay_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
