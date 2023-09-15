@@ -23,7 +23,6 @@ Then Call the Detach Account Api for "TS84_Detach"
 Then Edit the deal "<TSID>"
 Then Verify Virtual Account is not disable in Party "<TSID>"
 
-
 Examples:
       |TSID|
       |TS84|

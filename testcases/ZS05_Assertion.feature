@@ -1,7 +1,7 @@
 Feature: TS05_Budget_Assertion
 
 
-@Assertion @TS05
+@Assertion @TS05 @Regression
 Scenario Outline: TS05_Budget_Assertion
 
 Given Open browser and enter url 
