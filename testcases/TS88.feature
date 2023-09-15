@@ -10,8 +10,8 @@ And Create two eCommerce  Parties in the Parties Tab with given "<TSID>" and "<P
 Then submit the deal
 Then approve the deal from the deal checker common method
 Then Call the Create Transaction Api for "<TSID>"
-Then Validate in execution report for scheduled record "<TSID>"
-Then Call the Rollback Transaction Api
+Then Validate in execution report for scheduled record using endToEndId "<TSID>"
+Then Call the Rollback Transaction Api "<TSID>"
 Then Validate in execution report record should not be there
 
 Examples:

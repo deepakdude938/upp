@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
 
@@ -73,14 +74,10 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-//		tm.reports_searchBox.sendKeys("Execution Report");
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 		tm.reports_DealId.sendKeys(dealId);
-//		applyExplicitWaitsUntilElementClickable(tm.reports_SubmitButton, Duration.ofSeconds(5));
-//		jsClick.click(tm.reports_SubmitButton);
 		Thread.sleep(4000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
 				10, 1000);
@@ -846,6 +843,19 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertTrue(subInstruction.contains("200"));
 		Assert.assertTrue(subInstruction.contains("300"));
+	}
+
+	public void checkRecordIsNotPresentINEcommExecution(String endToEndId) throws Exception {
+		
+			driver.navigate().refresh();
+			Thread.sleep(2000);
+			applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
+			Thread.sleep(3000);
+			tm.reports_End_To_End_common.sendKeys(endToEndId);
+			Thread.sleep(3000);
+			jsClick.click(tm.cancelIcon);
+			List<WebElement> recordList =driver.findElements(By.xpath("//div[@col-id='End to End ID' and contains(@class,'ag-cell-not-inline-editing') and normalize-space()='"+endToEndId+"']"));
+			Assert.assertTrue(recordList.size()==0);
 	}
 
 }
