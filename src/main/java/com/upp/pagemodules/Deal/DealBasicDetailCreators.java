@@ -12,6 +12,7 @@ import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
+import com.upp.pageobjects.Object_NewDeal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
@@ -46,7 +47,8 @@ public class DealBasicDetailCreators extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static CommonUtils commonutils;
-
+	public static Object_NewDeal ond;
+	
 	public DealBasicDetailCreators() {
 
 		od = new Object_Deal();
@@ -58,6 +60,7 @@ public class DealBasicDetailCreators extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		commonutils = new CommonUtils(driver);
+		ond = new Object_NewDeal();
 
 	}
 
@@ -194,6 +197,60 @@ public class DealBasicDetailCreators extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.nextBtn, Duration.ofSeconds(15));
 		od.nextBtn.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+	}
+	
+	
+	public void editDeal() throws Exception {
+		 applyExplicitWaitsUntilElementClickable(ond.deal_SideMenuIcon,Duration.ofSeconds(15));
+		 ond.deal_SideMenuIcon.click();
+		 applyExplicitWaitsUntilElementClickable(ond.liveDealIcon,Duration.ofSeconds(15));
+		 ond.liveDealIcon.click();
+		 applyExplicitWaitsUntilElementClickable(ond.dealChecker_searchSelect,Duration.ofSeconds(25));
+		 dropdown.selectByVisibleText(ond.dealChecker_searchSelect,"Deal Id");
+		 applyExplicitWaitsUntilElementClickable(ond.dealChecker_searchBar,Duration.ofSeconds(15));
+		 ond.dealChecker_searchBar.sendKeys(dealId);
+		 Thread.sleep(4000);
+		 ond.dealChecker_searchButton.click();
+		 Thread.sleep(3000);
+		 applyExplicitWaitsUntilElementClickable( ond.dealChecker_showMenu,Duration.ofSeconds(30));
+		 ond.dealChecker_showMenu.click();
+		 applyExplicitWaitsUntilElementClickable(ond.deal_EditIcon,Duration.ofSeconds(20));
+		 ond.deal_EditIcon.click();
+		 if(commonutils.isElementDisplayed(ond.deal_Edit_Yes_Button,2))
+		 {
+			 ond.deal_Edit_Yes_Button.click();
+		 }
+				 
+		 if(commonutils.isElementDisplayed(ond.AlreadyExistPopup,2))
+		 {
+			 applyExplicitWaitsUntilElementClickable(ond.account_OK_Button,Duration.ofSeconds(15));
+			 ond.account_OK_Button.click();
+			 try {
+				 applyExplicitWaitsUntilElementClickable(ond.deal_SideMenuIcon,Duration.ofSeconds(15));
+				 ond.deal_SideMenuIcon.click();
+			 }
+			 catch(Exception e) {
+					handleElementClickException(ond.deal_SideMenuIcon);
+			     }
+			 
+			 applyExplicitWaitsUntilElementClickable(ond.DealDraftsIcon,Duration.ofSeconds(15));
+			 ond.DealDraftsIcon.click();
+			 applyExplicitWaitsUntilElementClickable(ond.dealChecker_searchSelect,Duration.ofSeconds(25));
+			 dropdown.selectByVisibleText(ond.dealChecker_searchSelect,"Deal Id");
+			 applyExplicitWaitsUntilElementClickable(ond.dealChecker_searchBar,Duration.ofSeconds(15));
+			 ond.dealChecker_searchBar.sendKeys(dealId);
+			 Thread.sleep(4000);
+			 ond.dealChecker_searchButton.click();
+			 Thread.sleep(3000);
+			 ond.dealChecker_searchButton.click();
+			Thread.sleep(5000);
+			applyExplicitWaitsUntilElementClickable(ond.dealChecker_showMenu, Duration.ofSeconds(20));
+			ond.dealChecker_showMenu.click();
+			 applyExplicitWaitsUntilElementClickable(ond.DealDraftsOpen,Duration.ofSeconds(20));
+			 ond.DealDraftsOpen.click();
+			 
+		 }
 
 	}
 

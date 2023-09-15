@@ -165,7 +165,7 @@ public class Budget extends BaseClass {
 		driver.findElement(paymentInstrument).click();
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
 		System.out.println(budget);
-		od.payments_budgetPurpose.sendKeys(budget);
+		od.payments_budgetPurpose1.sendKeys(budget);
 		if(TSID.equals("TS05")) {
 		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
 		applyExplicitWaitsUntilElementVisible(budgetPurpose, 10);

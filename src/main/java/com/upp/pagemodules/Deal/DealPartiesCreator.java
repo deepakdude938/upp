@@ -3,6 +3,7 @@ package com.upp.pagemodules.Deal;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
@@ -16,6 +17,7 @@ import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_NewDeal;
+import com.upp.stepdefinition.DealPage;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
@@ -51,6 +53,8 @@ public class DealPartiesCreator extends BaseClass {
 	Party_Accounts party_account;
 	Party_Contacts party_contacts;
 	Party_Documents party_documents;
+	public String responsibilities;
+	public String ecommerce;
 
 	public DealPartiesCreator() {
 
@@ -128,6 +132,45 @@ public class DealPartiesCreator extends BaseClass {
 
 		party_documents.Create_Party_Document(TSID, icallback);
 
+	}
+
+	public void createParty_BasicDetails(String TSID, ICallback icallback) throws Exception {
+		
+		applyExplicitWaitsUntilElementClickable(od.parties_icon, Duration.ofSeconds(20));
+		try {
+			od.parties_icon.click();
+		} catch (Exception e) {
+			handleElementClickException(od.parties_icon);
+		}
+		try {
+			od.parties_GetStarted.click();
+		} catch (Exception e) {
+			handleElementClickException(od.parties_GetStarted);
+		}
+		
+		od.parties_AddnewParty.click();
+		od.parties_CustomerID.sendKeys(externalData.getFieldData(TSID, "Party", "Customer Id"));
+		od.parties_PartyName.sendKeys(externalData.getFieldData(TSID, "Party", "Party Name"));
+		
+		responsibilities = externalData.getFieldData(TSID, "Party", "Responsibility");
+		od.parties_Responsibility.sendKeys(responsibilities);
+		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + responsibilities + "')]");
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
+		driver.findElement(party_Responsibility_Option).click();
+		
+		od.parties_Remarks.sendKeys(externalData.getFieldData(TSID, "Party", "Remarks"));
+		Thread.sleep(1000);
+		icallback.handleCallback("RESPONSIBILITIES", responsibilities);
+		Thread.sleep(1000);
+		ecommerce = externalData.getFieldData(TSID, "Party", "eCommerce Party-checkbox");
+		System.out.println(ecommerce);
+		new Actions(driver).moveToElement(od.parties_eCommerceCheckbox);
+		od.parties_eCommerceCheckbox.click();
+		String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
+		System.out.println(PraticipantId);
+		od.parties_ParticipantId.sendKeys(PraticipantId);
+		od.parties_BasicNextButton.click();
+		
 	}
 
 }

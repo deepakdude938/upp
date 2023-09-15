@@ -57,6 +57,7 @@ public class TS06 extends BaseClass implements ICallback {
 	public void submit_the_deal() throws Exception {
 		// Write code here that turns the phrase above into concrete actions
 		dealId = dm.submitDeal();
+		BaseClass.dealId=dealId;
 	}
 
 	@Then("approve the deal from the deal checker common method")
