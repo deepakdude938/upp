@@ -1,6 +1,7 @@
 package com.upp.pagemodules.Users;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -86,6 +87,26 @@ public class UserChecker extends BaseClass {
 		Assert.assertEquals(expectedUrl, actualUrl);
 	}
 
+	public void loginWithUSerAddedUsingAPI(String username) throws Exception {
+		System.out.println("Updated user login");
+		Thread.sleep(3000);
+		//int usercount1=3;
+
+		String excelFilePath = System.getProperty("user.dir")
+				+ "//src//main//resources//UserList.xlsx";
+	
+        
+        //String username = externalData.getFieldData(excelFilePath, "Sheet", "UserName",usercount2);
+        //String password = externalData.getFieldData(excelFilePath, "Sheet", "Password",usercount2);
+		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(35));
+		ol.username.sendKeys(username);
+		ol.password.sendKeys(username);
+		System.out.println("before loginsucessful");
+		ol.loginIn.click();
+		System.out.println("loginsucessful");
+		Thread.sleep(5000);
+	}
+	
 	public void verifyResponsibility() throws Exception {
 		int flag;
 		Thread.sleep(2000);
