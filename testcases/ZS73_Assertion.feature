@@ -1,7 +1,7 @@
 Feature: TS73_Budget_Assertion
 
 
-@Assertion @TS73
+@Assertion @TS73 @Regression
 Scenario Outline: TS73_Budget_Carryforward_Assertion
 
 Given Open browser and enter url 
