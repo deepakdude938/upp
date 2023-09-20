@@ -93,7 +93,7 @@ public class UpdateUser extends BaseClass {
 			usercount2 = Integer.parseInt(properties.getProperty("usercount1", "0"));
 			System.out.println("Count = " + usercount2);
 			// Increment the count
-			// usercount2++;
+			 usercount2++;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
