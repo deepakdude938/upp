@@ -40,16 +40,22 @@ public class TS94 extends BaseClass {
 	public static String TSID = "";
 	public static String TnxId = "";
 	Get_List_of_Users_API getUsers;
+	Verify_User_By_User_Name verify;
 	public TS94() {
 
 		this.dm = new DashBoard_Module();
 		getUsers=new Get_List_of_Users_API();
+		verify=new Verify_User_By_User_Name();
 	}
 	
 	@Then("Call the Get_List_of_Users API")
 	public void call_the_Get_List_of_Users_API() throws Exception {
 	   getUsers.getListOfUsers();
 	}
-
+	
+	@Then("Verify {int} User Details in UI with given {string}.")
+	public void verify_User_Details_in_UI_with_given(Integer int1, String string) throws Exception {
+		verify.verify_3_UserDetails_IN_UI(string);
+	}
 
 }
