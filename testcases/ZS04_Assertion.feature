@@ -1,7 +1,7 @@
 Feature: TS04_Linked_Instruction_Assertion
 
 
-@Assertion @TS04
+@Assertion @TS04 @Regression
 Scenario Outline: TS04_Linked_Instruction_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

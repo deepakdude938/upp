@@ -21,6 +21,7 @@ public class TransactionApi extends BaseClass {
 	public static String base_Url = Property.getProperty("Dev_base_uri");
 	public static ExcelReader externalData;
 	public Payload pay;
+	String endToEndId ;
 	
 	public TransactionApi() {
 		externalData = new ExcelReader();
@@ -65,18 +66,32 @@ public class TransactionApi extends BaseClass {
 		return endToEndId;
 	}
 
-	public void createTransaction(String TSID) throws Exception {
+	public String createTransaction(String TSID) throws Exception {
 		RestAssured.baseURI = base_url;
 	
-		String res = (String) given().header("Content-Type", "application/json")
+		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
 				.body(pay.api_createTransaction(TSID))
 				.when()
-				.post("transaction/api/transaction")
+				.post("transaction/api/transaction");
+			
+			String	response = res.then().extract().asString();	
+			JsonPath js = new JsonPath(response);
+			endToEndId = js.getString("endToEndId");
+			Assert.assertTrue(res.getStatusCode()==200);
+				return endToEndId;
+	}
+
+
+	public void deleteTransaction(String TSID) {
+		RestAssured.baseURI = base_url;
+		String endpoint = "transaction/api/transaction"+endToEndId+"rollback";
+		String res = (String) given().header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken)
+				.when()
+				.delete(endpoint)
 				.then()
 				.assertThat().statusCode(200).toString();
-	
-		
 	}
 
 
