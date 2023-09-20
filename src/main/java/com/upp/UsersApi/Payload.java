@@ -93,4 +93,43 @@ public class Payload extends BaseClass {
 
 	}
 	
+	public static String UpdateUserAttribute(String TSID, Properties prop) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String excelFilePath = System.getProperty("user.dir")
+				+ "//src//main//resources//UserList.xlsx";
+	
+		String filePath = System.getProperty("user.dir")
+				+ "//src//test//resources//usercount.properties";
+		
+		//System.out.println("test case id = "+TSID);
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		
+
+        try (FileInputStream fis = new FileInputStream(filePath)) {
+            Properties properties = new Properties();
+            properties.load(fis);
+            
+            // Get the current count from the properties file
+            usercount2 = Integer.parseInt(properties.getProperty("Phonenumber", "0"));
+            System.out.println("Count = "+usercount2 );
+            // Increment the count
+           // usercount2++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		System.out.println("Payload"+payLoadString);
+		 DocumentContext jsonContext = JsonPath.parse(payLoadString);
+			jsonContext.set("$.telephone", "9876543458");
+		//	jsonContext.set("$.state", "Maharashtra");
+		
+			//jsonContext.set("$.username", password);
+			String modifiedJsonString = jsonContext.jsonString();
+	    
+	        	
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+
+	}
 }
