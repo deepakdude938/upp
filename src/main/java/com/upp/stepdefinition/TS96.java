@@ -2,6 +2,7 @@ package com.upp.stepdefinition;
 
 import java.io.IOException;
 
+import com.upp.Api.utils.Fetch_All_Roles_API;
 import com.upp.Api.utils.Get_List_of_Users_API;
 import com.upp.Api.utils.Get_User_By_UserName_API;
 import com.upp.Api.utils.LogOutApi;
@@ -28,10 +29,11 @@ import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_Delete_Party_Api;
 import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_PartyApiAdded;
 import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_Update_Party_API;
 import com.upp.pagemodules.Users.Verify_User_By_User_Name;
+import com.upp.pagemodules.Users.Verify_User_Roles_Available;
 
 import io.cucumber.java.en.*;
 
-public class TS94 extends BaseClass {
+public class TS96 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String sourceAccountNo = "";
@@ -39,23 +41,23 @@ public class TS94 extends BaseClass {
 //	public static String dealId = "";
 	public static String TSID = "";
 	public static String TnxId = "";
-	Get_List_of_Users_API getUsers;
-	Verify_User_By_User_Name verify;
-	public TS94() {
+	Fetch_All_Roles_API rolesApi;
+	Verify_User_Roles_Available verify_roles;
+
+	public TS96() {
 
 		this.dm = new DashBoard_Module();
-		getUsers=new Get_List_of_Users_API();
-		verify=new Verify_User_By_User_Name();
-	}
-	
-	@Then("Call the Get_List_of_Users API")
-	public void call_the_Get_List_of_Users_API() throws Exception {
-	   getUsers.getListOfUsers();
-	}
-	
-	@Then("Verify {int} User Details in UI with given {string}.")
-	public void verify_User_Details_in_UI_with_given(Integer int1, String string) throws Exception {
-		verify.verify_3_UserDetails_IN_UI(string);
+        verify_roles=new Verify_User_Roles_Available();
+        rolesApi=new Fetch_All_Roles_API();
 	}
 
+	@Then("Call the Fetch_all_roles_API")
+	public void call_the_Fetch_all_roles_API() throws Exception {
+		rolesApi.fetch_All_Roles_API();
+	}
+
+	@Then("Verify the first {int} roles present in UI with given {string}.")
+	public void verify_the_first_roles_present_in_UI_with_given(Integer int1, String string) throws Exception{
+		verify_roles.verify_User_Roles_Available_IN_UI(string);
+	}
 }

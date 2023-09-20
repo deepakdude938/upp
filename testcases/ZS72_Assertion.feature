@@ -1,7 +1,7 @@
 Feature: TS72_Budget_PurposeandDestination_DateRange_Assertion
 
 
-@Assertion @TS72
+@Assertion @TS72 @Regression
 Scenario Outline: Budget_PurposeandDestination_DateRange_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

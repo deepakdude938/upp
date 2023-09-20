@@ -1,7 +1,7 @@
 Feature: TS70_Budget_Consolidated_Yearly Assertion
 
 
-@Assertion @TS70
+@Assertion @TS70 @Regression
 Scenario Outline: Budget_Consolidated_Yearly Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
