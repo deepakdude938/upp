@@ -594,6 +594,13 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
 		Thread.sleep(3000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
+
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+		Thread.sleep(2000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");
@@ -851,7 +858,11 @@ public class Reports_ExecutionReport extends BaseClass {
 			Thread.sleep(3000);
 			tm.reports_End_To_End_common.sendKeys(endToEndId);
 			Thread.sleep(3000);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
 			jsClick.click(tm.cancelIcon);
+//			jsClick.click(tm.cancelIcon);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+					-1000);
 			List<WebElement> recordList =driver.findElements(By.xpath("//div[@col-id='End to End ID' and contains(@class,'ag-cell-not-inline-editing') and normalize-space()='"+endToEndId+"']"));
 			Assert.assertTrue(recordList.size()==0);
 	}

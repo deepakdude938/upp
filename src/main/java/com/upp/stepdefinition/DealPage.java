@@ -64,6 +64,7 @@ public class DealPage extends BaseClass implements ICallback {
 		DealAccountCreator accountCreator = new DealAccountCreator();
 		sourceAccountNo = accountCreator.createNewAccount(string);
 		toaccountNo = accountCreator.createNewAccount(string);
+
 	}
 
 	@Then("Create Parties in the Parties Tab with given {string}")

@@ -51,7 +51,7 @@ public class Payload extends BaseClass {
 		String tomorow = DateUtils.getDate(1) + "T11:28:00Z";
 		DocumentContext jsonContext = JsonPath.parse(jsonEnrichDebtor);
 		jsonContext.set("$.dealRefId", dealId);
-		jsonContext.set("$.paymentInfo.accountNumber", DealPage.sourceAccountNo);
+		jsonContext.set("$.paymentInfo.accountNumber", debitAccount);
 		jsonContext.set("$.paymentInfo.platformRefNo", platformRefNo);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
 		modifiedJsonString = jsonContext.jsonString();

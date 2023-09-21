@@ -171,6 +171,9 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//div[@col-id='accountNumber'])[2]")
 	public WebElement ecommerceFirstAccount;
 	
+	@FindBy(xpath = "(//div[@col-id='accountNumber'])[2]/span/span")
+	public WebElement ecommerceFirstAccountNo;
+	
 	@FindBy(xpath = "(//div[@col-id='accountNumber'])[3]")
 	public WebElement ecommerceSecondAccount;
 		

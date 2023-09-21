@@ -66,11 +66,14 @@ public class EcommerceHandler extends BaseClass {
 		// od.startDate.click();
 		debitorFalg = externalData.getFieldData(TSID, "Party", "Debit Accounts");
 		System.out.println(debitorFalg);
+		
 		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
 			String hiddenClass = od.accountNumbers.getAttribute("class");
 			System.out.println(hiddenClass);
 			if (!(hiddenClass.contains("ag-hidden"))) {
 				Thread.sleep(500);
+				 debitAccount = od.ecommerceFirstAccountNo.getText();
+				 System.out.println(debitAccount);
 				jsClick.click(od.ecommerceFirstAccount);
 				Thread.sleep(2500);
 				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
