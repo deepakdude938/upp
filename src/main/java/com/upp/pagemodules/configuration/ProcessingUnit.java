@@ -42,7 +42,8 @@ public class ProcessingUnit extends BaseClass {
 	}
 
 	public String CreateProcessingUnit(String TSID) throws Exception {
-
+		
+        Thread.sleep(3000);
 		scroll.scrollInToView(oc.configurationButton);
 		applyExplicitWaitsUntilElementClickable(oc.configurationButton, Duration.ofSeconds(15));
 		oc.configurationButton.click();
