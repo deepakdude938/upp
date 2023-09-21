@@ -13,7 +13,7 @@ Then Add Party Accounts with given "TS58_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
 And Login to UPP through api
-And Call the Rule_IN_BT Api with given "<TSID>".
+And Call the Rule_IN_BT_DealLevel Api with given "<TSID>".
 Then Create odp json payload file with EndToEndId with given "<TSID>"
 And Create record in ODP "<TSID>"
 Examples:
