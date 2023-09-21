@@ -7,7 +7,7 @@ Given Open browser and enter url
 Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
-And Create two eCommerce  Parties in the Parties Tab with given "<TSID>" and "<PartiesID>"
+And Create two eCommerce  Parties in the Parties Tab with given "<PartiesID>" and "<TSID>"
 And Update json for Party_EnrichDebtor rule api "<TSID>"
 And Login to UPP through api
 And Call Party_EnrichDebtor rule api

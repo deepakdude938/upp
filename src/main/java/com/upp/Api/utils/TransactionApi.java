@@ -78,6 +78,7 @@ public class TransactionApi extends BaseClass {
 			String	response = res.then().extract().asString();	
 			JsonPath js = new JsonPath(response);
 			endToEndId = js.getString("endToEndId");
+			System.out.println("Status code : "+res.getStatusCode());
 			Assert.assertTrue(res.getStatusCode()==200);
 				return endToEndId;
 	}
@@ -85,7 +86,9 @@ public class TransactionApi extends BaseClass {
 
 	public void deleteTransaction(String TSID) {
 		RestAssured.baseURI = base_url;
-		String endpoint = "transaction/api/transaction"+endToEndId+"rollback";
+		String endpoint = "transaction/api/transaction/"+endToEndId+"/rollback";
+		System.out.println(base_url);
+		System.out.println(endpoint);
 		String res = (String) given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
 				.when()
