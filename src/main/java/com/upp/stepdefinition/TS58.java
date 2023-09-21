@@ -50,7 +50,6 @@ public class TS58 extends BaseClass {
 	LogOutApi logout_UPP;
 	Rule_IN_BT_DealLevel rule;
 	Reports_ExecutionReport report;
-	public static String batchId = "";
 	public static String paymentRefId = "";
 
 	public TS58() {
@@ -67,12 +66,12 @@ public class TS58 extends BaseClass {
 	
 	@And("Call the Rule_IN_BT_DealLevel Api with given {string}.")
 	public void call_the_Rule_IN_BT_DealLevel_Api_with_given(String string) throws Exception {
-		 TS55.endToEndIdRule= rule.Rule_IN_BT_dealLevel(TS06.dealId, string);
+		 endToEndIdRule= rule.Rule_IN_BT_dealLevel(TS06.dealId, string);
 	}
 
 	@And("Verify the Pain File For Rule_IN_BT_DealLevel")
 	public void verify_the_Pain_File_For_Rule_IN_BT_DealLevel() throws Exception {
-		rule.verify_Rule_IN_BT_Deal_Level_PainFile(TS55.batchId);
+		rule.verify_Rule_IN_BT_Deal_Level_PainFile(batchId);
 	}
 
 }

@@ -14,9 +14,8 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And Login to UPP through api
 And Call the Rule_IN_BT_DealLevel Api with given "<TSID>".
-Then Verify in Ecomm Execution Report with given "<TSID>".
-And Get the BatchId from Ecomm Payments
-And Verify the Pain File For Rule_IN_BT_DealLevel
+Then Create odp json payload file with EndToEndId with given "<TSID>"
+And Create record in ODP "<TSID>"
 Examples:
       |TSID   |
       |TS58   |
