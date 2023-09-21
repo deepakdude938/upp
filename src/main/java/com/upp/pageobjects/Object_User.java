@@ -120,5 +120,9 @@ public class Object_User extends BaseClass {
 	@FindBy(id = "swal2-content")
 	public WebElement user_deleted_message;
 	
+	@FindBy(id = "txt-perms-users-onBoardUpdate-userName-v1")
+	public WebElement user_Username;
 	
+	@FindBy(id = "ic-perms-users-onBoardUpdate-close-v1")
+	public WebElement user_CloseIcon;
 }

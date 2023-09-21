@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import com.upp.Api.utils.Get_List_of_Users_API;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
@@ -83,5 +84,76 @@ public class Verify_User_By_User_Name extends BaseClass {
 
 	}
 
+	public void verify_3_UserDetails_IN_UI(String TSID) throws Exception {
+		
+		scroll.scrollInToView(ou.usersTab);
+		applyExplicitWaitsUntilElementClickable(ou.usersTab, Duration.ofSeconds(20)); 
+		ou.usersTab.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker, Duration.ofSeconds(20)); 
+		ou.userMaker.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_directory, Duration.ofSeconds(20)); 
+		ou.userMaker_directory.click();
+		Thread.sleep(2000);
+		ou.userMaker_search.click();
+		Thread.sleep(3000);
+		ou.userMaker_search.sendKeys(Get_List_of_Users_API.Username1);
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_searchIcon, Duration.ofSeconds(20)); 
+		ou.userMaker_searchIcon.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_editIcon, Duration.ofSeconds(20)); 
+	    jsClick.click(ou.userMaker_editIcon);
+	    
+	    applyExplicitWaitsUntilElementVisible(ou.user_Username, Duration.ofSeconds(20)); 
+		String ActualUsername1 = ou.user_Username.getAttribute("value");
+		System.out.println("Username1 is = " + ActualUsername1);
+		Assert.assertEquals(ActualUsername1,Get_List_of_Users_API.Username1);
+	    ou.user_CloseIcon.click();
+		
+		scroll.scrollInToView(ou.usersTab);
+		applyExplicitWaitsUntilElementClickable(ou.usersTab, Duration.ofSeconds(20)); 
+		ou.usersTab.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker, Duration.ofSeconds(20)); 
+		ou.userMaker.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_directory, Duration.ofSeconds(20)); 
+		ou.userMaker_directory.click();
+		Thread.sleep(2000);
+		ou.userMaker_search.click();
+		Thread.sleep(3000);
+		ou.userMaker_search.sendKeys(Get_List_of_Users_API.Username2);
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_searchIcon, Duration.ofSeconds(20)); 
+		ou.userMaker_searchIcon.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_editIcon, Duration.ofSeconds(20)); 
+	    jsClick.click(ou.userMaker_editIcon);
+	    
+	    applyExplicitWaitsUntilElementVisible(ou.user_Username, Duration.ofSeconds(20)); 
+		String ActualUsername2 = ou.user_Username.getAttribute("value");
+		System.out.println("Username2 is = " + ActualUsername2);
+		Assert.assertEquals(ActualUsername2,Get_List_of_Users_API.Username2);
+		ou.user_CloseIcon.click();
+		
+		scroll.scrollInToView(ou.usersTab);
+		applyExplicitWaitsUntilElementClickable(ou.usersTab, Duration.ofSeconds(20)); 
+		ou.usersTab.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker, Duration.ofSeconds(20)); 
+		ou.userMaker.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_directory, Duration.ofSeconds(20)); 
+		ou.userMaker_directory.click();
+		Thread.sleep(2000);
+		ou.userMaker_search.click();
+		Thread.sleep(3000);
+		ou.userMaker_search.sendKeys(Get_List_of_Users_API.Username3);
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_searchIcon, Duration.ofSeconds(20)); 
+		ou.userMaker_searchIcon.click();
+		applyExplicitWaitsUntilElementClickable(ou.userMaker_editIcon, Duration.ofSeconds(20)); 
+	    jsClick.click(ou.userMaker_editIcon);
+	    
+	    applyExplicitWaitsUntilElementVisible(ou.user_Username, Duration.ofSeconds(20)); 
+		String ActualUsername3 = ou.user_Username.getAttribute("value");
+		System.out.println("Username3 is = " + ActualUsername3);
+		Assert.assertEquals(ActualUsername3,Get_List_of_Users_API.Username3);
+		ou.user_CloseIcon.click();
+		
 	
+
+	}
+
 }

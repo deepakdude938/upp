@@ -606,8 +606,8 @@ public class Budget extends BaseClass {
 		od.budget_Purpose.sendKeys(externalData.getFieldData(TSID, "Budget", "Purpose"));
 		}
 		od.budget_budgetDestination.sendKeys(toAccountNo);
-		By destination = By.xpath("//div[@id='grid-generic-destinationSearch-panelClick-v1']//li[contains(text(),'"
-				+ toAccountNo + "')]");
+		
+		By destination = By.xpath("//div[contains(text(),'" + toAccountNo + "')]");
 		applyExplicitWaitsUntilElementVisible(destination, 10);
 		driver.findElement(destination).click();
 		applyExplicitWaitsUntilElementClickable(od.budget_interval, Duration.ofSeconds(5));

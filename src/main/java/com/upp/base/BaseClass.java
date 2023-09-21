@@ -40,6 +40,9 @@ public class BaseClass {
 	public static String physical_Account_Number;
 	public static String debitAccount ;
 
+	public static String endToEndIdRule="";
+	public static  String batchId = "";
+	public static String endToEndIdAssertion="";
 	public boolean isFlexibleFunding;
 
 	public WebDriver initialize() throws Exception {

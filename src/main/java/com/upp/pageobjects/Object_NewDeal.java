@@ -709,7 +709,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//label[normalize-space()='Budget Carry forward']/following::span[@class='slider round']")
 	public WebElement budget_budgetCarryForward;
 	
-	@FindBy(id="txt-generic-autocomplete-input-v1")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement budget_budgetDestination;
 	
 	@FindBy(xpath = "//input[@id='txt-generic-timePicker-input-v1']")

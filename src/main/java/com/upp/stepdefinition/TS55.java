@@ -18,7 +18,9 @@ import callbackInterfaces.ICallback;
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
 import com.upp.odp.utils.Create_ODP_Account_Api;
+import com.upp.odp.utils.Fetch_EndToEndId_From_ODP;
 import com.upp.odp.utils.Logout_ODP_Api;
+import com.upp.odp.utils.ODP_JSON_ASSERTIONS_PAYLOAD;
 import com.upp.utils.SwitchWindow;
 
 import com.upp.pagemodules.Deal.DealAccountCreator;
@@ -49,9 +51,9 @@ public class TS55 extends BaseClass {
 	LogOutApi logout_UPP;
 	Rule_IN_BT rule;
 	Reports_ExecutionReport report;
-	public static String endToEndIdRule="";
-	public static  String batchId = "";
 	public static String paymentRefId = "";
+	ODP_JSON_ASSERTIONS_PAYLOAD odpRecordEndToEnd;
+	Fetch_EndToEndId_From_ODP fetch;
 
 	public TS55() {
 
@@ -63,6 +65,8 @@ public class TS55 extends BaseClass {
 		logout_UPP = new LogOutApi();
 		rule=new Rule_IN_BT();
 		report=new Reports_ExecutionReport();
+		odpRecordEndToEnd=new ODP_JSON_ASSERTIONS_PAYLOAD();
+		fetch=new Fetch_EndToEndId_From_ODP();
 	}
 	
 
@@ -73,7 +77,7 @@ public class TS55 extends BaseClass {
 	
 	@Then("Verify in Ecomm Execution Report with given {string}.")
 	public void verify_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
-		paymentRefId=report.eCommExecutionsReportCommon(endToEndIdRule);	
+		paymentRefId=report.eCommExecutionsReportCommon(endToEndIdAssertion);	
 	}
 	
 	@And("Get the BatchId from Ecomm Payments")
@@ -85,4 +89,13 @@ public class TS55 extends BaseClass {
 	public void verify_the_Pain_File_For_Rule_IN_BT_SystemLevel() {
 		rule.verify_Rule_IN_BT_System_Level_PainFile(batchId);
 	}
+	@Then("Create odp json payload file with EndToEndId with given {string}")
+	public void create_odp_json_payload_file_with_EndToEndId_with_given(String string) throws Exception {
+		odpRecordEndToEnd.Odp_Json_With_EndToEndId(string);
+	}
+	@Then("Fetch EndToEndId from ODP Record with {string}")
+	public void fetch_EndTorEndId_from_ODP_Record_with(String string) throws Exception {
+		fetch.fetchEndToEndIdFromODP(string);
+	}
+
 }

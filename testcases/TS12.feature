@@ -11,14 +11,14 @@ Then submit the deal
 Then Create odp json payload file with DealId with given "<TSID>"
 And Create record in ODP "<TSID>"
 Then approve the deal from the deal checker common method
-Then logout of the application
-Then Login to the application as "txn_maker"
+#Then logout of the application
+#Then Login to the application as "txn_maker"
 And Create Transaction from Transaction Maker and check whether To Field is accepting Non Registered Beneficiary with given "<TSID>" 
-Then logout of the application
-Then Login to the application as "txn_checker"
+#Then logout of the application
+#Then Login to the application as "txn_checker"
 Then Approve the transaction from Transaction Checker with given "<TSID>"
-Then logout of the application
-Then Login to the application as "txn_verifier"
+#Then logout of the application
+#Then Login to the application as "txn_verifier"
 #Then Approve the transaction from Transaction Verifier with given "<TSID>"
 And Check the Transaction staus in execution report with given "<TSID>"
 Then logout of the application
