@@ -340,6 +340,12 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id = "ic-parties-partiesList-addParty-v1")
 	public WebElement parties_GetStarted;
+	
+	@FindBy(id = "ic-parties-partiesList-addParty-v1")
+	public WebElement parties_GetStarted1;
+	
+	@FindBy(id = "ic-parties-addUpdateParty-back-v1")
+	public WebElement parties_backButtton;
 
 	@FindBy(id = "btn-parties-addLinkParty-addNewParty-v1")
 	public WebElement parties_AddnewParty;

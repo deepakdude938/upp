@@ -9,6 +9,7 @@ And Create two Accounts with given "<TSId>"
 And Create Parties in the Parties Tab with given "<TSId>"
 And Submit the deal
 Then Logout from Application
+Given Open browser and enter url 
 Then Login to the application as "deal_checker1"
 Then Approve the deal from the deal checker
 Then Logout from Application

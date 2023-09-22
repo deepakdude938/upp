@@ -60,6 +60,10 @@ public class TS28 extends BaseClass implements ICallback{
 	  dm.createJsonFile(string);
 	}
 	
+	@Then("Verify Tnx Status as Triggered or settled for ecomm transaction with given {string}")
+	public void verify_Tnx_Status_as_Triggered_or_settled_for_ecomm_transaction_with_given(String TSID) throws Exception {
+		execReport.verifyTriggeredStatusInExecutionReport(TSID);
+	}
 	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {

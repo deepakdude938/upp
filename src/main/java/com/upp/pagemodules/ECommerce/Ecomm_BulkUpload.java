@@ -76,12 +76,14 @@ public class Ecomm_BulkUpload extends BaseClass{
 		String transactionName1 = "TS28EcommTransaction_"+java.util.UUID.randomUUID().toString().substring(0, 6);
 		 excelFilePath = System.getProperty("user.dir")
 				+ "/src/main/resources/BulkEcomm.xlsx";
-		String tomorrowDate = new DateUtils().getCurrentDate();
+		String todayDate = new DateUtils().getTodayDate();
+		String todayTime =	DateUtils.getTimeAfterNMinutes(5);
 		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"dealRefId", dealId);
 		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"transactionName", transactionName);
 //		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"dealRefId", dealId);
 //		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"transactionName", transactionName1);
-		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"executeOn", tomorrowDate);
+		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"executeOn", todayDate);
+		externalData.writeDataToExcel(excelFilePath, "Sheet",1,"scheduleTime", todayTime);
 //		externalData.writeDataToExcel(excelFilePath, "Sheet",2,"executeOn", tomorrowDate);
 		
 		
