@@ -191,12 +191,14 @@ public class Payload extends BaseClass{
 	}
 
 	public String api_createTransaction(String TSID) throws Exception, IOException {
+		externalData = new ExcelReader();
 		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
 		String platformRefNo = "Party" + generateRandomString(6);
 		String tomorow = DateUtils.getDate(1) + "T11:28:00Z";
 		DocumentContext jsonContext = JsonPath.parse(payload);
 		jsonContext.set("$.dealRefId", dealId);
-		jsonContext.set("$.paymentInfo.accountNumber", DealPage.AccountNo1);
+		System.out.println(debitAccount);
+		jsonContext.set("$.paymentInfo.accountNumber", debitAccount);
 		jsonContext.set("$.paymentInfo.platformRefNo", platformRefNo);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
 		modifiedJsonString = jsonContext.jsonString();
