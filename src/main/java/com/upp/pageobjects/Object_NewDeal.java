@@ -528,7 +528,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
 	public WebElement payments_NextArrowButtonTransferSchedule;
 
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement payments_Instrument;
 
 	@FindBy(id = "payment-to-sel-v1")
@@ -724,10 +724,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-generic-autocomplete-input-v1")
 	public WebElement payments_BudgetPurpose;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement payments_budgetPurpose;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement payments_budgetPurpose1;
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6] | (//input[@id='txt-generic-autocomplete-input-v1'])[5]")
@@ -877,7 +877,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-deals-instruction-retentionBasic-formula-v1")
 	public WebElement retention_SpecifyAmountValue;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement Payment_Beneficiaryaccno;
 	
 	@FindBy(xpath="//span[normalize-space()='Summary']")

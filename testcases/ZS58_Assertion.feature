@@ -1,4 +1,4 @@
-Feature: TS58_Rule_IN_BT_DealLevel
+Feature: TS58_Rule_IN_BT_DealLevel_Assertion
 
 @Regression @TS58 @PaymentProfiles
 Scenario Outline: Rule_IN_BT_DealLevel
