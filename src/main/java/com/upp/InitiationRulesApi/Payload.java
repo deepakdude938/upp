@@ -585,5 +585,23 @@ public class Payload extends BaseClass {
 		return modifiedJsonString;
 		
 	}
+
+	public String createTransaction(String TSID) throws InvalidFormatException, IOException {
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+		String utcdate = DateUtils.getCurrentDateUTC();
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.paymentInfo.accountNumber", physical_Account_Number);
+		jsonContext.set("$.dealRefId", dealId);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+		jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn", utctimeEod);
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+	}
 	
 }

@@ -92,6 +92,8 @@ public class Party_BasicDetails extends BaseClass {
 			od.parties_BasicNextButton.click();
 
 		}
-	    
+	    if(TSID.equals("TS97_2")) {
+	    	od.parties_backButtton.click();
+	    }
 	}
 }

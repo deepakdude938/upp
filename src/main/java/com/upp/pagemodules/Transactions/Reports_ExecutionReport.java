@@ -619,21 +619,21 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertEquals(scroeStatus.size(), 2);
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
-				10, 1000);
-		ArrayList<String> subInstruction = new ArrayList();
-		for (WebElement iu : tm.reports_SubInstructions) {
-
-			subInstruction.add(iu.getText());
-			System.out.println(iu.getText());
-		}
-
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmountColumnName,
 				tm.reports_horizontalWindow1, 10, 1000);
 		ArrayList<String> settledAmount = new ArrayList();
 		for (WebElement iu : tm.reports_SettledAmountRecords) {
 
 			settledAmount.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
 			System.out.println(iu.getText());
 		}
 
@@ -865,6 +865,38 @@ public class Reports_ExecutionReport extends BaseClass {
 					-1000);
 			List<WebElement> recordList =driver.findElements(By.xpath("//div[@col-id='End to End ID' and contains(@class,'ag-cell-not-inline-editing') and normalize-space()='"+endToEndId+"']"));
 			Assert.assertTrue(recordList.size()==0);
+	}
+
+	public void verifyTriggeredStatusInExecutionReport(String tSID) throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		tm.reports_ReportsIcon.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		tm.reports_ReportsInternal.click();
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		tm.reports_eCommExecutionsList.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
+		System.out.println(dealId);
+		tm.reports_dealId1.sendKeys(dealId);
+		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
+
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+
+			Assert.assertEquals(record.getText(), "Triggered");
+
+		}
+		
 	}
 
 }
