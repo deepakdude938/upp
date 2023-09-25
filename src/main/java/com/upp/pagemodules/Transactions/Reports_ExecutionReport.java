@@ -418,8 +418,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
 		System.out.println("Deal in roprt= "+deal);
 		tm.reports_dealId1.sendKeys(deal);
-		Thread.sleep(3000);
-		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		Thread.sleep(5000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(20));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 			Assert.assertEquals(record.getText(), "Scheduled");
 
@@ -502,7 +502,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		System.out.println("Test = " + EndToEndId);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		// Assert.assertEquals(status, "Triggered");

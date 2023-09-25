@@ -72,7 +72,8 @@ public class TS93 extends BaseClass {
 
 	@Then("Call the Update User Attribute Api with given {string}")
 	public void call_the_Update_User_Attribute_Api_with_given(String string) throws Exception {
-	    user.updateUsers(string, prop);
+		login_UPP.loginToUpp();
+	    user.updateUsersAttribute1(string, prop);
 	}
 
 

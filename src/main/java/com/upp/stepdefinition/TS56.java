@@ -76,6 +76,7 @@ public class TS56 extends BaseClass {
 	@Then("Verify Status in Ecomm Execution Report with given {string}.")
 	public void verify_Status_in_Ecomm_Execution_Report_with_given(String string) throws Exception {
 		System.out.println(endToEndIdRule);
+	
 		paymentRefId = report.eCommExecutionsReportCommon(endToEndIdRule);
 	}
 

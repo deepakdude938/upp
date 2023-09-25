@@ -66,6 +66,7 @@ public class UserChecker extends BaseClass {
 	public void login(String TSID) throws Exception {
 		System.out.println("Updated user login");
 		Thread.sleep(3000);
+		
 		// driver.manage().deleteAllCookies();
 		// driver.navigate().refresh();
 		String userNameKey = externalData.getFieldData(TSID, "Users", "UserName");
@@ -79,8 +80,8 @@ public class UserChecker extends BaseClass {
 		Thread.sleep(5000);
 	}
 
-	public void verifyUser() {
-		
+	public void verifyUser() throws Exception {
+		Thread.sleep(3000);
 		String actualUrl = driver.getCurrentUrl();
 		String expected[] = actualUrl.split(".com");
 		String expectedUrl = expected[0] + ".com/dashboard";
