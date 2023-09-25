@@ -1176,7 +1176,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//h2[normalize-space()=\"There aren't any parties configured yet.\"])[1]")
 	public WebElement party_no_party_configured;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement payments_Instrument1;
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
