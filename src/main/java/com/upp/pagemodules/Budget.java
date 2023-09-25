@@ -158,8 +158,8 @@ public class Budget extends BaseClass {
 		od.payments_ScheduleTime.sendKeys(executiontime);
 		String t = od.linkedInstruction_Executiondate.getText();
 		od.payments_NextArrowButtonTransferSchedule.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(20));
-		od.payments_Instrument.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_Instrument2, Duration.ofSeconds(20));
+		od.payments_Instrument2.click();
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
