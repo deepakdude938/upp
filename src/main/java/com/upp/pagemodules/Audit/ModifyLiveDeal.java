@@ -147,16 +147,18 @@ public class ModifyLiveDeal extends BaseClass {
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
 		od.payments_budgetPurpose.sendKeys(budget);
 
-		By budgetPurpose = By.xpath("//div[contains(@class,'ng-star-inserted') and contains(text(),'" + budget + "')]");
+		By budgetPurpose = By.xpath("//div[contains(text(),'"+budget+"')]");
 		applyExplicitWaitsUntilElementVisible(budgetPurpose, 10);
 		driver.findElement(budgetPurpose).click();
-		driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='Phone Bill']"));
-		scroll.scrollInToView(od.payments_ToAccountInputBox);
-		Thread.sleep(1000);
-		od.payments_ToAccountInputBox.sendKeys(toAccountNo);
-		By acoount = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
-		Thread.sleep(2000);
-		driver.findElement(acoount).click();
+//		scroll.scrollInToView(od.payments_ToAccountInputBox);
+//		Thread.sleep(1000);
+//		od.payments_ToAccountInputBox.sendKeys(toAccountNo);
+//		By acoount = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
+//		Thread.sleep(2000);
+//		driver.findElement(acoount).click();
+		applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(15));
+		scroll.scrollInToView(od.payments_ToAccountDropdown);
+		dropdown.selectByVisibleText(od.payments_ToAccountDropdown,toAccountNo);
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Scheduled", "Select Account/IBAN"));
