@@ -187,4 +187,33 @@ public class DateUtils {
 	    String utcdate= tomorrow.format(formatter);
 	    return utcdate;
 	}
-}
+	
+	public static String getTodayDate() {
+		
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+		String date1;
+		Date tomorrow = calendar.getTime();
+		date1 = sdf.format(tomorrow);
+		return date1;
+	}
+	
+		public static String getTimeAfterNMinutes(int minutesToAdd) {
+	        try {
+	            SimpleDateFormat sdfInput = new SimpleDateFormat("hh:mma");
+	            SimpleDateFormat sdfOutput = new SimpleDateFormat("hh:mma");
+
+	            Calendar calendar = Calendar.getInstance();
+	            String currentTime = sdfInput.format(calendar.getTime());
+
+	            calendar.setTime(sdfInput.parse(currentTime));
+	            calendar.add(Calendar.MINUTE, minutesToAdd);
+
+	            return sdfOutput.format(calendar.getTime());
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return null;
+	        }
+	    }
+    }
+	

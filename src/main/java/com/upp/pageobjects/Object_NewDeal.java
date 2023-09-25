@@ -340,6 +340,12 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id = "ic-parties-partiesList-addParty-v1")
 	public WebElement parties_GetStarted;
+	
+	@FindBy(id = "ic-parties-partiesList-addParty-v1")
+	public WebElement parties_GetStarted1;
+	
+	@FindBy(id = "ic-parties-addUpdateParty-back-v1")
+	public WebElement parties_backButtton;
 
 	@FindBy(id = "btn-parties-addLinkParty-addNewParty-v1")
 	public WebElement parties_AddnewParty;
@@ -522,7 +528,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
 	public WebElement payments_NextArrowButtonTransferSchedule;
 
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement payments_Instrument;
 
 	@FindBy(id = "payment-to-sel-v1")
@@ -718,10 +724,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-generic-autocomplete-input-v1")
 	public WebElement payments_BudgetPurpose;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement payments_budgetPurpose;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement payments_budgetPurpose1;
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6] | (//input[@id='txt-generic-autocomplete-input-v1'])[5]")
@@ -871,7 +877,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-deals-instruction-retentionBasic-formula-v1")
 	public WebElement retention_SpecifyAmountValue;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement Payment_Beneficiaryaccno;
 	
 	@FindBy(xpath="//span[normalize-space()='Summary']")

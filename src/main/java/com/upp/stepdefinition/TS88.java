@@ -27,7 +27,8 @@ public class TS88 {
 	@Then("Call the Create Transaction Api for {string}")
 	public void call_the_Create_Transaction_Api_for(String TSID) throws Exception {
 		login_UPP.loginToUpp();
-		endToEndId=	   ta.createTransaction(TSID);
+		endToEndId=	 ta.createTransaction(TSID);
+		System.out.println(endToEndId);
 	}
 	
 	@Then("Call the Rollback Transaction Api {string}")
