@@ -18,8 +18,8 @@ And Create a Transaction from Transaction Maker with given "<TSID>"
 #Then logout of the application
 #Then Login to the application as "txn_checker"
 Then Approve the transaction from Transaction Checker with given "<TSID>" for transaction amount greater than limit
-Then Logout from Application
-Then Login to the application as "txn_verifier"
+#Then Logout from Application
+#Then Login to the application as "txn_verifier"
 Then Approve multiple transaction from Transaction Verifier with given "<TSID>"
 And Check the Transaction staus in execution report with given "<TSID>"
 
