@@ -207,7 +207,14 @@ public class Payload extends BaseClass{
 		
 	}
 
-	
+	public static String Add_Role_To_User_Api(String TSID) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		
+		return payload;
+		
+
+	}
 
 	
 }
