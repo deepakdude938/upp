@@ -171,9 +171,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		jsClick.click(tm.cancelIcon);
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 
 	}
 

@@ -30,6 +30,7 @@ import com.upp.pagemodules.Parties_Maker_Checker.Party_Edit_LiveDeal;
 import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_Delete_Party_Api;
 import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_PartyApiAdded;
 import com.upp.pagemodules.Parties_Maker_Checker.Party_Verify_Update_Party_API;
+import com.upp.pagemodules.Users.Verify_Role_Is_Added_To_User;
 import com.upp.pagemodules.Users.Verify_User_By_User_Name;
 import com.upp.pagemodules.Users.Verify_User_Roles_Available;
 
@@ -44,12 +45,12 @@ public class TS99 extends BaseClass {
 	public static String TSID = "";
 	public static String TnxId = "";
 	Add_Role_to_User_Api api;
-
+	Verify_Role_Is_Added_To_User verify;
 	public TS99() {
 
 		this.dm = new DashBoard_Module();
        api=new Add_Role_to_User_Api();
-        
+       verify=new Verify_Role_Is_Added_To_User();
 	}
    
 	@Then("Call the Add Role to a User API with given {string}.")
@@ -57,9 +58,9 @@ public class TS99 extends BaseClass {
 	  api.Add_Role_To_User_API(string);
 	}
 
-	@Then("verify the role got added in UI with given {string}.")
+	@Then("Verify the role got added in UI with given {string}.")
 	public void verify_the_role_got_added_in_UI_with_given(String string) throws Exception {
-	   
+	   verify.verify_Role_Is_Added_To_User(string);
 	}
 
 	
