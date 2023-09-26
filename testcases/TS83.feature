@@ -27,7 +27,7 @@ And Login to UPP through api
 And Call the Rule_ParticipantId_OBODetails_Virtual Api with given "<TSID>".
 And Logout of UPP through api
 Examples:
-      #|TSID|
-      #|TS83|
+      |TSID|
+      |TS83|
 
 

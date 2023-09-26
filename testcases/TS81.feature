@@ -28,6 +28,5 @@ And Call the Rule_Static_OBO_Virtual Api with given "<TSID>".
 And Logout of UPP through api
 Examples:
       |TSID|
-      #|TS81|
-#
-#
+      |TS81|
+
