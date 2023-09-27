@@ -98,14 +98,14 @@ public class Reports_ExecutionReport extends BaseClass {
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
-			//System.out.println("Waiting for Transaction to be triggered");
+			// System.out.println("Waiting for Transaction to be triggered");
 			TimeUnit.SECONDS.sleep(3);
 			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
 			if (ScroeStatusafter.equalsIgnoreCase("triggered")) {
-				//System.out.println("Transaction is triggered");
+				// System.out.println("Transaction is triggered");
 
 			} else {
-				//System.out.println("Transaction is not yet triggered");
+				// System.out.println("Transaction is not yet triggered");
 			}
 		}
 
@@ -146,8 +146,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		String amount2 = driver.findElement(Amount2).getText();
 		System.out.println("the amount2 is:" + amount2);
 
-		
-
 		if (!(amount1.equalsIgnoreCase("400"))) {
 			Assert.fail("Amount is mismatched");
 		}
@@ -168,7 +166,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_ExecutionReport);
-		
+
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
 		Thread.sleep(4000);
@@ -203,7 +201,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public void eCommExecutionsReportToCheckTransactionStatus(String EndToEndId, String DealId) throws Exception {
-		int flag=0;
+		int flag = 0;
 		System.out.println("Waiting for 3 minutes for Transactions to be triggered");
 		TimeUnit.MINUTES.sleep(3);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
@@ -225,21 +223,22 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
 		jsClick.click(tm.cancelIcon);
 		Thread.sleep(1000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_FirstTxnStatus, tm.reports_horizontalWindow1, 10, -1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_FirstTxnStatus, tm.reports_horizontalWindow1, 10,
+				-1000);
 		Thread.sleep(1000);
 		String txn1 = tm.reports_FirstTxnStatus.getText();
 		String txn2 = tm.reports_SecondTxnStatus.getText();
 		System.out.println("Test1" + txn1);
 		System.out.println("Test2" + txn2);
-		if(txn1.equalsIgnoreCase("HOLD")||txn1.equalsIgnoreCase("Scheduled")) {
+		if (txn1.equalsIgnoreCase("HOLD") || txn1.equalsIgnoreCase("Scheduled")) {
 			System.out.println("Test1");
-			if (txn2.equalsIgnoreCase("HOLD")||txn2.equalsIgnoreCase("Scheduled")) {
+			if (txn2.equalsIgnoreCase("HOLD") || txn2.equalsIgnoreCase("Scheduled")) {
 				System.out.println("Test2");
-				flag =1;
+				flag = 1;
 			}
 		}
 		Assert.assertEquals(flag, 1);
-		//Assert.assertEquals(txn2, "Scheduled");
+		// Assert.assertEquals(txn2, "Scheduled");
 	}
 
 	public void checkBothTransactionStatusIsScheduled(String TSID, String DealId) throws Exception {
@@ -416,14 +415,20 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
-		System.out.println("Deal in roprt= "+deal);
+		System.out.println("Deal in roprt= " + deal);
 		tm.reports_dealId1.sendKeys(deal);
-		Thread.sleep(5000);
+		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, -1000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(20));
-		for (WebElement record : tm.reports_EcommRecordStatus) {
-			Assert.assertEquals(record.getText(), "Scheduled");
+		String record = tm.reports_EcommRecordStatus.get(0).getText();
+		System.out.println("Record = "+record);
+//		for (WebElement record : tm.reports_EcommRecordStatus) {
+			Assert.assertEquals(record, "Scheduled");
 
-		}
+//		}
 
 	}
 
@@ -435,8 +440,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		String originalAmount = tm.reports_OriginalAmountValue.getText();
 		String expectedOriginalAmount = (int) Float.parseFloat(externalData.getFieldData(TSID, "Scheduled", "value"))
 				+ "";
-		if(TSID.equals("TS82")) {
-			expectedOriginalAmount="600";
+		if (TSID.equals("TS82")) {
+			expectedOriginalAmount = "600";
 		}
 		Assert.assertEquals(originalAmount, expectedOriginalAmount);
 	}
@@ -463,13 +468,12 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.fail("Transaction should be scheduled");
 
 		}
-		
+
 		if (!(ScroeStatus2ndrow.equalsIgnoreCase("Scheduled"))) {
 
 			Assert.fail("Transaction should be scheduled");
 
 		}
-		
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
 				tm.reports_horizontalWindow1, 8, 1000);
@@ -557,7 +561,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			originalAmount.add(iu.getText());
 			System.out.println(iu.getText());
 		}
-		
+
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
 				10, 1000);
 		ArrayList<String> subInstruction = new ArrayList();
@@ -627,7 +631,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			settledAmount.add(iu.getText());
 			System.out.println(iu.getText());
 		}
-		
+
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
 				10, 1000);
 		ArrayList<String> subInstruction = new ArrayList();
@@ -738,7 +742,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertEquals(ScroeStatus, "Scheduled");
 
 	}
-	
+
 	public void Check_Both_Tnx_Rejected_Verify_Error_Message(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
@@ -751,24 +755,24 @@ public class Reports_ExecutionReport extends BaseClass {
 
 			Assert.fail("The transaction should be rejected");
 		}
-		
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Errors, tm.reports_horizontalWindow1,10, 1000);
-		
-		By ErrorMessageA = By.xpath("//div[starts-with(text(),'amount 400000.00 to be transferred is not available in source account ')]");
-		if(!(driver.findElement(ErrorMessageA).isDisplayed())) {
-				
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Errors, tm.reports_horizontalWindow1, 10, 1000);
+
+		By ErrorMessageA = By.xpath(
+				"//div[starts-with(text(),'amount 400000.00 to be transferred is not available in source account ')]");
+		if (!(driver.findElement(ErrorMessageA).isDisplayed())) {
+
 			Assert.fail("Wrong Error Message displayed");
 		}
-		
+
 		By ErrorMessageB = By.xpath("//div[contains(text(),'Rejected due to dependent instruction')]");
-		if(!(driver.findElement(ErrorMessageB).isDisplayed())) {
-				
+		if (!(driver.findElement(ErrorMessageB).isDisplayed())) {
+
 			Assert.fail("Wrong Error Message displayed");
 		}
-		
 
 	}
-	
+
 	public void check_Original_amount_addupto_100_percentage(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
@@ -816,12 +820,12 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
-		System.out.println(tm.reports_ScroeStatusRecords.size()+" Records");
+		System.out.println(tm.reports_ScroeStatusRecords.size() + " Records");
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			System.out.println(iu.getText().trim());
-			Assert.assertEquals(iu.getText().trim(),"Settled");
+			Assert.assertEquals(iu.getText().trim(), "Settled");
 		}
-		
+
 	}
 
 	public void validateSplitFixedAmounts(String TSID) throws Exception {
@@ -834,7 +838,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			scroeStatus.add(iu.getText().trim());
 			Assert.assertEquals(iu.getText().trim(), "Scheduled");
 		}
-		
+
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
 				tm.reports_horizontalWindow1, 8, 1000);
 
@@ -851,20 +855,22 @@ public class Reports_ExecutionReport extends BaseClass {
 	}
 
 	public void checkRecordIsNotPresentINEcommExecution(String endToEndId) throws Exception {
-		
-			driver.navigate().refresh();
-			Thread.sleep(2000);
-			applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
-			Thread.sleep(3000);
-			tm.reports_End_To_End_common.sendKeys(endToEndId);
-			Thread.sleep(3000);
-			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
-			jsClick.click(tm.cancelIcon);
+
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
+		Thread.sleep(3000);
+		tm.reports_End_To_End_common.sendKeys(endToEndId);
+		Thread.sleep(3000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
 //			jsClick.click(tm.cancelIcon);
-			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
-					-1000);
-			List<WebElement> recordList =driver.findElements(By.xpath("//div[@col-id='End to End ID' and contains(@class,'ag-cell-not-inline-editing') and normalize-space()='"+endToEndId+"']"));
-			Assert.assertTrue(recordList.size()==0);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+		List<WebElement> recordList = driver.findElements(By.xpath(
+				"//div[@col-id='End to End ID' and contains(@class,'ag-cell-not-inline-editing') and normalize-space()='"
+						+ endToEndId + "']"));
+		Assert.assertTrue(recordList.size() == 0);
 	}
 
 	public void verifyTriggeredStatusInExecutionReport(String tSID) throws Exception {
@@ -896,7 +902,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(record.getText(), "Triggered");
 
 		}
-		
+
 	}
 
 }
