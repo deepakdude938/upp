@@ -125,4 +125,7 @@ public class Object_User extends BaseClass {
 	
 	@FindBy(id = "ic-perms-users-onBoardUpdate-close-v1")
 	public WebElement user_CloseIcon;
+	
+	@FindBy(xpath = "(//select[@id='sel-perms-users-onBoardUpdate-roles-v1'])[2]")
+	public WebElement User_roles_dropdown;
 }
