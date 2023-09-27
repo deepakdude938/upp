@@ -73,7 +73,7 @@ public class UpdateUser extends BaseClass {
 	}
 
 	
-	public static String updateUsersAttribute(String TSID, Properties prop) throws Exception {
+	public static String updateUsersAttribute1(String TSID, Properties prop) throws Exception {
 
 		externalData = new ExcelReader();
 		String newName;
@@ -93,7 +93,7 @@ public class UpdateUser extends BaseClass {
 			usercount2 = Integer.parseInt(properties.getProperty("usercount1", "0"));
 			System.out.println("Count = " + usercount2);
 			// Increment the count
-			// usercount2++;
+			 usercount2++;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -106,7 +106,7 @@ public class UpdateUser extends BaseClass {
 
 		Response res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken).header("Version", "v1")
-				.header("X-SC-TrackingId", "123").body(Payload.UpdateUser(TSID, prop)).when().put(updatedURL);
+				.header("X-SC-TrackingId", "123").body(Payload.UpdateUserAttribute(TSID, prop)).when().put(updatedURL);
 
 		response = res.then().extract().asString();
 
@@ -114,7 +114,7 @@ public class UpdateUser extends BaseClass {
 		// Replace "keyName" with the actual key in the JSON response
 
 		System.out.println("Response Status Code: " + statusCode);
-		// Assert.assertEquals(statusCode, 200);
+		 Assert.assertEquals(statusCode, 200);
 //		
 		return newName;
 

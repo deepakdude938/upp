@@ -72,4 +72,56 @@ public class EditOBOResponsibilty extends BaseClass {
 		Thread.sleep(1500);
 	}
 
+	
+	public void EditParticipantOBOResponsibilty_In_Account(String TSID) throws Exception
+	{
+
+		Thread.sleep(3000);
+		System.out.println("inside method");
+		scroll.scrollInToView(od.account_edit_icon);
+		js.click(od.account_edit_icon);
+		Thread.sleep(1500);
+		scroll.scrollInToView(od.account_obo_repsonsibility);
+		
+		applyExplicitWaitsUntilElementClickable(od.account_obo_repsonsibility, Duration.ofSeconds(15));
+		System.out.println(externalData.getFieldData(TSID, "Party", "Responsibility"));
+		dropdown.selectByVisibleText(od.account_obo_repsonsibility,externalData.getFieldData(TSID, "Party", "Responsibility"));
+		Thread.sleep(3000);
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
+		Thread.sleep(1500);
+		applyExplicitWaitsUntilElementClickable(od.account_OK_Button, Duration.ofSeconds(5));
+		od.account_OK_Button.click();
+		Thread.sleep(1500);
+	}
+	
+	public void EditParticipantIDOBOResponsibilty_In_Account(String TSID) throws Exception
+	{
+
+		Thread.sleep(3000);
+		System.out.println("inside method");
+		scroll.scrollInToView(od.account_edit_icon);
+		js.click(od.account_edit_icon);
+		Thread.sleep(1500);
+		scroll.scrollInToView(od.account_obo_repsonsibility);
+		
+		applyExplicitWaitsUntilElementClickable(od.account_obo_repsonsibility, Duration.ofSeconds(15));
+		System.out.println(externalData.getFieldData(TSID, "Party", "Responsibility"));
+		dropdown.selectByVisibleText(od.account_obo_repsonsibility,externalData.getFieldData(TSID, "Party", "Responsibility"));
+		Thread.sleep(3000);
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
+		Thread.sleep(1500);
+		applyExplicitWaitsUntilElementClickable(od.account_OK_Button, Duration.ofSeconds(5));
+		od.account_OK_Button.click();
+		Thread.sleep(1500);
+	}
 }

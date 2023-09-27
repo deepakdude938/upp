@@ -152,9 +152,9 @@ public class Payment_SubInstruction extends BaseClass {
 
 		
 		try {
-			od.payments_Instrument1.click();
+			od.payments_Instrument.click();
 		} catch (Exception e) {
-			handleElementClickException(od.payments_Instrument1);
+			handleElementClickException(od.payments_Instrument);
 		}
         Thread.sleep(5000);
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");

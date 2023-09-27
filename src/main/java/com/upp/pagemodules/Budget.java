@@ -293,7 +293,7 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
 		js.click(od.budget_AddButton);
 		 //Taking too much time manually also to add the budget
-		 Thread.sleep(16000);
+		 Thread.sleep(10000);
 	}
 	
 	public void Edit_Deal_And_Verify_Utilized_Budget(String TSID,String DealID) throws Exception
@@ -635,7 +635,7 @@ public class Budget extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(15));
 		js.click(od.budget_AddButton);
 		 //Taking too much time manually also to add the budget
-		 Thread.sleep(16000);
+		 Thread.sleep(10000);
 	}
 	
 	public String createBudget_Payments_ForPuposeBudget(String TSID, String sourceAccountno, String toAccountNo) throws Exception {

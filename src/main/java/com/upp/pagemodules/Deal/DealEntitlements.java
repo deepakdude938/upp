@@ -113,8 +113,8 @@ public class DealEntitlements extends BaseClass {
 		Thread.sleep(2000);
 		tm.entitlementsIcon.click();
 		Thread.sleep(2000);
-		tm.entitlements_Account.click();
-		Thread.sleep(1000);
+//		tm.entitlements_Account.click();
+//		Thread.sleep(1000);
 		tm.contactDetails.click();
 		
 		String contacts = externalData.getFieldData(TSID, "Party", "Email");

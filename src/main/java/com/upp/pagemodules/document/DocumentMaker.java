@@ -62,7 +62,7 @@ public class DocumentMaker extends BaseClass {
 		od.requiredDoc_manageDoc.click();
 		od.requiredDoc_uploadFile.sendKeys(filePath);
 		Thread.sleep(4000);
-		od.requiredDoc_submit.click();
+		od.requiredDoc1_submit.click();
 		od.requiredDoc_yesBtn.click();
 	}
 

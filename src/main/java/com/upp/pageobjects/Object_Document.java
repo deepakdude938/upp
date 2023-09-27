@@ -84,6 +84,9 @@ public class Object_Document extends BaseClass {
 	@FindBy(xpath = "//button[text()='submit']")
 	public WebElement requiredDoc_submit;
 
+	@FindBy(xpath = "//button[text()=' submit ']")
+	public WebElement requiredDoc1_submit;
+	
 	@FindBy(xpath = "//button[text()='Yes']")
 	public WebElement requiredDoc_yesBtn;
 

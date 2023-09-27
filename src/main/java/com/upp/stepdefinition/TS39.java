@@ -14,6 +14,7 @@ import com.upp.InitiationRulesApi.Rules_EnrichParty_UD1;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
+import com.upp.pagemodules.Account.EditOBOResponsibilty;
 import com.upp.pagemodules.configuration.PU_AdminChecker;
 import com.upp.pagemodules.configuration.ProcessingUnit;
 import com.upp.pagemodules.configuration.Verify_PU_Added;
@@ -58,6 +59,7 @@ public class TS39 extends BaseClass {
 	Rules_EnrichParty_UD enrichParty;
 	ECommerceTransactionVerifier ecommVerifier;
 	public Reports_ExecutionReport execReport;
+	EditOBOResponsibilty edit;
 
 	public TS39() {
 
@@ -69,6 +71,7 @@ public class TS39 extends BaseClass {
 		login_UPP = new LoginAPI_UPP();
 		this.ecommVerifier = new ECommerceTransactionVerifier();
 		execReport = new Reports_ExecutionReport();
+		edit = new EditOBOResponsibilty();
 	}
 
 	@Given("Run Rule_EnrichParty_UD rule using api with given {string}")
@@ -77,5 +80,9 @@ public class TS39 extends BaseClass {
 		enrichParty.Rule_EnrichParty_UD(string, TS06.dealId, TS06.sourceAccountNo);
 	}
 
-	
+	@Then("Edit the account and select ParticipantID OBO Responsibility with given {string}.")
+	public void edit_the_account_and_select_ParticipantID_OBO_Responsibility_with_given(String string) throws Exception {
+		edit.EditParticipantIDOBOResponsibilty_In_Account(string);
+	}
+
 }

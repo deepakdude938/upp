@@ -9,6 +9,7 @@ And Call the ODP Login Api
 Then Create account in Odp with details from excel sheet with given "<TSID>".
 Then Call the ODP Logout Api
 And Create Account_One From excel sheet with given "<TSID>".
+Then Edit the account and select Participant OBO Responsibility with given "<TSID>".
 Then Add Party basic_Details with given "<TSID>".
 Then Click On Accounts Tab
 Then Add Party basic_Details with given "TS37_1".

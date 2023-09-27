@@ -64,6 +64,11 @@ public class TS24 extends BaseClass implements ICallback {
 	public void login_with_updated_user_using(String string) throws Exception {
 		checker.login(string);
 	}
+	
+	@Then("Enter URL")
+	public void enter_URL() {
+		driver.get(url);
+	}
 
 	@Then("Clear and close the browser")
 	public void Clear_and_close_the_browser() throws Exception {
@@ -74,7 +79,7 @@ public class TS24 extends BaseClass implements ICallback {
 	}
 
 	@Then("Verify user is able to login")
-	public void verify_user_is_able_to_login() {
+	public void verify_user_is_able_to_login() throws Exception {
 		checker.verifyUser();
 	}
 
