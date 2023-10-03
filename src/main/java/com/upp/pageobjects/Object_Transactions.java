@@ -377,5 +377,8 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "(//div[@col-id='Source Account Number' and @role ='gridcell'])[1]")
 	public WebElement Reports_Source_Acc_No_First;
+	
+	@FindBy(xpath = "//span[normalize-space()='Sub-Instruction Type']")
+	public WebElement reports_SubInstructions_Type;
 }
 
