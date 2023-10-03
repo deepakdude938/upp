@@ -625,4 +625,25 @@ public class Payload extends BaseClass {
 	
 	}
 	
+	public static String Rule_Without_PaymentInfoDetails(String dealId, String TSID) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+
+		String utctimeEod = utcdate + "T" + "14:30:00Z";
+
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
+		jsonContext.set("$.dealRefId", dealId);
+		String modifiedJsonString = jsonContext.jsonString();
+
+		return modifiedJsonString;
+
+	}
 }

@@ -162,7 +162,7 @@ public class DateUtils {
 	public static String getCurrentDateTime(){
 		
 		 LocalDateTime currentDateTime = LocalDateTime.now();
-	     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yyyy:HH_mm");
+	     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH_mm");
 	     String formattedDateTime = currentDateTime.format(formatter);
 	     
 		return formattedDateTime;
