@@ -74,7 +74,9 @@ public class Transactions_Checker extends BaseClass {
 		tm.transactions_SummaryTab.click();
 		Thread.sleep(3000);
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
-		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
+	    double amountdouble=Double.parseDouble(amount);
+	    int amountInt = (int) amountdouble;
+		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" +  amountInt + "')])[1]");
 		applyExplicitWaitsUntilElementVisible(AmountID, 2);
 		String amount_checker = driver.findElement(AmountID).getText();
 		System.out.println("This is the amount from checker" + amount_checker);

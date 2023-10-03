@@ -138,7 +138,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//button[contains(text(),'Submit')]")
 	public WebElement reports_SubmitButton;
 
-	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[2]")
+	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[2] | (//div[@col-id='Settled Status'])[2]")
 	public WebElement reports_ScroeStatus;
 
 	@FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']")
@@ -234,7 +234,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//div[@col-id='Sub-Instruction Type'])[3]")
 	public WebElement reports_instructiontype_retention;
 
-	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[3]")
+	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[3] | (//div[@col-id='Settled Status'])[3]")
 	public WebElement reports_ScroeStatus2ndRow;
 
 	@FindBy(xpath = "(//div[@col-id='Instruction Type'])[2]")
@@ -372,7 +372,10 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//div[@col-id='Errors'])[1]")
 	public WebElement Reports_Errors;
 	
+	@FindBy(xpath = "(//div[@col-id='Source Account Number'])[1]")
+	public WebElement Reports_Source_Acc_No_Col;
 	
-	
+	@FindBy(xpath = "(//div[@col-id='Source Account Number' and @role ='gridcell'])[1]")
+	public WebElement Reports_Source_Acc_No_First;
 }
 
