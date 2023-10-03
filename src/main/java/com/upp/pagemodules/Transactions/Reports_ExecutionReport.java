@@ -838,7 +838,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			scroeStatus.add(iu.getText().trim());
 			Assert.assertEquals(iu.getText().trim(), "Scheduled");
 		}
-
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
 				tm.reports_horizontalWindow1, 8, 1000);
 

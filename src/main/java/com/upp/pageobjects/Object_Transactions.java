@@ -101,10 +101,10 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@col-id='Sub-Instruction Type' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_SubInstructions;
 
-	@FindBy(xpath = "//div[@col-id='SCROE Status' and not(contains(@class,'header'))]")
+	@FindBy(xpath = "//div[@col-id='SCROE Status' and not(contains(@class,'header'))] | //div[@col-id='Settled Status' and not(contains(@class,'header'))]")
 	public List<WebElement> reports_ScroeStatusRecords;
 	
-	@FindBy(xpath = "//div[@col-id='SCROE Status' and contains(@class,'header')]")
+	@FindBy(xpath = "//div[@col-id='SCROE Status' and contains(@class,'header')] | //div[@col-id='Settled Status' and contains(@class,'header')]")
 	public WebElement reports_ScroeStatusColumnName;
 	
 	@FindBy(xpath = "//div[@col-id='Original Amount' and contains(@class,'header')]")
