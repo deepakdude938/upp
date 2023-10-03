@@ -13,6 +13,7 @@ import com.upp.InitiationRulesApi.Rules_EnrichParty_UD1;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
+import com.upp.pagemodules.Account.EditOBOResponsibilty;
 import com.upp.pagemodules.configuration.PU_AdminChecker;
 import com.upp.pagemodules.configuration.ProcessingUnit;
 import com.upp.pagemodules.configuration.Verify_PU_Added;
@@ -59,6 +60,7 @@ public class TS37 extends BaseClass {
 	ECommerceTransactionVerifier ecommVerifier;
 	public Reports_ExecutionReport execReport;
 	Party_Edit_LiveDeal editDeal;
+	EditOBOResponsibilty edit;
 
 	public TS37() {
 
@@ -71,6 +73,7 @@ public class TS37 extends BaseClass {
 		this.ecommVerifier = new ECommerceTransactionVerifier();
 		execReport = new Reports_ExecutionReport();
 		editDeal = new Party_Edit_LiveDeal();
+		 edit=new EditOBOResponsibilty();
 	}
 
 	@Then("Edit the live deal.")
@@ -93,6 +96,11 @@ public class TS37 extends BaseClass {
 	@Then("Validate transaction in ecommerce report")
 	public void validate_transaction_in_ecommerce_report() throws Exception {
 		execReport.validateEcommTransactionwithDealId(TS06.dealId);
+	}
+	
+	@Then("Edit the account and select Participant OBO Responsibility with given {string}.")
+	public void edit_the_account_and_select_Participant_OBO_Responsibility_with_given(String string) throws Exception {
+		 edit.EditParticipantOBOResponsibilty_In_Account(string);
 	}
 
 }
