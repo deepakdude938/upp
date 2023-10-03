@@ -187,8 +187,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 
 		// scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 5,
-				2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructions_Type, tm.reports_horizontalWindow1, 10,
+				1000);
 
 		Thread.sleep(1000);
 
@@ -335,8 +335,8 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 5,
-				2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 10,
+				1000);
 		String instructionname = tm.reports_InstructionName.getText();
 
 		System.out.println(instructionname);
