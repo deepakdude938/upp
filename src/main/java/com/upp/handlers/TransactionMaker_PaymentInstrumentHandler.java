@@ -184,15 +184,15 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		scroll.scrollInToView(tm.transactions_country);
 		dropdown.selectByValue(tm.transactions_country,
 				externalData.getFieldData(TSID, "Txn Maker", "beneficiaryCountry"));
-		
+
 		scroll.scrollInToView(tm.transactions_beneficiaryaccountNumberInput);
 		tm.transactions_beneficiaryaccountNumberInput.sendKeys(sourceAccountno);
-		dropdown.selectByValue(tm.transactions_beneficiaryaccountNumberInput,sourceAccountno);
-		
+		dropdown.selectByValue(tm.transactions_beneficiaryaccountNumberInput, sourceAccountno);
+
 		scroll.scrollInToView(tm.transactions_beneficiaryIncorporation);
 		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
 				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
-		
+
 		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
 		scroll.scrollInToView(od.payments_AddSubInstructionButton);
 		od.payments_AddSubInstructionButton.click();
@@ -202,4 +202,77 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
 
 	}
+
+	public void handle_BT_UK_PaymentInstrument(String TSID) throws Exception {
+
+		tm.transactions_beneficiaryaccountNumber.click();
+		tm.transactions_beneficiaryaccountNumberInput.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "to"));
+
+		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
+		tm.transactions_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary BIC"));
+		dropdown.selectByValue(tm.transactions_accountOrIban,
+				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
+
+		tm.transactions_address.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Address Line 1"));
+		dropdown.selectByValue(tm.transactions_country,
+				externalData.getFieldData(TSID, "Txn Maker", "beneficiaryCountry"));
+		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
+				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		tm.transactions_addSubInstruction.click();
+
+	}
+
+	public void handle_LT_UK_PaymentInstrument(String TSID) throws Exception {
+
+		tm.transactions_beneficiaryaccountNumber.click();
+		tm.transactions_beneficiaryaccountNumberInput.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "to"));
+
+		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
+
+		tm.transactions_beneficiaryBankCode
+				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Bank Code"));
+		dropdown.selectByValue(tm.transactions_accountOrIban,
+				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
+
+		tm.transactions_address.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Address Line 1"));
+		dropdown.selectByValue(tm.transactions_country,
+				externalData.getFieldData(TSID, "Txn Maker", "beneficiaryCountry"));
+		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
+				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		tm.transactions_addSubInstruction.click();
+
+	}
+	
+public void handle_TT_UK_PaymentInstrument(String TSID) throws Exception {
+		
+
+		tm.transactions_beneficiaryaccountNumber.click();
+		tm.transactions_beneficiaryaccountNumberInput.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "to"));
+
+		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));
+		
+		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
+		tm.transactions_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary BIC"));
+		dropdown.selectByValue(tm.transactions_accountOrIban,
+				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
+
+		tm.transactions_address.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Address Line 1"));
+		dropdown.selectByValue(tm.transactions_country,
+				externalData.getFieldData(TSID, "Txn Maker", "beneficiaryCountry"));
+		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
+				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
+		tm.transactions_addSubInstruction.click();
+		
+		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
+		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
+				Duration.ofSeconds(10));
+		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
+
+
+	}
+
 }
