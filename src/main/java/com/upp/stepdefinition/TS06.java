@@ -44,7 +44,6 @@ public class TS06 extends BaseClass implements ICallback {
 
 		this.dm = new DashBoard_Module();
 		this.tm_BasicDetails = new Transactions_Maker_BasicDetails();
-		;
 		this.tm_sub = new Transactions_Maker_Sub_Instruction();
 		this.tm_doc = new Transactions_Maker_Documents();
 		this.tm_sum = new Transactions_Maker_Summary();

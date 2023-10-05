@@ -932,5 +932,25 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertEquals(ActualAccNo,DealPage.AccountNo1);
 
 	}
+	
+	public void check_All_3_Transaction_StatusIsScheduled(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+		System.out.println(" ScroeStatus3rdrow " + ScroeStatus3rdrow);
+
+		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled")) && ((ScroeStatus3rdrow.equalsIgnoreCase("Scheduled"))))) {
+
+			Assert.fail("The transaction is not Scheduled");
+		}
+
+	}
+	
+	
+
 
 }

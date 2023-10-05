@@ -1,0 +1,10 @@
+Feature: TS103_Adhoc Transaction Regression with GB Account_Assertion
+
+@Assertion @TS03 @Regression
+Scenario Outline: TS103_Adhoc Transaction Regression with GB Account_Assertion
+Given Open browser and enter url 
+Then Login to the application as "txn_maker"
+Then Fetch record from ODP with "<TSID>"
+Examples:
+      |TSID |
+      |TS103|
