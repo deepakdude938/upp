@@ -410,6 +410,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "btn-generic-partyAccounts-getStarted-v1")
 	public WebElement parties_AddAccounts;
+	
+	@FindBy(xpath = "//button[@id='btn-generic-partyAccounts-getStarted-v1' or @id='ic-generic-partyContacts-addAccount-v1']")
+	public WebElement parties_AddAccounts1;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement parties_PaymentSystem;
@@ -764,7 +767,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="//select[@id='payment-beneficiaryCurrency-sel-v1']")
 	public WebElement parties_Accounts_beneficiaryCurrency;
 	
-	@FindBy(xpath ="//div[contains(text(),'BT_IN')]")
+	@FindBy(xpath ="(//div[contains(text(),'BT_IN')])[last()]")
 	public WebElement parties_PaymentSystem_BT_IN;
 	
 	@FindBy(id="payment-paymentType-sel-v1")

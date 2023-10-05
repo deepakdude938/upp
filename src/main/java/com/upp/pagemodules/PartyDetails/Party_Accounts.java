@@ -81,7 +81,7 @@ public class Party_Accounts extends BaseClass {
 	}
 	catch(Exception e) {
 		Thread.sleep(1000);
-		handleElementClickException(od.parties_AddAccounts);
+		handleElementClickException(od.parties_AddAccounts1);
 	}
 		applyExplicitWaitsUntilElementClickable(od.parties_PaymentSystem, Duration.ofSeconds(5));
 		od.parties_PaymentSystem.click();
