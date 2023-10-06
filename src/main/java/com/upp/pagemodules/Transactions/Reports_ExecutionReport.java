@@ -931,5 +931,58 @@ public class Reports_ExecutionReport extends BaseClass {
 		Assert.assertEquals(ActualAccNo,DealPage.AccountNo1);
 
 	}
+	
+	public void check_All_3_Transaction_StatusIsScheduled(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+		System.out.println(" ScroeStatus3rdrow " + ScroeStatus3rdrow);
+
+		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled")) && ((ScroeStatus3rdrow.equalsIgnoreCase("Scheduled"))))) {
+
+			Assert.fail("The transaction is not Scheduled");
+		}
+
+	}
+	
+	public void check_Triggered_or_Settled_Status_For_All_3_Transactions(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+		System.out.println(" ScroeStatus3rdrow " + ScroeStatus3rdrow);
+
+		if ((ScroeStatus.equalsIgnoreCase("Triggered")) || (ScroeStatus.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+
+		if ((ScroeStatus2ndrow.equalsIgnoreCase("Triggered")) || (ScroeStatus2ndrow.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+		
+		if ((ScroeStatus3rdrow.equalsIgnoreCase("Triggered")) || (ScroeStatus3rdrow.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+	}
+	
+	
+
 
 }

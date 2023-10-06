@@ -178,6 +178,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement transactions_addSubInstruction;
 
+	@FindBy(id = "payment-beneficiaryBankCode-txt-v1")
+	public WebElement transactions_beneficiaryBankCode;
+
 	@FindBy(xpath = "(//div[contains(text(),'eComm Executions')])[3]")
 	
 	public WebElement reports_eCommExecutions;
@@ -380,5 +383,9 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "//span[normalize-space()='Sub-Instruction Type']")
 	public WebElement reports_SubInstructions_Type;
+	
+	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[4] | (//div[@col-id='Settled Status'])[4]")
+	public WebElement reports_ScroeStatus3rdRow;
+
 }
 
