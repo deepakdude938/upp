@@ -104,7 +104,10 @@ public class TS103 extends BaseClass implements ICallback {
 		execReport.check_All_3_Transaction_StatusIsScheduled(string,TS06.dealId);
 	}
 	
-	
+	@Then("Verify Tnx Status as Triggered or settled for all {int} Transactions with given {string}")
+	public void verify_Tnx_Status_as_Triggered_or_settled_for_all_Transactions_with_given(Integer int1, String string) throws Exception {
+	   execReport.check_Triggered_or_Settled_Status_For_All_3_Transactions(string,dealId);
+	}
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub

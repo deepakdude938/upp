@@ -1,7 +1,7 @@
 Feature: TS58_Rule_IN_BT_DealLevel_Assertion
 
 @Regression @TS58 @PaymentProfiles
-Scenario Outline: Rule_IN_BT_DealLevel
+Scenario Outline: Rule_IN_BT_DealLevel_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 Then Fetch EndToEndId from ODP Record with "<TSID>"
