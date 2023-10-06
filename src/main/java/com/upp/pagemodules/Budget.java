@@ -66,6 +66,7 @@ public class Budget extends BaseClass {
 						+ sourceAccountNo + "')]");
 		applyExplicitWaitsUntilElementVisible(sourceAccountNoDropDown, 10);
 		driver.findElement(sourceAccountNoDropDown).click();
+		
 		od.budget_AddBudget.click();
 		od.budget_budgetDetailsAddBudget.click();
 		String budgetType = externalData.getFieldData(TSID, "Budget", "Budget-Type");
@@ -172,8 +173,8 @@ public class Budget extends BaseClass {
 		driver.findElement(budgetPurpose).click();
 		driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='Phone Bill']"));
 		}
-		scroll.scrollInToView(od.payments_ToAccountInputBox);
-		od.payments_ToAccountInputBox.sendKeys(toAccountNo);
+		scroll.scrollInToView(od.payments_ToAccountInputBox1);
+		od.payments_ToAccountInputBox1.sendKeys(toAccountNo);
 		Thread.sleep(1000);
 		By account = By.xpath(
 				"//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
