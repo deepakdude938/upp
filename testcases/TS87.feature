@@ -10,7 +10,7 @@ Then Create account in Odp with details from excel sheet with given "<TSID>".
 Then Call the ODP Logout Api
 Then Add Party Basic Details with given "<TSID>".
 Then Submit the deal
-Then approve the deal from the deal checker common method
+Then Approve the deal from the deal checker
 Then Call the Attach Physical Account Api for "<TSID>"
 Then Edit the deal "<TSID>"
 Then Verify Physical account present in Account Tab "<TSID>"
