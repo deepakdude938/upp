@@ -928,6 +928,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Source_Acc_No_Col, tm.reports_horizontalWindow1,10, 1000);
 		applyExplicitWaitsUntilElementVisible(tm.Reports_Source_Acc_No_First, Duration.ofSeconds(10));
 		String ActualAccNo=tm.Reports_Source_Acc_No_First.getText();
+		System.out.println("The Account Number is:" + ActualAccNo);
 		Assert.assertEquals(ActualAccNo,DealPage.AccountNo1);
 
 	}
