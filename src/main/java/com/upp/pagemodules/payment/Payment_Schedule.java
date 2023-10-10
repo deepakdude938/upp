@@ -46,9 +46,10 @@ public class Payment_Schedule extends BaseClass {
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Schedule - Repeating")).equalsIgnoreCase("Yes"))) {
-			
-            od.payments_Repeatingslider.click();   
-			dropdown.selectByVisibleText(od.payment_Frequency1,externalData.getFieldData(TSID, "Scheduled", "Frequency"));
+
+			od.payments_Repeatingslider.click();
+			dropdown.selectByVisibleText(od.payment_Frequency1,
+					externalData.getFieldData(TSID, "Scheduled", "Frequency"));
 		}
 
 		// Repeating slider is enabled by default so have to disbale the slider
@@ -82,32 +83,42 @@ public class Payment_Schedule extends BaseClass {
 		By excecutionDay = By.xpath(
 				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
 						+ day + "']");
-		
+
 		Thread.sleep(1000);
 		try {
-		driver.findElement(excecutionDay).click();
-		}
-		catch(Exception e)
-		{
-		if(Integer.parseInt(DateUtils.getDay())>=29)
-		{
-			 excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
 			driver.findElement(excecutionDay).click();
-		}
+		} catch (Exception e) {
+			if (Integer.parseInt(DateUtils.getDay()) >= 29) {
+				excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
+				driver.findElement(excecutionDay).click();
+			}
 		}
 
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.payments_ScheduleAt,
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
-		if(externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
-			
-			String time=dateutil.getTimeAfterMins(5);
-			
+		if (externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
+
+			String time = dateutil.getTimeAfterMins(5);
+
 			od.payments_ScheduleTime.clear();
 			od.payments_ScheduleTime.sendKeys(time);
 		}
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+
+		if (externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation").trim().equalsIgnoreCase("GB")) {
+
+			dropdown.selectByVisibleText(od.payments_TimeZone, "Asia/Calcutta (GMT+05:30)");
+			String time = dateutil.getTimeAfterMins(8);
+
+			od.payments_ScheduleTime.clear();
+			od.payments_ScheduleTime.sendKeys(time);
+			Thread.sleep(3000);
+
+		}
+
+		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSchedule, Duration.ofSeconds(20));
 		od.payments_NextArrowButtonTransferSchedule.click();
 	}
 }

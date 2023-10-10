@@ -79,4 +79,39 @@ public class Party_Maker_Accounts extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(op.PartyMaker_OKButton, Duration.ofSeconds(5));
 		op.PartyMaker_OKButton.click();
 	}
+
+
+	public void editPartyAccount(String TSID) throws Exception, IOException {
+		op.parties_Icon.click();
+		op.parties_SummaryButton.click();
+		String partyName=externalData.getFieldData(TSID, "Party", "Party Name");
+		op.parties_SearchBox.sendKeys(partyName);
+		op.parties_SearchButton.click();
+		Thread.sleep(1000);
+		op.parties_editPartyButton.click();
+		try {
+			op.parties_OkButton.click();
+		}
+		catch(Exception n) {
+			
+		}
+		op.partyMaker_Icon.click();
+		op.partyMaker_NameTextBox.sendKeys(partyName,Keys.ENTER);
+		Thread.sleep(1000);
+		op.parties_editPartyButton1.click();
+		Thread.sleep(1000);
+		od.parties_AccountsTab.click();
+		Thread.sleep(2000);
+		op.parties_showMenu.click();
+		op.parties_showMenuEditButton.click();
+		
+		scroll.scrollInToView(od.parties_paymentTo);
+		applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
+		od.parties_paymentTo.sendKeys(Keys.CONTROL + "a");
+		od.parties_paymentTo.sendKeys(Keys.BACK_SPACE);
+		od.parties_paymentTo.sendKeys("ICICI1205");
+		scroll.scrollInToView(od.saveButton);
+		od.saveButton.click();
+		op.parties_OkButton.click();
+	}
 }

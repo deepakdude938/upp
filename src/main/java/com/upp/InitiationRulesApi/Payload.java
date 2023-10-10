@@ -647,4 +647,13 @@ public class Payload extends BaseClass {
 		return modifiedJsonString;
 
 	}
+
+	public String accountAmendment(String TSID) throws InvalidFormatException, IOException {
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.dealRefId", dealId);
+		String modifiedJsonString = jsonContext.jsonString();
+
+		return modifiedJsonString;
+	}
 }

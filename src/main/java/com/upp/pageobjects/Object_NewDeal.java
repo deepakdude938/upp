@@ -324,7 +324,7 @@ public class Object_NewDeal extends BaseClass {
 	// Parties Object
 	@FindBy(xpath = "//div[@title='Parties']/i")
 	public WebElement parties_icon;
-
+	
 	@FindBy(xpath = "(//div[@col-id='customerId'])[2]")
 	public WebElement parties_recordRow;
 	
@@ -407,6 +407,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//p[text()='Accounts']")
 	public WebElement parties_AccountsTab;
+	
+	@FindBy(xpath = "//table[@id='btn-generic-grid-row-v1']//td[2]//div[contains(@class,'truncate ng-star-inserted')]")
+	public List<WebElement> parties_AccountsList;
 
 	@FindBy(id = "btn-generic-partyAccounts-getStarted-v1")
 	public WebElement parties_AddAccounts;
@@ -537,6 +540,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1' and @placeholder='Select Instrument']")
 	public WebElement payments_Instrument2;
 	
+	@FindBy(xpath = "(//select[@id='sel-deals-instruction-fundsTransferSchedule-timezone'])[1]")
+	public WebElement payments_TimeZone;
 	
 	@FindBy(id = "payment-to-sel-v1")
 	public WebElement payments_ToAccountDropdown;
@@ -892,6 +897,9 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement Payment_Beneficiaryaccno;
+	
+	@FindBy(id="payment-beneficiaryCountry-sel-v1")
+	public WebElement Payment_beneficiaryCountry;
 	
 	@FindBy(xpath="//span[normalize-space()='Summary']")
 	public WebElement Retention_Summary;
