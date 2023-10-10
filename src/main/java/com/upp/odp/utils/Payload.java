@@ -134,7 +134,7 @@ public class Payload extends BaseClass{
 		
 		String country=externalData.getFieldData(TSID,"Accounts","Country Code");
 		String currency=externalData.getFieldData(TSID,"Accounts","Currency");
-		String accountIdentifierKey=externalData.getFieldData(TSID,"Accounts","Physical");
+ 		String accountIdentifierKey=externalData.getFieldData(TSID,"Accounts","Physical");
 		
 		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		 String accountno = Long.toString(number);
@@ -148,8 +148,8 @@ public class Payload extends BaseClass{
 			accountIdentifierKey="virtual";
 		}
 		
-		if(TSID.equals("TS87") || TSID.equals("TS84")) {
-			
+		if(TSID.equals("TS87") || TSID.equals("TS84_1")) {
+			accountIdentifierKey=externalData.getFieldData(TSID,"Accounts","Physical");
 			if((accountIdentifierKey.equalsIgnoreCase("Yes"))||(accountIdentifierKey.equalsIgnoreCase("Y")))
 			{
 				accountIdentifierKey="Physical";

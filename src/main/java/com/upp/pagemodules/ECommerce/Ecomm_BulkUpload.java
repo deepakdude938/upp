@@ -54,7 +54,13 @@ public class Ecomm_BulkUpload extends BaseClass{
 			}
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_NotificationMessage, Duration.ofSeconds(20));
 		Thread.sleep(2000);
+		try {
 		ecomm.ecommerce_NotificationMessage.click();
+		}
+		catch(Exception e ) {
+			Thread.sleep(3000);
+			handleElementClickException(ecomm.ecommerce_NotificationMessage);
+		}
 		ecomm.ecommerce_NextButton.click();
 		ecomm.ecommerce_AllRecordsCheckBox.click();
 		ecomm.ecommerce_SubmitBtn.click();

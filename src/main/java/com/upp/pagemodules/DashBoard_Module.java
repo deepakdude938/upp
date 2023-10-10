@@ -178,7 +178,7 @@ public class DashBoard_Module extends BaseClass {
 
 	public void approveDealFromDealChecker_Old(String dealId) throws Exception {
 
-		System.out.println("The deal id is" + dealId);
+		System.out.println("The deal id is " + dealId);
 
 		applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon, Duration.ofSeconds(15));
 		try {

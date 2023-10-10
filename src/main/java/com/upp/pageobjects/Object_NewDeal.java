@@ -324,7 +324,7 @@ public class Object_NewDeal extends BaseClass {
 	// Parties Object
 	@FindBy(xpath = "//div[@title='Parties']/i")
 	public WebElement parties_icon;
-
+	
 	@FindBy(xpath = "(//div[@col-id='customerId'])[2]")
 	public WebElement parties_recordRow;
 	
@@ -407,6 +407,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//p[text()='Accounts']")
 	public WebElement parties_AccountsTab;
+	
+	@FindBy(xpath = "//table[@id='btn-generic-grid-row-v1']//td[2]//div[contains(@class,'truncate ng-star-inserted')]")
+	public List<WebElement> parties_AccountsList;
 
 	@FindBy(id = "btn-generic-partyAccounts-getStarted-v1")
 	public WebElement parties_AddAccounts;
