@@ -500,8 +500,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		// Duration.ofSeconds(5));
 		// tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
-		scroll.scrollInToView(tm.reports_eCommExecutionsList);
-		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_eCommExecutionsList,tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(30));
 		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
 		Thread.sleep(3000);
@@ -928,6 +928,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Source_Acc_No_Col, tm.reports_horizontalWindow1,10, 1000);
 		applyExplicitWaitsUntilElementVisible(tm.Reports_Source_Acc_No_First, Duration.ofSeconds(10));
 		String ActualAccNo=tm.Reports_Source_Acc_No_First.getText();
+		System.out.println("The Account Number is:" + ActualAccNo);
 		Assert.assertEquals(ActualAccNo,DealPage.AccountNo1);
 
 	}
@@ -982,7 +983,33 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 	}
 	
+	public void check_All_6_Transaction_StatusIsScheduled(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
+		String ScroeStatus4throw = tm.reports_ScroeStatus4thRow.getText();
+		String ScroeStatus5throw = tm.reports_ScroeStatus5thRow.getText();
+		String ScroeStatus6throw = tm.reports_ScroeStatus6thRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+		System.out.println(" ScroeStatus3rdrow " + ScroeStatus3rdrow);
+		System.out.println(" ScroeStatus4throw " + ScroeStatus4throw);
+		System.out.println(" ScroeStatus5throw " + ScroeStatus5throw);
+		System.out.println(" ScroeStatus6throw " + ScroeStatus6throw);
+		
+		
+
+		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled")) && ((ScroeStatus3rdrow.equalsIgnoreCase("Scheduled"))) && ((ScroeStatus4throw.equalsIgnoreCase("Scheduled"))) && ((ScroeStatus5throw.equalsIgnoreCase("Scheduled"))) && ((ScroeStatus6throw.equalsIgnoreCase("Scheduled"))))) {
+
+			Assert.fail("The transaction is not Scheduled");
+		}
+		
 	
+		
+
+	}
 
 
 }
