@@ -148,6 +148,19 @@ public class Payload extends BaseClass{
 			accountIdentifierKey="virtual";
 		}
 		
+		if(TSID.equals("TS87") || TSID.equals("TS84")) {
+			
+			if((accountIdentifierKey.equalsIgnoreCase("Yes"))||(accountIdentifierKey.equalsIgnoreCase("Y")))
+			{
+				accountIdentifierKey="Physical";
+			}
+			else
+			{
+				accountIdentifierKey="Virtual";
+			}
+			
+		}
+		
 		String payLoadString =externalData.getFieldData(TSID, "ODP Api", "Payload");
 		
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);

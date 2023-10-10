@@ -111,6 +111,14 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
 				externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
 		
+		if(externalData.getFieldData(TSID, "Party", "Beneficiary Account Key")!="") {
+			if(TSID.equals("TS102") || TSID.equals("TS104")) {
+			scroll.scrollInToView(od.parties_BeneficiaryAccountKey);
+			applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryAccountKey, Duration.ofSeconds(5));
+			od.parties_BeneficiaryAccountKey.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Account Key"));
+		}
+		}
+		
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCountryOfIncorporation,
