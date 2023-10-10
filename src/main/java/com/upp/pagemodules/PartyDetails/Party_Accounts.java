@@ -1,8 +1,10 @@
 package com.upp.pagemodules.PartyDetails;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
@@ -29,6 +31,7 @@ import static org.testng.Assert.assertTrue;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
@@ -88,5 +91,26 @@ public class Party_Accounts extends BaseClass {
 		String paymentInstrument = externalData.getFieldData(TSID, "Party", "Accounts-Payment System");
 		icallback.handleCallback("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT", paymentInstrument);
 
+	}
+
+	public void verifyPartyAccountGotUpdated() throws Exception {
+		applyExplicitWaitsUntilElementClickable(op.parties_PartyTab, Duration.ofSeconds(20));
+		op.parties_PartyTab.click();
+		op.parties_editPartyButton.click();
+		try {
+			od.parties_AccountsTab.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_AccountsTab);
+		}
+		Thread.sleep(2000);
+		ArrayList<String> accounts = new ArrayList<>();
+		for(WebElement i : od.parties_AccountsList) {
+			String a = i.getText();
+			System.out.println(a);
+			accounts.add(a);
+			
+		}
+		Assert.assertTrue(accounts.contains("ICICI1205"));
 	}
 }

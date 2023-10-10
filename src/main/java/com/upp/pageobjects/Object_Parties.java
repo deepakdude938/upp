@@ -22,6 +22,30 @@ public class Object_Parties extends BaseClass{
 	@FindBy(id="tab-deals-partyWizard-v1")
 	public WebElement parties_PartyTab;
 	
+	@FindBy(id = "menu-generic-sidemenu-Parties-summary-v1")
+	public WebElement parties_SummaryButton;
+	
+	@FindBy(id = "sel-generic-searchBar-searchInput-v1")
+	public WebElement parties_SearchBox;
+	
+	@FindBy(id = "btn-generic-searchBar-search-v1")
+	public WebElement parties_SearchButton;
+	
+	@FindBy(xpath = "(//i[contains(@class,'ui-icon ic ic-edit_blue ng-star-inserted')])[1]")
+	public WebElement parties_editPartyButton;
+	
+	@FindBy(xpath = "(//i[contains(@class,'ui-icon ic ic-edit_blue')])[1]")
+	public WebElement parties_editPartyButton1;
+	
+	@FindBy(xpath = "//div[@id='ic-generic-menu-showMenu-v1']")
+	public WebElement parties_showMenu;
+	
+	@FindBy(xpath = "//div[contains(@class,'onbd_action_option') and normalize-space()='Edit']")
+	public WebElement parties_showMenuEditButton;
+	
+	@FindBy(xpath = "//button[normalize-space()='OK']")
+	public WebElement parties_OkButton;
+	
 	@FindBy(xpath="//i[@class='ui-icon ic ic-edit_blue ng-star-inserted']")
 	public WebElement parties_EditParty;
 	
@@ -34,6 +58,9 @@ public class Object_Parties extends BaseClass{
 	
 	@FindBy(xpath="//a[normalize-space()='Party Maker']")
 	public WebElement partyMaker_Icon;
+	
+	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[2]")
+	public WebElement partyMaker_NameTextBox;
 	
 	@FindBy(xpath="//div[contains(text(),'Add New')]")
 	public WebElement PartyMaker_AddNewButon;

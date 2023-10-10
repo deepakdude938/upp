@@ -12,13 +12,13 @@ Then Create Virtual account in ODP with given "TS84_Virtual".
 Then Call the ODP Logout Api
 Then Add Party basic_Details with given "<TSID>".
 Then Submit the deal
-Then approve the deal from the deal checker common method
+Then Approve the deal from the deal checker
 Then Call the Attach Account Api for "<TSID>"
 Then Edit the deal "<TSID>"
 Then Verify Virtual account present in Account Tab "<TSID>"
 Then Verify Virtual Account present in Party "<TSID>"
 Then Submit the deal
-Then approve the deal from the deal checker common method
+Then Approve the deal from the deal checker
 Then Call the Detach Account Api for "TS84_Detach"
 Then Edit the deal "<TSID>"
 Then Verify Virtual Account is not disable in Party "<TSID>"

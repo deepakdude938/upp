@@ -95,14 +95,19 @@ public class ECommerceTransactionChecker extends BaseClass {
 			handleElementClickException(ecomm.ecommerce_Allcomment);
 		}
 		ecomm.ecommerce_note.sendKeys("Ok approve");
-		ecomm.ecommerce_txnok.click();
+		try {
+			ecomm.ecommerce_txnok.click();
+		}
+	catch(Exception n) {
+		Thread.sleep(2000);
+		handleElementClickException(ecomm.ecommerce_txnok);
+	}
 		ecomm.ecommerce_submitBtn.click();
 		try {
 			if (ecomm.ecommerce_warning.isDisplayed()) {
 				ecomm.ecommerce_submitBtn.click();
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		new Actions(driver).moveToElement(ecomm.ecommerce_yesBtn);
 		ecomm.ecommerce_yesBtn.click();

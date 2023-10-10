@@ -99,6 +99,7 @@ public class Retention extends BaseClass{
 		}
 		
 		od.retention_ScheduleNextButton.click();
+		Thread.sleep(5000);
 		applyExplicitWaitsUntilElementClickable(od.retention_SubInstructionNextButton, Duration.ofSeconds(10));
 		od.retention_SubInstructionNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.retention_RetryNextButton, Duration.ofSeconds(10));
