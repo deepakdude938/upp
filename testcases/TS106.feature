@@ -11,8 +11,6 @@ Feature: TS106_Payment_Alert_Instruction
 		Then approve the deal from the deal checker common method
 		 Then Open and Edit the live deal
 		Then Edit the alert and verify message is displayed
-#Then approve the deal from the deal checker common method
-#And Check the Transaction staus and instruction type in execution report with given "<TSID>"
 
 Examples:
       |TSID |
