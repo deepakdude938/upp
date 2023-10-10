@@ -8,6 +8,7 @@ import org.testng.Assert;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_NewDeal;
@@ -46,6 +47,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static Object_Transactions tm;
+	CommonUtils util;
 
 	public Transactions_Maker_Sub_Instruction() {
 
@@ -58,6 +60,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		tm = new Object_Transactions();
+		util=new CommonUtils(driver);
 
 	}
 
@@ -92,6 +95,10 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		driver.findElement(paymentInstrument).click();
 		System.out.println("the to data is " + externalData.getFieldData(TSID, "Txn Maker", "to"));
 		icallback.handleCallback("PAYMENT_INSTRUMENT", paymentInstrumentdata);
+		if(util.isElementDisplayed(od.deal_Edit_Yes_Button,2))
+		 {
+			 od.deal_Edit_Yes_Button.click();
+		 }
 	}
 
 }
