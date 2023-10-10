@@ -52,9 +52,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_SideMenuIcon.click();
 		ecomm.ecommerce_Txnmaker.click();
 		Thread.sleep(5000);
-		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(20));
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(25));
 		ecomm.ecommerce_TxnSearch.click();
-
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		ecomm.ecommerce_addNewmaker.click();
 		ecomm.ecommerce_dealId.sendKeys(dealId);

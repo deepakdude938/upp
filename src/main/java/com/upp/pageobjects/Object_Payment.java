@@ -68,6 +68,25 @@ public class Object_Payment extends BaseClass {
 	@FindBy(xpath = "//div[@class='ui-btn-nav-ct']//i[contains(@class,'ui-fab-next')]")
 	public WebElement Alerts_nextBtn;
 	
+	@FindBy(xpath = "//p[@class='t-c text-overflow']")
+	public WebElement Alerts_summaryMessage;
+	
+	
+	@FindBy(xpath = "//b[@class='ng-star-inserted']")
+	public WebElement Alerts_summarySchedule;
+	
+	
+	@FindBy(id = "ic-generic-menu-showMenu-v1")
+	public WebElement Alerts_Menu;
+	
+	@FindBy(xpath = "//div[contains(text(),'Edit')]")
+	public WebElement Alerts_Edit;
+	
+	@FindBy(xpath = "//div[contains(text(),'Weekly')]")
+	public WebElement Alerts_weeklyFrequency;	
+	
+	@FindBy(xpath = "//div[contains(text(),' Mon ')]")
+	public WebElement Alerts_weeklyDayFrequency;	
 	
 	
 	

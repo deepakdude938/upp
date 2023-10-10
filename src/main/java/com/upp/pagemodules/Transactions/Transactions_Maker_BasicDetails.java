@@ -116,7 +116,6 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 			Thread.sleep(3000);
 			driver.findElement(transactions_SouceAccno).click();
 			System.out.println("Step2");
-
 		} catch (Exception e) {
 			tm.transactions_TransactionMaker.click();
 			Thread.sleep(2000);
