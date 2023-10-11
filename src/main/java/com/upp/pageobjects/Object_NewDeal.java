@@ -546,6 +546,12 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-to-sel-v1")
 	public WebElement payments_ToAccountDropdown;
 
+	@FindBy(xpath = "//label[normalize-space()='Split by percentage']")
+	public WebElement payments_Split_By_percentage_Text;
+	
+	@FindBy(xpath = "(//span[@class='slider round'])[3]")
+	public WebElement payments_Split_By_percentage_Slider;
+
 	@FindBy(id = "payment-beneficiaryBankBic-txt-v1")
 	public WebElement payments_beneficiaryBankBic;
 	

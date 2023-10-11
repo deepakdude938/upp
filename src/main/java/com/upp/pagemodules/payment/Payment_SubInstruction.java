@@ -149,8 +149,6 @@ public class Payment_SubInstruction extends BaseClass {
 			throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
-
-		
 		try {
 			od.payments_Instrument.click();
 		} catch (Exception e) {
@@ -160,6 +158,15 @@ public class Payment_SubInstruction extends BaseClass {
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
+		
+		if(TSID.equalsIgnoreCase("TS108")) {
+			
+			if (commonutils.isElementDisplayed(od.payments_Split_By_percentage_Text, 2)) {
+				od.payments_Split_By_percentage_Slider.click();
+				Thread.sleep(1500);
+			
+			}
+		}
 		
 		if(TSID.equalsIgnoreCase("TS72")) {
 		String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
