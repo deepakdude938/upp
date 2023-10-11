@@ -1013,6 +1013,77 @@ public class Reports_ExecutionReport extends BaseClass {
 		
 
 	}
+	
+	public void check_Triggered_or_Settled_Status_For_All_6_Transactions_and_Settled_Amount(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
+		String ScroeStatus4throw = tm.reports_ScroeStatus4thRow.getText();
+		String ScroeStatus5throw = tm.reports_ScroeStatus5thRow.getText();
+		String ScroeStatus6throw = tm.reports_ScroeStatus6thRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+		System.out.println(" ScroeStatus3rdrow " + ScroeStatus3rdrow);
+		System.out.println(" ScroeStatus4throw " + ScroeStatus4throw);
+		System.out.println(" ScroeStatus5throw " + ScroeStatus5throw);
+		System.out.println(" ScroeStatus6throw " + ScroeStatus6throw);
+
+		if ((ScroeStatus.equalsIgnoreCase("Triggered")) || (ScroeStatus.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+
+		if ((ScroeStatus2ndrow.equalsIgnoreCase("Triggered")) || (ScroeStatus2ndrow.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+		
+		if ((ScroeStatus3rdrow.equalsIgnoreCase("Triggered")) || (ScroeStatus3rdrow.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+		if ((ScroeStatus4throw.equalsIgnoreCase("Triggered")) || (ScroeStatus4throw.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+		if ((ScroeStatus5throw.equalsIgnoreCase("Triggered")) || (ScroeStatus5throw.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+		if ((ScroeStatus6throw.equalsIgnoreCase("Triggered")) || (ScroeStatus6throw.equalsIgnoreCase("Settled"))) {
+
+			System.out.println("Transaction succesfully settled or triggered");
+		} else {
+			Assert.fail("Transaction Staus should be either settled or triggered");
+		}
+		
+      ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmount, tm.reports_horizontalWindow1,10, 1000);
+		
+		By Amount1 = By.xpath("//div[normalize-space()='4200']");
+		applyExplicitWaitsUntilElementVisible(Amount1, 3);
+		String amount1 = driver.findElement(Amount1).getText();
+		System.out.println("the amount1 is:" + amount1);
+
+		By Amount2 = By.xpath("//div[normalize-space()='1650']");
+		applyExplicitWaitsUntilElementVisible(Amount2, 3);
+		String amount2 = driver.findElement(Amount2).getText();
+		System.out.println("the amount2 is:" + amount2);
+	}
+	
+	
 
 
 }

@@ -69,7 +69,11 @@ public class TS105 extends BaseClass implements ICallback {
 	    report.check_All_6_Transaction_StatusIsScheduled(string,TS06.dealId);
 	}
 
-	
+	@Then("Check the Transaction status of all {int} Transactions is Settled\\/Triggered and Settled amount in execution report with given {string}")
+	public void check_the_Transaction_status_of_all_Transactions_is_Settled_Triggered_and_Settled_amount_in_execution_report_with_given(Integer int1, String string) throws Exception{
+	    report.check_Triggered_or_Settled_Status_For_All_6_Transactions_and_Settled_Amount(string,dealId);
+	   
+	}
 
 	
 	@Override
