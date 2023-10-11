@@ -3,7 +3,9 @@ package com.upp.pagemodules.ECommerce;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
@@ -36,7 +38,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 	public ExcelReader externalData;
 	ScrollTypes scroll;
 	Transactions_Maker_Sub_Instruction tm;
-	
+	public static JavascriptClick jsClick;
+
 	public ECommerceTransactionMaker() {
 
 		ecomm = new Object_Ecommerce();
@@ -44,28 +47,34 @@ public class ECommerceTransactionMaker extends BaseClass {
 		externalData = new ExcelReader();
 		scroll = new ScrollTypes(driver);
 		tm = new Transactions_Maker_Sub_Instruction();
-		
+		jsClick = new JavascriptClick(driver);
+
 	}
 
-	public void addDealAsEcommerceTxn(String dealId, String TSID, String srcAccount, String toAccount,ICallback icallback)
-			throws Exception {
+	public void addDealAsEcommerceTxn(String dealId, String TSID, String srcAccount, String toAccount,
+			ICallback icallback) throws Exception {
+		Thread.sleep(3000);
 		ecomm.ecommerce_SideMenuIcon.click();
-		ecomm.ecommerce_Txnmaker.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Txnmaker, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_Txnmaker);
+		// ecomm.ecommerce_Txnmaker.click();
 		Thread.sleep(5000);
-		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(20));
-		ecomm.ecommerce_TxnSearch.click();
-
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnSearch, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
-		ecomm.ecommerce_addNewmaker.click();
+		jsClick.click(ecomm.ecommerce_addNewmaker);
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
-		ecomm.ecommerce_participantIdtxt.click();
+		jsClick.click(ecomm.ecommerce_participantIdtxt);
 		ecomm.ecommerce_participantId.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
+		jsClick.click(ecomm.ecommerce_SearchBtn);
+		jsClick.click(ecomm.ecommerce_debitAccount);
 		ecomm.ecommerce_SubmitBtn.click();
 		addBasicDetailsToEcommerceTxn(TSID, srcAccount, toAccount);
 		addSubInstructionToEcommerceTxn(TSID);
-		//tm.Transaction_Maker_Sub_Instruction(TSID, icallback);
+		// tm.Transaction_Maker_Sub_Instruction(TSID, icallback);
 		addDocument(TSID);
 	}
 
@@ -88,7 +97,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 	}
 
 	public void addSubInstructionToEcommerceTxn(String TSID) throws Exception {
-		
+
 		try {
 			ecomm.ecommerce_creatorParticipant.click();
 		} catch (Exception e) {
@@ -135,6 +144,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 		// Txn Maker", "Description"));
 		ecomm.ecommerce_proceed.click();
 		Thread.sleep(2000);
+		ecomm.ecommerce_submit.click();
+		ecomm.ecommerce_ok.click();
 		ecomm.ecommerce_submit.click();
 		ecomm.ecommerce_yes.click();
 		ecomm.ecommerce_ok.click();

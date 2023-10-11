@@ -36,7 +36,7 @@ public class Rule_OBOParticipant_OBO_Info_Null_OBO_Virtual extends BaseClass {
 		response = res.then().extract().asString();
 		System.out.println("The Rule_Non_OBO_Virtual response is " + response);
 
-		System.out.println("the status code is" + res.getStatusCode());
+		//System.out.println("the status code is" + res.getStatusCode());
 
 		if (res.getStatusCode() == 400) {
 			JsonPath js = new JsonPath(response);

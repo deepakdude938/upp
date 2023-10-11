@@ -101,22 +101,21 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		tm.transactions_TransactionMaker.click();
 		Thread.sleep(4000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
-		tm.transactions_AddNewButon.click();
+		jsClick.click(tm.transactions_AddNewButon);
 		Thread.sleep(6000);
 		try {
 			applyExplicitWaitsUntilElementClickable(tm.transactions_DealId1, Duration.ofSeconds(20));
-			tm.transactions_DealId1.click();
+			jsClick.click(tm.transactions_DealId1);
 			tm.transactions_DealId.sendKeys(DealId);
 			transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
 			driver.findElement(transactions_DealId).click();
 			System.out.println("Step1");
-			tm.transactions_SourceAccNo1.click();
+			jsClick.click(tm.transactions_SourceAccNo1);
 			tm.transactions_SourceAccNo1.sendKeys(sourceAccno);
 			By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
 			Thread.sleep(3000);
 			driver.findElement(transactions_SouceAccno).click();
 			System.out.println("Step2");
-
 		} catch (Exception e) {
 			tm.transactions_TransactionMaker.click();
 			Thread.sleep(2000);

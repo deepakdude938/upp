@@ -69,7 +69,7 @@ public class DealEntitlements extends BaseClass {
 		String currency1 = externalData.getFieldData(TSID, "Entitlements", "Currency");
 		od.currency.sendKeys(currency1, Keys.ENTER);
 		// dropdown.selectByValue(od.currency, " INR ");
-		
+
 		od.rangeFrom.sendKeys(externalData.getFieldData(TSID, "Entitlements", "Range From"));
 		od.initiatingContact.click();
 		// String contactName = externalData.getFieldData(TSID, "Basic Details",
@@ -113,13 +113,15 @@ public class DealEntitlements extends BaseClass {
 		Thread.sleep(2000);
 		tm.entitlementsIcon.click();
 		Thread.sleep(2000);
-		tm.entitlements_Account.click();
-		Thread.sleep(1000);
+		if (TSID.equalsIgnoreCase("TS54")) {
+			tm.entitlements_Account.click();
+			Thread.sleep(1000);
+		}
 		tm.contactDetails.click();
-		
+
 		String contacts = externalData.getFieldData(TSID, "Party", "Email");
-		if(tm.initiatingContact.getText().contains(contacts)) {
-			flag =1;
+		if (tm.initiatingContact.getText().contains(contacts)) {
+			flag = 1;
 		}
 		Assert.assertEquals(flag, 1);
 	}
@@ -134,14 +136,14 @@ public class DealEntitlements extends BaseClass {
 		Thread.sleep(1000);
 		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
 		driver.findElement(transactions_SouceAccno).click();
-		
+
 		od.rangeFrom.sendKeys(externalData.getFieldData(TSID, "Entitlements", "Range From"));
 		od.initiatingContact.click();
-		
+
 		applyExplicitWaitsUntilElementClickable(op.Alerts_contactCheckBox, Duration.ofSeconds(10));
 		op.Alerts_contactCheckBox.click();
 		op.Alerts_contactUpdate.click();
-		
+
 		od.authorzingContact.click();
 		applyExplicitWaitsUntilElementClickable(op.Alerts_contactCheckBox, Duration.ofSeconds(10));
 		op.Alerts_contactCheckBox.click();
