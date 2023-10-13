@@ -170,9 +170,9 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
-		Thread.sleep(5000);
+		Thread.sleep(6500);
 		jsClick.click(tm.cancelIcon);
-		Thread.sleep(5000);
+		Thread.sleep(6500);
 
 	}
 
@@ -1072,15 +1072,17 @@ public class Reports_ExecutionReport extends BaseClass {
 		
       ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmount, tm.reports_horizontalWindow1,10, 1000);
 		
-		By Amount1 = By.xpath("//div[normalize-space()='4200']");
-		applyExplicitWaitsUntilElementVisible(Amount1, 3);
-		String amount1 = driver.findElement(Amount1).getText();
-		System.out.println("the amount1 is:" + amount1);
+		
+		ArrayList<String> settledAmountrecords = new ArrayList();
+		for (WebElement iu : tm.reports_SettledAmountList) {
 
-		By Amount2 = By.xpath("//div[normalize-space()='1650']");
-		applyExplicitWaitsUntilElementVisible(Amount2, 3);
-		String amount2 = driver.findElement(Amount2).getText();
-		System.out.println("the amount2 is:" + amount2);
+			settledAmountrecords.add(iu.getText());
+			
+		}
+		Assert.assertTrue(settledAmountrecords.contains("4200"));
+		Assert.assertTrue(settledAmountrecords.contains("1650"));
+		
+		System.out.println("The settled amount status records are:"+settledAmountrecords.toString());
 	}
 	
 	
