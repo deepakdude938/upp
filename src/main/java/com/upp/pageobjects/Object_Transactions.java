@@ -34,6 +34,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement transactions_Instrument;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	public WebElement transactions_Instrument_when_budget_purpose_enabled;
 
 	@FindBy(id = "payment-debitAccountBicCode-txt-v1")
 	public WebElement transactions_debitAccountBicCode;
@@ -101,6 +104,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@col-id='Sub-Instruction Type' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_SubInstructions;
 
+	@FindBy(xpath = "//div[@col-id='Settled Amount' and contains(@class,'ag-cell-not-inline-editing')]")
+	public List<WebElement> reports_SettledAmountList;
+	
 	@FindBy(xpath = "//div[@col-id='SCROE Status' and not(contains(@class,'header'))] | //div[@col-id='Settled Status' and not(contains(@class,'header'))]")
 	public List<WebElement> reports_ScroeStatusRecords;
 	

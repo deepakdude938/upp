@@ -20,6 +20,9 @@ Then Approve the transaction from Transaction Checker with given "<TSID>"
 #Then logout of the application
 #Then Login to the application as "txn_verifier"
 #Then Approve the transaction from Transaction Verifier with given "<TSID>"
+Then logout of the application
+Given Open browser and enter url 
+Then Login to the application as "txn_checker"
 And Check the Transaction staus in execution report with given "<TSID>"
 Then logout of the application
 Examples:
