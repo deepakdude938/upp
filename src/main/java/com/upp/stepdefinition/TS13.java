@@ -65,7 +65,7 @@ public class TS13 extends BaseClass implements ICallback {
 		tm_sub.Transaction_Maker_Sub_Instruction(TSID, this);
 		tm_sub.Non_Registered_Beneficiary(toaccountNumber);
 		tm_doc.Transactions_Maker_Documents(string);
-		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
+		TS06.TnxId = tm_sum.Transaction_Maker_Summary1();
 
 	}
 

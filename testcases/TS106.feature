@@ -1,4 +1,4 @@
-Feature: TS106_Payment_Alert_Instruction
+Feature: TS106_Payment_Alert_Instruction_Message
 
 @Regression  @TS106
  Scenario Outline:  Create deal with alerts

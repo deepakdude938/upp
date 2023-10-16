@@ -129,4 +129,22 @@ public class Payload extends BaseClass {
 		return modifiedJsonString;
 
 	}
+
+	public static String deleteRole(String TSID) throws IOException, Exception {
+		externalData = new ExcelReader();
+		//String excelFilePath = System.getProperty("user.dir") + "//src//main//resources//UserList.xlsx";
+
+		// System.out.println("test case id = "+TSID);
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.roles[0].role", "DEALMAKER");
+
+		// jsonContext.set("$.username", password);
+		String modifiedJsonString = jsonContext.jsonString();
+
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+
+	}
+
 }
