@@ -1,6 +1,6 @@
 Feature: TS93_Update_UserAttribute_API
 
-@Regression @Api  @TS93
+@Regression @TS93 @Api
 Scenario Outline: Update_UserAttribute_API
 Given Open browser and enter url 
 And Call the Update User Attribute Api with given "<TSID>"

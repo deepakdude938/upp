@@ -34,6 +34,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement transactions_Instrument;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	public WebElement transactions_Instrument_when_budget_purpose_enabled;
 
 	@FindBy(id = "payment-debitAccountBicCode-txt-v1")
 	public WebElement transactions_debitAccountBicCode;
@@ -74,7 +77,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//h2[@id='swal2-title']")
 	public WebElement transactions_TransactionsId;
 
-	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
+	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[1]")
 	public WebElement transactions_TransactionIdSearchBox;
 
 	@FindBy(xpath = "//i[@class='ui-icon ic ic-edit_blue ng-star-inserted']")
