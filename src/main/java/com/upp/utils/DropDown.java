@@ -1,5 +1,6 @@
 package com.upp.utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -81,6 +82,15 @@ public class DropDown {
 			e.getMessage();
 		}
 		return Element;
+	}
+	
+	public String getSelectedValue(WebElement Element) {
+		Select select = new Select(Element);
+		WebElement option = select.getFirstSelectedOption();
+		String defaultItem = option.getText();
+		return defaultItem ;
+		
+		
 	}
 	
 }
