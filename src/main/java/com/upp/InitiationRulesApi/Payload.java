@@ -635,8 +635,9 @@ public class Payload extends BaseClass {
 		String uniquePlatformRefNo = "PlatformRef" + random;
 
 		String utcdate = DateUtils.getCurrentDateUTC();
+		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
 
-		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		String utctimeEod = utcdate + "T" + plus2mins;
 
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);

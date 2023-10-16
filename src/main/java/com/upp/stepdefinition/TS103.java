@@ -84,6 +84,15 @@ public class TS103 extends BaseClass implements ICallback {
 		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.AccountNo1);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 	}
+	
+	@Then("Add Sub Instruction with payment Instrument BT_UK in Tnx_Maker with given {string}.")
+	public void add_Sub_Intrsuction_with_payment_Instrument_BT_UK_in_Tnx_Maker_with_given(String string)throws Exception{
+		TSID = string;
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.AccountNo1);
+		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
+		tm_doc.Transactions_Maker_Documents(string);
+		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
+	}
 
 	@Then("Add Second Sub Intrsuction with payment Instrument LT_UK with given {string}.")
 	public void add_Second_Sub_Intrsuction_with_payment_Instrument_LT_UK_with_given(String string) throws Exception {
