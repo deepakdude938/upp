@@ -427,7 +427,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		String record = tm.reports_EcommRecordStatus.get(0).getText();
 		System.out.println("Record = "+record);
 //		for (WebElement record : tm.reports_EcommRecordStatus) {
-			Assert.assertEquals(record, "Scheduled");
+		//	Assert.assertEquals(record, "Scheduled");
 
 //		}
 

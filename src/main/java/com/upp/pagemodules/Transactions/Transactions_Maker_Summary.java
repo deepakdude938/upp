@@ -98,14 +98,14 @@ public class Transactions_Maker_Summary extends BaseClass {
 		 jsClick.click(tm.transactions_SummarySubmitButton);
 		 tm.transactions_Ok.click();
 		 Thread.sleep(3000);
-		 
+		 tm.transactions_SummarySubmitButton.click();
 		 applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton,Duration.ofSeconds(15));
 		 tm.transactions_YesButton.click();
 		 Thread.sleep(2000);
-		 tm.transactions_Ok.click();
-		 Thread.sleep(3000);
-		 tm.transactions_SummarySubmitButton.click();
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_Ok,Duration.ofSeconds(15));
+//		 tm.transactions_Ok.click();
+//		 Thread.sleep(3000);
+//		 tm.transactions_SummarySubmitButton.click();
+//		 applyExplicitWaitsUntilElementClickable(tm.transactions_Ok,Duration.ofSeconds(15));
 		 String transactionSubmitMessage=tm.transactions_TransactionsId.getText();
 		 String transactionMessage[]=transactionSubmitMessage.split(" ");
 		 String TnxId=transactionMessage[1];
