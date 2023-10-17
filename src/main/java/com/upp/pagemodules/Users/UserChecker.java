@@ -109,20 +109,24 @@ public class UserChecker extends BaseClass {
 	}
 	
 	public void verifyResponsibility() throws Exception {
-		int flag;
+		int flag=0;
 		Thread.sleep(2000);
 		ol.deal_SideMenuIcon.click();
+		Thread.sleep(2000);
 		int size = ou.user_dealList.size();
+		System.out.println(size);
 		for (int i = 0; i < size; i++) {
 			System.out.println("Found = " + ou.user_dealList.get(i).getText());
 			String dealList = ou.user_dealList.get(i).getText();
-			if (!(dealList.equalsIgnoreCase("Deal Checker"))) {
+		
+			if ((dealList.equalsIgnoreCase("Deal Checker"))) {
 				flag = 1;
 			} else {
 				flag = 0;
 			}
-			Assert.assertEquals(flag, 1);
+			
 		}
+		Assert.assertEquals(flag, 1);
 	}
 
 	public void verifyUserNotAbleTologin() {

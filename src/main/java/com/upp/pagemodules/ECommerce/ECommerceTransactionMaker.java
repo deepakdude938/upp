@@ -145,7 +145,9 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_proceed.click();
 		Thread.sleep(2000);
 		ecomm.ecommerce_submit.click();
+		Thread.sleep(3000);
 		ecomm.ecommerce_ok.click();
+		Thread.sleep(2000);
 		ecomm.ecommerce_submit.click();
 		ecomm.ecommerce_yes.click();
 		ecomm.ecommerce_ok.click();
