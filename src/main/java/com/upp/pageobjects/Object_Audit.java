@@ -65,6 +65,9 @@ public class Object_Audit extends BaseClass{
 	@FindBy(xpath="(//div[contains(text(),'1,000')])[2]")
 	public WebElement Budget_Total_Budget_Allocated_Amount;
 	
+	@FindBy(xpath="(//div[contains(text(),'10,000.00')])[3]")
+	public WebElement Budget_Amount_Utilized;
+	
 	@FindBy(xpath="//a[normalize-space()='Transaction']")
 	public WebElement audit_TransactionIcon;
 	

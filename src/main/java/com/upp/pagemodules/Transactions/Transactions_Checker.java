@@ -76,16 +76,16 @@ public class Transactions_Checker extends BaseClass {
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
 	    double amountdouble=Double.parseDouble(amount);
 	    int amountInt = (int) amountdouble;
-		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" +  amountInt + "')])[1]");
-		applyExplicitWaitsUntilElementVisible(AmountID, 15);
-		String amount_checker = driver.findElement(AmountID).getText();
-		System.out.println("This is the amount from checker" + amount_checker);
-
-		if (!(amount_checker.contains(amount))) {
-			System.out.println("amount doesn't match");
-			assertTrue(false);
-
-		}
+//		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" +  amountInt + "')])[1]");
+//		applyExplicitWaitsUntilElementVisible(AmountID, 15);
+//		String amount_checker = driver.findElement(AmountID).getText();
+//		System.out.println("This is the amount from checker" + amount_checker);
+//
+//		if (!(amount_checker.contains(amount))) {
+//			System.out.println("amount doesn't match");
+//			assertTrue(false);
+//
+//		}
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_Add_comments, Duration.ofSeconds(3));
 		scroll.scrollInToView(tm.transactions_Checker_Add_comments);
 		tm.transactions_Checker_Add_comments

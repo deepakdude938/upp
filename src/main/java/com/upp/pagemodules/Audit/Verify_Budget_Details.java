@@ -95,4 +95,50 @@ public class Verify_Budget_Details extends BaseClass {
 	    
 	}
 
+
+	public void verify_Utilized_details_In_AuditTab(String dealId,String TSID) throws Exception {
+		
+        scroll.scrollInToView(audit.Audit_Icon);
+		applyExplicitWaitsUntilElementClickable(audit.Audit_Icon, Duration.ofSeconds(20));
+		try {
+			audit.Audit_Icon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(audit.Audit_Icon);
+		}
+		try {
+			audit.Audit_Budget.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(audit.Audit_Budget);
+		}
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(audit.Budget_DealId, Duration.ofSeconds(10));
+		audit.Budget_DealId.sendKeys(dealId);
+		Thread.sleep(500);
+		By DealId = By.xpath("//div[contains(text(),'"+dealId+"')]");
+		applyExplicitWaitsUntilElementVisible(DealId, 8);
+	    driver.findElement(DealId).click();
+	    
+	    Thread.sleep(1000);
+	    applyExplicitWaitsUntilElementClickable(audit.Budget_budgetDropdown, Duration.ofSeconds(10));
+	    dropdown.selectByVisibleText(audit.Budget_budgetDropdown,TSID);
+	    audit.Budget_submitButton.click();
+	    Thread.sleep(1500);
+	    js.click(audit.Budget_Total_Allocated_Budget);
+	    audit.Budget_Total_Allocated_Budget.click();
+	   
+	    applyExplicitWaitsUntilElementClickable(audit.Budget_BasicDetails, Duration.ofSeconds(10));
+	    audit.Budget_BasicDetails.click();
+	    
+	 
+		String Utilized_budget=audit.Budget_Amount_Utilized.getText();
+		
+	    
+		Assert.assertEquals(Utilized_budget,externalData.getFieldData(TSID,"Audit","Amount Utilized"));
+	
+	    
+	    
+	    
+	}
 }
