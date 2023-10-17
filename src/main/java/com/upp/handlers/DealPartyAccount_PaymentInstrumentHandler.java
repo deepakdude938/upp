@@ -98,8 +98,21 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Party", "Select Account/IBAN"));
 		
 		scroll.scrollInToView(od.parties_paymentTo);
+		if(TSID.equals("TS107")||TSID.equals("TS107_1")) {
+			if(accountList.contains(debitAccount)) {
+				accountList.remove(debitAccount);
+				System.out.println(accountList);
+			}
+			applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
+			String accountKey = externalData.getFieldData(TSID, "Party", "Beneficiary Account Key");
+			accountMap.put(accountKey, accountList.get(0));
+			od.parties_paymentTo.sendKeys(accountList.get(0));
+			accountList.remove(0);
+		}
+		else {
 		applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
 		od.parties_paymentTo.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Account Number / IBAN"));
+		}
 		
 		scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
@@ -112,7 +125,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 				externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
 		
 		if(externalData.getFieldData(TSID, "Party", "Beneficiary Account Key")!="") {
-			if(TSID.equals("TS102") || TSID.equals("TS104")||TSID.equals("TS104_1")) {
+			if(TSID.equals("TS102") || TSID.equals("TS104")||TSID.equals("TS104_1")||TSID.equals("TS107_1")||TSID.equals("TS107")) {
 			scroll.scrollInToView(od.parties_BeneficiaryAccountKey);
 			applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryAccountKey, Duration.ofSeconds(5));
 			od.parties_BeneficiaryAccountKey.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Account Key"));

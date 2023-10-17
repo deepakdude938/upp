@@ -43,6 +43,9 @@ public class Object_Parties extends BaseClass{
 	@FindBy(xpath = "//div[contains(@class,'onbd_action_option') and normalize-space()='Edit']")
 	public WebElement parties_showMenuEditButton;
 	
+	@FindBy(xpath = "//div[contains(@class,'onbd_action_option') and normalize-space()='Delete']")
+	public WebElement parties_showMenuDeleteButton;
+	
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	public WebElement parties_OkButton;
 	

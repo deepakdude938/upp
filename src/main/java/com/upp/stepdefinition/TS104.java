@@ -59,5 +59,15 @@ public class TS104 extends BaseClass{
 	public void verify_Account_is_updated() throws Exception {
 	    pa.verifyPartyAccountGotUpdated();
 	}
+	
+	@Then("Offboard Account from Party Maker {string}")
+	public void offboard_Account_from_Party_Maker(String TSID) throws Exception {
+	   pa.OffBoardTheAccount(TSID);
+	}
+
+	@Then("Verify Account is offboarded in Party")
+	public void verify_Account_is_offboarded_in_Party() {
+	    pa.verifyAccountIsOffBoarded();
+	}
 
 }

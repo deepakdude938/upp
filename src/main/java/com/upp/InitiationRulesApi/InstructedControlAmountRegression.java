@@ -45,11 +45,11 @@ public class InstructedControlAmountRegression extends BaseClass{
 		String excelFilePath = System.getProperty("user.dir")+Constants.InstructedControlAmount_FILE_PATH;
 		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
 		int rowCount = externalData.getRowCount(excelFilePath, "Positive");
-
+		System.out.println("debit accnt is "+debitAccount);
 		String tomorow = DateUtils.getDate(1) + "T11:28:00Z";
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.dealRefId", dealId);
-		jsonContext.set("$.paymentInfo.accountNumber", DealPage.sourceAccountNo);
+		jsonContext.set("$.paymentInfo.accountNumber", debitAccount);
 	
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
 		jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn", tomorow);

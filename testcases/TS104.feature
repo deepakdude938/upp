@@ -17,6 +17,12 @@ Then Submit Party with given "<TSID>"
 Then Approve the Party with given "<TSID>"
 Then Edit the deal "<TSID>"
 Then Verify Account is updated
+And Submit the deal
+Then Approve the deal from the deal checker
+Then Offboard Account from Party Maker "<TSID>"
+Then Submit Party with given "<TSID>"
+Then Approve the Party with given "<TSID>"
+Then Verify Account is offboarded in Party
 
 Examples:
       |TSID   |
