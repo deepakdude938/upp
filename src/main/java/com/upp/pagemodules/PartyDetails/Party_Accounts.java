@@ -113,4 +113,37 @@ public class Party_Accounts extends BaseClass {
 		}
 		Assert.assertTrue(accounts.contains("ICICI1205"));
 	}
+
+	public void OffBoardTheAccount(String TSID) throws Exception {
+		op.parties_Icon.click();
+		op.parties_SummaryButton.click();
+		String partyName=externalData.getFieldData(TSID, "Party", "Party Name");
+		op.parties_SearchBox.sendKeys(partyName);
+		op.parties_SearchButton.click();
+		Thread.sleep(1000);
+		op.parties_editPartyButton.click();
+		try {
+			op.parties_OkButton.click();
+		}
+		catch(Exception n) {
+		}
+		op.partyMaker_Icon.click();
+		op.partyMaker_NameTextBox.sendKeys(partyName,Keys.ENTER);
+		Thread.sleep(1000);
+		op.parties_editPartyButton1.click();
+		Thread.sleep(1000);
+		od.parties_AccountsTab.click();
+		Thread.sleep(2000);
+		WebElement acc = driver.findElement(By.xpath("//div[@title='ICICI1205']/../../..//div[@id='ic-generic-menu-showMenu-v1']"));
+		acc.click();
+		op.parties_showMenuDeleteButton.click();
+		op.PartyMaker_YesButton.click();
+		Thread.sleep(2000);
+		op.parties_OkButton.click();
+	}
+
+	public void verifyAccountIsOffBoarded() {
+		
+		
+	}
 }

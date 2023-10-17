@@ -10,7 +10,7 @@ Then Create account in Odp with details from excel sheet with given "<TSID>".
 And Create Account_One From excel sheet with given "<TSID>".
 Then Create Virtual account in ODP with given "TS84_Virtual".
 Then Call the ODP Logout Api
-Then Add Party basic_Details with given "<TSID>".
+Then Add Party Basic Details with given "<TSID>".
 Then Submit the deal
 Then Approve the deal from the deal checker
 Then Call the Attach Account Api for "<TSID>"
@@ -21,7 +21,7 @@ Then Submit the deal
 Then Approve the deal from the deal checker
 Then Call the Detach Account Api for "TS84_Detach"
 Then Edit the deal "<TSID>"
-Then Verify Virtual Account is not disable in Party "<TSID>"
+Then Verify Virtual Account is disable in Party "<TSID>"
 
 Examples:
       |TSID|

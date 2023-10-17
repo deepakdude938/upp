@@ -7,6 +7,7 @@ import java.util.Random;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import com.upp.base.BaseClass;
@@ -68,12 +69,18 @@ public class EcommerceHandler extends BaseClass {
 		System.out.println(debitorFalg);
 		
 		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
+			
+			if(TSID.equals("TS78") || TSID.equals("TS76")) {
+				Thread.sleep(5000);
+				WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../.."));
+				s.click();
+			}
+			else {
 			String hiddenClass = od.accountNumbers.getAttribute("class");
 			System.out.println(hiddenClass);
 			if (!(hiddenClass.contains("ag-hidden"))) {
 				Thread.sleep(500);
 				 debitAccount = od.ecommerceFirstAccountNo.getText();
-				 System.out.println(debitAccount);
 				jsClick.click(od.ecommerceFirstAccount);
 				Thread.sleep(2500);
 				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
@@ -85,6 +92,8 @@ public class EcommerceHandler extends BaseClass {
 				Thread.sleep(2500);
 			}
 		}
+		}
+		
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
 		if (TSID.equalsIgnoreCase("TS08")) {

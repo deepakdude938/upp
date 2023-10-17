@@ -461,7 +461,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -618,7 +618,7 @@ public class Payload extends BaseClass {
 		String utcdate = DateUtils.getCurrentDateUTC();
 		String utctimeEod = utcdate + "T" + "14:30:00Z";
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
-		jsonContext.set("$.paymentInfo.accountNumber", physical_Account_Number);
+		jsonContext.set("$.paymentInfo.accountNumber", debitAccount);
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 //		jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn", utctimeEod);

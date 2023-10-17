@@ -145,7 +145,7 @@ public class DealPartiesCreator extends BaseClass {
 		try {
 			od.parties_GetStarted.click();
 		} catch (Exception e) {
-			handleElementClickException(od.parties_GetStarted);
+			handleElementClickException(od.parties_GetStarted1);
 		}
 		
 		od.parties_AddnewParty.click();
