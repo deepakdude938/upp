@@ -1,7 +1,7 @@
-Feature: TS109
+Feature: TS109_Delete_User_role 
 
  @Regression @TS109
- Scenario Outline: OnBoard the user and verify responsibility
+ Scenario Outline: Delete_User_role 
 		Given Open browser and enter url
     Then Login to the application as "deal_maker"
     And OnBoard the user with given role for "<TSID>"
