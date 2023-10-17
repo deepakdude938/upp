@@ -55,6 +55,7 @@ public class TS07 extends BaseClass implements ICallback {
 	@Then("Add deal in ecommerce transaction maker queue {string}")
 	public void add_deal_in_ecommerce_transaction_maker_queue(String TSID) throws Exception {
 		ecommTxn.addDealAsEcommerceTxn(dealId, TSID, sourceAccount, toAccount, this);
+		
 	}
 
 	@Then("Submit the deal to ecommerce transaction checker")

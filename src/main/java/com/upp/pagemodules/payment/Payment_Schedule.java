@@ -107,7 +107,7 @@ public class Payment_Schedule extends BaseClass {
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 
-		if (externalData.getFieldData(TSID, "Scheduled", "Beneficiary Country Of Incorporation").trim().equalsIgnoreCase("GB")) {
+		if ((TSID.equalsIgnoreCase("TS105")) || (TSID.equalsIgnoreCase("TS108"))) {
 
 			dropdown.selectByVisibleText(od.payments_TimeZone, "Asia/Calcutta (GMT+05:30)");
 			String time = dateutil.getTimeAfterMins(8);

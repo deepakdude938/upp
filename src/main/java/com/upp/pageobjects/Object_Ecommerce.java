@@ -49,7 +49,7 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//button[normalize-space()='Next']")
 	public WebElement ecommerce_NextButton;
 
-	@FindBy(xpath = "(//div[@aria-colindex='3']//input)[2]")
+	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
 	public WebElement ecommerce_TxnSearch;
 
 	@FindBy(xpath = "//div[contains(@class,'ui-icon-add')]")
@@ -67,6 +67,13 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//button[normalize-space()='Submit']")
 	public WebElement ecommerce_SubmitBtn;
 
+	@FindBy(xpath = "//button[normalize-space()='Search']")
+	public WebElement ecommerce_SearchBtn;
+
+
+	@FindBy(xpath = "//input[@type='radio']")
+	public WebElement ecommerce_debitAccount;
+	
 	// Object for basic details on ecomm treansaction maker
 	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']")
 	public WebElement ecommerce_purpose;
@@ -85,10 +92,10 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "//div[contains(text(),'All')]/..//span[@class='ui-pseudo-checkbox']")
 	public WebElement ecommerce_AllRecordsCheckBox;
-	
+
 	@FindBy(xpath = "//div[contains(@class,'loader') and not(contains(@class,'xcro-loader'))]")
 	public WebElement ecommerce_Loader;
-	
+
 	// Object for Sub instruction on ecomm treansaction maker
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-fdt-participant-id-v1']//input[@placeholder='Creditor Participant Id']")
 	public WebElement ecommerce_creatorParticipant;
@@ -172,12 +179,11 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONCHECKER']")
 	public WebElement ecommerce_txnChecker;
 
-
 //	@FindBy(xpath = "(//div[@aria-colindex='4']//input)[2]")
 //	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
-	@FindBy(xpath =  "(//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement ecommerce_TxnDealSearch;
-	
+
 	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
 //	@FindBy(css = "xcro-wrapper.theme-wrapper:nth-child(1) xcro-protected.ng-tns-c433-0.ng-star-inserted:nth-child(2) div.ui-wrapper-container.ng-tns-c433-0 div.ui-wrapper-ct.ui-col-md-12.ng-tns-c433-0 div.ui-content-ct.ng-tns-c433-0 div.ui-content.ng-tns-c433-0 xcro-deal-management.ng-star-inserted xcro-transaction-list.ng-star-inserted:nth-child(2) div.ui-section-row div.ui-section-row div.ui-section-row.ng-star-inserted div.ui-section-row div.ui-section-body div.ui-section-container ag-grid-angular.ag-theme-balham.custom-ag-grid-list.list-new.ng-star-inserted div.ag-root-wrapper.ag-layout-normal.ag-ltr div.ag-root-wrapper-body.ag-layout-normal div.ag-root.ag-unselectable.ag-layout-normal div.ag-header.ag-pivot-off div.ag-header-viewport div.ag-header-container div.ag-header-row:nth-child(2) div.ag-header-cell:nth-child(2) div.ag-floating-filter-body div.ag-input-wrapper > input.ag-floating-filter-input")
 	public WebElement ecommerce_TxnDealSearch1;

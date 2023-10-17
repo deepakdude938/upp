@@ -35,6 +35,11 @@ public class TS70 extends BaseClass {
 	public void create_Budget_Consolidated_Yearly_with_given(String string) throws Exception {
 		budget.CreateBudget_Consolidated_Yearly(string, DealPage.sourceAccountNo, DealPage.toaccountNo);
 	}
+	
+	@Then("Create Budget_Consolidated_Yearly for 1 account with given {string}")
+	public void create_Budget_Consolidated_Yearly_with_1_account__given(String string) throws Exception {
+		budget.CreateBudget_Consolidated_Yearly(string, DealPage.AccountNo1, DealPage.AccountNo1);
+	}
 
 	@Then("Create odp json payload file with DealId with given {string}")
 	public void create_odp_json_payload_file_for_TS70_with_given(String string) throws Exception {

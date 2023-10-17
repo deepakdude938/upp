@@ -1,6 +1,7 @@
 package com.upp.pagemodules.payment;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -17,6 +18,8 @@ import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
+
+import junit.framework.Assert;
 
 public class Payment_Alerts extends BaseClass {
 
@@ -83,6 +86,33 @@ public class Payment_Alerts extends BaseClass {
 		Thread.sleep(4000);
 		op.Alerts_nextBtn.click();
 		Thread.sleep(4000);
+
+	}
+
+	public void verifyMessageAndSchedule() throws Exception {
+		int flag =0;
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
+		od.payments_ScheduledInstructionIcon.click();
+		System.out.println("Scedule working fine");
+		op.Alerts_Menu.click();
+		op.Alerts_Edit.click();
+		op.Alert_message.clear();
+		op.Alert_message.sendKeys("Test");
+		op.Alerts_basicDetailsNext.click();
+		Thread.sleep(4000);
+		op.Alerts_Frequency.click();
+		op.Alerts_weeklyFrequency.click();
+		Thread.sleep(4000);
+		op.Alerts_weeklyDayFrequency.click();
+		Thread.sleep(4000);
+		op.Alerts_nextBtn.click();
+		Thread.sleep(4000);
+		Assert.assertEquals(op.Alerts_summaryMessage.getText(),"Test");
+		if(op.Alerts_summarySchedule.getText().contains("MON")) {
+			flag=1;
 		}
+		Assert.assertEquals(flag, 1);
+
+	}
 
 }

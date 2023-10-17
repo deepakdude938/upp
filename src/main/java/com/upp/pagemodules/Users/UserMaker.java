@@ -9,6 +9,7 @@ import org.apache.bcel.generic.Select;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
@@ -21,6 +22,8 @@ import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
+
+import junit.framework.Assert;
 
 public class UserMaker extends BaseClass {
 
@@ -44,8 +47,7 @@ public class UserMaker extends BaseClass {
 	}
 
 	public void onBoardUser(String TSID) throws Exception {
-		String excelFilePath = System.getProperty("user.dir")
-				+ "//src//main//resources//upp-automation-testdata.xlsx";
+		String excelFilePath = System.getProperty("user.dir") + "//src//main//resources//upp-automation-testdata.xlsx";
 		scroll.scrollInToView(ou.usersTab);
 		ou.usersTab.click();
 		ou.userMaker.click();
@@ -67,13 +69,12 @@ public class UserMaker extends BaseClass {
 		Thread.sleep(1000);
 		try {
 			ou.userMaker_editIcon.click();
-			
 
 		} catch (Exception e) {
 			ou.userMaker_addIcon.click();
 
 		}
-		
+
 		ou.usersActive.click();
 		ou.userMaker_phoneNumberTxt.clear();
 		ou.userMaker_phoneNumberTxt.sendKeys("9890986754");
@@ -89,18 +90,45 @@ public class UserMaker extends BaseClass {
 		}
 		ou.userMaker_Role.click();
 		dropdown.selectByVisibleText(ou.userMaker_Role, "Deal Maker");
-		
+
 		ou.userMaker_processingunit.click();
 		String processingUnit = "Bangalore CPU";
 		By processingunitButton = By.xpath("//div[text()='" + processingUnit + "']");
 		applyExplicitWaitsUntilElementVisible(processingunitButton, 10);
 		driver.findElement(processingunitButton).click();
+		//ou.userMaker_processingunit.click();
+		String processingUnit1 = "Mumbai HO";
+		By processingunitButton1 = By.xpath("//div[text()='" + processingUnit1 + "']");
+		applyExplicitWaitsUntilElementVisible(processingunitButton1, 10);
+		driver.findElement(processingunitButton1).click();
 		try {
 			applyExplicitWaitsUntilElementClickable(ou.userMaker_onboard, Duration.ofSeconds(20));
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		ou.plusIcon.click();
+		Thread.sleep(2000);
+		ou.userMaker_Role.click();
+		dropdown.selectByVisibleText(ou.userMaker_Role1, "Deal Checker");
+
+		ou.userMaker_processingunit1.click();
+		String processingUnitc = "Bangalore CPU";
+		By processingunitButtonc = By.xpath("(//div[text()='" + processingUnitc + "'])[2]");
+		applyExplicitWaitsUntilElementVisible(processingunitButtonc, 10);
+		driver.findElement(processingunitButtonc).click();
+		//ou.userMaker_processingunit.click();
+		String processingUnitc1 = "Mumbai HO";
+		By processingunitButtonc1 = By.xpath("(//div[text()='" + processingUnitc1 + "'])[2]");
+		applyExplicitWaitsUntilElementVisible(processingunitButtonc1, 10);
+		driver.findElement(processingunitButtonc1).click();
+		try {
+			applyExplicitWaitsUntilElementClickable(ou.userMaker_onboard, Duration.ofSeconds(20));
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		ou.userMaker_onboard.click();
 		Thread.sleep(3000);
 		ou.userMaker_ok.click();
@@ -148,5 +176,43 @@ public class UserMaker extends BaseClass {
 		ou.userMaker_onboard.click();
 		ou.userMaker_ok.click();
 
+	}
+	
+	public void verifyDeletedRole(String TSID) throws Exception {
+		int flag =0;
+		String excelFilePath = System.getProperty("user.dir") + "//src//main//resources//upp-automation-testdata.xlsx";
+		scroll.scrollInToView(ou.usersTab);
+		ou.usersTab.click();
+		ou.userMaker.click();
+		Thread.sleep(5000);
+		ou.userMaker_directory.click();
+		Thread.sleep(2000);
+		ou.userMaker_search.click();
+		Thread.sleep(3000);
+		ou.userMaker_search.sendKeys(externalData.getFieldData(TSID, "Users", "UserName"));
+		ou.userMaker_searchIcon.click();
+		String username = ou.userMaker_userList.getAttribute("title");
+		System.out.println("user name = " + username);
+		excel.writeDataToExcel(excelFilePath, "Users", 2, "UserName", username);
+		excel.writeDataToExcel(excelFilePath, "Users", 2, "Password", username);
+		ou.userMaker_search.clear();
+		Thread.sleep(1000);
+		ou.userMaker_search.click();
+		ou.userMaker_search.sendKeys(username);
+		Thread.sleep(1000);
+		try {
+			ou.userMaker_editIcon.click();
+
+		} catch (Exception e) {
+			ou.userMaker_addIcon.click();
+
+		}
+		
+		String role = dropdown.getSelectedValue(ou.userMaker_Role);
+		if(!role.equalsIgnoreCase("Deal Maker")) {
+			flag =1;
+		}
+
+		Assert.assertEquals(flag, 1);
 	}
 }
