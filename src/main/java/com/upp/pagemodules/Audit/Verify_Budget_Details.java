@@ -134,6 +134,8 @@ public class Verify_Budget_Details extends BaseClass {
 	 
 		String Utilized_budget=audit.Budget_Amount_Utilized.getText();
 		
+		System.out.println("The Utilized budget is:"+Utilized_budget);
+		
 	    
 		Assert.assertEquals(Utilized_budget,externalData.getFieldData(TSID,"Audit","Amount Utilized"));
 	

@@ -904,6 +904,12 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement Payment_Beneficiaryaccno;
 	
+	@FindBy(id="payment-creditRemittanceInformation-txt-v1")
+	public WebElement Payment_debitRemittanceInformation;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	public WebElement Payment_Beneficiaryaccno_with_budget;
+	
 	@FindBy(id="payment-beneficiaryCountry-sel-v1")
 	public WebElement Payment_beneficiaryCountry;
 	
@@ -1139,6 +1145,9 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//span[@id='lbl-deals-addUpdateBudget-availableAmount-v1'])[2]")
 	public WebElement Utilized_Budget_Amount;
+	
+	@FindBy(id="ic-deals-addUpdateBudget-close-v1")
+	public WebElement Budget_Close_button;
 	
 	@FindBy(id="txt-deals-addUpdateBudget-available-v1")
 	public WebElement Available_Budget_Amount;

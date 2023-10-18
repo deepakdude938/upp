@@ -1085,7 +1085,38 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println("The settled amount status records are:"+settledAmountrecords.toString());
 	}
 	
+	public void commonmethodBudget_Utilization_Report(String TSID, String DealId) throws Exception {
+
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_BUDGET_UTILIZATION_REPORT, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_BUDGET_UTILIZATION_REPORT);
+
+		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
+		tm.reports_DealId.sendKeys(DealId);
+		Thread.sleep(8000);
+		
+	}
 	
+	public void check_Utilized_Budget_in_Budget_Utilization_Report(String TSID, String DealId) throws Exception {
+
+		commonmethodBudget_Utilization_Report(TSID, DealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Utilized_Budget_ColName, tm.reports_horizontalWindow1,10, 1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_Utilized_Budget_Amount, Duration.ofSeconds(10));
+		String UtilzedAmount=tm.reports_Utilized_Budget_Amount.getText();
+		System.out.println("The Utlized Budget amount in Budget Utilization report:"+UtilzedAmount);
+     
+		Assert.assertEquals(UtilzedAmount,"10000");
+		
+	
+		
+
+	}
 
 
 }

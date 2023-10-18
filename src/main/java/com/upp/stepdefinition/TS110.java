@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
+import com.upp.pagemodules.Budget;
 import com.upp.pagemodules.DashBoard_Module;
 import com.upp.pagemodules.Audit.Verify_Budget_Details;
 
@@ -31,12 +32,16 @@ public class TS110 extends BaseClass {
 	DealPage dp;
 	public static String TnxId = "";
 	Verify_Budget_Details vb;
+	Reports_ExecutionReport report;
+	Budget budget;
 	
 
 	public TS110() {
 
 		this.dm = new DashBoard_Module();
 		vb=new Verify_Budget_Details();
+		report=new Reports_ExecutionReport();
+		budget=new Budget();
 	}
 
 	
@@ -53,5 +58,16 @@ public void check_the_Utilized_budget_amount_in_Audit_Budget_Tab_with_given(Stri
 	System.out.println("the TSID is:"+string);
     vb.verify_Utilized_details_In_AuditTab(TS06.dealId, string);
 }
+
+@Then("Check the Utilized budget amount in Budget_Utilization_Report with given {string}")
+public void check_the_Utilized_budget_amount_in_Budget_Utilization_Report_with_given(String string) throws Exception {
+   report.check_Utilized_Budget_in_Budget_Utilization_Report(string,TS06.dealId);
+}
+
+@Then("Edit the deal and Check the Utilized budget amount in BudgetTab with given {string}")
+public void edit_the_deal_and_Check_the_Utilized_budget_amount_in_BudgetTab_with_given(String string) throws Exception {
+    budget.edit_Deal_And_Verify_Utilized_Budget_Available_Budget_For_GB_Account(string,TS06.dealId);
+}
+
 	
 }

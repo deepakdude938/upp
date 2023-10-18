@@ -20,6 +20,16 @@ Then Login to the application as "txn_checker"
 And Check the Transaction staus in execution report with given "<TSID>"
 Then Wait for 3 mins
 And Check the Utilized budget amount in Audit_Budget Tab with given "<TSID>"
+Then Check the Utilized budget amount in Budget_Utilization_Report with given "<TSID>"
+And Edit the deal and Check the Utilized budget amount in BudgetTab with given "<TSID>"
+And Create payment_BasicDetails in the scheduled Instructions with given "<TSID>"
+And Create payment_Schedule in the scheduled Instructions with given "<TSID>"
+And Create payment_SubInstruction in the scheduled Instructions with given "<TSID>"
+Then submit the deal
+Then Create odp json payload file with DealId with given "<TSID>"
+And Create record in ODP "<TSID>"
+Then approve the deal from the deal checker common method
+And Check the Transaction staus in execution report with given "<TSID>"
 Examples:
       |TSID|
       |TS110|

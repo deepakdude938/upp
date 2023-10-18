@@ -11,7 +11,7 @@ Then Call the ODP Logout Api
 And Create Account_One From excel sheet with given "<TSID>".
 And Create payment_BasicDetails in the scheduled Instructions with given "<TSID>"
 And Create payment_Schedule in the scheduled Instructions with given "<TSID>"
-And Create payment_SubInstruction in the scheduled Instructions with given "TS108"
+And Create payment_SubInstruction in the scheduled Instructions with given "<TSID>"
 And Create payment_SubInstruction in the scheduled Instructions with given "TS108_1"
 And Create payment_SubInstruction in the scheduled Instructions with given "TS108_2"
 And Create payment_SubInstruction in the scheduled Instructions with given "TS108_3"
