@@ -107,6 +107,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@col-id='Settled Amount' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_SettledAmountList;
 	
+	@FindBy(xpath = "//div[@col-id='Utilized Budget' and contains(@class,'ag-cell-not-inline-editing')]")
+	public WebElement reports_Utilized_Budget_Amount;
+	
 	@FindBy(xpath = "//div[@col-id='SCROE Status' and not(contains(@class,'header'))] | //div[@col-id='Settled Status' and not(contains(@class,'header'))]")
 	public List<WebElement> reports_ScroeStatusRecords;
 	
@@ -137,6 +140,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//div[starts-with(text(),'Execution Report')]")
 	public WebElement reports_ExecutionReport;
+	
+	@FindBy(xpath = "//div[contains(text(),'Budget Utilization Report')]")
+	public WebElement reports_BUDGET_UTILIZATION_REPORT;
 
 	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement reports_DealId;
@@ -222,6 +228,9 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "//div[@col-id='Settled Amount']")
 	public WebElement reports_SettledAmount;
+	
+	@FindBy(xpath = "//div[@col-id='Utilized Budget']")
+	public WebElement reports_Utilized_Budget_ColName;
 
 	@FindBy(xpath = "(//div[@class='ag-body-horizontal-scroll-viewport'])[1]")
 	public WebElement reports_horizontalWindow;
@@ -318,6 +327,18 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "//span[normalize-space()='Original Amount']")
 	public WebElement reports_OriginalAmountColoumnName;
+	
+	@FindBy(xpath = "//span[normalize-space()='Source Account Number']")
+	public WebElement reports_SourceAccountNumberColumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Source Account Number' and not(contains(@class,'ag-header-cell'))]")
+	public WebElement reports_SourceAccountNumberValue;
+	
+	@FindBy(xpath = "//span[normalize-space()='Beneficiary Account Number']")
+	public WebElement reports_BeneficiaryAccountNumberColumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Beneficiary Account Number' and not(contains(@class,'ag-header-cell'))]")
+	public WebElement reports_BeneficiaryAccountNumberValue;
 	
 	@FindBy(xpath = "//div[@col-id='Transfer Info' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_TransferInfo;

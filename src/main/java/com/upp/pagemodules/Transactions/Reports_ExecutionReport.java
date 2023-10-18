@@ -565,14 +565,20 @@ public class Reports_ExecutionReport extends BaseClass {
 		
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumnName,
 				tm.reports_horizontalWindow1, 10, 1000);
+		try {
+			System.out.println(tm.reports_OriginalAmountColumnName.isDisplayed());
+		}
+		catch(Exception e) {
+			System.out.println("reversing scrolling");
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumnName,
+					tm.reports_horizontalWindow1, 10, -1000);
+		}
 		ArrayList<String> originalAmount = new ArrayList();
 		for (WebElement iu : tm.reports_OriginalAmountRecords) {
 
 			originalAmount.add(iu.getText());
 			System.out.println(iu.getText());
 		}
-
-		
 
 		LinkedHashMap<String, String> expectedOriginalAmount = new LinkedHashMap();
 		expectedOriginalAmount.put("Payment", "100");
@@ -611,6 +617,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");
+		
 	}
 
 	public void validateassertionInExecutionReport(String TSID) throws Exception {
@@ -1085,7 +1092,73 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println("The settled amount status records are:"+settledAmountrecords.toString());
 	}
 	
+	public void commonmethodBudget_Utilization_Report(String TSID, String DealId) throws Exception {
+
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("Execution Report");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_BUDGET_UTILIZATION_REPORT, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_BUDGET_UTILIZATION_REPORT);
+
+		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
+		tm.reports_DealId.sendKeys(DealId);
+		Thread.sleep(8000);
+		
+	}
 	
+	public void check_Utilized_Budget_in_Budget_Utilization_Report(String TSID, String DealId) throws Exception {
 
+		commonmethodBudget_Utilization_Report(TSID, DealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Utilized_Budget_ColName, tm.reports_horizontalWindow1,10, 1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_Utilized_Budget_Amount, Duration.ofSeconds(10));
+		String UtilzedAmount=tm.reports_Utilized_Budget_Amount.getText();
+		System.out.println("The Utlized Budget amount in Budget Utilization report:"+UtilzedAmount);
+     
+		Assert.assertEquals(UtilzedAmount,"10000");
+		
+	
+		
 
+	}
+
+	public void eCommExecutionsReport_Status(String endToEndId, String TSID) throws Exception {
+
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		jsClick.click(tm.reports_ReportsIcon);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		jsClick.click(tm.reports_ReportsInternal);
+		Thread.sleep(2000);
+		scroll.scrollInToView(tm.reports_eCommExecutionsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		jsClick.click(tm.reports_eCommExecutionsList);
+		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
+		Thread.sleep(3000);
+		tm.reports_End_To_End_common.sendKeys(endToEndId);
+		Thread.sleep(3000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
+
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+		Thread.sleep(2000);
+		String status = tm.reports_FirstTxnStatus.getText();
+		System.out.println("The status is:" + status);
+		Assert.assertEquals(status, "Scheduled");
+		
+		if(TSID.equals("TS107") || TSID.equals("TS107_1")) {
+			System.out.println(accountMap);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_BeneficiaryAccountNumberColumnName, tm.reports_horizontalWindow1, 10,
+					1000);
+			Thread.sleep(2000);
+			String account = tm.reports_BeneficiaryAccountNumberValue.getText();
+			String networkKeyAccount = accountMap.get("Computer");
+			Assert.assertEquals(account, networkKeyAccount);
+			
+		}
+	}
 }
