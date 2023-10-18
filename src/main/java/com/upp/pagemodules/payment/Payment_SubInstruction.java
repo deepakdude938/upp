@@ -147,6 +147,14 @@ public class Payment_SubInstruction extends BaseClass {
 
 	public void createPayments_Subinstruction_without_Party_Added(String TSID, String sourceAccountno,
 			String toaccountNo) throws Exception {
+		
+		if (TSID.equalsIgnoreCase("TS108")) {
+
+			if (commonutils.isElementDisplayed(od.payments_Split_By_percentage_Text, 2)) {
+				od.payments_Split_By_percentage_Slider.click();
+				Thread.sleep(2500);
+			}
+		}
 
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 		try {
@@ -155,18 +163,18 @@ public class Payment_SubInstruction extends BaseClass {
 			handleElementClickException(od.payments_Instrument);
 		}
 		Thread.sleep(500);
+		
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
 		driver.findElement(paymentInstrument).click();
 
-		if (TSID.equalsIgnoreCase("TS108")) {
-
-			if (commonutils.isElementDisplayed(od.payments_Split_By_percentage_Text, 2)) {
-				od.payments_Split_By_percentage_Slider.click();
-				Thread.sleep(1500);
+		
+		if (TSID.equalsIgnoreCase("TS110")) {
+			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno_with_budget, Duration.ofSeconds(5));
+			od.Payment_Beneficiaryaccno_with_budget.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
 
 			}
-		}
+		
 
 		if (TSID.equalsIgnoreCase("TS72")) {
 			String budget = externalData.getFieldData(TSID, "Scheduled", "Budget Purpose");
@@ -205,6 +213,10 @@ public class Payment_SubInstruction extends BaseClass {
 					applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
 					scroll.scrollInToView(od.Payment_Beneficiaryaccno);
 					od.Payment_Beneficiaryaccno.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
+					scroll.scrollInToView(od.Payment_debitRemittanceInformation);
+					applyExplicitWaitsUntilElementClickable(od.Payment_debitRemittanceInformation, Duration.ofSeconds(5));
+					od.Payment_debitRemittanceInformation.click();
+					Thread.sleep(2500);
 
 				}
 			}

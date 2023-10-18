@@ -776,6 +776,89 @@ public class Budget extends BaseClass {
 		return dealRefId;
 
 	}
+	
+	public void edit_Deal_And_Verify_Utilized_Budget_Available_Budget_For_GB_Account(String TSID, String DealID) throws Exception {
+		
+		 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
+		 od.deal_SideMenuIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.liveDealIcon,Duration.ofSeconds(15));
+		 od.liveDealIcon.click();
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
+		 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+		 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
+		 od.dealChecker_searchBar.sendKeys(DealID);
+		 Thread.sleep(4000);
+		 od.dealChecker_searchButton.click();
+		 Thread.sleep(3000);
+		 applyExplicitWaitsUntilElementClickable( od.dealChecker_showMenu,Duration.ofSeconds(30));
+		 od.dealChecker_showMenu.click();
+		 applyExplicitWaitsUntilElementClickable(od.deal_EditIcon,Duration.ofSeconds(20));
+		 od.deal_EditIcon.click();
+		 if(commonutils.isElementDisplayed(od.deal_Edit_Yes_Button,2))
+		 {
+			 od.deal_Edit_Yes_Button.click();
+		 }
+				 
+		 if(commonutils.isElementDisplayed(od.AlreadyExistPopup,2))
+		 {
+			 applyExplicitWaitsUntilElementClickable(od.account_OK_Button,Duration.ofSeconds(15));
+			 od.account_OK_Button.click();
+			 try {
+				 applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon,Duration.ofSeconds(15));
+				 od.deal_SideMenuIcon.click();
+			 }
+			 catch(Exception e) {
+					handleElementClickException(od.deal_SideMenuIcon);
+			     }
+			 
+			 applyExplicitWaitsUntilElementClickable(od.DealDraftsIcon,Duration.ofSeconds(15));
+			 od.DealDraftsIcon.click();
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect,Duration.ofSeconds(25));
+			 dropdown.selectByVisibleText(od.dealChecker_searchSelect,"Deal Id");
+			 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
+			 od.dealChecker_searchBar.sendKeys(DealID);
+			 Thread.sleep(4000);
+			 od.dealChecker_searchButton.click();
+			 Thread.sleep(3000);
+			 od.dealChecker_searchButton.click();
+			 Thread.sleep(4000);
+			 od.dealChecker_searchButton.click();
+			Thread.sleep(4000);
+			applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
+			od.dealChecker_showMenu.click();
+			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
+			 od.DealDraftsOpen.click();
+			 
+		 }
+			 
+		 applyExplicitWaitsUntilElementClickable(od.budget_BudgetIcon,Duration.ofSeconds(20));
+		
+		 try {
+			 od.budget_BudgetIcon.click();
+		 }
+		catch(Exception e) {
+			handleElementClickException( od.budget_BudgetIcon);
+	     }
+		 
+		 By Budget=By.xpath("//div[@title='"+TSID+"']");
+		 applyExplicitWaitsUntilElementVisible(Budget,10);
+		 driver.findElement(Budget).click();
+		 
+		 By AllocatedBudgetAmount=By.xpath("//td[@class='dir_col_small ui-text-m semi ui-ripple ng-star-inserted'] | //td[@class='dir_col_large ui-text-m semi ui-ripple date-range ng-star-inserted']");
+		 applyExplicitWaitsUntilElementVisible(AllocatedBudgetAmount,10);
+		 js.click(driver.findElement(AllocatedBudgetAmount));
+		 Thread.sleep(2000);
+		 
+		String utilized_Budget= od.Utilized_Budget_Amount.getText();
+		
+		System.out.println("The Utilized budget in Budget Tab is "+utilized_Budget);
+		
+		Assert.assertEquals(utilized_Budget,externalData.getFieldData(TSID,"Audit","Amount Utilized"));
+		
+		 applyExplicitWaitsUntilElementClickable(od.Budget_Close_button,Duration.ofSeconds(20));
+		 od.Budget_Close_button.click();
+		 Thread.sleep(1000);
+	}
 
 	public void createJsonPayloadFile(String TSID) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(15));
