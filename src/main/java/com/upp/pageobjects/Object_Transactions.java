@@ -328,6 +328,18 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//span[normalize-space()='Original Amount']")
 	public WebElement reports_OriginalAmountColoumnName;
 	
+	@FindBy(xpath = "//span[normalize-space()='Source Account Number']")
+	public WebElement reports_SourceAccountNumberColumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Source Account Number' and not(contains(@class,'ag-header-cell'))]")
+	public WebElement reports_SourceAccountNumberValue;
+	
+	@FindBy(xpath = "//span[normalize-space()='Beneficiary Account Number']")
+	public WebElement reports_BeneficiaryAccountNumberColumnName;
+	
+	@FindBy(xpath = "//div[@col-id='Beneficiary Account Number' and not(contains(@class,'ag-header-cell'))]")
+	public WebElement reports_BeneficiaryAccountNumberValue;
+	
 	@FindBy(xpath = "//div[@col-id='Transfer Info' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_TransferInfo;
 	

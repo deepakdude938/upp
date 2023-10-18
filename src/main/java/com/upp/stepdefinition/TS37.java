@@ -100,7 +100,7 @@ public class TS37 extends BaseClass {
 	
 	@Then("Edit the account and select Participant OBO Responsibility with given {string}.")
 	public void edit_the_account_and_select_Participant_OBO_Responsibility_with_given(String string) throws Exception {
-		 edit.EditParticipantOBOResponsibilty_In_Account(string);
+		 edit.EditParticipantIDOBOResponsibilty_In_Account(string);
 	}
 
 }

@@ -43,7 +43,7 @@ public class TS84 {
 	  api.detachAccountApi(TSID);
 	}
 	
-	@Then("Verify Virtual Account is not disable in Party {string}")
+	@Then("Verify Virtual Account is disable in Party {string}")
 	public void verify_Virtual_Account_is_not_disable_in_Party(String TSID) throws Exception {
 		api.verifyVirtualAccountisDisableInParty(TSID);
 	}

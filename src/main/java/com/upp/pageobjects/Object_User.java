@@ -50,9 +50,16 @@ public class Object_User extends BaseClass {
 
 	@FindBy(xpath = "//select[@id='sel-perms-users-onBoardUpdate-roles-v1']")
 	public WebElement userMaker_Role;
+	
+	@FindBy(xpath = "(//ui-dropdown[@placeholder='Select roles']//select)[2]")
+	public WebElement userMaker_Role1;
+	
 
 	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1']")
 	public WebElement userMaker_processingunit;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
+	public WebElement userMaker_processingunit1;
 
 	@FindBy(xpath = "//button[@id='btn-perms-users-onBoardUpdate-updateOnboard-v1']")
 	public WebElement userMaker_onboard;
@@ -68,6 +75,9 @@ public class Object_User extends BaseClass {
 	
 	@FindBy(xpath = "//a[@href='/user/onboarded']")
 	public WebElement onBoardusers;
+	
+	@FindBy(xpath = "//span[contains(@class,'icon-plus')]")
+	public WebElement plusIcon;
 	
 
 	// objects for user checker

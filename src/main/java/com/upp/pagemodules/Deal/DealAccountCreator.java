@@ -68,6 +68,11 @@ public class DealAccountCreator extends BaseClass {
 		accDetails = odpAccount.popelmnt(OdpApi.stack1);
 		System.out.println("the account no is" + accDetails.getAccno());
 		String accountNo = accDetails.getAccno();
+		try {
+		accountList.add(accountNo);
+		}
+		catch(Exception c) {
+		}
 		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
 		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
 		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
@@ -112,10 +117,7 @@ public class DealAccountCreator extends BaseClass {
 			dropdown.selectByVisibleText(od.physical, "Virtual");
 		}
 
-	
-
 		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
-
 		od.searchTextBox.sendKeys(accountNo);
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
@@ -147,11 +149,8 @@ public String OnBoard_Virtual_Account(String TSID) throws Exception {
 		} else {
 			dropdown.selectByVisibleText(od.physical, "Virtual");
 		}
-
-	
-
+		
 		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
-
 		od.searchTextBox.sendKeys(accountNo);
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));

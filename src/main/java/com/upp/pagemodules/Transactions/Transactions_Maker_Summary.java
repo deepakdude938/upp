@@ -87,4 +87,32 @@ public class Transactions_Maker_Summary extends BaseClass {
 		
 	}
 
+	public String Transaction_Maker_Summary1() throws Exception
+	{
+		
+		 scroll.scrollInToView(tm.transactions_ProceedToSummary);
+		 applyExplicitWaitsUntilElementClickable(tm.transactions_ProceedToSummary,Duration.ofSeconds(5));
+		 tm.transactions_ProceedToSummary.click();
+		 scroll.scrollInToView(tm.transactions_SummarySubmitButton);
+		 applyExplicitWaitsUntilElementClickable(tm.transactions_SummarySubmitButton,Duration.ofSeconds(5));
+		 jsClick.click(tm.transactions_SummarySubmitButton);
+		 tm.transactions_Ok.click();
+		 Thread.sleep(3000);
+		 tm.transactions_SummarySubmitButton.click();
+		 applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton,Duration.ofSeconds(15));
+		 tm.transactions_YesButton.click();
+		 Thread.sleep(2000);
+//		 tm.transactions_Ok.click();
+//		 Thread.sleep(3000);
+//		 tm.transactions_SummarySubmitButton.click();
+//		 applyExplicitWaitsUntilElementClickable(tm.transactions_Ok,Duration.ofSeconds(15));
+		 String transactionSubmitMessage=tm.transactions_TransactionsId.getText();
+		 String transactionMessage[]=transactionSubmitMessage.split(" ");
+		 String TnxId=transactionMessage[1];
+		 System.out.println("The Tnx id is "+TnxId);
+		 tm.transactions_Ok.click();
+		 
+		return TnxId;
+		
+	}
 }

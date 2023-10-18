@@ -3,6 +3,7 @@ package com.upp.pagemodules.Parties_Maker_Checker;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
@@ -102,7 +103,16 @@ public class Party_Maker_Accounts extends BaseClass {
 		Thread.sleep(1000);
 		od.parties_AccountsTab.click();
 		Thread.sleep(2000);
-		op.parties_showMenu.click();
+		if(TSID.equals("TS107") || TSID.equals("TS107_1")) {
+			Thread.sleep(2000);
+			String networkKeyAccount = accountMap.get("Computer");
+			WebElement e = driver.findElement(By.xpath("//div[@title='"+networkKeyAccount+"']//following::div[@id='ic-generic-menu-showMenu-v1']"));
+			e.click();
+		}
+		else {
+			op.parties_showMenu.click();
+		}
+		
 		op.parties_showMenuEditButton.click();
 		
 		scroll.scrollInToView(od.parties_paymentTo);
@@ -110,8 +120,14 @@ public class Party_Maker_Accounts extends BaseClass {
 		od.parties_paymentTo.sendKeys(Keys.CONTROL + "a");
 		od.parties_paymentTo.sendKeys(Keys.BACK_SPACE);
 		od.parties_paymentTo.sendKeys("ICICI1205");
+		if(TSID.equals("TS107") || TSID.equals("TS107_1")) {
+			accountMap.put("Computer", "ICICI1205");
+		}
 		scroll.scrollInToView(od.saveButton);
 		od.saveButton.click();
+		if(TSID.equals("TS107") || TSID.equals("TS107_1")) {
+			op.PartyMaker_YesButton.click();
+		}
 		op.parties_OkButton.click();
 	}
 }

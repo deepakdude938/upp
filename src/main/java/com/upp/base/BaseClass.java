@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.MalformedURLException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
@@ -40,11 +43,13 @@ public class BaseClass {
 	public static String physical_Account_Number;
 	public static int phonenumber = 0;
 	public static String debitAccount ;
-
 	public static String endToEndIdRule="";
 	public static  String batchId = "";
+	public static String endToEndId;
 	public static String endToEndIdAssertion="";
 	public boolean isFlexibleFunding;
+	public static  List<String> accountList ;
+	public static  LinkedHashMap<String,String> accountMap ;
 
 	public WebDriver initialize() throws Exception {
 		
@@ -53,7 +58,8 @@ public class BaseClass {
 		prop.load(fis);
 		String browser = prop.getProperty("browser");
 //		isHeadLess = true;
-		
+		accountList=new LinkedList<String>();
+		accountMap=new LinkedHashMap<>();
 		String env = prop.getProperty("env");
 		switch(env.toLowerCase()) {
 		

@@ -28,11 +28,12 @@ public class Rule_Map_VA_PA_ParticipantId extends BaseClass{
 				.post("transaction/api/transaction");
 
 		response = res.then().extract().asString();
+		JsonPath js = new JsonPath(response);
 		System.out.println( response);
 		System.out.println("the status code is" + res.getStatusCode());
-
+		System.err.println(js.getString("errors[0].message"));
 		if (res.getStatusCode() == 400) {
-			JsonPath js = new JsonPath(response);
+			
 			String ExpectederrorMessage = js.getString("errors[0].message");
 			Assert.assertEquals(ExpectederrorMessage, ActualErrorMessage);
 

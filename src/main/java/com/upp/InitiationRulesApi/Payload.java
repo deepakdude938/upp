@@ -133,8 +133,9 @@ public class Payload extends BaseClass {
 		String uniquePlatformRefNo = "PlatformRef" + random;
 
 		String utcdate = DateUtils.getCurrentDateUTC();
-
-		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
+		
+		String utctimeEod = utcdate + "T" + plus2mins;
 
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
@@ -219,8 +220,9 @@ public class Payload extends BaseClass {
 		String uniquePlatformRefNo = "PlatformRef" + random;
 
 		String utcdate = DateUtils.getCurrentDateUTC();
+		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
 
-		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		String utctimeEod = utcdate + "T" + plus2mins;
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
@@ -459,7 +461,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -548,7 +550,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
 		String modifiedJsonString1 = jsonContext.jsonString();
-		System.out.println(modifiedJsonString1);
+//		System.out.println(modifiedJsonString1);
 		return modifiedJsonString1;
 
 	}
@@ -616,7 +618,7 @@ public class Payload extends BaseClass {
 		String utcdate = DateUtils.getCurrentDateUTC();
 		String utctimeEod = utcdate + "T" + "14:30:00Z";
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
-		jsonContext.set("$.paymentInfo.accountNumber", physical_Account_Number);
+		jsonContext.set("$.paymentInfo.accountNumber", debitAccount);
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 //		jsonContext.set("$.creditTransactionInfo[1].requestedExecutionOn", utctimeEod);

@@ -4,18 +4,19 @@ import java.io.IOException;
 
 import com.upp.Api.utils.AttachDetach_Account_Api;
 import com.upp.Api.utils.TransactionApi;
+import com.upp.base.BaseClass;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 
 import io.cucumber.java.en.Then;
 
-public class TS88 {
+public class TS88 extends BaseClass{
 		public LoginAPI_UPP login_UPP;
 		public DealBasicDetailCreators dc;
 		public TransactionApi ta;
 		public Reports_ExecutionReport re;
-		public String endToEndId;
+//		public String endToEndId;
 		
 	public TS88(){
 		login_UPP = new LoginAPI_UPP();
@@ -37,8 +38,8 @@ public class TS88 {
 	}
 
 	@Then("Validate in execution report for scheduled record using endToEndId {string}")
-	public void validate_in_execution_report_for_scheduled_record_using_endToEndId(String string) throws Exception {
-	   re.eCommExecutionsReport_Status(endToEndId);
+	public void validate_in_execution_report_for_scheduled_record_using_endToEndId(String TSID) throws Exception {
+	   re.eCommExecutionsReport_Status(endToEndId,TSID);
 	}
 	
 	@Then("Validate in execution report record should not be there")

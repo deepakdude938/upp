@@ -301,7 +301,7 @@ public class Payment_SubInstruction extends BaseClass {
 
 		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 2)) {
 
-			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
+			if (!(externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase(toaccountNo))) {
 				applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
 				scroll.scrollInToView(od.payments_ToAccountDropdown);
 				dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
@@ -315,27 +315,23 @@ public class Payment_SubInstruction extends BaseClass {
 		}
 
 		if (commonutils.isElementDisplayed(od.Payment_Beneficiaryaccno, 1)) {
-			System.out.println("Enter in");
-			if (((TSID.equalsIgnoreCase("TS71")) || ((TSID.equalsIgnoreCase("TS71_1"))))) {
-				System.out.println(externalData.getFieldData(TSID, "Scheduled", "to"));
-				if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase(toaccountNo))) {
-					applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
-					scroll.scrollInToView(od.PaymentBudget_Beneficiaryaccno);
-					od.Payment_Beneficiaryaccno.sendKeys(toaccountNo);
-					By accno = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
-					driver.findElement(accno).click();
-				} else {
-					System.out.println("Enter in3");
-					applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
-					scroll.scrollInToView(od.PaymentBudget_Beneficiaryaccno);
-					String accountNo = externalData.getFieldData(TSID, "Scheduled", "to");
-					System.out.println("accountNo= " + accountNo);
-					od.Payment_Beneficiaryaccno.sendKeys(toaccountNo);
-					System.out.println(externalData.getFieldData(TSID, "Scheduled", "to"));
-					By accno = By.xpath(
-							"//div[contains(text(),'" + toaccountNo+ "')]");
-					driver.findElement(accno).click();
-				}
+			if(((TSID.equalsIgnoreCase("TS71"))||((TSID.equalsIgnoreCase("TS71_1"))))) {
+
+			if (!(externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase(toaccountNo))) {
+				applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
+				scroll.scrollInToView(od.PaymentBudget_Beneficiaryaccno);
+				od.Payment_Beneficiaryaccno.sendKeys(toaccountNo);
+				By accno = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+				driver.findElement(accno).click();
+			} else {
+				applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
+				scroll.scrollInToView(od.PaymentBudget_Beneficiaryaccno);
+				String accountNo = externalData.getFieldData(TSID, "Scheduled", "to");
+				od.Payment_Beneficiaryaccno.sendKeys(accountNo);
+				By accno = By
+						.xpath("//div[contains(text(),'" + externalData.getFieldData(TSID, "Scheduled", "to") + "')]");
+				driver.findElement(accno).click();
+			}
 			}
 		}
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
