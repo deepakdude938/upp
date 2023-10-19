@@ -147,10 +147,15 @@ public class Payment_SubInstruction extends BaseClass {
 
 	public void createPayments_Subinstruction_without_Party_Added(String TSID, String sourceAccountno,
 			String toaccountNo) throws Exception {
+		System.out.println(TSID);
+		
+		Thread.sleep(2000);
 		
 		if (TSID.equalsIgnoreCase("TS108")) {
+			System.out.println("inside if condition of TS108");
 
 			if (commonutils.isElementDisplayed(od.payments_Split_By_percentage_Text, 2)) {
+				System.out.println("inside if condition of TS108 2");
 				od.payments_Split_By_percentage_Slider.click();
 				Thread.sleep(2500);
 			}
@@ -169,7 +174,7 @@ public class Payment_SubInstruction extends BaseClass {
 		driver.findElement(paymentInstrument).click();
 
 		
-		if (TSID.equalsIgnoreCase("TS110")) {
+		if (TSID.equalsIgnoreCase("TS110") || TSID.equalsIgnoreCase("TS113")) {
 			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno_with_budget, Duration.ofSeconds(5));
 			od.Payment_Beneficiaryaccno_with_budget.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
 
@@ -202,7 +207,7 @@ public class Payment_SubInstruction extends BaseClass {
 		}
 
 		if (commonutils.isElementDisplayed(od.Payment_Beneficiaryaccno, 1)) {
-			if (!((TSID.equalsIgnoreCase("TS70")) || (TSID.equalsIgnoreCase("TS72")))) {
+			if (!((TSID.equalsIgnoreCase("TS70")) || (TSID.equalsIgnoreCase("TS72")) || (TSID.equalsIgnoreCase("TS113")))) {
 
 				if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 					applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno, Duration.ofSeconds(5));
