@@ -22,7 +22,9 @@ Then Approve the Party with given "<TSID>"
 Then Validate in execution report for scheduled record using endToEndId "<TSID>"
 Then Edit the deal "<TSID>"
 Then Verify Account is updated
-
+Then Submit Party with given "<TSID>"
+Then Approve the Party with given "<TSID>"
+Then Attempt to offboard the account "<TSID>"
 Examples:
       |TSID   |
       |TS107|

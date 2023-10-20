@@ -125,7 +125,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 				externalData.getFieldData(TSID, "Party", "Beneficiary Country"));
 		
 		if(externalData.getFieldData(TSID, "Party", "Beneficiary Account Key")!="") {
-			if(TSID.equals("TS102") || TSID.equals("TS104")||TSID.equals("TS104_1")||TSID.equals("TS107_1")||TSID.equals("TS107")) {
+			if(TSID.equals("TS102") || TSID.equals("TS104")||TSID.equals("TS104_1")||TSID.equals("TS107_1")||TSID.equals("TS107")||TSID.equals("TS114")||TSID.equals("TS114_1")) {
 			scroll.scrollInToView(od.parties_BeneficiaryAccountKey);
 			applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryAccountKey, Duration.ofSeconds(5));
 			od.parties_BeneficiaryAccountKey.sendKeys(externalData.getFieldData(TSID, "Party", "Beneficiary Account Key"));
