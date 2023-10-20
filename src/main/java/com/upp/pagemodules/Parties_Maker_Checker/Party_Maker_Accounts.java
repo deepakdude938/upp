@@ -130,4 +130,44 @@ public class Party_Maker_Accounts extends BaseClass {
 		}
 		op.parties_OkButton.click();
 	}
+
+
+	public void editPartyAccountCreditorLookUpKeys(String TSID) throws InvalidFormatException, IOException, InterruptedException {
+		op.parties_Icon.click();
+		op.parties_SummaryButton.click();
+		String partyName=externalData.getFieldData(TSID, "Party", "Party Name");
+		op.parties_SearchBox.sendKeys(partyName);
+		op.parties_SearchButton.click();
+		Thread.sleep(1000);
+		op.parties_editPartyButton.click();
+		try {
+			op.parties_OkButton.click();
+		}
+		catch(Exception n) {
+			
+		}
+		op.partyMaker_Icon.click();
+		op.partyMaker_NameTextBox.sendKeys(partyName,Keys.ENTER);
+		Thread.sleep(1000);
+		op.parties_editPartyButton1.click();
+		Thread.sleep(1000);
+		od.parties_AccountsTab.click();
+		Thread.sleep(2000);
+		WebElement acc = driver.findElement(By.xpath("//div[@title='SBI98765']/../../..//div[@id='ic-generic-menu-showMenu-v1']"));
+		acc.click();
+		op.parties_showMenuEditButton.click();
+		
+		scroll.scrollInToView(od.parties_BeneficiaryCountry);
+		applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
+				"US");
+		
+		scroll.scrollInToView(od.parties_beneficiaryCurrency1);
+		od.parties_beneficiaryCurrency1.sendKeys("USD");
+		
+		scroll.scrollInToView(od.saveButton);
+		applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(5));
+		od.saveButton.click();
+		op.parties_OkButton.click();
+	}
 }

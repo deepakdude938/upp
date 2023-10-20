@@ -66,7 +66,7 @@ public class TS104 extends BaseClass{
 	}
 
 	@Then("Verify Account is offboarded in Party")
-	public void verify_Account_is_offboarded_in_Party() {
+	public void verify_Account_is_offboarded_in_Party() throws Exception {
 	    pa.verifyAccountIsOffBoarded();
 	}
 
