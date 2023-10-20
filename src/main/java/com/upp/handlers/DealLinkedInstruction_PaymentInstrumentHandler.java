@@ -9,6 +9,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_NewDeal;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -22,12 +23,14 @@ public class DealLinkedInstruction_PaymentInstrumentHandler extends BaseClass im
 	DropDown dropdown;
 	public ScrollTypes scroll;
 	public static ExcelReader externalData;
+	CommonUtils utils;
 
 	public DealLinkedInstruction_PaymentInstrumentHandler() {
 		od = new Object_NewDeal();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
 		scroll = new ScrollTypes(driver);
+		utils=new CommonUtils(driver);
 	}
 
 	@Override
@@ -60,4 +63,33 @@ public class DealLinkedInstruction_PaymentInstrumentHandler extends BaseClass im
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 	}
 
+	public void handleLinkedInstructionBT_UK_PaymentInstrument(String TSID, String toaccountNo) throws Exception {
+
+		od.linkedInstruction_Instrumentddl.sendKeys(externalData.getFieldData(TSID, "Linked", "Instrument"));
+		String inst = externalData.getFieldData(TSID, "Linked", "Instrument");
+		By instrument = By.xpath("//div[contains(text(),'" + inst + "')]");
+		driver.findElement(instrument).click();
+		applyExplicitWaitsUntilElementClickable(od.linkedInstruction_ToAccountddl, Duration.ofSeconds(5));
+		od.linkedInstruction_ToAccountddl.sendKeys(toaccountNo);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+		applyExplicitWaitsUntilElementClickable(od.linkedInstruction_accountOrIban, Duration.ofSeconds(15));
+		dropdown.selectByVisibleText(od.linkedInstruction_accountOrIban, " ACCOUNTNUMBER ");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		od.linkedInstruction_Amount.sendKeys(externalData.getFieldData(TSID, "Linked", "Amount"));
+		od.linkedInstruction_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Name"));
+		
+		od.linkedInstruction_beneficiaryAddressl.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Address Line 1"));
+		dropdown.selectByVisibleText(od.linkedInstruction_Incorporationddl,externalData.getFieldData(TSID, "Linked", "Beneficiary Country Of Incorporation"));
+		if (externalData.getFieldData(TSID, "Linked", "BeneficiaryCountry") != null) {
+			if (utils.isElementDisplayed(od.Payment_beneficiaryCountry, 1)) {
+				scroll.scrollInToView(od.Payment_beneficiaryCountry);
+				od.Payment_beneficiaryCountry
+						.sendKeys(externalData.getFieldData(TSID, "Scheduled", "BeneficiaryCountry"));
+			}
+		}
+		if (utils.isElementDisplayed(od.payments_beneficiaryBankBic, 1)) {
+			scroll.scrollInToView(od.payments_beneficiaryBankBic);
+			od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Linked", "Beneficiary Bank Bic"));
+		}
+	}
 }

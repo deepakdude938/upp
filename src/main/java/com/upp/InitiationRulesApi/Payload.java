@@ -190,9 +190,11 @@ public class Payload extends BaseClass {
 		String random = Long.toString(number);
 		String uniquePlatformRefNo = "PlatformRef" + random;
 		String partyref = externalData.getFieldData(TSID, "Party", "Party Name");
-		String utcdate = DateUtils.getCurrentDateUTC();
 
-		String utctimeEod = utcdate + "T" + "14:30:00Z";
+		String utcdate = DateUtils.getCurrentDateUTC();
+		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
+
+		String utctimeEod = utcdate + "T" + plus2mins;
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.dealRefId", dealId);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);

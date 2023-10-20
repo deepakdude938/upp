@@ -10,6 +10,10 @@ public class CommonLinkedInstructionInstrument {
 			if (instrument.equalsIgnoreCase("BT_IN")) {
 				instrumentHandler.handlePartyMakerBT_INPaymentInstrument(TSID, toAccount);
 			}
+			if (instrument.equalsIgnoreCase("BT_UK")) {
+				instrumentHandler.handleLinkedInstructionBT_UK_PaymentInstrument(TSID, toAccount);
+			}
 		}
+		
 	}
 }

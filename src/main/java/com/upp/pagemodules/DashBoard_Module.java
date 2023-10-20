@@ -115,6 +115,60 @@ public class DashBoard_Module extends BaseClass {
 
 	}
 
+	public void createNewLinkedAccount1(String TSID, String sourceAccountno, String toaccountNo, ICallback icallback)
+			throws Exception {
+		
+		od.linkedInstruction_linkedBtn.click();
+		od.linkedInstruction_addAccountBtn.click();
+		System.out.println(TSID);
+		String pay = externalData.getFieldData(TSID, "Linked", "Select Instruction Type");
+		System.out.println(pay);
+		By payment = By.xpath("//div[contains(text(),'" + pay + "')]");
+		driver.findElement(payment).click();
+		od.linkedInstruction_proccedbtn.click();
+		od.linkedInstruction_basicNameTxt.clear();
+		od.linkedInstruction_basicNameTxt.sendKeys(externalData.getFieldData(TSID, "Linked", "Basic Details Name"));
+		od.linkedInstruction_purposeddl.click();
+		dropdown.selectByVisibleText(od.linkedInstruction_purposeddl,
+				externalData.getFieldData(TSID, "Linked", "Purpose"));
+		od.linkedInstruction_SourceAccounttxt.click();
+		od.linkedInstruction_Accountvalue.sendKeys(sourceAccountno);
+		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
+		driver.findElement(sourceaccountselect).click();
+		dropdown.selectByVisibleText(od.linkedInstruction_Balanceddl,
+				externalData.getFieldData(TSID, "Linked", "Balance Consideration"));
+		od.linkedInstruction_NextBtn.click();
+		od.linkedInstruction_LinkedConfigNextBtn.click();
+	//	od.linkedInstruction_sweepNext.click();
+		od.linkedInstruction_Executiondate.click();
+		od.linkedInstruction_Todaydate.click();
+
+		dropdown.selectByVisibleText(od.linkedInstruction_schedule,
+				externalData.getFieldData(TSID, "Linked", "Schedule At"));
+		dropdown.selectByVisibleText(od.linkedInstruction_HolidayAction,
+				externalData.getFieldData(TSID, "Linked", "Holiday Action"));
+		String timem = dateTime.getTimeAfterMins(waitingTime);
+		od.linkedInstruction_TimePicker.clear();
+		od.linkedInstruction_TimePicker.sendKeys(timem);
+		if ((TSID.equalsIgnoreCase("TS113"))) {
+
+			dropdown.selectByVisibleText(od.payments_TimeZone, "Asia/Calcutta (GMT+05:30)");
+			String time = dateutil.getTimeAfterMins(3);
+
+			od.payments_ScheduleTime.clear();
+			od.payments_ScheduleTime.sendKeys(time);
+			Thread.sleep(3000);
+
+		}
+		od.linkedInstruction_ScheduleNextBtn.click();
+		String instrumentName = externalData.getFieldData(TSID, "Linked", "Instrument");
+		icallback.handleCallback("Instrument_NAME", instrumentName);
+		Thread.sleep(3000);
+		od.linkedInstruction_AddBtn.click();
+		Thread.sleep(3000);
+	
+
+	}
 	public void approveDealFromDealChecker(String dealId) throws Exception {
 		System.out.println("Approval Screen");
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_Button, Duration.ofSeconds(20));
@@ -195,9 +249,11 @@ public class DashBoard_Module extends BaseClass {
 		od.dealChecker_searchBar.sendKeys(dealId);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton, Duration.ofSeconds(10));
 		od.dealChecker_searchButton.click();
-		Thread.sleep(9000);
+		Thread.sleep(5000);
 		od.dealChecker_searchButton.click();
 		Thread.sleep(9000);
+		od.dealChecker_searchButton.click();
+		Thread.sleep(5000);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
 		od.dealChecker_showMenu.click();
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_Open, Duration.ofSeconds(25));
