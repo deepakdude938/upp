@@ -8,8 +8,9 @@ Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create two Accounts with given "<TSID>"
-Then Add Party basic_Details with given "TS97_2".
-And Create two eCommerce  Parties in the Parties Tab with given "<PartiesID>" and "<TSID>"
+Then Add Party basic_Details with given "<TSID>".
+Then Hit Back button
+And Create two eCommerce  Parties in the Parties Tab with given "<PartiesID>" and "TS97_2"
 Then Call the Create tx with two fragments for "<TSID>"
 
 Examples:
