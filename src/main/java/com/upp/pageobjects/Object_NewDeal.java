@@ -904,7 +904,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-deals-instruction-retentionBasic-formula-v1")
 	public WebElement retention_SpecifyAmountValue;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
 	public WebElement Payment_Beneficiaryaccno;
 	
 	@FindBy(id="payment-creditRemittanceInformation-txt-v1")

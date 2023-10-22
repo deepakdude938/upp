@@ -109,4 +109,39 @@ public class TransactionApi extends BaseClass {
 		Assert.assertTrue(res.getStatusCode() == 200);
 	}
 
+	public void updateTransactionStatusAsCancel(String TSID, String endId) throws Exception, Exception {
+
+		RestAssured.baseURI = base_url + "transaction/api/transaction/";
+		String updatedURL = RestAssured.baseURI + endId + "/statusUpdate ";
+
+		Response res = given().header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken).header("Version", "v1")
+				.header("X-SC-TrackingId", "123").body(pay.api_updateTransactionStatusCancel(TSID)).when()
+				.put(updatedURL);
+
+		response = res.then().extract().asString();
+
+		int statusCode = res.getStatusCode();
+		System.out.println("Response Status Code: " + statusCode);
+		
+		Assert.assertTrue(res.getStatusCode() == 200);
+	}
+	
+	public void updateTransactionStatusAsSchedule(String TSID, String endId) throws Exception, Exception {
+
+		RestAssured.baseURI = base_url + "transaction/api/transaction/";
+		String updatedURL = RestAssured.baseURI + endId + "/statusUpdate ";
+
+		Response res = given().header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken).header("Version", "v1")
+				.header("X-SC-TrackingId", "123").body(pay.api_updateTransactionStatusSchedule(TSID)).when()
+				.put(updatedURL);
+
+		response = res.then().extract().asString();
+
+		int statusCode = res.getStatusCode();
+		System.out.println("Response Status Code: " + statusCode);
+		
+		//Assert.assertTrue(res.getStatusCode() == 200);
+	}
 }
