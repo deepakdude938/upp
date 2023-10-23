@@ -20,4 +20,10 @@ public class TS114 {
 	public void edit_party_CreditorLookUpKeys_with_given_from_Party_Maker_tab(String TSID) throws Exception, IOException, InterruptedException {
 	  pm.editPartyAccountCreditorLookUpKeys(TSID);
 	}
+	
+	@Then("Verify Creditor LookUp keys are updated {string}")
+	public void verify_Creditor_LookUp_keys_are_updated(String TSID) throws Exception {
+	    pm.verifyCreditorLookUpKeysAreUpdated(TSID);
+	}
+
 }
