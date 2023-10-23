@@ -41,6 +41,6 @@ public class TS115 extends BaseClass {
 
 	@Then("Verify transaction Schedule status in ecomm report {string}")
 	public void verify_transaction_Cancel_status_in_ecomm_report(String string) throws Exception {
-		re.verifyCancelStatusInExecutionReport(string);
+		re.verifyScheduleStatusInExecutionReport(string);
 	}
 }

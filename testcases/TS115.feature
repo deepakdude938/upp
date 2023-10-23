@@ -1,7 +1,7 @@
-Feature: TS115_Api_UpdateTransactionstatusCancel
+Feature: TS115_Api_UpdateTransactionstatusSchedule
 
 @Regression @TS115 @Api
-Scenario Outline: Api_UpdateTransactionstatus_Cancel
+Scenario Outline: Api_UpdateTransactionstatus_Schedule
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSID>".
