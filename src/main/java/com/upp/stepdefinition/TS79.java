@@ -36,6 +36,7 @@ import com.upp.pagemodules.Login.LoginAPI_ODP;
 import com.upp.pagemodules.Login.LoginAPI_UPP;
 import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.Transactions.Transactions_Checker;
+import com.upp.pagemodules.Transactions.Transactions_Verifier;
 import com.upp.pagemodules.payment.Balance_Reporting;
 import com.upp.pageobjects.Object_NewDeal;
 
@@ -47,11 +48,13 @@ public class TS79 extends BaseClass {
 	public static String TSID = "";
 	public static String TnxId = "";
 	Transactions_Checker tc;
+	Transactions_Verifier tv;
 
 	public TS79() {
 
 		this.dm = new DashBoard_Module();
 		this.tc = new Transactions_Checker();
+		this.tv = new Transactions_Verifier();
 	}
 
 	@Then("Approve the transaction from Transaction Checker with given {string} for transaction amount greater than limit")
@@ -59,6 +62,12 @@ public class TS79 extends BaseClass {
 			String string) throws Exception {
 		System.out.println("test = "+TS06.TnxId);
 		tc.TransactionsChecker1("TS79", TS06.TnxId);
+	}
+	
+	@Then("Approve the transaction from Transaction Verifier for transaction limit with given {string}")
+	public void approve_the_transaction_from_Transaction_Verifier_for_transaction_limit_with_given(String string) throws Exception {
+
+		tv.TransactionsVerifier1(string, TS06.TnxId);
 	}
 
 }
