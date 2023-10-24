@@ -104,6 +104,8 @@ public class Object_Parties extends BaseClass{
 	@FindBy(id="ic-generic-partyAccounts-getStarted-v1")
 	public WebElement PartyMaker_partyAccountsAddButton;
 	
+	@FindBy(id="ic-generic-partyContacts-addAccount-v1")
+	public WebElement PartyMaker_partyAccountsAddButton1;
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement PartyMaker_PaymentSystem;
