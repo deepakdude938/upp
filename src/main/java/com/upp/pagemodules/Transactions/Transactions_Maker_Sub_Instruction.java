@@ -60,7 +60,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		tm = new Object_Transactions();
-		util=new CommonUtils(driver);
+		util = new CommonUtils(driver);
 
 	}
 
@@ -68,17 +68,17 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		int flag = 0;
 		By toAccount;
 		try {
-			toAccount= By.xpath("//span[@class='truncate ng-star-inserted']");
+			toAccount = By.xpath("//span[@class='truncate ng-star-inserted']");
 			if (driver.findElement(toAccount).isDisplayed()) {
 				flag = 1;
 			}
 		} catch (Exception e) {
 			Thread.sleep(3000);
-			toAccount= By.xpath("//span[@class='truncate ng-star-inserted']");
+			toAccount = By.xpath("//span[@class='truncate ng-star-inserted']");
 			if (driver.findElement(toAccount).isDisplayed()) {
 				flag = 1;
 			}
-			
+
 		}
 
 		Assert.assertEquals(flag, 1);
@@ -87,33 +87,33 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 
 	public void Transaction_Maker_Sub_Instruction(String TSID, ICallback icallback) throws Exception {
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
-		if(!(TSID.equalsIgnoreCase("TS110"))){
-		tm.transactions_Instrument.click();
+		if ((TSID.equalsIgnoreCase("TS118"))) {
+			//scroll.scrollInToView(tm.paymentCountry);
+			applyExplicitWaitsUntilElementClickable(tm.paymentCountry, Duration.ofSeconds(7));
+			jsClick.click(tm.paymentCountry);
+			dropdown.selectByVisibleText(tm.paymentCountry, "INR");
 		}
-		else
-		{
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
+		if (!(TSID.equalsIgnoreCase("TS110"))) {
+			tm.transactions_Instrument.click();
+		} else {
 			tm.transactions_Instrument_when_budget_purpose_enabled.click();
 		}
 		Thread.sleep(1000);
-		if(!(TSID.equalsIgnoreCase("TS110"))){
+		if (!(TSID.equalsIgnoreCase("TS110"))) {
 			tm.transactions_Instrument.click();
-			}
-			else
-			{
-				tm.transactions_Instrument_when_budget_purpose_enabled.click();
-			}
+		} else {
+			tm.transactions_Instrument_when_budget_purpose_enabled.click();
+		}
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Txn Maker", "Sub Instruction - Instrument");
-		System.out.println("Excel data in payment = "+paymentInstrumentdata);
+		System.out.println("Excel data in payment = " + paymentInstrumentdata);
 		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[1]");
 		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
 		driver.findElement(paymentInstrument).click();
 		System.out.println("the to data is " + externalData.getFieldData(TSID, "Txn Maker", "to"));
 		icallback.handleCallback("PAYMENT_INSTRUMENT", paymentInstrumentdata);
-		if(util.isElementDisplayed(od.deal_Edit_Yes_Button,2))
-		 {
-			 od.deal_Edit_Yes_Button.click();
-		 }
+		if (util.isElementDisplayed(od.deal_Edit_Yes_Button, 2)) {
+			od.deal_Edit_Yes_Button.click();
+		}
 	}
-
 }
