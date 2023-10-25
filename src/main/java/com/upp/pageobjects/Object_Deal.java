@@ -112,6 +112,18 @@ public class Object_Deal extends BaseClass {
 	@FindBy(id = "ic-deals-account-accountDetails-addAccount-v1")
 	public WebElement accounts_addAccount;
 	
+	@FindBy(xpath = "//span[@class='ui-icon ic ic-edit_blue flex-center ng-star-inserted']")
+	public WebElement account_edit_icon;
+	
+	@FindBy(xpath = "(//span[@title='edit'])[2]")
+	public WebElement account_edit_icon2;
+	
+	@FindBy(xpath = "(//input[@type='text'])[8]")
+	public WebElement account_key_field;
+	
+	@FindBy(xpath = "//button[normalize-space()='OK']")
+	public WebElement account_OK_Button;
+	
 	@FindBy(xpath = "//span[contains(@class,'ic-attributes ng-star-inserted')]")
 	public WebElement accounts_Contextualize;
 	
@@ -672,5 +684,7 @@ public class Object_Deal extends BaseClass {
 	
 	@FindBy(xpath = "//div[contains(@class,'list-item')]//div[contains(@class,'ellipsis')]")
 	public List<WebElement> party_basic_details_ResponsibilityAttributes;
+	
+	
 	
 }

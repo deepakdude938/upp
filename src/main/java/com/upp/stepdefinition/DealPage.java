@@ -90,6 +90,20 @@ public class DealPage extends BaseClass implements ICallback {
 		DealAccountCreator accountCreator = new DealAccountCreator();
 		AccountNo2 = accountCreator.createNewAccount_ODP_From_ExcelSheet(string);
 	}
+	
+
+	@Then("Onboard the Account One and add the AccountKey with given {string}.")
+	public void onboard_the_Account_One_and_add_the_AccountKey_with_given(String string) throws Exception {
+		DealAccountCreator account = new DealAccountCreator();
+		AccountNo1=  account.Onboard_account_And_Add_Account_Key(string);
+	}
+
+	@Then("Onboard the Account Two and add the AccountKey with given {string}.")
+	public void onboard_the_Account_Two_and_add_the_AccountKey_with_given(String string) throws Exception {
+		DealAccountCreator account = new DealAccountCreator();
+		AccountNo2= account.Onboard_account_And_Add_Second_Account_Key(string);
+	}
+	
 
 	@Then("Add Party basic_Details with given {string}.")
 	public void add_Party_basic_Details_with_given(String TSID) throws Exception {
