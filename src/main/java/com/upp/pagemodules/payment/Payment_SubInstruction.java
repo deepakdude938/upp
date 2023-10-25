@@ -152,7 +152,6 @@ public class Payment_SubInstruction extends BaseClass {
 		Thread.sleep(2000);
 		
 		if (TSID.equalsIgnoreCase("TS108")) {
-			System.out.println("inside if condition of TS108");
 
 			if (commonutils.isElementDisplayed(od.payments_Split_By_percentage_Text, 2)) {
 				System.out.println("inside if condition of TS108 2");
@@ -177,6 +176,13 @@ public class Payment_SubInstruction extends BaseClass {
 		if (TSID.equalsIgnoreCase("TS110") || TSID.equalsIgnoreCase("TS113")) {
 			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno_with_budget, Duration.ofSeconds(5));
 			od.Payment_Beneficiaryaccno_with_budget.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
+
+			}
+		
+		if (TSID.startsWith("TS105") || TSID.startsWith("TS108")) {
+			
+			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno_without_Budget_Purpose, Duration.ofSeconds(5));
+			od.Payment_Beneficiaryaccno_without_Budget_Purpose.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
 
 			}
 		

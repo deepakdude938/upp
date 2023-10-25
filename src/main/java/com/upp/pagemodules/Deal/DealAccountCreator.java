@@ -200,4 +200,114 @@ public String OnBoard_Virtual_Account(String TSID) throws Exception {
 	    Thread.sleep(1000);
 		
 	}
+public String Onboard_account_And_Add_Account_Key(String TSID) throws Exception {
+		
+		accDetails = odpAccount.popelmnt(Create_ODP_Account_Api.stack1);
+		System.out.println("the account no is " + accDetails.getAccno());
+		
+		String accountNo = accDetails.getAccno();
+		physical_Account_Number=accountNo;
+		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
+		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
+		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
+		String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
+		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
+			dropdown.selectByVisibleText(od.physical, "Physical");
+		} else {
+			dropdown.selectByVisibleText(od.physical, "Virtual");
+		}
+
+		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
+		od.searchTextBox.sendKeys(accountNo);
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
+		od.searchButton.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
+		Thread.sleep(2000);
+		
+		Thread.sleep(1500);
+		
+		//edit account and add accountKey code
+		scroll.scrollInToView(od.account_edit_icon);
+		jsClick.click(od.account_edit_icon);
+		Thread.sleep(1500);
+		applyExplicitWaitsUntilElementClickable(od.account_key_field, Duration.ofSeconds(5));
+		scroll.scrollInToView(od.account_key_field);
+		od.account_key_field.sendKeys(externalData.getFieldData(TSID, "Accounts", "Account_Key"));
+		
+		Thread.sleep(1000);
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+		}
+		Thread.sleep(1500);
+		applyExplicitWaitsUntilElementClickable(od.account_OK_Button, Duration.ofSeconds(5));
+		od.account_OK_Button.click();
+		Thread.sleep(1500);
+		return accountNo;
+	}
+public String Onboard_account_And_Add_Second_Account_Key(String TSID) throws Exception {
+	
+	accDetails = odpAccount.popelmnt(Create_ODP_Account_Api.stack1);
+	System.out.println("the account no is " + accDetails.getAccno());
+	
+	String accountNo = accDetails.getAccno();
+	physical_Account_Number=accountNo;
+	applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
+	dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
+	dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
+	String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
+	if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
+		dropdown.selectByVisibleText(od.physical, "Physical");
+	} else {
+		dropdown.selectByVisibleText(od.physical, "Virtual");
+	}
+
+	applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
+	od.searchTextBox.sendKeys(accountNo);
+	Thread.sleep(1000);
+	applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
+	od.searchButton.click();
+	Thread.sleep(1000);
+	applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
+	try {
+		od.accounts_addAccount.click();
+	}
+	catch(Exception e) {
+		handleElementClickException(od.accounts_addAccount);
+	}
+	Thread.sleep(2000);
+	
+	Thread.sleep(1500);
+	
+	//edit account and add accountKey code
+	scroll.scrollInToView(od.account_edit_icon2);
+	jsClick.click(od.account_edit_icon2);
+	Thread.sleep(1500);
+	applyExplicitWaitsUntilElementClickable(od.account_key_field, Duration.ofSeconds(5));
+	scroll.scrollInToView(od.account_key_field);
+	od.account_key_field.sendKeys(externalData.getFieldData(TSID, "Accounts", "Account_Key"));
+	
+	Thread.sleep(1000);
+	try {
+		od.accounts_addAccount.click();
+	}
+	catch(Exception e) {
+		handleElementClickException(od.accounts_addAccount);
+	}
+	Thread.sleep(1500);
+	applyExplicitWaitsUntilElementClickable(od.account_OK_Button, Duration.ofSeconds(5));
+	od.account_OK_Button.click();
+	Thread.sleep(1500);
+	return accountNo;
+}
 }

@@ -6,6 +6,7 @@ import java.time.Duration;
 
 import com.upp.Api.utils.LogOutApi;
 import com.upp.InitiationRulesApi.Rule_Non_OBO;
+import com.upp.InitiationRulesApi.Rule_With_Partial_PaymentInfoDetails;
 import com.upp.InitiationRulesApi.Rule_Without_PaymentInfoDetails;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
@@ -38,31 +39,26 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS101 extends BaseClass {
+public class TS116 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
 	public static String TnxId = "";
-	Rule_Without_PaymentInfoDetails rule;
 	Reports_ExecutionReport report;
-	
+	Rule_With_Partial_PaymentInfoDetails rule;
 
-	public TS101() {
+	public TS116() {
 
 		this.dm = new DashBoard_Module();
-		rule=new Rule_Without_PaymentInfoDetails();
+		
 		report=new Reports_ExecutionReport();
-
+        rule=new Rule_With_Partial_PaymentInfoDetails();
 	}
 
-	@Then("Call the Rule_Without_PaymentInfoDetails Api with given {string}.")
-	public void call_the_Rule_Without_PaymentInfoDetails_Api_with_given(String string) throws Exception {
-		End2EndId=rule.Rule_Without_PaymentInfoDetails_Api(TS06.dealId, string);
+	
+	@Then("Call the Rule_With_Partial_PaymentInfoDetails Api with given {string}.")
+	public void call_the_Rule_With_Partial_PaymentInfoDetails_Api_with_given(String string) throws Exception {
+		End2EndId=rule.Rule_With_Partial_PaymentInfoDetails_Api(TS06.dealId, string);
 	}
-    
-	@Then("Verify the SourceAccountNumber in Ecomm Executions Report with given {string}.")
-	public void verify_the_SourceAccountNumber_in_Ecomm_Executions_Report_with_given(String string) throws Exception {
-	    report.Verify_Source_AccNo_In_eCommExecutionsReport(End2EndId);
-	}
-
+	
 }

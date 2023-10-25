@@ -50,6 +50,8 @@ public class BaseClass {
 	public boolean isFlexibleFunding;
 	public static  List<String> accountList ;
 	public static  LinkedHashMap<String,String> accountMap ;
+	public static String End2EndId;
+	
 
 	public WebDriver initialize() throws Exception {
 		

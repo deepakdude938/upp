@@ -14,7 +14,7 @@ import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_Deal;
-
+import com.upp.stepdefinition.DealPage;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -74,6 +74,18 @@ public class EcommerceHandler extends BaseClass {
 				Thread.sleep(5000);
 				WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../.."));
 				s.click();
+			}
+			if(TSID.equals("TS119")) {
+				Thread.sleep(5000);
+				String accountnumber1=DealPage.AccountNo1;
+				String accountnumber2=DealPage.AccountNo2;
+				System.out.println("The Second account number is"+accountnumber2);
+				WebElement s = driver.findElement(By.xpath("//span[@title='"+accountnumber2+"']/../.."));
+				s.click();
+				
+				System.out.println("The First account number is"+accountnumber1);
+				WebElement s2 = driver.findElement(By.xpath("//span[@title='"+accountnumber1+"']/../.."));
+				s2.click();
 			}
 			else {
 			String hiddenClass = od.accountNumbers.getAttribute("class");
