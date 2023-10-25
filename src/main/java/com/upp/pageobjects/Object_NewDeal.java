@@ -901,7 +901,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-deals-instruction-retentionBasic-formula-v1")
 	public WebElement retention_SpecifyAmountValue;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
 	public WebElement Payment_Beneficiaryaccno;
 	
 	@FindBy(id="payment-creditRemittanceInformation-txt-v1")
@@ -909,6 +909,9 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
 	public WebElement Payment_Beneficiaryaccno_with_budget;
+	
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	public WebElement Payment_Beneficiaryaccno_without_Budget_Purpose;
 	
 	@FindBy(id="payment-beneficiaryCountry-sel-v1")
 	public WebElement Payment_beneficiaryCountry;
@@ -1109,6 +1112,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[1]")
 	public WebElement account_obo_repsonsibility;
+	
 	
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	public WebElement account_OK_Button;
