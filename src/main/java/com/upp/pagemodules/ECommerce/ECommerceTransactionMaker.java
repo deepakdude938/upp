@@ -103,6 +103,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		} catch (Exception e) {
 			handleElementClickException(ecomm.ecommerce_creatorParticipant);
 		}
+		Thread.sleep(2000);
 		ecomm.ecommerce_creatorParticipantIdOpt.click();
 		Select creatorAcc = new Select(ecomm.ecommerce_creatorAccount);
 		creatorAcc.selectByIndex(1);
@@ -146,12 +147,14 @@ public class ECommerceTransactionMaker extends BaseClass {
 		Thread.sleep(2000);
 		ecomm.ecommerce_submit.click();
 		Thread.sleep(3000);
-		ecomm.ecommerce_ok.click();
-		Thread.sleep(2000);
-		ecomm.ecommerce_submit.click();
 		ecomm.ecommerce_yes.click();
+		Thread.sleep(3000);
 		ecomm.ecommerce_ok.click();
 		Thread.sleep(2000);
+//		ecomm.ecommerce_submit.click();
+//		ecomm.ecommerce_yes.click();
+//		ecomm.ecommerce_ok.click();
+//		Thread.sleep(2000);
 
 	}
 

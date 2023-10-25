@@ -187,8 +187,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 
 		// scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructions_Type, tm.reports_horizontalWindow1, 10,
-				1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructions_Type,
+				tm.reports_horizontalWindow1, 10, 1000);
 
 		Thread.sleep(1000);
 
@@ -335,8 +335,8 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		}
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1, 10,
-				1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1,
+				10, 1000);
 		String instructionname = tm.reports_InstructionName.getText();
 
 		System.out.println(instructionname);
@@ -425,9 +425,9 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, -1000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(20));
 		String record = tm.reports_EcommRecordStatus.get(0).getText();
-		System.out.println("Record = "+record);
+		System.out.println("Record = " + record);
 //		for (WebElement record : tm.reports_EcommRecordStatus) {
-		//	Assert.assertEquals(record, "Scheduled");
+		// Assert.assertEquals(record, "Scheduled");
 
 //		}
 
@@ -500,7 +500,8 @@ public class Reports_ExecutionReport extends BaseClass {
 		// Duration.ofSeconds(5));
 		// tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_eCommExecutionsList,tm.reports_horizontalWindow1, 8, 1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_eCommExecutionsList,
+				tm.reports_horizontalWindow1, 8, 1000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(30));
 		jsClick.click(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
@@ -561,14 +562,12 @@ public class Reports_ExecutionReport extends BaseClass {
 			subInstruction.add(iu.getText());
 			System.out.println(iu.getText());
 		}
-		
-		
+
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumnName,
 				tm.reports_horizontalWindow1, 10, 1000);
 		try {
 			System.out.println(tm.reports_OriginalAmountColumnName.isDisplayed());
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("reversing scrolling");
 			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumnName,
 					tm.reports_horizontalWindow1, 10, -1000);
@@ -617,7 +616,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");
-		
+
 	}
 
 	public void validateassertionInExecutionReport(String TSID) throws Exception {
@@ -913,7 +912,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 
 	}
-	
+
 	public void Verify_Source_AccNo_In_eCommExecutionsReport(String EndToEndId) throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
@@ -934,15 +933,16 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(6000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
-		
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Source_Acc_No_Col, tm.reports_horizontalWindow1,10, 1000);
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Source_Acc_No_Col, tm.reports_horizontalWindow1,
+				10, 1000);
 		applyExplicitWaitsUntilElementVisible(tm.Reports_Source_Acc_No_First, Duration.ofSeconds(10));
-		String ActualAccNo=tm.Reports_Source_Acc_No_First.getText();
+		String ActualAccNo = tm.Reports_Source_Acc_No_First.getText();
 		System.out.println("The Account Number is:" + ActualAccNo);
-		Assert.assertEquals(ActualAccNo,DealPage.AccountNo1);
+		Assert.assertEquals(ActualAccNo, DealPage.AccountNo1);
 
 	}
-	
+
 	public void check_All_3_Transaction_StatusIsScheduled(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
@@ -953,13 +953,14 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
 		System.out.println(" ScroeStatus3rdrow " + ScroeStatus3rdrow);
 
-		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled")) && ((ScroeStatus3rdrow.equalsIgnoreCase("Scheduled"))))) {
+		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled"))
+				&& ((ScroeStatus3rdrow.equalsIgnoreCase("Scheduled"))))) {
 
 			Assert.fail("The transaction is not Scheduled");
 		}
 
 	}
-	
+
 	public void check_Triggered_or_Settled_Status_For_All_3_Transactions(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
@@ -984,7 +985,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		} else {
 			Assert.fail("Transaction Staus should be either settled or triggered");
 		}
-		
+
 		if ((ScroeStatus3rdrow.equalsIgnoreCase("Triggered")) || (ScroeStatus3rdrow.equalsIgnoreCase("Settled"))) {
 
 			System.out.println("Transaction succesfully settled or triggered");
@@ -992,7 +993,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.fail("Transaction Staus should be either settled or triggered");
 		}
 	}
-	
+
 	public void check_All_6_Transaction_StatusIsScheduled(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
@@ -1008,20 +1009,20 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(" ScroeStatus4throw " + ScroeStatus4throw);
 		System.out.println(" ScroeStatus5throw " + ScroeStatus5throw);
 		System.out.println(" ScroeStatus6throw " + ScroeStatus6throw);
-		
-		
 
-		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled")) && ((ScroeStatus3rdrow.equalsIgnoreCase("Scheduled"))) && ((ScroeStatus4throw.equalsIgnoreCase("Scheduled"))) && ((ScroeStatus5throw.equalsIgnoreCase("Scheduled"))) && ((ScroeStatus6throw.equalsIgnoreCase("Scheduled"))))) {
+		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled"))
+				&& ((ScroeStatus3rdrow.equalsIgnoreCase("Scheduled")))
+				&& ((ScroeStatus4throw.equalsIgnoreCase("Scheduled")))
+				&& ((ScroeStatus5throw.equalsIgnoreCase("Scheduled")))
+				&& ((ScroeStatus6throw.equalsIgnoreCase("Scheduled"))))) {
 
 			Assert.fail("The transaction is not Scheduled");
 		}
-		
-	
-		
 
 	}
-	
-	public void check_Triggered_or_Settled_Status_For_All_6_Transactions_and_Settled_Amount(String TSID, String DealId) throws Exception {
+
+	public void check_Triggered_or_Settled_Status_For_All_6_Transactions_and_Settled_Amount(String TSID, String DealId)
+			throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
 
@@ -1051,7 +1052,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		} else {
 			Assert.fail("Transaction Staus should be either settled or triggered");
 		}
-		
+
 		if ((ScroeStatus3rdrow.equalsIgnoreCase("Triggered")) || (ScroeStatus3rdrow.equalsIgnoreCase("Settled"))) {
 
 			System.out.println("Transaction succesfully settled or triggered");
@@ -1076,22 +1077,22 @@ public class Reports_ExecutionReport extends BaseClass {
 		} else {
 			Assert.fail("Transaction Staus should be either settled or triggered");
 		}
-		
-      ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmount, tm.reports_horizontalWindow1,10, 1000);
-		
-		
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmount, tm.reports_horizontalWindow1, 10,
+				1000);
+
 		ArrayList<String> settledAmountrecords = new ArrayList();
 		for (WebElement iu : tm.reports_SettledAmountList) {
 
 			settledAmountrecords.add(iu.getText());
-			
+
 		}
 		Assert.assertTrue(settledAmountrecords.contains("4200"));
 		Assert.assertTrue(settledAmountrecords.contains("1650"));
-		
-		System.out.println("The settled amount status records are:"+settledAmountrecords.toString());
+
+		System.out.println("The settled amount status records are:" + settledAmountrecords.toString());
 	}
-	
+
 	public void commonmethodBudget_Utilization_Report(String TSID, String DealId) throws Exception {
 
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
@@ -1107,21 +1108,19 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
 		Thread.sleep(8000);
-		
+
 	}
-	
+
 	public void check_Utilized_Budget_in_Budget_Utilization_Report(String TSID, String DealId) throws Exception {
 
 		commonmethodBudget_Utilization_Report(TSID, DealId);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Utilized_Budget_ColName, tm.reports_horizontalWindow1,10, 1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Utilized_Budget_ColName,
+				tm.reports_horizontalWindow1, 10, 1000);
 		applyExplicitWaitsUntilElementVisible(tm.reports_Utilized_Budget_Amount, Duration.ofSeconds(10));
-		String UtilzedAmount=tm.reports_Utilized_Budget_Amount.getText();
-		System.out.println("The Utlized Budget amount in Budget Utilization report:"+UtilzedAmount);
-     
-		Assert.assertEquals(UtilzedAmount,"10000");
-		
-	
-		
+		String UtilzedAmount = tm.reports_Utilized_Budget_Amount.getText();
+		System.out.println("The Utlized Budget amount in Budget Utilization report:" + UtilzedAmount);
+
+		Assert.assertEquals(UtilzedAmount, "10000");
 
 	}
 
@@ -1149,16 +1148,110 @@ public class Reports_ExecutionReport extends BaseClass {
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		Assert.assertEquals(status, "Scheduled");
-		
-		if(TSID.equals("TS107") || TSID.equals("TS107_1")) {
+
+		if (TSID.equals("TS107") || TSID.equals("TS107_1")) {
 			System.out.println(accountMap);
-			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_BeneficiaryAccountNumberColumnName, tm.reports_horizontalWindow1, 10,
-					1000);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_BeneficiaryAccountNumberColumnName,
+					tm.reports_horizontalWindow1, 10, 1000);
 			Thread.sleep(2000);
 			String account = tm.reports_BeneficiaryAccountNumberValue.getText();
 			String networkKeyAccount = accountMap.get("Computer");
 			Assert.assertEquals(account, networkKeyAccount);
-			
+
 		}
+	}
+
+	public void verifyHoldStatusInExecutionReport(String tSID) throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		tm.reports_ReportsIcon.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		tm.reports_ReportsInternal.click();
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		tm.reports_eCommExecutionsList.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
+		System.out.println(dealId);
+		tm.reports_dealId1.sendKeys(dealId);
+		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
+
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+			System.out.println(record.getText());
+			Assert.assertEquals(record.getText(), "HOLD");
+
+		}
+
+	}
+	
+	public void verifyCancelStatusInExecutionReport(String tSID) throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		tm.reports_ReportsIcon.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		tm.reports_ReportsInternal.click();
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		tm.reports_eCommExecutionsList.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
+		System.out.println(dealId);
+		tm.reports_dealId1.sendKeys(dealId);
+		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
+
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+			System.out.println(record.getText());
+			Assert.assertEquals(record.getText(), "Cancelled");
+
+		}
+
+	}
+	
+	
+	public void verifyScheduleStatusInExecutionReport(String tSID) throws Exception {
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+		tm.reports_ReportsIcon.click();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+		tm.reports_ReportsInternal.click();
+//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//		tm.reports_searchBox.sendKeys("eComm Executions");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		tm.reports_eCommExecutionsList.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
+		System.out.println(dealId);
+		tm.reports_dealId1.sendKeys(dealId);
+		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+		jsClick.click(tm.cancelIcon);
+
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+			System.out.println(record.getText());
+			Assert.assertEquals(record.getText(), "Scheduled");
+
+		}
+
 	}
 }

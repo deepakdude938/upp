@@ -46,6 +46,9 @@ public class Object_Parties extends BaseClass{
 	@FindBy(xpath = "//div[contains(@class,'onbd_action_option') and normalize-space()='Delete']")
 	public WebElement parties_showMenuDeleteButton;
 	
+	@FindBy(xpath = "//*[contains(normalize-space(),'Error')]")
+	public WebElement parties_ErrorMessage;
+	
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	public WebElement parties_OkButton;
 	
@@ -101,6 +104,8 @@ public class Object_Parties extends BaseClass{
 	@FindBy(id="ic-generic-partyAccounts-getStarted-v1")
 	public WebElement PartyMaker_partyAccountsAddButton;
 	
+	@FindBy(id="ic-generic-partyContacts-addAccount-v1")
+	public WebElement PartyMaker_partyAccountsAddButton1;
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement PartyMaker_PaymentSystem;
@@ -126,6 +131,10 @@ public class Object_Parties extends BaseClass{
 	
 	@FindBy(xpath="//a[normalize-space()='Party Checker']")
 	public WebElement PartyChecker_Icon;
+	
+	@FindBy(xpath="//h2[normalize-space()='Party account deleted successfully.']")
+	public WebElement PartyMaker_deleteMessage;
+	
 	
 	@FindBy(xpath="(//input[@ref='eFloatingFilterText'])[1]")
 	public WebElement PartyChecker_CustomerID_SearchBox;

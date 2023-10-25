@@ -33,6 +33,8 @@ public class ManageConfigs extends BaseClass{
 	public void createProduct(String tSID) throws Exception {
 		
 		config.configurationButton.click();
+		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindow1(config.configuaration_LeftScrollBar, 1000);
 		config.configuration_ManageConfigs.click();
 		config.configuaration_Product.click();
 		config.configurationProduct_AddNew.click();

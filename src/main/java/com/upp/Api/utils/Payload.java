@@ -215,6 +215,46 @@ public class Payload extends BaseClass{
 		
 
 	}
-
 	
+	public String api_updateTransactionStatusHold(String TSID) throws Exception, IOException {
+		externalData = new ExcelReader();
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		
+		jsonContext.set("status", "HOLD");
+		
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
+	}
+
+	public String api_updateTransactionStatusCancel(String TSID) throws Exception, IOException {
+		externalData = new ExcelReader();
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		
+		jsonContext.set("status", "CANC");
+		
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
+	}
+	
+	public String api_updateTransactionStatusSchedule(String TSID) throws Exception, IOException {
+		externalData = new ExcelReader();
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		
+		jsonContext.set("status", "SCHD");
+		
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
+	}
 }

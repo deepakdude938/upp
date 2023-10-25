@@ -71,6 +71,9 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(id="menu-generic-sidemenu-Settings-MANAGE_CONFIGS-v1")
 	public WebElement configuration_ManageConfigs;
 	
+	@FindBy(xpath="//div[contains(@class,'ui-overlay ui-sidebar menu ui-overlay-left ui-box-shadow')]")
+	public WebElement configuaration_LeftScrollBar;
+	
 	@FindBy(xpath="//div[@class='ui-align-right card-text ui-text-semi ui-text-xs blue' and normalize-space()='Product']")
 	public WebElement configuaration_Product;
 	

@@ -428,12 +428,18 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "payment-beneficiaryCountry-sel-v1")
 	public WebElement parties_BeneficiaryCountry;
-
+	
+	@FindBy(xpath = "//select[@id='payment-beneficiaryCountry-sel-v1']")
+	public WebElement parties_BeneficiaryCountry1;
+	
 	@FindBy(id = "payment-to-txt-v1")
 	public WebElement parties_paymentTo;
 
 	@FindBy(id = "payment-beneficiaryCurrency-txt-v1")
 	public WebElement parties_beneficiaryCurrency;
+	
+	@FindBy(id = "payment-beneficiaryCurrency-sel-v1")
+	public WebElement parties_beneficiaryCurrency1;
 
 	@FindBy(xpath = "//button[normalize-space()='Add']")
 	public WebElement parties_partyAccountsAddButton;
