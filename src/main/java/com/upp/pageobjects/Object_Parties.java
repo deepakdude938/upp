@@ -13,8 +13,7 @@ public class Object_Parties extends BaseClass{
 	public Object_Parties() {
 		PageFactory.initElements(driver, this);
 	}
-
-
+	
 	
 	@FindBy(xpath="//label[contains(text(),'Parties')]")
 	public WebElement parties_Icon;
@@ -51,6 +50,9 @@ public class Object_Parties extends BaseClass{
 	
 	@FindBy(xpath = "//button[normalize-space()='OK']")
 	public WebElement parties_OkButton;
+	
+	@FindBy(xpath = "//h2[normalize-space()='Creditor Lookup keys passed for 2 or more accounts are not unique']")
+	public WebElement parties_ErrorMessage1;
 	
 	@FindBy(xpath="//i[@class='ui-icon ic ic-edit_blue ng-star-inserted']")
 	public WebElement parties_EditParty;
