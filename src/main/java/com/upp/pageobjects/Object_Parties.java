@@ -176,4 +176,5 @@ public class Object_Parties extends BaseClass{
 	
 	@FindBy(xpath="(//div[@class='ag-body-horizontal-scroll-viewport'])[2]")
 	public WebElement Party_status_window;
+	
 }

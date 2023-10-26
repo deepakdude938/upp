@@ -13,7 +13,7 @@ Then Click Document Tab
 And Submit the deal
 Then Approve the deal from the deal checker
 Then Click on Party-Maker Tab "<TSID>"
-Then Try to add account with same Creditor look up keys "<TSID>"
+Then Add account from Party Maker "<TSID>"
 Then Verify Account should not be created
 
 Examples:

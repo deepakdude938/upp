@@ -74,8 +74,6 @@ public class PartyMaker_PaymentInstrumentHandler extends BaseClass  implements I
 	
 public void handlePartyMakerBT_INPaymentInstrument(String TSID) throws Exception {
 		
-
-	
 	applyExplicitWaitsUntilElementClickable(od.parties_PaymentType, Duration.ofSeconds(5));
 	dropdown.selectByVisibleText(od.parties_PaymentType,"BT");
 	
@@ -93,12 +91,17 @@ public void handlePartyMakerBT_INPaymentInstrument(String TSID) throws Exception
 	scroll.scrollInToView(od.parties_Accounts_beneficiaryAddressLine1);
 	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
 	od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Address Line 1"));
-	
 
 	scroll.scrollInToView(od.parties_BeneficiaryCountry);
 	applyExplicitWaitsUntilElementClickable(od.parties_BeneficiaryCountry, Duration.ofSeconds(5));
 	dropdown.selectByVisibleText(od.parties_BeneficiaryCountry,
 			externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Country"));
+	
+	if(externalData.getFieldData(TSID, "Parties-Maker", "Is Currency").equals("Y")) {
+	scroll.scrollInToView(od.parties_Accounts_beneficiaryCurrency);
+	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCurrency, Duration.ofSeconds(5));
+	dropdown.selectByVisibleText(od.parties_Accounts_beneficiaryCurrency,externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Currency"));
+	}
 	
 	scroll.scrollInToView(od.parties_Accounts_beneficiaryCountryOfIncorporation);
 	applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryCountryOfIncorporation, Duration.ofSeconds(5));
@@ -106,11 +109,6 @@ public void handlePartyMakerBT_INPaymentInstrument(String TSID) throws Exception
 			externalData.getFieldData(TSID, "Parties-Maker", "Beneficiary Country Of Incorporation"));
 
 	od.parties_partyAccountsAddButton.click();
-	
 		
 	}
-	
-
-
-	
 }

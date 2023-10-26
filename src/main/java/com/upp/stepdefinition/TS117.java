@@ -7,7 +7,6 @@ import com.upp.base.BaseClass;
 import com.upp.handlers.PartyMaker_PaymentInstrumentHandler;
 import com.upp.pagemodules.Parties_Maker_Checker.Party_Maker_Accounts;
 import com.upp.pageobjects.Object_Parties;
-
 import callbackInterfaces.ICallback;
 import io.cucumber.java.en.Then;
 
@@ -21,10 +20,10 @@ public class TS117 extends BaseClass  implements ICallback{
 		op=new Object_Parties();
 	}
 	
-	@Then("Try to add account with same Creditor look up keys {string}")
-	public void try_to_add_account_with_same_Creditor_look_up_keys(String TSID) throws Exception {
+	@Then("Add account from Party Maker {string}")
+	public void add_account_from_Party_Maker(String TSID) throws IOException, Exception {
 		this.TSID=TSID;
-	   pma.addPartyMaker_Accounts(TSID,this);
+		   pma.addPartyMaker_Accounts(TSID,this);
 	}
 	
 	@Then("Click on Party-Maker Tab {string}")

@@ -11,7 +11,10 @@ Then Add Party Accounts with given "<TSID>".
 Then Click Document Tab
 And Submit the deal
 Then Approve the deal from the deal checker
-
+Then Click on Party-Maker Tab "<TSID>"
+Then Add account from Party Maker "<TSID>"
+Then Click on OK button
+Then Verify Account is created "<TSID>"
 
 Examples:
       |TSID   |
