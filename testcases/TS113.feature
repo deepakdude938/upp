@@ -18,6 +18,8 @@
 #Then approve the deal from the deal checker common method
 #Then submit the deal to transaction checker
 #Then submit the deal to transaction verifier
+#And Add Sub Instruction with payment Instrument TT_UK in Tnx_Maker with given "<TSID>".
+#Then Approve the transaction from Transaction Checker with given "<TSID>"
 #Examples:
       #|TSID|
       #|TS113|

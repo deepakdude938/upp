@@ -1,6 +1,7 @@
 package com.upp.stepdefinition;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
@@ -63,7 +64,8 @@ public class TS113 extends BaseClass implements ICallback {
 	}
 	@Then("submit the deal to transaction checker")
 	public void submit_the_deal_to_transaction_checker() throws Exception {
-		Thread.sleep(180000);
+		//Thread.sleep(240000);
+		TimeUnit.MINUTES.sleep(4);
 		txnsearch.txnMaker_SubmitDeal(TS06.dealId);
 	}
 
