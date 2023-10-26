@@ -88,7 +88,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 	public void Transaction_Maker_Sub_Instruction(String TSID, ICallback icallback) throws Exception {
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
-		if(!(TSID.equalsIgnoreCase("TS110"))){
+		if(!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))){
 		tm.transactions_Instrument.click();
 		}
 		else
@@ -96,7 +96,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 			tm.transactions_Instrument_when_budget_purpose_enabled.click();
 		}
 		Thread.sleep(1000);
-		if(!(TSID.equalsIgnoreCase("TS110"))){
+		if(!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))){
 			tm.transactions_Instrument.click();
 			}
 			else
