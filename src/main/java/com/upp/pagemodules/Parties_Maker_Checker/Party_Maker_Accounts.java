@@ -226,13 +226,10 @@ public class Party_Maker_Accounts extends BaseClass {
 		jsClick.click(op.PartyMaker_PaymentSystem);
 		Thread.sleep(1000);
 		String paymentInstrumentdata=externalData.getFieldData(TSID, "Parties-Maker", "Accounts-Payment System");
-		 By paymentInstrument = By.xpath("(//div[contains(text(),'"+paymentInstrumentdata+"')])[3]");
+		 By paymentInstrument = By.xpath("(//div[contains(text(),'"+paymentInstrumentdata+"')])[last()]");
 		 applyExplicitWaitsUntilElementVisible(paymentInstrument,5);
 		 driver.findElement(paymentInstrument).click();
 		icallback.handleCallback("PARTIES_MAKER_PAYMENT_INSTRUMENT",paymentInstrumentdata);
-		
-//		applyExplicitWaitsUntilElementClickable(op.PartyMaker_OKButton, Duration.ofSeconds(5));
-//		op.PartyMaker_OKButton.click();
 		
 	}
 }
