@@ -159,6 +159,18 @@ public class DateUtils {
 		return formattedDateTime;
 	}
 	
+	public static String getCurrentTimeUTCPlusMInutes(int min) {
+		LocalDateTime currentDateTime = LocalDateTime.now(ZoneId.of("UTC"));
+
+		LocalDateTime newDateTime = currentDateTime.plusMinutes(min);
+
+		ZonedDateTime zonedDateTime = newDateTime.atZone(ZoneId.of("UTC"));
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h.mm a");
+		String formattedDateTime = zonedDateTime.format(formatter);
+		return formattedDateTime;
+	}
+	
 	public static String getCurrentDateTime(){
 		
 		 LocalDateTime currentDateTime = LocalDateTime.now();
