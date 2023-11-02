@@ -18,6 +18,7 @@ Then submit the deal
 Then Create odp json payload file with DealId with given "<TSID>"
 And Create record in ODP "<TSID>"
 Then approve the deal from the deal checker common method
+And check Both Transactions Status is Scheduled
 Examples:
       |TSID|
       |TS122|
