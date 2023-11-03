@@ -60,9 +60,16 @@ public class Party_Maker_Summary extends BaseClass {
 	public void PartyMaker_Summary(String TSID) throws Exception
 	{
 		op.PartyMaker_SummaryTab.click();
-		Thread.sleep(2000);
+		Thread.sleep(5000);
+		try {
 		applyExplicitWaitsUntilElementClickable(op.PartyMaker_SubmitButton, Duration.ofSeconds(10));
 		op.PartyMaker_SubmitButton.click();
+		}
+		catch(Exception e ) {
+			Thread.sleep(1000);
+			handleElementClickException(op.PartyMaker_SubmitButton);
+		}
+		
 		applyExplicitWaitsUntilElementClickable(op.PartyMaker_YesButton, Duration.ofSeconds(10));
 		op.PartyMaker_YesButton.click();
 		Thread.sleep(5000);

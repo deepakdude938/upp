@@ -28,14 +28,37 @@ public class AccountAmendment extends BaseClass{
 	}
 
 	public void callAccountAmendment(String TSID) throws InvalidFormatException, IOException {
-	
+//		https://sit.upp.datanimbus.com/mdm/api/party/REF1698644612204-RRRMarketPlace
+//		https://qa.upp.datanimbus.com/mdm/api/party/REF1698654419560-RRRMarketPlace
+		System.out.println(base_url);
+		String url = "mdm/api/party/"+dealId+"-RRRMarketPlace";
+		System.out.println(url);
 		RestAssured.baseURI = base_url;		
-     	Response res = given().header("Content-Type", "application/json")
-				.header("Authorization", LoginAPI_UPP.authToken).body(pay.accountAmendment(TSID)).when()
-				.post("transaction/api/transaction");
+     	Response res = given()
+     			.header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken)
+				.body(pay.accountAmendment(TSID))
+				.when()
+				.put(url);
 
 		response = res.then().extract().asString();
-		System.out.println("the status code is" + res.getStatusCode());
+		System.out.println("the status code is " + res.getStatusCode());
 
+	}
+
+	public void call_AccountAmmendment_UpdateCreditorLookUpKeys_Api(String TSID) throws Exception, IOException {
+		System.out.println(base_url);
+		String url = "mdm/api/party/"+dealId+"-RRRMarketPlace";
+		System.out.println(url);
+		RestAssured.baseURI = base_url;		
+     	Response res = given()
+     			.header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken)
+				.body(pay.accountAmendment_UpdateCreditorLookUpKeys(TSID))
+				.when()
+				.put(url);
+
+		response = res.then().extract().asString();
+		System.out.println("the status code is " + res.getStatusCode());
 	}
 }
