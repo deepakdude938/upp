@@ -18,7 +18,7 @@ public class TS25 {
 	}
 	
 	@Then("Approve product")
-	public void approve_product() {
+	public void approve_product() throws Exception {
 		config.approveProduct();
 	}
 	

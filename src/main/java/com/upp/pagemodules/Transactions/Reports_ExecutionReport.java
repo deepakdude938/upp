@@ -1159,6 +1159,22 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(account, networkKeyAccount);
 
 		}
+		else if(TSID.equals("TS123") || TSID.equals("TS123_1")) {
+			System.out.println(accountMap);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_BeneficiaryAccountNumberColumnName,
+					tm.reports_horizontalWindow1, 10, 1000);
+			Thread.sleep(2000);
+			String account = tm.reports_BeneficiaryAccountNumberValue.getText();
+			String networkKeyAccount = accountMap.get("Computer");
+			System.out.println(account);
+			if(TSID.equals("TS123")) {
+				Assert.assertEquals(account, networkKeyAccount);
+			}
+			else if(TSID.equals("TS123_1")) {
+				Assert.assertEquals(account, "ICICI1205");
+			}
+
+		}
 	}
 
 	public void verifyHoldStatusInExecutionReport(String tSID) throws Exception {
