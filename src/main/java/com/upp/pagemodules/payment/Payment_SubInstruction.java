@@ -179,7 +179,7 @@ public class Payment_SubInstruction extends BaseClass {
 
 			}
 		
-		if (TSID.startsWith("TS105") || TSID.startsWith("TS108")) {
+		if (TSID.startsWith("TS105") || TSID.startsWith("TS108") || TSID.equalsIgnoreCase("TS122_1")) {
 			
 			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno_without_Budget_Purpose, Duration.ofSeconds(5));
 			od.Payment_Beneficiaryaccno_without_Budget_Purpose.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
