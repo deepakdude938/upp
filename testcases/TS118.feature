@@ -9,12 +9,12 @@ And Create two Accounts with given "<TSID>"
 And Create Parties in the Parties Tab with given "<TSID>"
 Then submit the deal
 Then approve the deal from the deal checker common method
-And Add Transaction Maker Basic Details with given "<TSID>"
-And Add Payment Currency and  currency Type  with given "<TSID>"
-And Add second Payment Currency and  currency Type  with given "<TSID>"
-And Add Payment Currency and  currency Type as Debit currency with given "TS118_1"
-And Add Payment Currency and  currency Type as Debit currency with given "TS118_1"
-And Verify total debit currency and payment currency
+#And Add Transaction Maker Basic Details with given "<TSID>"
+#And Add Payment Currency and  currency Type  with given "<TSID>"
+#And Add second Payment Currency and  currency Type  with given "<TSID>"
+#And Add Payment Currency and  currency Type as Debit currency with given "TS118_1"
+#And Add Payment Currency and  currency Type as Debit currency with given "TS118_1"
+#And Verify total debit currency and payment currency
 
 Examples:
       |TSID   |

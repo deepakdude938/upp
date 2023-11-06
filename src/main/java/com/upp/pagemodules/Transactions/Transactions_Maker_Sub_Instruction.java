@@ -88,30 +88,29 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 	public void Transaction_Maker_Sub_Instruction(String TSID, ICallback icallback) throws Exception {
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
-		if(!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))){
-		tm.transactions_Instrument.click();
-		if ((TSID.equalsIgnoreCase("TS118") || (TSID.equalsIgnoreCase("TS118_1")))) {
-			// scroll.scrollInToView(tm.paymentCountry);
-			applyExplicitWaitsUntilElementClickable(tm.paymentCountry, Duration.ofSeconds(7));
-			jsClick.click(tm.paymentCountry);
-			dropdown.selectByVisibleText(tm.paymentCountry,
-					externalData.getFieldData(TSID, "Txn Maker", "Payment Currency"));
-			String paymentCurrency = externalData.getFieldData(TSID, "Txn Maker", "Payment Currency");
-			System.out.println(paymentCurrency);
-			if (!paymentCurrency.equalsIgnoreCase("INR")) {
-
-				applyExplicitWaitsUntilElementClickable(tm.paymentCountryType, Duration.ofSeconds(7));
-				jsClick.click(tm.paymentCountryType);
-				dropdown.selectByVisibleText(tm.paymentCountryType, "Debit Currency");
-				System.out.println("Debit Currency set");
+		if (!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))) {
+			tm.transactions_Instrument.click();
+			if ((TSID.equalsIgnoreCase("TS118") || (TSID.equalsIgnoreCase("TS118_1")))) {
+				// scroll.scrollInToView(tm.paymentCountry);
+				applyExplicitWaitsUntilElementClickable(tm.paymentCountry, Duration.ofSeconds(7));
+				jsClick.click(tm.paymentCountry);
+				dropdown.selectByVisibleText(tm.paymentCountry,
+						externalData.getFieldData(TSID, "Txn Maker", "Payment Currency"));
+				String paymentCurrency = externalData.getFieldData(TSID, "Txn Maker", "Payment Currency");
+				System.out.println(paymentCurrency);
+				if (!paymentCurrency.equalsIgnoreCase("INR")) {
+					applyExplicitWaitsUntilElementClickable(tm.paymentCountryType, Duration.ofSeconds(7));
+					jsClick.click(tm.paymentCountryType);
+					dropdown.selectByVisibleText(tm.paymentCountryType, "Debit Currency");
+					System.out.println("Debit Currency set");
+				}
 			}
-		
-		}
-		 else {
+
+		} else {
 			tm.transactions_Instrument_when_budget_purpose_enabled.click();
 		}
 		Thread.sleep(1000);
-		if (!(TSID.equalsIgnoreCase("TS110"))) {
+		if (!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))) {
 			tm.transactions_Instrument.click();
 		} else {
 			tm.transactions_Instrument_when_budget_purpose_enabled.click();
@@ -193,5 +192,4 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		}
 	}
 
-	
 }
