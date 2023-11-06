@@ -27,6 +27,11 @@ public class JavascriptClick {
 		javascriptExecutor.executeScript("arguments[0].value='"+value+"';", element);
 	}
 	
+	public void sendKeys_longint(WebElement element,long value) {
+		javascriptExecutor = (JavascriptExecutor) driver;
+		javascriptExecutor.executeScript("arguments[0].value='"+value+"';", element);
+	}
+	
 	public void enterRichText(WebElement element,String value) {
 		javascriptExecutor = (JavascriptExecutor) driver;
 		javascriptExecutor.executeScript("arguments[0].innerHTML='"+value+"';", element);

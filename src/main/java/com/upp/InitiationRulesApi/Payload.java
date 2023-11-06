@@ -681,8 +681,50 @@ public class Payload extends BaseClass {
 	public String accountAmendment(String TSID) throws InvalidFormatException, IOException {
 		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+	
+		
+		if(TSID.equals("TS123")||TSID.equals("TS123_1")) {
+			System.out.println(accountMap.get("Network"));
+			jsonContext.set("$.party.accounts[0].paymentDetails.to", accountMap.get("Network"));
+		}
+		
+		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+	}
+	
+	public static String Rule_With_Account_Key(String dealId, String TSID) throws IOException, Exception {
+		externalData = new ExcelReader();
+		String payLoadString = externalData.getFieldData(TSID, "Initiation Rules", "Payload");
+
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniquePlatformRefNo = "PlatformRef" + random;
+
+		String utcdate = DateUtils.getCurrentDateUTC();
+		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
+
+		String utctimeEod = utcdate + "T" + plus2mins;
+
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 		jsonContext.set("$.dealRefId", dealId);
 		String modifiedJsonString = jsonContext.jsonString();
+
+		return modifiedJsonString;
+
+	}
+
+	public String accountAmendment_UpdateCreditorLookUpKeys(String TSID) throws Exception, IOException {
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.party.accounts[0].paymentDetails.to", accountMap.get("Network"));
+		jsonContext.set("$.party.accounts[1].paymentDetails.to", accountMap.get("Computer"));
+		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCountry", "US");
+		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCurrency", "USD");
+		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
 
 		return modifiedJsonString;
 	}

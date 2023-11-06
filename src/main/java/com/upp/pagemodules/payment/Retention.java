@@ -11,10 +11,13 @@ import java.util.HashMap;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jcraft.jsch.Random;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.Payload;
 import com.upp.pageobjects.Object_NewDeal;
@@ -30,23 +33,32 @@ import com.upp.utils.ScrollTypes;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.InputEvent;
 
 public class Retention extends BaseClass{
 	public static Object_NewDeal od;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
-	
+	String sourceAccountno;
+	public JavascriptClick jsClick;
 	public Retention() {
 		
 		od = new Object_NewDeal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
+		jsClick=new JavascriptClick(driver);
 		
 	}
 
 	public void createRetention(String TSID) throws Exception {
 		SoftAssert a = new SoftAssert();
-		String	sourceAccountno=DealPage.sourceAccountNo;
+	     sourceAccountno=DealPage.sourceAccountNo;
+		if(TSID.equalsIgnoreCase("TS122"))
+		{
+			sourceAccountno=DealPage.AccountNo1;
+		}
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
 		try {
 			od.payments_ScheduledInstructionIcon.click();
@@ -73,7 +85,50 @@ public class Retention extends BaseClass{
 		dropdown.selectByVisibleText(od.retention_SpecifyAmountAs, externalData.getFieldData(TSID, "PaymentRetention", "Specify amount as"));
 		od.retention_SpecifyAmountValue.clear();
 		System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
+		
 		od.retention_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
+//		if(TSID.equalsIgnoreCase("TS122"))
+//		{
+//			
+//			jsClick.sendKeys(od.retention_SpecifyAmountValue, "£30,000,0000.00");
+//			od.retention_SpecifyAmountValue.clear();
+//			Thread.sleep(500);
+//			jsClick.sendKeys(od.retention_SpecifyAmountValue, "£30,000,0000.00");
+//			od.retention_SpecifyAmountValue.clear();
+//			Thread.sleep(1000);
+//			od.retention_SpecifyAmountValue.sendKeys(Keys.BACK_SPACE);
+//			Thread.sleep(1000);
+//			od.retention_SpecifyAmountValue.sendKeys(Keys.BACK_SPACE);
+//			Thread.sleep(1000);
+//			od.retention_SpecifyAmountValue.sendKeys("£30,000,0000.00");
+//			od.retention_SpecifyAmountValue.clear();
+//			Thread.sleep(500);
+//			od.retention_SpecifyAmountValue.sendKeys("300000");
+//			od.retention_SpecifyAmountValue.sendKeys("3");
+//			
+//			jsClick.sendKeys(od.retention_SpecifyAmountValue, "£30,000,0000.00");
+//			od.retention_basicDetils_Name.click();
+//			try {
+//	            // Create a Robot instance
+//	            Robot robot = new Robot();
+//
+//	            // Move the mouse cursor to the desired coordinates outside of the element
+//	            int x = 600; // Set your desired X-coordinate
+//	            int y = 800; // Set your desired Y-coordinate
+//	            robot.mouseMove(x, y);
+//	            Thread.sleep(3000);
+//
+//	            // Simulate a left mouse click
+//	            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//	            Thread.sleep(800);
+//	            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+//	            Thread.sleep(800);
+//	        } catch (AWTException e) {
+//	            e.printStackTrace();
+//	        }
+//			
+//			Thread.sleep(500);
+//		}
 		od.retention_nextArrowIcon.click();
 		
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
@@ -94,11 +149,15 @@ public class Retention extends BaseClass{
 		dropdown.selectByValue(od.retention_SelectTimezone, "Asia/Calcutta")	;
 		Thread.sleep(1000);
 		dropdown.selectByVisibleText(od.retention_Execute1,"On scheduled date");
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		
 		if(isWebElementDisplayed(od.retention_ScheduleNoOfDays)) {
 			od.retention_ScheduleNoOfDays.sendKeys("3");
 		}
 		
 		od.retention_ScheduleNextButton.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		Thread.sleep(5000);
 		applyExplicitWaitsUntilElementClickable(od.retention_SubInstructionNextButton, Duration.ofSeconds(10));
 		od.retention_SubInstructionNextButton.click();
@@ -115,6 +174,8 @@ public class Retention extends BaseClass{
 		a.assertAll();
 
 	}
+	
+
 
 	public void createJsonFile(String TSID) throws Exception {
 

@@ -87,6 +87,9 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 
 	public void Transaction_Maker_Sub_Instruction(String TSID, ICallback icallback) throws Exception {
 		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
+		if(!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))){
+		tm.transactions_Instrument.click();
 		if ((TSID.equalsIgnoreCase("TS118") || (TSID.equalsIgnoreCase("TS118_1")))) {
 			// scroll.scrollInToView(tm.paymentCountry);
 			applyExplicitWaitsUntilElementClickable(tm.paymentCountry, Duration.ofSeconds(7));
@@ -102,11 +105,9 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 				dropdown.selectByVisibleText(tm.paymentCountryType, "Debit Currency");
 				System.out.println("Debit Currency set");
 			}
+		
 		}
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
-		if (!(TSID.equalsIgnoreCase("TS110"))) {
-			tm.transactions_Instrument.click();
-		} else {
+		 else {
 			tm.transactions_Instrument_when_budget_purpose_enabled.click();
 		}
 		Thread.sleep(1000);

@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.time.Duration;
 
 import com.upp.Api.utils.LogOutApi;
+import com.upp.InitiationRulesApi.Rule_Account_Key;
 import com.upp.InitiationRulesApi.Rule_Non_OBO;
 import com.upp.InitiationRulesApi.Rule_With_Partial_PaymentInfoDetails;
 import com.upp.InitiationRulesApi.Rule_Without_PaymentInfoDetails;
@@ -46,14 +47,18 @@ public class TS119 extends BaseClass {
 	public static String TnxId = "";
 	Reports_ExecutionReport report;
 	DealAccountCreator account;
+	Rule_Account_Key rule;
 
 	public TS119() {
 
 		this.dm = new DashBoard_Module();
 		account=new DealAccountCreator();
 		report=new Reports_ExecutionReport();
-       
+        rule=new Rule_Account_Key();
 	}
 
-	
+	@Then("Call the Rule_Account_Key Api with given {string}.")
+	public void call_the_Rule_Account_Key_Api_with_given(String string) throws Exception {
+		End2EndId=rule.Rule_Account_Key_Api(TS06.dealId, string);
+	}
 }

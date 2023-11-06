@@ -57,7 +57,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		dropdown = new DropDown(driver);
 		tm = new Object_Transactions();
 		noti = new Object_Notification();
-
+		jsClick=new JavascriptClick(driver);
 	}
 
 	public void bulkUpload(String srcAcc, String desAcc, String time) throws Exception {
@@ -91,6 +91,48 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		verifytNotification();
 		verifyTransaction();
 		Thread.sleep(6000);
+	}
+	
+	public void bulkUpload_GB_Account(String srcAcc, String desAcc, String time) throws Exception {
+		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+		String random = Long.toString(number);
+		String uniqueTransactionName = "tran" + random;
+
+		String uniqueTransactionName2 = "transaction1" + random;
+		String excelFilePath = System.getProperty("user.dir")
+				+ "//src//main//resources//BulkUploadAdhocTnx_GBAccount.xlsx";
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "transactionName", uniqueTransactionName);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "transactionName", uniqueTransactionName2);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "sourceAccount", srcAcc);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "sourceAccount", desAcc);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "scheduleTime", time);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
+		Thread.sleep(6000);
+		//tm.transactions_TransactionIcon1.click();
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon1, Duration.ofSeconds(60));
+		jsClick.click(tm.transactions_TransactionIcon1);
+		Thread.sleep(8000);
+	//	tm.transactions_TransactionMaker.click();
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionMaker, Duration.ofSeconds(60));
+		jsClick.click(tm.transactions_TransactionMaker);
+		Thread.sleep(8000);
+		applyExplicitWaitsUntilElementClickable(tm.transactionMaker_bulk, Duration.ofSeconds(60));
+		tm.transactionMaker_bulk.click();
+		Thread.sleep(8000);
+		tm.transactionMaker_browseButton.sendKeys(excelFilePath);
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.transactionMaker_sheetName, Duration.ofSeconds(60));
+		dropdown.selectByVisibleText(tm.transactionMaker_sheetName, "Sheet");
+		applyExplicitWaitsUntilElementClickable(tm.transactionMaker_uploadButton, Duration.ofSeconds(60));
+		tm.transactionMaker_uploadButton.click();
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(60));
+		tm.transactions_Ok.click();
+		Thread.sleep(10000);
+		driver.navigate().refresh();
+		Thread.sleep(10000);
+		verifytNotification();
+		verifyTransaction();
+		Thread.sleep(8000);
 	}
 
 	public void verifytNotification() {
@@ -142,9 +184,10 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		jsClick.click(tm.transactions_TransactionIcon);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofMinutes(2));
 		jsClick.click(tm.transactions_TransactionChecker);
-		Thread.sleep(8000);
+		Thread.sleep(9000);
+		applyExplicitWaitsUntilElementClickable(tm.transactionMaker_dealSearch, Duration.ofMinutes(2));
 		tm.transactionMaker_dealSearch.sendKeys(dealId);
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		try {
 			jsClick.click(tm.transactionMaker_allRecord);
 

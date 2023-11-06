@@ -3,7 +3,6 @@ package com.upp.pagemodules.Parties_Maker_Checker;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-
 import com.upp.base.BaseClass;
 import com.upp.handlers.DealPartiesHandler;
 import com.upp.odp.utils.AccountDetails;
@@ -17,14 +16,10 @@ import com.upp.pageobjects.Object_Transactions;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
-
 import freemarker.template.utility.DateUtil;
-
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-
 import static org.testng.Assert.assertTrue;
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
@@ -61,16 +56,22 @@ public class Party_Maker_Summary extends BaseClass {
 		op=new Object_Parties();
 
 	}
-
 	
 	public void PartyMaker_Summary(String TSID) throws Exception
 	{
 		op.PartyMaker_SummaryTab.click();
-		applyExplicitWaitsUntilElementClickable(op.PartyMaker_SubmitButton, Duration.ofSeconds(5));
+		Thread.sleep(5000);
+		try {
+		applyExplicitWaitsUntilElementClickable(op.PartyMaker_SubmitButton, Duration.ofSeconds(10));
 		op.PartyMaker_SubmitButton.click();
+		}
+		catch(Exception e ) {
+			Thread.sleep(1000);
+			handleElementClickException(op.PartyMaker_SubmitButton);
+		}
+		
 		applyExplicitWaitsUntilElementClickable(op.PartyMaker_YesButton, Duration.ofSeconds(10));
 		op.PartyMaker_YesButton.click();
 		Thread.sleep(5000);
 	}
-
 }
