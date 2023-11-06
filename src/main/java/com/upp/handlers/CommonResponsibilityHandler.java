@@ -17,6 +17,14 @@ public class CommonResponsibilityHandler {
 				DealResponsibilityHandler responsibilityHandler = new DealResponsibilityHandler();
 				responsibilityHandler.handleAutomationAttributes();
 			}
+			else	if (responsibility.equalsIgnoreCase("Buyer")) {
+				DealResponsibilityHandler responsibilityHandler = new DealResponsibilityHandler();
+				responsibilityHandler.handleBuyer();
+			}
+			else	if (responsibility.equalsIgnoreCase("Seller")) {
+				DealResponsibilityHandler responsibilityHandler = new DealResponsibilityHandler();
+				responsibilityHandler.handleSeller();
+			}
 		}
 	}
 }

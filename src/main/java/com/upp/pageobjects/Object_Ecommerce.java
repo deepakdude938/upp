@@ -70,10 +70,9 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//button[normalize-space()='Search']")
 	public WebElement ecommerce_SearchBtn;
 
-
 	@FindBy(xpath = "//input[@type='radio']")
 	public WebElement ecommerce_debitAccount;
-	
+
 	// Object for basic details on ecomm treansaction maker
 	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']")
 	public WebElement ecommerce_purpose;
@@ -95,6 +94,24 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "//div[contains(@class,'loader') and not(contains(@class,'xcro-loader'))]")
 	public WebElement ecommerce_Loader;
+
+	@FindBy(xpath = "//span[@class='ui-pseudo-checkbox']")
+	public WebElement unlimitDebtor;
+
+	@FindBy(xpath = "//input[@placeholder='Participant RefId']")
+	public WebElement participantRefId;
+
+	@FindBy(xpath = "(//li[@id='lbl-generic-autocomplete-listItemOption0'])[3]")
+	public WebElement ref1;
+
+	@FindBy(xpath = "//h2[@id='swal2-title']")
+	public WebElement warningMsg;
+
+	@FindBy(xpath = "//div[@class='swal2-header']")
+	public WebElement warningMsgPopup;
+	
+	@FindBy(xpath = "//label[normalize-space()='Deal RefId']")
+	public WebElement dealRefId;
 
 	// Object for Sub instruction on ecomm treansaction maker
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-fdt-participant-id-v1']//input[@placeholder='Creditor Participant Id']")

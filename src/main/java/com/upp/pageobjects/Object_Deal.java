@@ -685,6 +685,14 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//div[contains(@class,'list-item')]//div[contains(@class,'ellipsis')]")
 	public List<WebElement> party_basic_details_ResponsibilityAttributes;
 	
+	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1']")
+	public WebElement party_basic_details_buyer_field;
+	
+	@FindBy(xpath = "//div[contains(text(),'Buyer')]")
+	public WebElement party_basic_details_buyer;
+	
+	@FindBy(xpath = "//div[contains(text(),'Seller')]")
+	public WebElement party_basic_details_seller;
 	
 	
 }

@@ -357,6 +357,14 @@ public class Reports_ExecutionReport extends BaseClass {
 			driver.navigate().refresh();
 			applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 			tm.reports_DealId.sendKeys(DealId);
+			Thread.sleep(3000);
+//			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+//			jsClick.click(tm.cancelIcon);
+//
+//			Thread.sleep(1000);
+//			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+//					-1000);
+
 			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
 			if (ScroeStatusafter.equalsIgnoreCase("Settled")) {
 				flag = 1;

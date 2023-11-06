@@ -161,6 +161,36 @@ public class DealBasicDetailCreators extends BaseClass {
 				od.deals_partyResponsibilitiesText.click();
 			 }	 
 
+			 if(TSID.equalsIgnoreCase("TS121")) {
+				 input = "Seller";
+				 String[] responsibilityArray1 = input.split(",");
+				 ArrayList<String> arrayList1 = new ArrayList<>(Arrays.asList(responsibilityArray1));
+				 
+					 for(String responsibility:arrayList1)
+					 {
+						 Thread.sleep(1000);
+							od.partyResponsibility.click();
+							Thread.sleep(1500);
+						od.partyResponsibilityinput.sendKeys(responsibility);
+						Thread.sleep(1000);
+						By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + responsibility + "')]");
+						applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
+						driver.findElement(party_Responsibility_Option).click();
+
+						try {
+							driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+							if (od.responsibilityAttributePopup.isDisplayed()) {
+								applyExplicitWaitsUntilElementClickable(od.saveButton, Duration.ofSeconds(10));
+								od.saveButton.click();
+							}
+						} catch (Exception e) {
+							System.out.println("Normal flow ");
+						}
+						
+						od.deals_partyResponsibilitiesText.click();
+					 }	 
+
+			 }
 		try {
 			input = externalData.getFieldData(TSID, "Basic Details", "Contact");
 

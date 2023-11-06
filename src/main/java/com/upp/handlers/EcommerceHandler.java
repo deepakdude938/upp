@@ -87,6 +87,10 @@ public class EcommerceHandler extends BaseClass {
 				WebElement s2 = driver.findElement(By.xpath("//span[@title='"+accountnumber1+"']/../.."));
 				s2.click();
 			}
+			else if(TSID.equalsIgnoreCase("TS121")){
+				jsClick.click(od.ecommerceFirstAccount);
+				jsClick.click(od.ecommerceSecondAccount);
+			}
 			else {
 			String hiddenClass = od.accountNumbers.getAttribute("class");
 			System.out.println(hiddenClass);

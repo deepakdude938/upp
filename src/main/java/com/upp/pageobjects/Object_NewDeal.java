@@ -1227,4 +1227,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement PaymentBudget_BeneficiaryaccnoPurpose;
+	
+	@FindBy(xpath = "(//span[@title='edit'])[2]")
+	public WebElement editIcon2;
 }

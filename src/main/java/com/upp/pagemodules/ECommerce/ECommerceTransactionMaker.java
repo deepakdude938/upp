@@ -22,6 +22,7 @@ import com.upp.utils.ScrollTypes;
 
 import callbackInterfaces.ICallback;
 import freemarker.template.utility.DateUtil;
+import junit.framework.Assert;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -158,4 +159,113 @@ public class ECommerceTransactionMaker extends BaseClass {
 
 	}
 
+	public void addDealAsEcommerceTxn1(String dealId, String TSID, String srcAccount, String toAccount,
+			ICallback icallback) throws Exception {
+		Thread.sleep(3000);
+		ecomm.ecommerce_SideMenuIcon.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Txnmaker, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_Txnmaker);
+		// ecomm.ecommerce_Txnmaker.click();
+		Thread.sleep(5000);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnSearch, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_TxnSearch);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
+		jsClick.click(ecomm.ecommerce_addNewmaker);
+		ecomm.ecommerce_dealId.sendKeys(dealId);
+		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
+		driver.findElement(dealId_Option).click();
+		jsClick.click(ecomm.ecommerce_participantIdtxt);
+		ecomm.ecommerce_participantIdtxt.sendKeys("Participant1");
+		Thread.sleep(3000);
+		ecomm.ecommerce_participantId.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
+		jsClick.click(ecomm.ecommerce_SearchBtn);
+		jsClick.click(ecomm.ecommerce_debitAccount);
+		ecomm.ecommerce_SubmitBtn.click();
+		addBasicDetailsWithUnlimitedDeditorToEcommerceTxn(TSID, srcAccount, toAccount);
+
+	}
+
+	public void addBasicDetailsWithUnlimitedDeditorToEcommerceTxn(String TSID, String srcAccount, String toAccount) throws Exception {
+		Thread.sleep(2000);
+		ecomm.ecommerce_purpose.click();
+		System.out.println(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(2000);
+		ecomm.ecommerce_purpose.sendKeys(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		dropdown.selectByVisibleText(ecomm.ecommerce_purpose,
+				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(3000);
+		ecomm.ecommerce_participantAccount.click();
+		ecomm.ecommerce_firstParticipantAccount.click();
+		Thread.sleep(2000);
+		dropdown.selectByVisibleText(ecomm.ecommerce_balanceConsideration,
+				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Balance Consideration"));
+		Thread.sleep(2000);
+		ecomm.unlimitDebtor.click();
+		ecomm.participantRefId.click();
+		ecomm.participantRefId.sendKeys(externalData.getFieldData("TS121_Participant1", "Party", "Party Name"));
+		ecomm.ref1.click();
+		Thread.sleep(2000);
+		try {
+			if(ecomm.warningMsgPopup.isDisplayed()) {
+				String message = ecomm.warningMsg.getText();
+				Assert.assertEquals(message, "OBO Responsibility for selected participant is not same as Debtor");
+			}
+		}catch (Exception e) {
+			System.out.println("Failed");
+		}
+//				ecomm.ecommerce_saveAndContinue.click();
+	}
+
+	
+	public void verifyDealRefIdAndParticipantRefId(String TSID) throws Exception {
+		int flag =0;
+		Thread.sleep(3000);
+		ecomm.ecommerce_SideMenuIcon.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Txnmaker, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_Txnmaker);
+		// ecomm.ecommerce_Txnmaker.click();
+		Thread.sleep(5000);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnSearch, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_TxnSearch);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
+		jsClick.click(ecomm.ecommerce_addNewmaker);
+		ecomm.ecommerce_dealId.sendKeys(dealId);
+		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
+		driver.findElement(dealId_Option).click();
+		jsClick.click(ecomm.ecommerce_participantIdtxt);
+		ecomm.ecommerce_participantId.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
+		jsClick.click(ecomm.ecommerce_SearchBtn);
+		jsClick.click(ecomm.ecommerce_debitAccount);
+		ecomm.ecommerce_SubmitBtn.click();
+		Thread.sleep(2000);
+		ecomm.ecommerce_purpose.click();
+		System.out.println(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(2000);
+		ecomm.ecommerce_purpose.sendKeys(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		dropdown.selectByVisibleText(ecomm.ecommerce_purpose,
+				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(3000);
+		ecomm.ecommerce_participantAccount.click();
+		ecomm.ecommerce_firstParticipantAccount.click();
+		Thread.sleep(2000);
+		dropdown.selectByVisibleText(ecomm.ecommerce_balanceConsideration,
+				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Balance Consideration"));
+		Thread.sleep(2000);
+		ecomm.unlimitDebtor.click();
+		try {
+			if(ecomm.participantRefId.isDisplayed()) {
+				if(ecomm.dealRefId.isDisplayed()) {
+					flag =1;
+				}
+			}
+			
+		}catch (Exception e) {
+			flag =0;
+			// TODO: handle exception
+		}
+		Assert.assertEquals(flag, 1);
+//				ecomm.ecommerce_saveAndContinue.click();
+	}
 }
