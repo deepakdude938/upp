@@ -1,7 +1,7 @@
-Feature: TS118_Verify
+Feature: TS118_Verify_Total_of_DebitandPaymentCurrency 
 
 @Regression @TS118
-Scenario Outline: Create a Transaction in Transaction Maker , with Transaction to Non Registered Beneficiary Checkbox  Checked in Basic Details Page in Deal 
+Scenario Outline: Verify Total of Debit and Payment Currency  
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
@@ -11,14 +11,10 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And Add Transaction Maker Basic Details with given "<TSID>"
 And Add Payment Currency and  currency Type  with given "<TSID>"
-#Then logout of the application
-#Then Login to the application as "txn_checker"
-#Then Approve the transaction from Transaction Checker with given "<TSID>"
-#Then logout of the application
-#Then Login to the application as "txn_verifier"
-#Then Approve the transaction from Transaction Verifier with given "<TSID>"
-#And Check the Transaction staus in execution report with given "<TSID>"
-#Then logout of the application
+And Add second Payment Currency and  currency Type  with given "<TSID>"
+And Add Payment Currency and  currency Type as Debit currency with given "TS118_1"
+And Add Payment Currency and  currency Type as Debit currency with given "TS118_1"
+And Verify total debit currency and payment currency
 
 Examples:
       |TSID   |

@@ -61,12 +61,33 @@ public class TS118 extends BaseClass implements ICallback {
 	public void add_Transaction_Maker_Basic_Details_with_given(String string) throws Exception {
 		tm_BasicDetails.Transactions_Maker_BasicDetails1(string, TS06.dealId, DealPage.toaccountNo);
 	}
-	
+
 	@Then("Add Payment Currency and  currency Type  with given {string}")
 	public void add_Payment_Currency_and_currency_Type_with_given(String string) throws Exception {
-		tm_sub.Transaction_Maker_Sub_Instruction(TSID, this);
+		TSID = string;
+		System.out.println("TSID = " + TSID);
+		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 	}
-	
+
+	@Then("Add second Payment Currency and  currency Type  with given {string}")
+	public void add_second_Payment_Currency_and_currency_Type_with_given(String string) throws Exception {
+		TSID = string;
+		tm_sub.Transaction_Maker_Sub_InstructionPayment_Currency(string, this);
+	}
+
+	@Then("Add Payment Currency and  currency Type as Debit currency with given {string}")
+
+	public void add_Payment_Currency_and_currency_Type_as_Debit_currency_with_given(String string) throws Exception {
+		TSID = string;
+		tm_sub.Transaction_Maker_Sub_InstructionPayment_Currency(string, this);
+
+	}
+
+	@Then("Verify total debit currency and payment currency")
+	public void verify_total_debit_currency_and_payment_currency() throws Exception {
+		tm_sub.verifyDebitTotalCurrency();
+	}
+
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub
@@ -92,53 +113,19 @@ public class TS118 extends BaseClass implements ICallback {
 				instrumentHandler.handleBTPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
 
-			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
+			if (paymentInstrument.equalsIgnoreCase("BT_UAE")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
-				String checkbox = externalData.getFieldData(TSID, "Basic Details",
-						"Transactions to non-registered beneficiaries");
-				System.out.println("Checkbox value = " + checkbox);
-				if (checkbox.equalsIgnoreCase("Y")) {
-					instrumentHandler.handleLT_INPaymentInstrumentFor_Non_Registered_Beneficiary_WithCheckbox_checked(
-							TSID, callbackid, toaccountNumber);
-				}
 
-			}
-		}
-		
-		if (callbackid.equalsIgnoreCase("DEAL_PARTY_ACCONT_PAYMENT_INSTRUMENT")) {
-			String paymentInstrument = (String) data;
-
-			if (paymentInstrument.equalsIgnoreCase("BT")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_BT_PaymentInstrument(TSID);
-
-			}
-
-			if (paymentInstrument.equalsIgnoreCase("LTTest")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_LTTest_PaymentInstrument(TSID);
-
-			}
-
-			if (paymentInstrument.equalsIgnoreCase("BT_IN")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handleBT_IN_PaymentInstrument(TSID);
-
+				instrumentHandler.handleBT_UAEPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
 
 			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_LT_IN_PaymentInstrument(TSID);
-
+				System.out.println("TSID = " + TSID);
+				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
+				instrumentHandler.handleLT_INPaymentInstrumentForAdhocTransaction(TSID, DealPage.sourceAccountNo,
+						DealPage.toaccountNo);
 			}
-			if (paymentInstrument.equalsIgnoreCase("SC-PaymentProfile")) {
-				DealPartyAccount_PaymentInstrumentHandler handler = new DealPartyAccount_PaymentInstrumentHandler();
-				handler.handle_SC_Payment_Profile_PaymentInstrument(TSID);
-
-			}
-
 		}
-
 
 	}
 }

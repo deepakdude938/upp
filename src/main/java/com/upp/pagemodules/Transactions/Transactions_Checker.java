@@ -141,6 +141,7 @@ public class Transactions_Checker extends BaseClass {
 		jsClick.click(tm.transactions_TransactionChecker);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(10));
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(10));
 		tm.transactions_TransactionEditButton.click();
 		Thread.sleep(2000);

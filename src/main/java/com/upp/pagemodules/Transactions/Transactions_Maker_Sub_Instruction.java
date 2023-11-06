@@ -87,11 +87,21 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 
 	public void Transaction_Maker_Sub_Instruction(String TSID, ICallback icallback) throws Exception {
 		Thread.sleep(2000);
-		if ((TSID.equalsIgnoreCase("TS118"))) {
-			//scroll.scrollInToView(tm.paymentCountry);
+		if ((TSID.equalsIgnoreCase("TS118") || (TSID.equalsIgnoreCase("TS118_1")))) {
+			// scroll.scrollInToView(tm.paymentCountry);
 			applyExplicitWaitsUntilElementClickable(tm.paymentCountry, Duration.ofSeconds(7));
 			jsClick.click(tm.paymentCountry);
-			dropdown.selectByVisibleText(tm.paymentCountry, "INR");
+			dropdown.selectByVisibleText(tm.paymentCountry,
+					externalData.getFieldData(TSID, "Txn Maker", "Payment Currency"));
+			String paymentCurrency = externalData.getFieldData(TSID, "Txn Maker", "Payment Currency");
+			System.out.println(paymentCurrency);
+			if (!paymentCurrency.equalsIgnoreCase("INR")) {
+
+				applyExplicitWaitsUntilElementClickable(tm.paymentCountryType, Duration.ofSeconds(7));
+				jsClick.click(tm.paymentCountryType);
+				dropdown.selectByVisibleText(tm.paymentCountryType, "Debit Currency");
+				System.out.println("Debit Currency set");
+			}
 		}
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
 		if (!(TSID.equalsIgnoreCase("TS110"))) {
@@ -112,8 +122,75 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		driver.findElement(paymentInstrument).click();
 		System.out.println("the to data is " + externalData.getFieldData(TSID, "Txn Maker", "to"));
 		icallback.handleCallback("PAYMENT_INSTRUMENT", paymentInstrumentdata);
+		Thread.sleep(3000);
 		if (util.isElementDisplayed(od.deal_Edit_Yes_Button, 2)) {
 			od.deal_Edit_Yes_Button.click();
 		}
 	}
+
+	public void Transaction_Maker_Sub_InstructionPayment_Currency(String TSID, ICallback icallback) throws Exception {
+		System.out.println(TSID);
+		scroll.scrollInToView(tm.basicDetails);
+		Thread.sleep(3000);
+		jsClick.click(tm.SubInstructionArrow);
+		Thread.sleep(3000);
+		jsClick.click(tm.addSubInstructionArrow);
+		Transaction_Maker_Sub_Instruction(TSID, icallback);
+	}
+
+	public void Transaction_Maker_Sub_InstructionPayment_Currency_Debit(String TSID, ICallback icallback)
+			throws Exception {
+		scroll.scrollInToView(tm.basicDetails);
+		Thread.sleep(3000);
+		jsClick.click(tm.SubInstructionArrow);
+		Thread.sleep(3000);
+		jsClick.click(tm.addSubInstructionArrow);
+		Transaction_Maker_Sub_Instruction(TSID, icallback);
+	}
+
+	public void verifyDebitTotalCurrency() throws Exception {
+		Thread.sleep(3000);
+		scroll.scrollInToView(tm.basicDetails);
+		Thread.sleep(3000);
+		jsClick.click(tm.SubInstructionArrow);
+		Thread.sleep(3000);
+		jsClick.click(tm.addSubInstructionArrow);
+
+		String debitCurreny = tm.debitCurrencyTotal.getText();
+		String str = "₹160.00";
+		String[] arrOfStr = debitCurreny.split("₹", 2);
+
+		for (int i = 0; i < arrOfStr.length; i++) {
+			// System.out.println(arrOfStr[0]);
+			System.out.println(arrOfStr[1]);
+			String str1 = arrOfStr[1];
+			String[] arrOfStr1 = str1.split(".00");
+			for (int j = 0; j < arrOfStr1.length; j++) {
+				// System.out.println(arrOfStr[0]);
+				System.out.println(arrOfStr1[0]);
+				int num = Integer.parseInt(arrOfStr1[0]);
+				Assert.assertEquals(num, 160);
+			}
+
+			String paymentCurrency = tm.paymentCurrencyTotal.getText();
+
+			String[] arrofStr1 = paymentCurrency.split("₹", 2);
+
+			for (int i1 = 0; i1 < arrofStr1.length; i1++) {
+				// System.out.println(arrofStr1[0]);
+				System.out.println(arrofStr1[1]);
+				String str11 = arrofStr1[1];
+				String[] arrofStr21 = str11.split(".00");
+				for (int j1 = 0; j1 < arrofStr21.length; j1++) {
+					// System.out.println(arrofStr1[0]);
+					System.out.println(arrofStr21[0]);
+					int num1 = Integer.parseInt(arrofStr21[0]);
+					Assert.assertEquals(num1, 100);
+				}
+			}
+//		System.out.println(tm.paymentCurrencyTotal.getText());
+		}
+	}
+
+	
 }
