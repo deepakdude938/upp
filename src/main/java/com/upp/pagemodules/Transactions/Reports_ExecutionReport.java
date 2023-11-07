@@ -256,6 +256,21 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 
 	}
+	
+	public void checkBothTransactionStatusIsSettled(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+
+		if (!((ScroeStatus.equalsIgnoreCase("Settled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Settled")))) {
+
+			Assert.fail("The transaction is not Settled");
+		}
+
+	}
 
 	public void checkStatus_AwaitingForDependant(String TSID, String DealId) throws Exception {
 

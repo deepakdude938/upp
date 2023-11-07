@@ -78,6 +78,11 @@ public class Payment_Schedule extends BaseClass {
 
 		if (InstructionType.equalsIgnoreCase("Payment")) {
 			day = dateutil.getDay();
+			if(TSID.equalsIgnoreCase("TS126_1"))
+			{
+				int day_int = Integer.parseInt(day) + 1;
+				day = Integer.toString(day_int);
+			}
 		}
 
 		By excecutionDay = By.xpath(
@@ -107,7 +112,7 @@ public class Payment_Schedule extends BaseClass {
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 
-		if ((TSID.equalsIgnoreCase("TS105")) || (TSID.equalsIgnoreCase("TS108")) || (TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")) || (TSID.equalsIgnoreCase("TS122_1")) ) {
+		if ((TSID.equalsIgnoreCase("TS105")) || (TSID.equalsIgnoreCase("TS108")) || (TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")) || (TSID.equalsIgnoreCase("TS122_1")) || (TSID.equalsIgnoreCase("TS126_1"))) {
 
 			dropdown.selectByVisibleText(od.payments_TimeZone, "Asia/Calcutta (GMT+05:30)");
 			String time = dateutil.getTimeAfterMins(10);

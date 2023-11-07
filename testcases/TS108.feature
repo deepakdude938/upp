@@ -1,6 +1,6 @@
 Feature: TS108_Scheduled_Payment_with GB Account_Split_By_Amount
 
-@Regression @TS108
+@Regression @TS108 @ScbRegression
 Scenario Outline: TS108_Scheduled_Payment_with GB Account_Split_By_Amount 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
