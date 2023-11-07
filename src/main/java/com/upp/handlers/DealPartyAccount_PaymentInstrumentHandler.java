@@ -98,7 +98,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Party", "Select Account/IBAN"));
 		
 		scroll.scrollInToView(od.parties_paymentTo);
-		if(TSID.equals("TS107")||TSID.equals("TS107_1")) {
+		if(TSID.equals("TS107")||TSID.equals("TS107_1")||TSID.equals("TS123")||TSID.equals("TS123_1")||TSID.equals("TS124")||TSID.equals("TS124_1")) {
 			if(accountList.contains(debitAccount)) {
 				accountList.remove(debitAccount);
 				System.out.println(accountList);

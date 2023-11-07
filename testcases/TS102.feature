@@ -1,7 +1,7 @@
 Feature: TS102_Account_Ammendment
 
 @Api @TS102 @Regression
-Scenario Outline: Account_Ammendment
+Scenario Outline: Account_Ammendment_Api
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".

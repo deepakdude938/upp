@@ -372,6 +372,14 @@ public class Reports_ExecutionReport extends BaseClass {
 			driver.navigate().refresh();
 			applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 			tm.reports_DealId.sendKeys(DealId);
+			Thread.sleep(3000);
+//			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
+//			jsClick.click(tm.cancelIcon);
+//
+//			Thread.sleep(1000);
+//			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+//					-1000);
+
 			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
 			if (ScroeStatusafter.equalsIgnoreCase("Settled")) {
 				flag = 1;
@@ -1193,6 +1201,22 @@ public class Reports_ExecutionReport extends BaseClass {
 			String account = tm.reports_BeneficiaryAccountNumberValue.getText();
 			String networkKeyAccount = accountMap.get("Computer");
 			Assert.assertEquals(account, networkKeyAccount);
+
+		}
+		else if(TSID.equals("TS123") || TSID.equals("TS123_1")) {
+			System.out.println(accountMap);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_BeneficiaryAccountNumberColumnName,
+					tm.reports_horizontalWindow1, 10, 1000);
+			Thread.sleep(2000);
+			String account = tm.reports_BeneficiaryAccountNumberValue.getText();
+			String networkKeyAccount = accountMap.get("Computer");
+			System.out.println(account);
+			if(TSID.equals("TS123")) {
+				Assert.assertEquals(account, networkKeyAccount);
+			}
+			else if(TSID.equals("TS123_1")) {
+				Assert.assertEquals(account, "ICICI1205");
+			}
 
 		}
 	}

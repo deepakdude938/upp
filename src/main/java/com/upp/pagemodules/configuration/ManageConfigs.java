@@ -2,10 +2,7 @@ package com.upp.pagemodules.configuration;
 
 import java.io.IOException;
 import java.util.UUID;
-
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
-
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_Configuration;
 import com.upp.pageobjects.Object_NewDeal;
@@ -80,19 +77,21 @@ public class ManageConfigs extends BaseClass{
 		applyExplicitWaitsUntilElementVisible(configurationProduct_Notifications, 10);
 		driver.findElement(configurationProduct_Notifications).click();
 		config.configurationProduct_NotificationsText.click();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		config.configurationProduct_TransactionPurpose.sendKeys(externalData.getFieldData(tSID, "Configuration", "Transaction Purpose"));
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		config.configurationProduct_Submit.click();
 		}
 
-	public void approveProduct() {
+	public void approveProduct() throws Exception {
 		
 		config.configurationProduct_AdminChecker.click();
+		Thread.sleep(2000);
 		By product = By.xpath("//div[contains(text(),'"+config_productName +"')]/../../..//i[@title='Edit']") ;
 		System.out.println(config_productName);
 		applyExplicitWaitsUntilElementVisible(product, 5);
 		driver.findElement(product).click();
+		Thread.sleep(2000);
 		config.configurationProduct_Comment.sendKeys("Approved");
 		config.configurationProduct_Approve.click();
 		config.configurationProduct_OkButton.click();
@@ -160,6 +159,4 @@ public class ManageConfigs extends BaseClass{
 		Thread.sleep(1000);
 		config.configurationProduct_Submit.click();
 		}
-
-	
 }

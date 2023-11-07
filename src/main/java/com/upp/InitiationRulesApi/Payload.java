@@ -681,9 +681,15 @@ public class Payload extends BaseClass {
 	public String accountAmendment(String TSID) throws InvalidFormatException, IOException {
 		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
-		jsonContext.set("$.dealRefId", dealId);
+	
+		
+		if(TSID.equals("TS123")||TSID.equals("TS123_1")) {
+			System.out.println(accountMap.get("Network"));
+			jsonContext.set("$.party.accounts[0].paymentDetails.to", accountMap.get("Network"));
+		}
+		
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 	}
 	
@@ -708,5 +714,18 @@ public class Payload extends BaseClass {
 
 		return modifiedJsonString;
 
+	}
+
+	public String accountAmendment_UpdateCreditorLookUpKeys(String TSID) throws Exception, IOException {
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		jsonContext.set("$.party.accounts[0].paymentDetails.to", accountMap.get("Network"));
+		jsonContext.set("$.party.accounts[1].paymentDetails.to", accountMap.get("Computer"));
+		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCountry", "US");
+		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCurrency", "USD");
+		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+
+		return modifiedJsonString;
 	}
 }

@@ -166,7 +166,7 @@ public class Party_Maker_Accounts extends BaseClass {
 	}
 
 
-	public void verifyCreditorLookUpKeysAreUpdated(String tSID) throws Exception {
+	public void verifyCreditorLookUpKeysAreUpdated(String TSID) throws Exception {
 		SoftAssert assert1 = new SoftAssert();
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(op.parties_PartyTab, Duration.ofSeconds(20));
@@ -179,7 +179,14 @@ public class Party_Maker_Accounts extends BaseClass {
 			handleElementClickException(od.parties_AccountsTab);
 		}
 		Thread.sleep(2000);
-		WebElement acc = driver.findElement(By.xpath("//div[@title='SBI98765']/../../..//div[@id='ic-generic-menu-showMenu-v1']"));
+		WebElement acc ;
+		if(TSID.equals("TS124")) {
+			String account = accountMap.get("Network");
+			 acc = driver.findElement(By.xpath("//div[@title='"+account+"']/../../..//div[@id='ic-generic-menu-showMenu-v1']"));
+		}
+		else {
+			 acc = driver.findElement(By.xpath("//div[@title='SBI98765']/../../..//div[@id='ic-generic-menu-showMenu-v1']"));
+		}
 		acc.click();
 		op.parties_showMenuEditButton.click();
 		

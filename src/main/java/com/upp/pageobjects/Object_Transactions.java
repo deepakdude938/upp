@@ -159,6 +159,28 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']")
 	public List<WebElement> reports_RecordStatus;
 
+	@FindBy(xpath = "//ui-dropdown[@placeholder='Select Currency']//select")
+	public WebElement paymentCountry;
+	
+	@FindBy(xpath = "//ui-dropdown[@placeholder='Select Currency Type']//select")
+	public WebElement paymentCountryType;
+	
+	@FindBy(xpath = "(//div[@class='circle accordion-circle'])[2]")
+	public WebElement SubInstructionArrow;
+	
+	@FindBy(id = "ic-deals-instruction-fundTransferSubInstruction-hideSubIns-v1")
+	public WebElement addSubInstructionArrow;
+	
+	
+	@FindBy(xpath = "//span[text()='Basic Details']")
+	public WebElement basicDetails;
+	
+	@FindBy(xpath = "(//label[text()=' Debit ccy control sum ']/following-sibling::span)[1]")
+	public WebElement debitCurrencyTotal;
+	
+	@FindBy(xpath = "(//label[text()=' Debit ccy control sum ']/following-sibling::span)[2]")
+	public WebElement paymentCurrencyTotal;
+	
 	// object for LT-IN
 	@FindBy(xpath = "//ui-autocomplete[contains(@id,'instruction-fundTransferSubInstruction-paymentInstrument')]")
 	public WebElement transactions_instruments;

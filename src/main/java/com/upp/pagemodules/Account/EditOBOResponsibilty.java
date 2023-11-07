@@ -65,6 +65,7 @@ public class EditOBOResponsibilty extends BaseClass {
 		}
 		catch(Exception e) {
 			handleElementClickException(od.accounts_addAccount);
+			
 		}
 		Thread.sleep(1500);
 		applyExplicitWaitsUntilElementClickable(od.account_OK_Button, Duration.ofSeconds(5));
@@ -118,6 +119,35 @@ public class EditOBOResponsibilty extends BaseClass {
 		}
 		catch(Exception e) {
 			handleElementClickException(od.accounts_addAccount);
+		}
+		Thread.sleep(1500);
+		applyExplicitWaitsUntilElementClickable(od.account_OK_Button, Duration.ofSeconds(5));
+		od.account_OK_Button.click();
+		Thread.sleep(1500);
+	}
+	
+	public void EditOBOResponsibilty_In_2ndAccount(String TSID) throws Exception
+	{
+
+		Thread.sleep(1500);
+		System.out.println("inside method");
+		scroll.scrollInToView(od.editIcon2);
+		js.click(od.editIcon2);
+		Thread.sleep(1500);
+		applyExplicitWaitsUntilElementClickable(od.account_shortName, Duration.ofSeconds(5));
+		scroll.scrollInToView(od.account_shortName);
+		od.account_shortName.sendKeys("karthik1234");
+		Thread.sleep(1000);
+		scroll.scrollInToView(od.account_obo_repsonsibility);
+		applyExplicitWaitsUntilElementClickable(od.account_obo_repsonsibility, Duration.ofSeconds(5));
+		dropdown.selectByVisibleText(od.account_obo_repsonsibility,externalData.getFieldData(TSID, "Party", "Responsibility"));
+		Thread.sleep(1000);
+		try {
+			od.accounts_addAccount.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.accounts_addAccount);
+			
 		}
 		Thread.sleep(1500);
 		applyExplicitWaitsUntilElementClickable(od.account_OK_Button, Duration.ofSeconds(5));
