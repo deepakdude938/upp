@@ -1,6 +1,6 @@
 Feature: TS110_Budget_Regression_Using_GB_Account
 
-@Regression @TS110
+@Regression @TS110 @ScbRegression
 Scenario Outline: TS110_Budget_Regression_Using_GB_Account
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

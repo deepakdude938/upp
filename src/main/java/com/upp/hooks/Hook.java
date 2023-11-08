@@ -2,6 +2,9 @@ package com.upp.hooks;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +18,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
+import org.assertj.core.util.Arrays;
 import org.junit.AssumptionViolatedException;
 
 import io.cucumber.java.After;
@@ -64,6 +68,21 @@ public class Hook extends BaseClass {
 
 //		driver.quit();
 		
+		String s[] = scenario.getSourceTagNames().toArray(new String[0]);
+		String tagname = s[1];
+		String TSIDArray[] = tagname.split("@");
+		String TSID = TSIDArray[1];
+		
+		List<Object> list = Arrays.asList(s);
+		if(list.contains("@ScbRegression"))
+		{
+			if(list.contains("@Assertion"))
+			{
+				TSID=TSID+"_Assertion";
+			}
+		sh.takeScreenshot_For_SCB_Scenarios(driver,TSID);
+		}
+		
 		if((scenario.isFailed()))
 		{
 			failCount++;
@@ -98,6 +117,14 @@ public class Hook extends BaseClass {
 			String tagname = s[1];
 			String TSIDArray[] = tagname.split("@");
 			String TSID = TSIDArray[1];
+			List<Object> list = Arrays.asList(s);
+		
+				if(list.contains("@Assertion"))
+				{
+					TSID=TSID+"_Assertion";
+				}
+			sh.takeScreenshot_For_SCB_Scenarios(driver,TSID);
+			
 			sh=new Screenshots(driver);
 			sh.takeScreenshot(driver, TSID);
 		

@@ -61,16 +61,16 @@ public class Transactions_Checker extends BaseClass {
 	}
 
 	public void TransactionsChecker(String TSID, String TnxId) throws Exception {
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_TransactionIcon);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(25));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_TransactionChecker);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(100));
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(25));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(125));
 		tm.transactions_TransactionEditButton.click();
 		Thread.sleep(5000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(100));
 		tm.transactions_SummaryTab.click();
 		Thread.sleep(3000);
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");

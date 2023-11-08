@@ -1,6 +1,6 @@
 Feature: TS103_Adhoc Transaction Regression with GB Account_Assertion
 
-@Assertion @TS103 @Regression
+@Assertion @TS103 @Regression @ScbRegression
 Scenario Outline: TS103_Adhoc Transaction Regression with GB Account_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

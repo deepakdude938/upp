@@ -1,6 +1,6 @@
 Feature: TS113_Multiple_Transactions_Regression_Using_GB_Account_Assertion
 
-@Assertion @TS113 @Regression
+@Assertion @TS113 @Regression @ScbRegression
 Scenario Outline: TS113_Multiple_Transactions_Regression_Using_GB_Account_Account_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

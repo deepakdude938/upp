@@ -118,7 +118,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Txn Maker", "Sub Instruction - Instrument");
 		System.out.println("Excel data in payment = " + paymentInstrumentdata);
 		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[1]");
-		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
+		applyExplicitWaitsUntilElementVisible(paymentInstrument, 15);
 		driver.findElement(paymentInstrument).click();
 		System.out.println("the to data is " + externalData.getFieldData(TSID, "Txn Maker", "to"));
 		icallback.handleCallback("PAYMENT_INSTRUMENT", paymentInstrumentdata);

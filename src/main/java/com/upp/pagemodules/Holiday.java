@@ -75,7 +75,34 @@ public class Holiday extends BaseClass{
 		 hd.configuration_HolidayOkButton.click();
 		 
 }
-	
+	public void createNewHoliday_For_GB_Account(String TSID) throws InvalidFormatException, IOException, Exception {
+	   	ID =TSID;
+		 hd.configurationButton.click();
+		 hd.configuration_HolidayButton.click();
+		 hd.configuration_HolidayAddButton.click();
+		 hd.configuration_HolidayInputDate.click();
+		 String day = dateutil.getDay();
+		 int day_int = Integer.parseInt(day) + 1;
+			
+		 System.out.println(day_int);
+		 By excecutionDay = By.xpath("//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"+day_int+"']");
+		 driver.findElement(excecutionDay).click();
+		 String holdayApplicableForInput =  externalData.getFieldData(TSID,"Holidays and Holiday Drafts","Applicable For").trim();
+
+		 hd.configuration_HolidayApplicableFor.sendKeys(holdayApplicableForInput);
+		 By holidayApplicableFor = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+holdayApplicableForInput+"']");
+		 applyExplicitWaitsUntilElementVisible(holidayApplicableFor, 10);
+		 driver.findElement(holidayApplicableFor).click();
+		 hd.configuration_HolidayName.sendKeys(externalData.getFieldData(TSID,"Holidays and Holiday Drafts","Holiday").trim());
+		 hd.configuration_Country.sendKeys(externalData.getFieldData(TSID,"Holidays and Holiday Drafts","All countries").trim());
+		 String country = externalData.getFieldData(TSID,"Holidays and Holiday Drafts","All countries").trim();
+		 driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+country+"']")).click();
+		 hd.configuration_HolidayNextButton.click();
+		 hd.configuration_HolidayNextButton2.click();
+		 hd.configuration_HolidaySaveButton.click();
+		 hd.configuration_HolidayOkButton.click();
+		 
+}
 	public void createNewHoliday(String iD,String date) throws InvalidFormatException, IOException, Exception {
 		 ID =iD;
 		 hd.configurationButton.click();
@@ -106,6 +133,21 @@ public class Holiday extends BaseClass{
 		
 		 hd. configuration_HolidayDraftsButton.click();
 		 hd. configuration_HolidaySearchBox.sendKeys(externalData.getFieldData(ID,"Holidays and Holiday Drafts","Holiday").trim());;
+		 hd. configuration_HolidaySearchBoxButton.click();
+		 Thread.sleep(1000);
+		 hd. configuration_HolidayKebabMenu.click();
+		 hd. configuration_HolidayEditTab.click();
+		 hd.configuration_HolidayNextButton2.click();
+		 Thread.sleep(1000);
+		 hd.configuration_HolidayNextButton2.click();
+		 hd.configuration_HolidayApproveButton.click();
+		 hd.configuration_HolidayOkButton.click();
+	 
+	}
+	public void approveHoliday_with_TSID(String TSID) throws Exception, IOException {
+		
+		 hd. configuration_HolidayDraftsButton.click();
+		 hd. configuration_HolidaySearchBox.sendKeys(externalData.getFieldData(TSID,"Holidays and Holiday Drafts","Holiday").trim());;
 		 hd. configuration_HolidaySearchBoxButton.click();
 		 Thread.sleep(1000);
 		 hd. configuration_HolidayKebabMenu.click();
