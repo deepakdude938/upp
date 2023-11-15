@@ -104,7 +104,7 @@ public class Payload extends BaseClass{
 		+ "        \"additional\": null\r\n"
 		+ "    },\r\n"
 		+ "    \"openedOn\": \"2023-01-20T18:30:00.000Z\",\r\n"
-		+ "    \"accountIdentifierKey\":\""+accountIdentifierKey+"\"\r\n"
+		+ "    \"accountIdentifierKey\":[\""+accountIdentifierKey+"\"]\r\n"
 		+ "}";
 	}
 	

@@ -249,10 +249,8 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 	
 public void handle_TT_UK_PaymentInstrument(String TSID) throws Exception {
 		
-        Thread.sleep(6000);
-//        applyExplicitWaitsUntilElementClickable(tm.transactions_beneficiaryaccountNumber,
-//				Duration.ofSeconds(10));
-//		tm.transactions_beneficiaryaccountNumber.click();
+        Thread.sleep(7000);
+        tm.transactions_beneficiaryaccountNumber.click();
 		tm.transactions_beneficiaryaccountNumberInput.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "to"));
 
 		tm.transactions_amount.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount"));

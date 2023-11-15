@@ -19,9 +19,27 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONMAKER']")
 	public WebElement transactions_TransactionMaker;
+	
+	@FindBy(xpath = "//a[@href='/transactions/futuredated']")
+	public WebElement transactions_TransactionFutureDated;
 
 	@FindBy(xpath = "//div[contains(text(),'Add New')]")
 	public WebElement transactions_AddNewButon;
+	
+	@FindBy(xpath = "//div[contains(text(),'SCHD')]")
+	public List<WebElement> transactions_future_dated_SCHD;
+	
+	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[2]")
+	public WebElement transactions_future_dated_Checkbox1;
+	
+	@FindBy(xpath = "(//button[@class='ui-btn-primary ui-ripple'][normalize-space()='Cancel'])[1]")
+	public WebElement transactions_future_dated_Cancel1;
+	
+	@FindBy(xpath = "//button[normalize-space()='Proceed']")
+	public WebElement transactions_future_dated_Proceed;
+	
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[3]")
+	public WebElement transactions_future_dated_DealId;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement transactions_DealId;
@@ -76,6 +94,12 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONCHECKER']")
 	public WebElement transactions_TransactionChecker;
+	
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
+	public WebElement transactions_Checker_DealID;
+	
+	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[3]")
+	public WebElement transactions_Checker_Checkbox1;
 
 	@FindBy(xpath = "//h2[@id='swal2-title']")
 	public WebElement transactions_TransactionsId;

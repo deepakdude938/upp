@@ -17,6 +17,8 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And Login to UPP through api
 And Call the Rule_Without_PaymentInfoDetails Api with given "<TSID>".
+Then Create odp json payload file with EndToEndId with given "<TSID>"
+And Create record in ODP "<TSID>"
 Then Verify the SourceAccountNumber in Ecomm Executions Report with given "<TSID>".
 And Logout of UPP through api
 Examples:
