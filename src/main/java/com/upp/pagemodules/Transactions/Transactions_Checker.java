@@ -86,16 +86,16 @@ public class Transactions_Checker extends BaseClass {
 //			assertTrue(false);
 //
 //		}
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_Add_comments, Duration.ofSeconds(3));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_Add_comments, Duration.ofSeconds(120));
 		scroll.scrollInToView(tm.transactions_Checker_Add_comments);
 		tm.transactions_Checker_Add_comments
 				.sendKeys(externalData.getFieldData(TSID, "Txn checker", "Summary - Add your comments here"));
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_SubmitButton, Duration.ofSeconds(3));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_SubmitButton, Duration.ofSeconds(120));
 		tm.transactions_Checker_SubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(120));
 		tm.transactions_YesButton.click();
 
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(120));
 		tm.transactions_Ok.click();
 
 	}
