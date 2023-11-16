@@ -72,9 +72,12 @@ public class Rule_IN_BT extends BaseClass{
 		
 		ArrayList<String> ActualResult=ssh.getPainFileDetails(batchId,tagNames);
 		System.out.println("the pain file details are:"+ActualResult);
-		//ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList("BKTR", "DEBT"));
+		
+		System.out.println("the source accountno:"+TS101_SourceAccno);
+		
+		ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList(TS101_SourceAccno));
 
-		//Assert.assertEquals(ActualResult,ExcpectedResult);
+		Assert.assertEquals(ActualResult,ExcpectedResult);
 		
 	}
 
