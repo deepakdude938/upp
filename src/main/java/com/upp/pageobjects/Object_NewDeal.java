@@ -599,6 +599,12 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//ui-switch[@id='sw-instructions-tabRetryMechanism-retryEnabled-v1']//span[@class='slider round']")
 	public WebElement payments_RetrySlider;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5] | (//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	public WebElement payments_RetryType;
+	
+	@FindBy(xpath = "//div[contains(text(),'Forever')]")
+	public WebElement payments_RetryType_Forever;
 
 	@FindBy(id = "ic-instructions-tabRetryMechanism-next-v1")
 	public WebElement payments_NextArrowButtonRetryMechanism;
@@ -913,10 +919,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="payment-creditRemittanceInformation-txt-v1")
 	public WebElement Payment_debitRemittanceInformation;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement Payment_Beneficiaryaccno_with_budget;
 	
-	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement Payment_Beneficiaryaccno_without_Budget_Purpose;
 	
 	@FindBy(id="payment-beneficiaryCountry-sel-v1")
@@ -1227,4 +1233,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement PaymentBudget_BeneficiaryaccnoPurpose;
+	
+	@FindBy(xpath = "(//span[@title='edit'])[2]")
+	public WebElement editIcon2;
 }

@@ -19,12 +19,33 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONMAKER']")
 	public WebElement transactions_TransactionMaker;
+	
+	@FindBy(xpath = "//a[@href='/transactions/futuredated']")
+	public WebElement transactions_TransactionFutureDated;
 
 	@FindBy(xpath = "//div[contains(text(),'Add New')]")
 	public WebElement transactions_AddNewButon;
+	
+	@FindBy(xpath = "//div[contains(text(),'SCHD')]")
+	public List<WebElement> transactions_future_dated_SCHD;
+	
+	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[2]")
+	public WebElement transactions_future_dated_Checkbox1;
+	
+	@FindBy(xpath = "(//button[@class='ui-btn-primary ui-ripple'][normalize-space()='Cancel'])[1]")
+	public WebElement transactions_future_dated_Cancel1;
+	
+	@FindBy(xpath = "//button[normalize-space()='Proceed']")
+	public WebElement transactions_future_dated_Proceed;
+	
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[3]")
+	public WebElement transactions_future_dated_DealId;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement transactions_DealId;
+	
+	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[1]")
+	public WebElement transactions_ExecuteLater;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement transactions_SourceAccNo;
@@ -73,6 +94,12 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONCHECKER']")
 	public WebElement transactions_TransactionChecker;
+	
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
+	public WebElement transactions_Checker_DealID;
+	
+	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[3]")
+	public WebElement transactions_Checker_Checkbox1;
 
 	@FindBy(xpath = "//h2[@id='swal2-title']")
 	public WebElement transactions_TransactionsId;
@@ -159,6 +186,28 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']")
 	public List<WebElement> reports_RecordStatus;
 
+	@FindBy(xpath = "//ui-dropdown[@placeholder='Select Currency']//select")
+	public WebElement paymentCountry;
+	
+	@FindBy(xpath = "//ui-dropdown[@placeholder='Select Currency Type']//select")
+	public WebElement paymentCountryType;
+	
+	@FindBy(xpath = "(//div[@class='circle accordion-circle'])[2]")
+	public WebElement SubInstructionArrow;
+	
+	@FindBy(id = "ic-deals-instruction-fundTransferSubInstruction-hideSubIns-v1")
+	public WebElement addSubInstructionArrow;
+	
+	
+	@FindBy(xpath = "//span[text()='Basic Details']")
+	public WebElement basicDetails;
+	
+	@FindBy(xpath = "(//label[text()=' Debit ccy control sum ']/following-sibling::span)[1]")
+	public WebElement debitCurrencyTotal;
+	
+	@FindBy(xpath = "(//label[text()=' Debit ccy control sum ']/following-sibling::span)[2]")
+	public WebElement paymentCurrencyTotal;
+	
 	// object for LT-IN
 	@FindBy(xpath = "//ui-autocomplete[contains(@id,'instruction-fundTransferSubInstruction-paymentInstrument')]")
 	public WebElement transactions_instruments;
@@ -352,7 +401,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Transfer Info']")
 	public WebElement reports_TransferInfoColumn;
 	
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2] | (//input[@ref='eFloatingFilterText'])[5]")
+	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
 	public WebElement reports_End_To_End_common;
 	
 	@FindBy(xpath = "//label[contains(@class,'instruction_icon sidemenu_icon')]")

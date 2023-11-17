@@ -51,4 +51,23 @@ public class Payment_Retry extends BaseClass {
 		}
 		od.payments_NextArrowButtonRetryMechanism.click();
 }
+	
+	public void createPayments_RetryForever(String TSID)
+			throws Exception {
+		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction, Duration.ofSeconds(15));
+		od.payments_NextArrowButtonTransferSubInstruction.click();
+         Thread.sleep(3000);	
+         applyExplicitWaitsUntilElementClickable(od.payments_RetrySlider, Duration.ofSeconds(15));
+		od.payments_RetrySlider.click();
+		 Thread.sleep(1500);
+		 
+		    applyExplicitWaitsUntilElementClickable(od.payments_RetryType, Duration.ofSeconds(15));
+		    od.payments_RetryType.click();
+		    Thread.sleep(1500);
+		    od.payments_RetryType_Forever.click();
+			 Thread.sleep(1500);
+			applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonRetryMechanism, Duration.ofSeconds(15));
+			od.payments_NextArrowButtonRetryMechanism.click();
+			 Thread.sleep(1500);
+		}		
 }

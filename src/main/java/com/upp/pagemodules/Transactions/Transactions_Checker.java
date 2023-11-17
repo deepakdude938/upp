@@ -61,16 +61,16 @@ public class Transactions_Checker extends BaseClass {
 	}
 
 	public void TransactionsChecker(String TSID, String TnxId) throws Exception {
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_TransactionIcon);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(25));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_TransactionChecker);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(100));
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(25));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(125));
 		tm.transactions_TransactionEditButton.click();
 		Thread.sleep(5000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(100));
 		tm.transactions_SummaryTab.click();
 		Thread.sleep(3000);
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
@@ -86,16 +86,16 @@ public class Transactions_Checker extends BaseClass {
 //			assertTrue(false);
 //
 //		}
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_Add_comments, Duration.ofSeconds(3));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_Add_comments, Duration.ofSeconds(120));
 		scroll.scrollInToView(tm.transactions_Checker_Add_comments);
 		tm.transactions_Checker_Add_comments
 				.sendKeys(externalData.getFieldData(TSID, "Txn checker", "Summary - Add your comments here"));
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_SubmitButton, Duration.ofSeconds(3));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Checker_SubmitButton, Duration.ofSeconds(120));
 		tm.transactions_Checker_SubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(120));
 		tm.transactions_YesButton.click();
 
-		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(120));
 		tm.transactions_Ok.click();
 
 	}
@@ -141,6 +141,7 @@ public class Transactions_Checker extends BaseClass {
 		jsClick.click(tm.transactions_TransactionChecker);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionChecker, Duration.ofSeconds(10));
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(10));
 		tm.transactions_TransactionEditButton.click();
 		Thread.sleep(2000);

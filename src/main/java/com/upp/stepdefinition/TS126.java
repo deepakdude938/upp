@@ -6,11 +6,12 @@ import java.time.Duration;
 
 import com.upp.Api.utils.LogOutApi;
 import com.upp.InitiationRulesApi.Rule_Non_OBO;
+import com.upp.InitiationRulesApi.Rule_With_Partial_PaymentInfoDetails;
 import com.upp.InitiationRulesApi.Rule_Without_PaymentInfoDetails;
-import com.upp.PaymentRulesApi.Rule_IN_BT;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
+import com.upp.pagemodules.Holiday;
 import com.upp.pagemodules.configuration.PU_AdminChecker;
 import com.upp.pagemodules.configuration.ProcessingUnit;
 import com.upp.pagemodules.configuration.Verify_PU_Added;
@@ -39,39 +40,36 @@ import com.upp.pageobjects.Object_NewDeal;
 
 import io.cucumber.java.en.*;
 
-public class TS101 extends BaseClass {
+public class TS126 extends BaseClass {
 	DashBoard_Module dm;
 	DealPage dp;
 	public static String TSID = "";
 	public static String TnxId = "";
-	Rule_Without_PaymentInfoDetails rule;
 	Reports_ExecutionReport report;
-	
-	Rule_IN_BT rule1;
+	Holiday holiday;
 	
 
-	public TS101() {
+	public TS126() {
 
 		this.dm = new DashBoard_Module();
-		rule=new Rule_Without_PaymentInfoDetails();
+		
 		report=new Reports_ExecutionReport();
-        rule1=new Rule_IN_BT();
+        holiday=new Holiday();
 	}
 
-	@Then("Call the Rule_Without_PaymentInfoDetails Api with given {string}.")
-	public void call_the_Rule_Without_PaymentInfoDetails_Api_with_given(String string) throws Exception {
-		endToEndId=rule.Rule_Without_PaymentInfoDetails_Api(TS06.dealId, string);
+	
+	@Then("Create Holiday for GB Account {string}")
+	public void create_Holiday_for_GB_Account(String string) throws Exception{
+	    holiday.createNewHoliday_For_GB_Account(string);
 	}
-    
-	@Then("Verify the SourceAccountNumber in Ecomm Executions Report with given {string}.")
-	public void verify_the_SourceAccountNumber_in_Ecomm_Executions_Report_with_given(String string) throws Exception {
-	 //   report.Verify_Source_AccNo_In_eCommExecutionsReport(endToEndIdRule);
-	    report.Verify_Source_AccNo_In_eCommExecutionsReport(End2EndId);
+     
+	@Then("Approve Holiday with given {string}")
+	public void approve_Holiday_with_given(String string) throws Exception{
+	   holiday.approveHoliday_with_TSID(string);
+	}
+	@Then("Verify in Report that both Transactions are settled with given {string}")
+	public void verify_in_Report_that_both_Transactions_are_settled(String string) throws Exception {
+	    report.checkBothTransactionStatusIsSettled(string, dealId);
 	}
 	
-	@Then("Verify the AccountNumber Pain File with given {string}.")
-	public void verify_the_AccountNumber_Pain_File_with_given(String string) throws Exception {
-		rule1.verify_Account_Number_In_PainFile(batchId);
-	}
-
 }

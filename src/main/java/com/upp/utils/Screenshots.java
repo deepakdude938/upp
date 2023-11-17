@@ -33,6 +33,16 @@ public class Screenshots {
 		FileUtils.copyFile(sourceFile, new File(directory + fileName));
 		return fileName;
 	}
+	
+	public static String takeScreenshot_For_SCB_Scenarios(WebDriver driver, String fileName) throws IOException {
+		// DataGenerator generate = new DataGenerator();
+
+		fileName = fileName + ".png";
+		String directory = "test-output/Screenshots/SCB_Regression_Screenshots/";
+		File sourceFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(sourceFile, new File(directory + fileName));
+		return fileName;
+	}
 
 	public static String retryTakeScreenshot(WebDriver driver, String fileName) throws IOException {
 
