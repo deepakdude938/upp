@@ -68,10 +68,10 @@ public class InstructedControlAmountRegression extends BaseClass{
 							.when()
 								.post("transaction/api/transaction");
 					response = res.then().extract().asString();
-					
 
 					try {
 					Assert.assertEquals(res.getStatusCode(), 200);
+					System.out.println("-------------------------"+(rowNumber+1)+"-----------------------------");
 					}
 					catch(AssertionError e) {
 						JSONParser jsonParser = new JSONParser();

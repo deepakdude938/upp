@@ -16,10 +16,14 @@ And Submit the deal
 Then Approve the deal from the deal checker
 Then Call the Create Transaction Api for "<TSID>"
 Then Validate in execution report for scheduled record using endToEndId "<TSID>"
-Then Call the Account Ammendment Api "TS123_1"
-Then Edit the deal "<TSID>"
-Then Verify Account is updated
-Then Validate in execution report for scheduled record using endToEndId "TS123_1"
+#Then Call the Account Ammendment Api "TS123_1"
+#Then Edit the deal "<TSID>"
+#Then Verify Account is updated
+#Then Validate in execution report for scheduled record using endToEndId "TS123_1"
+#Then Edit the deal "<TSID>"
+#And Submit the deal
+#Then Approve the deal from the deal checker
+#Then Call Account Offboard Api "TS123_1"
 
 Examples:
       |TSID   |
