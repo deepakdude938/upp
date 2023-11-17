@@ -1,6 +1,6 @@
 Feature: TS130_Future_Dated_Adhoc_Transaction_ with_GB_Account_Assertion
 
-@Assertion @TS130 @Regression
+@Assertion @TS130
 Scenario Outline: TS130_Future_Dated_Adhoc_Transaction_ with_GB_Account_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

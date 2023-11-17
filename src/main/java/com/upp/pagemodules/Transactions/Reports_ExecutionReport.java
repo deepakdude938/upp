@@ -969,16 +969,17 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		System.out.println("Test = " + EndToEndId);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		Thread.sleep(6000);
+		Thread.sleep(9000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Source_Acc_No_Col, tm.reports_horizontalWindow1,
 				10, 1000);
 		applyExplicitWaitsUntilElementVisible(tm.Reports_Source_Acc_No_First, Duration.ofSeconds(10));
-		TS101_SourceAccno = tm.Reports_Source_Acc_No_First.getText();
-		System.out.println("The Account Number is:" + TS101_SourceAccno);
-		Assert.assertEquals(TS101_SourceAccno, DealPage.AccountNo1);
+		String accno = tm.Reports_Source_Acc_No_First.getText();
+		System.out.println("The Account Number is:" + accno);
+		System.out.println("The Deal Page Account Number is:" + DealPage.AccountNo1);
+		Assert.assertEquals(accno, DealPage.AccountNo1);
 
 	}
 
