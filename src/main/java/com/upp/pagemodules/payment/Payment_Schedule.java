@@ -112,7 +112,7 @@ public class Payment_Schedule extends BaseClass {
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 
-		if ((TSID.equalsIgnoreCase("TS105")) || (TSID.equalsIgnoreCase("TS108")) || (TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")) || (TSID.equalsIgnoreCase("TS122_1")) || (TSID.equalsIgnoreCase("TS126_1"))) {
+		if ((TSID.equalsIgnoreCase("TS105")) || (TSID.equalsIgnoreCase("TS108")) || (TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")) || (TSID.equalsIgnoreCase("TS122_1")) || (TSID.equalsIgnoreCase("TS126_1")) || (TSID.equalsIgnoreCase("TS137"))) {
 
 			dropdown.selectByVisibleText(od.payments_TimeZone, "Asia/Calcutta (GMT+05:30)");
 			String time = dateutil.getTimeAfterMins(10);

@@ -17,6 +17,9 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And Login to UPP through api
 And Call the Rule_With_Partial_PaymentInfoDetails Api with given "<TSID>".
+Then logout of the application
+Given Open browser and enter url 
+Then Login to the application as "txn_checker"
 Then Verify the SourceAccountNumber in Ecomm Executions Report with given "<TSID>".
 And Logout of UPP through api
 Examples:
