@@ -144,4 +144,19 @@ public class TransactionApi extends BaseClass {
 		
 		//Assert.assertTrue(res.getStatusCode() == 200);
 	}
+
+	public String createTransactionApi(String TSID) throws IOException, Exception {
+		RestAssured.baseURI = base_url;
+
+		Response res = given().header("Content-Type", "application/json")
+				.header("Authorization", LoginAPI_UPP.authToken).body(pay.createTransactionApi(TSID)).when()
+				.post("transaction/api/transaction");
+
+		String response = res.then().extract().asString();
+		JsonPath js = new JsonPath(response);
+		endToEndId = js.getString("endToEndId");
+		System.out.println("Status code : " + res.getStatusCode());
+		Assert.assertTrue(res.getStatusCode() == 200);
+		return endToEndId;
+	}
 }

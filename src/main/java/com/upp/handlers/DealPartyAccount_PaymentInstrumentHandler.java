@@ -98,7 +98,7 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 		dropdown.selectByVisibleText(od.parties_Accounts_accountOrIban,externalData.getFieldData(TSID, "Party", "Select Account/IBAN"));
 		
 		scroll.scrollInToView(od.parties_paymentTo);
-		if(TSID.equals("TS107")||TSID.equals("TS107_1")||TSID.equals("TS123")||TSID.equals("TS123_1")||TSID.equals("TS124")||TSID.equals("TS124_1")) {
+		if(TSID.equals("TS107")||TSID.equals("TS107_1")||TSID.equals("TS123")||TSID.equals("TS123_1")||TSID.equals("TS124")||TSID.equals("TS124_1")||TSID.equals("TS127")||TSID.equals("TS127_1")||TSID.equals("TS131")||TSID.equals("TS131_1")) {
 			if(accountList.contains(debitAccount)) {
 				accountList.remove(debitAccount);
 				System.out.println(accountList);
@@ -106,6 +106,17 @@ public void handleBT_IN_PaymentInstrument(String TSID) throws Exception {
 			applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
 			String accountKey = externalData.getFieldData(TSID, "Party", "Beneficiary Account Key");
 			accountMap.put(accountKey, accountList.get(0));
+			od.parties_paymentTo.sendKeys(accountList.get(0));
+			accountList.remove(0);
+		}
+		else if(TSID.equals("TS136")||TSID.equals("TS136_1")||TSID.equals("TS136_2")) {
+			if(accountList.contains(debitAccount)) {
+				accountList.remove(debitAccount);
+				System.out.println(accountList);
+			}
+			applyExplicitWaitsUntilElementClickable(od.parties_paymentTo, Duration.ofSeconds(5));
+			String accountNo = externalData.getFieldData(TSID, "Party", "Beneficiary Account Number / IBAN");
+			accountMap.put(accountNo, accountList.get(0));
 			od.parties_paymentTo.sendKeys(accountList.get(0));
 			accountList.remove(0);
 		}

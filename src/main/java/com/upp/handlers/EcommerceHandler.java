@@ -97,6 +97,7 @@ public class EcommerceHandler extends BaseClass {
 			if (!(hiddenClass.contains("ag-hidden"))) {
 				Thread.sleep(500);
 				 debitAccount = od.ecommerceFirstAccountNo.getText();
+				 System.out.println("Debit account is "+debitAccount);
 				jsClick.click(od.ecommerceFirstAccount);
 				Thread.sleep(2500);
 				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
