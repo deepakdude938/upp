@@ -121,8 +121,8 @@ public class BaseClass {
 				chromePrefs.put("download.default_directory", downloadFilepath);
 				options.addArguments("--remote-allow-origins=*");
 				options.setExperimentalOption("prefs", chromePrefs);
-				WebDriverManager.chromedriver().setup();
-//				WebDriverManager.chromedriver().browserVersion("116.0.5845.97").setup();
+				//WebDriverManager.chromedriver().setup();
+				WebDriverManager.chromedriver().browserVersion("119.0.6045.124").setup();
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if (isHeadLess) {
