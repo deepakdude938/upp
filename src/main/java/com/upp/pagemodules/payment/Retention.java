@@ -55,7 +55,7 @@ public class Retention extends BaseClass{
 	public void createRetention(String TSID) throws Exception {
 		SoftAssert a = new SoftAssert();
 	     sourceAccountno=DealPage.sourceAccountNo;
-		if(TSID.equalsIgnoreCase("TS122"))
+		if((TSID.equalsIgnoreCase("TS122"))|| (TSID.equalsIgnoreCase("TS126")))
 		{
 			sourceAccountno=DealPage.AccountNo1;
 		}

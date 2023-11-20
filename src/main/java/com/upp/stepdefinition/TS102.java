@@ -19,4 +19,16 @@ public class TS102 {
 		login_UPP.loginToUpp();
 		am.callAccountAmendment(TSID);
 	}
+	
+	@Then("Call Account Offboard Api {string}")
+	public void call_Account_Offboard_Api(String TSID) throws Exception {
+	 am.callAccountOffboardApi(TSID);
+	}
+	
+	@Then("Verify Account is offboarded")
+	public void verify_Account_is_offboarded() throws Exception {
+	   am.VerifyAccountIsOffBoarded();
+	}
+
+	
 }

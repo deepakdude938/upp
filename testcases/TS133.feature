@@ -1,25 +1,21 @@
-Feature: TS102_Account_Ammendment
+Feature: TS133_Account_Ammendment_NewAccount2_API
 
-@Api @TS102 @Regression
-Scenario Outline: Account_Ammendment_Api
+@Regression @TS133 @Api
+Scenario Outline: Account_Ammendment_NewAccount2_API
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 Then Add Party basic_Details with given "<TSID>".
 Then Add Party Accounts with given "<TSID>".
-Then Add Party Accounts with given "TS102_1".
 Then Click Document Tab
 And Submit the deal
 Then Approve the deal from the deal checker
-Then Call the Account Ammendment Api "<TSID>"
+Then Call Account_Ammendment_NewAccount2_API "<TSID>"
 Then Edit the deal "<TSID>"
-Then Verify Account is updated
-And Submit the deal
-Then Approve the deal from the deal checker
-Then Call Account Offboard Api "<TSID>"
-Then Edit the deal "<TSID>"
-Then Verify Account is offboarded
+Then Open account list from party
+Then Verify Account is created "<TSID>"
+
 Examples:
       |TSID   |
-      |TS102|
+      |TS133|

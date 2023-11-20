@@ -62,5 +62,23 @@ public class Rule_IN_BT extends BaseClass{
 		Assert.assertEquals(ActualResult,ExcpectedResult);
 		
 	}
+	
+	public void verify_Account_Number_In_PainFile(String batchId)
+	{
+		ssh=new SSHConnection();
+		ArrayList<String> tagNames = new ArrayList<>(Arrays.asList("Id"));
+		
+		
+		
+		ArrayList<String> ActualResult=ssh.getPainFileDetails(batchId,tagNames);
+		System.out.println("the Source account number is:"+ActualResult);
+		
+//		System.out.println("the source accountno:"+TS101_SourceAccno);
+//		
+//		ArrayList<String> ExcpectedResult = new ArrayList<>(Arrays.asList(TS101_SourceAccno));
+//
+//		Assert.assertEquals(ActualResult,ExcpectedResult);
+		
+	}
 
 }

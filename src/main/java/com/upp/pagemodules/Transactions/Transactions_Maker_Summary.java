@@ -78,6 +78,7 @@ public class Transactions_Maker_Summary extends BaseClass {
 		 
 		 applyExplicitWaitsUntilElementClickable(tm.transactions_Ok,Duration.ofSeconds(15));
 		 String transactionSubmitMessage=tm.transactions_TransactionsId.getText();
+		 System.out.println("The transaction submit message:"+transactionSubmitMessage);
 		 String transactionMessage[]=transactionSubmitMessage.split(" ");
 		 String TnxId=transactionMessage[1];
 		 System.out.println("The Tnx id is "+TnxId);

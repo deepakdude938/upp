@@ -87,7 +87,6 @@ public class Object_Deal extends BaseClass {
 	@FindBy (xpath = "//table[contains(@class,'acc-tbl')]//td[2]//span")
 	public List<WebElement> account_AccountNoList;
 	
-	
 	@FindBy (xpath = "//div[@title='Accounts']/i")
 	public WebElement accountIcon;
 	

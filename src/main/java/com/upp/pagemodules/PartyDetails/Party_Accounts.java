@@ -202,4 +202,36 @@ public class Party_Accounts extends BaseClass {
 		 assert1.assertTrue(status);
 		 assert1.assertAll("Error message not getting.Party is offboarding");
 	}
+
+	public void validateCreditorLookUpKeysDoesntChanged(String TSID) throws Exception {
+
+		SoftAssert assert1 = new SoftAssert();
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(op.parties_PartyTab, Duration.ofSeconds(20));
+		op.parties_PartyTab.click();
+		op.parties_editPartyButton.click();
+		try {
+			od.parties_AccountsTab.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.parties_AccountsTab);
+		}
+		Thread.sleep(2000);
+		WebElement acc ;
+
+			String account = accountMap.get("Computer");
+			acc = driver.findElement(By.xpath("//div[@title='"+account+"']/../../..//div[@id='ic-generic-menu-showMenu-v1']"));
+		acc.click();
+		op.parties_showMenuEditButton.click();
+		
+		scroll.scrollInToView(od.parties_BeneficiaryCountry1);
+		String countryText = dropdown.getSelectedValue(od.parties_BeneficiaryCountry1);
+		assert1.assertEquals(countryText.trim(), "IN");
+		
+		scroll.scrollInToView(od.parties_beneficiaryCurrency1);
+		String currencyText = dropdown.getSelectedValue(od.parties_beneficiaryCurrency1);
+		assert1.assertEquals(currencyText.trim(), "INR");
+		assert1.assertAll();
+		
+	}
 }
