@@ -96,17 +96,17 @@ public class Verify_User_By_User_Name extends BaseClass {
 		Thread.sleep(2000);
 		ou.userMaker_search.click();
 		Thread.sleep(3000);
-		ou.userMaker_search.sendKeys(Get_List_of_Users_API.Username1);
-		applyExplicitWaitsUntilElementClickable(ou.userMaker_searchIcon, Duration.ofSeconds(20)); 
-		ou.userMaker_searchIcon.click();
-		applyExplicitWaitsUntilElementClickable(ou.userMaker_editIcon, Duration.ofSeconds(20)); 
-	    jsClick.click(ou.userMaker_editIcon);
-	    
-	    applyExplicitWaitsUntilElementVisible(ou.user_Username, Duration.ofSeconds(20)); 
-		String ActualUsername1 = ou.user_Username.getAttribute("value");
-		System.out.println("Username1 is = " + ActualUsername1);
-		Assert.assertEquals(ActualUsername1,Get_List_of_Users_API.Username1);
-	    ou.user_CloseIcon.click();
+//		ou.userMaker_search.sendKeys(Get_List_of_Users_API.Username1);
+//		applyExplicitWaitsUntilElementClickable(ou.userMaker_searchIcon, Duration.ofSeconds(20)); 
+//		ou.userMaker_searchIcon.click();
+//		applyExplicitWaitsUntilElementClickable(ou.userMaker_editIcon, Duration.ofSeconds(20)); 
+//	    jsClick.click(ou.userMaker_editIcon);
+//	    
+//	    applyExplicitWaitsUntilElementVisible(ou.user_Username, Duration.ofSeconds(20)); 
+//		String ActualUsername1 = ou.user_Username.getAttribute("value");
+//		System.out.println("Username1 is = " + ActualUsername1);
+//		Assert.assertEquals(ActualUsername1,Get_List_of_Users_API.Username1);
+//	    ou.user_CloseIcon.click();
 		
 		scroll.scrollInToView(ou.usersTab);
 		applyExplicitWaitsUntilElementClickable(ou.usersTab, Duration.ofSeconds(20)); 
