@@ -16,7 +16,6 @@ public class TS02 extends BaseClass{
 
 	@Then("Submit the deal")
 	public void submit_the_deal() throws Exception {
-		
 		 dealId=dm.submitDeal();
 	}
 	

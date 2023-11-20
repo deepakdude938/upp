@@ -257,4 +257,26 @@ public class Payload extends BaseClass{
 		return modifiedJsonString;
 		
 	}
+
+	public String createTransactionApi(String TSID) throws Exception, IOException {
+		externalData = new ExcelReader();
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		String accountNo = externalData.getFieldData(TSID, "Party", "Beneficiary Account Number / IBAN");
+		String accountNo1=accountMap.get(accountNo);
+		System.out.println(accountNo);
+		System.out.println(accountNo1);
+		String platformRefNo = "Party" + generateRandomString(6);
+		String tomorow = DateUtils.getDate(1) + "T11:28:00Z";
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		jsonContext.set("$.dealRefId", dealId);
+		System.out.println(debitAccount);
+		jsonContext.set("$.paymentInfo.accountNumber", debitAccount);
+		jsonContext.set("$.paymentInfo.platformRefNo", platformRefNo);
+		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", tomorow);
+		jsonContext.set("$.creditTransactionInfo[0].participant.accountNumber", accountNo1);
+		modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+		return modifiedJsonString;
+		
+	}
 }

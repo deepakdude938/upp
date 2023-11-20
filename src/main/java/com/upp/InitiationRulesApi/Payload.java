@@ -681,14 +681,21 @@ public class Payload extends BaseClass {
 	public String accountAmendment(String TSID) throws InvalidFormatException, IOException {
 		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
-	
-		
-		if(TSID.equals("TS123")||TSID.equals("TS123_1")) {
+		System.out.println(accountMap);
+		if(TSID.equals("TS123")||TSID.equals("TS123_1")||TSID.equals("TS127")||TSID.equals("TS127_1")) {
 			System.out.println(accountMap.get("Network"));
 			jsonContext.set("$.party.accounts[0].paymentDetails.to", accountMap.get("Network"));
 		}
 		
+		if(TSID.equals("TS127")||TSID.equals("TS127_1")) {
+			System.out.println(accountMap.get("Computer"));
+			jsonContext.set("$.party.accounts[1].paymentDetails.to", accountMap.get("Computer"));
+			jsonContext.set("$.party.accounts[1].paymentDetails.beneficiaryCountry", "US");
+			jsonContext.set("$.party.accounts[1].paymentDetails.beneficiaryCurrency", "USD");
+		}
+		
 		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println("=============================");
 		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 	}
@@ -723,6 +730,67 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.party.accounts[1].paymentDetails.to", accountMap.get("Computer"));
 		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCountry", "US");
 		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCurrency", "USD");
+		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+
+		return modifiedJsonString;
+	}
+
+	public String accountAmendment_AccountOffboard(String TSID) throws InvalidFormatException, IOException {
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		System.out.println(payLoadString);
+		if(TSID.equals("TS123")||TSID.equals("TS123_1")) {
+			jsonContext.set("$.party.accounts[1].paymentDetails.to", "Acc3");
+			jsonContext.set("$.party.accounts[0].paymentDetails.to", accountMap.get("Network"));
+			jsonContext.set("$.party.accounts[1].paymentDetails.beneficiaryCountry", "US");
+			jsonContext.set("$.party.accounts[1].paymentDetails.beneficiaryCurrency", "USD");
+		}
+		else {
+			jsonContext.set("$.party.accounts[0].paymentDetails.to", "Acc3");
+//			jsonContext.set("$.party.accounts[1].paymentDetails.to", accountMap.get("Computer"));
+			jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCountry", "US");
+			jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCurrency", "USD");
+		}
+
+		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+
+		return modifiedJsonString;
+	}
+
+	public String newAccountwithSameCreditorLookUpKeys(String TSID) throws Exception, IOException {
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		System.out.println(payLoadString);
+		
+		jsonContext.set("$.party.accounts[0].paymentDetails.to", accountMap.get("Network"));
+		jsonContext.set("$.party.accounts[1].paymentDetails.to", accountMap.get("Computer"));
+//		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCountry", "US");
+//		jsonContext.set("$.party.accounts[0].paymentDetails.beneficiaryCurrency", "USD");
+		
+		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+
+		return modifiedJsonString;
+	}
+
+	public String newAccount2(String TSID) throws Exception, IOException {
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
+		System.out.println(payLoadString);
+		String acc = externalData.getFieldData(TSID, "Party", "Beneficiary Account Number / IBAN");
+		
+		jsonContext.set("$.party.accounts[0].paymentDetails.to", acc);
+		String modifiedJsonString = jsonContext.jsonString();
+		System.out.println(modifiedJsonString);
+
+		return modifiedJsonString;
+	}
+
+	public String newFourthAccount(String TSID) throws InvalidFormatException, IOException {
+		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
+		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		String modifiedJsonString = jsonContext.jsonString();
 		System.out.println(modifiedJsonString);
 
