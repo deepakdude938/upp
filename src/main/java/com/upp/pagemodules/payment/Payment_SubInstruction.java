@@ -272,6 +272,13 @@ public class Payment_SubInstruction extends BaseClass {
 		scroll.scrollInToView(od.payments_Amount);
 		applyExplicitWaitsUntilElementClickable(od.payments_Amount, Duration.ofSeconds(5));
 		od.payments_Amount.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Amount"));
+		if(TSID.equalsIgnoreCase("TS122_1"))	
+		{   od.payments_Amount.clear();
+			od.payments_Amount.sendKeys("980000000");
+		}
+		
+		
+		Thread.sleep(1500);
 
 		if (commonutils.isElementDisplayed(od.parties_Accounts_beneficiaryBankIfscCode, 1)) {
 			od.parties_Accounts_beneficiaryBankIfscCode
