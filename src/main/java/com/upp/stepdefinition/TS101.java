@@ -60,7 +60,7 @@ public class TS101 extends BaseClass {
 
 	@Then("Call the Rule_Without_PaymentInfoDetails Api with given {string}.")
 	public void call_the_Rule_Without_PaymentInfoDetails_Api_with_given(String string) throws Exception {
-		endToEndId=rule.Rule_Without_PaymentInfoDetails_Api(TS06.dealId, string);
+		End2EndId=rule.Rule_Without_PaymentInfoDetails_Api(TS06.dealId, string);
 	}
     
 	@Then("Verify the SourceAccountNumber in Ecomm Executions Report with given {string}.")
