@@ -54,10 +54,9 @@ public class TS139 extends BaseClass implements ICallback {
 		edit = new EditOBOResponsibilty();
 	}
 
-	@Given("Verify Debtor Currency Option available")
-	public void verify_Debtor_Currency_Option_available() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@Given("Verify Debtor Currency Option available with given {string}")
+	public void verify_Debtor_Currency_Option_available_with_given(String string) throws Exception {
+		ecommTxn.verifyDebtorOption(string);
 	}
 
 	@Override

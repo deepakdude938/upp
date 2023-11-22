@@ -589,13 +589,14 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_saveAndContinue.click();
 		Thread.sleep(2000);
 		Actions actions = new Actions(driver);
-		
+
 		try {
 			if (ecomm.errorIcon.isDisplayed()) {
 				Thread.sleep(2000);
 				actions.moveToElement(ecomm.errorIcon).perform();
 				String errorMsg = ecomm.errorMessage.getAttribute("requiredmsg");
 				System.out.println("Error msg = " + errorMsg);
+				Thread.sleep(2000);
 				Assert.assertEquals(errorMsg, "Name is required");
 
 			}
@@ -640,6 +641,80 @@ public class ECommerceTransactionMaker extends BaseClass {
 		dropdown.selectByVisibleText(ecomm.ecommerce_balanceConsideration,
 				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Balance Consideration"));
 		Thread.sleep(2000);
-		System.out.println("disable = "+ecomm.unlimitDebtor.getAttribute("class"));
+		System.out.println("disable = " + ecomm.unlimitDebtor.getAttribute("class"));
+	}
+
+	public void verifyDebtorOption(String TSID) throws Exception {
+		int flag = 0;
+		Thread.sleep(3000);
+		ecomm.ecommerce_SideMenuIcon.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Txnmaker, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_Txnmaker);
+		// ecomm.ecommerce_Txnmaker.click();
+		Thread.sleep(5000);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnSearch, Duration.ofSeconds(25));
+		jsClick.click(ecomm.ecommerce_TxnSearch);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
+		jsClick.click(ecomm.ecommerce_addNewmaker);
+		ecomm.ecommerce_dealId.sendKeys(dealId);
+		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
+		driver.findElement(dealId_Option).click();
+		jsClick.click(ecomm.ecommerce_participantIdtxt);
+		ecomm.ecommerce_participantId.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
+		jsClick.click(ecomm.ecommerce_SearchBtn);
+		jsClick.click(ecomm.ecommerce_debitAccount);
+		Thread.sleep(3000);
+		ecomm.ecommerce_SubmitBtn.click();
+		Thread.sleep(2000);
+		ecomm.ecommerce_purpose.click();
+		System.out.println(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(2000);
+		ecomm.ecommerce_purpose.sendKeys(externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		dropdown.selectByVisibleText(ecomm.ecommerce_purpose,
+				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Purpose"));
+		Thread.sleep(3000);
+		ecomm.ecommerce_participantAccount.click();
+		ecomm.ecommerce_firstParticipantAccount.click();
+		Thread.sleep(2000);
+		dropdown.selectByVisibleText(ecomm.ecommerce_balanceConsideration,
+				externalData.getFieldData(TSID, "Ecomm Txn Maker", "Balance Consideration"));
+		Thread.sleep(2000);
+		ecomm.ecommerce_saveAndContinue.click();
+		try {
+			ecomm.ecommerce_creatorParticipant.click();
+		} catch (Exception e) {
+			handleElementClickException(ecomm.ecommerce_creatorParticipant);
+		}
+		Thread.sleep(2000);
+		ecomm.ecommerce_creatorParticipantIdOpt.click();
+		Select creatorAcc = new Select(ecomm.ecommerce_creatorAccount);
+		creatorAcc.selectByIndex(1);
+		Thread.sleep(2000);
+		ecomm.ecommerce_ParticipantId.click();
+		ecomm.ecommerce_ParticipantIdOpt.click();
+		ecomm.ecommerce_PlatformRefNumber.sendKeys("Test098");
+		ecomm.ecommerce_FragmentPlatformRefNumber.sendKeys("Test099");
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm1.paymentCountry, Duration.ofSeconds(7));
+		jsClick.click(tm1.paymentCountry);
+		System.out.println(externalData.getFieldData(TSID, "Ecomm Txn Maker", "beneficiaryCurrency"));
+		dropdown.selectByVisibleText(tm1.paymentCountry,
+				externalData.getFieldData(TSID, "Ecomm Txn Maker", "beneficiaryCurrency"));
+		String paymentCurrency = externalData.getFieldData(TSID, "Ecomm Txn Maker", "beneficiaryCurrency");
+		System.out.println("currency = " + paymentCurrency);
+		applyExplicitWaitsUntilElementClickable(tm1.paymentCountryType, Duration.ofSeconds(7));
+		jsClick.click(tm1.paymentCountryType);
+		
+		for (int i = 0; i < 2; i++) {
+			List<String> s = dropdown.getAllValue(tm1.paymentCountryType);
+			System.out.println("List = "+s);
+			if (s.contains("Debit Currency")) {
+				flag = 1;
+				break;
+			}
+		}
+		Assert.assertEquals(flag, 1);
+
 	}
 }
