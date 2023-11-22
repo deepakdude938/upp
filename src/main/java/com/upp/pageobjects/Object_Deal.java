@@ -117,7 +117,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//span[@title='edit'])[2]")
 	public WebElement account_edit_icon2;
 	
-	@FindBy(xpath = "(//input[@type='text'])[8]")
+	@FindBy(xpath = "(//input[@type='text'])[2]")
 	public WebElement account_key_field;
 	
 	@FindBy(xpath = "//button[normalize-space()='OK']")
