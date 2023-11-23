@@ -603,7 +603,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//ui-switch[@id='sw-instructions-tabRetryMechanism-retryEnabled-v1']//span[@class='slider round']")
 	public WebElement payments_RetrySlider;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5] | (//input[@id='txt-generic-autocomplete-input-v1'])[4]")
+	@FindBy(xpath = "//label[normalize-space()='Retry Type']")
+	public WebElement payments_RetryTypeText;
+	
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement payments_RetryType;
 	
 	@FindBy(xpath = "//div[contains(text(),'Forever')]")
