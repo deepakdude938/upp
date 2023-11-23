@@ -71,11 +71,11 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//div[contains(@class,'control__indicator dl_con_check')]")
 	public WebElement deals_contactCheckBox;
 	
+	@FindBy(xpath = "//h4[normalize-space()='Loan Officer']/..//div[contains(@class,'control__indicator')]")
+	public WebElement deals_loanOfficer_ContactCheckBox;
+	
 	@FindBy(xpath = "//button[@id='btn-deals-basicDetails-addContact-addContacts-v1']")
 	public WebElement deals_contactUpdate;
-	
-	
-	
 	
 	@FindBy(id = "btn-deals-basicDetails-next-v1")
 	public WebElement nextBtn;

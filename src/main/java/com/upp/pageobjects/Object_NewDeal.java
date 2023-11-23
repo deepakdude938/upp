@@ -233,6 +233,9 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//button[text()='OK'])[1]")
 	public WebElement payments_DealOkButton;
 
+	@FindBy(id = "btn-deals-accounts-addUpdateAdvice-ok-v1")
+	public WebElement deal_DealOkButton;
+	
 	// dealChecker objects
 
 	@FindBy(xpath = "//span[contains(text(),'REF')]")
@@ -645,6 +648,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "btn-deals-summary-submit-v1")
 	public WebElement payments_DealSubmitButton;
 	
+	@FindBy(id = "txt-deals-accounts-addUpdateAdvice-noteTxt-v1")
+	public WebElement deal_AddNote;
+	
+	
 //	@FindBy(xpath="(//button[normalize-space()='Yes'])[1]")
 //	public WebElement payments_DealYesButton;
 //	
@@ -763,7 +770,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6] | (//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement payments_ToAccountInputBox;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement payments_ToAccountInputBox1;
 	
 	@FindBy(xpath = "(//div[normalize-space()='LTTest'])[1]")
