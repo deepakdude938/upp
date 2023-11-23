@@ -24,6 +24,8 @@ import com.upp.utils.SwitchWindow;
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
+import com.upp.pagemodules.ECommerce.ECommerceTransactionMaker;
+
 import io.cucumber.java.en.*;
 
 public class TS118 extends BaseClass implements ICallback {
@@ -42,6 +44,7 @@ public class TS118 extends BaseClass implements ICallback {
 	Transactions_Verifier tv;
 	Reports_ExecutionReport execReport;
 	public static ExcelReader externalData;
+	ECommerceTransactionMaker ecommTxn;
 
 	public TS118() {
 
@@ -54,6 +57,7 @@ public class TS118 extends BaseClass implements ICallback {
 		this.tv = new Transactions_Verifier();
 		this.execReport = new Reports_ExecutionReport();
 		externalData = new ExcelReader();
+		this.ecommTxn = new ECommerceTransactionMaker();
 
 	}
 
@@ -72,14 +76,14 @@ public class TS118 extends BaseClass implements ICallback {
 	@Then("Add second Payment Currency and  currency Type  with given {string}")
 	public void add_second_Payment_Currency_and_currency_Type_with_given(String string) throws Exception {
 		TSID = string;
-		tm_sub.Transaction_Maker_Sub_InstructionPayment_Currency(string, this);
+		ecommTxn.Transaction_Maker_Sub_InstructionPayment_Currency(string);
 	}
 
 	@Then("Add Payment Currency and  currency Type as Debit currency with given {string}")
 
 	public void add_Payment_Currency_and_currency_Type_as_Debit_currency_with_given(String string) throws Exception {
 		TSID = string;
-		tm_sub.Transaction_Maker_Sub_InstructionPayment_Currency(string, this);
+		ecommTxn.Transaction_Maker_Sub_InstructionPayment_Currency(string);
 
 	}
 
@@ -87,6 +91,12 @@ public class TS118 extends BaseClass implements ICallback {
 	public void verify_total_debit_currency_and_payment_currency() throws Exception {
 		tm_sub.verifyDebitTotalCurrency();
 	}
+
+	@Then("Add Debit and Payment currency with given {string}")
+	public void add_Debit_and_Payment_currency_with_given(String string) throws Exception {
+		ecommTxn.addDealAsEcommerceTxnForDebitAndPaymentCurrency(TS07.dealId,string, DealPage.sourceAccountNo, DealPage.toaccountNo,this);
+	}
+
 
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
