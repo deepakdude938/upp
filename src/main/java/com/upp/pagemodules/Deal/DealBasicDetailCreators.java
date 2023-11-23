@@ -201,10 +201,15 @@ public class DealBasicDetailCreators extends BaseClass {
 				System.out.println(contactName);
 				od.deals_contactNameTextBox.sendKeys(contactName);
 				od.deals_contactNameSearch.click();
-				applyExplicitWaitsUntilElementClickable(od.deals_contactCheckBox, Duration.ofSeconds(10));
-				od.deals_contactCheckBox.click();
+				if(TSID.equals("TS138")) {
+					applyExplicitWaitsUntilElementClickable(od.deals_loanOfficer_ContactCheckBox, Duration.ofSeconds(10));
+					od.deals_loanOfficer_ContactCheckBox.click();
+				}
+				else {
+					applyExplicitWaitsUntilElementClickable(od.deals_contactCheckBox, Duration.ofSeconds(10));
+					od.deals_contactCheckBox.click();
+				}
 				od.deals_contactUpdate.click();
-
 			}
 		} catch (NullPointerException e) {
 
@@ -213,7 +218,6 @@ public class DealBasicDetailCreators extends BaseClass {
 		try {
 			String context=externalData.getFieldData(TSID, "Basic Details", "Contextualize");
 				if(context.equalsIgnoreCase("Yes")||context.equalsIgnoreCase("Y")) {
-					
 					
 					String PaymentRule=TSID+"_DEAL_LEVEL_RULE";
 					System.out.println(PaymentRule);

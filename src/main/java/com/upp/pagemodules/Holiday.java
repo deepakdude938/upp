@@ -141,7 +141,9 @@ public class Holiday extends BaseClass{
 		 hd.configuration_HolidayNextButton2.click();
 		 Thread.sleep(1000);
 		 hd.configuration_HolidayNextButton2.click();
+		 Thread.sleep(5000);
 		 hd.configuration_HolidayApproveButton.click();
+		 Thread.sleep(1000);
 		 hd.configuration_HolidayOkButton.click();
 	 
 	}

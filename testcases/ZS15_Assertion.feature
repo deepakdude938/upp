@@ -1,7 +1,7 @@
 Feature: TS15_Payment-Surplus_Assertion
 
 
-@Assertion @TS69 @Regression
+@Assertion @TS15 @Regression
 Scenario Outline: Payment-Surplus_Assertion
 
 Given Open browser and enter url 
