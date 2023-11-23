@@ -1,5 +1,8 @@
 package com.upp.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -93,4 +96,16 @@ public class DropDown {
 		
 	}
 	
+	public List<String> getAllValue(WebElement Element) {
+		Select select = new Select(Element);
+		List<String> options =new ArrayList<>();
+		List<WebElement> option = select.getOptions();
+		int size = option.size();
+	      for(int i =0; i<size ; i++){
+	    	  String op = option.get(i).getText();
+	    	  options.add(op);
+	         System.out.println(options);
+	      }
+		return options;
+	}
 }

@@ -95,7 +95,7 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//div[contains(@class,'loader') and not(contains(@class,'xcro-loader'))]")
 	public WebElement ecommerce_Loader;
 
-	@FindBy(xpath = "//span[@class='ui-pseudo-checkbox']")
+	@FindBy(xpath = "//span[contains(@class,'ui-pseudo-checkbox')]")
 	public WebElement unlimitDebtor;
 
 	@FindBy(xpath = "//input[@placeholder='Participant RefId']")
@@ -112,7 +112,33 @@ public class Object_Ecommerce extends BaseClass {
 	
 	@FindBy(xpath = "//label[normalize-space()='Deal RefId']")
 	public WebElement dealRefId;
+		
+	@FindBy(xpath = "//div[@formgroupname='ultimateDebtor']//label")
+	public List<WebElement> debtorDetails;
 
+	@FindBy(xpath = "//input[contains(@id,'name')]")
+	public WebElement name;
+
+	@FindBy(xpath = "//input[contains(@id,'addressLine1')]")
+	public WebElement addressline1;
+	
+	@FindBy(xpath = "//input[contains(@id,'addressLine2')]")
+	public WebElement addressline2;
+	
+	@FindBy(xpath = "//input[contains(@id,'addressLine3')]")
+	public WebElement addressline3;
+	
+	@FindBy(xpath = "//input[contains(@id,'addressLine4')]")
+	public WebElement addressline4;
+	
+	@FindBy(xpath = "//select[@id='sel-ultimate-debtor-country-v1']")
+	public WebElement country;
+	
+	@FindBy(xpath = "//i[@id='ic-generic-inputError-error-v1']")
+	public WebElement errorIcon;
+	
+	@FindBy(xpath = "//xcro-input-error[@class='ng-tns-c484-55 ng-star-inserted']")
+	public WebElement errorMessage;
 	// Object for Sub instruction on ecomm treansaction maker
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-fdt-participant-id-v1']//input[@placeholder='Creditor Participant Id']")
 	public WebElement ecommerce_creatorParticipant;
