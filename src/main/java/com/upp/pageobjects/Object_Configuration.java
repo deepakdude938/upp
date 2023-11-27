@@ -60,11 +60,20 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//div[@id='ic-generic-menu-showMenu-v1']")
 	public WebElement configuration_HolidayKebabMenu;
 	
+	@FindBy(xpath="//div[normalize-space()='Delete']")
+	public WebElement configuration_Holiday_Delete;
+	
+	@FindBy(xpath="(//textarea[@id='txt-config-holidays-addUpdate-description-v1'])[1]")
+	public WebElement configuration_Holiday_Description;
+	
 	@FindBy(xpath="//div[@id='popup-menu']")
 	public WebElement configuration_HolidayEditTab;
 	
 	@FindBy(xpath="//button[contains(@class,'ui-btn-primary ui-align-right btn-preference') and normalize-space()='Approve']")
 	public WebElement configuration_HolidayApproveButton;
+	
+	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[1]")
+	public WebElement holiday_searchBox;
 	
 	//Product
 

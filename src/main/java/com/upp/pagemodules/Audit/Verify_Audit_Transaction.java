@@ -50,6 +50,7 @@ public class Verify_Audit_Transaction extends BaseClass {
 
 	public void verify_Audit_Transaction(String dealId) throws Exception {
 
+		Thread.sleep(10000);
 		scroll.scrollInToView(audit.Audit_Icon);
 		applyExplicitWaitsUntilElementClickable(audit.Audit_Icon, Duration.ofSeconds(50));
 		try {
@@ -77,15 +78,16 @@ public class Verify_Audit_Transaction extends BaseClass {
 		js.click(audit.audit_Transaction_Notification);
 		applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Reload, Duration.ofSeconds(25));
 		js.click(audit.audit_Transaction_Reload);
-        Thread.sleep(4000);
+        Thread.sleep(16000);
         System.out.println("The dealid is:"+dealId);
 		By Report = By.xpath("//span[contains(text(),'" + dealId + "')]");
 		try {
+			applyExplicitWaitsUntilElementVisible(Report,40);
 			driver.findElement(Report).click();
 		} catch (Exception e) {
 			handleElementClickException(driver.findElement(Report));
 		}
-		Thread.sleep(8000);
+		Thread.sleep(15000);
 
 	}
 
