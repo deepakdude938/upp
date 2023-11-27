@@ -6,6 +6,7 @@ Given Open browser and enter url
 Then Login to the application as "txn_maker"
 Then Fetch record from ODP with "<TSID>"
 Then Verify in Report that both Transactions are settled with given "<TSID>"
+And Delete the Tomorrow Holiday with given "<TSID>"
 Examples:
       |TSID |
       |TS126|

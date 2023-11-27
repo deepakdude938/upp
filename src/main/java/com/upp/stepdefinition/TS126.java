@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
 import com.upp.Api.utils.LogOutApi;
 import com.upp.InitiationRulesApi.Rule_Non_OBO;
 import com.upp.InitiationRulesApi.Rule_With_Partial_PaymentInfoDetails;
@@ -70,6 +72,16 @@ public class TS126 extends BaseClass {
 	@Then("Verify in Report that both Transactions are settled with given {string}")
 	public void verify_in_Report_that_both_Transactions_are_settled(String string) throws Exception {
 	    report.checkBothTransactionStatusIsSettled(string, dealId);
+	}
+	
+	@Then("Delete the Tomorrow Holiday with given {string}")
+	public void delete_the_Tomorrow_Holiday_with_given(String string) throws InvalidFormatException, IOException, Exception {
+	  holiday.delete_Tomorrow_Holiday(string);
+	}
+
+	@Then("Approve Holiday for GB Account with given {string}")
+	public void approve_Holiday_for_GB_Account_with_given(String string) throws Exception {
+	 holiday.approveHoliday_For_GB_Account(string);
 	}
 	
 }

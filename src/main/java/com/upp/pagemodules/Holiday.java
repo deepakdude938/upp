@@ -1,6 +1,7 @@
 package com.upp.pagemodules;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
@@ -76,11 +77,17 @@ public class Holiday extends BaseClass{
 		 
 }
 	public void createNewHoliday_For_GB_Account(String TSID) throws InvalidFormatException, IOException, Exception {
+		
+		Thread.sleep(5000);
 	   	ID =TSID;
+	    applyExplicitWaitsUntilElementClickable(hd.configurationButton,Duration.ofSeconds(20));
 		 hd.configurationButton.click();
 		 hd.configuration_HolidayButton.click();
 		 hd.configuration_HolidayAddButton.click();
 		 hd.configuration_HolidayInputDate.click();
+		 String holiday_name=dateutil.getCurrentDate_and_Month();
+		 String holiday_name1="TS126-"+holiday_name;
+		 System.out.println("the holiday name:"+holiday_name1);
 		 String day = dateutil.getDay();
 		 int day_int = Integer.parseInt(day) + 1;
 			
@@ -93,7 +100,8 @@ public class Holiday extends BaseClass{
 		 By holidayApplicableFor = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+holdayApplicableForInput+"']");
 		 applyExplicitWaitsUntilElementVisible(holidayApplicableFor, 10);
 		 driver.findElement(holidayApplicableFor).click();
-		 hd.configuration_HolidayName.sendKeys(externalData.getFieldData(TSID,"Holidays and Holiday Drafts","Holiday").trim());
+	//	 hd.configuration_HolidayName.sendKeys(externalData.getFieldData(TSID,"Holidays and Holiday Drafts","Holiday").trim());
+		 hd.configuration_HolidayName.sendKeys(holiday_name1);
 		 hd.configuration_Country.sendKeys(externalData.getFieldData(TSID,"Holidays and Holiday Drafts","All countries").trim());
 		 String country = externalData.getFieldData(TSID,"Holidays and Holiday Drafts","All countries").trim();
 		 driver.findElement(By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='"+country+"']")).click();
@@ -101,6 +109,59 @@ public class Holiday extends BaseClass{
 		 hd.configuration_HolidayNextButton2.click();
 		 hd.configuration_HolidaySaveButton.click();
 		 hd.configuration_HolidayOkButton.click();
+		 
+}
+	
+	public void delete_Tomorrow_Holiday(String TSID) throws InvalidFormatException, IOException, Exception {
+	   	ID =TSID;
+	   	Thread.sleep(5000);
+	    applyExplicitWaitsUntilElementClickable( hd.configurationButton,Duration.ofSeconds(20));
+		 hd.configurationButton.click();
+		 Thread.sleep(1500);
+		 hd.configuration_HolidayButton.click();
+		 Thread.sleep(1500);
+		 String holiday_name=dateutil.getCurrentDate_and_Month();
+		 String holiday_name1="TS126-"+holiday_name;
+		 System.out.println("The holiday_name is:"+holiday_name1);
+		 applyExplicitWaitsUntilElementClickable(hd.holiday_searchBox,Duration.ofSeconds(20));
+		 hd.holiday_searchBox.sendKeys(holiday_name1);
+		 Thread.sleep(1500);
+		 applyExplicitWaitsUntilElementClickable( hd.configuration_HolidayKebabMenu,Duration.ofSeconds(20));
+		 hd.configuration_HolidayKebabMenu.click();
+		 Thread.sleep(1500);
+		 applyExplicitWaitsUntilElementClickable( hd.configuration_Holiday_Delete,Duration.ofSeconds(20));
+		 hd.configuration_Holiday_Delete.click();
+		 Thread.sleep(1500);
+		 applyExplicitWaitsUntilElementClickable( hd.configuration_Holiday_Description,Duration.ofSeconds(20));
+		 hd.configuration_Holiday_Description.sendKeys("ok");
+		 Thread.sleep(1500);
+		 hd.PU_SubmitButton.click();
+		 Thread.sleep(1500);
+		 applyExplicitWaitsUntilElementClickable(hd.PU_OkButton,Duration.ofSeconds(20));
+		 hd.PU_OkButton.click();
+		 Thread.sleep(1500);
+		 hd. configuration_HolidayDraftsButton.click();
+		 Thread.sleep(1500);
+		 hd. configuration_HolidaySearchBox.sendKeys(holiday_name1);
+		 Thread.sleep(1500);
+		 hd. configuration_HolidaySearchBoxButton.click();
+		 Thread.sleep(1500);
+		 Thread.sleep(1000);
+		 hd.configuration_HolidayKebabMenu.click();
+		 Thread.sleep(1500);
+		 hd.configuration_HolidayEditTab.click();
+		 Thread.sleep(1500);
+		 hd.configuration_HolidayNextButton2.click();
+		 Thread.sleep(1000);
+		 hd.configuration_HolidayNextButton2.click();
+		 Thread.sleep(1500);
+		 hd.configuration_HolidayApproveButton.click();
+		 Thread.sleep(1500);
+		 hd.configuration_HolidayOkButton.click();
+		 Thread.sleep(1500);
+		 
+		 
+		 
 		 
 }
 	public void createNewHoliday(String iD,String date) throws InvalidFormatException, IOException, Exception {
@@ -149,6 +210,24 @@ public class Holiday extends BaseClass{
 		
 		 hd. configuration_HolidayDraftsButton.click();
 		 hd. configuration_HolidaySearchBox.sendKeys(externalData.getFieldData(TSID,"Holidays and Holiday Drafts","Holiday").trim());;
+		 hd. configuration_HolidaySearchBoxButton.click();
+		 Thread.sleep(1000);
+		 hd. configuration_HolidayKebabMenu.click();
+		 hd. configuration_HolidayEditTab.click();
+		 hd.configuration_HolidayNextButton2.click();
+		 Thread.sleep(1000);
+		 hd.configuration_HolidayNextButton2.click();
+		 hd.configuration_HolidayApproveButton.click();
+		 hd.configuration_HolidayOkButton.click();
+	 
+	}
+	
+	public void approveHoliday_For_GB_Account(String TSID) throws Exception, IOException {
+		
+		 hd. configuration_HolidayDraftsButton.click();
+		 String holiday_name=dateutil.getCurrentDate_and_Month();
+		 String holiday_name1="TS126-"+holiday_name;
+		 hd. configuration_HolidaySearchBox.sendKeys(holiday_name1);
 		 hd. configuration_HolidaySearchBoxButton.click();
 		 Thread.sleep(1000);
 		 hd. configuration_HolidayKebabMenu.click();
