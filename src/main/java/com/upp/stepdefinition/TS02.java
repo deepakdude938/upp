@@ -19,4 +19,13 @@ public class TS02 extends BaseClass{
 		 dealId=dm.submitDeal();
 	}
 	
+	@Then("Send Introductory Mail")
+	public void send_Introductory_Mail() throws Exception {
+		 dealId=dm.send_Introductory_Mail();
+	}
+	
+	@Then("Verify Email id In ODP")
+	public void verify_Email_id_In_ODP() {
+	   
+	}
 }
