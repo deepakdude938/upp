@@ -424,4 +424,31 @@ public class DashBoard_Module extends BaseClass {
 		approveDealFromDealChecker_Old(dealId);
 		return dealId;
 	}
+
+
+	public String send_Introductory_Mail() throws Exception {
+		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(15));
+		try {
+			od.payments_DealsummaryIcon.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(od.payments_DealsummaryIcon);
+		}
+		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(50));
+		String dealId = od.deals_SummaryRefId.getText();
+		System.out.println(dealId);
+		Thread.sleep(1000);
+		scroll.scrollInToView(od.payments_DealSubmitButton);
+		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(5));
+		Thread.sleep(3000);
+		od.payments_DealSubmitButton.click();
+		applyExplicitWaitsUntilElementClickable(od.deal_AddNote, Duration.ofSeconds(10));
+		od.deal_AddNote.sendKeys("Ok");
+		applyExplicitWaitsUntilElementClickable(od.deal_DealOkButton, Duration.ofSeconds(10));
+		od.deal_DealOkButton.click();
+		System.out.println(dealId);
+		return dealId;
+	
+	}
 }
