@@ -1,6 +1,0 @@
-@Regression,to run all test cases related to Regression suite
-@ScbRegression,to run all test cases related to  scb regression
-@Assertion,This will execute only assertion related test cases 
-@InitiationRules,this will execute test cases related to Initiation Rules
-@PaymentProfiles,this will execute test cases related to payment profile 
-@Api,this will execute test cases related to API 
