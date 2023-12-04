@@ -134,6 +134,30 @@ public class DateUtils {
 		date1 = sdf.format(tomorrow);
 		return date1;
 	}
+public static String getCurrentDate_HashFormat() {
+		
+		
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String date1;
+		// Date today = calendar.getTime();
+		calendar.add(Calendar.DATE, 1);
+		Date tomorrow = calendar.getTime();
+		date1 = sdf.format(tomorrow);
+		return date1;
+	}
+
+public static String getCurrentDate_HashFormatToday() {
+	
+	
+	Calendar calendar = Calendar.getInstance();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	String date1;
+    Date today = calendar.getTime();
+	//Date tomorrow = calendar.getTime();
+	date1 = sdf.format(today);
+	return date1;
+}
 	
 public static String getCurrentDate_and_Month() {
 		

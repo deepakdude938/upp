@@ -56,14 +56,14 @@ public class Payment_Retry extends BaseClass {
 		od.payments_NextArrowButtonRetryMechanism.click();
 	}
 
-	public void createPayments_RetryForever(String TSID) throws Exception {
+	public void createPayments_Retry(String TSID) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
 				Duration.ofSeconds(15));
 		od.payments_NextArrowButtonTransferSubInstruction.click();
-		Thread.sleep(3000);
+		Thread.sleep(6000);
 		applyExplicitWaitsUntilElementClickable(od.payments_RetrySlider, Duration.ofSeconds(15));
 		od.payments_RetrySlider.click();
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		js.click(od.payments_RetryType);
 
 		// applyExplicitWaitsUntilElementClickable(od.payments_RetryType, Duration.ofSeconds(15));
@@ -94,12 +94,34 @@ public class Payment_Retry extends BaseClass {
 //		    e.printStackTrace();
 //		}
 
+		if(TSID.equalsIgnoreCase("TS137"))
+		{
 		Thread.sleep(3000);
-		//od.payments_RetryType_Forever.click();
 		js.click(od.payments_RetryType_Forever);
-		Thread.sleep(1500);
+		}
+		if(TSID.equalsIgnoreCase("TS140"))
+		{
+		Thread.sleep(3000);
+		js.click(od.payments_RetryType_TillNextDate);
+		}
+		if(TSID.equalsIgnoreCase("TS141"))
+		{
+		Thread.sleep(3000);
+		js.click(od.payments_RetryType_Custom);
+		Thread.sleep(3000);
+		od.payments_RetryType_CustomDays.sendKeys("1");
+		}
+		
+		if(TSID.equalsIgnoreCase("TS142"))
+		{
+		Thread.sleep(3000);
+		js.click(od.payments_RetryType_SameDay);
+		Thread.sleep(3000);
+		od.payments_Hours.sendKeys("1");
+		}
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonRetryMechanism, Duration.ofSeconds(15));
 		od.payments_NextArrowButtonRetryMechanism.click();
-		Thread.sleep(1500);
+		Thread.sleep(3000);
 	}
 }

@@ -65,12 +65,13 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(120));
 		tm.transactions_TransactionIcon.click();
-		Thread.sleep(3000);
+		Thread.sleep(13000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionMaker, Duration.ofSeconds(120));
 		tm.transactions_TransactionMaker.click();
-		Thread.sleep(2000);
+		Thread.sleep(12000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_AddNewButon);
+		Thread.sleep(8000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(120));
 		tm.transactions_DealId.sendKeys(DealId);
 		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
@@ -122,6 +123,8 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 
 				String time = dateutil.getTimeAfterMins(5);
 
+				od.payments_ScheduleTime.clear();
+				od.payments_ScheduleTime.clear();
 				od.payments_ScheduleTime.clear();
 				od.payments_ScheduleTime.sendKeys(time);
 				Thread.sleep(3000);

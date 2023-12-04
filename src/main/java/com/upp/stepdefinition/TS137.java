@@ -61,15 +61,24 @@ public class TS137 extends BaseClass {
       
 	}
 
-	@Then("Create Retry Payment Forvever with given {string}")
-	public void create_Retry_Payment_Forvever_with_given(String string) throws Exception{
-	 retry.createPayments_RetryForever(string);
+	@Then("Create Retry Payment with given {string}")
+	public void create_Retry_Payment_with_given(String string) throws Exception{
+	 retry.createPayments_Retry(string);
 	}
 	
 	@Then("Verify in execution Report One Tnx is Rejected and other Rescheduled with given {string}")
 	public void verify_in_execution_Report_One_Tnx_is_Rejected_and_other_Rescheduled_with_given(String string) throws Exception {
 	    report.check_one_Tnx_Rejected_and_second_Tnx_Rescheduled(string,dealId);
 	}
+	
+	@Then("Verify in execution Report One Tnx is Rejected and other Rescheduled and Reschudled date with given {string}")
+	public void verify_in_execution_Report_One_Tnx_is_Rejected_and_other_Rescheduled_and_Reschudled_date_with_given(String string) throws Exception {
+	report.check_one_Tnx_Rejected_and_second_Tnx_Rescheduled_and_RescheduledDate(string,dealId);
+	}
 
+	@Then("Verify in execution Report One Tnx is Rejected and other Rescheduled and Reschudled date wth same day {string}")
+	public void verify_in_execution_Report_One_Tnx_is_Rejected_and_other_Rescheduled_and_Reschudled_date_wth_same_day(String string) throws Exception {
+	    report.check_one_Tnx_Rejected_and_second_Tnx_Rescheduled_and_RescheduledDate_SameDay(string,dealId);
+	}
 	
 }
