@@ -104,7 +104,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//h2[@id='swal2-title']")
 	public WebElement transactions_TransactionsId;
 
-	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[1]")
+	@FindBy(xpath = "//input[contains(@aria-label,'Txn Id Filter Input')]")
 	public WebElement transactions_TransactionIdSearchBox;
 
 	@FindBy(xpath = "//i[@class='ui-icon ic ic-edit_blue ng-star-inserted']")
@@ -136,6 +136,9 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "//div[@col-id='Utilized Budget' and contains(@class,'ag-cell-not-inline-editing')]")
 	public WebElement reports_Utilized_Budget_Amount;
+	
+	@FindBy(xpath = "(//div[@col-id='ScheduledOn' and contains(@class,'ag-cell-not-inline-editing')])[2]")
+	public WebElement reports_RescheduledDate;
 	
 	@FindBy(xpath = "//div[@col-id='Utilized Budget' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_Utilized_Budget_Amount_List;
@@ -174,7 +177,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'Budget Utilization Report')]")
 	public WebElement reports_BUDGET_UTILIZATION_REPORT;
 
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")
 	public WebElement reports_DealId;
 
 	@FindBy(xpath = "//button[contains(text(),'Submit')]")
@@ -401,7 +404,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@class='ag-header-cell-label' and normalize-space()='Transfer Info']")
 	public WebElement reports_TransferInfoColumn;
 	
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "//input[@aria-label='End to End ID Filter Input']")
 	public WebElement reports_End_To_End_common;
 	
 	@FindBy(xpath = "//label[contains(@class,'instruction_icon sidemenu_icon')]")
@@ -434,7 +437,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'ECOMMBATCH')]")
 	public WebElement ecommBatch;
 	
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
+	@FindBy(xpath = "//input[@aria-label='Payment ID Filter Input']")
 	public WebElement ecommPayments_PaymentId;
 	
 	@FindBy(xpath = "(//div[@col-id='Status'])[2]")

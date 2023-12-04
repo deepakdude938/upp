@@ -781,6 +781,54 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertTrue(scroeStatus.contains("Rescheduled"));
 		Assert.assertTrue(scroeStatus.contains("Rejected"));
+		
+	
+
+	}
+	
+	public void check_one_Tnx_Rejected_and_second_Tnx_Rescheduled_and_RescheduledDate(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		System.out.println(DealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		ArrayList<String> scroeStatus = new ArrayList();
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+			scroeStatus.add(iu.getText().trim());
+		}
+		Assert.assertTrue(scroeStatus.contains("Rescheduled"));
+		Assert.assertTrue(scroeStatus.contains("Rejected"));
+		
+		String rescheduleddate=	tm.reports_RescheduledDate.getText();
+		String date[]=rescheduleddate.split(" ");
+		String rescheduleddate1=date[0];
+		String ExcpectedRescheduledDate=dateutil.getCurrentDate_HashFormat();
+		Assert.assertEquals(rescheduleddate1, ExcpectedRescheduledDate);
+		
+		
+
+	}
+
+	public void check_one_Tnx_Rejected_and_second_Tnx_Rescheduled_and_RescheduledDate_SameDay(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+		System.out.println(DealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
+		ArrayList<String> scroeStatus = new ArrayList();
+		for (WebElement iu : tm.reports_ScroeStatusRecords) {
+			scroeStatus.add(iu.getText().trim());
+		}
+		Assert.assertTrue(scroeStatus.contains("Rescheduled"));
+		Assert.assertTrue(scroeStatus.contains("Rejected"));
+		
+		String rescheduleddate=	tm.reports_RescheduledDate.getText();
+		String date[]=rescheduleddate.split(" ");
+		String rescheduleddate1=date[0];
+		String ExcpectedRescheduledDate=dateutil.getCurrentDate_HashFormatToday();
+		Assert.assertEquals(rescheduleddate1, ExcpectedRescheduledDate);
+		
+		
 
 	}
 
