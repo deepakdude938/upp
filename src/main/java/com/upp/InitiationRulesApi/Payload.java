@@ -260,7 +260,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -286,7 +286,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.ultimateDebtor.dealRefId", dealId);
 
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -338,7 +338,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -362,7 +362,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -386,7 +386,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 		jsonContext.set("$.ultimateDebtor.dealRefId", dealId);
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -411,7 +411,7 @@ public class Payload extends BaseClass {
 		jsonContext.set("$.ultimateDebtor.dealRefId", dealId);
 
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
