@@ -5,7 +5,7 @@ Scenario Outline: TS126_Retention_and_Payment_With_Holiday_Action_As_Previous_Bu
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create Holiday for GB Account "<TSID>"
-And Approve Holiday with given "<TSID>"
+And Approve Holiday for GB Account with given "<TSID>"
 And Create new deal with basic details with given "<TSID>".
 And Call the ODP Login Api
 Then Create account in Odp with details from excel sheet with given "<TSID>".

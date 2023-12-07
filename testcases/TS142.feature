@@ -1,7 +1,7 @@
-Feature: TS137_Payment_with_Retry Failed Scheduled Instruction
+Feature: TS142_Payment_with_Retry Failed Scheduled Instruction With Retry_Type SameDay
 
-@Regression @TS137
-Scenario Outline: TS137_Payment_with_Retry Failed Scheduled Instruction
+@Regression @TS142
+Scenario Outline: TS142_Payment_with_Retry Failed Scheduled Instruction with Retry_Type SameDay
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
@@ -20,6 +20,6 @@ Then approve the deal from the deal checker common method
 And Check the Transaction staus in execution report with given "<TSID>"
 Examples:
       |TSID  |
-      |TS137 |
+      |TS142 |
 
 

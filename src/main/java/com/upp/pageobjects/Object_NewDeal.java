@@ -611,6 +611,21 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath = "//div[contains(text(),'Forever')]")
 	public WebElement payments_RetryType_Forever;
+	
+	@FindBy(xpath = "//div[contains(text(),'Till Next Date')]")
+	public WebElement payments_RetryType_TillNextDate;
+	
+	@FindBy(xpath = "//div[contains(text(),'Same day')]")
+	public WebElement payments_RetryType_SameDay;
+	
+	@FindBy(xpath = "//div[contains(text(),'Custom')]")
+	public WebElement payments_RetryType_Custom;
+	
+	@FindBy(xpath = "(//input[@id='txt-instructions-tabRetryMechanism-retryCustomDays-v1'])[1]")
+	public WebElement payments_RetryType_CustomDays;
+	
+	@FindBy(xpath = "(//input[@id='txt-instructions-tabRetryMechanism-retryInHours-v1'])[1]")
+	public WebElement payments_Hours;
 
 	@FindBy(id = "ic-instructions-tabRetryMechanism-next-v1")
 	public WebElement payments_NextArrowButtonRetryMechanism;

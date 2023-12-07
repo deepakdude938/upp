@@ -34,16 +34,16 @@ public class EcommTnxApi extends BaseClass {
 
 		System.out.println("the status code is" + res.getStatusCode());
 
-		if (res.getStatusCode() == 500) {
-			String s[] = response.split("}");
-			System.out.println("s1   " + s[1]);
-			String x[] = s[1].split(":");
-			System.out.println("x1   " + x[1]);
-			String y[] = x[1].split("\"");
-			System.out.println("y1   " + y[1]);
-			endToEndId = y[1];
-			System.out.println("The End to end is" + endToEndId);
-		}
+//		if (res.getStatusCode() == 500) {
+//			String s[] = response.split("}");
+//			System.out.println("s1   " + s[1]);
+//			String x[] = s[1].split(":");
+//			System.out.println("x1   " + x[1]);
+//			String y[] = x[1].split("\"");
+//			System.out.println("y1   " + y[1]);
+//			endToEndId = y[1];
+//			System.out.println("The End to end is" + endToEndId);
+//		}
 		if (res.getStatusCode() == 200) {
 			JsonPath js = new JsonPath(response);
 			endToEndId = js.getString("endToEndId");
