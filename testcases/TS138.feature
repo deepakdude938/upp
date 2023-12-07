@@ -6,7 +6,7 @@ Given Open browser and enter url
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".
 And Send Introductory Mail
-Then Verify Email id In ODP
+Then Verify Email id In ODP "<TSID>"
 
 Examples:
       |TSID   |

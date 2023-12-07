@@ -28,6 +28,9 @@ public class BaseClass {
 
 	public static WebDriver driver;
 	public static String browser = System.getProperty("browser");
+	public static String env = System.getProperty("env");
+	public static String username = System.getProperty("username");
+	public static String password = System.getProperty("password");
 	public static boolean isHeadLess;
 	public static Properties prop;
 	public static String dealId = "";
@@ -52,6 +55,7 @@ public class BaseClass {
 	public static  LinkedHashMap<String,String> accountMap ;
 	public static String End2EndId;
 	public static String TS101_SourceAccno;
+//	public static String browser = System.getProperty("browser");
 	
 
 	public WebDriver initialize() throws Exception {
@@ -63,7 +67,17 @@ public class BaseClass {
 //		isHeadLess = true;
 		accountList=new LinkedList<String>();
 		accountMap=new LinkedHashMap<>();
-		String env = prop.getProperty("env");
+		
+//		String env = prop.getProperty("env");
+		if(env==null) {
+			 env = prop.getProperty("env");
+		}
+		System.out.println("=========================");
+		System.out.println(env);
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println("=========================");
+
 		switch(env.toLowerCase()) {
 		
 					case "sit":

@@ -1,15 +1,20 @@
 package com.upp.stepdefinition;
 
+import java.io.IOException;
+
 import com.upp.base.BaseClass;
+import com.upp.odp.utils.ODP_FetchRecord;
 import com.upp.pagemodules.DashBoard_Module;
 
 import io.cucumber.java.en.Then;
 
 public class TS02 extends BaseClass{
 	public DashBoard_Module dm;
+	public ODP_FetchRecord fetch;
 	
 	public TS02() {
 		this.dm = new DashBoard_Module();
+		fetch= new ODP_FetchRecord();
 	}
 
 	
@@ -24,8 +29,8 @@ public class TS02 extends BaseClass{
 		 dealId=dm.send_Introductory_Mail();
 	}
 	
-	@Then("Verify Email id In ODP")
-	public void verify_Email_id_In_ODP() {
-	   
+	@Then("Verify Email id In ODP {string}")
+	public void verify_Email_id_In_ODP(String TSID) throws IOException {
+	   fetch.verifyEmailIdFromODP(TSID);
 	}
 }

@@ -34,19 +34,22 @@ public class LoginToApplication extends BaseClass {
 		String userNameKey = userType + ".username";
 		String pwdKey = userType + ".password";
 		
-		if(prop.getProperty("env").equalsIgnoreCase("qa")) {
+		if(env.equalsIgnoreCase("qa")) {
 			pwdKey="QA_"+userType+".password";
 		}
-		
-		String userName = prop.getProperty(userNameKey);
-		String password = prop.getProperty(pwdKey);
+		if(username==null) {
+			 username = prop.getProperty(userNameKey);
+		}
+		if(password==null) {
+			password = prop.getProperty(pwdKey);
+		}
+	
 		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(35));
-		ol.username.sendKeys(userName);
+		ol.username.sendKeys(username);
 //		ol.nextButton.click();
 //		Thread.sleep(2000);nextButton
 		ol.loginIn.click();
 		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(5));
-
 		ol.password.sendKeys(password);
 		ol.loginIn.click();
 
