@@ -97,6 +97,7 @@ public class DashBoard_Module extends BaseClass {
 		dropdown.selectByVisibleText(od.linkedInstruction_HolidayAction,
 				externalData.getFieldData(TSID, "Linked", "Holiday Action"));
 		String timem = dateTime.getTimeAfterMins(waitingTime);
+		System.out.println("time = "+timem);
 		od.linkedInstruction_TimePicker.clear();
 		od.linkedInstruction_TimePicker.sendKeys(timem);
 		od.linkedInstruction_ScheduleNextBtn.click();
