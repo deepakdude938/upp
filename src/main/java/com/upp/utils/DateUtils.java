@@ -83,7 +83,7 @@ public class DateUtils {
 	}
 
 	public static String getTimeAfterMins(int mins) {
-		SimpleDateFormat df = new SimpleDateFormat("hh.mm aa");
+		SimpleDateFormat df = new SimpleDateFormat("hh:mmaa");
 
 		String dateString = df.format(new Date()).toString();
 		System.out.println(dateString);
