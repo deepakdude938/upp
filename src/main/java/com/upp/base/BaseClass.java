@@ -103,8 +103,13 @@ public class BaseClass {
 						url = prop.getProperty("SCB_Url");
 						api_Password= prop.getProperty("api_password");
 						break;	
+						
+					case "documentdb":
+						System.out.println("documentdb");
+						url = prop.getProperty("DOCUMENTDB_Url");
+						api_Password= prop.getProperty("DOCUMENTDB_api_password");
+						break;	
 		}
-		
 				base_url=	url.replace("login", "");
 
 		if (browser.equalsIgnoreCase("chrome")) {

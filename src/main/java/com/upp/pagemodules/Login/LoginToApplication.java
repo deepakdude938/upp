@@ -37,6 +37,10 @@ public class LoginToApplication extends BaseClass {
 		if(env.equalsIgnoreCase("qa")) {
 			pwdKey="QA_"+userType+".password";
 		}
+		else if(env.equalsIgnoreCase("documentdb")) {
+			pwdKey="DOCUMENTDB_"+userType+".password";
+		}
+		
 		if(username==null) {
 			 username = prop.getProperty(userNameKey);
 		}
