@@ -43,6 +43,7 @@ public class Budget extends BaseClass {
 	public static String productName;
 	public static CommonUtils commonutils;
 	public String executiontime ;
+	public String executiontime1 ;
 	JavascriptClick js;
 
 	public Budget() {
@@ -121,6 +122,7 @@ public class Budget extends BaseClass {
 		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Scheduled", "Purpose"));
 		od.payments_SourceAccount.sendKeys(sourceAccountno);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
+		Thread.sleep(2000);
 		driver.findElement(sourceaccountselect).click();
 
 		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
@@ -155,6 +157,7 @@ public class Budget extends BaseClass {
 		dropdown.selectByVisibleText(od.payments_HolidayAction,
 				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 		 executiontime = dateutil.getTimeAfterMins(5);
+		 executiontime1 = dateutil.getTimeAfterMins1(5);
 		od.payments_ScheduleTime.clear();
 		od.payments_ScheduleTime.sendKeys(executiontime);
 		String t = od.linkedInstruction_Executiondate.getText();
@@ -475,7 +478,10 @@ public class Budget extends BaseClass {
 		String dealID = url.split("[/]")[url.split("/").length - 1];
 		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
 		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
-		Date date = parseFormat.parse(executiontime.replace('.', ':'));
+		System.out.println(executiontime1);
+//		Date date = parseFormat.parse(executiontime.replace('.', ':'));
+		Date date = parseFormat.parse(executiontime1);
+
 		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
 
 		HashMap odpRecord = new HashMap<>();

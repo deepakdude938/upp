@@ -41,7 +41,7 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_SelectTab = externalData.getFieldData(tSID, "Configuration", "Select Tabs");
 		config.configurationProduct_SelectTabs.click();
-		By selectTabs = By.xpath("//label[normalize-space()='Select Tabs']//following::span[@class='ng-tns-c93-1 ui-autocomplete-list-item-option' and normalize-space()='"+input_SelectTab+"']");
+		By selectTabs = By.xpath("//label[normalize-space()='Select Tabs']//following::span[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_SelectTab+"']");
 		applyExplicitWaitsUntilElementVisible(selectTabs, 10);
 		driver.findElement(selectTabs).click();
 		config.configurationProduct_SelectTabsText.click();
@@ -49,7 +49,7 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_ScheduleInstructionType = externalData.getFieldData(tSID, "Configuration", "Schedule Instruction Types");
 		config.configurationProduct_ScheduleInstructionType.click();
-		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[@class='ng-tns-c93-2 ui-autocomplete-list-item-option' and normalize-space()='"+input_ScheduleInstructionType+"']");
+		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_ScheduleInstructionType+"']");
 		applyExplicitWaitsUntilElementVisible(scheduleInstructionType, 10);
 		driver.findElement(scheduleInstructionType).click();
 		config.configurationProduct_ScheduleInstructionTypeText.click();

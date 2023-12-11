@@ -177,9 +177,10 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'Budget Utilization Report')]")
 	public WebElement reports_BUDGET_UTILIZATION_REPORT;
 
-	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")
+//	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
 	public WebElement reports_DealId;
-
+	//input[@aria-label='Deal Id Filter Input']
 	@FindBy(xpath = "//button[contains(text(),'Submit')]")
 	public WebElement reports_SubmitButton;
 
