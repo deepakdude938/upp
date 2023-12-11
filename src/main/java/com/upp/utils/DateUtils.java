@@ -102,6 +102,26 @@ public class DateUtils {
 		return newTime;
 
 	}
+	public static String getTimeAfterMins1(int mins) {
+		SimpleDateFormat df = new SimpleDateFormat("hh:mm aa");
+
+		String dateString = df.format(new Date()).toString();
+		System.out.println(dateString);
+		Date d = null;
+		try {
+			d = df.parse(dateString);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(d);
+		cal.add(Calendar.MINUTE, mins);
+		String newTime = df.format(cal.getTime());
+		System.out.println(newTime);
+		return newTime;
+
+	}
 	
 	public static String getDay() {
 		Calendar calendar = Calendar.getInstance();

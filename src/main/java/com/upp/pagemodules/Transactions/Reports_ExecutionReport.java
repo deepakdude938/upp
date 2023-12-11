@@ -171,6 +171,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
 		Thread.sleep(6500);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 9, 1000);
 		jsClick.click(tm.cancelIcon);
 		Thread.sleep(6500);
 
