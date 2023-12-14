@@ -138,7 +138,8 @@ public class Object_Parties extends BaseClass{
 	public WebElement PartyMaker_deleteMessage;
 	
 	
-	@FindBy(xpath="(//input[@ref='eFloatingFilterText'])[1]")
+//	@FindBy(xpath="(//input[@ref='eFloatingFilterText'])[1]")     documentdb
+	@FindBy(xpath="//input[@aria-label='Customer Id Filter Input']")
 	public WebElement PartyChecker_CustomerID_SearchBox;
 	
 	@FindBy(xpath="(//i[@class='ui-icon ic ic-edit_blue'])[1]")

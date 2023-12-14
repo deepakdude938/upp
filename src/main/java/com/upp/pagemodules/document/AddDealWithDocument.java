@@ -60,14 +60,25 @@ public class AddDealWithDocument extends BaseClass {
 	public void addDealWithRequiredDocument(String TSID, ICallback icallback) throws Exception {
 		String docType = "Blueprint";
 		od.documentTab.click();
+		Thread.sleep(2000);
+		try {
 		od.requiredDoc_addBtn.click();
+		}
+		catch(Exception e ) {
+			handleElementClickException(od.requiredDoc_addBtn);
+		}
 		String documentType = externalData.getFieldData(TSID, "Document", "Document Type");
 		icallback.handleCallback("Document_Type", documentType);
 	}
 
 	public void scheduleReminder(String TSID) throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_schedule, Duration.ofSeconds(20));
+		try {
 		od.requiredDoc_schedule.click();
+		}
+		catch(Exception po) {
+			handleElementClickException(od.requiredDoc_schedule);
+		}
 		applyExplicitWaitsUntilElementClickable(od.requiredDoc_scheduleAtEod, Duration.ofSeconds(20));
 		od.requiredDoc_scheduleAtEod.click();		
 		od.requiredDoc_frequencyOnce.click();

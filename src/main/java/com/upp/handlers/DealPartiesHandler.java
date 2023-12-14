@@ -164,7 +164,9 @@ public class DealPartiesHandler extends BaseClass {
 		op.Party_linkPartyDetails_customerId.sendKeys(externalData.getFieldData(TSID, "Parties-Maker", "Customer Id"));
 		applyExplicitWaitsUntilElementClickable(op.Party_linkPartyDetails_searchButton, Duration.ofSeconds(5));
 		op.Party_linkPartyDetails_searchButton.click();
+		Thread.sleep(1000);
 		op.Party_selectPartyCircle.click();
+		Thread.sleep(1000);
 		od.parties_addPartyPlusIcon.click();
 		String responsibility = externalData.getFieldData(TSID, "Party", "Responsibility");
 		applyExplicitWaitsUntilElementClickable(od.parties_Responsibility, Duration.ofSeconds(5));

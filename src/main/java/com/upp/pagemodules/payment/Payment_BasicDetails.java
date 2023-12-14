@@ -67,6 +67,7 @@ public class Payment_BasicDetails extends BaseClass{
 		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Scheduled", "Purpose"));
 		System.out.println("The source_account number is:"+sourceAccountno);
 		od.payments_SourceAccount.sendKeys(sourceAccountno);
+		Thread.sleep(1000);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
 		driver.findElement(sourceaccountselect).click();
 

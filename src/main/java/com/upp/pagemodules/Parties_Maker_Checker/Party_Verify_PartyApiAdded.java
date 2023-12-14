@@ -154,8 +154,12 @@ public class Party_Verify_PartyApiAdded extends BaseClass {
 		String On_Party_Deactivation = od.party_Hold_Execution_Dropdown.getAttribute("value");
 		Assert.assertEquals(On_Party_Deactivation, "doNothing");
 		
-		
-		jsClick.click(od.ecommerceSave);
+//		try {
+//		jsClick.click(od.ecommerceSave);
+//		}
+//		catch(Exception e) {
+			od.party_ContactButton.click();
+//		}
 		System.out.println("save button click");
 		Thread.sleep(2000);
 		

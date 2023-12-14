@@ -74,6 +74,7 @@ public class TransactionApi extends BaseClass {
 				.post("transaction/api/transaction");
 
 		String response = res.then().extract().asString();
+		System.out.println(response);
 		JsonPath js = new JsonPath(response);
 		endToEndId = js.getString("endToEndId");
 		System.out.println("Status code : " + res.getStatusCode());
