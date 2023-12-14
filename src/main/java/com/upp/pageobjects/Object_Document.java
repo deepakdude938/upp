@@ -95,18 +95,20 @@ public class Object_Document extends BaseClass {
 	@FindBy(xpath = "//a[@href ='/document-tracker/required-document']")
 	public WebElement requiredDoc_requiredDocSchedule;
 
-	@FindBy(xpath = "(//div[@role='columnheader']//input)[1]")
+//	@FindBy(xpath = "(//div[@role='columnheader']//input)[1]")  documentdb
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")
 	public WebElement requiredDoc_dealId;
-
+	
 	@FindBy(xpath = "//i[@title='Create Workitem']")
 	public WebElement requiredDoc_createItem;
 
 	@FindBy(xpath = "//button[text()='OK']")
 	public WebElement requiredDoc_OkBtn;
 
-	@FindBy(xpath = "//div[@role ='gridcell' and @aria-colindex='5']")
+//	@FindBy(xpath = "//div[@role ='gridcell' and @aria-colindex='5']")
+	@FindBy(xpath = "(//div[@role ='gridcell' and @aria-colindex='7'])[2]")
 	public WebElement requiredDoc_docStatus;
-
+	
 	// object for document checker
 
 	@FindBy(xpath = "//a[@href='/document-tracker/required-document/DEALCHECKER']")

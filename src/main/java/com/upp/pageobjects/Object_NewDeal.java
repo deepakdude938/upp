@@ -1241,6 +1241,9 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "btn-parties-ecommerce-updateParty-v1")
 	public WebElement ecommerceSave;
 	
+	@FindBy(xpath = "//p[@class='ui-text-s ui-tab' and normalize-space()='Contacts']")
+	public WebElement party_ContactButton;
+	
 	@FindBy(xpath="(//div[@id='ic-generic-menu-showMenu-v1'])[2]")
 	public WebElement party_Accounts_Showmenu;
 	

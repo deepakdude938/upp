@@ -52,6 +52,7 @@ public class AccountAmendment extends BaseClass{
 				.put(url);
 
 		response = res.then().extract().asString();
+		System.out.println(response);
 		System.out.println("the status code is " + res.getStatusCode());
 		if (res.getStatusCode() == 400) {
 			String errorMessage = externalData.getFieldData(TSID, "API Testcases", "Response Message");

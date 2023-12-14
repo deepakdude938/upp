@@ -26,6 +26,7 @@ public class PartyApi extends BaseClass {
 				.post("mdm/api/party").then()
 				// .assertThat().statusCode(200)
 				.extract().response().asString();
+		System.out.println(Payload.createParty(dealId, TSID));
 		System.out.println("The Party Api response is " + response);
 		JsonPath js = new JsonPath(response);
 		partyRefId = js.getString("partyRefId");
@@ -39,6 +40,7 @@ public class PartyApi extends BaseClass {
 //Get Party Api
 
 		RestAssured.baseURI = base_url;
+		System.out.println(base_url);
 		String response = given().header("Content-Type", "application/json")
 				.queryParam("filter", "{\"name\":\"" + partyRefId + "\"}")
 				.header("Authorization", LoginAPI_UPP.authToken).when().get("mdm/api/v1/partyList").then()

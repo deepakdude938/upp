@@ -439,11 +439,15 @@ public class Payment_SubInstruction extends BaseClass {
 		od.payments_KebabScheduledInstructionIconEdit.click();
 		Thread.sleep(2000);
 		od.payments_Amount.clear();
-		Thread.sleep(2000);
+		int textLength = od.payments_Amount.getAttribute("value").length();
+		System.out.println(textLength);
+		for (int i = 0; i < textLength; i++) {
+			od.payments_Amount.sendKeys("\b");
+		}
 		od.payments_Amount.sendKeys("600");
 		Thread.sleep(2000);
 		od.payments_Address.clear();
-		int textLength = od.payments_Address.getAttribute("value").length();
+		textLength = od.payments_Address.getAttribute("value").length();
 		System.out.println(textLength);
 		for (int i = 0; i < textLength; i++) {
 			od.payments_Address.sendKeys("\b");

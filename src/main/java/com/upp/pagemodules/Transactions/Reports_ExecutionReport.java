@@ -505,13 +505,13 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		Thread.sleep(500);
 
-		ArrayList<String> subInstruction = new ArrayList();
+		ArrayList<String> originalAmount = new ArrayList();
 		for (WebElement iu : tm.reports_OriginalAmount) {
 
-			subInstruction.add(iu.getText());
+			originalAmount.add(iu.getText());
 		}
-		Assert.assertTrue(subInstruction.contains(strNumberamount1));
-		Assert.assertTrue(subInstruction.contains(strNumberamount2));
+		Assert.assertTrue(originalAmount.contains(strNumberamount1));
+		Assert.assertTrue(originalAmount.contains(strNumberamount2));
 	}
 
 	public String eCommExecutionsReportCommon(String EndToEndId) throws Exception {
@@ -955,14 +955,14 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		Thread.sleep(500);
 
-		ArrayList<String> subInstruction = new ArrayList();
+		ArrayList<String> originalAmount = new ArrayList();
 		for (WebElement iu : tm.reports_OriginalAmount) {
 
-			subInstruction.add(iu.getText());
+			originalAmount.add(iu.getText());
 			System.out.println(iu.getText());
 		}
-		Assert.assertTrue(subInstruction.contains("200"));
-		Assert.assertTrue(subInstruction.contains("300"));
+		Assert.assertTrue(originalAmount.contains("200"));
+		Assert.assertTrue(originalAmount.contains("300"));
 	}
 
 	public void checkRecordIsNotPresentINEcommExecution(String endToEndId) throws Exception {
