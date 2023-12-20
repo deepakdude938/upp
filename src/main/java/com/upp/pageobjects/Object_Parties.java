@@ -67,8 +67,10 @@ public class Object_Parties extends BaseClass{
 	@FindBy(xpath="//a[normalize-space()='Party Maker']")
 	public WebElement partyMaker_Icon;
 	
-	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[2]")
+//	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[2]") documentdb
+	@FindBy(xpath="//input[@aria-label='Name Filter Input']")
 	public WebElement partyMaker_NameTextBox;
+	
 	
 	@FindBy(xpath="//div[contains(text(),'Add New')]")
 	public WebElement PartyMaker_AddNewButon;
