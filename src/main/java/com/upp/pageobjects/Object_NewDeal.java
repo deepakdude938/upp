@@ -657,7 +657,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//tr[@class='ui-grid-row']/td[1]/div[@class='ui-grid-cell-inner ui-grid-transparent']")
 	public List<WebElement> dealSummary_partyResponsibilityOption_Attributes;
 	
-	@FindBy(xpath = "//span[@class='ag-group-value']")
+//	@FindBy(xpath = "//span[@class='ag-group-value']")
+	@FindBy(xpath = "(//div[@role='rowgroup' and @class='ag-center-cols-container'])[3]/div//xcro-grid-tree/span/span")
 	public List<WebElement> dealSummary_partyResponsibilityOptions;
 	
 	@FindBy(xpath = "//div[contains(@class,'ui-icon-close ui-icon ui-align-right')]")

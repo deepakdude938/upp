@@ -79,7 +79,7 @@ public class Party_Maker_Accounts extends BaseClass {
 	public void editPartyAccount(String TSID) throws Exception, IOException {
 		op.parties_Icon.click();
 		op.parties_SummaryButton.click();
-		String partyName=externalData.getFieldData(TSID, "Party", "Party Name");
+//		String partyName=externalData.getFieldData(TSID, "Party", "Party Name");
 		op.parties_SearchBox.sendKeys(partyName);
 		op.parties_SearchButton.click();
 		Thread.sleep(1000);
@@ -90,6 +90,7 @@ public class Party_Maker_Accounts extends BaseClass {
 		catch(Exception n) {
 			
 		}
+		System.out.println(partyName);
 		op.partyMaker_Icon.click();
 		op.partyMaker_NameTextBox.sendKeys(partyName,Keys.ENTER);
 		Thread.sleep(1000);

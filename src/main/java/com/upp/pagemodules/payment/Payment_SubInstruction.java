@@ -160,7 +160,7 @@ public class Payment_SubInstruction extends BaseClass {
 			}
 		}
 
-		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(15));
 		try {
 			od.payments_Instrument.click();
 		} catch (Exception e) {

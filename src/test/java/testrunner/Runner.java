@@ -12,7 +12,8 @@ import io.cucumber.junit.CucumberOptions;
 				glue={"com.upp.stepdefinition","com.upp.hooks"},
 				monochrome=true,tags="@Regression",
 				strict = true,
-				plugin = { "pretty"
+				plugin = { "pretty",
+						"com.upp.hooks.CustomReportListener"
 						,"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 }
 				)

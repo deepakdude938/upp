@@ -55,6 +55,7 @@ public class BaseClass {
 	public static  LinkedHashMap<String,String> accountMap ;
 	public static String End2EndId;
 	public static String TS101_SourceAccno;
+	public static String  partyName ;
 //	public static String browser = System.getProperty("browser");
 	
 

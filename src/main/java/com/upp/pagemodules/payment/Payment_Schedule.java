@@ -7,6 +7,9 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.stepdefinition.DealPage;
@@ -98,20 +101,11 @@ public class Payment_Schedule extends BaseClass {
 				driver.findElement(excecutionDay).click();
 			}
 		}
-
+		
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 		dropdown.selectByVisibleText(od.payments_ScheduleAt,
 				externalData.getFieldData(TSID, "Scheduled", "Schedule At"));
-		if (externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
-
-			String time = dateutil.getTimeAfterMins(5);
-
-			od.payments_ScheduleTime.clear();
-			od.payments_ScheduleTime.sendKeys(time);
-		}
-		dropdown.selectByVisibleText(od.payments_HolidayAction,
-				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
-
+		Thread.sleep(2000);
 		if ((TSID.equalsIgnoreCase("TS105")) || (TSID.equalsIgnoreCase("TS108")) || (TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")) || (TSID.equalsIgnoreCase("TS122_1")) || (TSID.equalsIgnoreCase("TS126_1")) || (TSID.equalsIgnoreCase("TS137")) || (TSID.equalsIgnoreCase("TS140")) || (TSID.equalsIgnoreCase("TS141")) || (TSID.equalsIgnoreCase("TS142"))) {
 
 			dropdown.selectByVisibleText(od.payments_TimeZone, "Asia/Calcutta (GMT+05:30)");
@@ -120,8 +114,19 @@ public class Payment_Schedule extends BaseClass {
 			od.payments_ScheduleTime.clear();
 			od.payments_ScheduleTime.sendKeys(time);
 			Thread.sleep(3000);
-
+//			od.payments_ScheduleTime.clear();
+//	        ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", od.payments_ScheduleTime, time);
 		}
+		
+		if (externalData.getFieldData(TSID, "Scheduled", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
+
+			String time = dateutil.getTimeAfterMins(5);
+			System.out.println(time);
+			od.payments_ScheduleTime.clear();
+			od.payments_ScheduleTime.sendKeys(time);
+		}
+		dropdown.selectByVisibleText(od.payments_HolidayAction,
+				externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
 
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSchedule, Duration.ofSeconds(20));
 		od.payments_NextArrowButtonTransferSchedule.click();
