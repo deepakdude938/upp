@@ -30,9 +30,9 @@ public class CustomReportListener extends BaseClass implements EventListener {
 // completed
 	private void runFinished(TestRunFinished event) {
 
-	System.out.println("passedTestcasesCount : "+Hook.getPassedCount());
-	System.out.println("failedTestcasesCount :"+Hook.getFailedCount());
-	System.out.println("skippedTestcasesCount :"+Hook.getSkippedCount());
+	System.out.println("passedTestcasesCount:"+Hook.getPassedCount());
+	System.out.println("failedTestcasesCount:"+Hook.getFailedCount());
+	System.out.println("skippedTestcasesCount:"+Hook.getSkippedCount());
 	
 	};
 
