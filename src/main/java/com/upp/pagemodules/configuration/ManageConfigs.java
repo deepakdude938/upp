@@ -46,7 +46,7 @@ public class ManageConfigs extends BaseClass{
 //		applyExplicitWaitsUntilElementVisible(selectTabs, 10);
 		driver.findElement(selectTabs).click();
 		config.configurationProduct_SelectTabsText.click();
-		Thread.sleep(1500);
+		Thread.sleep(3000);
 		
 		String input_ScheduleInstructionType = externalData.getFieldData(tSID, "Configuration", "Schedule Instruction Types");
 		config.configurationProduct_ScheduleInstructionType.click();
@@ -54,7 +54,7 @@ public class ManageConfigs extends BaseClass{
 //		applyExplicitWaitsUntilElementVisible(scheduleInstructionType, 10);
 		driver.findElement(scheduleInstructionType).click();
 		config.configurationProduct_ScheduleInstructionTypeText.click();
-		Thread.sleep(1500);
+		Thread.sleep(3000);
 		
 		String input_LinkedInstructionType = externalData.getFieldData(tSID, "Configuration", "Linked Instruction Types");
 		config.configurationProduct_LinkedInstructionTypes.click();

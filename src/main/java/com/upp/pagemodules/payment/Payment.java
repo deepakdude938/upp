@@ -177,7 +177,7 @@ public class Payment extends BaseClass{
 	}
 		od.payments_NextArrowButtonTransferSchedule.click();
 		
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(5));
 
 		od.payments_Instrument.click();
