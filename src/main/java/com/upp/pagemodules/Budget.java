@@ -277,6 +277,7 @@ public class Budget extends BaseClass {
 		od.budget_CreateBudget.click();
 		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
 		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
+		Thread.sleep(1000);
 		By sourceAccountNoDropDown = By
 				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
 						+ sourceAccountNo + "')]");

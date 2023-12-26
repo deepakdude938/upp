@@ -51,14 +51,22 @@ public class Payment_Summary extends BaseClass{
 	            int daysUntilNextMonday = (DateTimeConstants.MONDAY - now.now().getDayOfWeek() + 7) % 7;
 	            nextMonday = now.now().plusDays(daysUntilNextMonday);
 	        }
-		 
+		  LocalDate nextTuesday = null;
+			 if (now.now().getDayOfWeek() == DateTimeConstants.TUESDAY) {
+				 nextTuesday =now.now().plusWeeks(1);
+		        } else {
+		            int daysUntilNextTuesday = (DateTimeConstants.TUESDAY - now.now().getDayOfWeek() + 7) % 7;
+		            nextTuesday = now.now().plusDays(daysUntilNextTuesday);
+		        }
+			 
 	    String day =friday.toString().split("[/-]")[2];
 		String sat= saturday.toString().split("[/-]")[2];
 		String nextMon= nextMonday.toString().split("[/-]")[2];
+		String nextTue= nextTuesday.toString().split("[/-]")[2];
 		String nextSun= nextSunday.toString().split("[/-]")[2];
 		 String actualDate1 = actualDate.split(" ")[0].split("-")[0];
 		Assert.assertEquals(day, strikeDate.split(" ")[0].split("-")[0]);
-		Assert.assertTrue((actualDate1.equals(sat) || actualDate1.equals(nextMon) || actualDate1.equals(nextSun)));
+		Assert.assertTrue((actualDate1.equals(sat) || actualDate1.equals(nextMon) || actualDate1.equals(nextTue)));
 //	    Assert.assertTrue(actualDate.split(" ")[0].split("-")[0]+"".equals(sat) || actualDate.split(" ")[0].split("-")[0]+"".equals( nextSun) || actualDate.split(" ")[0].split("-")[0]+"".equals(nextMon));
 	  	}
 }
