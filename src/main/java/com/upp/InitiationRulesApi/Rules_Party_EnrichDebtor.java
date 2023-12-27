@@ -46,8 +46,10 @@ public class Rules_Party_EnrichDebtor extends BaseClass{
 		ecom.ecommerce_SideMenuIcon.click();
 		Thread.sleep(1000);
 		ecom.ecommerce_txnVerifier.click();
+		applyExplicitWaitsUntilElementVisible(	ecom.ecommerce_dealIdInline, Duration.ofSeconds(15));
 		ecom.ecommerce_dealIdInline.sendKeys(dealId,Keys.ENTER);
-		applyExplicitWaitsUntilElementVisible(	ecom.ecommerce_dealIdInline, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(ecom.ecommerce_TxnIdRecord, Duration.ofSeconds(15));
+		Thread.sleep(2000);
 		String txnIdText =ecom.ecommerce_TxnIdRecord.getText();
 		System.out.println(txnIdText);
 		JSONParser parser = new JSONParser();

@@ -263,7 +263,7 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//a[@href='/ecommerce/transactions/ECOMMERCETRANSACTIONVERIFIER']")
 	public WebElement ecommerce_txnVerifier;
 
-	@FindBy(xpath = "(//div[contains(text(),'Deal Id')]/../../../../..//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")
 	public WebElement ecommerce_dealIdInline;
 
 	@FindBy(xpath = "//div[@col-id='_id' and contains(@class,'ag-cell-not-inline-editing')]")
