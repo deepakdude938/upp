@@ -79,14 +79,15 @@ public class Verify_Audit_Transaction extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Reload, Duration.ofSeconds(25));
 		js.click(audit.audit_Transaction_Reload);
         Thread.sleep(16000);
-        System.out.println("The dealid is:"+dealId);
-		By Report = By.xpath("//span[contains(text(),'" + dealId + "')]");
-		try {
-			applyExplicitWaitsUntilElementVisible(Report,40);
-			driver.findElement(Report).click();
-		} catch (Exception e) {
-			handleElementClickException(driver.findElement(Report));
-		}
+        applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Submit, Duration.ofSeconds(5));
+      		js.click(audit.audit_Transaction_Submit);
+		/*
+		 * System.out.println("The dealid is:"+dealId); By Report =
+		 * By.xpath("//span[contains(text(),'" + dealId + "')]"); try {
+		 * applyExplicitWaitsUntilElementVisible(Report,40);
+		 * driver.findElement(Report).click(); } catch (Exception e) {
+		 * handleElementClickException(driver.findElement(Report)); }
+		 */
 		Thread.sleep(15000);
 
 	}

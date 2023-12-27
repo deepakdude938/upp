@@ -80,6 +80,7 @@ public class UserMaker extends BaseClass {
 		ou.userMaker_phoneNumberTxt.sendKeys("9890986754");
 		ou.userMaker_country.click();
 		dropdown.selectByVisibleText(ou.userMaker_country, "India");
+		Thread.sleep(2000);
 		try {
 			String processingUnit = "Select All";
 			By processingunitButton = By.xpath("//span[text()='" + processingUnit + "']");
@@ -90,17 +91,20 @@ public class UserMaker extends BaseClass {
 		}
 		ou.userMaker_Role.click();
 		dropdown.selectByVisibleText(ou.userMaker_Role, "Deal Maker");
-
+		Thread.sleep(2000);
 		ou.userMaker_processingunit.click();
-		String processingUnit = "Bangalore CPU";
-		By processingunitButton = By.xpath("//div[text()='" + processingUnit + "']");
-		applyExplicitWaitsUntilElementVisible(processingunitButton, 10);
-		driver.findElement(processingunitButton).click();
+		String processingUnit2 = "Select All";
+		By processingunitButton11 = By.xpath("//div[text()='" + processingUnit2 + "']");
+		applyExplicitWaitsUntilElementVisible(processingunitButton11, 10);
+		driver.findElement(processingunitButton11).click();
+		Thread.sleep(2000);
 		//ou.userMaker_processingunit.click();
-		String processingUnit1 = "Mumbai HO";
-		By processingunitButton1 = By.xpath("//div[text()='" + processingUnit1 + "']");
-		applyExplicitWaitsUntilElementVisible(processingunitButton1, 10);
-		driver.findElement(processingunitButton1).click();
+		/*
+		 * String processingUnit1 = "Mumbai HO"; By processingunitButton1 =
+		 * By.xpath("//div[text()='" + processingUnit1 + "']");
+		 * applyExplicitWaitsUntilElementVisible(processingunitButton1, 10);
+		 * driver.findElement(processingunitButton1).click();
+		 */
 		try {
 			applyExplicitWaitsUntilElementClickable(ou.userMaker_onboard, Duration.ofSeconds(20));
 		} catch (MalformedURLException e) {

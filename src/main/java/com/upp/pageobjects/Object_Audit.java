@@ -20,7 +20,8 @@ public class Object_Audit extends BaseClass{
 	@FindBy(xpath="(//a[normalize-space()='Deals'])[1]")
 	public WebElement Audit_Deals;
 	
-	@FindBy(xpath="(//input[@ref='eFloatingFilterText'])[1]")
+	//@FindBy(xpath="(//input[@ref='eFloatingFilterText'])[1]")sit
+	@FindBy(xpath="(//input[@aria-label='Deal Id Filter Input'])")	
 	public WebElement Audit_DealId;
 	
 	@FindBy(xpath="//li[@class='ui-chip active ng-star-inserted'][2]")

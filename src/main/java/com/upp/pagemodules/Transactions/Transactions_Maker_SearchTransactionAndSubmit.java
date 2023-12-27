@@ -63,18 +63,23 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 	public void txnMaker_SubmitDeal(String dealid) throws Exception {
 		System.out.println("deal id in maker = " + dealid);
 		//TimeUnit.MINUTES.sleep(waitingTime);
+		Thread.sleep(2000);
 		tm.transactions_TransactionIcon.click();
 		try {
 			tm.transactions_TransactionMaker.click();
+			od.TxnMaker_searchDealId.clear();
 			od.TxnMaker_searchDealId.sendKeys(dealid);
+			Thread.sleep(2000);
 			try {
+				
 				od.TxnMaker_txnCheckbox.click();
 				od.TxnMaker_submitBtn.click();
 				od.TxnMaker_okBtn.click();
 			} catch (Exception e) {
-
 				handleElementClickException(tm.transactions_TransactionMaker);
+				od.TxnMaker_searchDealId.clear();
 				od.TxnMaker_searchDealId.sendKeys(dealid);
+				Thread.sleep(2000);
 				od.TxnMaker_txnCheckbox.click();
 				Thread.sleep(4000);
 				od.TxnMaker_submitBtn.click();

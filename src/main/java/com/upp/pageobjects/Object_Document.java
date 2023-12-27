@@ -106,7 +106,7 @@ public class Object_Document extends BaseClass {
 	public WebElement requiredDoc_OkBtn;
 
 //	@FindBy(xpath = "//div[@role ='gridcell' and @aria-colindex='5']")
-	@FindBy(xpath = "(//div[@role ='gridcell' and @aria-colindex='7'])[2]")
+	@FindBy(xpath = "(//div[@col-id='status'])[2]")
 	public WebElement requiredDoc_docStatus;
 	
 	// object for document checker

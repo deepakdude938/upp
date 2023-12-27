@@ -31,7 +31,8 @@ public class Object_DealLifecycle extends BaseClass{
 	@FindBy(xpath="//a[normalize-space()='Lifecycle Maker']")
 	public WebElement LifecycleMakerIcon;
 	
-	@FindBy(xpath="(//input[@ref='eFloatingFilterText'])[1]")
+	//@FindBy(xpath="(//input[@ref='eFloatingFilterText'])[1]")//sit
+	@FindBy(xpath="//input[@aria-label='Deal Id Filter Input']")
 	public WebElement LifecycleMaker_Dealid;
 	
 	@FindBy(xpath="(//i[@class='ui-icon ic ic-doc_submit_icon'])[1]")

@@ -78,6 +78,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
+		Thread.sleep(2000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
 		ecomm.ecommerce_SubmitBtn.click();
 		addBasicDetailsToEcommerceTxn(TSID, srcAccount, toAccount);

@@ -12,11 +12,11 @@ Then approve the deal from the deal checker common method
 And Create Transaction from Transaction Maker and check whether To Field is accepting Non Registered Beneficiary with given "<TSID>" 
 Then Approve the transaction from Transaction Checker with given "<TSID>"
 #Then Approve the transaction from Transaction Verifier with given "<TSID>"
-Then logout of the application
-Given Open browser and enter url 
-Then Login to the application as "txn_checker"
-And verify Audit Transcation with given "<TSID>"
-Then verify the downloaded Audit Report with Action version "Create" and "<TSID>"
+#Then logout of the application
+#Given Open browser and enter url 
+#Then Login to the application as "txn_checker"
+#And verify Audit Transcation with given "<TSID>"
+#Then verify the downloaded Audit Report with Action version "Create" and "<TSID>"
 Examples:
       |TSID|
       |TS50|

@@ -81,8 +81,11 @@ public class Payment_Alerts extends BaseClass {
 		Thread.sleep(4000);
 		op.Alerts_scheduleAt.click();
 		dropdown.selectByVisibleText(op.Alerts_scheduleAt, "At specific time");
-		String time1 = DateUtils.getCurrentTimeUTC();
-		op.Alerts_scheduleTime.sendKeys(time1);
+		op.Alerts_scheduleTime.clear();
+		String timem = DateUtils.getTimeAfterMins(5);
+		System.out.println("time = "+timem);
+		//String time1 = DateUtils.getCurrentTimeUTC();
+		op.Alerts_scheduleTime.sendKeys(timem);
 		Thread.sleep(4000);
 		op.Alerts_nextBtn.click();
 		Thread.sleep(4000);

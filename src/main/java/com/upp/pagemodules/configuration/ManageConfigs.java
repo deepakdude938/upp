@@ -119,7 +119,8 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_SelectTab = externalData.getFieldData(tSID, "Configuration", "Select Tabs");
 		config.configurationProduct_SelectTabs.click();
-		By selectTabs = By.xpath("//label[normalize-space()='Select Tabs']//following::span[@class='ng-tns-c93-1 ui-autocomplete-list-item-option' and normalize-space()='"+input_SelectTab+"']");
+		By selectTabs = By.xpath("(//span[text()='Select All'])[1]");
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementVisible(selectTabs, 10);
 		driver.findElement(selectTabs).click();
 		config.configurationProduct_SelectTabsText.click();
