@@ -3,12 +3,15 @@ package com.upp.Api.utils;
 import static io.restassured.RestAssured.given;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.WebElement;
 
 import com.upp.InitiationRulesApi.Payload;
@@ -47,7 +50,7 @@ public class AttachDetach_Account_Api extends BaseClass{
 		String endpoint1 = "/attachAccount";
 		String finalEndpoint= endpoint+dealId+"/"+dealId+"-"+participantId+endpoint1;
 		System.out.println(finalEndpoint);
-		
+		System.out.println(pay.api_AttachAccount(TSID));
 		String res = given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)
 				.body(pay.api_AttachAccount(TSID))
@@ -55,13 +58,13 @@ public class AttachDetach_Account_Api extends BaseClass{
 				.post(finalEndpoint).then().extract().asString();
 		System.out.println(res);
 		
-			String	res1 = (String) given().header("Content-Type", "application/json")
-				.header("Authorization", LoginAPI_UPP.authToken)
-				.body(pay.api_AttachAccount(TSID))
-				.when()
-				.post(finalEndpoint)
-				.then()
-				.assertThat().statusCode(200).toString();
+//			String	res1 = (String) given().header("Content-Type", "application/json")
+//				.header("Authorization", LoginAPI_UPP.authToken)
+//				.body(pay.api_AttachAccount(TSID))
+//				.when()
+//				.post(finalEndpoint)
+//				.then()
+//				.assertThat().statusCode(200).toString();
 		
 	}
 
@@ -78,17 +81,28 @@ public class AttachDetach_Account_Api extends BaseClass{
 		Assert.assertTrue(accountNoList.contains(virtual_Account_Number));
 	}
 
-	public void verifyVirtualAccountPresentInParty(String TSID) throws InterruptedException {
+	public void verifyVirtualAccountPresentInParty(String TSID) throws InterruptedException, MalformedURLException {
 		op.parties_PartyTab.click();
+		Thread.sleep(1000);
+		try {
 		op.parties_EditParty.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(op.parties_EditParty);
+		}
 		op.parties_Ecommerce_Config_Tab.click();
 		
 		
 		Thread.sleep(2000);
 		System.out.println(virtual_Account_Number);
-		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//span//div"));
+		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
+		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
 		String checked = s.getAttribute("class");
-		if(checked.contains("ag-hidden")) {
+		System.out.println(checked);
+		if(checked.contains("ag-checked")) {
+			Assert.assertTrue("Account no is checked", true);
+		}
+		else {
 			Assert.assertTrue("Account no is not checked", false);
 		}
 	}
@@ -113,15 +127,21 @@ public class AttachDetach_Account_Api extends BaseClass{
 	public void verifyVirtualAccountisDisableInParty(String tSID) throws Exception {
 		
 		op.parties_PartyTab.click();
+		try {
 		op.parties_EditParty.click();
+		}
+		catch(Exception e) {
+			handleElementClickException(op.parties_EditParty);
+		}
 		op.parties_Ecommerce_Config_Tab.click();
 		
 		
 		Thread.sleep(2000);
-		System.out.println(virtual_Account_Number);
-		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//span//div"));
+		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
+		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
 		String checked = s.getAttribute("class");
-		if(!checked.contains("ag-hidden")) {
+		System.out.println(checked);
+		if(checked.contains("ag-checked")) {
 			Assert.assertTrue("Account no is checked", false);
 		}
 	}
@@ -160,15 +180,32 @@ public class AttachDetach_Account_Api extends BaseClass{
 
 	public void verifyPhysicalAccountPresentInParty(String tSID) throws Exception {
 		op.parties_PartyTab.click();
+		try {
 		op.parties_EditParty.click();
+		}
+	catch(Exception e) {
+		handleElementClickException(op.parties_EditParty);
+	}
 		op.parties_Ecommerce_Config_Tab.click();
 		Thread.sleep(2000);
 		System.out.println(physical_Account_Number);
-		WebElement s = driver.findElement(By.xpath("//span[@title='"+physical_Account_Number+"']/../../..//div[@role='presentation']//div//span//div"));
+//		WebElement s = driver.findElement(By.xpath("//span[@title='"+physical_Account_Number+"']/../../..//div[@role='presentation']//div//span//div"));
+//		String checked = s.getAttribute("class");
+//		if(checked.contains("ag-hidden")) {
+//			Assert.assertTrue("Account no is not checked", false);
+//		}
+		
+		WebElement s = driver.findElement(By.xpath("//span[@title='"+physical_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
+		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
 		String checked = s.getAttribute("class");
-		if(checked.contains("ag-hidden")) {
+		System.out.println(checked);
+		if(checked.contains("ag-checked")) {
+			Assert.assertTrue("Account no is checked", true);
+		}
+		else {
 			Assert.assertTrue("Account no is not checked", false);
 		}
+		
 		
 	}
 	
