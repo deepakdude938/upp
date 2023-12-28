@@ -94,7 +94,7 @@ public class UserMaker extends BaseClass {
 		Thread.sleep(2000);
 		ou.userMaker_processingunit.click();
 		String processingUnit2 = "Select All";
-		By processingunitButton11 = By.xpath("//div[text()='" + processingUnit2 + "']");
+		By processingunitButton11 = By.xpath("//span[text()='" + processingUnit2 + "']");
 		applyExplicitWaitsUntilElementVisible(processingunitButton11, 10);
 		driver.findElement(processingunitButton11).click();
 		Thread.sleep(2000);
@@ -132,7 +132,7 @@ public class UserMaker extends BaseClass {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		Thread.sleep(3000);
 		ou.userMaker_onboard.click();
 		Thread.sleep(3000);
 		ou.userMaker_ok.click();

@@ -76,9 +76,13 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
 		Thread.sleep(3000);
 		tm.transactions_TransactionIcon1.click();
-		Thread.sleep(3000);
-		tm.transactions_TransactionMaker.click();
 		Thread.sleep(5000);
+		tm.transactions_TransactionMaker.click();
+		Thread.sleep(7000);
+		driver.navigate().refresh();
+		Thread.sleep(7000);
+		tm.transactionMaker_dealSearch1.click();
+		Thread.sleep(3000);
 		tm.transactionMaker_bulk.click();
 		tm.transactionMaker_browseButton.sendKeys(excelFilePath);
 		Thread.sleep(2000);

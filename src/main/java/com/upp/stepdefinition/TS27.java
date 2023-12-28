@@ -51,8 +51,8 @@ public class TS27 extends BaseClass implements ICallback {
 		System.out.println("source Account = "+DealPage.sourceAccountNo);
 		System.out.println("des Account = "+DealPage.toaccountNo);
 		
-		bulkUpload.bulkUpload(DealPage.sourceAccountNo,DealPage.toaccountNo,time);
-		//bulkUpload.bulkUpload("1466443356","9854716055");
+		//bulkUpload.bulkUpload(DealPage.sourceAccountNo,DealPage.toaccountNo,time);
+		bulkUpload.bulkUpload("5230325432","8103962803",time);
 	}
 
 	@Then("Approve multiple transactions from Transaction Checker with given {string}")
