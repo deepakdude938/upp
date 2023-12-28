@@ -70,15 +70,15 @@ public class Transactions_Checker extends BaseClass {
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
 		Thread.sleep(12000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(125));
-		//tm.transactions_TransactionEditButton.click();
+		// tm.transactions_TransactionEditButton.click();
 		jsClick.click(tm.transactions_TransactionEditButton);
 		Thread.sleep(10000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(100));
 		tm.transactions_SummaryTab.click();
 		Thread.sleep(3000);
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
-	    double amountdouble=Double.parseDouble(amount);
-	    int amountInt = (int) amountdouble;
+		double amountdouble = Double.parseDouble(amount);
+		int amountInt = (int) amountdouble;
 //		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" +  amountInt + "')])[1]");
 //		applyExplicitWaitsUntilElementVisible(AmountID, 15);
 //		String amount_checker = driver.findElement(AmountID).getText();
@@ -105,11 +105,15 @@ public class Transactions_Checker extends BaseClass {
 
 	public void txnChecker_SubmitDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
+		Thread.sleep(4000);
 		od.TxnChecker_Transaction.click();
 		try {
 			od.TxnChecker_TrasactionChecker.click();
+			od.TxnChecker_searchDealId.clear();
+			od.TxnChecker_searchDealId.sendKeys(dealId);
+			Thread.sleep(4000);
 			try {
-				od.TxnChecker_searchDealId.sendKeys(dealId);
+
 				od.TxnChecker_comment.click();
 				od.TxnChecker_note.sendKeys("Ok");
 				od.TxnChecker_ok.click();
@@ -120,7 +124,9 @@ public class Transactions_Checker extends BaseClass {
 			} catch (Exception e) {
 
 				handleElementClickException(od.TxnChecker_TrasactionChecker);
+				od.TxnChecker_searchDealId.clear();
 				od.TxnChecker_searchDealId.sendKeys(dealId);
+				Thread.sleep(2000);
 				od.TxnChecker_comment.click();
 				od.TxnChecker_note.sendKeys("Ok");
 				od.TxnChecker_ok.click();
@@ -136,7 +142,7 @@ public class Transactions_Checker extends BaseClass {
 		}
 
 	}
-	
+
 	public void TransactionsChecker1(String TSID, String TnxId) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
 		jsClick.click(tm.transactions_TransactionIcon);

@@ -51,6 +51,7 @@ public class ECommerceTransactionChecker extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_txnChecker, Duration.ofSeconds(7));
 		ecomm.ecommerce_txnChecker.click();
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
+		Thread.sleep(4000);
 		ecomm.ecommerce_comment.click();
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		ecomm.ecommerce_txnok.click();

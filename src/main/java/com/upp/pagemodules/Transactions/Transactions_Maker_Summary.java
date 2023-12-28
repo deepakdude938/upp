@@ -28,6 +28,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import callbackInterfaces.ICallback;
+
 public class Transactions_Maker_Summary extends BaseClass {
 
 	public static Object_NewDeal od;
@@ -43,7 +44,8 @@ public class Transactions_Maker_Summary extends BaseClass {
 	public static DateUtils dateutil;
 	public static ScrollTypes scroll;
 	public static String productName;
-	 public static Object_Transactions tm ;
+	public static Object_Transactions tm;
+
 	public Transactions_Maker_Summary() {
 
 		od = new Object_NewDeal();
@@ -54,66 +56,63 @@ public class Transactions_Maker_Summary extends BaseClass {
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
-		tm=new Object_Transactions();
+		tm = new Object_Transactions();
 
 	}
 
-	
-	public String Transaction_Maker_Summary() throws Exception
-	{
-		
-		 scroll.scrollInToView(tm.transactions_ProceedToSummary);
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_ProceedToSummary,Duration.ofSeconds(5));
-		 tm.transactions_ProceedToSummary.click();
-		 scroll.scrollInToView(tm.transactions_SummarySubmitButton);
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_SummarySubmitButton,Duration.ofSeconds(5));
-		 jsClick.click(tm.transactions_SummarySubmitButton);
-		 Thread.sleep(2000);
-		 tm.transactions_Ok.click();
-		 Thread.sleep(3000);
-		 tm.transactions_SummarySubmitButton.click();
-		 
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton,Duration.ofSeconds(15));
-		 tm.transactions_YesButton.click();
-		 
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_Ok,Duration.ofSeconds(15));
-		 String transactionSubmitMessage=tm.transactions_TransactionsId.getText();
-		 System.out.println("The transaction submit message:"+transactionSubmitMessage);
-		 String transactionMessage[]=transactionSubmitMessage.split(" ");
-		 String TnxId=transactionMessage[1];
-		 System.out.println("The Tnx id is "+TnxId);
-		 tm.transactions_Ok.click();
-		 
+	public String Transaction_Maker_Summary() throws Exception {
+
+		scroll.scrollInToView(tm.transactions_ProceedToSummary);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_ProceedToSummary, Duration.ofSeconds(5));
+		tm.transactions_ProceedToSummary.click();
+		scroll.scrollInToView(tm.transactions_SummarySubmitButton);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_SummarySubmitButton, Duration.ofSeconds(5));
+		jsClick.click(tm.transactions_SummarySubmitButton);
+		Thread.sleep(3000);
+		tm.transactions_Ok.click();
+		Thread.sleep(3000);
+		tm.transactions_SummarySubmitButton.click();
+		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(15));
+		tm.transactions_YesButton.click();
+
+		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(15));
+		String transactionSubmitMessage = tm.transactions_TransactionsId.getText();
+		System.out.println("The transaction submit message:" + transactionSubmitMessage);
+		String transactionMessage[] = transactionSubmitMessage.split(" ");
+		String TnxId = transactionMessage[1];
+		System.out.println("The Tnx id is " + TnxId);
+		tm.transactions_Ok.click();
+
 		return TnxId;
-		
+
 	}
 
-	public String Transaction_Maker_Summary1() throws Exception
-	{
-		
-		 scroll.scrollInToView(tm.transactions_ProceedToSummary);
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_ProceedToSummary,Duration.ofSeconds(5));
-		 tm.transactions_ProceedToSummary.click();
-		 scroll.scrollInToView(tm.transactions_SummarySubmitButton);
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_SummarySubmitButton,Duration.ofSeconds(5));
-		 jsClick.click(tm.transactions_SummarySubmitButton);
-		 tm.transactions_Ok.click();
-		 Thread.sleep(3000);
-		 tm.transactions_SummarySubmitButton.click();
-		 applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton,Duration.ofSeconds(15));
-		 tm.transactions_YesButton.click();
-		 Thread.sleep(2000);
+	public String Transaction_Maker_Summary1() throws Exception {
+
+		scroll.scrollInToView(tm.transactions_ProceedToSummary);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_ProceedToSummary, Duration.ofSeconds(5));
+		tm.transactions_ProceedToSummary.click();
+		scroll.scrollInToView(tm.transactions_SummarySubmitButton);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_SummarySubmitButton, Duration.ofSeconds(5));
+		jsClick.click(tm.transactions_SummarySubmitButton);
+		tm.transactions_Ok.click();
+		Thread.sleep(3000);
+		tm.transactions_SummarySubmitButton.click();
+		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(15));
+		tm.transactions_YesButton.click();
+		Thread.sleep(2000);
 //		 tm.transactions_Ok.click();
 //		 Thread.sleep(3000);
 //		 tm.transactions_SummarySubmitButton.click();
 //		 applyExplicitWaitsUntilElementClickable(tm.transactions_Ok,Duration.ofSeconds(15));
-		 String transactionSubmitMessage=tm.transactions_TransactionsId.getText();
-		 String transactionMessage[]=transactionSubmitMessage.split(" ");
-		 String TnxId=transactionMessage[1];
-		 System.out.println("The Tnx id is "+TnxId);
-		 tm.transactions_Ok.click();
-		 
+		String transactionSubmitMessage = tm.transactions_TransactionsId.getText();
+		String transactionMessage[] = transactionSubmitMessage.split(" ");
+		String TnxId = transactionMessage[1];
+		System.out.println("The Tnx id is " + TnxId);
+		tm.transactions_Ok.click();
+
 		return TnxId;
-		
+
 	}
 }

@@ -48,7 +48,7 @@ public class LifeCycleMaker extends BaseClass {
 		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_Dealid, Duration.ofSeconds(5));
 		dl.LifecycleMaker_Dealid.sendKeys(dealId);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		js.click(dl.LifecycleMaker_submit);
 		Thread.sleep(1000);
 		js.click(dl.LifecycleMaker_plusIcon);

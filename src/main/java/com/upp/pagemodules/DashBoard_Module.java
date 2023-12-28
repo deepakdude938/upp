@@ -265,6 +265,7 @@ public class DashBoard_Module extends BaseClass {
 		od.dealChecker_addNote.sendKeys("Ok approved");
 		od.dealChecker_okCommentbutton.click();
 		jsClick.click(od.dealChecker_approveAllRadioButton);
+		Thread.sleep(3000);
 		od.dealChecker_ApproveButton.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(40));
 		od.payments_DealYesButton.click();
