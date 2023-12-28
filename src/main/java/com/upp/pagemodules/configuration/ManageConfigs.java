@@ -50,6 +50,7 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_ScheduleInstructionType = externalData.getFieldData(tSID, "Configuration", "Schedule Instruction Types");
 		config.configurationProduct_ScheduleInstructionType.click();
+		Thread.sleep(1500);
 		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_ScheduleInstructionType+"']");
 //		applyExplicitWaitsUntilElementVisible(scheduleInstructionType, 10);
 		driver.findElement(scheduleInstructionType).click();
