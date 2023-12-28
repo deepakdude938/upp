@@ -50,6 +50,7 @@ public class ECommerceTransactionChecker extends BaseClass {
 		Thread.sleep(5000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_txnChecker, Duration.ofSeconds(7));
 		ecomm.ecommerce_txnChecker.click();
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnDealSearch, Duration.ofSeconds(100));
 		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
 		Thread.sleep(4000);
 		ecomm.ecommerce_comment.click();
@@ -66,7 +67,7 @@ public class ECommerceTransactionChecker extends BaseClass {
 		}
 		ecomm.ecommerce_yesBtn.click();
 		ecomm.ecommerce_okBtn.click();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 	}
 
 	public void approveRecordFromEcommTxnChecker() throws Exception {

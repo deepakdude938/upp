@@ -88,7 +88,7 @@ public class Payment_Alerts extends BaseClass {
 		op.Alerts_scheduleTime.sendKeys(timem);
 		Thread.sleep(4000);
 		op.Alerts_nextBtn.click();
-		Thread.sleep(4000);
+//		Thread.sleep(4000);
 
 	}
 

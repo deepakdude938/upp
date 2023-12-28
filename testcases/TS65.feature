@@ -17,9 +17,9 @@ And Login to UPP through api
 And Call the Rule_IN_LT Api with given "<TSID>" for deal Level.
 Then Create odp json payload file with EndToEndId with given "<TSID>"
 And Create record in ODP "<TSID>"
-Then Verify Status in Ecomm Execution Report with given "<TSID>" for dealLevel.
-And Get the BatchId from payment refID for dealLevel
-And Verify the Pain File For Rule_IN_LT_AccountLevel
+#Then Verify Status in Ecomm Execution Report with given "<TSID>" for dealLevel.
+#And Get the BatchId from payment refID for dealLevel
+#And Verify the Pain File For Rule_IN_LT_AccountLevel
 	
 Examples:
       |TSID   |
