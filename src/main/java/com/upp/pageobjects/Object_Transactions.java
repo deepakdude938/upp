@@ -269,7 +269,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//span[normalize-space()='dealRefId']/../../../../..//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_dealId;
 
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[1]")
+	@FindBy(xpath = "(//input[@ref='eInput'])[9]")
 	public WebElement reports_dealId1;
 	
 //	@FindBy(xpath="//span[normalize-space()='Deal ID']/../../../../..//input[@class='ag-floating-filter-input']")
@@ -366,6 +366,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
 	public WebElement transactionMaker_dealSearch;
+	
+	@FindBy(xpath = "(//input[@ref='eInput'])[10]")
+	public WebElement transactionMaker_dealSearch1;
 
 	// reports
 	@FindBy(xpath = "//span[@class='ic ic-cancel_black ic-sm ng-star-inserted']")

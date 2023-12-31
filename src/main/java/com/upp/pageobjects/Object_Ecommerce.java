@@ -65,6 +65,9 @@ public class Object_Ecommerce extends BaseClass {
 
 	@FindBy(xpath = "(//li[contains(@id,lbl-generic-autocomplete-listItem)])[2]")
 	public WebElement ecommerce_participantId;
+	
+	@FindBy(xpath = "//div[text()='RRRMerchant']")
+	public WebElement ecommerce_participantId1;
 
 	@FindBy(xpath = "//button[normalize-space()='Submit']")
 	public WebElement ecommerce_SubmitBtn;

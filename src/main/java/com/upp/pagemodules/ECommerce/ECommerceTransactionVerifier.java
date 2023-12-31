@@ -47,7 +47,7 @@ public class ECommerceTransactionVerifier extends BaseClass {
 
 	public void txnVerifier_ApproveDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		ecomm.ecommerce_SideMenuIcon.click();
 		try {
 			ecomm.ecommerce_txnVerifier.click();
@@ -89,6 +89,8 @@ public class ECommerceTransactionVerifier extends BaseClass {
 
 			}
 			new Actions(driver).moveToElement(ecomm.ecommerce_yesBtn);
+			ecomm.ecommerce_yesBtn.click();
+			Thread.sleep(3000);
 			ecomm.ecommerce_yesBtn.click();
 			Thread.sleep(3000);
 			ecomm.ecommerce_okBtn.click();

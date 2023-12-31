@@ -532,7 +532,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		System.out.println("Test = " + EndToEndId);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		Thread.sleep(6000);
+		Thread.sleep(9000);
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 		String paymentRefId = tm.ecommPaymentLink.getText();
