@@ -93,18 +93,17 @@ public class UserMaker extends BaseClass {
 		dropdown.selectByVisibleText(ou.userMaker_Role, "Deal Maker");
 		Thread.sleep(2000);
 		ou.userMaker_processingunit.click();
-		String processingUnit2 = "Select All";
-		By processingunitButton11 = By.xpath("//span[text()='" + processingUnit2 + "']");
-		applyExplicitWaitsUntilElementVisible(processingunitButton11, 10);
-		driver.findElement(processingunitButton11).click();
+//		String processingUnit2 = "Select All";
+//		By processingunitButton11 = By.xpath("//span[text()='" + processingUnit2 + "']");
+//		applyExplicitWaitsUntilElementVisible(processingunitButton11, 10);
+//		driver.findElement(processingunitButton11).click();
 		Thread.sleep(2000);
 		//ou.userMaker_processingunit.click();
-		/*
-		 * String processingUnit1 = "Mumbai HO"; By processingunitButton1 =
-		 * By.xpath("//div[text()='" + processingUnit1 + "']");
-		 * applyExplicitWaitsUntilElementVisible(processingunitButton1, 10);
-		 * driver.findElement(processingunitButton1).click();
-		 */
+		String processingUnit1 = "Mumbai HO";
+		By processingunitButton1 = By.xpath("//div[text()='" + processingUnit1 + "']");
+		applyExplicitWaitsUntilElementVisible(processingunitButton1, 10);
+		driver.findElement(processingunitButton1).click();
+
 		try {
 			applyExplicitWaitsUntilElementClickable(ou.userMaker_onboard, Duration.ofSeconds(20));
 		} catch (MalformedURLException e) {
@@ -121,7 +120,7 @@ public class UserMaker extends BaseClass {
 		By processingunitButtonc = By.xpath("(//div[text()='" + processingUnitc + "'])[2]");
 		applyExplicitWaitsUntilElementVisible(processingunitButtonc, 10);
 		driver.findElement(processingunitButtonc).click();
-		//ou.userMaker_processingunit.click();
+		// ou.userMaker_processingunit.click();
 		String processingUnitc1 = "Mumbai HO";
 		By processingunitButtonc1 = By.xpath("(//div[text()='" + processingUnitc1 + "'])[2]");
 		applyExplicitWaitsUntilElementVisible(processingunitButtonc1, 10);
@@ -181,9 +180,9 @@ public class UserMaker extends BaseClass {
 		ou.userMaker_ok.click();
 
 	}
-	
+
 	public void verifyDeletedRole(String TSID) throws Exception {
-		int flag =0;
+		int flag = 0;
 		String excelFilePath = System.getProperty("user.dir") + "//src//main//resources//upp-automation-testdata.xlsx";
 		scroll.scrollInToView(ou.usersTab);
 		ou.usersTab.click();
@@ -211,10 +210,10 @@ public class UserMaker extends BaseClass {
 			ou.userMaker_addIcon.click();
 
 		}
-		
+
 		String role = dropdown.getSelectedValue(ou.userMaker_Role);
-		if(!role.equalsIgnoreCase("Deal Maker")) {
-			flag =1;
+		if (!role.equalsIgnoreCase("Deal Checker")) {
+			flag = 1;
 		}
 
 		Assert.assertEquals(flag, 1);

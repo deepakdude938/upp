@@ -57,7 +57,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		dropdown = new DropDown(driver);
 		tm = new Object_Transactions();
 		noti = new Object_Notification();
-		jsClick=new JavascriptClick(driver);
+		jsClick = new JavascriptClick(driver);
 	}
 
 	public void bulkUpload(String srcAcc, String desAcc, String time) throws Exception {
@@ -79,11 +79,18 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		Thread.sleep(5000);
 		tm.transactions_TransactionMaker.click();
 		Thread.sleep(7000);
-		driver.navigate().refresh();
-		Thread.sleep(7000);
-		tm.transactionMaker_dealSearch1.click();
-		Thread.sleep(3000);
-		tm.transactionMaker_bulk.click();
+		try {
+			tm.transactionMaker_dealSearch1.click();
+		} catch (Exception e) {
+			handleElementClickException(tm.transactionMaker_dealSearch1);
+		}
+		try {
+			tm.transactionMaker_bulk.click();
+		} catch (Exception e) {
+			handleElementClickException(tm.transactionMaker_bulk);
+		}
+		
+		
 		tm.transactionMaker_browseButton.sendKeys(excelFilePath);
 		Thread.sleep(2000);
 		dropdown.selectByVisibleText(tm.transactionMaker_sheetName, "Sheet");
@@ -96,7 +103,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		verifyTransaction();
 		Thread.sleep(6000);
 	}
-	
+
 	public void bulkUpload_GB_Account(String srcAcc, String desAcc, String time) throws Exception {
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
@@ -112,17 +119,21 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "scheduleTime", time);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
 		Thread.sleep(12000);
-		//tm.transactions_TransactionIcon1.click();
+		// tm.transactions_TransactionIcon1.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon1, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_TransactionIcon1);
 		Thread.sleep(12000);
-	//	tm.transactions_TransactionMaker.click();
+		// tm.transactions_TransactionMaker.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionMaker, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_TransactionMaker);
 		Thread.sleep(15000);
 		applyExplicitWaitsUntilElementClickable(tm.transactionMaker_bulk, Duration.ofSeconds(120));
-		//tm.transactionMaker_bulk.click();
-		jsClick.click(tm.transactionMaker_bulk);
+		// tm.transactionMaker_bulk.click();
+		try {
+			jsClick.click(tm.transactionMaker_bulk);
+		} catch (Exception e) {
+			handleElementClickException(tm.transactionMaker_bulk);
+		}
 		Thread.sleep(8000);
 		tm.transactionMaker_browseButton.sendKeys(excelFilePath);
 		Thread.sleep(2000);

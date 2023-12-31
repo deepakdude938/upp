@@ -161,7 +161,7 @@ public class DealBasicDetailCreators extends BaseClass {
 				od.deals_partyResponsibilitiesText.click();
 			 }	 
 
-			 if(TSID.equalsIgnoreCase("TS121")) {
+			 if(TSID.equalsIgnoreCase("TS121")||TSID.equalsIgnoreCase("TS125")) {
 				 input = "Seller";
 				 String[] responsibilityArray1 = input.split(",");
 				 ArrayList<String> arrayList1 = new ArrayList<>(Arrays.asList(responsibilityArray1));

@@ -185,9 +185,10 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
 		ecomm.ecommerce_participantIdtxt.sendKeys("Participant1");
 		Thread.sleep(3000);
-		ecomm.ecommerce_participantId.click();
+		ecomm.ecommerce_participantId1.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
 		ecomm.ecommerce_SubmitBtn.click();
 		addBasicDetailsWithUnlimitedDeditorToEcommerceTxn(TSID, srcAccount, toAccount);
@@ -242,9 +243,11 @@ public class ECommerceTransactionMaker extends BaseClass {
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
-		ecomm.ecommerce_participantId.click();
+		ecomm.ecommerce_participantId1.click();
+		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
 		ecomm.ecommerce_SubmitBtn.click();
 		Thread.sleep(2000);
@@ -289,6 +292,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
+		Thread.sleep(2000);
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
@@ -298,8 +302,9 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
-		ecomm.ecommerce_SubmitBtn.click();
+				ecomm.ecommerce_SubmitBtn.click();
 		addBasicDetailsToEcommerceTxn(TSID, srcAccount, toAccount);
 		addDebitAndPaymentCurrency(TSID);
 	}
@@ -419,7 +424,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 	}
 
 	public void verifyNameAndAddressLine(String TSID) throws Exception {
-		int flag = 0;
+		int flag =0;
 		Thread.sleep(3000);
 		ecomm.ecommerce_SideMenuIcon.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Txnmaker, Duration.ofSeconds(25));
@@ -433,10 +438,12 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
-		ecomm.ecommerce_participantId.click();
+		ecomm.ecommerce_participantId1.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
 		Thread.sleep(3000);
 		ecomm.ecommerce_SubmitBtn.click();
@@ -498,6 +505,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
 		Thread.sleep(3000);
 		ecomm.ecommerce_SubmitBtn.click();
@@ -625,6 +633,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
 		Thread.sleep(3000);
 		ecomm.ecommerce_SubmitBtn.click();
@@ -657,6 +666,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
+		// dealId = "REF1703845408075";
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
@@ -664,8 +674,13 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
-		jsClick.click(ecomm.ecommerce_debitAccount);
 		Thread.sleep(3000);
+		try {
+			ecomm.ecommerce_debitAccount.click();
+		} catch (Exception e) {
+			handleElementClickException(ecomm.ecommerce_debitAccount);
+		}
+
 		ecomm.ecommerce_SubmitBtn.click();
 		Thread.sleep(2000);
 		ecomm.ecommerce_purpose.click();
@@ -706,10 +721,10 @@ public class ECommerceTransactionMaker extends BaseClass {
 		System.out.println("currency = " + paymentCurrency);
 		applyExplicitWaitsUntilElementClickable(tm1.paymentCountryType, Duration.ofSeconds(7));
 		jsClick.click(tm1.paymentCountryType);
-		
+
 		for (int i = 0; i < 2; i++) {
 			List<String> s = dropdown.getAllValue(tm1.paymentCountryType);
-			System.out.println("List = "+s);
+			System.out.println("List = " + s);
 			if (s.contains("Debit Currency")) {
 				flag = 1;
 				break;
