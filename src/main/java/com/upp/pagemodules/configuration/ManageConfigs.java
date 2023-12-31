@@ -43,32 +43,36 @@ public class ManageConfigs extends BaseClass{
 		config.configurationProduct_SelectTabs.click();
 		By selectTabs = By.xpath("//label[normalize-space()='Select Tabs']//following::span[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_SelectTab+"']");
 		//label[normalize-space()='Select Tabs']//following::span[contains(@class,'ui-autocomplete-list-item-option')]
-//		applyExplicitWaitsUntilElementVisible(selectTabs, 10);
+		try {
 		driver.findElement(selectTabs).click();
+		}
+		catch(Exception e) {
+			handleElementClickException(driver.findElement(selectTabs));
+		}
 		config.configurationProduct_SelectTabsText.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		
+		ScrollTypes.scrollInsideWindow1(config.configurationProduct_ScrollBar, 100);
 		String input_ScheduleInstructionType = externalData.getFieldData(tSID, "Configuration", "Schedule Instruction Types");
 		config.configurationProduct_ScheduleInstructionType.click();
 		Thread.sleep(1500);
 		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_ScheduleInstructionType+"']");
-//		applyExplicitWaitsUntilElementVisible(scheduleInstructionType, 10);
 		driver.findElement(scheduleInstructionType).click();
 		config.configurationProduct_ScheduleInstructionTypeText.click();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		
+		ScrollTypes.scrollInsideWindow1(config.configurationProduct_ScrollBar, 50);
 		String input_LinkedInstructionType = externalData.getFieldData(tSID, "Configuration", "Linked Instruction Types");
 		config.configurationProduct_LinkedInstructionTypes.click();
 		By linkedInstructionInstructionType= By.xpath("//label[normalize-space()='Linked Instruction Types']//following::div[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_LinkedInstructionType+"']");
-//		applyExplicitWaitsUntilElementVisible(linkedInstructionInstructionType, 10);
 		driver.findElement(linkedInstructionInstructionType).click();
 		config.configurationProduct_LinkedInstructionTypesText.click();
 		Thread.sleep(1000);
 		
+		ScrollTypes.scrollInsideWindow1(config.configurationProduct_ScrollBar, 50);
 		String input_FeeInstructionType = externalData.getFieldData(tSID, "Configuration", "Fee Instruction Types");
 		config.configurationProduct_FeeInstructionTypes.click();
 		By feeInstructionInstructionType= By.xpath("//label[normalize-space()='Fee Instruction Types']//following::span[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_FeeInstructionType+"']");
-//		applyExplicitWaitsUntilElementVisible(feeInstructionInstructionType, 10);
 		driver.findElement(feeInstructionInstructionType).click();
 		config.configurationProduct_FeeInstructionTypesText.click();
 		Thread.sleep(1000);
@@ -76,7 +80,6 @@ public class ManageConfigs extends BaseClass{
 		String input_Notifications = externalData.getFieldData(tSID, "Configuration", "Notifications");
 		config.configurationProduct_Notifications.click();
 		By configurationProduct_Notifications= By.xpath("//label[contains(text(),'Notifications')]//following::div[contains(text(),'"+input_Notifications.trim()+"')]");
-//		applyExplicitWaitsUntilElementVisible(configurationProduct_Notifications, 10);
 		driver.findElement(configurationProduct_Notifications).click();
 		config.configurationProduct_NotificationsText.click();
 		Thread.sleep(2000);

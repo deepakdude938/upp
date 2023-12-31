@@ -108,6 +108,10 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//label[normalize-space()='Schedule Instruction Types']")
 	public WebElement configurationProduct_ScheduleInstructionTypeText;
 	
+	@FindBy(xpath="//div[@class='ui-section-inner']")
+	public WebElement configurationProduct_ScrollBar;
+	
+	
 	@FindBy(xpath="//label[normalize-space()='Linked Instruction Types']/following-sibling::ui-autocomplete/child::div/child::input")
 	public WebElement configurationProduct_LinkedInstructionTypes;
 	

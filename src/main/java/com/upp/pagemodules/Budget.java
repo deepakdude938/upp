@@ -57,7 +57,8 @@ public class Budget extends BaseClass {
 	}
 
 	public void createBudget(String TSID, String sourceAccountNo, String toAccountNo) throws Exception, IOException {
-		od.budget_BudgetIcon.click();
+//		od.budget_BudgetIcon.click();
+		click(od.budget_BudgetIcon);
 		od.budget_CreateBudget.click();
 		od.budget_AddBudgetName.sendKeys(externalData.getFieldData(TSID, "Budget", "BudgetName"));
 		od.budget_BudgetSourceAccount.sendKeys(sourceAccountNo);
@@ -143,7 +144,7 @@ public class Budget extends BaseClass {
 			od.payments_PartialpaymentSlider.click();
 		}
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(15));
-		od.payments_ExecutionDate.click();
+		click(od.payments_ExecutionDate);
 		String day = DateUtils.getDay();
 		By excecutionDay = By.xpath(
 				"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
