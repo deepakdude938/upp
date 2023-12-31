@@ -106,41 +106,35 @@ public class Transactions_Checker extends BaseClass {
 	public void txnChecker_SubmitDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
 		Thread.sleep(4000);
+		try {
 		od.TxnChecker_Transaction.click();
+		}catch (Exception e) {
+			handleElementClickException(od.TxnChecker_Transaction);
+		}
 		try {
 			od.TxnChecker_TrasactionChecker.click();
+		}catch (Exception e) {
+			handleElementClickException(od.TxnChecker_TrasactionChecker);
+		}
 			od.TxnChecker_searchDealId.clear();
 			od.TxnChecker_searchDealId.sendKeys(dealId);
 			Thread.sleep(4000);
 			try {
-
 				od.TxnChecker_comment.click();
+			}catch (Exception e) {
+				handleElementClickException(od.TxnChecker_comment);
+			}		
+			try {
 				od.TxnChecker_note.sendKeys("Ok");
-				od.TxnChecker_ok.click();
-				od.TxnChecker_txnCheckbox.click();
-				od.TxnChecker_submitBtn.click();
-				tm.transactions_YesButton.click();
-				od.TxnChecker_okBtn.click();
-			} catch (Exception e) {
-
-				handleElementClickException(od.TxnChecker_TrasactionChecker);
-				od.TxnChecker_searchDealId.clear();
-				od.TxnChecker_searchDealId.sendKeys(dealId);
-				Thread.sleep(2000);
-				od.TxnChecker_comment.click();
-				od.TxnChecker_note.sendKeys("Ok");
-				od.TxnChecker_ok.click();
-				od.TxnChecker_txnCheckbox.click();
-				Thread.sleep(4000);
-				od.TxnChecker_submitBtn.click();
-				tm.transactions_YesButton.click();
-				od.TxnChecker_okBtn.click();
-			}
-		} catch (Exception e) {
-			System.out.println("Pass");
-			od.TxnChecker_TrasactionChecker.click();
-		}
-
+			}catch (Exception e) {
+				handleElementClickException(od.TxnChecker_note);
+			}				
+			handleElementClickException(od.TxnChecker_ok);
+			handleElementClickException(od.TxnChecker_txnCheckbox);
+			//od.TxnChecker_txnCheckbox.click();
+			handleElementClickException(od.TxnChecker_submitBtn);
+			tm.transactions_YesButton.click();
+			od.TxnChecker_okBtn.click();		
 	}
 
 	public void TransactionsChecker1(String TSID, String TnxId) throws Exception {

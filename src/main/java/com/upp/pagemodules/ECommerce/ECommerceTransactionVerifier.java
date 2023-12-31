@@ -91,6 +91,8 @@ public class ECommerceTransactionVerifier extends BaseClass {
 			new Actions(driver).moveToElement(ecomm.ecommerce_yesBtn);
 			ecomm.ecommerce_yesBtn.click();
 			Thread.sleep(3000);
+			ecomm.ecommerce_yesBtn.click();
+			Thread.sleep(3000);
 			ecomm.ecommerce_okBtn.click();
 		}
 

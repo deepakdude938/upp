@@ -49,22 +49,26 @@ public class Verify_Audit_Deal extends BaseClass {
 	}
 
 	public void verify_Audit_Tab_Update_Log(String dealId) throws Exception {
-		
-        scroll.scrollInToView(audit.Audit_Icon);
+
+		scroll.scrollInToView(audit.Audit_Icon);
 		applyExplicitWaitsUntilElementClickable(audit.Audit_Icon, Duration.ofSeconds(50));
 		try {
 			audit.Audit_Icon.click();
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			handleElementClickException(audit.Audit_Icon);
 		}
-		
+
 		applyExplicitWaitsUntilElementClickable(audit.Audit_Deals, Duration.ofSeconds(5));
 		audit.Audit_Deals.click();
 		applyExplicitWaitsUntilElementClickable(audit.Audit_DealId, Duration.ofSeconds(5));
 		audit.Audit_DealId.sendKeys(dealId);
 		Thread.sleep(2000);
-		jsClick.click(audit.Audit_Deal_Party_icon);
+		try {
+			audit.Audit_Deal_Party_icon.click();
+		} catch (Exception e) {
+			handleElementClickException(audit.Audit_Deal_Party_icon);
+		}
+
 		Thread.sleep(4000);
 		if (!(commonutils.isElementDisplayed(audit.Audit_DealPartyaccountsadded, 1))) {
 			Assert.fail("party added not updated in log");
@@ -73,7 +77,7 @@ public class Verify_Audit_Deal extends BaseClass {
 		if (!(commonutils.isElementDisplayed(audit.Audit_DealPartyaccountsadded, 1))) {
 			Assert.fail("party accounts not added  updated in log");
 		}
-		
+
 		if (!(commonutils.isElementDisplayed(audit.Audit_Deal_contacts_added, 1))) {
 			Assert.fail("party contacts not added  updated in log");
 		}

@@ -137,7 +137,7 @@ public class Payload extends BaseClass {
 		// System.out.println("test case id = "+TSID);
 		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
-		jsonContext.set("$.roles[0].role", "DEALMAKER");
+		jsonContext.set("$.roles[0].role", "DEALCHECKER");
 
 		// jsonContext.set("$.username", password);
 		String modifiedJsonString = jsonContext.jsonString();

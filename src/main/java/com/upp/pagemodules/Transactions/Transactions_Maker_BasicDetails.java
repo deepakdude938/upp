@@ -74,8 +74,8 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 		Thread.sleep(8000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(120));
 		tm.transactions_DealId.sendKeys(DealId);
+		Thread.sleep(3000);
 		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
-		driver.findElement(transactions_DealId).click();
 		tm.transactions_SourceAccNo.sendKeys(sourceAccno);
 		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
 		driver.findElement(transactions_SouceAccno).click();
@@ -92,15 +92,14 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 				|| (externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Yes"))) {
 			od.payments_SplitBalanceSlider.click();
 		}
-		
-	    if(TSID.startsWith("TS130"))
-	    {
-	    	applyExplicitWaitsUntilElementClickable(tm.transactions_ExecuteLater, Duration.ofSeconds(15));
-	    	tm.transactions_ExecuteLater.click();
-	    	applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(20));
+
+		if (TSID.startsWith("TS130")) {
+			applyExplicitWaitsUntilElementClickable(tm.transactions_ExecuteLater, Duration.ofSeconds(15));
+			tm.transactions_ExecuteLater.click();
+			applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(20));
 			od.payments_ExecutionDate.click();
-	        day = dateutil.getDay();
-	    	int day_int = Integer.parseInt(day) + 1;
+			day = dateutil.getDay();
+			int day_int = Integer.parseInt(day) + 1;
 			day = Integer.toString(day_int);
 			By excecutionDay = By.xpath(
 					"//td[contains(@class,today) and not(contains(@class,'ui-calendar-outFocus'))]//a[normalize-space()='"
@@ -111,15 +110,18 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 				driver.findElement(excecutionDay).click();
 			} catch (Exception e) {
 				if (Integer.parseInt(DateUtils.getDay()) >= 29) {
-					excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
+					excecutionDay = By
+							.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
 					driver.findElement(excecutionDay).click();
 				}
 			}
-			dropdown.selectByVisibleText(od.payments_HolidayAction,externalData.getFieldData(TSID, "Txn Maker", "Holiday Action"));
+			dropdown.selectByVisibleText(od.payments_HolidayAction,
+					externalData.getFieldData(TSID, "Txn Maker", "Holiday Action"));
 			applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
 			dropdown.selectByVisibleText(od.payments_ScheduleAt,
 					externalData.getFieldData(TSID, "Txn Maker", "Schedule At"));
-			if (externalData.getFieldData(TSID, "Txn Maker", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
+			if (externalData.getFieldData(TSID, "Txn Maker", "Schedule At").trim()
+					.equalsIgnoreCase("At specific time")) {
 
 				String time = dateutil.getTimeAfterMins(5);
 
@@ -129,9 +131,9 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 				od.payments_ScheduleTime.sendKeys(time);
 				Thread.sleep(3000);
 			}
-			
-	    }
-		
+
+		}
+
 		od.payments_NextArrowButtonTransferBasic.click();
 
 	}
@@ -139,7 +141,7 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 	public void Transactions_Maker_BasicDetails1(String TSID, String DealId, String sourceAccno) throws Exception {
 		Thread.sleep(5000);
 		By transactions_DealId;
-		System.out.println("Deal id in tm"+DealId);
+		System.out.println("Deal id in tm" + DealId);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon1, Duration.ofSeconds(15));
 		tm.transactions_TransactionIcon1.click();
 		Thread.sleep(3000);
