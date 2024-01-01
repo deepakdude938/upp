@@ -218,7 +218,7 @@ public class BaseClass {
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 	}
 
-	public void handleElementClickException(WebElement element) {
+	public  void handleElementClickException(WebElement element) {
 
 		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
 		javascriptExecutor.executeScript("arguments[0].scrollIntoView(true)", element);
@@ -242,30 +242,14 @@ public class BaseClass {
 		return status;
 	}
 
-	public boolean retryUsingWhileLoop_TryCatch(List<WebElement> t) {
-		boolean outcome = false;
-		int repeat = 0;
-
-		while (repeat <= 3) {
-
-			try {
-				driver.findElement(By.xpath(getXpath(t)));
-			} catch (StaleElementReferenceException r) {
-
-			}
-		}
-
-		return outcome;
-
-	}
-	
 	public String generateRandomString(int count) {
 	String randomString=	UUID.randomUUID().toString().substring(0, count);
 	return randomString;
 	}
 
-	public String getXpath(List<WebElement> dataServiceNameBifrost) {
-		String str = dataServiceNameBifrost.toString();
+	public String getXpath(WebElement element) {
+		String str = element.toString();
+		
 		String[] listString = null;
 		if (str.contains("xpath"))
 			listString = str.split("xpath:");
@@ -275,6 +259,41 @@ public class BaseClass {
 		String last = listString[1].trim();
 		System.out.println(last);
 		String xpath = last.split("ChromeDriver")[0];
-		return xpath.substring(0, xpath.length() - 5).trim();
+		return xpath.substring(0, xpath.length() - 1).trim();
 	}
+	
+	
+		public  void click(WebElement element) {
+			try {
+				applyExplicitWaitsUntilElementClickable(element, Duration.ofSeconds(30));
+			} catch (MalformedURLException e) {
+			}
+			
+			try {
+				element.click();
+			}
+//			catch(StaleElementReferenceException p) {
+//				String xpath = getXpath(element);
+//				System.out.println(xpath);
+//				By ap = By.xpath(xpath);
+//				driver.findElement(ap).click();
+//			}
+			catch(Exception e) {
+				handleElementClickException(element);
+			}
+		}
+		
+		public void click(By element) {
+			
+			try {
+				applyExplicitWaitsUntilElementVisible(element, 30);
+				driver.findElement(element).click();
+			}
+//			catch(Stale) {
+//				
+//			}
+			catch(Exception e) {
+				handleElementClickException(driver.findElement(element));
+			}
+		}
 }

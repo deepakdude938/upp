@@ -694,7 +694,7 @@ public class Reports_ExecutionReport extends BaseClass {
 				tm.reports_horizontalWindow1, 8, 1000);
 		ArrayList<String> scroeStatus = new ArrayList();
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
-
+			System.out.println(iu.getText().trim());
 			scroeStatus.add(iu.getText().trim());
 			Assert.assertEquals(iu.getText().trim(), "Scheduled");
 		}
