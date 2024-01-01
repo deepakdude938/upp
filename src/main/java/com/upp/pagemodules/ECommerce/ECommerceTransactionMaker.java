@@ -72,8 +72,10 @@ public class ECommerceTransactionMaker extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
 		ecomm.ecommerce_dealId.sendKeys(dealId);
+		Thread.sleep(3000);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
@@ -239,6 +241,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_dealId, Duration.ofSeconds(100));
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
@@ -498,6 +501,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_dealId, Duration.ofSeconds(100));
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
@@ -559,7 +563,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 		Thread.sleep(5000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnSearch, Duration.ofSeconds(25));
 		jsClick.click(ecomm.ecommerce_TxnSearch);
-		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(100));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");

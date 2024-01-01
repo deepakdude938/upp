@@ -14,6 +14,7 @@ import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_Ecommerce;
+import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
@@ -36,9 +37,10 @@ public class ECommerceTransactionVerifier extends BaseClass {
 	DropDown dropdown;
 	public ExcelReader externalData;
 	ScrollTypes scroll;
+	public static Object_NewDeal od;
 
 	public ECommerceTransactionVerifier() {
-
+		od = new Object_NewDeal();
 		ecomm = new Object_Ecommerce();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
@@ -57,7 +59,7 @@ public class ECommerceTransactionVerifier extends BaseClass {
 		}
 
 //		ecomm.ecommerce_txnVerifier.click();
-
+		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 		ecomm.ecommerce_TxnDealSearch1.clear();
 		ecomm.ecommerce_TxnDealSearch1.sendKeys(dealId);
 		Thread.sleep(1000);

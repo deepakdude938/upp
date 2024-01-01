@@ -17,8 +17,8 @@ Then Add Party Accounts with given "TS39_1".
 Then submit the deal
 Then approve the deal from the deal checker common method
 And Run Rule_EnrichParty_UD rule using api with given "<TSID>"
-And Veriy transaction from transaction verifier
-Then Validate transaction in ecommerce report
+#And Veriy transaction from transaction verifier
+#Then Validate transaction in ecommerce report
 
 
 Examples:

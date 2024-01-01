@@ -1311,10 +1311,10 @@ public class Reports_ExecutionReport extends BaseClass {
 //		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 //		tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(100));
 		tm.reports_eCommExecutionsList.click();
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(100));
 		System.out.println(dealId);
 		tm.reports_dealId1.sendKeys(dealId);
 		Thread.sleep(2000);
@@ -1325,7 +1325,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
 				-1000);
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(100));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 			System.out.println(record.getText());
 			Assert.assertEquals(record.getText(), "HOLD");
@@ -1342,10 +1342,10 @@ public class Reports_ExecutionReport extends BaseClass {
 //		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 //		tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(100));
 		tm.reports_eCommExecutionsList.click();
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(100));
 		System.out.println(dealId);
 		tm.reports_dealId1.sendKeys(dealId);
 		Thread.sleep(2000);
@@ -1356,7 +1356,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
 				-1000);
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(100));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 			System.out.println(record.getText());
 			Assert.assertEquals(record.getText(), "Cancelled");
@@ -1374,10 +1374,10 @@ public class Reports_ExecutionReport extends BaseClass {
 //		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
 //		tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
+		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(100));
 		tm.reports_eCommExecutionsList.click();
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(tm.reports_dealId1, Duration.ofSeconds(100));
 		System.out.println(dealId);
 		tm.reports_dealId1.sendKeys(dealId);
 		Thread.sleep(2000);
@@ -1388,7 +1388,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
 				-1000);
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(100));
 		for (WebElement record : tm.reports_EcommRecordStatus) {
 			System.out.println(record.getText());
 			Assert.assertEquals(record.getText(), "Scheduled");

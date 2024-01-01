@@ -111,6 +111,7 @@ public class Transactions_Checker extends BaseClass {
 		}catch (Exception e) {
 			handleElementClickException(od.TxnChecker_Transaction);
 		}
+		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 		try {
 			od.TxnChecker_TrasactionChecker.click();
 		}catch (Exception e) {
@@ -118,7 +119,7 @@ public class Transactions_Checker extends BaseClass {
 		}
 			od.TxnChecker_searchDealId.clear();
 			od.TxnChecker_searchDealId.sendKeys(dealId);
-			Thread.sleep(4000);
+			applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 			try {
 				od.TxnChecker_comment.click();
 			}catch (Exception e) {
