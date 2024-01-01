@@ -297,6 +297,9 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement TxnMaker_okBtn;
 
 //	Transaction Checker objects
+	@FindBy(xpath = "//*[name()='svg']//*[name()='circle']")
+	public WebElement TxnChecker_TransactionProgress;
+	
 	@FindBy(xpath = "//label[contains(text(),' TRANSACTIONS ')]")
 	public WebElement TxnChecker_Transaction;
 

@@ -107,6 +107,7 @@ public class Transactions_Verifier extends BaseClass {
 		}catch (Exception e) {
 			handleElementClickException(tm.transactions_TransactionIcon);
 		}
+		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 		try {
 			tm.transactions_TransactionVerifier.click();	
 		}catch (Exception e) {
@@ -116,6 +117,7 @@ public class Transactions_Verifier extends BaseClass {
 
 		od.TxnChecker_searchDealId.sendKeys(dealId);
 		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 		try {
 			od.TxnChecker_comment.click();
 		}catch (Exception e) {

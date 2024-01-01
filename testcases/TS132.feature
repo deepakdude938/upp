@@ -1,7 +1,7 @@
 Feature: TS132_Verify_Name_feild_Is_Mandatory
 
 @Regression @TS132
-Scenario Outline: Verify Name Address line deal ref id, participant ref id field Available
+Scenario Outline: Verify Name feild Is Mandatory
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".

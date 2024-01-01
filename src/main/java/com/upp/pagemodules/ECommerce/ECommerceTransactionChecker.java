@@ -14,6 +14,7 @@ import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.pageobjects.Object_Ecommerce;
+import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
@@ -36,9 +37,10 @@ public class ECommerceTransactionChecker extends BaseClass {
 	DropDown dropdown;
 	public ExcelReader externalData;
 	ScrollTypes scroll;
+	public static Object_NewDeal od;
 
 	public ECommerceTransactionChecker() {
-
+		od = new Object_NewDeal();
 		ecomm = new Object_Ecommerce();
 		dropdown = new DropDown(driver);
 		externalData = new ExcelReader();
@@ -47,7 +49,8 @@ public class ECommerceTransactionChecker extends BaseClass {
 
 	public void ecommChecker_SubmitDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_txnChecker, Duration.ofSeconds(7));
 		ecomm.ecommerce_txnChecker.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnDealSearch, Duration.ofSeconds(100));
