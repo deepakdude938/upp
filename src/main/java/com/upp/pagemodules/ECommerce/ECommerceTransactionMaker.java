@@ -666,8 +666,8 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_Txnmaker);
 		// ecomm.ecommerce_Txnmaker.click();
 		Thread.sleep(5000);
-		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnSearch, Duration.ofSeconds(25));
-		jsClick.click(ecomm.ecommerce_TxnSearch);
+//		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnSearch, Duration.ofSeconds(25));
+//		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
 		// dealId = "REF1703845408075";

@@ -416,8 +416,10 @@ public class Budget extends BaseClass {
 		dropdown.selectByVisibleText(od.budget_interval, externalData.getFieldData(TSID, "Budget", "Interval"));
 		Thread.sleep(1000);
 		String halfYearValue = externalData.getFieldData(TSID, "Budget", "Half Year");
+		System.out.println(halfYearValue);
 		applyExplicitWaitsUntilElementClickable(od.budget_halfYear, Duration.ofSeconds(5));
-		dropdown.selectByVisibleText(od.budget_halfYear, halfYearValue);
+//		dropdown.selectByVisibleText(od.budget_halfYear, halfYearValue);
+		dropdown.selectByIndex(od.budget_halfYear, 1);
 		//od.budget_duration.sendKeys(externalData.getFieldData(TSID, "Budget", "Year"));
 		applyExplicitWaitsUntilElementClickable(od.budget_allocatedAmount, Duration.ofSeconds(5));
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));

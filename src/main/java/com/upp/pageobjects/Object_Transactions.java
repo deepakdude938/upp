@@ -269,7 +269,8 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "(//span[normalize-space()='dealRefId']/../../../../..//input[@class='ag-floating-filter-input'])[1]")
 	public WebElement reports_dealId;
 
-	@FindBy(xpath = "(//input[@ref='eInput'])[9]")
+//	@FindBy(xpath = "(//input[@ref='eInput'])[9]")
+	@FindBy(xpath = "//input[@aria-label='Deal ID Filter Input']")
 	public WebElement reports_dealId1;
 	
 //	@FindBy(xpath="//span[normalize-space()='Deal ID']/../../../../..//input[@class='ag-floating-filter-input']")
