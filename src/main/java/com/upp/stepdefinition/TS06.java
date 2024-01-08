@@ -73,7 +73,7 @@ public class TS06 extends BaseClass implements ICallback {
 	public void create_a_Transaction_from_Transaction_Maker(String string) throws Exception {
 
 		TSID = string;
-		tm_BasicDetails.Transactions_Maker_BasicDetails(string, "REF1704103969329", "2471755614");
+		tm_BasicDetails.Transactions_Maker_BasicDetails(string, dealId, DealPage.sourceAccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
