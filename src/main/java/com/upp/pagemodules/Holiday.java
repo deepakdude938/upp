@@ -2,11 +2,14 @@ package com.upp.pagemodules;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_Configuration;
 import com.upp.pageobjects.Object_NewDeal;
@@ -123,45 +126,45 @@ public class Holiday extends BaseClass{
 		 String holiday_name=dateutil.getCurrentDate_and_Month();
 		 String holiday_name1="TS126-"+holiday_name;
 		 System.out.println("The holiday_name is:"+holiday_name1);
-		 applyExplicitWaitsUntilElementClickable(hd.holiday_searchBox,Duration.ofSeconds(20));
 		 hd.holiday_searchBox.sendKeys(holiday_name1);
-		 Thread.sleep(1500);
-		 applyExplicitWaitsUntilElementClickable( hd.configuration_HolidayKebabMenu,Duration.ofSeconds(20));
-		 hd.configuration_HolidayKebabMenu.click();
-		 Thread.sleep(1500);
-		 applyExplicitWaitsUntilElementClickable( hd.configuration_Holiday_Delete,Duration.ofSeconds(20));
-		 hd.configuration_Holiday_Delete.click();
-		 Thread.sleep(1500);
-		 applyExplicitWaitsUntilElementClickable( hd.configuration_Holiday_Description,Duration.ofSeconds(20));
-		 hd.configuration_Holiday_Description.sendKeys("ok");
-		 Thread.sleep(1500);
-		 hd.PU_SubmitButton.click();
-		 Thread.sleep(1500);
-		 applyExplicitWaitsUntilElementClickable(hd.PU_OkButton,Duration.ofSeconds(20));
-		 hd.PU_OkButton.click();
-		 Thread.sleep(1500);
-		 hd. configuration_HolidayDraftsButton.click();
-		 Thread.sleep(1500);
-		 hd. configuration_HolidaySearchBox.sendKeys(holiday_name1);
-		 Thread.sleep(1500);
-		 hd. configuration_HolidaySearchBoxButton.click();
-		 Thread.sleep(1500);
-		 Thread.sleep(1000);
-		 hd.configuration_HolidayKebabMenu.click();
-		 Thread.sleep(1500);
-		 hd.configuration_HolidayEditTab.click();
-		 Thread.sleep(1500);
-		 hd.configuration_HolidayNextButton2.click();
-		 Thread.sleep(1000);
-		 hd.configuration_HolidayNextButton2.click();
-		 Thread.sleep(1500);
-		 hd.configuration_HolidayApproveButton.click();
-		 Thread.sleep(1500);
-		 hd.configuration_HolidayOkButton.click();
-		 Thread.sleep(1500);
-		 
-		 
-		 
+
+//		 List<WebElement> holidays= driver.findElements(By.xpath("//div[@col-id='name' and normalize-space()='"+holiday_name+"']"));
+//		 System.out.println(holidays.size());
+
+			 Thread.sleep(1500);
+			 applyExplicitWaitsUntilElementClickable( hd.configuration_HolidayKebabMenu,Duration.ofSeconds(20));
+			 hd.configuration_HolidayKebabMenu.click();
+			 Thread.sleep(1500);
+			 applyExplicitWaitsUntilElementClickable( hd.configuration_Holiday_Delete,Duration.ofSeconds(20));
+			 hd.configuration_Holiday_Delete.click();
+			 Thread.sleep(1500);
+			 applyExplicitWaitsUntilElementClickable( hd.configuration_Holiday_Description,Duration.ofSeconds(20));
+			 hd.configuration_Holiday_Description.sendKeys("ok");
+			 Thread.sleep(1500);
+			 hd.PU_SubmitButton.click();
+			 Thread.sleep(1500);
+			 applyExplicitWaitsUntilElementClickable(hd.PU_OkButton,Duration.ofSeconds(20));
+			 hd.PU_OkButton.click();
+			 Thread.sleep(1500);
+//			 hd. configuration_HolidayDraftsButton.click();
+			 handleElementClickException(hd. configuration_HolidayDraftsButton);
+			 Thread.sleep(1500);
+			 hd. configuration_HolidaySearchBox.sendKeys(holiday_name1);
+			 Thread.sleep(1500);
+			 hd. configuration_HolidaySearchBoxButton.click();
+			 Thread.sleep(1500);
+			 hd.configuration_HolidayKebabMenu.click();
+			 Thread.sleep(1500);
+			 hd.configuration_HolidayEditTab.click();
+			 Thread.sleep(1500);
+			 hd.configuration_HolidayNextButton2.click();
+			 Thread.sleep(1000);
+			 hd.configuration_HolidayNextButton2.click();
+			 Thread.sleep(1500);
+			 hd.configuration_HolidayApproveButton.click();
+			 Thread.sleep(1500);
+			 hd.configuration_HolidayOkButton.click();
+			 Thread.sleep(1500);
 		 
 }
 	public void createNewHoliday(String iD,String date) throws InvalidFormatException, IOException, Exception {
