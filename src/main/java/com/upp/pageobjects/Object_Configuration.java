@@ -1,5 +1,7 @@
 package com.upp.pageobjects;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -60,6 +62,9 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//div[@id='ic-generic-menu-showMenu-v1']")
 	public WebElement configuration_HolidayKebabMenu;
 	
+	@FindBy(xpath="//div[@class='ag-center-cols-container']/div[@role='row']")
+	public List <WebElement> configuration_HolidayList;
+	
 	@FindBy(xpath="//div[normalize-space()='Delete']")
 	public WebElement configuration_Holiday_Delete;
 	
@@ -72,7 +77,7 @@ public class Object_Configuration extends BaseClass {
 	@FindBy(xpath="//button[contains(@class,'ui-btn-primary ui-align-right btn-preference') and normalize-space()='Approve']")
 	public WebElement configuration_HolidayApproveButton;
 	
-	@FindBy(xpath="(//input[@class='ag-floating-filter-input'])[1]")
+	@FindBy(xpath="//input[@aria-label='Holiday Filter Input']")
 	public WebElement holiday_searchBox;
 	
 	//Product

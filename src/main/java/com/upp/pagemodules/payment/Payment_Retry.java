@@ -117,7 +117,7 @@ public class Payment_Retry extends BaseClass {
 		Thread.sleep(3000);
 		js.click(od.payments_RetryType_SameDay);
 		Thread.sleep(3000);
-		od.payments_Hours.sendKeys("1");
+		od.payments_Hours.sendKeys("4");
 		}
 		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonRetryMechanism, Duration.ofSeconds(15));
