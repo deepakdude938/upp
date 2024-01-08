@@ -29,11 +29,11 @@ public class CustomReportListener extends BaseClass implements EventListener {
 // TestRunFinished event is triggered when all feature file executions are
 // completed
 	private void runFinished(TestRunFinished event) {
-
+		
+	System.out.println("totalTestcasesCount:"+(Hook.getPassedCount()+Hook.getFailedCount()+Hook.getSkippedCount()));
 	System.out.println("passedTestcasesCount:"+Hook.getPassedCount());
 	System.out.println("failedTestcasesCount:"+Hook.getFailedCount());
 	System.out.println("skippedTestcasesCount:"+Hook.getSkippedCount());
-	System.out.print("totalTestcasesCount:"+(Hook.getPassedCount()+Hook.getFailedCount()+Hook.getSkippedCount()));
 	};
 
 }

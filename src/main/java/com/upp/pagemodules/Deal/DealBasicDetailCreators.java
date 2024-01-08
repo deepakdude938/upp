@@ -145,7 +145,16 @@ public class DealBasicDetailCreators extends BaseClass {
 				od.partyResponsibilityinput.sendKeys(responsibility);
 				Thread.sleep(1000);
 				By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + responsibility + "')]");
+				try {
 				applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
+				}
+				catch(Exception e) {
+					od.partyResponsibilityinput.clear();
+					od.partyResponsibilityinput.sendKeys(responsibility);
+					 party_Responsibility_Option = By.xpath("//div[contains(text(),'" + responsibility + "')]");
+					 applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
+				}
+			
 				driver.findElement(party_Responsibility_Option).click();
 
 				try {

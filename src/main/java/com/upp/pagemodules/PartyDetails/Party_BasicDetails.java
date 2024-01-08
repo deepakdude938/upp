@@ -81,8 +81,9 @@ public class Party_BasicDetails extends BaseClass {
 		responsibilities = externalData.getFieldData(TSID, "Party", "Responsibility");
 		od.parties_Responsibility.sendKeys(responsibilities);
 		By party_Responsibility_Option = By.xpath("//div[contains(text(),'" + responsibilities + "')]");
-		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 5);
+		applyExplicitWaitsUntilElementVisible(party_Responsibility_Option, 15);
 		driver.findElement(party_Responsibility_Option).click();
+//		click(party_Responsibility_Option);
 		
 		od.parties_Remarks.sendKeys(externalData.getFieldData(TSID, "Party", "Remarks"));
 		Thread.sleep(1000);

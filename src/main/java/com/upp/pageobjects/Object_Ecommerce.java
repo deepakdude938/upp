@@ -51,9 +51,10 @@ public class Object_Ecommerce extends BaseClass {
 
 
 	//@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]") sit old 
-	@FindBy(xpath = "(//input[@ref='eInput'])[10]")	
+//	@FindBy(xpath = "(//input[@ref='eInput'])[10]")	
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")	
 	public WebElement ecommerce_TxnSearch;
-
+	
 	@FindBy(xpath = "//div[contains(@class,'ui-icon-add')]")
 	public WebElement ecommerce_addNewmaker;
 
