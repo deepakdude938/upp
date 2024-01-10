@@ -196,14 +196,14 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//ui-dropdown[@placeholder='Select Currency Type']//select")
 	public WebElement paymentCountryType;
 	
-	@FindBy(xpath = "(//div[@class='circle accordion-circle'])[2]")
+	@FindBy(xpath = "(//i[@class='ic ic-lg ic-right'])[1]")
 	public WebElement SubInstructionArrow;
 	
 	@FindBy(id = "ic-deals-instruction-fundTransferSubInstruction-hideSubIns-v1")
 	public WebElement addSubInstructionArrow;
 	
 	
-	@FindBy(xpath = "//span[text()='Basic Details']")
+	@FindBy(xpath = "//div[text()=' Basic Details ']")
 	public WebElement basicDetails;
 	
 	@FindBy(xpath = "(//label[text()=' Debit ccy control sum ']/following-sibling::span)[1]")

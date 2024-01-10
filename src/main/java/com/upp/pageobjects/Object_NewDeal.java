@@ -432,7 +432,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-beneficiaryBankBic-txt-v1")
 	public WebElement parties_beneficiaryBankBic;
 
-	@FindBy(id = "payment-beneficiaryCountry-sel-v1")
+	@FindBy(xpath = "//div[@id='payment-beneficiaryCountry-sel-v1']//select")
 	public WebElement parties_BeneficiaryCountry;
 	
 	@FindBy(xpath = "//select[@id='payment-beneficiaryCountry-sel-v1']")
@@ -492,13 +492,13 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-deals-instruction-fundTransferBasic-name-v1")
 	public WebElement payments_BasicName;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']//select")
 	public WebElement payments_Purpose;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement payments_SourceAccount;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-balanceConsideration-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-balanceConsideration-v1']//select")
 	public WebElement payments_BalanceConsideration;
 
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferBasic-split-v1']//span[@class='slider round']")
@@ -537,10 +537,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-generic-datePicker-input-v1']")
 	public WebElement payments_Documents_ExecutionDate;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']//select")
 	public WebElement payments_ScheduleAt;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1'] | //select[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']")
+	  @FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1']//select | //select[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']")
 	public WebElement payments_HolidayAction;
 
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
@@ -819,10 +819,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id ="payment-beneficiaryAccountKey-txt-v1")
 	public WebElement parties_BeneficiaryAccountKey;
 	
-	@FindBy(id ="payment-beneficiaryCountryOfIncorporation-sel-v1")
+	@FindBy(xpath ="//div[@id='payment-beneficiaryCountryOfIncorporation-sel-v1']//select")
 	public WebElement parties_Accounts_beneficiaryCountryOfIncorporation;
 	
-	@FindBy(xpath ="//select[@id='payment-beneficiaryCurrency-sel-v1']")
+	@FindBy(xpath =" //div[contains(@id,'payment-beneficiaryCurrency-sel')]//select")
 	public WebElement parties_Accounts_beneficiaryCurrency;
 	
 	@FindBy(xpath ="(//div[contains(text(),'BT_IN')])[last()]")
@@ -837,8 +837,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="payment-beneficiaryName-txt-v1")
 	public WebElement parties_Accounts_beneficiaryName;
 	
-	@FindBy(id="payment-accountOrIban-sel-v1")
-	public WebElement parties_Accounts_accountOrIban;
+	@FindBy(xpath="//div[@id='payment-accountOrIban-sel-v1']//select")
+    public WebElement parties_Accounts_accountOrIban;
 	
 	@FindBy(xpath ="//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input[@id='txt-generic-autocomplete-input-v1']")
 	public WebElement schedule_IBAN;
