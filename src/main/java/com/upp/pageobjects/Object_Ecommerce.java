@@ -80,7 +80,7 @@ public class Object_Ecommerce extends BaseClass {
 	public WebElement ecommerce_debitAccount;
 
 	// Object for basic details on ecomm treansaction maker
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']//select")
 	public WebElement ecommerce_purpose;
 
 	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1']")
@@ -89,7 +89,7 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//li[@id='lbl-generic-autocomplete-listItemOption0']//div//div")
 	public WebElement ecommerce_firstParticipantAccount;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-balanceConsideration-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-balanceConsideration-v1']//select")
 	public WebElement ecommerce_balanceConsideration;
 
 	@FindBy(xpath = "//div[text()=' Save & Continue ']")

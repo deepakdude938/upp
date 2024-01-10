@@ -95,6 +95,7 @@ public class TS118 extends BaseClass implements ICallback {
 	@Then("Add Debit and Payment currency with given {string}")
 	public void add_Debit_and_Payment_currency_with_given(String string) throws Exception {
 		ecommTxn.addDealAsEcommerceTxnForDebitAndPaymentCurrency(TS07.dealId,string, DealPage.sourceAccountNo, DealPage.toaccountNo,this);
+//		ecommTxn.addDealAsEcommerceTxnForDebitAndPaymentCurrency("REF1704887881853",string, "1614224950", "5984144164",this);
 	}
 
 
