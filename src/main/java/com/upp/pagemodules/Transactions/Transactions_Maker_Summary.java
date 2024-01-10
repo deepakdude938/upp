@@ -73,9 +73,9 @@ public class Transactions_Maker_Summary extends BaseClass {
 		Thread.sleep(3000);
 		tm.transactions_SummarySubmitButton.click();
 		Thread.sleep(3000);
+		
 		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(15));
 		tm.transactions_YesButton.click();
-
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(15));
 		String transactionSubmitMessage = tm.transactions_TransactionsId.getText();
 		System.out.println("The transaction submit message:" + transactionSubmitMessage);

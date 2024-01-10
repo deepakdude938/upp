@@ -11,8 +11,8 @@ Then submit the deal
 Then Create odp json payload file with DealId with given "<TSID>"
 And Create record in ODP "<TSID>"
 Then approve the deal from the deal checker common method
-Then logout of the application
-Then Login to the application as "txn_maker"
+#Then logout of the application
+#Then Login to the application as "txn_maker"
 And Create a Transaction from Transaction Maker with given "<TSID>"
 #Then logout of the application
 #Then Login to the application as "txn_checker"

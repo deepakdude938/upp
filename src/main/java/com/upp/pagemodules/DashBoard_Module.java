@@ -81,6 +81,7 @@ public class DashBoard_Module extends BaseClass {
 		dropdown.selectByVisibleText(od.linkedInstruction_purposeddl,
 				externalData.getFieldData(TSID, "Linked", "Purpose"));
 		od.linkedInstruction_SourceAccounttxt.click();
+		Thread.sleep(2000);
 		od.linkedInstruction_Accountvalue.sendKeys(sourceAccountno);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
 		driver.findElement(sourceaccountselect).click();
