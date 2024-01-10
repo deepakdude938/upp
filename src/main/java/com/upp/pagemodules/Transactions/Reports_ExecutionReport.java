@@ -782,8 +782,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		}
 		Assert.assertTrue(scroeStatus.contains("Rescheduled"));
 		Assert.assertTrue(scroeStatus.contains("Rejected"));
-		
-	
 
 	}
 	
@@ -805,8 +803,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		String rescheduleddate1=date[0];
 		String ExcpectedRescheduledDate=dateutil.getCurrentDate_HashFormat();
 		Assert.assertEquals(rescheduleddate1, ExcpectedRescheduledDate);
-		
-		
 
 	}
 
@@ -828,8 +824,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		String rescheduleddate1=date[0];
 		String ExcpectedRescheduledDate=dateutil.getCurrentDate_HashFormatToday();
 		Assert.assertEquals(rescheduleddate1, ExcpectedRescheduledDate);
-		
-		
 
 	}
 
@@ -1331,7 +1325,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(record.getText(), "HOLD");
 
 		}
-
 	}
 	
 	public void verifyCancelStatusInExecutionReport(String tSID) throws Exception {
@@ -1362,9 +1355,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(record.getText(), "Cancelled");
 
 		}
-
 	}
-	
 	
 	public void verifyScheduleStatusInExecutionReport(String tSID) throws Exception {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
@@ -1394,10 +1385,30 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(record.getText(), "Scheduled");
 
 		}
-
 	}
 	
-
-	
-	
+		private void verifyAndAddDealIdColumn() throws Exception {
+			applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
+			jsClick.click(tm.reports_ReportsIcon);
+			applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
+			jsClick.click(tm.reports_ReportsInternal);
+//			applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
+//			tm.reports_searchBox.sendKeys("Execution Report");
+			Thread.sleep(2000);
+			applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
+			jsClick.click(tm.reports_ExecutionReport);
+			
+		boolean b=	isWebElementDisplayed(tm.reports_dealId1);
+		if(!b) {
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+					-1000);
+			b=isWebElementDisplayed(tm.reports_dealId1);
+		}
+		
+		if(!b) {
+			click(tm.reports_setPreference);
+			ScrollTypes. scrollVerticalInsideWindowTillWebElementPresent(tm.reports_setPreference_DealId,tm.reports_setPreference_VerticalScrollBar,10,300);
+			click(tm.reports_setPreference_DealIdCheckBox);
+			}
+		}
 }

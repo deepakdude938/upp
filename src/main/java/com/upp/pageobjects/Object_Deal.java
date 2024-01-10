@@ -26,16 +26,17 @@ public class Object_Deal extends BaseClass {
 	@FindBy(id = "txt-deals-basicDetails-name-v1")
 	public WebElement newDeal;
 
-	@FindBy(xpath = "//select[@id='sel-deals-basicDetails-businessSegment-v1']")
+	@FindBy(xpath = "//div[contains(@id,'sel-deals-basicDetails-businessSegment')]//select")
 	public WebElement businessSegmentDropDown;
 
-	@FindBy(xpath = "//select[@id='sel-deals-basicDetails-country-v1']")
+	@FindBy(xpath = "//div[contains(@id,'sel-deals-basicDetails-country')]//select")
 	public WebElement countryIndiaDropDown;
 
 	@FindBy(xpath = "//input[@id='allowBeneficiaries']")
 	public WebElement beneficiariesCheckBox;
 
-	@FindBy(xpath = "//label[text()='Product']/following::select[contains(@id,'sel-deals-basicDetails-product')]")
+//	@FindBy(xpath = "//label[text()='Product']/following::select[contains(@id,'sel-deals-basicDetails-product')]")
+	@FindBy(xpath = "//div[contains(@id,'sel-deals-basicDetails-product')]//select")
 	public WebElement deal_Product;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
@@ -90,7 +91,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy (xpath = "//div[@title='Accounts']/i")
 	public WebElement accountIcon;
 	
-	@FindBy(xpath = " //select[@id='country']")
+	@FindBy(xpath = "//div[@id='country']/select")
 	public WebElement country;
 
 	@FindBy(xpath = "(//select[@class='ui-dropdown-select full-border'])[2]")

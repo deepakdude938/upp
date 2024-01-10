@@ -432,8 +432,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-beneficiaryBankBic-txt-v1")
 	public WebElement parties_beneficiaryBankBic;
 
-	@FindBy(id = "payment-beneficiaryCountry-sel-v1")
-	public WebElement parties_BeneficiaryCountry;
+	@FindBy(xpath = "//div[@id='payment-beneficiaryCountry-sel-v1']//select")
+    public WebElement parties_BeneficiaryCountry;
 	
 	@FindBy(xpath = "//select[@id='payment-beneficiaryCountry-sel-v1']")
 	public WebElement parties_BeneficiaryCountry1;
@@ -492,13 +492,13 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "txt-deals-instruction-fundTransferBasic-name-v1")
 	public WebElement payments_BasicName;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']//select")
 	public WebElement payments_Purpose;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement payments_SourceAccount;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-balanceConsideration-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-balanceConsideration-v1']//select")
 	public WebElement payments_BalanceConsideration;
 
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferBasic-split-v1']//span[@class='slider round']")
@@ -537,10 +537,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-generic-datePicker-input-v1']")
 	public WebElement payments_Documents_ExecutionDate;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']//select")
 	public WebElement payments_ScheduleAt;
 
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1'] | //select[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1']//select | //select[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']")
 	public WebElement payments_HolidayAction;
 
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
@@ -555,7 +555,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//select[@id='sel-deals-instruction-fundsTransferSchedule-timezone'])[1]")
 	public WebElement payments_TimeZone;
 	
-	@FindBy(id = "payment-to-sel-v1")
+	@FindBy(xpath = "//div[@id='payment-to-sel-v1']//select")
 	public WebElement payments_ToAccountDropdown;
 
 	@FindBy(xpath = "//label[normalize-space()='Split by percentage']")
@@ -567,7 +567,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "payment-beneficiaryBankBic-txt-v1")
 	public WebElement payments_beneficiaryBankBic;
 	
-	@FindBy(id = "payment-beneficiaryCountry-sel-v1")
+	@FindBy(xpath = "//div[@id='payment-beneficiaryCountry-sel-v1']//select")
 	public WebElement payments_beneficiaryCountry;
 	
 	@FindBy(xpath = "//div[@class='ui-tab truncate ng-star-inserted']")
@@ -585,7 +585,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "btn-instructions-simulateSchedule-close-v1")
 	public WebElement payments_SimulateCloseButton;
 
-	@FindBy(id = "payment-beneficiaryCountryOfIncorporation-sel-v1")
+	@FindBy(xpath = "//div[@id='payment-beneficiaryCountryOfIncorporation-sel-v1']//select")
 	public WebElement payments_beneficiaryCountryOfIncorporationDropdown;
 
 	@FindBy(id = "payment-amount-txt-v1")
@@ -731,10 +731,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="(//i[@id='ic-instructions-tabSweepIn-next-v1'])[1]")
 	public WebElement payments_SweepinNextButton;
 	
-	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-frequency-v1']")
+	@FindBy(xpath="//div[@id='sel-deals-addUpdateBudget-frequency-v1']//select")
 	public WebElement budget_Interval;
 	
-	@FindBy(xpath="//select[@id='sel-deals-addUpdateBudget-duration-v1']")
+	@FindBy(xpath="//div[@id='sel-deals-addUpdateBudget-duration-v1']//select")
 	public WebElement budget_Duration;
 	
 	@FindBy(id="btn-deals-addUpdateBudget-add-v1")
@@ -819,11 +819,11 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id ="payment-beneficiaryAccountKey-txt-v1")
 	public WebElement parties_BeneficiaryAccountKey;
 	
-	@FindBy(id ="payment-beneficiaryCountryOfIncorporation-sel-v1")
+	@FindBy(xpath ="//div[@id='payment-beneficiaryCountryOfIncorporation-sel-v1']//select")
 	public WebElement parties_Accounts_beneficiaryCountryOfIncorporation;
 	
-	@FindBy(xpath ="//select[@id='payment-beneficiaryCurrency-sel-v1']")
-	public WebElement parties_Accounts_beneficiaryCurrency;
+	@FindBy(xpath =" //div[contains(@id,'payment-beneficiaryCurrency-sel')]//select")
+    public WebElement parties_Accounts_beneficiaryCurrency;
 	
 	@FindBy(xpath ="(//div[contains(text(),'BT_IN')])[last()]")
 	public WebElement parties_PaymentSystem_BT_IN;
@@ -837,7 +837,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="payment-beneficiaryName-txt-v1")
 	public WebElement parties_Accounts_beneficiaryName;
 	
-	@FindBy(id="payment-accountOrIban-sel-v1")
+	@FindBy(xpath="//div[@id='payment-accountOrIban-sel-v1']//select")
 	public WebElement parties_Accounts_accountOrIban;
 	
 	@FindBy(xpath ="//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input[@id='txt-generic-autocomplete-input-v1']")
@@ -860,7 +860,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	// Payments-Surplus WebElements
 	
-	@FindBy(xpath ="//select[@id='sel-deals-instruction-surplusBasic-purpose-v1']")
+	@FindBy(xpath ="//div[@id='sel-deals-instruction-surplusBasic-purpose-v1']//select")
 	public WebElement paymentSurplus_Purpose;
 	
 	@FindBy(id="txt-deals-instruction-surplusBasic-remark-v1")
@@ -881,13 +881,13 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="//span[normalize-space()='Retention']")
 	public WebElement retention_Tab;
 	
-	@FindBy(xpath ="(//select[@id='sel-deals-instruction-retentionBasic-purpose-v1'])[1]")
+	@FindBy(xpath ="(//div[@id='sel-deals-instruction-retentionBasic-purpose-v1']//select)[1]")
 	public WebElement retention_Purpose;
 	
 	@FindBy(id="txt-deals-instruction-retentionBasic-remark-v1")
 	public WebElement retention_Remarks;
 	
-	@FindBy(xpath ="(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	@FindBy(xpath ="(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement retention_Execute;
 	
 	@FindBy(xpath ="(//div[contains(text(),'A few days prior')])[1]")
@@ -1064,7 +1064,7 @@ public class Object_NewDeal extends BaseClass {
 	
 	//split %of amount
 	
-	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']")
+	@FindBy(xpath="//div[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']//select")
 	public WebElement payment_specifyAmountAs1;
 	
 	@FindBy(xpath="//input[@id='txt-deals-instruction-fundTransferBasic-value-v1']")
@@ -1167,10 +1167,11 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//div[contains(text(),'Consolidated')]")
 	public WebElement budget_consolidated;
 	
-	@FindBy(xpath="(//select[@id='sel-deals-addUpdateBudget-frequency-v1'])[1]")
+//	@FindBy(xpath="(//select[@id='sel-deals-addUpdateBudget-frequency-v1'])[1]")
+	@FindBy(xpath="(//div[@id='sel-deals-addUpdateBudget-frequency-v1']//select)[1]")
 	public WebElement budget_interval;
 	
-	@FindBy(xpath="(//select[@id='sel-deals-addUpdateBudget-duration-v1'])[1]")
+	@FindBy(xpath="(//div[@id='sel-deals-addUpdateBudget-duration-v1']//select)[1]")
 	public WebElement budget_duration;
 	
 	@FindBy(xpath = "//select[@id='sel-deals-addUpdateBudget-duration-v1']")
