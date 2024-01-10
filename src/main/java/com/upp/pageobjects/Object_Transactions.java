@@ -273,6 +273,21 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//input[@aria-label='Deal ID Filter Input']")
 	public WebElement reports_dealId1;
 	
+	@FindBy(xpath = "//button[contains(@class,'ui-btn-primary') and normalize-space()='Set Preference']")
+	public WebElement reports_setPreference;
+	
+	@FindBy(xpath = "//div[@class='grid-row']//div[normalize-space()='Deal Id']")
+	public WebElement reports_setPreference_DealId;
+	
+	@FindBy(xpath = "//div[contains(text(),'Deal Id')]/..//span[@class='ui-pseudo-checkbox']")
+	public WebElement reports_setPreference_DealIdCheckBox;
+	
+	@FindBy(xpath = "//button[normalize-space()='Apply']")
+	public WebElement reports_setPreference_Apply;
+	
+	@FindBy(id = "cdk-drop-list-1")
+	public WebElement reports_setPreference_VerticalScrollBar;
+	
 //	@FindBy(xpath="//span[normalize-space()='Deal ID']/../../../../..//input[@class='ag-floating-filter-input']")
 //	public WebElement reports_dealId1;
 	
@@ -377,6 +392,9 @@ public class Object_Transactions extends BaseClass {
 	
 	@FindBy(xpath = "//span[normalize-space()='Deal ID']")
 	public WebElement reports_dealIDText;
+	
+	@FindBy(xpath = "//span[normalize-space()='Deal Id']")
+	public WebElement reports_dealIDText1;
 	
 	@FindBy(xpath = "//div[@col-id='Original Amount' and not(contains(@class,'ag-header-cell'))]")
 	public WebElement reports_OriginalAmountValue;

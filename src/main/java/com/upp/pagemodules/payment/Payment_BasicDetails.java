@@ -69,9 +69,14 @@ public class Payment_BasicDetails extends BaseClass{
 		od.payments_SourceAccount.sendKeys(sourceAccountno);
 		Thread.sleep(1000);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
-		applyExplicitWaitsUntilElementVisible(sourceaccountselect, 30);
+		try {
 		driver.findElement(sourceaccountselect).click();
-//		click(sourceaccountselect);
+		}
+		catch(Exception e) {
+			Thread.sleep(1000);
+		 sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
+		 driver.findElement(sourceaccountselect).click();
+		}
 
 		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
 				externalData.getFieldData(TSID, "Scheduled", "Balance Consideration"));

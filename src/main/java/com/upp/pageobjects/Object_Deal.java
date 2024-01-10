@@ -35,6 +35,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//input[@id='allowBeneficiaries']")
 	public WebElement beneficiariesCheckBox;
 
+//	@FindBy(xpath = "//label[text()='Product']/following::select[contains(@id,'sel-deals-basicDetails-product')]")
 	@FindBy(xpath = "//div[contains(@id,'sel-deals-basicDetails-product')]//select")
 	public WebElement deal_Product;
 
@@ -90,7 +91,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy (xpath = "//div[@title='Accounts']/i")
 	public WebElement accountIcon;
 	
-	@FindBy(xpath = " //div[@id='country']//select")
+	@FindBy(xpath = "//div[@id='country']/select")
 	public WebElement country;
 
 	@FindBy(xpath = "(//select[@class='ui-dropdown-select full-border'])[2]")
