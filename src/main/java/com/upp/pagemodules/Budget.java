@@ -607,7 +607,17 @@ public class Budget extends BaseClass {
 				.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
 						+ sourceAccountNo + "')]");
 		applyExplicitWaitsUntilElementVisible(sourceAccountNoDropDown, 10);
-		driver.findElement(sourceAccountNoDropDown).click();
+		try {
+			driver.findElement(sourceAccountNoDropDown).click();
+		}
+		catch(Exception e) {
+			Thread.sleep(1000);
+			 sourceAccountNoDropDown = By
+					.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and contains(normalize-space(),'"
+							+ sourceAccountNo + "')]");
+			 driver.findElement(sourceAccountNoDropDown).click();
+		}
+		
 		Thread.sleep(500);
 		od.budget_AddBudget.click();
 		applyExplicitWaitsUntilElementClickable(od.budget_budgetDetailsAddBudget, Duration.ofSeconds(10));

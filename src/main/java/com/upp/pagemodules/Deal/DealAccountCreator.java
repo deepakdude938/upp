@@ -86,7 +86,7 @@ public class DealAccountCreator extends BaseClass {
 
 		od.searchTextBox.sendKeys(accountNo);
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(15));
 		od.searchButton.click();
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.accounts_addAccount, Duration.ofSeconds(45));
