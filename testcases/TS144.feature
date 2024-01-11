@@ -17,7 +17,7 @@ And Create Payment_Retry in the scheduled Instructions with given "<TSID>"
 And Create Payment_Notification in the scheduled Instructions with given "<TSID>"
 And Submit the deal
 Then Approve the deal from the deal checker
-#Then Validate Split Fixed Amount Execution Report "<TSID>"
+Then Verify Split Fixed Amount Execution Report "<TSID>"
 Examples:
       |TSID|
       |TS144|
