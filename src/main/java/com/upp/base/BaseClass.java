@@ -143,7 +143,7 @@ public class BaseClass {
 				options.addArguments("--remote-allow-origins=*");
 				options.setExperimentalOption("prefs", chromePrefs);
 				WebDriverManager.chromedriver().setup();
-				//WebDriverManager.chromedriver().browserVersion("119.0.6045.124").setup();
+//				WebDriverManager.chromedriver().browserVersion("120.0.6099.217").setup();
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--start-maximized");
 				if (isHeadLess) {
@@ -153,6 +153,7 @@ public class BaseClass {
 			}
 
 			driver = new ChromeDriver(options);
+//			driver = WebDriverManager.chromedriver().capabilities(options).create();
 
 		} else if (browser.equalsIgnoreCase("firefox")) {
 
