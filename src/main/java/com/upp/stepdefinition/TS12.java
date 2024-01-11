@@ -62,6 +62,7 @@ public class TS12 extends BaseClass implements ICallback {
 	public void create_Transaction_from_Transaction_Maker_and_check_whether_To_Field_is_accepting_Non_Registered_Beneficiary_with_given(String string) throws Exception {
 		TSID = string;
 		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.toaccountNo);
+//		tm_BasicDetails.Transactions_Maker_BasicDetails(string, "REF1704964855203", "7322661124");
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
