@@ -101,13 +101,13 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		scroll.scrollInToView(tm.transactions_beneficiaryIncorporation);
 		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
 				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));
-//		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
-//		scroll.scrollInToView(od.payments_AddSubInstructionButton);
-//		od.payments_AddSubInstructionButton.click();
-//		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
-//		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
-//				Duration.ofSeconds(10));
-//		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
+		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
+		scroll.scrollInToView(od.payments_AddSubInstructionButton);
+		od.payments_AddSubInstructionButton.click();
+		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
+		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
+				Duration.ofSeconds(10));
+		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
 
 	}
 
