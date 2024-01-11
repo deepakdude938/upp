@@ -98,7 +98,7 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement newDeal_percentageCommissionAttribute;
 	
 	// Objects for ecommerce
-	@FindBy(xpath = "//select[@id='sel-deals-basicDetails-status-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-basicDetails-status-v1']//select")
 	public WebElement ecommerce_status;
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[1]")
@@ -504,7 +504,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferBasic-split-v1']//span[@class='slider round']")
 	public WebElement payments_SplitBalanceSlider;
 	
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-specifyAmountAs-v1']//select")
 	public WebElement payments_SpecifyAmountAs;
 	
 	@FindBy(id = "txt-deals-instruction-fundTransferBasic-value-v1")
@@ -540,7 +540,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']//select")
 	public WebElement payments_ScheduleAt;
 
-	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1']//select | //select[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferSchedule-holidayAction-v1']//select | //div[@id='sel-deals-instruction-retentionSchedule-holidayAction-v1']//select")
 	public WebElement payments_HolidayAction;
 
 	@FindBy(id = "ic-deals-instruction-fundTransferSchedule-next-v1")
@@ -843,7 +843,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath ="//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input[@id='txt-generic-autocomplete-input-v1']")
 	public WebElement schedule_IBAN;
 	
-	@FindBy(xpath ="//select[@id='payment-to-sel-v1']")
+	@FindBy(xpath ="//div[@id='payment-to-sel-v1']//select")
 	public WebElement schedule_IBAN_Split;
 	
 	@FindBy(id="payment-beneficiaryAddressLine1-txt-v1")
@@ -899,17 +899,17 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="ic-deals-instruction-retentionBasic-next-v1")
 	public WebElement retention_nextArrowIcon;
 	
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-retentionSchedule-scheduleAt-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-retentionSchedule-scheduleAt-v1']//select")
 	public WebElement retention_ScheduleAt;
 	
 	@FindBy(id = "txt-generic-timePicker-input-v1")
 	public WebElement retention_ScheduleTime;
 	
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-fundsTransferSchedule-timezone']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundsTransferSchedule-timezone']//select")
 	public WebElement retention_SelectTimezone;
 	
 	
-	@FindBy(xpath= "//select[@id='sel-deals-instruction-retentionSchedule-priorScheduleConfig-v1']")
+	@FindBy(xpath= "//div[@id='sel-deals-instruction-retentionSchedule-priorScheduleConfig-v1']//select")
 	public WebElement retention_Execute1;
 	
 	@FindBy(id = "btn-deals-instruction-retentionSchedule-next-v1")
@@ -936,7 +936,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="txt-deals-instruction-retentionBasic-name-v1")
 	public WebElement retention_basicDetils_Name;
 	
-	@FindBy(xpath = "//select[@id='sel-deals-instruction-retentionBasic-typeOfTransfer-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-retentionBasic-typeOfTransfer-v1']//select")
 	public WebElement retention_SpecifyAmountAs;
 
 	@FindBy(id = "txt-deals-instruction-retentionBasic-formula-v1")

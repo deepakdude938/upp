@@ -101,7 +101,7 @@ public class Party_Checker extends BaseClass {
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(od.dealSummary_CustomHeaderLabel_Attributes,
 				od.dealSummary_HorizontalSlider, 5, 500);
-		od.dealSummary_CustomHeaderLabel_AttributesValue.click();
+		click(od.dealSummary_CustomHeaderLabel_AttributesValue);
 		List<String> o1 = new ArrayList();
 		for (WebElement ele : od.dealSummary_partyResponsibilityOption_Attributes) {
 			o1.add(ele.getText().trim());

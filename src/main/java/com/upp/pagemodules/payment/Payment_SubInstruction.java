@@ -68,7 +68,7 @@ public class Payment_SubInstruction extends BaseClass {
 			driver.findElement(budgetPurpose).click();
 		}
 
-		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 2)) {
+		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 10)) {
 
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));

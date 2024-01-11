@@ -95,11 +95,12 @@ public class AttachDetach_Account_Api extends BaseClass{
 		
 		Thread.sleep(2000);
 		System.out.println(virtual_Account_Number);
-		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
-		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
-		String checked = s.getAttribute("class");
+//		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
+		WebElement s = driver.findElement(By.xpath("//span[normalize-space()='"+virtual_Account_Number+"']/../..//input"));
+//		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
+		String checked = s.getAttribute("aria-label");
 		System.out.println(checked);
-		if(checked.contains("ag-checked")) {
+		if(checked.contains("Press Space to toggle row selection (checked)")) {
 			Assert.assertTrue("Account no is checked", true);
 		}
 		else {
@@ -137,11 +138,15 @@ public class AttachDetach_Account_Api extends BaseClass{
 		
 		
 		Thread.sleep(2000);
-		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
-		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
-		String checked = s.getAttribute("class");
+//		WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
+		WebElement s = driver.findElement(By.xpath("//span[normalize-space()='"+virtual_Account_Number+"']/../..//input"));
+//		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
+		String checked = s.getAttribute("aria-label");
 		System.out.println(checked);
-		if(checked.contains("ag-checked")) {
+		if(checked.contains("Press Space to toggle row selection (unchecked)")) {
+			Assert.assertTrue("Account no is not checked", true);
+		}
+		else {
 			Assert.assertTrue("Account no is checked", false);
 		}
 	}
@@ -195,18 +200,15 @@ public class AttachDetach_Account_Api extends BaseClass{
 //			Assert.assertTrue("Account no is not checked", false);
 //		}
 		
-		WebElement s = driver.findElement(By.xpath("//span[@title='"+physical_Account_Number+"']/../../..//div[@role='presentation']//div//div/div[contains(@class,'ag-checkbox-input-wrapper')]"));
-		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
-		String checked = s.getAttribute("class");
+		WebElement s = driver.findElement(By.xpath("//span[normalize-space()='"+physical_Account_Number+"']/../..//input"));
+//		applyExplicitWaitsUntilElementClickable(s, Duration.ofSeconds(15));
+		String checked = s.getAttribute("aria-label");
 		System.out.println(checked);
-		if(checked.contains("ag-checked")) {
+		if(checked.contains("Press Space to toggle row selection (checked)")) {
 			Assert.assertTrue("Account no is checked", true);
 		}
 		else {
 			Assert.assertTrue("Account no is not checked", false);
 		}
-		
-		
 	}
-	
 }
