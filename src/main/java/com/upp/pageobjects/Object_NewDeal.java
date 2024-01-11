@@ -954,7 +954,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[4]")
 	public WebElement Payment_Beneficiaryaccno_without_Budget_Purpose;
 	
-	@FindBy(id="payment-beneficiaryCountry-sel-v1")
+	@FindBy(xpath="//div[@id='payment-beneficiaryCountry-sel-v1']//select")
 	public WebElement Payment_beneficiaryCountry;
 	
 	@FindBy(xpath="//span[normalize-space()='Summary']")
