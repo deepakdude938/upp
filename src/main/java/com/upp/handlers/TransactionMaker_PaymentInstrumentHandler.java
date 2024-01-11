@@ -77,12 +77,16 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 			String sourceAccountno, String toaccountNo) throws Exception {
 		System.out.println("Inside LT_IN");
 		scroll.scrollInToView(tm.transactions_ToAccountDropdown);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
-		jsClick.click(tm.transactions_ToAccountDropdown);
-		dropdown.selectByVisibleText(tm.transactions_ToAccountDropdown, sourceAccountno);
-
+		Thread.sleep(3000);
+		
+		Thread.sleep(3000);
+		//		applyExplicitWaitsUntilElementClickable(tm.transactions_ToAccountDropdown, Duration.ofSeconds(7));
+		tm.transactions_ToAccountDropdown.click();
+		
+		dropdown.selectByValue(tm.transactions_ToAccountDropdown, sourceAccountno);
 		tm.transactions_bankIFSCCode
-				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
+		.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
+		
 		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
 		dropdown.selectByValue(tm.transactions_accountOrIban,
 				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));

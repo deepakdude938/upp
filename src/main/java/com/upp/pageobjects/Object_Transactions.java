@@ -62,7 +62,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(id = "payment-debitAccountBicCode-txt-v1")
 	public WebElement transactions_debitAccountBicCode;
 
-	@FindBy(xpath = "(//select[@id='payment-to-sel-v1'])[1]")
+	@FindBy(xpath = "//div[@id='payment-to-sel-v1']//select")
 	public WebElement transactions_ToAccountDropdown;
 
 	@FindBy(xpath = "(//select[@class='ui-dropdown-select'])[1]")
@@ -225,16 +225,16 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//input[contains(@id,'payment-beneficiaryName')]")
 	public WebElement transactions_beneficiaryName;
 
-	@FindBy(xpath = "//select[contains(@id,'payment-accountOrIban')]")
+	@FindBy(xpath = "//div[contains(@id,'payment-accountOrIban')]//select")
 	public WebElement transactions_accountOrIban;
 
 	@FindBy(xpath = "//input[contains(@id,'beneficiaryAddressLine1')]")
 	public WebElement transactions_address;
 
-	@FindBy(xpath = "//select[contains(@id,'beneficiaryCountry')]")
+	@FindBy(xpath = "//div[contains(@id,'beneficiaryCountry')]//select")
 	public WebElement transactions_country;
 
-	@FindBy(xpath = "//select[contains(@id,'beneficiaryCountryOfIncorporation')]")
+	@FindBy(xpath = "//div[contains(@id,'beneficiaryCountryOfIncorporation')]//select")
 	public WebElement transactions_beneficiaryIncorporation;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")

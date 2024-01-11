@@ -1174,7 +1174,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//div[@id='sel-deals-addUpdateBudget-duration-v1']//select)[1]")
 	public WebElement budget_duration;
 	
-	@FindBy(xpath = "//select[@id='sel-deals-addUpdateBudget-duration-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-addUpdateBudget-duration-v1']//select")
 	public WebElement budget_halfYear;
 	
 	@FindBy(xpath="//div[@id='btn-deals-addUpdateBudget-card2-v1']")
@@ -1219,7 +1219,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[6]")
 	public WebElement PaymentBudget_Beneficiaryaccno;
 	
-	@FindBy(xpath="//select[@id='payment-beneficiaryCountry-sel-v1']")
+	@FindBy(xpath="//div[@id='payment-beneficiaryCountry-sel-v1']//select")
 	public WebElement PaymentBudget_BeneficiaryCountry;
 	
 	@FindBy(xpath="(//i[@class='ui-icon ic ic-edit_blue ng-star-inserted'])[1]")
