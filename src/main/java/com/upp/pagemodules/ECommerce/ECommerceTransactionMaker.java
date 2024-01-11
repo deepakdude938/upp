@@ -1,5 +1,6 @@
 package com.upp.pagemodules.ECommerce;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -181,9 +182,12 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
+		Thread.sleep(3000);
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
-		driver.findElement(dealId_Option).click();
+		WebElement dealIdop = driver.findElement(dealId_Option);
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
+		dealIdop.click();
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
 		ecomm.ecommerce_participantIdtxt.sendKeys("Participant1");
 		Thread.sleep(3000);
@@ -307,9 +311,10 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_SearchBtn);
 		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_debitAccount);
-				ecomm.ecommerce_SubmitBtn.click();
+		ecomm.ecommerce_SubmitBtn.click();
 		addBasicDetailsToEcommerceTxn(TSID, srcAccount, toAccount);
 		addDebitAndPaymentCurrency(TSID);
+
 	}
 
 	public void addDebitAndPaymentCurrency(String TSID) throws Exception {
@@ -325,8 +330,10 @@ public class ECommerceTransactionMaker extends BaseClass {
 		Thread.sleep(2000);
 		ecomm.ecommerce_ParticipantId.click();
 		ecomm.ecommerce_ParticipantIdOpt.click();
-		ecomm.ecommerce_PlatformRefNumber.sendKeys("Test098");
-		ecomm.ecommerce_FragmentPlatformRefNumber.sendKeys("Test099");
+		String generatedString1 = RandomStringUtils.random(10, true, false);
+		ecomm.ecommerce_PlatformRefNumber.sendKeys(generatedString1);
+		String generatedString = RandomStringUtils.random(10, true, false);
+		ecomm.ecommerce_FragmentPlatformRefNumber.sendKeys(generatedString);
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm1.paymentCountry, Duration.ofSeconds(7));
 		jsClick.click(tm1.paymentCountry);
@@ -368,11 +375,21 @@ public class ECommerceTransactionMaker extends BaseClass {
 
 	public void Transaction_Maker_Sub_InstructionPayment_Currency(String TSID) throws Exception {
 		System.out.println(TSID);
+		Thread.sleep(5000);
+		// scroll.scrollUp();
+		applyExplicitWaitsUntilElementClickable(tm1.basicDetails, Duration.ofSeconds(7));
 		scroll.scrollInToView(tm1.basicDetails);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		jsClick.click(tm1.SubInstructionArrow);
-		Thread.sleep(3000);
-		jsClick.click(tm1.addSubInstructionArrow);
+		
+		Thread.sleep(5000);
+		ecomm.ecommerce_saveAndContinue.click();
+//		Thread.sleep(5000);
+//		scroll.scrollUp();
+//		scroll.scrollUp();
+//		scroll.scrollUp();
+//		Thread.sleep(5000);
+		//jsClick.click(tm1.addSubInstructionArrow);
 		try {
 			ecomm.ecommerce_creatorParticipant.click();
 		} catch (Exception e) {
@@ -427,7 +444,7 @@ public class ECommerceTransactionMaker extends BaseClass {
 	}
 
 	public void verifyNameAndAddressLine(String TSID) throws Exception {
-		int flag =0;
+		int flag = 0;
 		Thread.sleep(3000);
 		ecomm.ecommerce_SideMenuIcon.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_Txnmaker, Duration.ofSeconds(25));
@@ -501,10 +518,12 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_dealId, Duration.ofSeconds(100));
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
+		Thread.sleep(2000);
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
@@ -630,9 +649,11 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
+		Thread.sleep(3000);
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
 		driver.findElement(dealId_Option).click();
+		Thread.sleep(3000);
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));

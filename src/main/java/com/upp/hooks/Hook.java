@@ -26,10 +26,10 @@ import io.cucumber.java.After;
 public class Hook extends BaseClass {
 
 	public static WebDriver driver;
-    public static int failCount=0;
-	public static int passCount=0;
-	public static int skipCount=0;
-	public static int totalCount=0;
+	public static int failCount = 0;
+	public static int passCount = 0;
+	public static int skipCount = 0;
+	public static int totalCount = 0;
 	public static Screenshots sh;
 
 	@Before()
@@ -51,14 +51,13 @@ public class Hook extends BaseClass {
 		System.out.println("Run Mode:" + run);
 
 		if ((run.equalsIgnoreCase("no")) || (run.equalsIgnoreCase("n"))) {
-			
-            skipCount++;      
+
+			skipCount++;
 			throw new AssumptionViolatedException("Skipping test as mentioned in excel sheet");
 
 		}
-		
-		if(!((run.equalsIgnoreCase("no"))||(run.equalsIgnoreCase("yes"))))
-		{
+
+		if (!((run.equalsIgnoreCase("no")) || (run.equalsIgnoreCase("yes")))) {
 			Assert.fail("Run mode should be Yes/No");
 		}
 
@@ -68,42 +67,40 @@ public class Hook extends BaseClass {
 	public void AfterScenario(Scenario scenario) throws IOException {
 
 //		driver.quit();
-		
+
 		String s[] = scenario.getSourceTagNames().toArray(new String[0]);
 		String tagname = s[1];
 		String TSIDArray[] = tagname.split("@");
 		String TSID = TSIDArray[1];
-		
+
 		List<Object> list = Arrays.asList(s);
-		if(list.contains("@ScbRegression"))
-		{
-			if(list.contains("@Assertion"))
-			{
-				TSID=TSID+"_Assertion";
+		if (list.contains("@ScbRegression")) {
+			if (list.contains("@Assertion")) {
+				TSID = TSID + "_Assertion";
 			}
-		sh.takeScreenshot_For_SCB_Scenarios(driver,TSID);
+			sh.takeScreenshot_For_SCB_Scenarios(driver, TSID);
 		}
-		
-		if((scenario.isFailed()))
-		{
+
+		if ((scenario.isFailed())) {
 			failCount++;
 		}
-		if(!(scenario.isFailed()))
-		{
+		if (!(scenario.isFailed())) {
 			passCount++;
 		}
-   	driver.close();
+		driver.close();
 	}
-	 public static int getPassedCount() {
-	        return passCount;
-	    }
 
-	    public static int getFailedCount() {
-	        return failCount;
-	    }
-	    public static int getSkippedCount() {
-	    	 return skipCount;
-	    }
+	public static int getPassedCount() {
+		return passCount;
+	}
+
+	public static int getFailedCount() {
+		return failCount;
+	}
+
+	public static int getSkippedCount() {
+		return skipCount;
+	}
 
 	@AfterStep
 	public void AddScreenshot(Scenario scenario) throws IOException {
@@ -113,22 +110,20 @@ public class Hook extends BaseClass {
 			File sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
 			scenario.attach(fileContent, "image/png", "image");
-			
+
 			String s[] = scenario.getSourceTagNames().toArray(new String[0]);
 			String tagname = s[1];
 			String TSIDArray[] = tagname.split("@");
 			String TSID = TSIDArray[1];
 			List<Object> list = Arrays.asList(s);
-		
-				if(list.contains("@Assertion"))
-				{
-					TSID=TSID+"_Assertion";
-				}
-			sh.takeScreenshot_For_SCB_Scenarios(driver,TSID);
-			
-			sh=new Screenshots(driver);
+
+			if (list.contains("@Assertion")) {
+				TSID = TSID + "_Assertion";
+			}
+			sh.takeScreenshot_For_SCB_Scenarios(driver, TSID);
+
+			sh = new Screenshots(driver);
 			sh.takeScreenshot(driver, TSID);
-		
 
 		}
 
