@@ -72,6 +72,7 @@ public class Verify_Audit_Transaction extends BaseClass {
 	    driver.findElement(DealId).click();
 	    applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Submit, Duration.ofSeconds(5));
 		js.click(audit.audit_Transaction_Submit);
+		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(audit.audit_Transaction_Ok, Duration.ofSeconds(25));
 		audit.audit_Transaction_Ok.click();
 		Thread.sleep(30000);

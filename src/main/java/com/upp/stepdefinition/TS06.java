@@ -89,7 +89,9 @@ public class TS06 extends BaseClass implements ICallback {
 	@Then("Approve the transaction from Transaction Verifier with given {string}")
 	public void approve_the_transaction_from_Transaction_Verifier_with_given(String string) throws Exception {
 		
+		//tv.TransactionsVerifier(string, TS06.TnxId);
 		tv.TransactionsVerifier(string, TS06.TnxId);
+		
 	}
 
 	@Then("Check the Transaction staus in execution report with given {string}")

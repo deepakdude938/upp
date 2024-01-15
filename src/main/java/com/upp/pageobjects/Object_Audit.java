@@ -84,6 +84,10 @@ public class Object_Audit extends BaseClass{
 	@FindBy(xpath="//div[@title='Notifications']//i")
 	public WebElement audit_Transaction_Notification;
 	
+	@FindBy(xpath="(//div[contains(@class,'list-item ng-tns')])[1]")
+	public WebElement audit_Transaction_Notification_First;
+	
+	
 	@FindBy(xpath="//a[normalize-space()='Reload']")
 	public WebElement audit_Transaction_Reload;
 	
