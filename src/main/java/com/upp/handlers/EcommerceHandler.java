@@ -80,11 +80,15 @@ public class EcommerceHandler extends BaseClass {
 				String accountnumber1=DealPage.AccountNo1;
 				String accountnumber2=DealPage.AccountNo2;
 				System.out.println("The Second account number is"+accountnumber2);
-				WebElement s = driver.findElement(By.xpath("//span[@title='"+accountnumber2+"']/../.."));
+//				WebElement s = driver.findElement(By.xpath("//span[@title='"+accountnumber2+"']/../.."));
+				WebElement s = driver.findElement(By.xpath("//span[normalize-space()='"+accountnumber2+"']/../..//input"));
+
 				s.click();
 				
 				System.out.println("The First account number is"+accountnumber1);
-				WebElement s2 = driver.findElement(By.xpath("//span[@title='"+accountnumber1+"']/../.."));
+//				WebElement s2 = driver.findElement(By.xpath("//span[@title='"+accountnumber1+"']/../.."));
+				WebElement s2 = driver.findElement(By.xpath("//span[normalize-space()='"+accountnumber1+"']/../..//input"));
+
 				s2.click();
 			}
 			else if(TSID.equalsIgnoreCase("TS121")){
