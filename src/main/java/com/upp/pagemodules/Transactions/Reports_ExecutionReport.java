@@ -1418,4 +1418,30 @@ public class Reports_ExecutionReport extends BaseClass {
 			click(tm.reports_setPreference_DealIdCheckBox);
 			}
 		}
+		
+		public void verifySplitFixedAmounts(String TSID) throws Exception {
+			commonmethodExecReport(TSID, dealId);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+					tm.reports_horizontalWindow1, 8, 1000);
+			ArrayList<String> scroeStatus = new ArrayList();
+			for (WebElement iu : tm.reports_ScroeStatusRecords) {
+
+				scroeStatus.add(iu.getText().trim());
+				Assert.assertEquals(iu.getText().trim(), "Scheduled");
+			}
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
+					tm.reports_horizontalWindow1, 8, 1000);
+
+			Thread.sleep(500);
+
+			ArrayList<String> originalAmount = new ArrayList();
+			for (WebElement iu : tm.reports_OriginalAmount) {
+
+				originalAmount.add(iu.getText());
+				System.out.println(iu.getText());
+			}
+			Assert.assertTrue(originalAmount.contains("200"));
+			Assert.assertTrue(originalAmount.contains("300"));
+		}
+
 }

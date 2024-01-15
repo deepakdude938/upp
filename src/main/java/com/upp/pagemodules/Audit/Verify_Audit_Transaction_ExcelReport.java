@@ -60,7 +60,8 @@ public class Verify_Audit_Transaction_ExcelReport extends BaseClass {
 			}
 			else
 			{
-				audit_path= System.getProperty("user.dir")+"\\downloadedFiles\\"+excelname;
+				audit_path= System.getProperty("user.dir")
+						+ "//src//main//resources//"+excelname;
 			}
 		
 		System.out.println("The path is:"+audit_path);
