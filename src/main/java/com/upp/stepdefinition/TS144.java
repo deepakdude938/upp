@@ -15,10 +15,8 @@ public class TS144 {
 		this.pm = new Payment();
 	}
 	
-
 	@Then("Verify Split Fixed Amount Execution Report {string}")
 	public void verify_Split_Fixed_Amount_Execution_Report(String string) throws Exception {
 		 re.verifySplitFixedAmounts(string);
 	}
-	
 }

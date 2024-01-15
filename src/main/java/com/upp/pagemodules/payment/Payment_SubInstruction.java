@@ -69,7 +69,6 @@ public class Payment_SubInstruction extends BaseClass {
 		}
 
 		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 10)) {
-
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
 				scroll.scrollInToView(od.payments_ToAccountDropdown);
@@ -80,6 +79,14 @@ public class Payment_SubInstruction extends BaseClass {
 				scroll.scrollInToView(od.payments_ToAccountDropdown);
 				dropdown.selectByVisibleText(od.payments_ToAccountDropdown,
 						(externalData.getFieldData(TSID, "Scheduled", "to")));
+			}
+		}
+		
+		if (externalData.getFieldData(TSID, "Scheduled", "BeneficiaryCountry") != null) {
+			if (commonutils.isElementDisplayed(od.Payment_beneficiaryCountry, 1)) {
+				scroll.scrollInToView(od.Payment_beneficiaryCountry);
+				od.Payment_beneficiaryCountry
+						.sendKeys(externalData.getFieldData(TSID, "Scheduled", "BeneficiaryCountry"));
 			}
 		}
 

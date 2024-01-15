@@ -97,7 +97,7 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//select[@class='ui-dropdown-select full-border'])[2]")
 	public WebElement currency;
 
-	@FindBy(xpath = "//select[@id='accountIdentifierKey']")
+	@FindBy(xpath = "//div[@id='accountIdentifierKey']//select")
 	public WebElement physical;
 
 	@FindBy(xpath = "//select[@id='sel-generic-searchBar-searchSelect-v1']")

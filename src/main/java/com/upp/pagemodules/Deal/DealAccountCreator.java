@@ -76,6 +76,7 @@ public class DealAccountCreator extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.country, Duration.ofSeconds(70));
 		dropdown.selectByVisibleText(od.country, externalData.getFieldData(TSID, "Accounts", "Country"));
 		dropdown.selectByVisibleText(od.currency, externalData.getFieldData(TSID, "Accounts", "Currency"));
+
 		String physicalYesOrNo = externalData.getFieldData(TSID, "Accounts", "Physical");
 		if (physicalYesOrNo.equalsIgnoreCase("Yes")) {
 			dropdown.selectByVisibleText(od.physical, "Physical");
@@ -83,7 +84,6 @@ public class DealAccountCreator extends BaseClass {
 			dropdown.selectByVisibleText(od.physical, "Virtual");
 		}
 		applyExplicitWaitsUntilElementClickable(od.searchTextBox, Duration.ofSeconds(5));
-
 		od.searchTextBox.sendKeys(accountNo);
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.searchButton, Duration.ofSeconds(15));
