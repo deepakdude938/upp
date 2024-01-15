@@ -1033,7 +1033,14 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Source_Acc_No_Col, tm.reports_horizontalWindow1,
 				10, 1000);
+		try {
 		applyExplicitWaitsUntilElementVisible(tm.Reports_Source_Acc_No_First, Duration.ofSeconds(10));
+	}
+	catch(Exception e) {
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.Reports_Source_Acc_No_Col, tm.reports_horizontalWindow1,
+				10, -1000);
+	}
+		
 		String accno = tm.Reports_Source_Acc_No_First.getText();
 		System.out.println("The Account Number is:" + accno);
 		System.out.println("The Deal Page Account Number is:" + DealPage.AccountNo1);
