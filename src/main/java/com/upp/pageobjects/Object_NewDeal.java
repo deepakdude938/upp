@@ -552,7 +552,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1' and @placeholder='Select Instrument']")
 	public WebElement payments_Instrument2;
 	
-	@FindBy(xpath = "(//select[@id='sel-deals-instruction-fundsTransferSchedule-timezone'])[1]")
+	@FindBy(xpath = "(//div[@id='sel-deals-instruction-fundsTransferSchedule-timezone']//select)[1]")
 	public WebElement payments_TimeZone;
 	
 	@FindBy(xpath = "//div[@id='payment-to-sel-v1']//select")
