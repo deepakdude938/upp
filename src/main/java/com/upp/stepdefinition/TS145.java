@@ -49,7 +49,7 @@ public class TS145 extends BaseClass {
 
 	}
 
-	@Given("Reject the Workitem from Dealchecker with given {string}")
+	@And("Reject the Workitem from Dealchecker with given {string}")
 	public void reject_the_Workitem_from_Dealchecker_with_given(String string) throws Exception {
 		lc.Reject_From_LifecycleChecker(TS145.dealId);
 	}
