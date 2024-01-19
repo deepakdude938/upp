@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 
 //				dryRun = true,
 				glue={"com.upp.stepdefinition","com.upp.hooks"},
-				monochrome=true,tags="@TS147",
+				monochrome=true,tags="@Regression",
 				strict = true,
 				plugin = { "pretty",
 						"com.upp.hooks.CustomReportListener"
@@ -21,4 +21,3 @@ import io.cucumber.junit.CucumberOptions;
 public class Runner {
 	
 }
-  
