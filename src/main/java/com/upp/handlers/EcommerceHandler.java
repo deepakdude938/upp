@@ -15,6 +15,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_Deal;
 import com.upp.stepdefinition.DealPage;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -31,6 +32,7 @@ public class EcommerceHandler extends BaseClass {
 	public static final String CHAR_LIST = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	public static final int RANDOM_STRING_LENGTH = 10;
 	ScrollTypes scroll;
+	public static CommonUtils commonutils;
 
 	public EcommerceHandler() {
 		od = new Object_Deal();
@@ -38,6 +40,7 @@ public class EcommerceHandler extends BaseClass {
 		externalData = new ExcelReader();
 		jsClick = new JavascriptClick(driver);
 		scroll = new ScrollTypes(driver);
+		commonutils = new CommonUtils(driver);
 	}
 
 	public void handleEcommerce(String TSID) throws Exception {
@@ -56,6 +59,11 @@ public class EcommerceHandler extends BaseClass {
 		System.out.println(PraticipantId);
 		od.parties_ParticipantId.sendKeys(PraticipantId);
 		od.parties_BasicNextButton.click();
+		Thread.sleep(1000);
+		if(	commonutils.isElementDisplayed(od.parties_ConflictMessage, 10)) {
+			click(od.parties_ConflictMessage_CreateNew);
+		}
+		
 		dropdown.selectByVisibleText(od.ecommerce_status, externalData.getFieldData(TSID, "Party", "Party_Status"));
 
 		// od.ecommerce_validFrom.click();

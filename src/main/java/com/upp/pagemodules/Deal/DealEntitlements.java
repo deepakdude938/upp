@@ -111,7 +111,12 @@ public class DealEntitlements extends BaseClass {
 		driver.findElement(transactions_SouceAccno).click();
 		jsClick.click(tm.transactions_SubmitButton);
 		Thread.sleep(2000);
+		try {
 		tm.entitlementsIcon.click();
+		}
+				catch(Exception e) {
+					click(tm.entitlementsIcon);
+				}
 		Thread.sleep(2000);
 		if (TSID.equalsIgnoreCase("TS54")) {
 			tm.entitlements_Account.click();

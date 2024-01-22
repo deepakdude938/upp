@@ -1044,7 +1044,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//input[@id='txt-generic-datePicker-input-v1'])[2]")
 	public WebElement Balance_Reporting_EndDate;
 	
-	@FindBy(xpath="(//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1'])[1]")
+	@FindBy(xpath="(//div[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']//select)[1]")
 	public WebElement Balance_Reporting_ScheduleAt;
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[2]")

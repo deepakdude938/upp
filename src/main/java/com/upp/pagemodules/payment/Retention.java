@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -243,5 +244,60 @@ public class Retention extends BaseClass{
 						.when().delete("api/a/rbac/logout").then()
 						.assertThat().statusCode(200)
 						.extract().response().asString();
+	}
+	
+	public void createRetentionSurplus(String TSID) throws Exception, IOException{
+
+//		applyExplicitWaitsUntilElementClickable(od.retention_Tab, Duration.ofSeconds(5));
+//		od.retention_Tab.click();
+		click(od.retention_Tab);
+		applyExplicitWaitsUntilElementClickable(od.retention_Purpose, Duration.ofSeconds(10));
+		dropdown.selectByVisibleText(od.retention_Purpose, "Retention");
+		sourceAccountno=DealPage.sourceAccountNo;
+		od.payments_SourceAccount.sendKeys(sourceAccountno);
+		Thread.sleep(1000);
+		System.out.println(sourceAccountno);
+		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
+		driver.findElement(sourceaccountselect).click();
+		od.retention_Remarks.sendKeys(externalData.getFieldData(TSID,"PaymentRetention","Remarks"));
+		Thread.sleep(1000);
+		dropdown.selectByVisibleText(od.retention_SpecifyAmountAs, externalData.getFieldData(TSID, "PaymentRetention", "Specify amount as"));
+		od.retention_SpecifyAmountValue.clear();
+		System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
+		od.retention_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
+//		od.retention_nextArrowIcon.click();
+		click(od.retention_nextArrowIcon);
+		
+		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
+//		od.payments_ExecutionDate.click();
+		click(od.payments_ExecutionDate);
+		String	day= DateUtils.getDay();
+    	By excecutionDay = By.xpath("//td[contains(@class,'ui-day') and not(contains(@class,'ui-calendar-invalid')) and not(contains(@class,'ui-calendar-outFocus')) and normalize-space()='"+day+"']");
+    	applyExplicitWaitsUntilElementVisible(excecutionDay, 10);
+		driver.findElement(excecutionDay).click();
+		System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Schedule At"));
+		dropdown.selectByVisibleText(od.retention_ScheduleAt,externalData.getFieldData(TSID, "PaymentRetention", "Schedule At"));
+		System.out.println(externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+		dropdown.selectByVisibleText(od.payments_HolidayAction,externalData.getFieldData(TSID, "Scheduled", "Holiday Action"));
+
+		String time = DateUtils.getTimeAfterMins(5);
+		od.retention_ScheduleTime.clear();
+		od.retention_ScheduleTime.sendKeys(time);
+		Thread.sleep(1000);
+		dropdown.selectByValue(od.retention_SelectTimezone, "Asia/Calcutta")	;
+		Thread.sleep(1000);
+		dropdown.selectByVisibleText(od.retention_Execute1,"On scheduled date");
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		
+		if(isWebElementDisplayed(od.retention_ScheduleNoOfDays)) {
+			od.retention_ScheduleNoOfDays.sendKeys("3");
+		}
+		
+		click(od.retention_ScheduleNextButton);
+		click(od.retention_SubInstructionNextButton);
+		click(od.retention_RetryNextButton);
+//		click(od.retention_Summary);
+
 	}
 }

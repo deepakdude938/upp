@@ -162,7 +162,7 @@ public class Object_Deal extends BaseClass {
 	public WebElement newDeal_percentageCommissionAttribute;
 	
 	// Objects for ecommerce
-	@FindBy(xpath = "//select[@id='sel-deals-basicDetails-status-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-basicDetails-status-v1']//select")
 	public WebElement ecommerce_status;
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[1]")
@@ -427,7 +427,13 @@ public class Object_Deal extends BaseClass {
 
 	@FindBy(id = "btn-parties-partyBasic-updateParty-v1")
 	public WebElement parties_BasicNextButton;
-
+	
+	@FindBy(xpath = "//h2[normalize-space()='Conflict' and @id='swal2-title']")
+	public WebElement parties_ConflictMessage;
+	
+	@FindBy(xpath = "//button[@class='swal2-cancel swal2-styled' and normalize-space()='No, Create New']")
+	public WebElement parties_ConflictMessage_CreateNew;
+	
 	@FindBy(id = "ic-generic-partyContacts-getStarted-v1")
 	public WebElement parties_AddContact;
 

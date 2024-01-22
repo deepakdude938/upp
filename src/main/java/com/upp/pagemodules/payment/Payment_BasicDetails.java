@@ -103,4 +103,26 @@ public class Payment_BasicDetails extends BaseClass{
 			handleElementClickException(od.payments_NextArrowButtonTransferBasic);
 		}
 	}
+	
+	public void selectInstruction(String TSID) throws Exception{
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(40));
+		try {
+			od.payments_ScheduledInstructionIcon.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_ScheduledInstructionIcon);
+		}
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(od.PaymentsPlusIcon, Duration.ofSeconds(5));
+		od.PaymentsPlusIcon.click();
+		Thread.sleep(1000);
+		String InstructionType = externalData.getFieldData(TSID, "Scheduled", "Select Instruction Type");
+		By InstructionButton = By
+				.xpath("//div[@class='ui-align-left ui-relative ui-inline-block ui-label'][normalize-space()='"
+						+ InstructionType + "']");
+		applyExplicitWaitsUntilElementVisible(InstructionButton, 10);
+		driver.findElement(InstructionButton).click();
+		applyExplicitWaitsUntilElementClickable(od.payments_Proceed, Duration.ofSeconds(5));
+		od.payments_Proceed.click();
+	}
 }
