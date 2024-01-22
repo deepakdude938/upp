@@ -61,7 +61,7 @@ public class CloseLiveDeal extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(dl.Ok_Icon, Duration.ofSeconds(5));
 		dl.Ok_Icon.click();
 		Thread.sleep(3000);
-
+	
 	}
 
 }

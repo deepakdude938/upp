@@ -201,7 +201,6 @@ public class DashBoard_Module extends BaseClass {
 	public void logout() throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.logout, Duration.ofSeconds(40));
 		jsClick.click(od.logout);
-
 	}
 
 	public String submitDeal() throws Exception {
@@ -226,7 +225,7 @@ public class DashBoard_Module extends BaseClass {
 		System.out.println(dealId);
 		return dealId;
 	}
-
+	
 	public void logOutOld() throws Exception {
 		applyExplicitWaitsUntilElementClickable(od.logOutIcon, Duration.ofSeconds(40));
 		jsClick.click(od.logOutIcon);

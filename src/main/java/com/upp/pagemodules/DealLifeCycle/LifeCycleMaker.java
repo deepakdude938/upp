@@ -1,11 +1,16 @@
 package com.upp.pagemodules.DealLifeCycle;
 
 import java.time.Duration;
+
+import javax.swing.Scrollable;
+
 import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
+import com.aventstack.extentreports.Status;
 import com.upp.base.BaseClass;
 import com.upp.pageobjects.Object_DealLifecycle;
 import com.upp.pageobjects.Object_NewDeal;
@@ -74,6 +79,39 @@ public class LifeCycleMaker extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(dl.Yes_Icon, Duration.ofSeconds(5));
 		dl.Yes_Icon.click();
 
+	}
+	
+	public void move_To_LifecycleMaker() throws Exception {
+		applyExplicitWaitsUntilElementClickable(dl.Deal_Lifecycle, Duration.ofSeconds(5));
+		dl.Deal_Lifecycle.click();
+		applyExplicitWaitsUntilElementClickable(dl.LifecycleMakerIcon, Duration.ofSeconds(5));
+		dl.LifecycleMakerIcon.click();
+		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_Dealid, Duration.ofSeconds(5));
+		dl.LifecycleMaker_Dealid.clear();
+		Thread.sleep(1000);
+		System.out.println("In Deal Lifecycle Maker");
+	}
+	
+	public void verify_rejDeal_LifecycleMaker(String dealId) throws Exception {
+		applyExplicitWaitsUntilElementClickable(dl.Deal_Lifecycle, Duration.ofSeconds(5));
+		dl.Deal_Lifecycle.click();
+		applyExplicitWaitsUntilElementClickable(dl.LifecycleMakerIcon, Duration.ofSeconds(5));
+		dl.LifecycleMakerIcon.click();
+		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_Dealid, Duration.ofSeconds(5));
+		dl.LifecycleMaker_Dealid.clear();
+		Thread.sleep(1000);
+		dl.LifecycleMaker_Dealid.sendKeys(dealId);
+		Thread.sleep(2000);
+		if(dl.Reject_Warning.isDisplayed())
+        {
+        	System.out.println("Deal close rejected successfully.");
+        }
+        else
+        {
+        	Assert.fail("Deal close rejection failed.");
+        }
 	}
 
 }
