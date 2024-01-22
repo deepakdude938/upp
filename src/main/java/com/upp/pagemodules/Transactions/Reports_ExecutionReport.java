@@ -657,6 +657,16 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(iu.getText().trim(), "Settled");
 		}
 		Assert.assertEquals(scroeStatus.size(), 2);
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmountColumnName,
 				tm.reports_horizontalWindow1, 10, 1000);
@@ -667,15 +677,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			System.out.println(iu.getText());
 		}
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
-				10, 1000);
-		ArrayList<String> subInstruction = new ArrayList();
-		for (WebElement iu : tm.reports_SubInstructions) {
-
-			subInstruction.add(iu.getText());
-			System.out.println(iu.getText());
-		}
-
+		
 		LinkedHashMap<String, String> expectedSettledAmount = new LinkedHashMap();
 		expectedSettledAmount.put("Payment", "39000.12");
 		expectedSettledAmount.put("Retention", "50000");
@@ -1452,17 +1454,17 @@ public class Reports_ExecutionReport extends BaseClass {
 				
 				driver.findElement(By.xpath("//*[contains(text(), 'Set Preference')]")).click();
 				Thread.sleep(2500);
-				WebElement checkbox =  driver.findElement(By.xpath("//div[@class='ui-text-xs ui-checkbox header-checkbox']//span"));
-				System.out.println("Checkbox status"+checkbox.isSelected());
-				if(checkbox.isSelected()) {
-					checkbox.click();
-
-				}
-				else {
-					checkbox.click();
-					Thread.sleep(1000);
-					checkbox.click();
-				}
+//				WebElement checkbox =  driver.findElement(By.xpath("//div[@class='ui-text-xs ui-checkbox header-checkbox']//span"));
+//				System.out.println("Checkbox status"+checkbox.isSelected());
+//				if(checkbox.isSelected()) {
+//					checkbox.click();
+//
+//				}
+//				else {
+//					checkbox.click();
+//					Thread.sleep(1000);
+//					checkbox.click();
+//				}
 				Thread.sleep(1000);
 				List<WebElement> preferenceElements = driver.findElements(By.xpath("//div[@cdkdraglockaxis='y']"));
 				int X =preferenceElements.get(0).getLocation().getX();

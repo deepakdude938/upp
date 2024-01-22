@@ -279,7 +279,7 @@ public class Payment extends BaseClass{
 			
 		od.paymentSurplus_Instrument.click();
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Payment-Surplus", "Instrument");
-		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[2]");
+		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[last()]");
 		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
 		driver.findElement(paymentInstrument).click();
 		
