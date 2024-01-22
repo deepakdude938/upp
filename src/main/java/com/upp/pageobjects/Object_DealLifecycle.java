@@ -65,7 +65,13 @@ public class Object_DealLifecycle extends BaseClass{
 	@FindBy(xpath="//button[normalize-space()='Approve']")
 	public WebElement Appprove_Button;
 	
+	@FindBy(xpath="//button[normalize-space()='Send for review']")
+	public WebElement Reject_Button;
+	
 	@FindBy(xpath="(//dd[@class='truncate status'])[1]")
 	public WebElement Deal_Status;
+	
+	@FindBy (xpath="//span/div[@class='reject-warning']")
+	public WebElement Reject_Warning;
 	
 }

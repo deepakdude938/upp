@@ -272,6 +272,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "btn-deals-accounts-addUpdateAdvice-ok-v1")
 	public WebElement dealChecker_okCommentbutton;
+	
+	@FindBy(xpath = "//dl/dd[@class='truncate ng-star-inserted']")
+	public WebElement liveDeals_DealIdCheck;
 
 	// Logout Object
 	@FindBy(xpath = "//i[contains(@class,'logout ')]")

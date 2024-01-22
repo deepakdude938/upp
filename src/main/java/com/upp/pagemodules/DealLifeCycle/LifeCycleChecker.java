@@ -55,6 +55,26 @@ public class LifeCycleChecker extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(dl.Yes_Icon, Duration.ofSeconds(5));
 		dl.Yes_Icon.click();
 		Thread.sleep(5000);
+	}
+	
+	public void Reject_From_LifecycleChecker(String dealId) throws Exception {
+		applyExplicitWaitsUntilElementClickable(dl.Deal_Lifecycle, Duration.ofSeconds(5));
+		dl.Deal_Lifecycle.click();
+		applyExplicitWaitsUntilElementClickable(dl.LifecycleCheckerIcon, Duration.ofSeconds(5));
+		dl.LifecycleCheckerIcon.click();
+		System.out.println("the deal id in checker"+dealId);
+		applyExplicitWaitsUntilElementClickable(dl.LifecycleMaker_Dealid, Duration.ofSeconds(5));
+		js.sendKeys(dl.LifecycleMaker_Dealid, dealId);
+		js.click(dl.LifecycleMaker_submit);
+		applyExplicitWaitsUntilElementClickable(dl.AddYourComments, Duration.ofSeconds(5));
+		dl.AddYourComments.sendKeys("Reject");
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(dl.Reject_Button, Duration.ofSeconds(5));
+		dl.Reject_Button.click();
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementClickable(dl.Yes_Icon, Duration.ofSeconds(5));
+		dl.Yes_Icon.click();
+		Thread.sleep(5000);
 		
 		
 
