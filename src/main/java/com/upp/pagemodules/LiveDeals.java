@@ -1,46 +1,38 @@
-package com.upp.pagemodules.DealLifeCycle;
+package com.upp.pagemodules;
 
 import java.time.Duration;
-import org.joda.time.DateTimeConstants;
-import org.joda.time.LocalDate;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import com.upp.base.BaseClass;
-import com.upp.pageobjects.Object_DealLifecycle;
+import com.upp.odp.utils.AccountDetails;
+import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_NewDeal;
-import com.upp.utils.CommonUtils;
+import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
 import com.upp.utils.JavascriptClick;
 import com.upp.utils.ScrollTypes;
-import com.upp.utils.DateUtils;
 
-public class CloseLiveDeal extends BaseClass {
+import callbackInterfaces.ICallback;
 
+public class LiveDeals extends BaseClass{
+	
 	public static Object_NewDeal od;
 	public static ExcelReader externalData;
 	public static DropDown dropdown;
-	public static JavascriptClick jsClick;
-	public static ScrollTypes scroll;
-	public static CommonUtils commonutils;
-	public JavascriptClick js;
-	public static DateUtils dateutil;
-	Object_DealLifecycle dl;
-
-	public CloseLiveDeal() {
+	public static int waitingTime = 5;
+	
+	public LiveDeals() {
 		od = new Object_NewDeal();
 		externalData = new ExcelReader();
 		dropdown = new DropDown(driver);
-		scroll = new ScrollTypes(driver);
-		commonutils = new CommonUtils(driver);
-		js = new JavascriptClick(driver);
-		dateutil = new DateUtils();
-		dl = new Object_DealLifecycle();
 	}
 
-	public void closeLiveDeal(String dealId) throws Exception {
-
+	public void liveDealsCheck(String TSID) throws Exception {
+		od.deal_SideMenuIcon.click();
+		od.liveDealIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon, Duration.ofSeconds(15));
 		od.deal_SideMenuIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.liveDealIcon, Duration.ofSeconds(15));
@@ -53,15 +45,14 @@ public class CloseLiveDeal extends BaseClass {
 		od.dealChecker_searchButton.click();
 		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(30));
-		od.dealChecker_showMenu.click();
-		applyExplicitWaitsUntilElementClickable(dl.Close_icon, Duration.ofSeconds(5));
-		dl.Close_icon.click();
-		applyExplicitWaitsUntilElementClickable(dl.Yes_Icon, Duration.ofSeconds(5));
-		dl.Yes_Icon.click();
-		applyExplicitWaitsUntilElementClickable(dl.Ok_Icon, Duration.ofSeconds(5));
-		dl.Ok_Icon.click();
 		Thread.sleep(3000);
-	
-	}
-
+		
+		if(od.liveDeals_DealIdCheck.isDisplayed())
+		{
+			System.out.println("Newly created deal is present under Live Deals");
+		}
+		else {
+			System.out.println("Newly created deal is not present under Live Deals");
+		}
+}
 }

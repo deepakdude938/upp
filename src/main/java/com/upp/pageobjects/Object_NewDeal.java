@@ -272,6 +272,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "btn-deals-accounts-addUpdateAdvice-ok-v1")
 	public WebElement dealChecker_okCommentbutton;
+	
+	@FindBy(xpath = "//dl/dd[@class='truncate ng-star-inserted']")
+	public WebElement liveDeals_DealIdCheck;
 
 	// Logout Object
 	@FindBy(xpath = "//i[contains(@class,'logout ')]")
@@ -552,7 +555,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1' and @placeholder='Select Instrument']")
 	public WebElement payments_Instrument2;
 	
-	@FindBy(xpath = "(//select[@id='sel-deals-instruction-fundsTransferSchedule-timezone'])[1]")
+	@FindBy(xpath = "(//div[@id='sel-deals-instruction-fundsTransferSchedule-timezone']//select)[1]")
 	public WebElement payments_TimeZone;
 	
 	@FindBy(xpath = "//div[@id='payment-to-sel-v1']//select")
@@ -1044,7 +1047,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="(//input[@id='txt-generic-datePicker-input-v1'])[2]")
 	public WebElement Balance_Reporting_EndDate;
 	
-	@FindBy(xpath="(//select[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1'])[1]")
+	@FindBy(xpath="(//div[@id='sel-deals-instruction-fundTransferSchedule-scheduleAt-v1']//select)[1]")
 	public WebElement Balance_Reporting_ScheduleAt;
 	
 	@FindBy(xpath="(//input[@id='txt-generic-autocomplete-input-v1'])[2]")

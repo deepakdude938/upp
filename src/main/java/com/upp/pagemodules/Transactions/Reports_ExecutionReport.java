@@ -3,7 +3,9 @@ package com.upp.pagemodules.Transactions;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import com.upp.PaymentRulesApi.SSHConnection;
@@ -655,6 +657,16 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(iu.getText().trim(), "Settled");
 		}
 		Assert.assertEquals(scroeStatus.size(), 2);
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
+				10, 1000);
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
+			System.out.println(iu.getText());
+		}
+
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SettledAmountColumnName,
 				tm.reports_horizontalWindow1, 10, 1000);
@@ -665,15 +677,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			System.out.println(iu.getText());
 		}
 
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
-				10, 1000);
-		ArrayList<String> subInstruction = new ArrayList();
-		for (WebElement iu : tm.reports_SubInstructions) {
-
-			subInstruction.add(iu.getText());
-			System.out.println(iu.getText());
-		}
-
+		
 		LinkedHashMap<String, String> expectedSettledAmount = new LinkedHashMap();
 		expectedSettledAmount.put("Payment", "39000.12");
 		expectedSettledAmount.put("Retention", "50000");
@@ -1442,6 +1446,57 @@ public class Reports_ExecutionReport extends BaseClass {
 			}
 			Assert.assertTrue(originalAmount.contains("200"));
 			Assert.assertTrue(originalAmount.contains("300"));
+		}
+		
+		public void moveSetPreferenceColumn(WebDriver driver,String[] preferences,String prefrenceName,int i) throws Exception {
+			try {
+				List<String> preferenceList = new ArrayList<String>();
+				
+				driver.findElement(By.xpath("//*[contains(text(), 'Set Preference')]")).click();
+				Thread.sleep(2500);
+//				WebElement checkbox =  driver.findElement(By.xpath("//div[@class='ui-text-xs ui-checkbox header-checkbox']//span"));
+//				System.out.println("Checkbox status"+checkbox.isSelected());
+//				if(checkbox.isSelected()) {
+//					checkbox.click();
+//
+//				}
+//				else {
+//					checkbox.click();
+//					Thread.sleep(1000);
+//					checkbox.click();
+//				}
+				Thread.sleep(1000);
+				List<WebElement> preferenceElements = driver.findElements(By.xpath("//div[@cdkdraglockaxis='y']"));
+				int X =preferenceElements.get(0).getLocation().getX();
+				int Y =preferenceElements.get(0).getLocation().getY();
+				
+				for(WebElement element : preferenceElements) {
+			
+					preferenceList.add(element.getText());
+					if(element.getText().equals(prefrenceName)) {
+						System.out.println(element.getText());
+						int x=element.getLocation().getX();
+						int y=element.getLocation().getY();
+						if(x!=X || y!=Y) {
+							new Actions(driver).clickAndHold(element).pause(2).perform();
+							new Actions(driver).moveToElement(preferenceElements.get(i)).pause(5).perform();
+							new Actions(driver).release(preferenceElements.get(i)).pause(10).perform();	
+						}
+							}
+				}
+				
+				for(int index = 0; index < preferences.length; index++) {
+					if(preferenceList.contains(preferences[index])) {
+						preferenceElements.get(preferenceList.indexOf(preferences[index])).findElement(By.id("undefined")).click();
+					}
+				}
+				Thread.sleep(10000);
+				driver.findElement(By.xpath("//button[contains(text(), 'Apply')]")).click();	
+			}
+			catch (Exception e) {
+				
+				throw new Exception("Error while setting and moving preferences column");
+			}
 		}
 
 }
