@@ -694,5 +694,11 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'Seller')]")
 	public WebElement party_basic_details_seller;
 	
+	@FindBy(xpath = "//div[@aria-live='assertive']")
+	public WebElement party_Conflict_Popup;
+	
+	@FindBy(xpath = "//button[contains(@class,'cancel ')]")
+	public WebElement party_Cancelbtn;
+	
 	
 }

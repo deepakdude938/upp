@@ -59,7 +59,7 @@ public class Object_Payment extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'Days')]")
 	public WebElement Alerts_daysFrequency;
 	
-	@FindBy(xpath="//select[contains(@id,'deals-instruction-fundTransferSchedule-scheduleAt')]")
+	@FindBy(xpath="//div[contains(@id,'deals-instruction-fundTransferSchedule-scheduleAt')]//select")
 	public WebElement Alerts_scheduleAt;
 	
 	@FindBy(xpath = "//input[@id='txt-generic-timePicker-input-v1']")
