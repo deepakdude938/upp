@@ -67,6 +67,7 @@ public class Verify_Audit_Deal extends BaseClass {
 			audit.Audit_Deal_Party_icon.click();
 		} catch (Exception e) {
 			applyExplicitWaitsUntilElementClickable(audit.Audit_Deal_Party_icon, Duration.ofSeconds(15));
+			audit.Audit_Deal_Party_icon.click();
 		}
 
 		Thread.sleep(4000);
