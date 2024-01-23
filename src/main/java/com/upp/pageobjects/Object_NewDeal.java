@@ -1085,7 +1085,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id="payment-beneficiaryBankCode-txt-v1")
 	public WebElement parties_Accounts_beneficiaryBankCode;
 	
-	@FindBy(id="payment-accountType-sel-v1")
+	@FindBy(xpath ="//div[@id='payment-accountType-sel-v1']//select")
 	public WebElement parties_Accounts_Type;
 	
 	@FindBy(id="payment-beneficiaryCountryOfIncorporation-txt-v1")
