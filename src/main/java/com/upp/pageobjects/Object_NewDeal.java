@@ -86,7 +86,25 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "ic-deals-account-accountDetails-addAccount-v1")
 	public WebElement accounts_addAccount;
-
+	
+	@FindBy(xpath="(//span[@title='delete'])[1]")
+	public WebElement accounts_offboardAccount;
+	
+	@FindBy(xpath = "//button[text()='Yes']")
+	public WebElement offboardAcct_YesBtn;
+	
+	@FindBy(xpath = "//button[text()='No']")
+	public WebElement offboardAcct_NoBtn;
+	
+	@FindBy(xpath = "//button[text()='OK']")
+	public WebElement offboardAcct_OK;
+	
+	@FindBy(xpath = "//div[@class='swal2-popup swal2-modal swal2-icon-success swal2-show']")
+	public WebElement offboardAcct_Success;
+	
+	@FindBy(xpath = "//div[@class='loaded-msg']")
+	public WebElement accounts_AccountCount;
+	
 	// Objects for flexible finding attributes
 	@FindBy(xpath = "(//*[@id='txt-deals-basicDetails-addAttribute-attributeValue-v1']//select)[1]")
 	public WebElement newDeal_spiltTypeAttribute;
