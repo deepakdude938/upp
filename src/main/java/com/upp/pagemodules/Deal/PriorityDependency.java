@@ -28,18 +28,18 @@ public class PriorityDependency extends BaseClass {
 	}
 
 	public void addSameDayDependency() throws Exception {
-		applyExplicitWaitsUntilElementClickable(od.PriorityDependencyIcon, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.PriorityDependencyIcon, Duration.ofSeconds(15));
 		od.PriorityDependencyIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.Priority_EditIcon, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.Priority_EditIcon, Duration.ofSeconds(15));
 		od.Priority_EditIcon.click();
-		applyExplicitWaitsUntilElementClickable(od.Priority_Select_Checkbox, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.Priority_Select_Checkbox, Duration.ofSeconds(15));
 		od.Priority_Select_Checkbox.click();
-		Thread.sleep(1500);
+//		Thread.sleep(1500);
 //		scroll.scrollInToView(od.Priority_SameDay);
 //		jsClick.click(od.Priority_SameDay);
-		applyExplicitWaitsUntilElementClickable(od.Priority_Dependency_Dropdown, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.Priority_Dependency_Dropdown, Duration.ofSeconds(15));
 		dropdown.selectByVisibleText(od.Priority_Dependency_Dropdown,"SameDay");
-		applyExplicitWaitsUntilElementClickable(od.Priority_SaveButton, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.Priority_SaveButton, Duration.ofSeconds(15));
 		od.Priority_SaveButton.click();
 
 	}
