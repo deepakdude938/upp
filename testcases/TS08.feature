@@ -18,7 +18,7 @@ And Update the Pary Api using given "TS11-3"
 Then Edit the live deal
 Then submit the deal
 Then approve the deal from the deal checker common method
-#Then Verify the Transaction status in eComm Executions Report
+Then Verify the Transaction status in eComm Executions Report
 
 Examples:
       |TSID   |

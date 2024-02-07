@@ -137,14 +137,15 @@ public class Object_Ecommerce extends BaseClass {
 	@FindBy(xpath = "//input[contains(@id,'addressLine4')]")
 	public WebElement addressline4;
 	
-	@FindBy(xpath = "//select[@id='sel-ultimate-debtor-country-v1']")
+	@FindBy(xpath = "//div[@id='sel-ultimate-debtor-country-v1']//select")
 	public WebElement country;
 	
 	@FindBy(xpath = "//i[@id='ic-generic-inputError-error-v1']")
 	public WebElement errorIcon;
 	
-	@FindBy(xpath = "//xcro-input-error[@class='ng-tns-c484-55 ng-star-inserted']")
+	@FindBy(xpath = "//xcro-input-error[contains(@class,'star-inserted')]")
 	public WebElement errorMessage;
+	
 	// Object for Sub instruction on ecomm treansaction maker
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-fdt-participant-id-v1']//input[@placeholder='Creditor Participant Id']")
 	public WebElement ecommerce_creatorParticipant;
