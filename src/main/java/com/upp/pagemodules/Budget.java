@@ -425,50 +425,6 @@ public class Budget extends BaseClass {
 		od.budget_allocatedAmount.sendKeys(externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
 		applyExplicitWaitsUntilElementClickable(od.budget_AddButton, Duration.ofSeconds(5));
 		od.budget_AddButton.click();
-//		
-//		applyExplicitWaitsUntilElementClickable(od.payments_DealsummaryIcon, Duration.ofSeconds(5));
-//		od.payments_DealsummaryIcon.click();
-//		applyExplicitWaitsUntilElementClickable(od.deals_SummaryRefId, Duration.ofSeconds(5));
-//		String dealRefId = od.deals_SummaryRefId.getText();
-//		String url = driver.getCurrentUrl();
-//		String dealID = url.split("[/]")[url.split("/").length - 1];
-//		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
-//		SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
-//		Date date = parseFormat.parse(time.replace('.', ':'));
-//		String dateAndTime = DateUtils.getDate(0) + "T" + displayFormat.format(date);
-//
-//		HashMap odpRecord = new HashMap<>();
-//		odpRecord.put("_id", TSID);
-//		odpRecord.put("originTcId", TSID);
-//		odpRecord.put("dealId", dealID);
-//		odpRecord.put("dealRefId", dealRefId);
-//
-//		HashMap tcDataRecord = new HashMap();
-//		tcDataRecord.put("allocatedBudgetAmount", externalData.getFieldData(TSID, "Budget", "Allocated Budget Amount"));
-//		tcDataRecord.put("executionDate", DateUtils.getDate(0));
-//		tcDataRecord.put("scheduledTime", time);
-//		tcDataRecord.put("utilizedAmount", externalData.getFieldData(TSID, "Scheduled", "Amount"));
-//
-//		ObjectMapper mapper = new ObjectMapper();
-//		String json = mapper.writeValueAsString(tcDataRecord);
-//
-//		HashMap jsonMap1 = new HashMap();
-//		jsonMap1.put("data", json);
-//		jsonMap1.put("scheduledOnTime", dateAndTime);
-//		odpRecord.put("tcData", jsonMap1);
-//		odpRecordJson = new ObjectMapper().writeValueAsString(odpRecord);
-//
-//		System.out.println(odpRecordJson);
-//
-//		scroll.scrollInToView(od.payments_DealSubmitButton);
-//		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(10));
-//		od.payments_DealSubmitButton.click();
-//		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
-//		od.payments_DealYesButton.click();
-//		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
-//		od.payments_DealOkButton.click();
-//
-//		return dealRefId;
 
 	}
 

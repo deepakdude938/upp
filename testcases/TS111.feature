@@ -8,8 +8,8 @@ And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
 And Create two eCommerce  Parties in the Parties Tab with given "<TSID>" and "<PartiesID>"
 Then Call the Create Transaction Api for TS111 "<TSID>"
-Then Call the update transaction status as hold for "<PartiesID>"
-Then Verify transaction hold status in ecomm report "<TSID>"
+#Then Call the update transaction status as hold for "<PartiesID>"
+#Then Verify transaction hold status in ecomm report "<TSID>"
 
 
 

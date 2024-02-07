@@ -72,20 +72,12 @@ public class DealEntitlements extends BaseClass {
 
 		od.rangeFrom.sendKeys(externalData.getFieldData(TSID, "Entitlements", "Range From"));
 		od.initiatingContact.click();
-		// String contactName = externalData.getFieldData(TSID, "Basic Details",
-		// "Contact-Name");
-//		System.out.println("");
-//		op.Alerts_contactNameTextBox.sendKeys("Karthik");
-//		op.Alerts_contactNameSearch.click();
+
 		applyExplicitWaitsUntilElementClickable(op.Alerts_contactCheckBox, Duration.ofSeconds(10));
 		op.Alerts_contactCheckBox.click();
 		op.Alerts_contactUpdate.click();
 		od.authorzingContact.click();
-		// String contactName = externalData.getFieldData(TSID, "Basic Details",
-		// "Contact-Name");
-//		System.out.println("");
-//		op.Alerts_contactNameTextBox.sendKeys("Karthik");
-//		op.Alerts_contactNameSearch.click();
+		
 		applyExplicitWaitsUntilElementClickable(op.Alerts_contactCheckBox, Duration.ofSeconds(10));
 		op.Alerts_contactCheckBox.click();
 		op.Alerts_contactUpdate.click();

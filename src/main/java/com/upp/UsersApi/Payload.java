@@ -86,47 +86,20 @@ public class Payload extends BaseClass {
 
 	}
 
-	public static String UpdateUserAttribute(String TSID, Properties prop) throws IOException, Exception {
+	public static String UpdateUserAttribute(String TSID) throws IOException, Exception {
+//		externalData = new ExcelReader();
+//		String excelFilePath = System.getProperty("user.dir") + "//src//main//resources//UserList.xlsx";
 		externalData = new ExcelReader();
-		String excelFilePath = System.getProperty("user.dir") + "//src//main//resources//UserList.xlsx";
-
-		String filePath = System.getProperty("user.dir") + "//src//test//resources//usercount.properties";
-
-		// System.out.println("test case id = "+TSID);
-		// long number = (long) Math.floor(Math.random() * 9_000_000_000L) +
-		// 1_000_000_000L;
-		int number =  (new Random()).nextInt(90000000) + 10000000;
+		String payload = externalData.getFieldData(TSID, "API Testcases", "Payload");
 		
-
-		String payLoadString = externalData.getFieldData(TSID, "API Testcases", "Payload");
-		System.out.println("Payload" + payLoadString);
-		DocumentContext jsonContext = JsonPath.parse(payLoadString);
-		System.out.println("phone number" + number);
-		String phone = Integer.toString(number);
-		String phnumber = "98"+phone;
-		long  number1 =Long.parseLong(phnumber);
-		System.out.println(number1);
-		jsonContext.set("$.telephone", phnumber);
+		DocumentContext jsonContext = JsonPath.parse(payload);
+		
 		jsonContext.set("$.attributes.district", "Pune");
-		// jsonContext.set("$.state", "Maharashtra");
-
-		// jsonContext.set("$.username", password);
-
-		try (FileOutputStream fos = new FileOutputStream(filePath)) {
-			Properties properties = new Properties();
-			//String countdata = Integer.toString(usercount2);
-			properties.setProperty("Phonenumber", phnumber);
-			properties.setProperty("District", "pune");
-			properties.store(fos, "Testing");
-			//System.out.println("count in prop = " + countdata);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		String modifiedJsonString = jsonContext.jsonString();
-
+		
+		modifiedJsonString = jsonContext.jsonString();
 		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
+		
 
 	}
 

@@ -46,6 +46,7 @@ public class DealLinkedInstruction_PaymentInstrumentHandler extends BaseClass im
 		By instrument = By.xpath("//div[contains(text(),'" + inst + "')]");
 		driver.findElement(instrument).click();
 		od.linkedInstruction_ToAccountddl.sendKeys(toaccountNo);
+		Thread.sleep(2000);
 		By toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
 		System.out.println(toaccountselect);
 		driver.findElement(toaccountselect).click();

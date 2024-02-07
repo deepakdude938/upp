@@ -182,12 +182,10 @@ public class ECommerceTransactionMaker extends BaseClass {
 		jsClick.click(ecomm.ecommerce_TxnSearch);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_addNewmaker);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		ecomm.ecommerce_dealId.sendKeys(dealId);
 		By dealId_Option = By.xpath("//div[contains(text(),'" + dealId + "')]");
-		WebElement dealIdop = driver.findElement(dealId_Option);
-		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_addNewmaker, Duration.ofSeconds(5));
-		dealIdop.click();
+		driver.findElement(dealId_Option).click();
 		jsClick.click(ecomm.ecommerce_participantIdtxt);
 		ecomm.ecommerce_participantIdtxt.sendKeys("Participant1");
 		Thread.sleep(3000);
@@ -591,8 +589,9 @@ public class ECommerceTransactionMaker extends BaseClass {
 		ecomm.ecommerce_participantId.click();
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_SearchBtn, Duration.ofSeconds(5));
 		jsClick.click(ecomm.ecommerce_SearchBtn);
-		jsClick.click(ecomm.ecommerce_debitAccount);
 		Thread.sleep(3000);
+		jsClick.click(ecomm.ecommerce_debitAccount);
+		
 		ecomm.ecommerce_SubmitBtn.click();
 		Thread.sleep(2000);
 		ecomm.ecommerce_purpose.click();

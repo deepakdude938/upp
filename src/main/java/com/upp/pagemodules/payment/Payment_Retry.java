@@ -52,6 +52,7 @@ public class Payment_Retry extends BaseClass {
 		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))) {
 			od.payments_RetrySlider.click();
+
 		}
 		od.payments_NextArrowButtonRetryMechanism.click();
 	}
@@ -66,14 +67,14 @@ public class Payment_Retry extends BaseClass {
 		Thread.sleep(6000);
 		js.click(od.payments_RetryType);
 
-		// applyExplicitWaitsUntilElementClickable(od.payments_RetryType, Duration.ofSeconds(15));
-		//od.payments_RetryType.click();
+		// applyExplicitWaitsUntilElementClickable(od.payments_RetryType,
+		// Duration.ofSeconds(15));
+		// od.payments_RetryType.click();
 		// js.click(od.payments_RetryType);
-		
-		
+
 //		Actions actions = new Actions(driver);
 //		actions.click(od.payments_RetryType).perform();
-		
+
 //		try {
 //		    Robot robot = new Robot();
 //		    robot.delay(1000); // Introducing a delay before interacting
@@ -94,30 +95,30 @@ public class Payment_Retry extends BaseClass {
 //		    e.printStackTrace();
 //		}
 
-		if(TSID.equalsIgnoreCase("TS137"))
-		{
-		Thread.sleep(3000);
-		js.click(od.payments_RetryType_Forever);
+		if (TSID.equalsIgnoreCase("TS137")) {
+			Thread.sleep(3000);
+			js.click(od.payments_RetryType_Forever);
 		}
-		if(TSID.equalsIgnoreCase("TS140"))
-		{
-		Thread.sleep(3000);
-		js.click(od.payments_RetryType_TillNextDate);
+		if (TSID.equalsIgnoreCase("TS140")) {
+			Thread.sleep(3000);
+			js.click(od.payments_RetryType_TillNextDate);
 		}
-		if(TSID.equalsIgnoreCase("TS141"))
-		{
-		Thread.sleep(3000);
-		js.click(od.payments_RetryType_Custom);
-		Thread.sleep(3000);
-		od.payments_RetryType_CustomDays.sendKeys("1");
+		if (TSID.equalsIgnoreCase("TS141")) {
+			Thread.sleep(3000);
+			js.click(od.payments_RetryType_Custom);
+			Thread.sleep(3000);
+			od.payments_RetryType_CustomDays.sendKeys("1");
 		}
-		
-		if(TSID.equalsIgnoreCase("TS142"))
-		{
-		Thread.sleep(3000);
-		js.click(od.payments_RetryType_SameDay);
-		Thread.sleep(3000);
-		od.payments_Hours.sendKeys("4");
+
+		if (TSID.equalsIgnoreCase("TS142") || TSID.equalsIgnoreCase("TS149")) {
+			Thread.sleep(3000);
+			js.click(od.payments_RetryType_SameDay);
+			Thread.sleep(3000);
+			if (TSID.equalsIgnoreCase("TS149")) {
+				od.payments_Hours.sendKeys("1");
+			} else {
+				od.payments_Hours.sendKeys("4");
+			}
 		}
 		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonRetryMechanism, Duration.ofSeconds(15));

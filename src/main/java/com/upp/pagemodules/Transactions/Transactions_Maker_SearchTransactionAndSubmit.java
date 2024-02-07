@@ -67,29 +67,32 @@ public class Transactions_Maker_SearchTransactionAndSubmit extends BaseClass {
 		tm.transactions_TransactionIcon.click();
 		try {
 			tm.transactions_TransactionMaker.click();
+		} catch (Exception e) {
+			handleElementClickException(tm.transactions_TransactionMaker);
+		}
+		try {
 			od.TxnMaker_searchDealId.clear();
 			od.TxnMaker_searchDealId.sendKeys(dealid);
-			Thread.sleep(2000);
-			try {
-				applyExplicitWaitsUntilElementClickable(od.TxnMaker_txnCheckbox, Duration.ofSeconds(5));
-				od.TxnMaker_txnCheckbox.click();
-				od.TxnMaker_submitBtn.click();
-				od.TxnMaker_okBtn.click();
-			} catch (Exception e) {
-				handleElementClickException(tm.transactions_TransactionMaker);
-				od.TxnMaker_searchDealId.clear();
-				od.TxnMaker_searchDealId.sendKeys(dealid);
-				Thread.sleep(2000);
-				od.TxnMaker_txnCheckbox.click();
-				Thread.sleep(4000);
-				od.TxnMaker_submitBtn.click();
-				od.TxnMaker_okBtn.click();
-			}
 		} catch (Exception e) {
-			System.out.println("Pass");
-			tm.transactions_TransactionMaker.click();
+			handleElementClickException(od.TxnMaker_searchDealId);
+			od.TxnMaker_searchDealId.clear();
+			od.TxnMaker_searchDealId.sendKeys(dealid);
 		}
-		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
+		try {
+			applyExplicitWaitsUntilElementClickable(od.TxnMaker_txnCheckbox, Duration.ofSeconds(5));
+			od.TxnMaker_txnCheckbox.click();
+		} catch (Exception e) {
+			handleElementClickException(od.TxnMaker_txnCheckbox);
+		}
+		try {
+			od.TxnMaker_submitBtn.click();
+			od.TxnMaker_okBtn.click();
+		} catch (Exception e) {
+			handleElementClickException(od.TxnMaker_submitBtn);
+			od.TxnMaker_submitBtn.click();
+			od.TxnMaker_okBtn.click();
+		}
 	}
 
 }
