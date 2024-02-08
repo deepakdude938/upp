@@ -22,8 +22,10 @@ public class Object_Login extends BaseClass {
 	@FindBy(id = "btn-generic-login-submit-v1")
 	public WebElement nextButton;
 	
-
 	@FindBy(id = "btn-generic-login-submit-v1")
 	public WebElement loginIn;
+	
+	@FindBy(id = "lbl-generic-login-error-v1")
+	public WebElement loginError;
 
 }

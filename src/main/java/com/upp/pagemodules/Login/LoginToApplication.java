@@ -1,5 +1,8 @@
 package com.upp.pagemodules.Login;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.Properties;
@@ -57,6 +60,19 @@ public class LoginToApplication extends BaseClass {
 		ol.password.sendKeys(password);
 		ol.loginIn.click();
 
+	}
+	public void unsuccessful_login() throws Exception{
+		Thread.sleep(1000);
+		if(ol.loginError.isDisplayed())
+		{
+			System.out.println("Login is unsuccessful");
+		}
+		else
+		{
+			System.out.println("Test failed");
+		}
+		String errorText = ol.loginError.getText();
+		System.out.println("Login error: "+errorText);
 	}
 
 }
