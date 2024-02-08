@@ -7,7 +7,7 @@ Then Login to the application as "txn_maker"
 Then Fetch EndToEndId from ODP Record with "<TSID>"
 Then Verify in Ecomm Execution Report with given "<TSID>".
 And Get the BatchId from Ecomm Payments
-And Verify the Pain File For Rule_IN_LT_DealLevel
+And Verify the Pain File For Rule_IN_BT_DealLevel
 Examples:
       |TSID   |
       |TS60   |
