@@ -72,7 +72,13 @@ public class Payment_SubInstruction extends BaseClass {
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
 				scroll.scrollInToView(od.payments_ToAccountDropdown);
-				dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
+				if(TSID.equals("TS152_1")) {
+					dropdown.selectByIndex(od.payments_ToAccountDropdown, 1);
+				}
+				else {
+					dropdown.selectByVisibleText(od.payments_ToAccountDropdown, toaccountNo);
+				}
+			
 
 			} else {
 				applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));

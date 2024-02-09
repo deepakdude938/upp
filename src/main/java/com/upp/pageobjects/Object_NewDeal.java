@@ -555,6 +555,12 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[1]")
 	public WebElement payments_ExecutionDate;
 	
+	@FindBy(xpath = "(//input[@id='txt-generic-datePicker-input-v1'])[2]")
+	public WebElement payments_endDate;
+	
+	@FindBy(xpath = "//span[contains(@class,'ui-nav-next')]")
+	public WebElement payments_nextButton;
+	
 	@FindBy(xpath = "//input[@id='txt-generic-datePicker-input-v1']")
 	public WebElement payments_Documents_ExecutionDate;
 
@@ -865,6 +871,9 @@ public class Object_NewDeal extends BaseClass {
 	public WebElement schedule_IBAN;
 	
 	@FindBy(xpath ="//div[@id='payment-to-sel-v1']//select")
+	public WebElement schedule_IBAN_DropDown;
+	
+	@FindBy(xpath ="//div[@id='payment-to-sel-v1']//select")
 	public WebElement schedule_IBAN_Split;
 	
 	@FindBy(id="payment-beneficiaryAddressLine1-txt-v1")
@@ -1091,8 +1100,17 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath="//input[@id='txt-deals-instruction-fundTransferBasic-value-v1']")
 	public WebElement payment_value1;
 	
-	@FindBy(xpath="//select[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']")
+	@FindBy(xpath="//div[@id='sel-deals-instruction-fundTransferSchedule-frequency-v1']//select")
 	public WebElement payment_Frequency1;
+	
+	@FindBy(id="txt-deals-instruction-fundTransferSchedule-repeatEvery-v1")
+	public WebElement payment_repeatEvery;
+	
+	@FindBy(xpath="//div[@id='sel-deals-instruction-fundTransferSchedule-subType-v1']//select")
+	public WebElement payment_subType;
+	
+	@FindBy(xpath="//div[@id='sel-deals-instruction-fundTransferSchedule-week-v1']//select")
+	public WebElement payment_week;
 	
 	@FindBy(xpath="//div[contains(text(),'SC-PaymentProfile')]")
 	public WebElement party_SC_PaymentProfile;

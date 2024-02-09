@@ -403,6 +403,9 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@col-id='Original Amount' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_OriginalAmount;
 	
+	@FindBy(xpath = "//div[@col-id='SCROE Status' and @role='gridcell']")
+	public List<WebElement> reports_AllRecordsScroeStatus;
+	
 	@FindBy(xpath = "//span[normalize-space()='Original Amount']")
 	public WebElement reports_OriginalAmountColoumnName;
 	

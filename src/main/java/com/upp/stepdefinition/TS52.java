@@ -55,7 +55,7 @@ public class TS52 extends BaseClass implements ICallback {
 
 	@Then("Create Payment_Schedule in the scheduled Instructions with given {string}") 
 	public void create_Payment_Schedule_in_the_scheduled_Instructions_with_given(String string) throws Exception {
-		schedule.createPayments_Schedule(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
+		schedule.createPayments_Schedule(string,DealPage.sourceAccountNo,DealPage.toaccountNo,this);
 	}
 
 	@Then("Create Payment_SubInstruction in the scheduled Instructions with given {string}")
