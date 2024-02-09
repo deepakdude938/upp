@@ -21,5 +21,3 @@ And Check the Transaction staus in execution report with given "<TSID>"
 Examples:
       |TSID|
       |TS72|
-
-

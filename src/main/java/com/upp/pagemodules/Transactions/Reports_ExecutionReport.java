@@ -56,7 +56,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static Object_Transactions tm;
-
+    public static int totalRecord;
 	public Reports_ExecutionReport() {
 
 		od = new Object_NewDeal();
@@ -201,6 +201,30 @@ public class Reports_ExecutionReport extends BaseClass {
 			subInstruction.add(iu.getText());
 		}
 		Assert.assertTrue(subInstruction.contains("Payment"));
+		Assert.assertTrue(subInstruction.contains("Retention"));
+	}
+	
+	public void checkInstructionTypeRetention_Surplus(String TSID, String DealId) throws Exception {
+
+		commonmethodExecReport(TSID, DealId);
+
+		String ScroeStatus = tm.reports_ScroeStatus.getText();
+		System.out.println("Scroe status is " + ScroeStatus);
+		if (!(ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled"))) {
+			Assert.fail("Transaction not scheduled");
+		}
+
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructions_Type,
+				tm.reports_horizontalWindow1, 10, 1000);
+
+		Thread.sleep(1000);
+
+		ArrayList<String> subInstruction = new ArrayList();
+		for (WebElement iu : tm.reports_SubInstructions) {
+
+			subInstruction.add(iu.getText());
+		}
+		Assert.assertTrue(subInstruction.contains("Surplus"));
 		Assert.assertTrue(subInstruction.contains("Retention"));
 	}
 
@@ -1496,6 +1520,27 @@ public class Reports_ExecutionReport extends BaseClass {
 			catch (Exception e) {
 				
 				throw new Exception("Error while setting and moving preferences column");
+			}
+		}
+
+		public void validateExtraRecordNotCreated(String string) throws Exception {
+			applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
+			tm.reports_DealId.clear();
+			tm.reports_DealId.sendKeys(dealId);
+			Thread.sleep(2000);
+			List<WebElement> allrecordStatus = tm.reports_AllRecordsScroeStatus;	
+			System.out.println("After"+allrecordStatus.size());
+			Assert.assertEquals(totalRecord, allrecordStatus.size());
+		}
+
+		public void validateRecordStatusAsScheduled(String tSID) throws Exception {
+			commonmethodExecReport(tSID, dealId);
+			Thread.sleep(5000);
+			List<WebElement> allrecordStatus = tm.reports_AllRecordsScroeStatus;	
+			totalRecord = allrecordStatus.size();
+			System.out.println(allrecordStatus.size());
+			for(WebElement record : allrecordStatus) {
+				System.out.println(record.getText());
 			}
 		}
 

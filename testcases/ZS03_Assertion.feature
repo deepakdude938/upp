@@ -10,3 +10,5 @@ Then Verify Tnx Status as Triggered or settled with given "<TSID>"
 Examples:
       |TSID|
       |TS03|
+      
+ 

@@ -282,12 +282,19 @@ public class Payment extends BaseClass{
 		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[last()]");
 		applyExplicitWaitsUntilElementVisible(paymentInstrument, 10);
 		driver.findElement(paymentInstrument).click();
-		
+		if(TSID.equals("TS146")) {
+			System.out.println(toAccountNo);
+			System.out.println("==");
+			scroll.scrollInToView(od.schedule_IBAN_DropDown);
+			dropdown.selectByIndex(od.schedule_IBAN_DropDown, 1);
+		}
+		else {
 		scroll.scrollInToView(od.schedule_IBAN);
 		od.schedule_IBAN.sendKeys(toAccountNo);
 		Thread.sleep(1000);
 		By account = By.xpath("//div[contains(@class,'ui-autocomplete-list-item-div') and normalize-space()='" + toAccountNo + "']");
 		driver.findElement(account).click();
+		}
 		
 		scroll.scrollInToView(od.parties_Accounts_accountOrIban);
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_accountOrIban, Duration.ofSeconds(5));
@@ -307,8 +314,13 @@ public class Payment extends BaseClass{
 		applyExplicitWaitsUntilElementClickable(od.parties_Accounts_beneficiaryAddressLine1, Duration.ofSeconds(5));
 		od.parties_Accounts_beneficiaryAddressLine1.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Address Line 1"));
 		
+		if(TSID.equals("TS146")) {
+			dropdown.selectByVisibleText(od.payments_beneficiaryCountry,externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Country Of Incorporation"));
+		}
+		else {
 		od.payments_beneficiaryCountry.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Country Of Incorporation"));
-
+		}
+		
 		if(commonutils.isElementDisplayed(od.payments_beneficiaryBankBic,1)) {
 		scroll.scrollInToView(od.payments_beneficiaryBankBic);
 		od.payments_beneficiaryBankBic.sendKeys(externalData.getFieldData(TSID, "Payment-Surplus", "Beneficiary Bank Bic"));

@@ -31,6 +31,7 @@ public class BaseClass {
 	public static String env = System.getProperty("env");
 	public static String username = System.getProperty("username");
 	public static String password = System.getProperty("password");
+	public static String tsid;
 	public static boolean isHeadLess;
 	public static Properties prop;
 	public static String dealId = "";
@@ -279,6 +280,30 @@ public class BaseClass {
 //				driver.findElement(ap).click();
 //			}
 			catch(Exception e) {
+				handleElementClickException(element);
+			}
+		}
+		
+		public  void click(WebElement element,int time) {
+			try {
+				applyExplicitWaitsUntilElementClickable(element, Duration.ofSeconds(30));
+			} catch (MalformedURLException e) {
+			}
+			
+			try {
+				element.click();
+			}
+//			catch(StaleElementReferenceException p) {
+//				String xpath = getXpath(element);
+//				System.out.println(xpath);
+//				By ap = By.xpath(xpath);
+//				driver.findElement(ap).click();
+//			}
+			catch(Exception e) {
+				try {
+					Thread.sleep(time*1000);
+				} catch (InterruptedException e1) {
+				}
 				handleElementClickException(element);
 			}
 		}

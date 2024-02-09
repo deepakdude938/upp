@@ -1,17 +1,14 @@
 package com.upp.stepdefinition;
 
 import java.io.IOException;
-
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.pagemodules.DashBoard_Module;
-
 import callbackInterfaces.ICallback;
-
 import com.upp.handlers.DealGroupAttributesHandler;
 import com.upp.handlers.TransactionMaker_PaymentInstrumentHandler;
+import com.upp.handlers.SubInstruction_Handler;
 import com.upp.utils.SwitchWindow;
-
 import com.upp.pagemodules.Deal.DealAccountCreator;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
 import com.upp.pagemodules.Deal.DealPartiesCreator;
@@ -22,7 +19,6 @@ import com.upp.pagemodules.payment.Payment_Notification;
 import com.upp.pagemodules.payment.Payment_Retry;
 import com.upp.pagemodules.payment.Payment_Schedule;
 import com.upp.pagemodules.payment.Payment_SubInstruction;
-
 import io.cucumber.java.en.*;
 
 public class TS105 extends BaseClass implements ICallback {
@@ -56,12 +52,13 @@ public class TS105 extends BaseClass implements ICallback {
 
 	@Then("Create payment_Schedule in the scheduled Instructions with given {string}")
 	public void create_payment_Schedule_in_the_scheduled_Instructions_with_given(String string) throws Exception {
-		schedule.createPayments_Schedule(string,DealPage.AccountNo1,DealPage.toaccountNo);
+		tsid=string;
+		schedule.createPayments_Schedule(string,DealPage.sourceAccountNo,DealPage.toaccountNo,this);
 	}
 
 	@Then("Create payment_SubInstruction in the scheduled Instructions with given {string}")
 	public void create_payment_SubInstruction_in_the_scheduled_Instructions_with_given(String string) throws Exception {
-		inx.createPayments_Subinstruction_without_Party_Added(string,DealPage.AccountNo1,DealPage.toaccountNo);
+		inx.createPayments_Subinstruction_without_Party_Added(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
 	}
 	
 	@Then("Check the Transaction status of all {int} Transactions is Scheduled in execution report with given {string}")
@@ -93,7 +90,7 @@ public class TS105 extends BaseClass implements ICallback {
 
 		}
 
-		if (callbackid.equalsIgnoreCase("PAYMENT_INSTRUMENT")) {
+		else	if (callbackid.equalsIgnoreCase("PAYMENT_INSTRUMENT")) {
 			String paymentInstrument = (String) data;
 			if (paymentInstrument.equalsIgnoreCase("BT")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
@@ -101,6 +98,24 @@ public class TS105 extends BaseClass implements ICallback {
 				instrumentHandler.handleBTPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
 
+		}
+		
+		else	if (callbackid.equalsIgnoreCase("FREQUENCY")) {
+			String frequency = (String) data;
+			if (frequency.equalsIgnoreCase("Days")) {
+				SubInstruction_Handler sh = new SubInstruction_Handler();
+				sh.handleFrequency_Days();
+			}
+			else if (frequency.equalsIgnoreCase("Weekly")) {
+				SubInstruction_Handler sh = new SubInstruction_Handler();
+				sh.handleFrequency_Weekly();
+			}
+			else if (frequency.equalsIgnoreCase("Monthly")) {
+				SubInstruction_Handler sh = new SubInstruction_Handler();
+				sh.handleFrequency_Monthly();
+			}
+			
+			
 		}
 
 	}
