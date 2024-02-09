@@ -174,6 +174,8 @@ public class Payload extends BaseClass{
 		String random = Long.toString(number);
 		String uniquePartyName = "Party" + random;
 		String uniquePartyRefId = "Party" + random;
+		String utcdate = DateUtils.getCurrentDateUTC();
+		System.out.println("Date  = "+utcdate);
 
 		// Used Jackson library to modify Json values
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -183,6 +185,8 @@ public class Payload extends BaseClass{
 		((ObjectNode) nodeToModify).put("dealRefId", dealId);
 		((ObjectNode) nodeToModify).put("name", externalData.getFieldData(TSID, "Party", "Participant Id"));
 		((ObjectNode) nodeToModify).put("partyRefId", externalData.getFieldData(TSID, "Party", "Participant Id"));
+		
+		((ObjectNode) nodeToModify).put("validUntil", utcdate);
 
 		String modifiedJsonString = objectMapper.writeValueAsString(rootNode);
 

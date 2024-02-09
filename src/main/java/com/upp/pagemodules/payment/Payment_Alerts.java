@@ -69,31 +69,36 @@ public class Payment_Alerts extends BaseClass {
 		op.Alerts_contactCheckBox.click();
 		op.Alerts_contactUpdate.click();
 		op.Alerts_basicDetailsNext.click();
-		Thread.sleep(4000);
-		op.Alerts_startsDate.click();
+		click(op.Alerts_startsDate);
+//		Thread.sleep(4000);
+		// op.Alerts_startsDate.click();
 		op.Alerts_todaysDate.click();
 		op.Alerts_Frequency.click();
 		op.Alerts_daysFrequency.click();
-		Thread.sleep(4000);
-		op.Alerts_endDate.click();
-		Thread.sleep(4000);
-		op.Alerts_nextEndDate.click();
-		Thread.sleep(4000);
-		op.Alerts_scheduleAt.click();
+		// Thread.sleep(4000);
+		click(op.Alerts_endDate);
+		// op.Alerts_endDate.click();
+		click(op.Alerts_nextEndDate);
+//		Thread.sleep(4000);
+//		op.Alerts_nextEndDate.click();
+		click(op.Alerts_scheduleAt);
+//		Thread.sleep(4000);
+//		op.Alerts_scheduleAt.click();
 		dropdown.selectByVisibleText(op.Alerts_scheduleAt, "At specific time");
 		op.Alerts_scheduleTime.clear();
 		String timem = DateUtils.getTimeAfterMins(5);
-		System.out.println("time = "+timem);
-		//String time1 = DateUtils.getCurrentTimeUTC();
+		System.out.println("time = " + timem);
+		// String time1 = DateUtils.getCurrentTimeUTC();
 		op.Alerts_scheduleTime.sendKeys(timem);
-		Thread.sleep(4000);
-		op.Alerts_nextBtn.click();
+		click(op.Alerts_nextBtn);
+//		Thread.sleep(4000);
+//		op.Alerts_nextBtn.click();
 //		Thread.sleep(4000);
 
 	}
 
 	public void verifyMessageAndSchedule() throws Exception {
-		int flag =0;
+		int flag = 0;
 		applyExplicitWaitsUntilElementClickable(od.payments_ScheduledInstructionIcon, Duration.ofSeconds(5));
 		od.payments_ScheduledInstructionIcon.click();
 		System.out.println("Scedule working fine");
@@ -110,9 +115,9 @@ public class Payment_Alerts extends BaseClass {
 		Thread.sleep(4000);
 		op.Alerts_nextBtn.click();
 		Thread.sleep(4000);
-		Assert.assertEquals(op.Alerts_summaryMessage.getText(),"Test");
-		if(op.Alerts_summarySchedule.getText().contains("MON")) {
-			flag=1;
+		Assert.assertEquals(op.Alerts_summaryMessage.getText(), "Test");
+		if (op.Alerts_summarySchedule.getText().contains("MON")) {
+			flag = 1;
 		}
 		Assert.assertEquals(flag, 1);
 

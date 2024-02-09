@@ -45,10 +45,10 @@ public class Object_User extends BaseClass {
 	@FindBy(xpath = "//input[@id='txt-perms-users-onBoardUpdate-phone-v1']")
 	public WebElement userMaker_phoneNumberTxt;
 
-	@FindBy(xpath = "//select[@id='sel-deals-basicDetails-country-v1']")
+	@FindBy(xpath = "//div[@id='sel-deals-basicDetails-country-v1']//select")
 	public WebElement userMaker_country;
 
-	@FindBy(xpath = "//select[@id='sel-perms-users-onBoardUpdate-roles-v1']")
+	@FindBy(xpath = "//div[@id='sel-perms-users-onBoardUpdate-roles-v1']//select")
 	public WebElement userMaker_Role;
 	
 	@FindBy(xpath = "(//ui-dropdown[@placeholder='Select roles']//select)[2]")
@@ -121,7 +121,7 @@ public class Object_User extends BaseClass {
 	@FindBy(id = "txt-perms-users-onBoardUpdate-phone-v1")
 	public WebElement usermaker_phone;
 	
-	@FindBy(xpath = "(//select[@id='sel-perms-users-onBoardUpdate-roles-v1'])[1]")
+	@FindBy(xpath = "//div[@id='sel-perms-users-onBoardUpdate-roles-v1']//select")
 	public WebElement usermaker_role;
 	
 	@FindBy(xpath = "//button[contains(@class,'stat-active')]")
@@ -136,6 +136,6 @@ public class Object_User extends BaseClass {
 	@FindBy(id = "ic-perms-users-onBoardUpdate-close-v1")
 	public WebElement user_CloseIcon;
 	
-	@FindBy(xpath = "(//select[@id='sel-perms-users-onBoardUpdate-roles-v1'])[2]")
+	@FindBy(xpath = "(//div[@id='sel-perms-users-onBoardUpdate-roles-v1']//select)[2]")
 	public WebElement User_roles_dropdown;
 }

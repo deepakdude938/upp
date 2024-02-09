@@ -52,6 +52,7 @@ public class Payment_Retry extends BaseClass {
 		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))) {
 			od.payments_RetrySlider.click();
+
 		}
 		od.payments_NextArrowButtonRetryMechanism.click();
 	}

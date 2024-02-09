@@ -259,7 +259,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[contains(text(),'eComm Payments')]")
 	public WebElement reports_eCommPaymentsList;
 
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "//input[@aria-label='End to End ID Filter Input']")
 	public WebElement reports_endToendId;
 
 	
@@ -380,7 +380,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//button[contains(text(),'Ok')]")
 	public WebElement transactionMaker_messageOk;
 
-	@FindBy(xpath = "(//input[@ref='eFloatingFilterText'])[2]")
+	@FindBy(xpath = "(//input[@ref='eInput'])[2]")
 	public WebElement transactionMaker_dealSearch;
 	
 	@FindBy(xpath = "(//input[@ref='eInput'])[10]")

@@ -58,6 +58,7 @@ public class EcommerceHandler extends BaseClass {
 		String PraticipantId = externalData.getFieldData(TSID, "Party", "Participant Id");
 		System.out.println(PraticipantId);
 		od.parties_ParticipantId.sendKeys(PraticipantId);
+
 		od.parties_BasicNextButton.click();
 		Thread.sleep(1000);
 		if(	commonutils.isElementDisplayed(od.parties_ConflictMessage, 10)) {
@@ -75,54 +76,54 @@ public class EcommerceHandler extends BaseClass {
 		// od.startDate.click();
 		debitorFalg = externalData.getFieldData(TSID, "Party", "Debit Accounts");
 		System.out.println(debitorFalg);
-		
+
 		if (debitorFalg.equalsIgnoreCase("Yes") || debitorFalg.equalsIgnoreCase("Y")) {
-			
-			if(TSID.equals("TS78") || TSID.equals("TS76")) {
+
+			if (TSID.equals("TS78") || TSID.equals("TS76")) {
 				Thread.sleep(5000);
-				WebElement s = driver.findElement(By.xpath("//span[@title='"+virtual_Account_Number+"']/../.."));
+				WebElement s = driver.findElement(By.xpath("//span[@title='" + virtual_Account_Number + "']/../.."));
 				s.click();
 			}
-			if(TSID.equals("TS119")) {
+			if (TSID.equals("TS119")) {
 				Thread.sleep(5000);
-				String accountnumber1=DealPage.AccountNo1;
-				String accountnumber2=DealPage.AccountNo2;
-				System.out.println("The Second account number is"+accountnumber2);
+				String accountnumber1 = DealPage.AccountNo1;
+				String accountnumber2 = DealPage.AccountNo2;
+				System.out.println("The Second account number is" + accountnumber2);
 //				WebElement s = driver.findElement(By.xpath("//span[@title='"+accountnumber2+"']/../.."));
-				WebElement s = driver.findElement(By.xpath("//span[normalize-space()='"+accountnumber2+"']/../..//input"));
+				WebElement s = driver
+						.findElement(By.xpath("//span[normalize-space()='" + accountnumber2 + "']/../..//input"));
 
 				s.click();
-				
-				System.out.println("The First account number is"+accountnumber1);
+
+				System.out.println("The First account number is" + accountnumber1);
 //				WebElement s2 = driver.findElement(By.xpath("//span[@title='"+accountnumber1+"']/../.."));
-				WebElement s2 = driver.findElement(By.xpath("//span[normalize-space()='"+accountnumber1+"']/../..//input"));
+				WebElement s2 = driver
+						.findElement(By.xpath("//span[normalize-space()='" + accountnumber1 + "']/../..//input"));
 
 				s2.click();
-			}
-			else if(TSID.equalsIgnoreCase("TS121")){
+			} else if (TSID.equalsIgnoreCase("TS121")) {
 				jsClick.click(od.ecommerceFirstAccount);
 				jsClick.click(od.ecommerceSecondAccount);
-			}
-			else {
-			String hiddenClass = od.accountNumbers.getAttribute("class");
-			System.out.println(hiddenClass);
-			if (!(hiddenClass.contains("ag-hidden"))) {
-				Thread.sleep(500);
-				 debitAccount = od.ecommerceFirstAccountNo.getText();
-				 System.out.println("Debit account is "+debitAccount);
-				jsClick.click(od.ecommerceFirstAccount);
-				Thread.sleep(2500);
-				System.out.println("First = " + od.accountNumbers.getAttribute("class"));
 			} else {
-				System.out.println(od.ecommerceSecondAccount.isSelected());
-				{
-					jsClick.click(od.ecommerceSecondAccount);
+				String hiddenClass = od.accountNumbers.getAttribute("class");
+				System.out.println(hiddenClass);
+				if (!(hiddenClass.contains("ag-hidden"))) {
+					Thread.sleep(500);
+					debitAccount = od.ecommerceFirstAccountNo.getText();
+					System.out.println("Debit account is " + debitAccount);
+					jsClick.click(od.ecommerceFirstAccount);
+					Thread.sleep(2500);
+					System.out.println("First = " + od.accountNumbers.getAttribute("class"));
+				} else {
+					System.out.println(od.ecommerceSecondAccount.isSelected());
+					{
+						jsClick.click(od.ecommerceSecondAccount);
+					}
+					Thread.sleep(2500);
 				}
-				Thread.sleep(2500);
 			}
 		}
-		}
-		
+
 		// od.ecommerce_validTill.click();
 		// od.endDate.click();
 		if (TSID.equalsIgnoreCase("TS08")) {

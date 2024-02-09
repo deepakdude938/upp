@@ -49,15 +49,29 @@ public class ECommerceTransactionChecker extends BaseClass {
 
 	public void ecommChecker_SubmitDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
-		//Thread.sleep(5000);
+		// Thread.sleep(5000);
+		
 		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_txnChecker, Duration.ofSeconds(7));
 		ecomm.ecommerce_txnChecker.click();
-		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnDealSearch, Duration.ofSeconds(100));
-		ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
-		Thread.sleep(4000);
-		ecomm.ecommerce_comment.click();
-		ecomm.ecommerce_note.sendKeys("Ok approve");
+		try {
+			ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
+		} catch (Exception e) {
+			handleElementClickException(ecomm.ecommerce_TxnDealSearch);
+		}
+		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
+		try {
+			ecomm.ecommerce_comment.click();
+		} catch (Exception e) {
+			handleElementClickException(ecomm.ecommerce_comment);
+		}
+		try {
+
+			ecomm.ecommerce_note.sendKeys("Ok approve");
+		} catch (Exception e) {
+			handleElementClickException(ecomm.ecommerce_note);
+			ecomm.ecommerce_note.sendKeys("Ok approve");
+		}
 		ecomm.ecommerce_txnok.click();
 		ecomm.ecommerce_txnCheckbox.click();
 		ecomm.ecommerce_submitBtn.click();
@@ -75,38 +89,34 @@ public class ECommerceTransactionChecker extends BaseClass {
 
 	public void approveRecordFromEcommTxnChecker() throws Exception {
 		try {
-		ecomm.ecommerce_txnChecker.click();
-		}
-		catch(Exception n) {
+			ecomm.ecommerce_txnChecker.click();
+		} catch (Exception n) {
 			handleElementClickException(ecomm.ecommerce_txnChecker);
 		}
 //		ecomm.ecommerce_TxnDealSearch.clear();
 		ecomm.ecommerce_TxnDealSearch1.sendKeys(dealId);
 		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox,Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_AllRecordsCheckBox, Duration.ofSeconds(10));
 		try {
-		ecomm.ecommerce_AllRecordsCheckBox.click();
-		}
-		catch(Exception e) {
+			ecomm.ecommerce_AllRecordsCheckBox.click();
+		} catch (Exception e) {
 			Thread.sleep(2000);
 			handleElementClickException(ecomm.ecommerce_AllRecordsCheckBox);
 		}
 		Thread.sleep(1000);
 		try {
-		ecomm.ecommerce_Allcomment.click();
-		}
-		catch(ElementClickInterceptedException e) {
+			ecomm.ecommerce_Allcomment.click();
+		} catch (ElementClickInterceptedException e) {
 			Thread.sleep(2000);
 			handleElementClickException(ecomm.ecommerce_Allcomment);
 		}
 		ecomm.ecommerce_note.sendKeys("Ok approve");
 		try {
 			ecomm.ecommerce_txnok.click();
+		} catch (Exception n) {
+			Thread.sleep(2000);
+			handleElementClickException(ecomm.ecommerce_txnok);
 		}
-	catch(Exception n) {
-		Thread.sleep(2000);
-		handleElementClickException(ecomm.ecommerce_txnok);
-	}
 		ecomm.ecommerce_submitBtn.click();
 		try {
 			if (ecomm.ecommerce_warning.isDisplayed()) {

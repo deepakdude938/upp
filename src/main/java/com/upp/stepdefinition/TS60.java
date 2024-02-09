@@ -101,6 +101,6 @@ public class TS60 extends BaseClass {
 
 		String bID = batchId;
 		System.out.println("B Id = " + bID);
-		rule.verify_Rule_IN_LT_Deal_Level_PainFile(bID);
+		rule.verify_Rule_IN_LT_Account_Level_PainFile(bID);
 	}
 }

@@ -64,16 +64,21 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		String random = Long.toString(number);
 		String uniqueTransactionName = "tran" + random;
-
+		String toAccount1 = "'"+desAcc;
+		String toAccount2 = "'"+srcAcc;		
+		String srcAccount1 = srcAcc;
+		String srcAccount2 = desAcc;	
 		String uniqueTransactionName2 = "transaction1" + random;
 		String excelFilePath = System.getProperty("user.dir")
 				+ "//src//main//resources//Bulk_ConventionalTransactions_File.xlsx";
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "transactionName", uniqueTransactionName);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "transactionName", uniqueTransactionName2);
-		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "sourceAccount", srcAcc);
-		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "sourceAccount", desAcc);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "sourceAccount", srcAccount1);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "sourceAccount", srcAccount2);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "scheduleTime", time);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "to", toAccount1);
+		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "to", toAccount2);
 		Thread.sleep(3000);
 		tm.transactions_TransactionIcon1.click();
 		Thread.sleep(5000);
@@ -112,12 +117,12 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		String uniqueTransactionName2 = "transaction1" + random;
 		String excelFilePath = System.getProperty("user.dir")
 				+ "//src//main//resources//BulkUploadAdhocTnx_GBAccount.xlsx";
-		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "transactionName", uniqueTransactionName);
+//		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "transactionName", uniqueTransactionName);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "transactionName", uniqueTransactionName2);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "sourceAccount", srcAcc);
-		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "sourceAccount", desAcc);
+//		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "sourceAccount", desAcc);
 		externalData.writeDataToExcel(excelFilePath, "Sheet", 1, "scheduleTime", time);
-		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
+//		externalData.writeDataToExcel(excelFilePath, "Sheet", 2, "scheduleTime", time);
 		Thread.sleep(12000);
 		// tm.transactions_TransactionIcon1.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon1, Duration.ofSeconds(120));
