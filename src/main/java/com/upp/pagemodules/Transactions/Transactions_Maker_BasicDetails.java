@@ -62,32 +62,24 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 	}
 
 	public void Transactions_Maker_BasicDetails(String TSID, String DealId, String sourceAccno) throws Exception {
-		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(120));
-		tm.transactions_TransactionIcon.click();
-		Thread.sleep(13000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionMaker, Duration.ofSeconds(120));
-		tm.transactions_TransactionMaker.click();
-		Thread.sleep(12000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(120));
-		jsClick.click(tm.transactions_AddNewButon);
-		Thread.sleep(8000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(120));
-		tm.transactions_DealId.sendKeys(DealId);
-		Thread.sleep(3000);
-		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
-		driver.findElement(transactions_DealId).click();
-		Thread.sleep(3000);
-		tm.transactions_SourceAccNo.sendKeys(sourceAccno);
-		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
-		driver.findElement(transactions_SouceAccno).click();
-
-		jsClick.click(tm.transactions_SubmitButton);
+		
 		applyExplicitWaitsUntilElementClickable(od.payments_BasicName, Duration.ofSeconds(120));
 		od.payments_BasicName.clear();
 		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Name"));
 		Thread.sleep(4000);
 		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Txn Maker", "Purpose"));
+		
+		String createTxnFrom = externalData.getFieldData(TSID, "Txn Maker", "CreateTxnFrom");
+		if(createTxnFrom.equals("Live Deal")) {
+			
+			System.out.println(sourceAccno);
+			od.payments_SourceAccount.sendKeys(sourceAccno);
+			Thread.sleep(1000);
+			By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+			driver.findElement(sourceaccountselect).click();
+			
+		}
+		
 		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
 				externalData.getFieldData(TSID, "Txn Maker", "Balance Consideration"));
 		Thread.sleep(2000);
@@ -195,6 +187,31 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 			od.payments_SplitBalanceSlider.click();
 		}
 		od.payments_NextArrowButtonTransferBasic.click();
+
+	}
+	
+	public void createNewAdhocTransaction(String TSID, String DealId, String sourceAccno) throws Exception {
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(120));
+		tm.transactions_TransactionIcon.click();
+		Thread.sleep(13000);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionMaker, Duration.ofSeconds(120));
+		tm.transactions_TransactionMaker.click();
+		Thread.sleep(12000);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(120));
+		jsClick.click(tm.transactions_AddNewButon);
+		Thread.sleep(8000);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(120));
+		tm.transactions_DealId.sendKeys(DealId);
+		Thread.sleep(3000);
+		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
+		driver.findElement(transactions_DealId).click();
+		Thread.sleep(3000);
+		tm.transactions_SourceAccNo.sendKeys(sourceAccno);
+		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+		driver.findElement(transactions_SouceAccno).click();
+
+		jsClick.click(tm.transactions_SubmitButton);
 
 	}
 }

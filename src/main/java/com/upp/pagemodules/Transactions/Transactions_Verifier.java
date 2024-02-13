@@ -69,7 +69,8 @@ public class Transactions_Verifier extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIdSearchBox, Duration.ofSeconds(10));
 		tm.transactions_TransactionIdSearchBox.sendKeys(TnxId);
 		Thread.sleep(3000);
-		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(10));
+//		applyExplicitWaitsUntilElementInvisible(tm.transactions_Loader, 200);
+		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionEditButton, Duration.ofSeconds(200));
 		tm.transactions_TransactionEditButton.click();
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));

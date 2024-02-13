@@ -91,7 +91,10 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//button[contains(text(),'Yes')]")
 	public WebElement transactions_YesButton;
-
+	
+	@FindBy(xpath = "//h2[@id='swal2-title' and normalize-space()='Error(s)']")
+	public List<WebElement> transactions_TransactionCheckerError;
+	
 	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONCHECKER']")
 	public WebElement transactions_TransactionChecker;
 	
@@ -112,6 +115,10 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//div[@title='Summary']")
 	public WebElement transactions_SummaryTab;
+	
+	@FindBy(xpath = "//div[contains(@class,'xcro-loader')]")
+	public WebElement transactions_Loader;
+	
 
 	@FindBy(xpath = "(//textarea[@placeholder='Add your comments here ...'])[1]")
 	public WebElement transactions_Checker_Add_comments;
@@ -186,6 +193,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "(//div[@col-id='SCROE Status'])[2] | (//div[@col-id='Settled Status'])[2]")
 	public WebElement reports_ScroeStatus;
+	
+	@FindBy(xpath = "//div[contains(@class,'ag-row-position-absolute ag-row-first')]")
+	public WebElement reports_ScroeStatusRecordFirst;
 
 	@FindBy(xpath = "//div[@ref='eCenterContainer']//div[@role='row']")
 	public List<WebElement> reports_RecordStatus;
@@ -242,6 +252,10 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
 	public WebElement transactions_beneficiaryaccountNumberInput;
+	
+	@FindBy(xpath = "//div[@id='payment-to-sel-v1']//select")
+	public WebElement transactions_beneficiaryaccountNumberInputDropDown;
+	
 
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement transactions_addSubInstruction;

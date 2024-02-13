@@ -97,7 +97,8 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void ExecutionReport(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatus, tm.reports_horizontalWindow1, 9, -1000);
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
@@ -110,6 +111,9 @@ public class Reports_ExecutionReport extends BaseClass {
 			} else {
 				// System.out.println("Transaction is not yet triggered");
 			}
+		}
+		else {
+			Assert.assertFalse(true,"Scroe status didnt found");
 		}
 
 	}
@@ -164,25 +168,22 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-//		tm.reports_searchBox.sendKeys("Execution Report");
-		Thread.sleep(2000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
+		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(10));
 		jsClick.click(tm.reports_ExecutionReport);
-
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
 		tm.reports_DealId.sendKeys(DealId);
-		Thread.sleep(6500);
+//		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
+//		Thread.sleep(6500);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 9, 1000);
 		jsClick.click(tm.cancelIcon);
-		Thread.sleep(6500);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatusRecordFirst, Duration.ofSeconds(30));
 
 	}
 
 	public void checkInstructionTypePayment_Retention(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		if (!(ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled"))) {
