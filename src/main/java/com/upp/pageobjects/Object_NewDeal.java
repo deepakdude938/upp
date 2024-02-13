@@ -273,6 +273,15 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "ic-generic-menu-showMenu-v1")
 	public WebElement dealChecker_showMenu;
+	
+	@FindBy(xpath = "//div[contains(@class,'onbd_action') and normalize-space()='Add Transaction']")
+	public WebElement dealChecker_addTransaction;
+	
+	@FindBy(xpath = "//div[contains(@class,'onbd_action_option drop-down') and normalize-space()='ADHOC']")
+	public WebElement dealChecker_addTransaction_Adhoc;
+	
+	@FindBy(xpath = "//div[contains(@class,'onbd_action_option drop-down') and normalize-space()='ADHOC']//following-sibling::ul/li[normalize-space()='Payment']")
+	public WebElement dealChecker_addTransaction_Adhoc_Payment;
 
 	@FindBy(xpath = "//div[contains(text(),'open')]")
 	public WebElement dealChecker_Open;
@@ -515,6 +524,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']//select")
 	public WebElement payments_Purpose;
+	
+	@FindBy(xpath = "//div[@id='sel-deals-instruction-fundTransferBasic-purpose-v1']//select")
+	public WebElement payments_;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement payments_SourceAccount;

@@ -73,7 +73,15 @@ public class Transactions_Maker_Summary extends BaseClass {
 		Thread.sleep(3000);
 		tm.transactions_SummarySubmitButton.click();
 		Thread.sleep(3000);
-		
+		int i =1;
+		while(tm.transactions_TransactionCheckerError.size()>0 && i<5) {
+			System.out.println("Error no"+i++);
+			tm.transactions_Ok.click();
+			tm.transactions_SummarySubmitButton.click();
+			Thread.sleep(1000);
+			
+		}
+
 		applyExplicitWaitsUntilElementClickable(tm.transactions_YesButton, Duration.ofSeconds(15));
 		tm.transactions_YesButton.click();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Ok, Duration.ofSeconds(15));

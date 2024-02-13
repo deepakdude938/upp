@@ -171,9 +171,18 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 //		applyExplicitWaitsUntilElementClickable(tm.toAccount, Duration.ofSeconds(7));
 //		jsClick.click(tm.toAccount);
 //		dropdown.selectByVisibleText(tm.toAccount, sourceAccountno);
-
-		tm.transactions_bankIFSCCode
-				.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
+		if(tsid.equals("TS157")) {
+			scroll.scrollInToView(tm.transactions_beneficiaryaccountNumberInputDropDown);
+//			tm.transactions_beneficiaryaccountNumberInput.sendKeys(sourceAccountno);
+			dropdown.selectByVisibleText(tm.transactions_beneficiaryaccountNumberInputDropDown, toaccountNo);
+		}
+		else {
+		scroll.scrollInToView(tm.transactions_beneficiaryaccountNumberInput);
+		tm.transactions_beneficiaryaccountNumberInput.sendKeys(sourceAccountno);
+		dropdown.selectByValue(tm.transactions_beneficiaryaccountNumberInput, sourceAccountno);
+		}
+		
+		tm.transactions_bankIFSCCode.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary bank IFSC code"));
 		tm.transactions_beneficiaryName.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Name"));
 		dropdown.selectByValue(tm.transactions_accountOrIban,
 				externalData.getFieldData(TSID, "Txn Maker", "Select Account/IBAN"));
@@ -186,13 +195,8 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 //		}
 
 		scroll.scrollInToView(tm.transactions_country);
-		dropdown.selectByValue(tm.transactions_country,
-				externalData.getFieldData(TSID, "Txn Maker", "beneficiaryCountry"));
-
-		scroll.scrollInToView(tm.transactions_beneficiaryaccountNumberInput);
-		tm.transactions_beneficiaryaccountNumberInput.sendKeys(sourceAccountno);
-		dropdown.selectByValue(tm.transactions_beneficiaryaccountNumberInput, sourceAccountno);
-
+		dropdown.selectByValue(tm.transactions_country,externalData.getFieldData(TSID, "Txn Maker", "beneficiaryCountry"));
+	
 		scroll.scrollInToView(tm.transactions_beneficiaryIncorporation);
 		dropdown.selectByValue(tm.transactions_beneficiaryIncorporation,
 				externalData.getFieldData(TSID, "Txn Maker", "Beneficiary Country Of Incorporation"));

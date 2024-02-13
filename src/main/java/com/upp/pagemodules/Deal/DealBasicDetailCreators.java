@@ -64,10 +64,10 @@ public class DealBasicDetailCreators extends BaseClass {
 
 	}
 
-	public static void createDealBasicDetails(String TSID, ICallback icallback) throws Exception {
+	public void createDealBasicDetails(String TSID, ICallback icallback) throws Exception {
 		Thread.sleep(3000);
-		od.deal_SideMenuIcon.click();
-		od.newDealButton.click();
+		click(od.deal_SideMenuIcon);
+		click(od.newDealButton);
 		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name")+"_"+DateUtils.getCurrentDateTime());
 
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
@@ -115,10 +115,13 @@ public class DealBasicDetailCreators extends BaseClass {
 
 		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
 
-		if (!(ProcessingUnits.equalsIgnoreCase("Select All"))) {
+		if (ProcessingUnits.equalsIgnoreCase("Select All")) {
 			od.deals_ProcessingUnits.click();
 			applyExplicitWaitsUntilElementClickable(od.deals_selectAll, Duration.ofSeconds(10));
 			od.deals_selectAll.click();
+		}
+		else {
+			od.deals_ProcessingUnits.click();
 			applyExplicitWaitsUntilElementClickable(od.deals_ProcessingUnitsSearch, Duration.ofSeconds(5));
 			od.deals_ProcessingUnitsSearch.sendKeys(ProcessingUnits);
 			By ProcessingUnit = By.xpath("//div[contains(text(),'" + ProcessingUnits + "')]");
@@ -296,6 +299,24 @@ public class DealBasicDetailCreators extends BaseClass {
 			 
 		 }
 
+	}
+
+	public void createTransactionFromLiveDeal(String tSID) throws Exception {
+		 applyExplicitWaitsUntilElementClickable(ond.liveDealIcon,Duration.ofSeconds(15));
+		 click(ond.liveDealIcon);
+		 applyExplicitWaitsUntilElementClickable(ond.dealChecker_searchSelect,Duration.ofSeconds(25));
+		 dropdown.selectByVisibleText(ond.dealChecker_searchSelect,"Deal Id");
+		 applyExplicitWaitsUntilElementClickable(ond.dealChecker_searchBar,Duration.ofSeconds(15));
+		 ond.dealChecker_searchBar.sendKeys(dealId);
+		click( ond.dealChecker_searchButton);
+		 applyExplicitWaitsUntilElementClickable( ond.dealChecker_showMenu,Duration.ofSeconds(30));
+		click( ond.dealChecker_showMenu);
+		click( ond.dealChecker_addTransaction);
+		click( ond.dealChecker_addTransaction_Adhoc);
+		click(ond.dealChecker_addTransaction_Adhoc_Payment);
+
+		
+		
 	}
 
 }

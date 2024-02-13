@@ -218,9 +218,9 @@ public class DashBoard_Module extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(5));
 		Thread.sleep(3000);
 		od.payments_DealSubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(20));
 		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(10));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(20));
 		od.payments_DealOkButton.click();
 		System.out.println(dealId);
 		return dealId;
@@ -250,14 +250,9 @@ public class DashBoard_Module extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(40));
 		od.dealChecker_searchBar.sendKeys(dealId);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton, Duration.ofSeconds(10));
-//		od.dealChecker_searchButton.click();
-//		Thread.sleep(5000);
-//		od.dealChecker_searchButton.click();
-//		Thread.sleep(9000);
-//		od.dealChecker_searchButton.click();
-//		Thread.sleep(5000);
 		click(od.dealChecker_searchButton,5);
-		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(30));
+		Thread.sleep(2000);
+		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(40));
 		od.dealChecker_showMenu.click();
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_Open, Duration.ofSeconds(25));
 		od.dealChecker_Open.click();

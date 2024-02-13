@@ -30,7 +30,7 @@ public class TS06 extends BaseClass implements ICallback {
 	public static String sourceAccountNo = "";
 	public static String toaccountNo = "";
 	public static String dealId = "";
-	public static String TSID = "";
+//	public static String TSID = "";
 	public static String TnxId = "";
 	Transactions_Maker_Sub_Instruction tm_sub;
 	Transactions_Maker_Documents tm_doc;
@@ -72,7 +72,8 @@ public class TS06 extends BaseClass implements ICallback {
 	@Given("Create a Transaction from Transaction Maker with given {string}")
 	public void create_a_Transaction_from_Transaction_Maker(String string) throws Exception {
 
-		TSID = string;
+		tsid = string;
+		tm_BasicDetails.createNewAdhocTransaction(string, dealId, DealPage.sourceAccountNo);
 		tm_BasicDetails.Transactions_Maker_BasicDetails(string, dealId, DealPage.sourceAccountNo);
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);
 		tm_doc.Transactions_Maker_Documents(string);
@@ -125,18 +126,18 @@ public class TS06 extends BaseClass implements ICallback {
 			if (paymentInstrument.equalsIgnoreCase("BT")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleBTPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
+				instrumentHandler.handleBTPaymentInstrument(tsid, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
 
 			if (paymentInstrument.equalsIgnoreCase("BT_UAE")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
 
-				instrumentHandler.handleBT_UAEPaymentInstrument(TSID, DealPage.sourceAccountNo, DealPage.toaccountNo);
+				instrumentHandler.handleBT_UAEPaymentInstrument(tsid, DealPage.sourceAccountNo, DealPage.toaccountNo);
 			}
 
 			if (paymentInstrument.equalsIgnoreCase("LT_IN")) {
 				TransactionMaker_PaymentInstrumentHandler instrumentHandler = new TransactionMaker_PaymentInstrumentHandler();
-				instrumentHandler.handleLT_INPaymentInstrumentForAdhocTransaction(TSID, DealPage.sourceAccountNo,
+				instrumentHandler.handleLT_INPaymentInstrumentForAdhocTransaction(tsid, DealPage.sourceAccountNo,
 						DealPage.toaccountNo);
 			}
 		}
