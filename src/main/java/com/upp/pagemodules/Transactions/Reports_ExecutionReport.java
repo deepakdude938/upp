@@ -176,7 +176,11 @@ public class Reports_ExecutionReport extends BaseClass {
 //		Thread.sleep(6500);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 9, 1000);
 		jsClick.click(tm.cancelIcon);
+		try {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatusRecordFirst, Duration.ofSeconds(30));
+		}
+		catch(Exception e) {
+		}
 
 	}
 
@@ -273,6 +277,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void checkBothTransactionStatusIsScheduled(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,tm.reports_horizontalWindow1, 8, 1000);
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
@@ -287,7 +292,9 @@ public class Reports_ExecutionReport extends BaseClass {
 	
 	public void checkBothTransactionStatusIsSettled(String TSID, String DealId) throws Exception {
 
-		commonmethodExecReport(TSID, DealId);
+		commonmethodExecReport(TSID, dealId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
+				tm.reports_horizontalWindow1, 8, 1000);
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		System.out.println("Scroe status is " + ScroeStatus);

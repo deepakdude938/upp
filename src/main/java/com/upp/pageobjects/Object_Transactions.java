@@ -256,6 +256,8 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@id='payment-to-sel-v1']//select")
 	public WebElement transactions_beneficiaryaccountNumberInputDropDown;
 	
+	@FindBy(xpath = "//input[@id='payment-to-txt-v1']")
+	public WebElement transactions_beneficiaryaccountNumberInputTextBox;
 
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement transactions_addSubInstruction;

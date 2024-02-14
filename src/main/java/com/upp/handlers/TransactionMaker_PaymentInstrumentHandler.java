@@ -171,9 +171,11 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 //		applyExplicitWaitsUntilElementClickable(tm.toAccount, Duration.ofSeconds(7));
 //		jsClick.click(tm.toAccount);
 //		dropdown.selectByVisibleText(tm.toAccount, sourceAccountno);
-		if(tsid.equals("TS157")) {
+		System.out.println(tsid);
+		System.out.println(externalData.getFieldData(tsid, "Txn Maker", "CreateTxnFrom").equals("Live Deal"));
+		if(externalData.getFieldData(tsid, "Txn Maker", "CreateTxnFrom").equals("Live Deal")) {
 			scroll.scrollInToView(tm.transactions_beneficiaryaccountNumberInputDropDown);
-//			tm.transactions_beneficiaryaccountNumberInput.sendKeys(sourceAccountno);
+//			tm.transactions_beneficiaryaccountNumberInputTextBox.sendKeys(toaccountNo);
 			dropdown.selectByVisibleText(tm.transactions_beneficiaryaccountNumberInputDropDown, toaccountNo);
 		}
 		else {
@@ -204,11 +206,13 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		applyExplicitWaitsUntilElementClickable(od.payments_AddSubInstructionButton, Duration.ofSeconds(10));
 		scroll.scrollInToView(od.payments_AddSubInstructionButton);
 		od.payments_AddSubInstructionButton.click();
+		
+		if(!tsid.equals("TS158")) {
 		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
 				Duration.ofSeconds(10));
 		jsClick.click(od.payments_NextArrowButtonTransferSubInstruction);
-
+		}
 	}
 
 	public void handle_BT_UK_PaymentInstrument(String TSID) throws Exception {
