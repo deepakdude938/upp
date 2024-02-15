@@ -278,16 +278,15 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		commonmethodExecReport(TSID, DealId);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
 
 		if (!((ScroeStatus.equalsIgnoreCase("Scheduled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Scheduled")))) {
-
 			Assert.fail("The transaction is not Scheduled");
 		}
-
 	}
 	
 	public void checkBothTransactionStatusIsSettled(String TSID, String DealId) throws Exception {
@@ -295,6 +294,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		commonmethodExecReport(TSID, dealId);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		System.out.println("Scroe status is " + ScroeStatus);

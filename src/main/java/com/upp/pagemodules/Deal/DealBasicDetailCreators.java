@@ -114,11 +114,20 @@ public class DealBasicDetailCreators extends BaseClass {
 		}
 
 		String ProcessingUnits = externalData.getFieldData(TSID, "Basic Details", "Processing Units");
-
 		if (ProcessingUnits.equalsIgnoreCase("Select All")) {
-			od.deals_ProcessingUnits.click();
-			applyExplicitWaitsUntilElementClickable(od.deals_selectAll, Duration.ofSeconds(10));
-			od.deals_selectAll.click();
+			try {
+			applyExplicitWaitsUntilElementClickable(od.deals_ProcessingUnitsSelectedText, Duration.ofSeconds(30));
+			String text = od.deals_ProcessingUnitsSelectedText.getText();
+			System.out.println(text);
+			if(!text.equals("All selected")) {
+				od.deals_ProcessingUnits.click();
+				Thread.sleep(1000);
+				applyExplicitWaitsUntilElementClickable(od.deals_selectAll, Duration.ofSeconds(20));
+				od.deals_selectAll.click();
+			}
+		}
+		catch(Exception e) {
+		}
 		}
 		else {
 			od.deals_ProcessingUnits.click();

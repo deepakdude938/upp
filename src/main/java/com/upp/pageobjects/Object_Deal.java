@@ -53,6 +53,9 @@ public class Object_Deal extends BaseClass {
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement deals_ProcessingUnits;
+	
+	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//li/span")
+	public WebElement deals_ProcessingUnitsSelectedText;
 
 	@FindBy(xpath = "//span[contains(text(),'Select All')]")
 	public WebElement deals_selectAll;
@@ -617,6 +620,9 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath="//div[@title='Logout']")
 	public WebElement logOutIcon;
 	
+	@FindBy(xpath="//i[@id='ic-generic-inputError-error-v1']")
+	public WebElement error;
+	//i[@id='ic-generic-inputError-error-v1']
 	//Object for budget page
 	
 

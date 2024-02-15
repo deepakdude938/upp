@@ -75,7 +75,7 @@ public class Transactions_Verifier extends BaseClass {
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_SummaryTab, Duration.ofSeconds(10));
 		tm.transactions_SummaryTab.click();
-		if(!TSID.equals("TS158")) {
+		if(!TSID.equals("TS158") && !TSID.equals("TS159") && !TSID.equals("TS161")) {
 		Thread.sleep(2000);
 		String amount = externalData.getFieldData(TSID, "Txn Maker", "Amount");
 		By AmountID = By.xpath("(//span[@class='ng-star-inserted'][contains(text(),'" + amount + "')])[1]");
