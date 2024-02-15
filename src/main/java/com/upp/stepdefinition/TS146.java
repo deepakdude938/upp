@@ -27,8 +27,8 @@ public class TS146 extends BaseClass{
 	}
 	
 	@Then("Verify Tnx Status as Triggered or settled for all Two Transactions with given {string}")
-	public void verify_Tnx_Status_as_Triggered_or_settled_for_all_Two_Transactions_with_given(String string) throws Exception {
-		report.checkBothTransactionStatusIsSettled(string, string);
+	public void verify_Tnx_Status_as_Triggered_or_settled_for_all_Two_Transactions_with_given(String TSID) throws Exception {
+		report.checkBothTransactionStatusIsSettled(TSID, dealId);
 	}
 	
 }

@@ -74,8 +74,12 @@ public class Transactions_Maker_Summary extends BaseClass {
 		tm.transactions_SummarySubmitButton.click();
 		Thread.sleep(3000);
 		int i =1;
-		while(tm.transactions_TransactionCheckerError.size()>0 && i<5) {
-			System.out.println("Error no"+i++);
+		while(tm.transactions_TransactionCheckerError.size()>0 && i<6) {
+			
+			System.out.println("Error no "+i++);
+			if(i>3) {
+				Thread.sleep(10000);
+			}
 			tm.transactions_Ok.click();
 			tm.transactions_SummarySubmitButton.click();
 			Thread.sleep(1000);

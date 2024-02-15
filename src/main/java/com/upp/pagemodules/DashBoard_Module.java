@@ -215,13 +215,11 @@ public class DashBoard_Module extends BaseClass {
 		String dealId = od.deals_SummaryRefId.getText();
 		Thread.sleep(1000);
 		scroll.scrollInToView(od.payments_DealSubmitButton);
-		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(5));
+		applyExplicitWaitsUntilElementClickable(od.payments_DealSubmitButton, Duration.ofSeconds(20));
 		Thread.sleep(3000);
-		od.payments_DealSubmitButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(20));
-		od.payments_DealYesButton.click();
-		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(20));
-		od.payments_DealOkButton.click();
+		click(od.payments_DealSubmitButton);
+		click(od.payments_DealYesButton);
+		click(od.payments_DealOkButton);
 		System.out.println(dealId);
 		return dealId;
 	}
@@ -234,20 +232,11 @@ public class DashBoard_Module extends BaseClass {
 	public void approveDealFromDealChecker_Old(String dealId) throws Exception {
 
 		System.out.println("The deal id is " + dealId);
-
 		applyExplicitWaitsUntilElementClickable(od.deal_SideMenuIcon, Duration.ofSeconds(15));
-		try {
-		od.deal_SideMenuIcon.click();
-		}
-		catch(ElementClickInterceptedException e) {
-			handleElementClickException(od.deal_SideMenuIcon);
-		}
-//		Thread.sleep(4000);
-//		jsClick.click(od.dealChecker_Button1);
+		click(od.deal_SideMenuIcon);
 		click(od.dealChecker_Button1,4);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchSelect, Duration.ofSeconds(25));
 		dropdown.selectByVisibleText(od.dealChecker_searchSelect, "Deal Id");
-		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(40));
 		od.dealChecker_searchBar.sendKeys(dealId);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_searchButton, Duration.ofSeconds(10));
 		click(od.dealChecker_searchButton,5);
@@ -256,20 +245,16 @@ public class DashBoard_Module extends BaseClass {
 		od.dealChecker_showMenu.click();
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_Open, Duration.ofSeconds(25));
 		od.dealChecker_Open.click();
-//		Thread.sleep(3000);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_addComments, Duration.ofSeconds(10));
-//		jsClick.click(od.dealChecker_addComments);
 		click(od.dealChecker_addComments,3);
 		od.dealChecker_addNote.sendKeys("Ok approved");
-		od.dealChecker_okCommentbutton.click();
+		click(od.dealChecker_okCommentbutton);
 		jsClick.click(od.dealChecker_approveAllRadioButton);
-//		Thread.sleep(3000);
-//		od.dealChecker_ApproveButton.click();
 		click(od.dealChecker_ApproveButton,3);
 		applyExplicitWaitsUntilElementClickable(od.payments_DealYesButton, Duration.ofSeconds(40));
-		od.payments_DealYesButton.click();
+		click(od.payments_DealYesButton);
 		applyExplicitWaitsUntilElementClickable(od.payments_DealOkButton, Duration.ofSeconds(120));
-		od.payments_DealOkButton.click();
+		click(od.payments_DealOkButton);
 	}
 
 	public void createBudget(String TSID, String sourceAccountNo, String toAccountNo) throws Exception, IOException {

@@ -53,9 +53,9 @@ public class TS18 extends BaseClass implements ICallback {
 		pd.addSameDayDependency();
 	}
 	
-	@Given("check Both Transactions Status is Scheduled")
-	public void check_Both_Transactions_Status_is_Scheduled() throws Exception {
-	 report.checkBothTransactionStatusIsScheduled(TSID,TS06.dealId);
+	@And("check Both Transactions Status is Scheduled {string}")
+	public void check_Both_Transactions_Status_is_Scheduled(String TSID) throws Exception {
+	 report.checkBothTransactionStatusIsScheduled(TSID,dealId);
 	}
 	@Then("Check the Execution Report that both Tnx are rejected and verify the Error Message with given {string}")
 	public void check_the_Execution_Report_that_both_Tnx_are_rejected_and_verify_the_Error_Message_with_given(String string) throws Exception {

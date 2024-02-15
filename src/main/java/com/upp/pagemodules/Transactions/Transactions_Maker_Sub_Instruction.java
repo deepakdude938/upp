@@ -86,6 +86,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 	}
 
 	public void Transaction_Maker_Sub_Instruction(String TSID, ICallback icallback) throws Exception {
+		tsid=TSID;
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_Instrument, Duration.ofSeconds(15));
 		if (!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))) {
@@ -94,12 +95,12 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 		} else {
 			tm.transactions_Instrument_when_budget_purpose_enabled.click();
 		}
-		Thread.sleep(3000);
-		if (!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))) {
-			tm.transactions_Instrument.click();
-		} else {
-			tm.transactions_Instrument_when_budget_purpose_enabled.click();
-		}
+//		Thread.sleep(3000);
+//		if (!((TSID.equalsIgnoreCase("TS110")) || (TSID.equalsIgnoreCase("TS113")))) {
+//			tm.transactions_Instrument.click();
+//		} else {
+//			tm.transactions_Instrument_when_budget_purpose_enabled.click();
+//		}
 		
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Txn Maker", "Sub Instruction - Instrument");
 		System.out.println("Excel data in payment = " + paymentInstrumentdata);

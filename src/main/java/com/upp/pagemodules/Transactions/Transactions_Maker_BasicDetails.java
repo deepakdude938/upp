@@ -80,12 +80,12 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 			
 		}
 		
-		dropdown.selectByVisibleText(od.payments_BalanceConsideration,
-				externalData.getFieldData(TSID, "Txn Maker", "Balance Consideration"));
+		dropdown.selectByVisibleText(od.payments_BalanceConsideration, externalData.getFieldData(TSID, "Txn Maker", "Balance Consideration"));
 		Thread.sleep(2000);
-		if (((externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Y")
-				|| (externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Yes"))) {
+		if (((externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Y") || (externalData.getFieldData(TSID, "Txn Maker", "Split")).equalsIgnoreCase("Yes"))) {
 			od.payments_SplitBalanceSlider.click();
+			dropdown.selectByVisibleText(od.payments_SpecifyAmountAs, externalData.getFieldData(TSID, "Txn Maker", "Specify Amount As"));
+			od.payments_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "Txn Maker", "Amount_Value"));
 		}
 
 		if (TSID.startsWith("TS130")) {
@@ -105,18 +105,14 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 				driver.findElement(excecutionDay).click();
 			} catch (Exception e) {
 				if (Integer.parseInt(DateUtils.getDay()) >= 29) {
-					excecutionDay = By
-							.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
+					excecutionDay = By.xpath("//td[contains(@class,'ui-calendar-outFocus') and normalize-space()='2'] ");
 					driver.findElement(excecutionDay).click();
 				}
 			}
-			dropdown.selectByVisibleText(od.payments_HolidayAction,
-					externalData.getFieldData(TSID, "Txn Maker", "Holiday Action"));
+			dropdown.selectByVisibleText(od.payments_HolidayAction,externalData.getFieldData(TSID, "Txn Maker", "Holiday Action"));
 			applyExplicitWaitsUntilElementClickable(od.payments_ScheduleAt, Duration.ofSeconds(5));
-			dropdown.selectByVisibleText(od.payments_ScheduleAt,
-					externalData.getFieldData(TSID, "Txn Maker", "Schedule At"));
-			if (externalData.getFieldData(TSID, "Txn Maker", "Schedule At").trim()
-					.equalsIgnoreCase("At specific time")) {
+			dropdown.selectByVisibleText(od.payments_ScheduleAt,externalData.getFieldData(TSID, "Txn Maker", "Schedule At"));
+			if (externalData.getFieldData(TSID, "Txn Maker", "Schedule At").trim().equalsIgnoreCase("At specific time")) {
 
 				String time = dateutil.getTimeAfterMins(5);
 
@@ -126,11 +122,9 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 				od.payments_ScheduleTime.sendKeys(time);
 				Thread.sleep(3000);
 			}
-
 		}
-
+		
 		od.payments_NextArrowButtonTransferBasic.click();
-
 	}
 
 	public void Transactions_Maker_BasicDetails1(String TSID, String DealId, String sourceAccno) throws Exception {

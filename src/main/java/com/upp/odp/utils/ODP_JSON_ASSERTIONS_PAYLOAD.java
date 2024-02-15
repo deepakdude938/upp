@@ -19,8 +19,8 @@ public class ODP_JSON_ASSERTIONS_PAYLOAD extends BaseClass{
 		HashMap odpRecord = new HashMap<>();
 		odpRecord.put("_id", TSID);
 		odpRecord.put("originTcId", TSID);
-		odpRecord.put("dealId", TS06.dealId);
-		odpRecord.put("dealRefId", TS06.dealId);
+		odpRecord.put("dealId", dealId);
+		odpRecord.put("dealRefId", dealId);
 
 		ObjectMapper mapper = new ObjectMapper();
 		HashMap jsonMap1 = new HashMap();

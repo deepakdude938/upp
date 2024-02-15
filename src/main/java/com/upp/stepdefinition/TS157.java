@@ -35,5 +35,15 @@ public class TS157 extends BaseClass{
 		TS06.TnxId = tm_sum.Transaction_Maker_Summary();
 	   }
 
+	@Then("Create Two Transaction from Live Deals with given {string}")
+	public void create_Two_Transaction_from_Live_Deals_with_given(String TSID) throws Exception {
+			tsid=TSID;
+		   ds.createTransactionFromLiveDeal(TSID);
+			tm_BasicDetails.Transactions_Maker_BasicDetails(TSID, dealId, DealPage.sourceAccountNo);
+			tm_sub.Transaction_Maker_Sub_Instruction(TSID, new TS06());
+			tm_sub.Transaction_Maker_Sub_Instruction("TS158_1", new TS06());
+			tm_doc.Transactions_Maker_Documents(TSID);
+			TS06.TnxId = tm_sum.Transaction_Maker_Summary();
+	}
 
 }

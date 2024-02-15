@@ -556,10 +556,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-instructions-tabSweepIn-next-v1")
 	public WebElement payments_tabSweepInnext;
 	
-	
 	@FindBy(id = "ic-instructions-tabSweepIn-next-v1")
 	public WebElement payments_NextArrowButton;
-	
 
 	@FindBy(xpath = "//ui-switch[@id='sw-deals-instruction-fundTransferSchedule-repeating-v1']//span[@class='slider round']")
 	public WebElement payments_Repeatingslider;
