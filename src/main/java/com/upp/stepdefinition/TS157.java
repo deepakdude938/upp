@@ -41,7 +41,7 @@ public class TS157 extends BaseClass{
 		   ds.createTransactionFromLiveDeal(TSID);
 			tm_BasicDetails.Transactions_Maker_BasicDetails(TSID, dealId, DealPage.sourceAccountNo);
 			tm_sub.Transaction_Maker_Sub_Instruction(TSID, new TS06());
-			tm_sub.Transaction_Maker_Sub_Instruction("TS158_1", new TS06());
+			tm_sub.Transaction_Maker_Sub_Instruction(TSID+"_1", new TS06());
 			tm_doc.Transactions_Maker_Documents(TSID);
 			TS06.TnxId = tm_sum.Transaction_Maker_Summary();
 	}

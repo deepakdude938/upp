@@ -101,7 +101,7 @@ public class Transactions_Maker_Sub_Instruction extends BaseClass {
 //		} else {
 //			tm.transactions_Instrument_when_budget_purpose_enabled.click();
 //		}
-		
+
 		String paymentInstrumentdata = externalData.getFieldData(TSID, "Txn Maker", "Sub Instruction - Instrument");
 		System.out.println("Excel data in payment = " + paymentInstrumentdata);
 		By paymentInstrument = By.xpath("(//div[contains(text(),'" + paymentInstrumentdata + "')])[1]");
