@@ -35,6 +35,8 @@ public class Payload extends BaseClass{
 		String currency=externalData.getFieldData(TSID,"Accounts","Currency");
 		String accountIdentifierKey=externalData.getFieldData(TSID,"Accounts","Physical");
 		String accountBalance=externalData.getFieldData(TSID,"Accounts","Account Balance");
+		String status =externalData.getFieldData(TSID,"Accounts","Status");
+
 		
 		 long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 		 String accno = Long.toString(number);
@@ -94,7 +96,7 @@ public class Payload extends BaseClass{
 		+ "        \"oboAddressLine2\": null,\r\n"
 		+ "        \"oboCountry\": null\r\n"
 		+ "    },\r\n"
-		+ "    \"status\": \"ACTIVE\",\r\n"
+		+ "    \"status\": \""+status+"\",\r\n"
 		+ "    \"name\": \"ACC1212\",\r\n"
 		+ "    \"test1233\": null,\r\n"
 		+ "    \"helperNotes\": {\r\n"

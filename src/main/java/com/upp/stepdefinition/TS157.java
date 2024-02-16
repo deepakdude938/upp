@@ -2,6 +2,7 @@ package com.upp.stepdefinition;
 
 import com.upp.base.BaseClass;
 import com.upp.pagemodules.Deal.DealBasicDetailCreators;
+import com.upp.pagemodules.Transactions.Reports_ExecutionReport;
 import com.upp.pagemodules.Transactions.Transactions_Maker_BasicDetails;
 import com.upp.pagemodules.Transactions.Transactions_Maker_Documents;
 import com.upp.pagemodules.Transactions.Transactions_Maker_Sub_Instruction;
@@ -16,6 +17,7 @@ public class TS157 extends BaseClass{
 	Transactions_Maker_Documents tm_doc;
 	Transactions_Maker_Summary tm_sum;
 	Transactions_Maker_BasicDetails tm_BasicDetails;
+	Reports_ExecutionReport re;
 	
 			public TS157() {
 				ds=new DealBasicDetailCreators();
@@ -23,6 +25,7 @@ public class TS157 extends BaseClass{
 				tm_sub = new Transactions_Maker_Sub_Instruction();
 				tm_doc = new Transactions_Maker_Documents();
 				tm_sum = new Transactions_Maker_Summary();
+				re=new Reports_ExecutionReport();
 			}
 	
 	@Then("Create a Transaction from Live Deals with given {string}")
@@ -45,5 +48,11 @@ public class TS157 extends BaseClass{
 			tm_doc.Transactions_Maker_Documents(TSID);
 			TS06.TnxId = tm_sum.Transaction_Maker_Summary();
 	}
+	
+	@Then("Verify Tnx Status as Rejected for all Two Transactions with given {string}")
+	public void verify_Tnx_Status_as_Rejected_for_all_Two_Transactions_with_given(String tsid) throws Exception {
+	  re.check_Both_Tnx_Rejected(tsid);
+	}
 
+//	check_Both_Tnx_Rejected
 }
