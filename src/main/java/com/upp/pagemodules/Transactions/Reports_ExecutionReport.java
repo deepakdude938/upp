@@ -1573,4 +1573,18 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(rescheduleddate1, ExcpectedRescheduledDate);
 
 		}
+		
+		public void check_Both_Tnx_Rejected(String tsid) throws Exception {
+			commonmethodExecReport(tsid, dealId);
+			applyExplicitWaitsUntilElementClickable( tm.reports_ScroeStatus, Duration.ofSeconds(30));
+			String ScroeStatus = tm.reports_ScroeStatus.getText();
+			String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
+			System.out.println("Scroe status is " + ScroeStatus);
+			System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
+
+			if (!((ScroeStatus.equalsIgnoreCase("Rejected")) && (ScroeStatus2ndrow.equalsIgnoreCase("Rejected")))) {
+
+				Assert.fail("The transaction should be rejected");
+			}
+		}
 }

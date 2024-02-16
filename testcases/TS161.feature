@@ -1,7 +1,7 @@
 Feature: TS161_Adhoc_Transaction_FromDeal_Split_%Balance
 
 @Regression @TS161
-Scenario Outline: Adhoc_Transaction_FromDeal_Split (Maker, Checker, Verifier) 
+Scenario Outline: Adhoc_Transaction_FromDeal_Split(Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".

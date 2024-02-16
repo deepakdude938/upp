@@ -571,7 +571,10 @@ public class Object_Deal extends BaseClass {
 
 	@FindBy(id = "btn-deals-instruction-fundTransferSubInstruction-add-v1")
 	public WebElement payments_AddSubInstructionButton;
-
+	
+	@FindBy(xpath = "//button[@class='swal2-confirm swal2-styled' and normalize-space()='Yes']")
+	public List <WebElement> payments_YesButton;
+	
 	@FindBy(id = "ic-deals-instruction-fundTransferSubInstruction-next-v1")
 	public WebElement payments_NextArrowButtonTransferSubInstruction;
 

@@ -1,7 +1,7 @@
-Feature: TS159_Adhoc_Transaction_FromDeal_Split
+Feature: TS159_Adhoc_Transaction_FromDeal_Split_DormantAccount(Maker, Checker, Verifier) 
 
-@Regressio @TS159
-Scenario Outline: TS159_Adhoc_Transaction_FromDeal_Split (Maker, Checker, Verifier) 
+@Regression @TS159
+Scenario Outline: TS159_Adhoc_Transaction_FromDeal_Split_DormantAccount(Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
 And Create new deal with basic details with given "<TSID>".

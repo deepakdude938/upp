@@ -207,6 +207,10 @@ public class TransactionMaker_PaymentInstrumentHandler extends BaseClass impleme
 		scroll.scrollInToView(od.payments_AddSubInstructionButton);
 		od.payments_AddSubInstructionButton.click();
 		
+		if(od.payments_YesButton.size()>0) {
+			od.TxnChecker_yesBtn.click();
+		}
+		
 		if(!tsid.equals("TS158") && !tsid.equals("TS159") && !tsid.equals("TS161")) {
 		scroll.scrollInToView(od.payments_NextArrowButtonTransferSubInstruction);
 		applyExplicitWaitsUntilElementClickable(od.payments_NextArrowButtonTransferSubInstruction,
