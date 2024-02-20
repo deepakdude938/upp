@@ -88,19 +88,33 @@ public class DealEntitlements extends BaseClass {
 		int flag = 0;
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(15));
-		tm.transactions_TransactionIcon.click();
+		click(tm.transactions_TransactionIcon);
 		Thread.sleep(3000);
-		tm.transactions_TransactionMaker.click();
+		click(tm.transactions_TransactionMaker);
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(15));
 		jsClick.click(tm.transactions_AddNewButon);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_DealId, Duration.ofSeconds(20));
 		tm.transactions_DealId.sendKeys(DealId);
 		By transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
+		try {
 		driver.findElement(transactions_DealId).click();
+		}
+		catch(Exception e) {
+			Thread.sleep(3000);
+			transactions_DealId = By.xpath("//div[contains(text(),'" + DealId + "')]");
+			driver.findElement(transactions_DealId).click();
+		}
 		tm.transactions_SourceAccNo.sendKeys(sourceAccno);
 		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+		try {
 		driver.findElement(transactions_SouceAccno).click();
+		}
+		catch(Exception r) {
+			Thread.sleep(3000);
+			transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
+			driver.findElement(transactions_SouceAccno).click();
+		}
 		jsClick.click(tm.transactions_SubmitButton);
 		Thread.sleep(2000);
 		try {
@@ -111,10 +125,10 @@ public class DealEntitlements extends BaseClass {
 				}
 		Thread.sleep(2000);
 		if (TSID.equalsIgnoreCase("TS54")) {
-			tm.entitlements_Account.click();
+			click(tm.entitlements_Account);
 			Thread.sleep(1000);
 		}
-		tm.contactDetails.click();
+		click(tm.contactDetails);
 
 		String contacts = externalData.getFieldData(TSID, "Party", "Email");
 		if (tm.initiatingContact.getText().contains(contacts)) {
@@ -133,7 +147,6 @@ public class DealEntitlements extends BaseClass {
 		Thread.sleep(1000);
 		By transactions_SouceAccno = By.xpath("//div[contains(text(),'" + sourceAccno + "')]");
 		driver.findElement(transactions_SouceAccno).click();
-
 		od.rangeFrom.sendKeys(externalData.getFieldData(TSID, "Entitlements", "Range From"));
 		od.initiatingContact.click();
 

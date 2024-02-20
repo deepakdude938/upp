@@ -115,6 +115,12 @@ public class Object_Deal extends BaseClass {
 	@FindBy(id = "ic-deals-account-accountDetails-addAccount-v1")
 	public WebElement accounts_addAccount;
 	
+	@FindBy(id = "ic-deals-account-accountDetails-addAccount-v1")
+	public List<WebElement> accounts_addAccount1;
+	
+	@FindBy(xpath = "//table[@class='acc-tbl ng-star-inserted']//tr")
+	public List<WebElement> accounts_addAccount2;
+	
 	@FindBy(xpath = "//span[@class='ui-icon ic ic-edit_blue flex-center ng-star-inserted']")
 	public WebElement account_edit_icon;
 	

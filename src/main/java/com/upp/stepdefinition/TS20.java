@@ -21,9 +21,9 @@ public class TS20 {
 		retention.createRetentionSurplus(TSID);
 	}
 	
-	@Then("Validate SubInstruction Type as {string} and {string} and {string}")
-	public void validate_SubInstruction_Type_as_and_and(String payment, String surplus, String retention1) throws Exception {
-		re.checkSubInstructionTypeInExecutionReport(payment,surplus,retention1);
+	@Then("Validate SubInstruction Type as {string} and {string} and {string} for {string}")
+	public void validate_SubInstruction_Type_as_and_and(String payment, String surplus, String retention1,String tsid) throws Exception {
+		re.checkSubInstructionTypeInExecutionReport(payment,surplus,retention1,tsid);
 	}
 	
 }

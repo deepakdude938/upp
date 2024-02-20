@@ -961,6 +961,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "ic-instructions-tabRetryMechanism-next-v1")
 	public WebElement retention_RetryNextButton;
 	
+	@FindBy(xpath = "(//span[@class='slider round'])[4]")
+	public WebElement retention_NotificationAlert;
+	
+	
 	@FindBy(xpath = "//span[@class='ui-widget-ct ui-text-s ui-instruction-title' and normalize-space()='Summary']")
 	public WebElement retention_Summary;
 	

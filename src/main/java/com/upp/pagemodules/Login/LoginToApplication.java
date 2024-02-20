@@ -47,10 +47,11 @@ public class LoginToApplication extends BaseClass {
 		if(username==null) {
 			 username = prop.getProperty(userNameKey);
 		}
-		if(password==null) {
+		if(password==null ) {
 			password = prop.getProperty(pwdKey);
 		}
 	
+		System.out.println(username+"="+password);
 		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(35));
 		ol.username.sendKeys(username);
 //		ol.nextButton.click();

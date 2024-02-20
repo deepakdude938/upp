@@ -320,23 +320,10 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	}
 
-	public static void checkSubInstructionTypeInExecutionReport(String payment, String surplus, String retention)
+	public void checkSubInstructionTypeInExecutionReport(String payment, String surplus, String retention, String tsid)
 			throws Exception {
-
-		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
-		jsClick.click(tm.reports_ReportsIcon);
-		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
-		jsClick.click(tm.reports_ReportsInternal);
-//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-//		tm.reports_searchBox.sendKeys("Execution Report");
-		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
-		jsClick.click(tm.reports_ExecutionReport);
-		Thread.sleep(2000);
-		jsClick.click(tm.cancelIcon);
-		Thread.sleep(4000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
-		tm.reports_DealId.sendKeys(dealId);
+		
+		commonmethodExecReport(tsid, dealId);
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructionType, tm.reports_horizontalWindow1,
 				10, 1000);
@@ -1087,6 +1074,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void check_All_3_Transaction_StatusIsScheduled(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
@@ -1586,5 +1574,29 @@ public class Reports_ExecutionReport extends BaseClass {
 
 				Assert.fail("The transaction should be rejected");
 			}
+		}
+
+		public void checkStatusAndInstructionTypeForRetention(String tsid) throws Exception {
+
+			commonmethodExecReport(tsid, dealId);
+			applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
+			String ScroeStatus = tm.reports_ScroeStatus.getText();
+			System.out.println("Scroe status is " + ScroeStatus);
+			if (!(ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled"))) {
+				Assert.fail("Transaction not scheduled");
+			}
+
+			// scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
+			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructions_Type,
+					tm.reports_horizontalWindow1, 10, 1000);
+
+			Thread.sleep(1000);
+
+			ArrayList<String> subInstruction = new ArrayList();
+			for (WebElement iu : tm.reports_SubInstructions) {
+
+				subInstruction.add(iu.getText());
+			}
+			Assert.assertTrue(subInstruction.contains("Retention"));
 		}
 }
