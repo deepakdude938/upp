@@ -57,6 +57,18 @@ public class DealPage extends BaseClass implements ICallback {
 		DealBasicDetailCreators deal = new DealBasicDetailCreators();
 		deal.createDealBasicDetails(TSID, this);
 	}
+	
+	@And("Navigate to new deal page to validate that Product field is not defaulted to any values")
+	public void validateProductField()throws Exception {
+		DealBasicDetailCreators deal = new DealBasicDetailCreators();
+		deal.dealBasicDetailsPdt();
+	}
+	
+	@And("Validate that Processing Unit field is not defaulted to any values")
+	public void validateProcUnitField()throws Exception {
+		DealBasicDetailCreators deal = new DealBasicDetailCreators();
+		deal.dealBasicDetailsPU();
+	}
 
 	@Then("Create two Accounts with given {string}")
 	public void create_two_Accounts_with_given(String string) throws Exception {

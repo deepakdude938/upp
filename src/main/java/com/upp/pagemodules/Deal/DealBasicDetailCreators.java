@@ -304,10 +304,8 @@ public class DealBasicDetailCreators extends BaseClass {
 			applyExplicitWaitsUntilElementClickable(ond.dealChecker_showMenu, Duration.ofSeconds(20));
 			ond.dealChecker_showMenu.click();
 			 applyExplicitWaitsUntilElementClickable(ond.DealDraftsOpen,Duration.ofSeconds(20));
-			 ond.DealDraftsOpen.click();
-			 
+			 ond.DealDraftsOpen.click(); 
 		 }
-
 	}
 
 	public void createTransactionFromLiveDeal(String tSID) throws Exception {
@@ -328,4 +326,36 @@ public class DealBasicDetailCreators extends BaseClass {
 		
 	}
 
+	public static void dealBasicDetailsPdt() throws Exception {
+		Thread.sleep(3000);
+		od.deal_SideMenuIcon.click();
+		od.newDealButton.click();
+		String pdtName = od.deal_Product.getAccessibleName();
+		System.out.println("pdtName: "+pdtName);
+		
+		if(!(pdtName==null))
+		{
+			System.out.println("Product Dropdown is not defaulted to a value");
+		}
+		else
+		{
+			System.out.println("Product Dropdown is defaulted to "+pdtName);
+		}
+		}
+	
+	public static void dealBasicDetailsPU() throws Exception {
+		Thread.sleep(3000);
+		String procUnitName = od.deals_ProcessingUnits.getAccessibleName();
+		System.out.println("Processing Unit: "+procUnitName);
+		
+		if(!(procUnitName==null))
+		{
+			System.out.println("Processing Unit Dropdown is not defaulted to a value");
+		}
+		else
+		{
+			System.out.println("Product Dropdown is defaulted to "+procUnitName);
+		}
+		}
 }
+		
