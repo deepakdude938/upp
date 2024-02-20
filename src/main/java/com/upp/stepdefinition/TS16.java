@@ -52,10 +52,12 @@ public class TS16 extends BaseClass implements ICallback {
 
 	@Then("check status and instruction type for payment retention with given {string}")
 	public void check_status_and_instruction_type_for_payment_retention_with_given(String string) throws Exception {
-
 		report.checkInstructionTypePayment_Retention(string,TS06.dealId);
+	}
 	
-
+	@Then("Check status and instruction type for retention with given {string}")
+	public void check_status_and_instruction_type_for_retention_with_given(String tsid) throws Exception {
+		report.checkStatusAndInstructionTypeForRetention(tsid);
 	}
 
 	@Override

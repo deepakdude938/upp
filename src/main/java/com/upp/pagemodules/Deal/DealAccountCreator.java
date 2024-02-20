@@ -96,7 +96,16 @@ public class DealAccountCreator extends BaseClass {
 		catch(Exception e) {
 			handleElementClickException(od.accounts_addAccount);
 		}
-		Thread.sleep(2000);
+		
+		By account = By.xpath("//table[@class='acc-tbl ng-star-inserted']//tr//td[normalize-space()='"+accountNo+"']");
+		try {
+			applyExplicitWaitsUntilElementVisible(account, 5);
+		}
+		catch(Exception n) {
+			od.accounts_addAccount.click();
+			applyExplicitWaitsUntilElementVisible(account, 5);
+		}
+
 		return accountNo;
 	}
 	

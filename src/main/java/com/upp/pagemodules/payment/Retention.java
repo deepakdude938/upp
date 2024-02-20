@@ -88,50 +88,7 @@ public class Retention extends BaseClass{
 		System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
 		
 		od.retention_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
-//		if(TSID.equalsIgnoreCase("TS122"))
-//		{
-//			
-//			jsClick.sendKeys(od.retention_SpecifyAmountValue, "£30,000,0000.00");
-//			od.retention_SpecifyAmountValue.clear();
-//			Thread.sleep(500);
-//			jsClick.sendKeys(od.retention_SpecifyAmountValue, "£30,000,0000.00");
-//			od.retention_SpecifyAmountValue.clear();
-//			Thread.sleep(1000);
-//			od.retention_SpecifyAmountValue.sendKeys(Keys.BACK_SPACE);
-//			Thread.sleep(1000);
-//			od.retention_SpecifyAmountValue.sendKeys(Keys.BACK_SPACE);
-//			Thread.sleep(1000);
-//			od.retention_SpecifyAmountValue.sendKeys("£30,000,0000.00");
-//			od.retention_SpecifyAmountValue.clear();
-//			Thread.sleep(500);
-//			od.retention_SpecifyAmountValue.sendKeys("300000");
-//			od.retention_SpecifyAmountValue.sendKeys("3");
-//			
-//			jsClick.sendKeys(od.retention_SpecifyAmountValue, "£30,000,0000.00");
-//			od.retention_basicDetils_Name.click();
-//			try {
-//	            // Create a Robot instance
-//	            Robot robot = new Robot();
-//
-//	            // Move the mouse cursor to the desired coordinates outside of the element
-//	            int x = 600; // Set your desired X-coordinate
-//	            int y = 800; // Set your desired Y-coordinate
-//	            robot.mouseMove(x, y);
-//	            Thread.sleep(3000);
-//
-//	            // Simulate a left mouse click
-//	            robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//	            Thread.sleep(800);
-//	            robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//	            Thread.sleep(800);
-//	        } catch (AWTException e) {
-//	            e.printStackTrace();
-//	        }
-//			
-//			Thread.sleep(500);
-//		}
 		od.retention_nextArrowIcon.click();
-		
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
 		String	day= DateUtils.getDay();
@@ -150,7 +107,6 @@ public class Retention extends BaseClass{
 		dropdown.selectByValue(od.retention_SelectTimezone, "Asia/Calcutta")	;
 		Thread.sleep(1000);
 		dropdown.selectByVisibleText(od.retention_Execute1,"On scheduled date");
-		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 		
 		if(isWebElementDisplayed(od.retention_ScheduleNoOfDays)) {
@@ -164,19 +120,19 @@ public class Retention extends BaseClass{
 		od.retention_SubInstructionNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.retention_RetryNextButton, Duration.ofSeconds(10));
 		od.retention_RetryNextButton.click();
+		String notification = externalData.getFieldData(TSID, "PaymentRetention", "Notification Enable");
+		if(notification.equals("Y") || notification.equals("Yes")) {
+			click(od.retention_NotificationAlert);
+		}
 		od.retention_Summary.click();
-		
 		Thread.sleep(1000);
 		applyExplicitWaitsUntilElementClickable(od.retention_SummaryPurpose, Duration.ofSeconds(10));
 		String purpose = od.retention_SummaryPurpose.getText();
-		
 		a.assertEquals( "Retention",purpose);
 		od.retention_BackButton.click();
 		a.assertAll();
 
 	}
-	
-
 
 	public void createJsonFile(String TSID) throws Exception {
 
