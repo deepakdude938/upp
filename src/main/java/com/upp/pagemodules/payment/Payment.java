@@ -622,7 +622,12 @@ public class Payment extends BaseClass{
 		}
 		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
-			od.payments_Repeatingslider.click();
+//			if(TSID.equals("TS51")) {
+				if(commonutils.isElementDisplayed(od.payments_endDate, 10)) {
+					od.payments_Repeatingslider.click();
+				}
+//			}
+//			od.payments_Repeatingslider.click();
 			
 		}
 		

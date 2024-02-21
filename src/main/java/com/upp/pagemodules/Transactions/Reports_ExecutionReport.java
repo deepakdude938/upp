@@ -505,20 +505,16 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		System.out.println("amount1 :" + strNumberamount1);
 		System.out.println("amount2 :" + strNumberamount2);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String status = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 
 		if (!(status.equalsIgnoreCase("Scheduled"))) {
-
 			Assert.fail("Transaction should be scheduled");
-
 		}
 
 		if (!(ScroeStatus2ndrow.equalsIgnoreCase("Scheduled"))) {
-
 			Assert.fail("Transaction should be scheduled");
-
 		}
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_OriginalAmountColumn,
@@ -715,6 +711,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		ArrayList<String> scroeStatus = new ArrayList();
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			System.out.println(iu.getText().trim());
@@ -769,6 +766,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(dealId);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		ArrayList<String> scroeStatus = new ArrayList();
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			scroeStatus.add(iu.getText().trim());
@@ -784,6 +782,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(DealId);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		ArrayList<String> scroeStatus = new ArrayList();
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			scroeStatus.add(iu.getText().trim());
@@ -800,6 +799,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
 		ArrayList<String> scroeStatus = new ArrayList();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			scroeStatus.add(iu.getText().trim());
 		}
@@ -815,6 +815,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
 		ArrayList<String> scroeStatus = new ArrayList();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			scroeStatus.add(iu.getText().trim());
 		}
@@ -835,6 +836,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(DealId);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		ArrayList<String> scroeStatus = new ArrayList();
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			scroeStatus.add(iu.getText().trim());
@@ -856,7 +858,7 @@ public class Reports_ExecutionReport extends BaseClass {
 //		long wait = Long.parseLong(timem);
 		TimeUnit.MINUTES.sleep(8);
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		Assert.assertEquals(ScroeStatus, "Awaiting for Dependant");
@@ -865,7 +867,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void ExecutionReportForSchedule(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		Assert.assertEquals(ScroeStatus, "Scheduled");
@@ -875,6 +877,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void Check_Both_Tnx_Rejected_Verify_Error_Message(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
@@ -915,7 +918,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		System.out.println("amount1 :" + strNumberamount1);
 		System.out.println("amount2 :" + strNumberamount2);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String status = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 
@@ -949,6 +952,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		System.out.println(tm.reports_ScroeStatusRecords.size() + " Records");
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			System.out.println(iu.getText().trim());
@@ -962,6 +966,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
 		ArrayList<String> scroeStatus = new ArrayList();
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(40));
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 
 			scroeStatus.add(iu.getText().trim());

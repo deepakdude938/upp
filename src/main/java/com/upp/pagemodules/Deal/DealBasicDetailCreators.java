@@ -136,6 +136,12 @@ public class DealBasicDetailCreators extends BaseClass {
 			By ProcessingUnit = By.xpath("//div[contains(text(),'" + ProcessingUnits + "')]");
 			driver.findElement(ProcessingUnit).click();
 		}
+		
+	String	input1 = externalData.getFieldData(TSID, "Basic Details", "Enable Transaction Verifier");
+	boolean a=	commonutils.isElementDisplayed(od.transactionLimit, 5);
+	if(((input1.equalsIgnoreCase("Y") || input1.equalsIgnoreCase("Yes")) && !a) || (input1.equalsIgnoreCase("N") || input1.equalsIgnoreCase("No")) && a) {
+		click(od.enableTransactionLimit);
+	}
 
 		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
 		od.transactionCategory.click();

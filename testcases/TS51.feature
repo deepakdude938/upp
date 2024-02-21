@@ -7,7 +7,7 @@ Given Open browser and enter url
 Then Login to the application as "deal_maker"
 And Create new deal with basic details with given "<TSID>".
 And Create two Accounts with given "<TSID>"
-And Create Parties in the Parties Tab with given "<TSID>"
+#And Create Parties in the Parties Tab with given "<TSID>"
 And Create Payments in schedule instruction for "<TSID>"
 And Create Payment_SubInstruction for "<TSID>"
 And Create Payment_SubInstruction for "TS51_1"

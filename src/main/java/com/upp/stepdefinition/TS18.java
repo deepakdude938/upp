@@ -53,7 +53,7 @@ public class TS18 extends BaseClass implements ICallback {
 		pd.addSameDayDependency();
 	}
 	
-	@And("check Both Transactions Status is Scheduled {string}")
+	@And("Check Both Transactions Status is Scheduled {string}")
 	public void check_Both_Transactions_Status_is_Scheduled(String TSID) throws Exception {
 	 report.checkBothTransactionStatusIsScheduled(TSID,dealId);
 	}
