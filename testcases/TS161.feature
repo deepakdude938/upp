@@ -12,8 +12,8 @@ And Create record in ODP "<TSID>"
 Then approve the deal from the deal checker common method
 And Create Two Transaction from Live Deals with given "<TSID>"
 Then Approve the transaction from Transaction Checker with given "<TSID>"
-Then Approve the transaction from Transaction Verifier with given "<TSID>"
-And check Both Transactions Status is Scheduled "<TSID>"
+#Then Approve the transaction from Transaction Verifier with given "<TSID>"
+And Check Both Transactions Status is Scheduled "<TSID>"
 Examples:
       |TSID   |
       |TS161 |

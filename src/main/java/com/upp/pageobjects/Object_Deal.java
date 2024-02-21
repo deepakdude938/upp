@@ -47,6 +47,12 @@ public class Object_Deal extends BaseClass {
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement transactionCategory;
+	
+	@FindBy(xpath = "//label[@id='deal-basic-txnLimitAmount']")
+	public WebElement transactionLimit;
+	
+	@FindBy(xpath = "//ui-switch[@id='deal-basic-enableTxnVerifier']//span")
+	public WebElement enableTransactionLimit;
 
 	@FindBy(xpath = "//button[normalize-space()='Save']")
 	public WebElement saveButton;

@@ -14,6 +14,7 @@ import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.pageobjects.Object_NewDeal;
 import com.upp.pageobjects.Object_Login;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.utils.ExcelReader;
@@ -24,11 +25,12 @@ public class LoginToApplication extends BaseClass {
 
 	public static Object_Login ol;
 	public static Properties prop;
+	public CommonUtils cm;
 
 	public LoginToApplication() {
 
 		ol = new Object_Login();
-
+		cm=new CommonUtils(driver);
 	}
 
 	public void login(String userType, Properties prop) throws Exception{
@@ -47,11 +49,9 @@ public class LoginToApplication extends BaseClass {
 		if(username==null) {
 			 username = prop.getProperty(userNameKey);
 		}
-		if(password==null ) {
+		if(password==null || userType.equals("invalid_deal_maker")) {
 			password = prop.getProperty(pwdKey);
 		}
-	
-		System.out.println(username+"="+password);
 		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(35));
 		ol.username.sendKeys(username);
 //		ol.nextButton.click();
@@ -64,16 +64,13 @@ public class LoginToApplication extends BaseClass {
 	}
 	public void unsuccessful_login() throws Exception{
 		Thread.sleep(1000);
-		if(ol.loginError.isDisplayed())
-		{
+		if(cm.isElementDisplayed( ol.loginError,5)){
 			System.out.println("Login is unsuccessful");
+			String errorText = ol.loginError.getText();
+			System.out.println("Login error: "+errorText);
 		}
-		else
-		{
+		else{
 			System.out.println("Test failed");
 		}
-		String errorText = ol.loginError.getText();
-		System.out.println("Login error: "+errorText);
 	}
-
 }

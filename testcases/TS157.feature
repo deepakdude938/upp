@@ -12,7 +12,7 @@ Then submit the deal
 Then approve the deal from the deal checker common method
 And Create a Transaction from Live Deals with given "<TSID>"
 Then Approve the transaction from Transaction Checker with given "<TSID>"
-Then Approve the transaction from Transaction Verifier with given "<TSID>"
+#Then Approve the transaction from Transaction Verifier with given "<TSID>"
 And Check the Transaction staus in execution report with given "<TSID>"
 Examples:
       |TSID   |
