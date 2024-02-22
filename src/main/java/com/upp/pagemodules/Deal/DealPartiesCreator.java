@@ -172,6 +172,7 @@ public class DealPartiesCreator extends BaseClass {
 		System.out.println(PraticipantId);
 		od.parties_ParticipantId.sendKeys(PraticipantId);
 		od.parties_BasicNextButton.click();
+		applyExplicitWaitsUntilElementClickable(od.parties_PartyNameText, Duration.ofSeconds(20));
 		
 	}
 
