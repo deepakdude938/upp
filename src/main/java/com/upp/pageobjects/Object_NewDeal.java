@@ -417,7 +417,10 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(id = "btn-parties-partyBasic-updateParty-v1")
 	public WebElement parties_BasicNextButton;
-
+	
+	@FindBy(xpath = "//div[@class='party_name_board']")
+	public WebElement parties_PartyNameText;
+	
 	@FindBy(id = "ic-generic-partyContacts-getStarted-v1")
 	public WebElement parties_AddContact;
 

@@ -60,7 +60,10 @@ public class LoginToApplication extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(ol.username, Duration.ofSeconds(5));
 		ol.password.sendKeys(password);
 		ol.loginIn.click();
-
+		if(userType.equals("invalid_deal_maker")) {
+				username = System.getProperty("username");
+				password = System.getProperty("password");
+		}
 	}
 	public void unsuccessful_login() throws Exception{
 		Thread.sleep(1000);

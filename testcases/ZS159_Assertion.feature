@@ -1,4 +1,4 @@
-Feature: TS159_Adhoc_Transaction_FromDeal_Split_DormantAccount(Maker, Checker, Verifier) 
+Feature: TS159_Adhoc_Transaction_FromDeal_Split_DormantAccount_Assertion(Maker, Checker, Verifier) 
 
 @Assertion @TS159 @Regression
 Scenario Outline: TS159_Adhoc_Transaction_FromDeal_Split_DormantAccount_Assertion(Maker, Checker, Verifier) 

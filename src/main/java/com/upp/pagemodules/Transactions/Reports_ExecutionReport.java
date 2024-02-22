@@ -99,6 +99,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		commonmethodExecReport(TSID, DealId);
 		
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatus, tm.reports_horizontalWindow1, 9, -1000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled")) {
@@ -1131,6 +1132,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void check_All_6_Transaction_StatusIsScheduled(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();

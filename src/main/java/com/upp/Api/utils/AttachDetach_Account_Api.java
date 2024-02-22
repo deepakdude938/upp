@@ -159,6 +159,7 @@ public class AttachDetach_Account_Api extends BaseClass{
 		String endpoint1 = "/attachAccount";
 		String finalEndpoint= endpoint+dealId+"/"+dealId+"-"+participantId+endpoint1;
 		System.out.println(finalEndpoint);
+		pay.api_AttachPhysicalAccount(TSID);
 	
 		String res = (String) given().header("Content-Type", "application/json")
 				.header("Authorization", LoginAPI_UPP.authToken)

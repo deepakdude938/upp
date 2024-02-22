@@ -136,6 +136,7 @@ public class DashBoard_Module extends BaseClass {
 		od.linkedInstruction_SourceAccounttxt.click();
 		od.linkedInstruction_Accountvalue.sendKeys(sourceAccountno);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
+		Thread.sleep(1000);
 		driver.findElement(sourceaccountselect).click();
 		dropdown.selectByVisibleText(od.linkedInstruction_Balanceddl,
 				externalData.getFieldData(TSID, "Linked", "Balance Consideration"));
