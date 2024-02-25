@@ -53,6 +53,9 @@ public class TS157 extends BaseClass{
 	public void verify_Tnx_Status_as_Rejected_for_all_Two_Transactions_with_given(String tsid) throws Exception {
 	  re.check_Both_Tnx_Rejected(tsid);
 	}
-
-//	check_Both_Tnx_Rejected
+	
+	@Then("Check Both Transactions Status is Scheduled or Settled {string}")
+	public void check_Both_Transactions_Status_is_Scheduled_or_Settled(String TSID) throws Exception {
+	 re.checkBothTransactionStatusIsScheduledOrSettled(TSID, dealId);
+	}
 }

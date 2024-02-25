@@ -142,9 +142,13 @@ public class DealBasicDetailCreators extends BaseClass {
 	if(((input1.equalsIgnoreCase("Y") || input1.equalsIgnoreCase("Yes")) && !a) || (input1.equalsIgnoreCase("N") || input1.equalsIgnoreCase("No")) && a) {
 		click(od.enableTransactionLimit);
 	}
+	
+	if(od.transactionLimitWarning.size()>0) {
+		click(od.deal_yesBtn);
+	}
 
 		input = externalData.getFieldData(TSID, "Basic Details", "Transaction Categories");
-		od.transactionCategory.click();
+		click(od.transactionCategory);
 		od.transactionCategoryInput.sendKeys(input);
 		By transaction_Category_Option = By.xpath("(//div[contains(text(),'" + input + "')])[1]");
 		// applyExplicitWaitsUntilElementVisible(transaction_Category_Option, 10);

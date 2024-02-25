@@ -601,9 +601,10 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//label[normalize-space()='Split by percentage']")
 	public WebElement payments_Split_By_percentage_Text;
 	
-	@FindBy(xpath = "(//span[@class='slider round'])[3]")
+//	@FindBy(xpath = "(//span[@class='slider round'])[3]")
+	@FindBy(id = "sw-deals-instruction-fundTransferSubInstruction-split-v1")
 	public WebElement payments_Split_By_percentage_Slider;
-
+	
 	@FindBy(id = "payment-beneficiaryBankBic-txt-v1")
 	public WebElement payments_beneficiaryBankBic;
 	

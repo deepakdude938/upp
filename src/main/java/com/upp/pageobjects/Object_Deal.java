@@ -51,6 +51,12 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "//label[@id='deal-basic-txnLimitAmount']")
 	public WebElement transactionLimit;
 	
+	@FindBy(xpath = "//div[@id='swal2-html-container' and contains(text(),'transaction limits')]")
+	public List<WebElement> transactionLimitWarning;
+	
+	@FindBy(xpath = "//button[text()='Yes']")
+	public WebElement deal_yesBtn;
+	
 	@FindBy(xpath = "//ui-switch[@id='deal-basic-enableTxnVerifier']//span")
 	public WebElement enableTransactionLimit;
 

@@ -187,10 +187,10 @@ public class Transactions_Maker_BasicDetails extends BaseClass {
 	public void createNewAdhocTransaction(String TSID, String DealId, String sourceAccno) throws Exception {
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofSeconds(120));
-		tm.transactions_TransactionIcon.click();
+		click(tm.transactions_TransactionIcon);
 		Thread.sleep(13000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionMaker, Duration.ofSeconds(120));
-		tm.transactions_TransactionMaker.click();
+		click(tm.transactions_TransactionMaker);
 		Thread.sleep(12000);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_AddNewButon, Duration.ofSeconds(120));
 		jsClick.click(tm.transactions_AddNewButon);
