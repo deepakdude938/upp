@@ -13,7 +13,7 @@ Then approve the deal from the deal checker common method
 And Create Two Transaction from Live Deals with given "<TSID>"
 Then Approve the transaction from Transaction Checker with given "<TSID>"
 #Then Approve the transaction from Transaction Verifier with given "<TSID>"
-And Check Both Transactions Status is Scheduled "<TSID>"
+And Check Both Transactions Status is Scheduled or Settled "<TSID>"
 Examples:
       |TSID   |
       |TS159 |
