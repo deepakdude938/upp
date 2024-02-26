@@ -52,7 +52,7 @@ public class Object_Deal extends BaseClass {
 	public WebElement transactionLimit;
 	
 	@FindBy(xpath = "//div[@id='swal2-html-container' and contains(text(),'transaction limits')]")
-	public List<WebElement> transactionLimitWarning;
+	public WebElement transactionLimitWarning;
 	
 	@FindBy(xpath = "//button[text()='Yes']")
 	public WebElement deal_yesBtn;

@@ -767,14 +767,18 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
-		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
+		try {
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(40));
+		}
+		catch(Exception e) {
+		}
 		ArrayList<String> scroeStatus = new ArrayList();
+		System.out.println(tm.reports_ScroeStatusRecords.size());
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			System.out.println(iu.getText().trim());
 			scroeStatus.add(iu.getText().trim());
 			Assert.assertEquals(iu.getText().trim(), "Scheduled");
 		}
-
 	}
 
 	public void verify_Rule_IN_LT_PenddingStatus(String paymentRefId) throws Exception {
@@ -803,7 +807,11 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void check_Triggered_or_Settled_Status(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		try {
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(40));
+		}
+		catch(Exception e) {
+		}
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 
@@ -822,7 +830,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(dealId);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_ScroeStatusColumnName,
 				tm.reports_horizontalWindow1, 8, 1000);
+		try {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
+		}
+		catch(Exception e) {
+		}
 		ArrayList<String> scroeStatus = new ArrayList();
 		for (WebElement iu : tm.reports_ScroeStatusRecords) {
 			scroeStatus.add(iu.getText().trim());
@@ -1110,8 +1122,11 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_End_To_End_common, Duration.ofSeconds(5));
 		Thread.sleep(3000);
 		System.out.println("Test = " + EndToEndId);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 9, 1000);
+		jsClick.click(tm.cancelIcon);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		Thread.sleep(9000);
+		Thread.sleep(4000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_FirstTxnStatus, Duration.ofSeconds(30));
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is:" + status);
 

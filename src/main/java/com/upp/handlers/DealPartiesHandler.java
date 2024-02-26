@@ -75,7 +75,7 @@ public class DealPartiesHandler extends BaseClass {
 		}
 		od.parties_ContactName.sendKeys(externalData.getFieldData(TSID, "Party", "Contact Name"));
 		if ((externalData.getFieldData(TSID, "Party", "Authorised signatory-check box")).equalsIgnoreCase("Y")) {
-			od.parties_AuthrorizedSignatoryYes.click();
+			click(od.parties_AuthrorizedSignatoryYes);
 		}
 		od.parties_Email.sendKeys(externalData.getFieldData(TSID, "Party", "Email"));
 		

@@ -640,17 +640,21 @@ public class Payload extends BaseClass {
 		String random = Long.toString(number);
 		String uniquePlatformRefNo = "PlatformRef" + random;
 
-		String utcdate = DateUtils.getCurrentDateUTC();
+//		String utcdate = DateUtils.getCurrentDateUTC();
+		String utcdate = DateUtils.getNextUTCtDate();
+
+//		getNextUTCtDate
 		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
 
 		String utctimeEod = utcdate + "T" + plus2mins;
-
+		System.out.println(utctimeEod);
+		System.out.println("-------------");
 		DocumentContext jsonContext = JsonPath.parse(payLoadString);
 		jsonContext.set("$.paymentInfo.platformRefNo", uniquePlatformRefNo);
 		jsonContext.set("$.creditTransactionInfo[0].requestedExecutionOn", utctimeEod);
 		jsonContext.set("$.dealRefId", dealId);
 		String modifiedJsonString = jsonContext.jsonString();
-
+		System.out.println(modifiedJsonString);
 		return modifiedJsonString;
 
 	}
@@ -663,7 +667,8 @@ public class Payload extends BaseClass {
 		String random = Long.toString(number);
 		String uniquePlatformRefNo = "PlatformRef" + random;
 
-		String utcdate = DateUtils.getCurrentDateUTC();
+//		String utcdate = DateUtils.getCurrentDateUTC();
+		String utcdate = DateUtils.getNextUTCtDate();
 		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
 
 		String utctimeEod = utcdate + "T" + plus2mins;
@@ -708,7 +713,8 @@ public class Payload extends BaseClass {
 		String random = Long.toString(number);
 		String uniquePlatformRefNo = "PlatformRef" + random;
 
-		String utcdate = DateUtils.getCurrentDateUTC();
+//		String utcdate = DateUtils.getCurrentDateUTC();
+		String utcdate = DateUtils.getNextUTCtDate();
 		String plus2mins=DateUtils.getCurrentTimeUTCPlus2Minutes();
 
 		String utctimeEod = utcdate + "T" + plus2mins;

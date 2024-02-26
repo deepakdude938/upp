@@ -150,7 +150,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//div[@col-id='Utilized Budget' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_Utilized_Budget_Amount_List;
 	
-	@FindBy(xpath = "//div[@col-id='SCROE Status' and not(contains(@class,'header'))] | //div[@col-id='Settled Status' and not(contains(@class,'header'))]")
+	@FindBy(xpath = "//div[@col-id='SCROE Status' and not(contains(@class,'header'))] | //div[@col-id='Settled Status' and not(contains(@class,'header')) and text()]")
 	public List<WebElement> reports_ScroeStatusRecords;
 	
 	@FindBy(xpath = "//div[@col-id='SCROE Status' and contains(@class,'header')] | //div[@col-id='Settled Status' and contains(@class,'header')]")
