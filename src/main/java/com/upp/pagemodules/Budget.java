@@ -30,8 +30,6 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 
-
-
 public class Budget extends BaseClass {
 
 	public static Object_NewDeal od;
@@ -44,7 +42,7 @@ public class Budget extends BaseClass {
 	public static CommonUtils commonutils;
 	public String executiontime ;
 	public String executiontime1 ;
-	JavascriptClick js;
+	public JavascriptClick js;
 
 	public Budget() {
 		od = new Object_NewDeal();
@@ -213,7 +211,7 @@ public class Budget extends BaseClass {
 		od.payments_AddSubInstructionButton.click();
 		
 		Thread.sleep(5000);
-		od.payments_NextArrowButtonTransferSubInstruction.click();
+		click(od.payments_NextArrowButtonTransferSubInstruction);
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Retry-Enable Auto Retry")).equalsIgnoreCase("Yes"))) {
@@ -509,11 +507,12 @@ public class Budget extends BaseClass {
 			 applyExplicitWaitsUntilElementClickable(od.dealChecker_searchBar,Duration.ofSeconds(15));
 			 od.dealChecker_searchBar.sendKeys(DealID);
 			 Thread.sleep(4000);
-			 od.dealChecker_searchButton.click();
+			applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(30));
+//			 od.dealChecker_searchButton.click();
+			Thread.sleep(3000);
+			 JavascriptClick.click( od.dealChecker_searchButton);
 			 Thread.sleep(3000);
-			 od.dealChecker_searchButton.click();
-			Thread.sleep(5000);
-			applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(20));
+			applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(30));
 			od.dealChecker_showMenu.click();
 			 applyExplicitWaitsUntilElementClickable(od.DealDraftsOpen,Duration.ofSeconds(20));
 			 od.DealDraftsOpen.click();

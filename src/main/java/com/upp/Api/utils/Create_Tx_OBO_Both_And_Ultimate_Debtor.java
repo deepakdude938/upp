@@ -29,6 +29,7 @@ public class Create_Tx_OBO_Both_And_Ultimate_Debtor extends BaseClass{
 
 		response = res.then().extract().asString();
 		System.out.println("Status code : "+res.getStatusCode());
+		System.out.println(response);
 		
 		if (res.getStatusCode() == 400) {
 			JsonPath js = new JsonPath(response);
