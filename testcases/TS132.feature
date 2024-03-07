@@ -1,6 +1,6 @@
 Feature: TS132_Verify_Name_feild_Is_Mandatory
 
-@Regression @TS132
+@Regression @TS132 @MonWedFri
 Scenario Outline: Verify Name feild Is Mandatory
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

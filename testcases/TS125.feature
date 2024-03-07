@@ -1,6 +1,6 @@
 Feature: TS125_Verify_DealRefID_ParticipantRefID_field_Available
 
-@Regression @TS125
+@Regression @TS125 @MonWedFri
 Scenario Outline: Verify DealRefID ParticipantRefID field Available
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

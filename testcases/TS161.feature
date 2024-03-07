@@ -1,6 +1,6 @@
 Feature: TS161_Adhoc_Transaction_FromDeal_Split_%Balance
 
-@Regression @TS161
+@Regression @TS161 @Daily
 Scenario Outline: Adhoc_Transaction_FromDeal_Split(Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

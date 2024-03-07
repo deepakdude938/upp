@@ -1,7 +1,7 @@
 Feature: TS04_Linked_Instruction
 
 
-@Regression @TS04
+@Regression @TS04 @Daily
 Scenario Outline: Create deal with Linked Instruction payment
 Given Open browser and enter url 
  #userType can be deal_maker, deal_cherk, txn_maker, txn_checker, txn_verifier

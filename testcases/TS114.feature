@@ -1,6 +1,6 @@
 Feature: TS114_Account_Ammendment_CreditorLookUpKeys_UI
 
-@Regression @TS114 
+@Regression @TS114 @TuesThurs
 Scenario Outline: Account_Ammendment_CreditorLookUpKeys_UI
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

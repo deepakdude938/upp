@@ -1,6 +1,6 @@
 Feature: TS126_Retention_and_Payment_With_Holiday_Action_As_Previous_Business_Day
 
-@Regression @TS126 @ScbRegression
+@Regression @TS126 @ScbRegression @MonWedFri
 Scenario Outline: TS126_Retention_and_Payment_With_Holiday_Action_As_Previous_Business_Day
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

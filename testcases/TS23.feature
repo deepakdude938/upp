@@ -1,6 +1,6 @@
 Feature: TS23_Lifecycle_Maker_and_Checker
 
-@Regression @TS23
+@Regression @TS23 @WeeklyMon
 Scenario Outline: Deal Lifecycle Maker and Checker
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

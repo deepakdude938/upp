@@ -1,7 +1,7 @@
 Feature: TS156_Login_Invalid_Credentials
 
 
-@Regression @TS156
+@Regression @TS156 @WeeklyMon
 Scenario Outline: Login_Invalid_Credentials
 Given Open browser and enter url 
 Then Login to the application as "invalid_deal_maker"

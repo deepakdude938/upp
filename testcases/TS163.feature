@@ -1,6 +1,6 @@
 Feature: TS163_Retention_%Balance
 
-@Regression @TS163
+@Regression @TS163 @MonWedFri
 Scenario Outline: Create a UPP Deal Retention
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

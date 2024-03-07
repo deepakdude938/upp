@@ -1,7 +1,7 @@
 Feature: TS25_Product Config
 
 
-@Regression @TS25
+@Regression @TS25 @WeeklyMon
 Scenario Outline: Product Config
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

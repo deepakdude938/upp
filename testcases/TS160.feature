@@ -1,7 +1,7 @@
 Feature: TS160_NewDeal_BasicDetails
 
 
-@Regression @TS160
+@Regression @TS160 @WeeklyMon
 Scenario Outline: NewDeal_BasicDetails
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

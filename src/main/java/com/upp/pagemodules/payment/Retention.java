@@ -83,11 +83,19 @@ public class Retention extends BaseClass{
 		Thread.sleep(1000);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
 		driver.findElement(sourceaccountselect).click();
-		dropdown.selectByVisibleText(od.retention_SpecifyAmountAs, externalData.getFieldData(TSID, "PaymentRetention", "Specify amount as"));
-		od.retention_SpecifyAmountValue.clear();
-		System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
 		
-		od.retention_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
+		String multipleRetention = externalData.getFieldData(TSID, "PaymentRetention", "Multiple Retention");
+		if(multipleRetention.equalsIgnoreCase("No")) {
+			
+			dropdown.selectByVisibleText(od.retention_SpecifyAmountAs, externalData.getFieldData(TSID, "PaymentRetention", "Specify amount as"));
+			od.retention_SpecifyAmountValue.clear();
+			System.out.println(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
+			od.retention_SpecifyAmountValue.sendKeys(externalData.getFieldData(TSID, "PaymentRetention", "Amount"));
+			
+		}
+		else {
+			od.retention_MultipleRetention.click();
+		}
 		od.retention_nextArrowIcon.click();
 		applyExplicitWaitsUntilElementClickable(od.payments_ExecutionDate, Duration.ofSeconds(5));
 		od.payments_ExecutionDate.click();
@@ -115,7 +123,19 @@ public class Retention extends BaseClass{
 		
 		od.retention_ScheduleNextButton.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		Thread.sleep(5000);
+		Thread.sleep(2000);
+		
+		if(multipleRetention.equalsIgnoreCase("Yes")) {
+			od.retention_Amount.sendKeys("500");
+			od.retention_Narration.sendKeys("SubInstruction 1");
+			od.retention_AddSubInstruction.click();
+			applyExplicitWaitsUntilElementClickable(od.retention_SubInstructionRow, Duration.ofSeconds(30));
+			Thread.sleep(2000);
+			
+			od.retention_Amount.sendKeys("1000");
+			od.retention_Narration.sendKeys("SubInstruction 2");
+			od.retention_AddSubInstruction.click();
+		}
 		applyExplicitWaitsUntilElementClickable(od.retention_SubInstructionNextButton, Duration.ofSeconds(10));
 		od.retention_SubInstructionNextButton.click();
 		applyExplicitWaitsUntilElementClickable(od.retention_RetryNextButton, Duration.ofSeconds(10));

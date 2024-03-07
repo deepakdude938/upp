@@ -1,6 +1,6 @@
 Feature: TS73_Budget_CarryForward
 
-@Regression @TS73
+@Regression @TS73 @TuesThurs
 Scenario Outline: Budget_CarryForward
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

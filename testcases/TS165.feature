@@ -1,6 +1,6 @@
-Feature: TS162_Retention
+Feature: TS165_MultipleRetention
 
-@Regression @TS162 @Daily
+@Regression @TS165 @MonWedFri
 Scenario Outline: Create a UPP Deal Retention
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
@@ -12,6 +12,6 @@ Then approve the deal from the deal checker common method
 And Check status and instruction type for retention with given "<TSID>"
 Examples:
       |TSID|
-      |TS162|
+      |TS165|
 
 

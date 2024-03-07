@@ -1,7 +1,7 @@
 Feature: TS144_Scheduled_Split_FixedAmount_With_Holiday
 
 
-@Regression @TS144
+@Regression @TS144 @Daily
 Scenario Outline: Scheduled_Split_FixedAmount_With_Holiday
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

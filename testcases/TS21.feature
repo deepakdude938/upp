@@ -1,6 +1,6 @@
 Feature: TS21_BalanceReporting
 
-@Regression @TS21
+@Regression @TS21 @MonWedFri
 Scenario Outline: Create a UPP deal with Balance Reporting from Scheduled Instructions Tab
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

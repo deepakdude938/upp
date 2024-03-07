@@ -1,6 +1,6 @@
 Feature: TS17_RequiredDocument
 
-@Regression @TS17
+@Regression @TS17 @TuesThurs
 Scenario Outline:  Document
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

@@ -1,6 +1,6 @@
 Feature: TS140_Payment_with_Retry Failed Scheduled Instruction With Retry_Type Till Next Date
 
-@Regression @TS140
+@Regression @TS140 @TuesThurs
 Scenario Outline: TS140_Payment_with_Retry Failed Scheduled Instruction With Retry_TypeTill Next Date
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

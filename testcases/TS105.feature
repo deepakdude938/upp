@@ -1,6 +1,6 @@
 Feature: TS105_Scheduled_Payment_with GB Account_Split_By_Percentage 
 
-@Regression @TS105 @ScbRegression
+@Regression @TS105 @ScbRegression @MonWedFri
 Scenario Outline: TS105_Scheduled_Payment_with GB Account_Split_By_Percentage 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

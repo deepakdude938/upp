@@ -1,6 +1,6 @@
 Feature: TS157_Adhoc_Transaction_FromDeal
 
-@Regression @TS157
+@Regression @TS157 @Daily
 Scenario Outline: Adhoc_Transaction_FromDeal (Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

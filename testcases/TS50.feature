@@ -1,6 +1,6 @@
 Feature: TS50_Audit_Transaction
 
-@Regression @TS50
+@Regression @TS50 @TuesThurs
 Scenario Outline: Create a UPP Deal with 1 Transaction and check in Audit Transaction
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

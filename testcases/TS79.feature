@@ -1,7 +1,7 @@
 Feature: TS79_Verify_Trasaction_Amount_Greater_Than_Limit
 
 
-@Regression @TS79
+@Regression @TS79 @Daily
 Scenario Outline: Verify Trasaction amount greater than limit
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

@@ -1,6 +1,6 @@
 Feature: TS72_Budget_PurposeandDestination_DateRange
 
-@Regression @TS72
+@Regression @TS72 @Daily
 Scenario Outline: Budget_PurposeandDestination_DateRange
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

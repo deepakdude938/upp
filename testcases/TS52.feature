@@ -1,6 +1,6 @@
 Feature: TS52_Split_%OfBalance
 
-@Regression @TS52
+@Regression @TS52 @Daily
 Scenario Outline: Create a UPP Deal with Sheduled Instruction with Split_%OfBalance
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

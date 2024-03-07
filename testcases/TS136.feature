@@ -1,6 +1,6 @@
 Feature: TS136_Account_Amendment_NewAccountwithTransaction_Api
 
-@Regression @TS136 @Api
+@Regression @TS136 @Api @WeeklyMon
 Scenario Outline: Account_Amendment_NewAccountwithTransaction_Api
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

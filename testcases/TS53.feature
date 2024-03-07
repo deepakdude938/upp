@@ -1,6 +1,6 @@
 Feature: TS53_Create_Deal_Entitlments
 
- @Regression @TS53
+ @Regression @TS53 @TuesThurs
  Scenario Outline:  Create Entitlments
 		Given Open browser and enter url
     Then Login to the application as "deal_maker"

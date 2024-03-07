@@ -1,7 +1,7 @@
 Feature: TS149_Reschedule_transaction
 
 
-@Regression @TS149
+@Regression @TS149 @TuesThurs
 Scenario Outline: Reschedule_transaction
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

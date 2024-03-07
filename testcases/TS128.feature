@@ -1,6 +1,6 @@
 Feature: TS128_Verify_Name_AddressLine_field_Available
 
-@Regression @TS128
+@Regression @TS128 @MonWedFri
 Scenario Outline: Verify Name Address line field Available
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

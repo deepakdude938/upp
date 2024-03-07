@@ -1,7 +1,7 @@
 Feature: TS10_HolidayAction
 
 
-@Regression @TS10
+@Regression @TS10 @TuesThurs
 Scenario Outline: Holiday combination
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"
