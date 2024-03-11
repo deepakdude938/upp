@@ -1,7 +1,7 @@
 Feature: TS69_Budget_Destination_Quarterly_Assertion
 
 
-@Assertion @TS69 @Regression
+@Assertion @TS69 @Regression @TuesThurs
 Scenario Outline: Budget_Destination_Quarterly_Assertion
 
 Given Open browser and enter url 
