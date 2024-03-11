@@ -1,6 +1,6 @@
 Feature: TS26_Processing Unit
 
-@Regression @TS26
+@Regression @TS26 @WeeklyMon
 Scenario Outline: Create Processing Unit From Configuration Tab and Verify The PU is Available in BasicDetails
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

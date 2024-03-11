@@ -1,6 +1,6 @@
 Feature: TS22_Payment_Alert_Instruction
 
- @Regression @TS22
+ @Regression @TS22 @MonWedFri
  Scenario Outline:  Create deal with alerts
 		Given Open browser and enter url
     Then Login to the application as "deal_maker"

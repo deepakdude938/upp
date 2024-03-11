@@ -1,6 +1,6 @@
 Feature: TS130_Future_Dated_Adhoc_Transaction_ with_GB_Account
 
-@Regression @TS130 @ScbRegression
+@Regression @TS130 @ScbRegression @MonWedFri
 Scenario Outline: TS130_Future_Dated_Adhoc_Transaction_ with_GB_Account
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

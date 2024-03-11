@@ -1,7 +1,7 @@
 Feature: TS61_Payment Retention Decimal
 
 
-@Regression @TS61
+@Regression @TS61 @MonWedFri
 Scenario Outline: Payment Retention Decimal
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

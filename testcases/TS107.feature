@@ -1,6 +1,6 @@
 Feature: TS107_Account_Amendment_With_Transaction_UI
 
-@Api @TS107
+@Api @TS107 @TuesThurs
 Scenario Outline: Account_Amendment_With_Transaction_UI
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

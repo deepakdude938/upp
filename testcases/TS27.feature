@@ -1,7 +1,7 @@
 Feature: TS27_Bulk_Upload_Adhoc_Transaction
 
 
-@Regression @TS27
+@Regression @TS27 @MonWedFri
 Scenario Outline: Bulk upload transaction
 Given Open browser and enter url
  

@@ -1,7 +1,7 @@
 Feature: TS15_Payment-Surplus
 
 
-@Regression @TS15
+@Regression @TS15 @Daily
 Scenario Outline: Payment-Surplus
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

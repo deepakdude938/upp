@@ -1,7 +1,7 @@
 Feature: TS07_Ecommerce_Transaction
 
 
-@Regression @TS07
+@Regression @TS07 @MonWedFri
 Scenario Outline: ECommerce Transaction (Deal with eComm Party, Ecomm Transaction Maker, Checker and Approver)
 Given Open browser and enter url 
  #userType can be deal_maker, deal_cherk, txn_maker, txn_checker, txn_verifier

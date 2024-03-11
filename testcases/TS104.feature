@@ -1,6 +1,6 @@
 Feature: TS104_Account_Ammendment_UI
 
-@Api @TS104 @Regression
+@Api @TS104 @Regression @TuesThurs
 Scenario Outline: Account_Ammendment_UI
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

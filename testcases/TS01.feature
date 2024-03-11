@@ -1,7 +1,7 @@
 Feature: TS01_Deal_TwoAccounts
 
 
-@Regression @TS01
+@Regression @TS01 @Daily
 Scenario Outline: Create deal with two accounts
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

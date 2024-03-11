@@ -1,6 +1,6 @@
 Feature: TS139_Debtor_Currency_Option
 
-@Regression @TS139 
+@Regression @TS139 @MonWedFri
 Scenario Outline:  Debtor Currency Option
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

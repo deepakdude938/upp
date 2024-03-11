@@ -89,7 +89,6 @@ public class Payment_BasicDetails extends BaseClass{
 			od.payment_value1.sendKeys(externalData.getFieldData(TSID, "Scheduled", "value"));
 			Thread.sleep(1500);
 			
-			
 		}
 		if (((externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Partial Payment")).equalsIgnoreCase("Yes"))) {

@@ -1,6 +1,6 @@
 Feature: TS143_Scheduled payment with 3 Sub Instructions
 
-@Regression @TS143
+@Regression @TS143 @Daily
 Scenario Outline: Scheduled payment with 3 Sub Instructions
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

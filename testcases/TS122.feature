@@ -1,6 +1,6 @@
 Feature: TS122_Retention_and_Payment_Retention_with_GB_Account
 
-@Regression @TS122 @ScbRegression
+@Regression @TS122 @ScbRegression @MonWedFri
 Scenario Outline: TS122_Retention_and_Payment_Retention_with_GB_Account
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

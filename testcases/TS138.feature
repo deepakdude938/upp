@@ -1,6 +1,6 @@
 Feature: TS138_External Introductory mail Setup
 
-@Regression @TS138
+@Regression @TS138 @WeeklyMon
 Scenario Outline: External Introductory mail Setup
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

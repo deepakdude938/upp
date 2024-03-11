@@ -1,6 +1,6 @@
 Feature: TS09_Party_Maker_Checker
 
-@Regression @TS09
+@Regression @TS09 @MonWedFri
 Scenario Outline: Creating a new Party under Parties tab and onboarding the party to the deal and creating a txn 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

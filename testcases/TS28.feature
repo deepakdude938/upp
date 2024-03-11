@@ -1,7 +1,7 @@
 Feature: TS28_Bulk Upload Ecomm Transaction
 
 
-@Regression @TS28
+@Regression @TS28 @MonWedFri
 Scenario Outline: Bulk Upload Ecomm Transaction
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

@@ -1,6 +1,6 @@
 Feature: TS70_Budget_Consolidated_Yearly
 
-@Regression @TS70
+@Regression @TS70 @Daily
 Scenario Outline: Budget_Consolidated_Yearly
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -1,6 +1,6 @@
 Feature: TS141_Payment_with_Retry Failed Scheduled Instruction With Retry_Type Custom
 
-@Regression @TS141
+@Regression @TS141 @TuesThurs
 Scenario Outline: TS141_Payment_with_Retry Failed Scheduled Instruction with Retry_Type Custom
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

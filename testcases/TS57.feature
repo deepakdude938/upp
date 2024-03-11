@@ -1,6 +1,6 @@
 Feature: TS57_Party Responsibilty
 
- @Regression @TS57
+ @Regression @TS57 @MonWedFri
  Scenario Outline:  Party Responsibilty
 		Given Open browser and enter url
     Then Login to the application as "deal_maker"

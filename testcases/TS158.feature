@@ -1,6 +1,6 @@
 Feature: TS158_Adhoc_Transaction_FromDeal_Split
 
-@Regression @TS158
+@Regression @TS158 @Daily
 Scenario Outline: Adhoc_Transaction_FromDeal_Split (Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -1,6 +1,6 @@
 Feature: TS71_Budget_Purpose_HalfYearly
 
-@Regression @TS71
+@Regression @TS71 @TuesThurs
 Scenario Outline: Budget_Purpose_HalfYearly
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

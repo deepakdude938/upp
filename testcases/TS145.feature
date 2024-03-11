@@ -1,6 +1,6 @@
 Feature: TS145_Deal_Lifecycle_Close_and_Checker_Rejects
 
-@Regression @TS145
+@Regression @TS145 @WeeklyMon
 Scenario Outline: Deal Lifecycle Checker Rejects Close Request
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

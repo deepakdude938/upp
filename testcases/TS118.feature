@@ -1,6 +1,6 @@
 Feature: TS118_Verify_Total_of_DebitandPaymentCurrency 
 
-@Regression @TS118
+@Regression @TS118 @MonWedFri
 Scenario Outline: Verify Total of Debit and Payment Currency  
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

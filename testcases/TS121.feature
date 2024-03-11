@@ -1,6 +1,6 @@
 Feature: TS121_Verify_Error_Message
 
-@Regression @TS121
+@Regression @TS121 @MonWedFri
 Scenario Outline: Verify error message  
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

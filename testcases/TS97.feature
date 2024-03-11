@@ -1,7 +1,7 @@
 Feature: TS97_Create Tx(tx with two fragments)
 
 
-@Regression @TS97 @Api
+@Regression @TS97 @Api @MonWedFri
 Scenario Outline: Create Tx(tx with two fragments)
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

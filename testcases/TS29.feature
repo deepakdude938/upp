@@ -1,6 +1,6 @@
 Feature: TS29_Audit_Deal_Audit_Budget
 
-@Regression @TS29
+@Regression @TS29 @TuesThurs
 Scenario Outline: Update the Details in Party Tab and check whether changes visible in Audit
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

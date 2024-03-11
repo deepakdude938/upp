@@ -1,6 +1,6 @@
 Feature: TS137_Payment_with_Retry Failed Scheduled Instruction
 
-@Regression @TS137
+@Regression @TS137 @MonWedFri
 Scenario Outline: TS137_Payment_with_Retry Failed Scheduled Instruction
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

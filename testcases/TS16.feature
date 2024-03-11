@@ -1,6 +1,6 @@
 Feature: TS16_Payment Retention
 
-@Regression @TS16
+@Regression @TS16 @Daily
 Scenario Outline: Create a UPP Deal with Payment Retention
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

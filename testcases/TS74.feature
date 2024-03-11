@@ -1,7 +1,7 @@
 Feature: TS74_Verify_Trasaction_Limit
 
 
-@Regression @TS74
+@Regression @TS74 @Daily
 Scenario Outline: Verify Trasaction Limit
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

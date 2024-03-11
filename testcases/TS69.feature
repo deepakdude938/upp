@@ -1,6 +1,6 @@
 Feature: TS69_Budget_Destination_Quarterly
 
-@Regression @TS69
+@Regression @TS69 @TuesThurs
 Scenario Outline: Budget_Destination_Quarterly
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

@@ -1,6 +1,6 @@
 Feature: TS106_Payment_Alert_Instruction_Message
 
-@Regression  @TS106
+@Regression  @TS106 @MonWedFri
  Scenario Outline:  Create deal with alerts Message
 			Given Open browser and enter url
     Then Login to the application as "deal_maker"

@@ -959,6 +959,18 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(id = "btn-deals-instruction-retentionSchedule-next-v1")
 	public WebElement retention_ScheduleNextButton;
 	
+	@FindBy(id = "txt-deals-instruction-retentionSubInstruction-amount-v1")
+	public WebElement retention_Amount;
+	
+	@FindBy(xpath = "//tr[@class='ui-grid-row']")
+	public WebElement retention_SubInstructionRow;
+	
+	@FindBy(id = "txt-deals-instruction-retentionSubInstruction-narration-v1")
+	public WebElement retention_Narration;
+	
+	@FindBy(id = "ic-deals-instruction-retentionSubInstruction-addSubInstruction-v1")
+	public WebElement retention_AddSubInstruction;
+	
 	@FindBy(id = "ic-deals-instruction-retentionSubInstruction-next-v1")
 	public WebElement retention_SubInstructionNextButton;
 	
@@ -983,6 +995,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(id="txt-deals-instruction-retentionBasic-name-v1")
 	public WebElement retention_basicDetils_Name;
+	
+	@FindBy(xpath="//ui-switch[@id='sw-deals-instruction-retentionBasic-multiple-v1']//span")
+	public WebElement retention_MultipleRetention;
+	
 	
 	@FindBy(xpath = "//div[@id='sel-deals-instruction-retentionBasic-typeOfTransfer-v1']//select")
 	public WebElement retention_SpecifyAmountAs;

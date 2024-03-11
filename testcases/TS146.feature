@@ -1,6 +1,6 @@
 Feature: TS146_Retention-Surplus
 
-@Regression @TS146
+@Regression @TS146 @Daily
 Scenario Outline: Create a UPP Deal with Retention-Surplus
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

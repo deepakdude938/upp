@@ -1,7 +1,7 @@
 Feature: TS05_Budget and Payments
 
 
-@Regression @TS05
+@Regression @TS05 @TuesThurs
 Scenario Outline: Budget and Payments
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

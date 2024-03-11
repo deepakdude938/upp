@@ -1,7 +1,7 @@
 Feature: TS51_Scheduled_Split_FixedAmount
 
 
-@Regression @TS51
+@Regression @TS51 @Daily
 Scenario Outline: Scheduled_Split_FixedAmount
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

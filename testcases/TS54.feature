@@ -1,6 +1,6 @@
  Feature: TS54_Entitlements-Account
  
- @Regression @TS54
+ @Regression @TS54 @TuesThurs
  Scenario Outline:  Create Entitlments-Account
 		Given Open browser and enter url
     Then Login to the application as "deal_maker"

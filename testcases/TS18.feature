@@ -1,6 +1,6 @@
 Feature: TS18_PriorityDependency_SameDay
 
-@Regression @TS18
+@Regression @TS18 @MonWedFri
 Scenario Outline: Create a UPP Deal with 2 Payments where 1 payment is dependent on other Payment
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

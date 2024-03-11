@@ -1,6 +1,6 @@
 Feature: TS06_Adhoc_Transaction
 
-@Regression @TS06
+@Regression @TS06 @Daily
 Scenario Outline: Traditional UPP Transaction (Maker, Checker, Verifier) 
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
