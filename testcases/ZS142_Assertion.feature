@@ -1,6 +1,6 @@
 Feature: TS142_Payment_with_Retry Failed Scheduled Instruction with Retry_Type SameDay Assertion
 
-@Assertion @TS142 @Regression
+@Assertion @TS142 @Regression @TuesThurs
 Scenario Outline: TS142_Payment_with_Retry Failed Scheduled Instruction with Retry_Type SameDay Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

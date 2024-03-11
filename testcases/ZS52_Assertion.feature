@@ -1,7 +1,7 @@
 Feature: TS52_Split_%OfBalance_Assertion
 
 
-@Assertion @TS52 @Regression
+@Assertion @TS52 @Regression  @Daily
 Scenario Outline: TS52_Split_%OfBalance
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

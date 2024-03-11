@@ -1,6 +1,6 @@
 Feature: TS146_Retention-Surplus_Assertion
 
-@Assertion @TS146 @Regression
+@Assertion @TS146 @Regression  @Daily
 Scenario Outline: TS146_Retention-Surplus_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -1,6 +1,6 @@
 Feature: TS141_Payment_with_Retry Failed Scheduled Instruction with Retry_Type Custom Assertion
 
-@Assertion @TS141 @Regression
+@Assertion @TS141 @Regression @TuesThurs
 Scenario Outline: TS141_Payment_with_Retry Failed Scheduled Instruction with Retry_Type Custom Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

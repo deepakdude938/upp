@@ -1,7 +1,7 @@
 Feature: TS27_Bulk_Upload_Adhoc_Transaction_Assertion
 
 
-@Assertion @TS27 @Regression
+@Assertion @TS27 @Regression  @MonWedFri
 Scenario Outline: TS27_Bulk_Upload_Adhoc_Transaction_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

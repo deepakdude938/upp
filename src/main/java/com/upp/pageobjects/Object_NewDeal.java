@@ -288,7 +288,9 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "(//input[@id='rad-generic-radio-select-v1'])[1]")
 	public WebElement dealChecker_approveAllRadioButton;
-	@FindBy(xpath = "(//i[@class='ui-icon ui-icon-note warning'])[1]")
+	
+//	@FindBy(xpath = "(//i[@class='ui-icon ui-icon-note warning'])[1]")
+	@FindBy(xpath = "(//em[@class='ui-icon ui-icon-note warning'])[1]")
 	public WebElement dealChecker_addComments;
 
 	@FindBy(id = "btn-deals-summary-approve-v1")

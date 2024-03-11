@@ -1,7 +1,7 @@
 Feature: TS28_Assertion
 
 
-@Assertion @TS28 @Regression
+@Assertion @TS28 @Regression  @MonWedFri
 Scenario Outline: TS28_Bulk Upload_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

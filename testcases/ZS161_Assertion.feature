@@ -1,6 +1,6 @@
 Feature: TS161_Adhoc_Transaction_FromDeal_Split_%Balance_Assertion
 
-@Assertion @TS161 @Regression
+@Assertion @TS161 @Regression @Daily
 Scenario Outline: TS161_Adhoc_Transaction_FromDeal_Split_%Balance_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -1,7 +1,7 @@
 Feature: TS71_Budget_Purpose_HalfYearly_Assertion
 
 
-@Assertion @TS71 @Regression
+@Assertion @TS71 @Regression @TuesThurs
 Scenario Outline: Budget_Purpose_HalfYearly Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

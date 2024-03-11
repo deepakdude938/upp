@@ -1,7 +1,7 @@
 Feature: TS15_Payment-Surplus_Assertion
 
 
-@Assertion @TS15 @Regression
+@Assertion @TS15 @Regression  @Daily
 Scenario Outline: Payment-Surplus_Assertion
 
 Given Open browser and enter url 
