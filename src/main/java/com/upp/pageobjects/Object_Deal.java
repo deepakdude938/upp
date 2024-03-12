@@ -66,6 +66,9 @@ public class Object_Deal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
 	public WebElement deals_ProcessingUnits;
 	
+	@FindBy(id = "deal-basic-processingUnit")
+	public WebElement deals_ProcessingUnitsText;
+	
 	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//li/span")
 	public WebElement deals_ProcessingUnitsSelectedText;
 

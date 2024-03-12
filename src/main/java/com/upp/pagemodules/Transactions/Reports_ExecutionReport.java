@@ -106,7 +106,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		
-		if(TSID.equals("TS110")) {
+		if(TSID.equals("TS110") || TSID.equals("TS79")) {
 			
 			if (ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled") || ScroeStatus.equalsIgnoreCase("Settled")) {
 				// System.out.println("Waiting for Transaction to be triggered");
