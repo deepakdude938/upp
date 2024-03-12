@@ -244,9 +244,9 @@ public class DashBoard_Module extends BaseClass {
 		click(od.dealChecker_searchButton,5);
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_showMenu, Duration.ofSeconds(120));
-		od.dealChecker_showMenu.click();
+		click(od.dealChecker_showMenu);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_Open, Duration.ofSeconds(25));
-		od.dealChecker_Open.click();
+		click(od.dealChecker_Open);
 		applyExplicitWaitsUntilElementClickable(od.dealChecker_addComments, Duration.ofSeconds(20));
 		click(od.dealChecker_addComments,3);
 		od.dealChecker_addNote.sendKeys("Ok approved");

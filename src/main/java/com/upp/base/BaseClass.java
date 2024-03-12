@@ -268,6 +268,7 @@ public class BaseClass {
 			try {
 				applyExplicitWaitsUntilElementClickable(element, Duration.ofSeconds(30));
 			} catch (MalformedURLException e) {
+				
 			}
 			
 			try {

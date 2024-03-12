@@ -105,7 +105,8 @@ public class ManageConfigs extends BaseClass{
 	public void createProductWithTransactionLimit(String tSID) throws Exception {
 		
 		config.configurationButton.click();
-		config.configuration_ManageConfigs.click();
+		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(config.configuration_ManageConfigs, config.configuaration_LeftScrollBar, 9, 1000);
+		click(config.configuration_ManageConfigs);
 		config.configuaration_Product.click();
 		config.configurationProduct_AddNew.click();
 		config_productName =externalData.getFieldData(tSID, "Configuration", "Name")+"_"+DateUtils.getCurrentDateTime1();
@@ -132,7 +133,8 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_ScheduleInstructionType = externalData.getFieldData(tSID, "Configuration", "Schedule Instruction Types");
 		config.configurationProduct_ScheduleInstructionType.click();
-		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[@class='ng-tns-c93-2 ui-autocomplete-list-item-option' and normalize-space()='"+input_ScheduleInstructionType+"']");
+//		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']//following::span[@class='ng-tns-c93-2 ui-autocomplete-list-item-option' and normalize-space()='"+input_ScheduleInstructionType+"']");
+		By scheduleInstructionType= By.xpath("//label[normalize-space()='Schedule Instruction Types']/..//*[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_ScheduleInstructionType+"']");
 		applyExplicitWaitsUntilElementVisible(scheduleInstructionType, 10);
 		driver.findElement(scheduleInstructionType).click();
 		config.configurationProduct_ScheduleInstructionTypeText.click();
@@ -140,7 +142,8 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_LinkedInstructionType = externalData.getFieldData(tSID, "Configuration", "Linked Instruction Types");
 		config.configurationProduct_LinkedInstructionTypes.click();
-		By linkedInstructionInstructionType= By.xpath("//label[normalize-space()='Linked Instruction Types']//following::div[@class='ng-tns-c93-3 ui-autocomplete-list-item-option ng-star-inserted' and normalize-space()='"+input_LinkedInstructionType+"']");
+//		By linkedInstructionInstructionType= By.xpath("//label[normalize-space()='Linked Instruction Types']//following::div[@class='ng-tns-c93-3 ui-autocomplete-list-item-option ng-star-inserted' and normalize-space()='"+input_LinkedInstructionType+"']");
+		By linkedInstructionInstructionType= By.xpath("//label[normalize-space()='Linked Instruction Types']/..//*[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_LinkedInstructionType+"']");
 		applyExplicitWaitsUntilElementVisible(linkedInstructionInstructionType, 10);
 		driver.findElement(linkedInstructionInstructionType).click();
 		config.configurationProduct_LinkedInstructionTypesText.click();
@@ -148,7 +151,7 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_FeeInstructionType = externalData.getFieldData(tSID, "Configuration", "Fee Instruction Types");
 		config.configurationProduct_FeeInstructionTypes.click();
-		By feeInstructionInstructionType= By.xpath("//label[normalize-space()='Fee Instruction Types']//following::span[@class='ng-tns-c93-4 ui-autocomplete-list-item-option' and normalize-space()='"+input_FeeInstructionType+"']");
+		By feeInstructionInstructionType= By.xpath("//label[normalize-space()='Fee Instruction Types']/..//*[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_FeeInstructionType+"']");
 		applyExplicitWaitsUntilElementVisible(feeInstructionInstructionType, 10);
 		driver.findElement(feeInstructionInstructionType).click();
 		config.configurationProduct_FeeInstructionTypesText.click();
@@ -156,7 +159,7 @@ public class ManageConfigs extends BaseClass{
 		
 		String input_Notifications = externalData.getFieldData(tSID, "Configuration", "Notifications");
 		config.configurationProduct_Notifications.click();
-		By configurationProduct_Notifications= By.xpath("//label[normalize-space()='Notifications']//following::div[@class='ng-tns-c93-5 ui-autocomplete-list-item-option ng-star-inserted' and normalize-space()='"+input_Notifications+"']");
+		By configurationProduct_Notifications= By.xpath("//label[normalize-space()='Notifications']/..//*[contains(@class,'ui-autocomplete-list-item-option') and normalize-space()='"+input_Notifications+"']");
 		applyExplicitWaitsUntilElementVisible(configurationProduct_Notifications, 10);
 		driver.findElement(configurationProduct_Notifications).click();
 		config.configurationProduct_NotificationsText.click();
