@@ -1,6 +1,6 @@
 Feature: TS43_Rule_OBOPartyResponsibility_PartyId
 
-@Regression @TS43 @InitiationRules
+@Regression @TS43 @InitiationRules @TuesThurs
 Scenario Outline: Rule_OBOPartyResponsibility_PartyId
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -1,7 +1,7 @@
 Feature: TS30_Party_EnrichDebtor
 
 
-@Regression @TS30 @InitiationRules
+@Regression @TS30 @InitiationRules @TuesThurs
 Scenario Outline: Rule_Party_EnrichDebtor
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

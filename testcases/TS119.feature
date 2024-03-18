@@ -1,6 +1,6 @@
 Feature: TS119_Rule_Account_Key
 
-@Regression @TS119 @InitiationRules
+@Regression @TS119 @InitiationRules @TuesThurs
 Scenario Outline: TS119_Rule_Account_Key
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

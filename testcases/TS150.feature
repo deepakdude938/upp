@@ -1,6 +1,6 @@
 Feature: TS150_ProdIssue1
 
-@Regression @TS150 @DupTxnProdIssue
+@Regression @TS150 @DupTxnProdIssue @Biweekly
 Scenario Outline: ProdIssue1
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

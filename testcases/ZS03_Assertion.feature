@@ -1,7 +1,7 @@
 Feature: TS03_Payment_Scheduled_Instruction_Assertion
 
 
-@Assertion @TS03 @Regression
+@Assertion @TS03 @Regression @Daily
 Scenario Outline: TS03_Payment_Scheduled_Instruction_Assertion
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

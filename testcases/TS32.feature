@@ -1,6 +1,6 @@
 Feature: TS32_Rule_Static_OBO
 
-@Regression @TS32 @InitiationRules
+@Regression @TS32 @InitiationRules @TuesThurs
 Scenario Outline: Rule_Static_OBO
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

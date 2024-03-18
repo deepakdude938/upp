@@ -1,6 +1,6 @@
 Feature: TS41_Rule_OBOParticipant_PartyRefId_Null
 
-@Regression @TS41 @InitiationRules
+@Regression @TS41 @InitiationRules @TuesThurs
 Scenario Outline: Rule_OBOParticipant_PartyRefId_Null
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

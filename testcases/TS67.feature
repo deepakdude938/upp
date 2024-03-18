@@ -1,6 +1,6 @@
 Feature: TS67_Rule_OBO_Responsibility_Reject1
 
-@Regression @TS67 @InitiationRules
+@Regression @TS67 @InitiationRules @TuesThurs
 Scenario Outline: Rule_OBO_Responsibility_Reject1
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

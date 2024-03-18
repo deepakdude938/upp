@@ -1,6 +1,6 @@
 Feature: TS40_Rule_dealRefId_V3_UD1
 
-@Regression @TS40 @InitiationRules
+@Regression @TS40 @InitiationRules @TuesThurs
 Scenario Outline: Rule_dealRefId_V3_UD1
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -1,6 +1,6 @@
 Feature: TS64_Rule_OBO_Participant_Enrich1
 
-@Regression @TS64 @InitiationRules
+@Regression @TS64 @InitiationRules @TuesThurs
 Scenario Outline: Rule_OBO_Participant_Enrich1
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

@@ -1,6 +1,6 @@
 Feature: TS31_Rule_Non_OBO
 
-@Regression @TS31 @InitiationRules
+@Regression @TS31 @InitiationRules @TuesThurs
 Scenario Outline: Rule_Non_OBO
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
