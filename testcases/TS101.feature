@@ -1,6 +1,6 @@
 Feature: TS101_Rule_Without_PaymentInfoDetails
 
-@Regression @TS101 @InitiationRules
+@Regression @TS101 @InitiationRules @TuesThurs
 Scenario Outline: TS101_Rule_Without_PaymentInfoDetails
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

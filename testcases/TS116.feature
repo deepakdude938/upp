@@ -1,6 +1,6 @@
 Feature: TS116_Rule_With_Partial_PaymentInfoDetails
 
-@Regression @TS116 @InitiationRules
+@Regression @TS116 @InitiationRules @TuesThurs
 Scenario Outline: TS116_Rule_With_Partial_PaymentInfoDetails
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

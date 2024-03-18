@@ -1,6 +1,6 @@
 Feature: TS08_EcommerceTransaction_With_APIS
 
-@Regression @TS08
+@Regression @TS08 @TuesThurs
 Scenario Outline:  ECommerce Transaction + Party API + Transaction API (REST API calls)
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

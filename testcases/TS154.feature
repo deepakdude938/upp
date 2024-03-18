@@ -1,6 +1,6 @@
 Feature: TS154_ProdIssue5
 
-@DupTxnProdIssue @TS154
+@DupTxnProdIssue @TS154 @Biweekly
 Scenario Outline: ProdIssue5
 Given Open browser and enter url 
 Then Login to the application as "deal_maker"

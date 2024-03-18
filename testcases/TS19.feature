@@ -1,6 +1,6 @@
 Feature: TS19_Contacts Configuration
 
-  @Regression @TS19
+  @Regression @TS19 @WeeklyMon
   Scenario Outline: Contacts Configuration
     Given Open browser and enter url
     Then Login to the application as "deal_maker"

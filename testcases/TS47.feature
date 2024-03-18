@@ -1,6 +1,6 @@
 Feature: TS47_Rule_Creditor_Party_Validate
 
-@Regression @TS47 @InitiationRules
+@Regression @TS47 @InitiationRules @TuesThurs
 Scenario Outline: Rule_Creditor_Party_Validate
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"

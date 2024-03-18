@@ -1,6 +1,6 @@
 Feature: TS36_Rule_OBOParticipant_OBO_Info_Not_Null
 
-@Regression @TS36 @InitiationRules
+@Regression @TS36 @InitiationRules @TuesThurs
 Scenario Outline: Rule_OBOParticipant_OBO_Info_Not_Null
 Given Open browser and enter url 
 Then Login to the application as "txn_maker"
