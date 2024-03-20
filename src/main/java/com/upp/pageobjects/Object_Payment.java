@@ -41,13 +41,13 @@ public class Object_Payment extends BaseClass {
 	
 	//Alerts schedule
 	
-	@FindBy(xpath = "(//i[@id='ic-generic-datePicker-calender-v1'])[1]")
+	@FindBy(xpath = "//*[@id='dtpk-deals-instruction-waterfallSchedule-startDate-v1']//em[@id='ic-generic-datePicker-calender-v1']")
 	public WebElement Alerts_startsDate;
 	
 	@FindBy(xpath ="//td[contains(@class,'today')]")
 	public WebElement Alerts_todaysDate;
 	
-	@FindBy(xpath = "//i[@id='ic-generic-datePicker-calender-v1']")
+	@FindBy(xpath = "//*[@id='dtpk-deals-instruction-waterfallSchedule-endDate-v1']//em[@id='ic-generic-datePicker-calender-v1']")
 	public WebElement Alerts_endDate;
 	
 	@FindBy(xpath = "(//td[not(contains(@class,'calendar-invalid'))])[2]")

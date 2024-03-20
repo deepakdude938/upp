@@ -47,7 +47,7 @@ public class TS105 extends BaseClass implements ICallback {
 	
 	@Then("Create payment_BasicDetails in the scheduled Instructions with given {string}")
 	public void create_payment_BasicDetails_in_the_scheduled_Instructions_with_given(String string) throws Exception {
-		basic.createPayments_BasicDetails(string,DealPage.AccountNo1,DealPage.toaccountNo);
+		basic.createPayments_BasicDetails(string,DealPage.sourceAccountNo,DealPage.toaccountNo);
 	}
 
 	@Then("Create payment_Schedule in the scheduled Instructions with given {string}")

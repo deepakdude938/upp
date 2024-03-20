@@ -211,7 +211,7 @@ public class Payment_SubInstruction extends BaseClass {
 		}
 
 		if (commonutils.isElementDisplayed(od.payments_ToAccountDropdown, 2)) {
-
+		
 			if ((externalData.getFieldData(TSID, "Scheduled", "to").equalsIgnoreCase("toaccountNo"))) {
 				applyExplicitWaitsUntilElementClickable(od.payments_ToAccountDropdown, Duration.ofSeconds(5));
 				scroll.scrollInToView(od.payments_ToAccountDropdown);
@@ -222,6 +222,21 @@ public class Payment_SubInstruction extends BaseClass {
 				scroll.scrollInToView(od.payments_ToAccountDropdown);
 				dropdown.selectByVisibleText(od.payments_ToAccountDropdown,
 						(externalData.getFieldData(TSID, "Scheduled", "to")));
+			}
+		}
+		else if(commonutils.isElementDisplayed(od.payments_ToAccountTextBox, 2)) {
+			System.out.println(externalData.getFieldData(TSID, "Scheduled", "to"));
+			System.out.println(toaccountNo);
+			od.payments_ToAccountTextBox.sendKeys(toaccountNo);
+			Thread.sleep(1000);
+			By sourceaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+			try {
+			driver.findElement(sourceaccountselect).click();
+			}
+			catch(Exception e) {
+				Thread.sleep(1000);
+			 sourceaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+			 driver.findElement(sourceaccountselect).click();
 			}
 		}
 

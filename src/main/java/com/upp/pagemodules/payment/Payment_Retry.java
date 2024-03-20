@@ -85,7 +85,7 @@ public class Payment_Retry extends BaseClass {
 		od.payments_RetryType_CustomDays.sendKeys("1");
 		}
 		
-		else if(TSID.equalsIgnoreCase("TS142") || TSID.equalsIgnoreCase("TS153")){
+		else if(TSID.equalsIgnoreCase("TS142") || TSID.equalsIgnoreCase("TS153") ||  TSID.equalsIgnoreCase("TS167")){
 		Thread.sleep(3000);
 		js.click(od.payments_RetryType_SameDay);
 		Thread.sleep(3000);
@@ -94,6 +94,9 @@ public class Payment_Retry extends BaseClass {
 			}
 			else if(TSID.equalsIgnoreCase("TS153")) {
 				od.payments_Hours.sendKeys("2");
+			}
+			else if(TSID.equalsIgnoreCase("TS167")) {
+				od.payments_Hours.sendKeys("1");
 			}
 		}
 		Thread.sleep(3000);

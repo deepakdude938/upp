@@ -105,8 +105,9 @@ public class Payment extends BaseClass{
 		}
 		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
+			if(!TSID.equals("TS61")) {
 			od.payments_Repeatingslider.click();
-			
+			}
 		}
 		
 		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")

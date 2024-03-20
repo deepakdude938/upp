@@ -369,7 +369,7 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "//div[@class='ag-center-cols-viewport']")
 	public WebElement parties_HorizontalSlider;
 	
-	@FindBy(xpath = "//i[contains(@class,'ui-icon ic ic-edit')]")
+	@FindBy(xpath = "//em[contains(@class,'ui-icon ic ic-edit')]")
 	public WebElement parties_recordEditButton;
 	
 	@FindBy(xpath = "//div[contains(@class,'party-basic-form ng-tns')]")
@@ -599,7 +599,10 @@ public class Object_NewDeal extends BaseClass {
 	
 	@FindBy(xpath = "//div[@id='payment-to-sel-v1']//select")
 	public WebElement payments_ToAccountDropdown;
-
+	
+	@FindBy(xpath = "//ui-autocomplete[@id='sel-deals-basicDetails-processingUnit-v1']//input")
+	public WebElement payments_ToAccountTextBox;
+	
 	@FindBy(xpath = "//label[normalize-space()='Split by percentage']")
 	public WebElement payments_Split_By_percentage_Text;
 	
