@@ -229,6 +229,7 @@ public class Holiday extends BaseClass{
 	
 	public void approveHoliday_For_GB_Account(String TSID) throws Exception, IOException {
 		
+		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(hd. configuration_HolidayDraftsButton, hd.configuration_LeftSideScrollBar, 9, 1000);
 		 hd. configuration_HolidayDraftsButton.click();
 		 String holiday_name=dateutil.getCurrentDate_and_Month();
 		 String holiday_name1="TS126-"+holiday_name;
@@ -244,5 +245,4 @@ public class Holiday extends BaseClass{
 		 hd.configuration_HolidayOkButton.click();
 	 
 	}
-
 }

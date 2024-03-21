@@ -52,6 +52,9 @@ public class Object_Configuration extends BaseClass {
 	
 	@FindBy(xpath="//a[normalize-space()='Holiday Drafts']")
 	public WebElement configuration_HolidayDraftsButton;
+	
+	@FindBy(xpath="//div[contains(@class,'ui-overlay ui-sidebar')]")
+	public WebElement configuration_LeftSideScrollBar;
 
 	@FindBy(id="sel-generic-searchBar-searchInput-v1")
 	public WebElement configuration_HolidaySearchBox;

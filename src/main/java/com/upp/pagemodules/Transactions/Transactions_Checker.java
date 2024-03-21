@@ -126,9 +126,11 @@ public class Transactions_Checker extends BaseClass {
 				handleElementClickException(od.TxnChecker_comment);
 			}		
 			try {
+				Thread.sleep(3000);
 				od.TxnChecker_note.sendKeys("Ok");
 			}catch (Exception e) {
-				handleElementClickException(od.TxnChecker_note);
+				Thread.sleep(3000);
+				od.TxnChecker_note.sendKeys("Ok");
 			}				
 			handleElementClickException(od.TxnChecker_ok);
 			handleElementClickException(od.TxnChecker_txnCheckbox);
