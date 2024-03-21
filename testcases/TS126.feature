@@ -7,10 +7,11 @@ Then Login to the application as "txn_maker"
 And Create Holiday for GB Account "<TSID>"
 And Approve Holiday for GB Account with given "<TSID>"
 And Create new deal with basic details with given "<TSID>".
-And Call the ODP Login Api
-Then Create account in Odp with details from excel sheet with given "<TSID>".
-Then Call the ODP Logout Api
-And Create Account_One From excel sheet with given "<TSID>".
+And Create two Accounts with given "<TSID>"
+#And Call the ODP Login Api
+#Then Create account in Odp with details from excel sheet with given "<TSID>".
+#Then Call the ODP Logout Api
+#And Create Account_One From excel sheet with given "<TSID>".
 And Create Retention in the Scheduled Instructions with given "<TSID>"
 Then Click On Accounts Tab
 And Create payment_BasicDetails in the scheduled Instructions with given "TS126_1"

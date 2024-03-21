@@ -38,7 +38,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//button[normalize-space()='Proceed']")
 	public WebElement transactions_future_dated_Proceed;
 	
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[3]")
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")
 	public WebElement transactions_future_dated_DealId;
 
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[1]")
@@ -98,7 +98,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONCHECKER']")
 	public WebElement transactions_TransactionChecker;
 	
-	@FindBy(xpath = "(//input[@class='ag-floating-filter-input'])[2]")
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")
 	public WebElement transactions_Checker_DealID;
 	
 	@FindBy(xpath = "(//span[@class='ui-pseudo-checkbox'])[3]")

@@ -186,7 +186,7 @@ public class Payment_SubInstruction extends BaseClass {
 		driver.findElement(paymentInstrument).click();
 
 		
-		if (TSID.equalsIgnoreCase("TS110") || TSID.equalsIgnoreCase("TS113")) {
+		if (TSID.equalsIgnoreCase("TS110") ) {
 			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno_with_budget, Duration.ofSeconds(5));
 			od.Payment_Beneficiaryaccno_with_budget.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
 
@@ -195,7 +195,7 @@ public class Payment_SubInstruction extends BaseClass {
 		if (TSID.startsWith("TS105") || TSID.startsWith("TS108") || TSID.equalsIgnoreCase("TS122_1") || TSID.equalsIgnoreCase("TS126_1") || TSID.startsWith("TS137") || TSID.startsWith("TS140") || TSID.startsWith("TS141") || TSID.startsWith("TS142")) {
 			
 			applyExplicitWaitsUntilElementClickable(od.Payment_Beneficiaryaccno_without_Budget_Purpose, Duration.ofSeconds(5));
-			od.Payment_Beneficiaryaccno_without_Budget_Purpose.sendKeys(externalData.getFieldData(TSID, "Scheduled", "to"));
+			od.Payment_Beneficiaryaccno_without_Budget_Purpose.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE,externalData.getFieldData(TSID, "Scheduled", "to"));
 
 			}
 		

@@ -68,7 +68,7 @@ public class TS113 extends BaseClass implements ICallback {
 	public void create_linked_Instruction_Payment_with_given(String TSID) throws Exception {
 		tsid = TSID;
 		System.out.println("Changes = " + TSID);
-		dm.createNewLinkedAccount1(TSID,DealPage.AccountNo1 ,DealPage.AccountNo1 , this);
+		dm.createNewLinkedAccount1(TSID,DealPage.sourceAccountNo ,DealPage.toaccountNo , this);
 	}
 	@Then("submit the deal to transaction checker")
 	public void submit_the_deal_to_transaction_checker() throws Exception {
