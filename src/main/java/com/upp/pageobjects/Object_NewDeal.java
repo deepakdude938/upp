@@ -838,7 +838,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[6] | (//input[@id='txt-generic-autocomplete-input-v1'])[5]")
 	public WebElement payments_ToAccountInputBox;
 	
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+//	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[5]")
+	@FindBy(xpath = "//label[normalize-space()='Beneficiary Account Number / IBAN']/..//input[@id='txt-generic-autocomplete-input-v1']")
 	public WebElement payments_ToAccountInputBox1;
 	
 	@FindBy(xpath = "(//div[normalize-space()='LTTest'])[1]")

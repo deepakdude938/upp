@@ -27,6 +27,9 @@ public class Object_Audit extends BaseClass{
 	@FindBy(xpath="//li[@class='ui-chip active ng-star-inserted'][2]")
 	public WebElement Audit_Deal_Party_icon;
 	
+	@FindBy(xpath="//div[@class='ag-body-horizontal-scroll-viewport']")
+	public WebElement Audit_Deal_Party_HorizontalScrollBar;
+	
 	@FindBy(xpath="//span[contains(text(),'dealParties added:')]")
 	public WebElement Audit_DealPartyadded;
 	
