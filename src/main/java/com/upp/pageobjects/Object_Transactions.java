@@ -310,6 +310,9 @@ public class Object_Transactions extends BaseClass {
 //	@FindBy(xpath="//div[@col-id='Amount']")
 	@FindBy(xpath = "//div[@col-id='Status' and contains(@class,'ag-cell-not-inline-editing')]")
 	public List<WebElement> reports_EcommRecordStatus;
+	
+	@FindBy(xpath = "//div[@col-id='Status' and contains(@class,'ag-cell-not-inline-editing')]")
+	public WebElement reports_EcommRecordStatus1;
 
 	@FindBy(xpath = "//div[@col-id='Amount']")
 	public WebElement reports_Amount;

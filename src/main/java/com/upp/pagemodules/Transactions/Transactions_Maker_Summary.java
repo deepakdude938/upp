@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import com.upp.base.BaseClass;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
+import com.upp.utils.CommonUtils;
 import com.upp.utils.DateUtils;
 import com.upp.utils.DropDown;
 import com.upp.pageobjects.Object_NewDeal;
@@ -45,7 +46,7 @@ public class Transactions_Maker_Summary extends BaseClass {
 	public static ScrollTypes scroll;
 	public static String productName;
 	public static Object_Transactions tm;
-
+	public CommonUtils cu;
 	public Transactions_Maker_Summary() {
 
 		od = new Object_NewDeal();
@@ -57,6 +58,7 @@ public class Transactions_Maker_Summary extends BaseClass {
 		scroll = new ScrollTypes(driver);
 		dateutil = new DateUtils();
 		tm = new Object_Transactions();
+		cu=new CommonUtils(driver);
 
 	}
 
@@ -69,9 +71,17 @@ public class Transactions_Maker_Summary extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.transactions_SummarySubmitButton, Duration.ofSeconds(5));
 		jsClick.click(tm.transactions_SummarySubmitButton);
 		Thread.sleep(3000);
+		if(cu.isElementDisplayed(tm.transactions_Ok, 5)) {
 		tm.transactions_Ok.click();
+	}
 		Thread.sleep(3000);
-		tm.transactions_SummarySubmitButton.click();
+		if(cu.isElementDisplayed(tm.transactions_SummarySubmitButton, 5)) {
+			try {
+			tm.transactions_SummarySubmitButton.click();
+			}
+			catch(Exception e) {
+			}
+		}
 		Thread.sleep(3000);
 		int i =1;
 		while(tm.transactions_TransactionCheckerError.size()>0 && i<6) {

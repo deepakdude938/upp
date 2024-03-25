@@ -54,12 +54,11 @@ public class ECommerceTransactionChecker extends BaseClass {
 		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
 		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_txnChecker, Duration.ofSeconds(7));
 		ecomm.ecommerce_txnChecker.click();
-		try {
+		applyExplicitWaitsUntilElementClickable(ecomm.ecommerce_TxnDealSearch, Duration.ofSeconds(15));
 			ecomm.ecommerce_TxnDealSearch.sendKeys(dealId);
-		} catch (Exception e) {
-			handleElementClickException(ecomm.ecommerce_TxnDealSearch);
-		}
+		
 		applyExplicitWaitsUntilElementInvisible(od.TxnChecker_TransactionProgress, 100);
+		Thread.sleep(2000);
 		try {
 			ecomm.ecommerce_comment.click();
 		} catch (Exception e) {

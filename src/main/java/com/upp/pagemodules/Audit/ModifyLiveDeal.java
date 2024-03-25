@@ -101,6 +101,7 @@ public class ModifyLiveDeal extends BaseClass {
 		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Basic Details Name"));
 		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Scheduled", "Purpose"));
 		od.payments_SourceAccount.sendKeys(sourceAccountno);
+		Thread.sleep(2000);
 		By sourceaccountselect = By.xpath("//div[contains(text(),'" + sourceAccountno + "')]");
 		driver.findElement(sourceaccountselect).click();
 

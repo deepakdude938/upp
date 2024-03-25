@@ -197,7 +197,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(10));
 		jsClick.click(tm.reports_ExecutionReport);
 		applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(40));
-		tm.reports_DealId.sendKeys(DealId);
+		tm.reports_DealId.sendKeys(dealId);
 //		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 //		Thread.sleep(6500);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 9, 1000);
@@ -473,6 +473,41 @@ public class Reports_ExecutionReport extends BaseClass {
 
 	public void validateEcommTransaction() throws Exception {
 
+		commonEcommExecution();
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		for (WebElement record : tm.reports_EcommRecordStatus) {
+
+			Assert.assertEquals(record.getText(), "Scheduled");
+
+		}
+
+	}
+	
+	public void validateEcommTransactionScheduledOrTriggered() throws Exception {
+
+		commonEcommExecution();
+		Thread.sleep(1000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
+				-1000);
+
+		Thread.sleep(1000);
+		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
+		String ecomStatus = tm.reports_EcommRecordStatus1.getText();
+		System.out.println(ecomStatus);
+		if(ecomStatus.equals("Scheduled")  || ecomStatus.equals("Triggered") ) {
+		}
+		else {
+			Assert.fail("Status is not triggered or scheduled");
+		}
+
+	}
+	
+	private void commonEcommExecution() throws MalformedURLException, InterruptedException {
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsIcon, Duration.ofSeconds(15));
 		tm.reports_ReportsIcon.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
@@ -489,18 +524,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(2000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
 		jsClick.click(tm.cancelIcon);
-
-		Thread.sleep(1000);
-		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
-				-1000);
-
-		Thread.sleep(1000);
-		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(10));
-		for (WebElement record : tm.reports_EcommRecordStatus) {
-
-			Assert.assertEquals(record.getText(), "Scheduled");
-
-		}
 
 	}
 

@@ -98,8 +98,13 @@ public class TS06 extends BaseClass implements ICallback {
 	@Then("Check the Transaction staus in execution report with given {string}")
 	public void check_the_Transaction_staus_in_execution_report_with_given(String string) throws Exception {
 
-		execReport.ExecutionReport(string, TS06.dealId);
+		execReport.ExecutionReport(string, dealId);
 
+	}
+	
+	@Then("Check the Transaction status in ecomm execution report with given {string}")
+	public void check_the_Transaction_status_in_ecomm_execution_report_with_given(String string) throws Exception {
+	  execReport.validateEcommTransactionScheduledOrTriggered();
 	}
 
 

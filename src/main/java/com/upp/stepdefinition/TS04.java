@@ -25,7 +25,7 @@ import io.cucumber.java.en.*;
 
 public class TS04 extends BaseClass implements ICallback {
 	DashBoard_Module dm;
-	public String dealId;
+//	public String dealId;
 	Transactions_Maker_SearchTransactionAndSubmit txnsearch;
 	Transactions_Checker txnChecker;
 	Transactions_Verifier txnVerifier;

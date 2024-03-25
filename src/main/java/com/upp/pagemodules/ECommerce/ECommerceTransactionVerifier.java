@@ -50,7 +50,7 @@ public class ECommerceTransactionVerifier extends BaseClass {
 	public void txnVerifier_ApproveDeal(String dealId) throws Exception {
 		// TODO Auto-generated method stub
 		Thread.sleep(5000);
-		ecomm.ecommerce_SideMenuIcon.click();
+		click(ecomm.ecommerce_SideMenuIcon);
 		try {
 			ecomm.ecommerce_txnVerifier.click();
 		} catch (ElementClickInterceptedException e) {

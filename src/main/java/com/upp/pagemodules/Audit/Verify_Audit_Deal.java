@@ -63,6 +63,9 @@ public class Verify_Audit_Deal extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(audit.Audit_DealId, Duration.ofSeconds(5));
 		audit.Audit_DealId.sendKeys(dealId);
 		Thread.sleep(2000);
+		ScrollTypes.scrollInsideWindowTillWebElementPresent(audit.Audit_Deal_Party_icon, audit.Audit_Deal_Party_HorizontalScrollBar, 9, 1000);
+
+		
 		try {
 			audit.Audit_Deal_Party_icon.click();
 		} catch (Exception e) {

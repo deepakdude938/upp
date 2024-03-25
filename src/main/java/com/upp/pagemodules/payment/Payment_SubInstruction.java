@@ -229,14 +229,14 @@ public class Payment_SubInstruction extends BaseClass {
 			System.out.println(toaccountNo);
 			od.payments_ToAccountTextBox.sendKeys(toaccountNo);
 			Thread.sleep(1000);
-			By sourceaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+			By toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
 			try {
-			driver.findElement(sourceaccountselect).click();
+			driver.findElement(toaccountselect).click();
 			}
 			catch(Exception e) {
 				Thread.sleep(1000);
-			 sourceaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
-			 driver.findElement(sourceaccountselect).click();
+				toaccountselect = By.xpath("//div[contains(text(),'" + toaccountNo + "')]");
+			 driver.findElement(toaccountselect).click();
 			}
 		}
 
