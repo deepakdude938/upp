@@ -12,14 +12,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.NumberToTextConverter;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -340,4 +335,40 @@ public class ExcelReader {
 		fileInputStream.close();
 		return rowCount;
 	}
+	
+	public static double sumAmountsFromExcel(String filePath) throws IOException {
+        double sum = 0;
+        try (FileInputStream fis = new FileInputStream(filePath);
+             Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheetAt(0); // Assuming the data is in the first sheet.
+            int amountColumnIndex = -1;
+
+            // Find the "amount" column index
+            Row headerRow = sheet.getRow(sheet.getFirstRowNum());
+            for (Cell cell : headerRow) {
+                if (cell.getCellType() == CellType.STRING && "amount".equalsIgnoreCase(cell.getStringCellValue().trim())) {
+                    amountColumnIndex = cell.getColumnIndex();
+                    break;
+                }
+            }
+
+            if (amountColumnIndex == -1) {
+                throw new IllegalArgumentException("The 'amount' column was not found.");
+            }
+
+            // Sum the values in the "amount" column
+            for (int rowNum = sheet.getFirstRowNum() + 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
+                Row row = sheet.getRow(rowNum);
+                if (row != null) {
+                    Cell cell = row.getCell(amountColumnIndex);
+                    if (cell != null && cell.getCellType() == CellType.NUMERIC) {
+                        sum += cell.getNumericCellValue();
+                    }
+                }
+            }
+        }
+        return sum;
+    }
+	
 }

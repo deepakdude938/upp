@@ -88,7 +88,22 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(xpath = "//button[contains(text(),'OK')]")
 	public WebElement transactions_Ok;
-
+	
+	@FindBy(xpath = "//button[normalize-space()='Next']")
+	public WebElement transactions_NextButton;
+	
+	@FindBy(xpath = "//button[normalize-space()='next']")
+	public WebElement transactions_NextButton1;
+	
+	@FindBy(xpath = "//div[contains(@class,'ui-tree-grid-view-ct')]")
+	public WebElement transactions_MappingScreenScrollBar;
+	
+	@FindBy(xpath = "//input[@placeholder='Select Destination Account' and @id='txt-generic-autocomplete-input-v1']")
+	public WebElement transactions_DestinationAccount;
+	
+	@FindBy(xpath = "//li[@id='lbl-generic-autocomplete-listItemOption1']//div[normalize-space()='to']")
+	public WebElement transactions_toAccount;
+	
 	@FindBy(xpath = "//button[contains(text(),'Yes')]")
 	public WebElement transactions_YesButton;
 	
@@ -128,6 +143,9 @@ public class Object_Transactions extends BaseClass {
 
 	@FindBy(id = "btn-tranaction-summary-submit-v1")
 	public WebElement transactions_Checker_SubmitButton;
+	
+	@FindBy(xpath = "//div[contains(@class,'ui-overlay ui-sidebar m')]")
+	public WebElement transactions_SideBar;
 
 	@FindBy(xpath = "//a[@href='/transactions/TRANSACTIONVERIFIER']")
 	public WebElement transactions_TransactionVerifier;
@@ -399,7 +417,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(xpath = "//button[contains(text(),'Ok')]")
 	public WebElement transactionMaker_messageOk;
 
-	@FindBy(xpath = "(//input[@ref='eInput'])[2]")
+	@FindBy(xpath = "//input[@aria-label='Deal Id Filter Input']")
 	public WebElement transactionMaker_dealSearch;
 	
 	@FindBy(xpath = "(//input[@ref='eInput'])[10]")

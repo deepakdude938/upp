@@ -61,6 +61,7 @@ public class TS12 extends BaseClass implements ICallback {
 	@Then("Create Transaction from Transaction Maker and check whether To Field is accepting Non Registered Beneficiary with given {string}")
 	public void create_Transaction_from_Transaction_Maker_and_check_whether_To_Field_is_accepting_Non_Registered_Beneficiary_with_given(String string) throws Exception {
 		TSID = string;
+		tm_BasicDetails.createNewAdhocTransaction(string, dealId, DealPage.sourceAccountNo);
 		tm_BasicDetails.Transactions_Maker_BasicDetails(string, TS06.dealId, DealPage.toaccountNo);
 //		tm_BasicDetails.Transactions_Maker_BasicDetails(string, "REF1704964855203", "7322661124");
 		tm_sub.Transaction_Maker_Sub_Instruction(string, this);

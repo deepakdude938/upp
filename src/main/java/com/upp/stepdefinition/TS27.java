@@ -71,6 +71,11 @@ public class TS27 extends BaseClass implements ICallback {
 	   report.ExecutionReportForBulkUpload(string,TS06.dealId,time);
 	}
 	
+	@Then("Create SubInstruction Bulk Upload with {string}")
+	public void create_SubInstruction_Bulk_Upload_with(String string) throws Exception {
+		bulkUpload.subInstructionBulkUpload(string);
+	}
+	
 	@Override
 	public void handleCallback(String callbackid, Object data) throws Exception {
 		// TODO Auto-generated method stub
