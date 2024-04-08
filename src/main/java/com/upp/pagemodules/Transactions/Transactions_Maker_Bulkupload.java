@@ -3,8 +3,10 @@ package com.upp.pagemodules.Transactions;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 
 import com.upp.base.BaseClass;
+import com.upp.base.Constants;
 import com.upp.odp.utils.AccountDetails;
 import com.upp.odp.utils.OdpApi;
 import com.upp.utils.DateUtils;
@@ -99,7 +101,15 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		tm.transactionMaker_browseButton.sendKeys(excelFilePath);
 		Thread.sleep(2000);
 		dropdown.selectByVisibleText(tm.transactionMaker_sheetName, "Sheet");
-		tm.transactionMaker_uploadButton.click();
+		tm.transactions_NextButton.click();
+//		transactions_MappingScreenScrollBar
+		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(tm.transactions_DestinationAccount, tm.transactions_MappingScreenScrollBar, 200, 5);
+		Thread.sleep(2000);
+		tm.transactions_DestinationAccount.sendKeys("to");
+		tm.transactions_toAccount.click();
+		tm.transactions_NextButton1.click();
+		
+		
 		tm.transactions_Ok.click();
 		Thread.sleep(8000);
 		driver.navigate().refresh();
@@ -243,6 +253,7 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 //		driver.navigate().refresh();
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionIcon, Duration.ofMinutes(2));
 		jsClick.click(tm.transactions_TransactionIcon);
+		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(tm.transactions_SideBar, tm.transactions_TransactionVerifier, 10, 5);
 		applyExplicitWaitsUntilElementClickable(tm.transactions_TransactionVerifier, Duration.ofMinutes(2));
 		jsClick.click(tm.transactions_TransactionVerifier);
 		Thread.sleep(8000);
@@ -273,5 +284,44 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 			tm.transactions_YesButton.click();
 			tm.transactions_Ok.click();
 		}
+	}
+
+	public void subInstructionBulkUpload(String TSID) throws Exception {
+		String bulkUploadFilePath = 	System.getProperty("user.dir")
+				+ "//src//main//resources//SIBU_NEFT02.xlsx";
+		  double totalAmount =ExcelReader. sumAmountsFromExcel(bulkUploadFilePath);
+	        // Format the output to two decimal places
+	        String formattedTotal = String.format("%.2f", totalAmount);
+		System.out.println(bulkUploadFilePath);
+		applyExplicitWaitsUntilElementClickable(od.payments_Instrument, Duration.ofSeconds(15));
+		try {
+			od.payments_Instrument.click();
+		} catch (Exception e) {
+			handleElementClickException(od.payments_Instrument);
+		}
+		Thread.sleep(500);
+		
+		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
+		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
+		
+		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(od.payments_subInstructionScrollBar, od.payments_neftSubInstruction, 5,500);
+		driver.findElement(paymentInstrument).click();
+		click(od.payments_bulkUpload);
+		applyExplicitWaitsUntilElementClickable(od.payments_bulkUploadFile, Duration.ofSeconds(20));
+		od.payments_bulkUploadFile.sendKeys(bulkUploadFilePath);
+		dropdown.selectByVisibleText(od.payments_subInstructionBulkUploadSheet, "Reference");
+		Thread.sleep(3000);
+		dropdown.selectByVisibleText(od.payments_subInstructionBulkUploadSheet, "Sheet");
+		click(od.payments_selectAllCheckbox);
+		click(od.payments_subInstructionSubmit);
+//		
+		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(od.payments_subInstructionBulkUploadSheetScrollBar, od.payments_subInstructionLastRecord, 5, 500);
+		Thread.sleep(3000);
+		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(od.payments_subInstructionBulkUploadSheetScrollBar1, od.payments_subInstructionBulkUploadTotalAmountSum, 5, 500);
+
+		String finalSumAmount = od.payments_subInstructionBulkUploadTotalAmountSum.getText();
+		System.out.println(finalSumAmount);
+		Assert.assertEquals(formattedTotal, finalSumAmount);
+
 	}
 }

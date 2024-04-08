@@ -289,8 +289,8 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//input[@id='rad-generic-radio-select-v1'])[1]")
 	public WebElement dealChecker_approveAllRadioButton;
 	
-//	@FindBy(xpath = "(//i[@class='ui-icon ui-icon-note warning'])[1]")
-	@FindBy(xpath = "(//em[@class='ui-icon ui-icon-note warning'])[1]")
+	@FindBy(xpath = "(//i[@class='ui-icon ui-icon-note warning'])[1]")
+//	@FindBy(xpath = "(//em[@class='ui-icon ui-icon-note warning'])[1]")
 	public WebElement dealChecker_addComments;
 
 	@FindBy(id = "btn-deals-summary-approve-v1")
@@ -590,6 +590,43 @@ public class Object_NewDeal extends BaseClass {
 
 	@FindBy(xpath = "//input[@placeholder='Select Instrument']")
 	public WebElement payments_Instrument;
+	
+	@FindBy(xpath = "//div[contains(@class,'bulk_upload')]")
+	public WebElement payments_bulkUpload;
+	
+	@FindBy(xpath = "//div[normalize-space()='NEFT']")
+	public WebElement payments_neftSubInstruction;
+	
+	@FindBy(xpath = "(//cdk-virtual-scroll-viewport[contains(@class,'cdk-virtual-scroll-viewport cdk-viewport cdk-virtual-scrollable')])[3]")
+	public WebElement payments_subInstructionScrollBar;
+	
+	@FindBy(id = "txt-generic-fileUpload-fileInput-v1")
+	public WebElement payments_bulkUploadFile;
+	
+	@FindBy(xpath = "//select[contains(@class,'form-control')]")
+	public WebElement payments_subInstructionBulkUploadSheet;
+	
+	@FindBy(xpath = "//label[normalize-space()='Select all']//span")
+	public WebElement payments_selectAllCheckbox;
+	
+	@FindBy(xpath = "(//div[contains(@class,'grid-view-container')])[2]")
+	public WebElement payments_subInstructionBulkUploadSheetScrollBar;
+	
+	@FindBy(xpath = "(//div[@class='ui-wizard-step ng-star-inserted'])[3]")
+	public WebElement payments_subInstructionBulkUploadSheetScrollBar1;
+	
+	@FindBy(xpath = "//span[@class='total-amount-sum']")
+	public WebElement payments_subInstructionBulkUploadTotalAmountSum;
+	
+	
+	
+	
+	@FindBy(xpath = "//td[normalize-space()='20']")
+	public WebElement payments_subInstructionLastRecord;
+	
+	
+	@FindBy(xpath = "(//button[normalize-space()='Submit' and contains(@class,'ui-btn-primary')])[2]")
+	public WebElement payments_subInstructionSubmit;
 
 	@FindBy(xpath = "//input[@id='txt-generic-autocomplete-input-v1' and @placeholder='Select Instrument']")
 	public WebElement payments_Instrument2;

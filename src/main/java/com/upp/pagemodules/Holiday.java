@@ -195,7 +195,7 @@ public class Holiday extends BaseClass{
 
 	public void approveHoliday() throws Exception, IOException {
 		
-		 hd. configuration_HolidayDraftsButton.click();
+		 click(hd. configuration_HolidayDraftsButton);
 		 hd. configuration_HolidaySearchBox.sendKeys(externalData.getFieldData(ID,"Holidays and Holiday Drafts","Holiday").trim());;
 		 hd. configuration_HolidaySearchBoxButton.click();
 		 Thread.sleep(1000);
