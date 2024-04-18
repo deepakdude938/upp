@@ -600,7 +600,11 @@ public class Object_NewDeal extends BaseClass {
 	@FindBy(xpath = "(//cdk-virtual-scroll-viewport[contains(@class,'cdk-virtual-scroll-viewport cdk-viewport cdk-virtual-scrollable')])[3]")
 	public WebElement payments_subInstructionScrollBar;
 	
-	@FindBy(id = "txt-generic-fileUpload-fileInput-v1")
+	@FindBy(xpath = "//input[@placeholder='Select Instrument']")
+	public WebElement payments_paymentsInstrument;
+	
+	
+	@FindBy(xpath = "//input[@type='file']")
 	public WebElement payments_bulkUploadFile;
 	
 	@FindBy(xpath = "//select[contains(@class,'form-control')]")

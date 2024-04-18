@@ -172,7 +172,7 @@ public class BaseClass {
 		}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		
+	
 		return driver;
 
 	}

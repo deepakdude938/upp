@@ -4,7 +4,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
-
+import java.util.Set;
 import com.upp.base.BaseClass;
 import com.upp.base.Constants;
 import com.upp.odp.utils.AccountDetails;
@@ -300,14 +300,32 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 			handleElementClickException(od.payments_Instrument);
 		}
 		Thread.sleep(500);
-		
-		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
+		od.payments_paymentsInstrument.sendKeys("NEFT");;
+		Thread.sleep(2000);
+//		String paymentInstrumentdata = externalData.getFieldData(TSID, "Scheduled", "Instrument");
+		String paymentInstrumentdata = "NEFT";
+
 		By paymentInstrument = By.xpath("//div[contains(text(),'" + paymentInstrumentdata + "')]");
-		
+		Thread.sleep(4000);
 		ScrollTypes.scrollVerticalInsideWindowTillWebElementPresent(od.payments_subInstructionScrollBar, od.payments_neftSubInstruction, 5,500);
 		driver.findElement(paymentInstrument).click();
 		click(od.payments_bulkUpload);
-		applyExplicitWaitsUntilElementClickable(od.payments_bulkUploadFile, Duration.ofSeconds(20));
+		Thread.sleep(5000);
+//		String kj =driver.getWindowHandle();
+//		System.out.println(kj);
+//		Set<String> kjj=driver.getWindowHandles();
+//		System.out.println(kjj.size());
+//		for(String handle : kjj) {
+//			System.out.println(handle);
+//			if(!handle.equals(kj)) {
+//				driver.switchTo().window(handle);
+//			}
+//		}
+//		Thread.sleep(5000);
+//		String l =driver.findElement(By.tagName("ui-file-upload")).getAttribute("class");
+//		System.out.println(l);
+//		System.out.println(od.payments_bulkUploadFile.getAttribute("class"));
+//		applyExplicitWaitsUntilElementClickable(od.payments_bulkUploadFile, Duration.ofSeconds(20));
 		od.payments_bulkUploadFile.sendKeys(bulkUploadFilePath);
 		dropdown.selectByVisibleText(od.payments_subInstructionBulkUploadSheet, "Reference");
 		Thread.sleep(3000);

@@ -15,8 +15,8 @@ Then Add Party Accounts with given "TS131_1".
 And Submit the deal
 Then Approve the deal from the deal checker
 Then Hit NewAccountwithSameCreditorLookUpKeys_Api "<TSID>"
-#Then Edit the deal "<TSID>"
-#Then Verify Creditor LookUp keys are updated "<TSID>"
+Then Edit the deal "<TSID>"
+Then Verify Creditor LookUp keys are updated "<TSID>"
 
 Examples:
       |TSID   |

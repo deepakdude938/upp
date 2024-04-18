@@ -122,8 +122,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			else {
 				Assert.assertFalse(true,"Scroe status didnt found");
 			}
-			
-			
 		}
 		else {
 		
@@ -238,7 +236,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void checkInstructionTypeRetention_Surplus(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(20));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		if (!(ScroeStatus.equalsIgnoreCase("Pending") || ScroeStatus.equalsIgnoreCase("Scheduled"))) {
