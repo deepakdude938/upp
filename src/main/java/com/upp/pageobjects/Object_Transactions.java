@@ -53,7 +53,7 @@ public class Object_Transactions extends BaseClass {
 	@FindBy(css = ".ui-btn-primary.ui-align-left.w-a")
 	public WebElement transactions_SubmitButton;
 
-	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[3]")
+	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[2]")
 	public WebElement transactions_Instrument;
 	
 	@FindBy(xpath = "(//input[@id='txt-generic-autocomplete-input-v1'])[4]")

@@ -30,7 +30,7 @@ public class Object_Parties extends BaseClass{
 	@FindBy(id = "btn-generic-searchBar-search-v1")
 	public WebElement parties_SearchButton;
 	
-	@FindBy(xpath = "(//i[contains(@class,'ui-icon ic ic-edit_blue ng-star-inserted')])[1]")
+	@FindBy(xpath = "(//em[contains(@class,'ui-icon ic ic-edit_blue ng-star-inserted')])[1]")
 	public WebElement parties_editPartyButton;
 	
 	@FindBy(xpath = "(//i[contains(@class,'ui-icon ic ic-edit_blue')])[1]")
