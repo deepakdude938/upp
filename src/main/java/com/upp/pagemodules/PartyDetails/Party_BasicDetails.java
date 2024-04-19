@@ -70,13 +70,10 @@ public class Party_BasicDetails extends BaseClass {
 	
 	public void Create_Party_BasicDetails(String TSID, ICallback icallback) throws Exception
 	{
-		od.parties_AddnewParty.click();
+		click(od.parties_AddnewParty);
 		partyName = externalData.getFieldData(TSID, "Party", "Customer Id")+"_"+DateUtils.getCurrentDateTime();
 		od.parties_CustomerID.sendKeys(partyName);
 		od.parties_PartyName.sendKeys(externalData.getFieldData(TSID, "Party", "Party Name")+"_"+DateUtils.getCurrentDateTime());
-		
-//		od.parties_CustomerID.sendKeys(partyName);
-//		od.parties_PartyName.sendKeys(partyName);
 		
 		responsibilities = externalData.getFieldData(TSID, "Party", "Responsibility");
 		od.parties_Responsibility.sendKeys(responsibilities);

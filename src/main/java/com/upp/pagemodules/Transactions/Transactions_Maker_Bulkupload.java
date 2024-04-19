@@ -311,21 +311,6 @@ public class Transactions_Maker_Bulkupload extends BaseClass {
 		driver.findElement(paymentInstrument).click();
 		click(od.payments_bulkUpload);
 		Thread.sleep(5000);
-//		String kj =driver.getWindowHandle();
-//		System.out.println(kj);
-//		Set<String> kjj=driver.getWindowHandles();
-//		System.out.println(kjj.size());
-//		for(String handle : kjj) {
-//			System.out.println(handle);
-//			if(!handle.equals(kj)) {
-//				driver.switchTo().window(handle);
-//			}
-//		}
-//		Thread.sleep(5000);
-//		String l =driver.findElement(By.tagName("ui-file-upload")).getAttribute("class");
-//		System.out.println(l);
-//		System.out.println(od.payments_bulkUploadFile.getAttribute("class"));
-//		applyExplicitWaitsUntilElementClickable(od.payments_bulkUploadFile, Duration.ofSeconds(20));
 		od.payments_bulkUploadFile.sendKeys(bulkUploadFilePath);
 		dropdown.selectByVisibleText(od.payments_subInstructionBulkUploadSheet, "Reference");
 		Thread.sleep(3000);

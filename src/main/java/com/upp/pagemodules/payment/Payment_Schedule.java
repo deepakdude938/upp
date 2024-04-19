@@ -83,15 +83,7 @@ public class Payment_Schedule extends BaseClass {
 				}
 				}
 		}
-//		if(!TSID.equals("TS152")) {
-//		// Repeating slider is enabled by default so have to disbale the slider
-//		if (((externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Y")
-//				|| (externalData.getFieldData(TSID, "Scheduled", "Split")).equalsIgnoreCase("Yes"))) {
-//			System.out.println("inside------------- Split and Repeat");
-//			Thread.sleep(1000);
-//			js.click(od.payments_Repeatingslider);
-//		}
-//		}
+
 
 		if (((externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Y")
 				|| (externalData.getFieldData(TSID, "Scheduled", "Sweep in")).equalsIgnoreCase("Yes"))) {

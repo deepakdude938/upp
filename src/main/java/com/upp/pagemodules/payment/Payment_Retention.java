@@ -48,12 +48,6 @@ public class Payment_Retention extends BaseClass {
 		applyExplicitWaitsUntilElementClickable(od.retention_nextArrowIcon, Duration.ofSeconds(3));
 		od.retention_nextArrowIcon.click();
 		Thread.sleep(3000);
-//		applyExplicitWaitsUntilElementClickable(od.Retention_Summary, Duration.ofSeconds(5));
-//		od.Retention_Summary.click();
-//		Thread.sleep(1000);
-//		od.payments_SimulateButton.click();
-//		Thread.sleep(1000);
-//		od.Retention_Summary_close.click();
 	
 	}
 	

@@ -157,16 +157,12 @@ public class Reports_ExecutionReport extends BaseClass {
 		Thread.sleep(3000);
 		System.out.println("EndtoEndId" + EndToEndId);
 		tm.reports_End_To_End_common.sendKeys(EndToEndId);
-		Thread.sleep(3000);
+		applyExplicitWaitsUntilElementClickable(tm.reports_FirstTxnStatus, Duration.ofSeconds(40));
 		String status = tm.reports_FirstTxnStatus.getText();
 		System.out.println("The status is :" + status);
-
 		Assert.assertEquals(status, "Scheduled");
-
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_Amount, tm.reports_horizontalWindow1, 9, 1000);
-
 		Thread.sleep(3000);
-
 		By Amount1 = By.xpath("//div[normalize-space()='400']");
 		applyExplicitWaitsUntilElementVisible(Amount1, 3);
 		String amount1 = driver.findElement(Amount1).getText();
@@ -221,9 +217,7 @@ public class Reports_ExecutionReport extends BaseClass {
 		// scroll.scrollHorizontalInsideWindow(tm.reports_horizontalWindow, 3800);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructions_Type,
 				tm.reports_horizontalWindow1, 10, 1000);
-
 		Thread.sleep(1000);
-
 		ArrayList<String> subInstruction = new ArrayList();
 		for (WebElement iu : tm.reports_SubInstructions) {
 
@@ -245,9 +239,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_SubInstructions_Type,
 				tm.reports_horizontalWindow1, 10, 1000);
-
 		Thread.sleep(1000);
-
 		ArrayList<String> subInstruction = new ArrayList();
 		for (WebElement iu : tm.reports_SubInstructions) {
 
@@ -355,15 +347,14 @@ public class Reports_ExecutionReport extends BaseClass {
 		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
 
 		if (!((ScroeStatus.equalsIgnoreCase("Settled")) && (ScroeStatus2ndrow.equalsIgnoreCase("Settled")))) {
-
 			Assert.fail("The transaction is not Settled");
 		}
-
 	}
 
 	public void checkStatus_AwaitingForDependant(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus2ndRow, Duration.ofSeconds(30));
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		System.out.println(" ScroeStatus2ndrow " + ScroeStatus2ndrow);
 
@@ -395,7 +386,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void checkStatusAndInstructionType(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String status = tm.reports_ScroeStatus.getText();
 
 		if (!(status.equalsIgnoreCase("Scheduled"))) {
@@ -417,13 +408,11 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void checkStatusAndInstructionTypeAsBalanceReport(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String status = tm.reports_ScroeStatus.getText();
 
 		if (!(status.equalsIgnoreCase("Scheduled"))) {
-
 			Assert.fail("Transaction not scheduled");
-
 		}
 
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_InstructionName, tm.reports_horizontalWindow1,
@@ -439,6 +428,7 @@ public class Reports_ExecutionReport extends BaseClass {
 
 		int flag = 0;
 		commonmethodExecReport(TSID, DealId);
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		System.out.println("Scroe status is " + ScroeStatus);
 		System.out.println(tm.reports_RecordStatus.size());
@@ -449,13 +439,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			applyExplicitWaitsUntilElementClickable(tm.reports_DealId, Duration.ofSeconds(5));
 			tm.reports_DealId.sendKeys(DealId);
 			Thread.sleep(3000);
-//			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.cancelIcon, tm.reports_horizontalWindow1, 10, 1000);
-//			jsClick.click(tm.cancelIcon);
-//
-//			Thread.sleep(1000);
-//			ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_dealIDText, tm.reports_horizontalWindow1, 10,
-//					-1000);
-
 			String ScroeStatusafter = tm.reports_ScroeStatus.getText();
 			if (ScroeStatusafter.equalsIgnoreCase("Settled")) {
 				flag = 1;
@@ -465,7 +448,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			}
 			Assert.assertEquals(flag, 1);
 		}
-		// }
 
 	}
 
@@ -483,7 +465,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			Assert.assertEquals(record.getText(), "Scheduled");
 
 		}
-
 	}
 	
 	public void validateEcommTransactionScheduledOrTriggered() throws Exception {
@@ -510,8 +491,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_ReportsIcon.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		tm.reports_ReportsInternal.click();
-//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-//		tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
 		tm.reports_eCommExecutionsList.click();
@@ -530,9 +509,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		// applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,
-		// Duration.ofSeconds(5));
-		// tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
@@ -548,10 +524,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		applyExplicitWaitsUntilElementVisible(tm.reports_EcommRecordStatus, Duration.ofSeconds(20));
 		String record = tm.reports_EcommRecordStatus.get(0).getText();
 		System.out.println("Record = " + record);
-//		for (WebElement record : tm.reports_EcommRecordStatus) {
-		// Assert.assertEquals(record, "Scheduled");
-
-//		}
 
 	}
 
@@ -614,9 +586,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		// applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,
-		// Duration.ofSeconds(5));
-		// tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		ScrollTypes.scrollInsideWindowTillWebElementPresent(tm.reports_eCommExecutionsList,
 				tm.reports_horizontalWindow1, 8, 1000);
@@ -640,9 +609,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		// applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,
-		// Duration.ofSeconds(5));
-		// tm.reports_searchBox.sendKeys("eComm Payments");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommPaymentsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommPaymentsList, Duration.ofSeconds(6));
@@ -808,9 +774,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		// applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,
-		// Duration.ofSeconds(5));
-		// tm.reports_searchBox.sendKeys("eComm Payments");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommPaymentsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommPaymentsList, Duration.ofSeconds(6));
@@ -1133,9 +1096,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		jsClick.click(tm.reports_ReportsIcon);
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		jsClick.click(tm.reports_ReportsInternal);
-		// applyExplicitWaitsUntilElementClickable(tm.reports_searchBox,
-		// Duration.ofSeconds(5));
-		// tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		scroll.scrollInToView(tm.reports_eCommExecutionsList);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(6));
@@ -1190,7 +1150,7 @@ public class Reports_ExecutionReport extends BaseClass {
 	public void check_Triggered_or_Settled_Status_For_All_3_Transactions(String TSID, String DealId) throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
@@ -1253,7 +1213,7 @@ public class Reports_ExecutionReport extends BaseClass {
 			throws Exception {
 
 		commonmethodExecReport(TSID, DealId);
-
+		applyExplicitWaitsUntilElementClickable(tm.reports_ScroeStatus, Duration.ofSeconds(30));
 		String ScroeStatus = tm.reports_ScroeStatus.getText();
 		String ScroeStatus2ndrow = tm.reports_ScroeStatus2ndRow.getText();
 		String ScroeStatus3rdrow = tm.reports_ScroeStatus3rdRow.getText();
@@ -1417,13 +1377,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			String networkKeyAccount = accountMap.get("Computer");
 			System.out.println(account);
 			System.out.println(networkKeyAccount);
-//			if(TSID.equals("TS123")) {
-//				Assert.assertEquals(account, networkKeyAccount);
-//			}
-//			else if(TSID.equals("TS123_1")) {
-//				Assert.assertEquals(account, "ICICI1205");
-//			}
-
 		}
 	}
 
@@ -1462,8 +1415,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_ReportsIcon.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		tm.reports_ReportsInternal.click();
-//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-//		tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(100));
 		tm.reports_eCommExecutionsList.click();
@@ -1492,8 +1443,6 @@ public class Reports_ExecutionReport extends BaseClass {
 		tm.reports_ReportsIcon.click();
 		applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 		tm.reports_ReportsInternal.click();
-//		applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-//		tm.reports_searchBox.sendKeys("eComm Executions");
 		Thread.sleep(2000);
 		applyExplicitWaitsUntilElementClickable(tm.reports_eCommExecutionsList, Duration.ofSeconds(100));
 		tm.reports_eCommExecutionsList.click();
@@ -1522,8 +1471,6 @@ public class Reports_ExecutionReport extends BaseClass {
 			jsClick.click(tm.reports_ReportsIcon);
 			applyExplicitWaitsUntilElementClickable(tm.reports_ReportsInternal, Duration.ofSeconds(5));
 			jsClick.click(tm.reports_ReportsInternal);
-//			applyExplicitWaitsUntilElementClickable(tm.reports_searchBox, Duration.ofSeconds(5));
-//			tm.reports_searchBox.sendKeys("Execution Report");
 			Thread.sleep(2000);
 			applyExplicitWaitsUntilElementClickable(tm.reports_ExecutionReport, Duration.ofSeconds(6));
 			jsClick.click(tm.reports_ExecutionReport);
@@ -1572,18 +1519,7 @@ public class Reports_ExecutionReport extends BaseClass {
 				List<String> preferenceList = new ArrayList<String>();
 				
 				driver.findElement(By.xpath("//*[contains(text(), 'Set Preference')]")).click();
-				Thread.sleep(2500);
-//				WebElement checkbox =  driver.findElement(By.xpath("//div[@class='ui-text-xs ui-checkbox header-checkbox']//span"));
-//				System.out.println("Checkbox status"+checkbox.isSelected());
-//				if(checkbox.isSelected()) {
-//					checkbox.click();
-//
-//				}
-//				else {
-//					checkbox.click();
-//					Thread.sleep(1000);
-//					checkbox.click();
-//				}
+		
 				Thread.sleep(1000);
 				List<WebElement> preferenceElements = driver.findElements(By.xpath("//div[@cdkdraglockaxis='y']"));
 				int X =preferenceElements.get(0).getLocation().getX();

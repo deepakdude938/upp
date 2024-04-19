@@ -62,6 +62,7 @@ public class Payment_BasicDetails extends BaseClass{
 		driver.findElement(InstructionButton).click();
 		applyExplicitWaitsUntilElementClickable(od.payments_Proceed, Duration.ofSeconds(5));
 		od.payments_Proceed.click();
+		applyExplicitWaitsUntilElementClickable(od.payments_Proceed,  Duration.ofSeconds(5));
 		od.payments_BasicName.clear();
 		od.payments_BasicName.sendKeys(externalData.getFieldData(TSID, "Scheduled", "Basic Details Name"));
 		dropdown.selectByVisibleText(od.payments_Purpose, externalData.getFieldData(TSID, "Scheduled", "Purpose"));
