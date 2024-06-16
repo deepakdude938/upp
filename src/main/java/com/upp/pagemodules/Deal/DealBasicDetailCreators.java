@@ -68,8 +68,10 @@ public class DealBasicDetailCreators extends BaseClass {
 		Thread.sleep(3000);
 		click(od.deal_SideMenuIcon);
 		click(od.newDealButton);
-		od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name")+"_"+DateUtils.getCurrentDateTime());
+	//	od.newDeal.sendKeys(externalData.getFieldData(TSID, "Basic Details", "Deal Name")+"_"+DateUtils.getCurrentDateTime());
+			od.newDeal.sendKeys("Transaction");
 
+		
 		productName = externalData.getFieldData(TSID, "Basic Details", "Product");
 
 		if (!(productName.equals("1.0"))) {
